@@ -1,0 +1,3 @@
+# DialCanvas-SAS
+
+DialCanvasプロジェクトのルートリポジトリです。
