@@ -1,0 +1,17 @@
+{
+  "version": "v1.0",
+  "updated_date": "2026-10-16",
+  "task_total": 48,
+  "scoped_evidence_done": 16,
+  "working": 8,
+  "open": 20,
+  "hardware_wait": 4,
+  "new_this_turn": [
+    "G2-06"
+  ],
+  "manufacturer_release_closed": 0,
+  "manufacturer_release_total": 6,
+  "software_evidence_passed": 11,
+  "software_evidence_total": 14,
+  "gh_guard_scope": "process consistency only, not safety validation"
+}
