@@ -1,0 +1,125 @@
+{
+  "design": "M1 Phase73 double-falling-edge qualification only",
+  "status": "REVIEW_ONLY_NO_MOTOR_ENABLE",
+  "source_vendor_contract": "phase72/vendor_contract.json",
+  "nets": {
+    "5V_RAW": [
+      "U7.5"
+    ],
+    "5V_MOTOR": [
+      "U7.6",
+      "R_PGTH_TOP.1"
+    ],
+    "3V3_AON": [
+      "R_PG_PU.2",
+      "U_WD.1",
+      "U_WD.3",
+      "U_WD.5",
+      "U_EDGE.2",
+      "U_EDGE.7",
+      "U_EDGE.8",
+      "U_RUN.7",
+      "U_RUN.8",
+      "U_HB_INV.5",
+      "U_POR.5",
+      "U_POR.6",
+      "U_POR.3",
+      "R_WD_CWD.2",
+      "R_WDO_PU.2",
+      "R_POR_PU.2"
+    ],
+    "GND": [
+      "R_PGTH_BOT.2",
+      "U7.8",
+      "U_WD.4",
+      "U_EDGE.4",
+      "U_RUN.4",
+      "U_HB_INV.3",
+      "U_POR.2",
+      "R_EN_PD.2"
+    ],
+    "U7_EN_CLAMPED_DISABLED": [
+      "U7.1",
+      "R_EN_PD.1"
+    ],
+    "REQUIRES_OVLO_PARTS": [
+      "U7.2"
+    ],
+    "EFUSE_PG_OD": [
+      "U7.3",
+      "R_PG_PU.1"
+    ],
+    "PGTH_SENSE": [
+      "U7.4",
+      "R_PGTH_TOP.2",
+      "R_PGTH_BOT.1"
+    ],
+    "REQUIRES_DVDT_DESIGN": [
+      "U7.7"
+    ],
+    "REQUIRES_ILIM_R": [
+      "U7.9"
+    ],
+    "REQUIRES_ITIMER_C": [
+      "U7.10"
+    ],
+    "WD_200MS_CWD": [
+      "U_WD.2",
+      "R_WD_CWD.1"
+    ],
+    "QUAL_CLR_N": [
+      "U_WD.7",
+      "R_WDO_PU.1",
+      "U_POR.1",
+      "R_POR_PU.1",
+      "U_EDGE.6",
+      "U_RUN.6"
+    ],
+    "WD_ENOUT_NO_CONNECT_PER_TI": [
+      "U_WD.8"
+    ],
+    "GPIO28_HEARTBEAT": [
+      "U_WD.6",
+      "U_HB_INV.2"
+    ],
+    "HB_FALL_EDGE_RISING": [
+      "U_HB_INV.4",
+      "U_EDGE.1",
+      "U_RUN.1"
+    ],
+    "U_HB_INV_MANUFACTURER_NC": [
+      "U_HB_INV.1"
+    ],
+    "HB_EDGE1_Q": [
+      "U_EDGE.5",
+      "U_RUN.2"
+    ],
+    "HB_EDGE1_Q_N_UNUSED": [
+      "U_EDGE.3"
+    ],
+    "HB_TWO_EDGE_Q_ISOLATED": [
+      "U_RUN.5"
+    ],
+    "RUN_Q_N_UNUSED": [
+      "U_RUN.3"
+    ],
+    "POR_CT_NC_FIXED_DELAY": [
+      "U_POR.4"
+    ]
+  },
+  "disposition": {
+    "number_of_heartbeat_edges": 2,
+    "gpio_heartbeat": 28,
+    "two_edge_qualified": true,
+    "stop_loop": "OPEN_NOT_IMPLEMENTED",
+    "manual_rearm_latch": "OPEN_NOT_IMPLEMENTED",
+    "five_volt_supervision": "OPEN_NOT_IMPLEMENTED",
+    "pg_fault_latch": "OPEN_NOT_IMPLEMENTED",
+    "mcu_arm_wire_to_efuse_en": false,
+    "efuse_en_clamped_low": true,
+    "kicad_erc": "NOT_RUN",
+    "kicad_pcb_drc": "NOT_RUN",
+    "manufacturing_gates_closed": 0,
+    "software_evidence_closed": 11
+  }
+}
