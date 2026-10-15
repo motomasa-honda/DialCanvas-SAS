@@ -1,0 +1,48 @@
+name: Phase72 TI component pin contract and fail-closed review
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/phase72-component-review.yml'
+      - 'phase72/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  manufacturer-pin-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check protected original input remains intact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p phase72-evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Manufacturer pad map and 512 conservative interlock truth states
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile phase72/check_vendor.py
+          python3 phase72/check_vendor.py | tee phase72-evidence/stdout.log
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("phase72-evidence/report.json").read_text())
+          assert d["status"]=="PASS_DATASHEET_PAD_STATIC_AND_512_ABSTRACT_STATES"
+          assert d["vendor_verified_part_instances"]==6
+          assert d["vendor_verified_pads"]==45
+          assert d["abstract_states"]==512
+          assert d["manufacturing_gates_closed"]==0
+          assert d["software_evidence_closed"]==11
+          assert d["physical_eFuse_power_enable"]=="INHIBITED"
+          assert d["kicad_erc"]=="NOT_RUN"
+          PY
+          printf '%s\n' 'VENDOR_PAD_MAPPING=PASS_STATIC' 'ACTUAL_EFUSE_EN=HARDWARE_UNBUILT_AND_GROUNDED' 'NATIVE_KICAD_ERC=NOT_RUN' 'MOTOR_HW_FAULT=NOT_TESTED' 'MANUFACTURING_GATES=0/6' > phase72-evidence/scope.txt
+      - name: Keep evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase72-manufacturer-pin-review-evidence
+          path: phase72-evidence/
+          if-no-files-found: warn
