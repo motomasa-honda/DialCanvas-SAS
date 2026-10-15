@@ -136,5 +136,32 @@
     "kicad_erc": "NOT_RUN",
     "pcb_drc": "NOT_RUN",
     "native_target_flash": "NOT_TESTED"
+  },
+  "pgth_candidate": {
+    "source": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+    "top_ohm": 47000,
+    "bottom_ohm": 17400,
+    "tolerance_each": 0.01,
+    "pg_pullup_ohm": 47000,
+    "pgth_rise_v": {
+      "min": 1.183,
+      "typ": 1.2,
+      "max": 1.223
+    },
+    "pgth_fall_v": {
+      "min": 1.076,
+      "typ": 1.09,
+      "max": 1.116
+    },
+    "calculated_rise_output_v": {
+      "typ": 4.441379310344828
+    },
+    "calculated_fall_output_v": {
+      "typ": 4.034252873563219
+    },
+    "qualification": "CALCULATION_ONLY_PG_NOT_COMPREHENSIVE_FAULT_SIGNAL",
+    "pg_is_low_before_power_good": true,
+    "pg_does_not_signal_all_transient_overcurrent": true,
+    "approved_for_board": false
   }
 }
