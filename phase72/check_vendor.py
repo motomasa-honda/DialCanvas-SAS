@@ -34,6 +34,27 @@ assert m["other_sku"]=="MTR-09-004" and m["other_listed_mm"]==[40,20]
 assert m["conservative_pre_measurement_envelope_mm"]==[40,31]
 assert m["independent_axes"]==7 and m["independent_fuses"]==7
 assert m["removal_test_envelope_mm"]==55 and not m["dimensions_measured"]
+# PGTH divider is a calculated candidate, never proof that PG is a full FAULT output.
+pg=data["pgth_candidate"]
+assert (pg["top_ohm"],pg["bottom_ohm"],pg["pg_pullup_ohm"]) == (47000,17400,47000)
+assert pg["tolerance_each"]==0.01
+assert pg["pg_is_low_before_power_good"] and pg["pg_does_not_signal_all_transient_overcurrent"]
+assert not pg["approved_for_board"]
+assert pg["qualification"]=="CALCULATION_ONLY_PG_NOT_COMPREHENSIVE_FAULT_SIGNAL"
+def vtrip(v,top,bottom):
+    return v*(top+bottom)/bottom
+typ_rise=vtrip(pg["pgth_rise_v"]["typ"],pg["top_ohm"],pg["bottom_ohm"])
+typ_fall=vtrip(pg["pgth_fall_v"]["typ"],pg["top_ohm"],pg["bottom_ohm"])
+assert abs(typ_rise-pg["calculated_rise_output_v"]["typ"])<1e-10
+assert abs(typ_fall-pg["calculated_fall_output_v"]["typ"])<1e-10
+assert 4.40<typ_rise<4.50 and 4.0<typ_fall<4.10
+t=pg["tolerance_each"];top=pg["top_ohm"];bottom=pg["bottom_ohm"]
+rise_min=vtrip(pg["pgth_rise_v"]["min"],top*(1-t),bottom*(1+t))
+rise_max=vtrip(pg["pgth_rise_v"]["max"],top*(1+t),bottom*(1-t))
+fall_min=vtrip(pg["pgth_fall_v"]["min"],top*(1-t),bottom*(1+t))
+fall_max=vtrip(pg["pgth_fall_v"]["max"],top*(1+t),bottom*(1-t))
+assert 4.30<rise_min<rise_max<4.61
+assert 3.90<fall_min<fall_max<4.21
 assert e["manufacturing_gates_closed"]==0 and e["software_evidence_closed"]==11
 assert e["kicad_erc"]=="NOT_RUN" and e["pcb_drc"]=="NOT_RUN"
 # 2^9 combinations times both initial trip states. Not an asserted physical implementation.
@@ -55,6 +76,9 @@ report={"status":"PASS_DATASHEET_PAD_STATIC_AND_512_ABSTRACT_STATES",
         "vendor_verified_part_instances":len(expected),
         "vendor_verified_pads":sum(map(len,expected.values())),
         "abstract_states":states,
+        "pgth_rise_v_typ":round(typ_rise,4),"pgth_fall_v_typ":round(typ_fall,4),
+        "pgth_rise_min_v":round(rise_min,4),"pgth_rise_max_v":round(rise_max,4),
+        "pgth_fall_min_v":round(fall_min,4),"pgth_fall_max_v":round(fall_max,4),
         "physical_eFuse_power_enable":"INHIBITED",
         "source_sha256":hashlib.sha256(p.read_bytes()).hexdigest(),
         "manufacturing_gates_closed":0,"software_evidence_closed":11,
