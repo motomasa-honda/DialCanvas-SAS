@@ -30,6 +30,18 @@ jobs:
           sha256sum phase66-probe/build/fg_phase66_toolchain_probe.bin > phase66-evidence/bin.sha256
           wc -c phase66-probe/build/fg_phase66_toolchain_probe.bin > phase66-evidence/bin-size.txt
           printf '%s\n' 'PROBE_ONLY=true' 'PRODUCT_BUILD=false' > phase66-evidence/scope.txt
+      - name: Compile and link original Forest Guardian motor safety modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          mkdir -p phase66-evidence
+          idf.py -C phase67-core set-target esp32p4
+          idf.py -C phase67-core build 2>&1 | tee phase66-evidence/phase67-safety-core-build.log
+          test -s phase67-core/build/fg_phase67_safety_core.bin
+          sha256sum phase67-core/build/fg_phase67_safety_core.bin > phase66-evidence/phase67-core-bin.sha256
+          wc -c phase67-core/build/fg_phase67_safety_core.bin > phase66-evidence/phase67-core-bin-size.txt
+          printf '%s\n' 'PRODUCT_SOURCE_MODULES=control.c,fg_intent.c,fg_output_guard.c' 'TARGET=esp32p4' 'FULL_PRODUCT_BUILD=false' 'VIRTUAL_IO_TEST=COMPILED_NOT_EXECUTED_ON_HARDWARE' > phase66-evidence/phase67-scope.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
