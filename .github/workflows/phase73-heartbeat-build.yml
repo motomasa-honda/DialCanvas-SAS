@@ -55,6 +55,12 @@ jobs:
           Path("phase73-heartbeat-evidence/timing-audit.json").write_text(json.dumps(report,indent=2)+"\n")
           print(json.dumps(report,indent=2))
           PY
+      - name: Host C regression of same 40ms control function
+        shell: bash
+        run: |
+          set -euo pipefail
+          gcc -std=c11 -Wall -Wextra -Werror -I firmware/main phase73/tests/heartbeat_host.c firmware/main/control.c -o /tmp/fg_phase73_heartbeat_test
+          /tmp/fg_phase73_heartbeat_test | tee phase73-heartbeat-evidence/host-c-test.txt
       - name: ESP-IDF 5.5.2 combined Phase69 + 73 product build
         shell: bash
         run: |
