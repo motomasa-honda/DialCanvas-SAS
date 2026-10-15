@@ -29,3 +29,7 @@ These **16 scoped passes** include **15 prior source-evidenced partial deliverab
 Underlying source: `Forest_Guardian_Handoff_Phase67_2026-10-15.zip/CANONICAL_D7/completion-contract.md`; `remaining-work.csv`, `harness/m1-module-branches.csv`; and Phase74 manufacturing 6 gates + SW14 evidence tables. Full editable dashboard/7 sheets are in the companion user artifact.
 
 **Release states:** manufacturing **0/6**, software **11/14**, all seven motors OFF; PR kept Draft and base `main` unchanged.
+
+## Engineering production, not just task tracking — 2026-10-16
+
+New separately downloadable **verified engineering assets**: P3 / TRAY / BACK_WOOD *nominal* CAD section planes each as 1:1 A3 PDF + editable SVG + DXF; 86 contour/hole analysis rows, 7 real gear-shaft datums, plus a 32-row M1 BOM delta and updated nine-sheet tracker Excel. The ZIP assets are distributed as a conversation handoff package and tied to the immutable D7 SHA; GitHub tracks their precise scope, SHA evidence, [engineering output report](increments/2026-10-16-engineering-output.md), [CAD slices](increments/2026-10-16-cad-register.csv) and [M1 quantity contract](increments/2026-10-16-m1-quantity-contract.json). Three drawing sets and one BOM set are **new intermediate artifacts**, not artificially four more `DONE_SCOPE` tasks: frozen 16/48 remains unchanged. Safety 0/6; 11/14. 
