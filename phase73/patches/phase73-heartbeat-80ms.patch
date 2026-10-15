@@ -1,0 +1,48 @@
+--- a/firmware/main/app_main.c
++++ b/firmware/main/app_main.c
+@@ -16,6 +16,7 @@
+ #include "lvgl.h"
+ #include "control.h"
+ #include "fg_board_pins.h"
++#include "fg_heartbeat_config.h"
+ #include "fg_time.h"
+ #include "fg_intent.h"
+ #include "fg_output_guard.h"
+@@ -83,7 +84,7 @@
+  uint64_t start=esp_timer_get_time(),last=0;bool h=false;
+  while((uint64_t)esp_timer_get_time()-start<500000){
+   uint8_t p[4];fg_ports(&ctl,p);if(!apply(p))return false;
+-  uint64_t now=esp_timer_get_time();if(now-last>=50000){h=!h;gpio_set_level(HB,h);last=now;}
++  uint64_t now=esp_timer_get_time();if(now-last>=FG_HEARTBEAT_TOGGLE_US){h=!h;gpio_set_level(HB,h);last=now;}
+   if(now-start>=100000 && gpio_get_level(FAULT)){ctl.hb=h;ctl.last_hb=last;return true;}
+   vTaskDelay(pdMS_TO_TICKS(5));
+  }
+--- a/firmware/main/control.c
++++ b/firmware/main/control.c
+@@ -1,4 +1,5 @@
+ #include "control.h"
++#include "fg_heartbeat_config.h"
+ #include <string.h>
+ static const int8_t direction[7]={1,-1,1,-1,1,-1,1};
+ /* Fixed internal rates: 20..32 wave-drive steps/s, no user speed control. */
+@@ -41,7 +42,7 @@
+ bool fg_heartbeat(fg_control *c,uint64_t now,bool verified){
+  if(!verified||(c->state!=FG_OFF&&c->state!=FG_STARTING&&c->state!=FG_RUN))return false;
+  for(unsigned i=0;i<7;i++)if(c->phase[i] && (c->phase[i]&(c->phase[i]-1))) {fg_fail(c,"multiple_phase");return false;}
+- if(now-c->last_hb<50000)return false;
++ if(now-c->last_hb<FG_HEARTBEAT_TOGGLE_US)return false;
+  c->hb=!c->hb;c->last_hb=now;return true;
+ }
+ void fg_buttons_init(fg_buttons *b,uint64_t now){memset(b,0,sizeof(*b));b->raw_changed_at[0]=b->raw_changed_at[1]=now;}
+--- /dev/null
++++ b/firmware/main/fg_heartbeat_config.h
+@@ -0,0 +1,9 @@
++#ifndef FG_HEARTBEAT_CONFIG_H
++#define FG_HEARTBEAT_CONFIG_H
++/* Candidate only: two HIGH/LOW toggles per WDI falling edge. */
++#define FG_HEARTBEAT_TOGGLE_US 40000ULL
++#define FG_HEARTBEAT_FALL_PERIOD_US (2ULL * FG_HEARTBEAT_TOGGLE_US)
++#if FG_HEARTBEAT_FALL_PERIOD_US > 100000ULL
++#error "Heartbeat nominal falling edge interval exceeds review budget"
++#endif
++#endif
