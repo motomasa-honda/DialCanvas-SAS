@@ -1,0 +1,140 @@
+{
+  "revision": "Phase72 manufacturer pin/electrical review only",
+  "release": false,
+  "datasheets": {
+    "TPS259474LRPW": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+    "TPS3431DRBR": "https://www.ti.com/lit/ds/symlink/tps3431.pdf",
+    "SN74LVC2G74DCUR": "https://www.ti.com/lit/ds/symlink/sn74lvc2g74.pdf",
+    "SN74LVC1G04DBVR": "https://www.ti.com/lit/ds/symlink/sn74lvc1g04.pdf",
+    "TPS3808G33DBVR": "https://www.ti.com/lit/ds/symlink/tps3808.pdf"
+  },
+  "parts": {
+    "U7": {
+      "sku": "TPS259474LRPW",
+      "pins": [
+        "EN/UVLO",
+        "OVLO",
+        "PG",
+        "PGTH",
+        "IN",
+        "OUT",
+        "DVDT",
+        "GND",
+        "ILM",
+        "ITIMER"
+      ]
+    },
+    "U_WD": {
+      "sku": "TPS3431DRBR",
+      "pins": [
+        "VDD",
+        "CWD",
+        "EN",
+        "GND",
+        "SET1",
+        "WDI",
+        "WDO",
+        "ENOUT"
+      ],
+      "thermal_pad": "GND"
+    },
+    "U_EDGE": {
+      "sku": "SN74LVC2G74DCUR",
+      "pins": [
+        "CLK",
+        "D",
+        "Q_N",
+        "GND",
+        "Q",
+        "CLR_N",
+        "PRE_N",
+        "VCC"
+      ]
+    },
+    "U_RUN": {
+      "sku": "SN74LVC2G74DCUR",
+      "pins": [
+        "CLK",
+        "D",
+        "Q_N",
+        "GND",
+        "Q",
+        "CLR_N",
+        "PRE_N",
+        "VCC"
+      ]
+    },
+    "U_HB_INV": {
+      "sku": "SN74LVC1G04DBVR",
+      "pins": [
+        "NC",
+        "A",
+        "GND",
+        "Y",
+        "VCC"
+      ]
+    },
+    "U_POR": {
+      "sku": "TPS3808G33DBVR",
+      "pins": [
+        "RESET_N",
+        "GND",
+        "MR_N",
+        "CT",
+        "SENSE",
+        "VDD"
+      ]
+    }
+  },
+  "watchdog": {
+    "cwd_resistor_ohm": 10000,
+    "wdo_pullup_ohm": 10000,
+    "en_tied_to_3v3": true,
+    "set1_tied_to_3v3": true,
+    "falling_edge_ms_min": 170,
+    "falling_edge_ms_typ": 200,
+    "falling_edge_ms_max": 230,
+    "reset_ms_min": 170,
+    "reset_ms_max": 230
+  },
+  "safety_hold": {
+    "efuse_en_pulldown_ohm": 10000,
+    "efuse_drive_source": "NONE__REQUIRES_APPROVED_LATCH",
+    "arm_direct_efuse_en": false,
+    "arm_from_mcu_gpio32": true,
+    "watchdog_from_gpio28": true,
+    "external_fault_to_gpio22": "NOT_BUILT",
+    "required_heartbeat_edges": 2,
+    "real_second_edge_qualifier": "NOT_BUILT",
+    "physical_rearm": "NOT_BUILT",
+    "five_volt_supervisor": "NOT_BUILT",
+    "pg_startup_blank_fault_latch": "NOT_BUILT"
+  },
+  "motor_modules": {
+    "selected_sku": "MTR-09-024",
+    "listed_mm": [
+      35,
+      31
+    ],
+    "other_sku": "MTR-09-004",
+    "other_listed_mm": [
+      40,
+      20
+    ],
+    "conservative_pre_measurement_envelope_mm": [
+      40,
+      31
+    ],
+    "independent_axes": 7,
+    "independent_fuses": 7,
+    "removal_test_envelope_mm": 55,
+    "dimensions_measured": false
+  },
+  "evidence": {
+    "manufacturing_gates_closed": 0,
+    "software_evidence_closed": 11,
+    "kicad_erc": "NOT_RUN",
+    "pcb_drc": "NOT_RUN",
+    "native_target_flash": "NOT_TESTED"
+  }
+}
