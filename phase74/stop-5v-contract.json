@@ -1,0 +1,54 @@
+{
+  "revision": "Phase74 review only",
+  "supplier_source": "https://www.ti.com/product/TPS3808/part-details/TPS3808G50DBVR",
+  "sku": "TPS3808G50DBVR",
+  "threshold_nominal_volts": 4.65,
+  "pins": {
+    "1": "RESET_N",
+    "2": "GND",
+    "3": "MR_N",
+    "4": "CT",
+    "5": "SENSE",
+    "6": "VDD"
+  },
+  "pin_nets": {
+    "1": "QUAL_CLR_N",
+    "2": "GND",
+    "3": "STOP_NC_SENSE",
+    "4": "U_5V_CT_NC",
+    "5": "5V_RAW",
+    "6": "3V3_AON"
+  },
+  "resistors": {
+    "R_STOP_PD": {
+      "1": "STOP_NC_SENSE",
+      "2": "GND",
+      "ohm": 10000
+    },
+    "R_5V_RST_PU": {
+      "1": "QUAL_CLR_N",
+      "2": "3V3_AON",
+      "ohm": 10000
+    }
+  },
+  "stop_connector": {
+    "1": "3V3_AON",
+    "2": "STOP_NC_SENSE",
+    "closed": "electrically healthy",
+    "shorted_3v3_detectable": false
+  },
+  "combined_reset": "QUAL_CLR_N",
+  "newly_monitored_conditions": [
+    "5V_RAW undervoltage",
+    "STOP wire open"
+  ],
+  "physical_manual_rearm_latch": "NOT_BUILT",
+  "pg_post_start_latch": "NOT_BUILT",
+  "physical_driver_isolation": "NOT_BUILT",
+  "power_5v_sense_at_vdd_3v3": "REQUIRES_ELECTRICAL_SIGNOFF",
+  "power_en": "HELD_LOW",
+  "manufacturing_gates_closed": 0,
+  "software_evidence_closed": 11,
+  "kicad_erc": "NOT_RUN",
+  "previous_phase73_net_ref": "phase73/connectivity.json"
+}
