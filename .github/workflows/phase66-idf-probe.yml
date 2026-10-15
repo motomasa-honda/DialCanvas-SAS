@@ -18,6 +18,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          source /opt/esp/idf/export.sh
           idf.py --version
           mkdir -p phase66-probe/main phase66-evidence
           printf '%s\n'             'cmake_minimum_required(VERSION 3.16)'             'include($ENV{IDF_PATH}/tools/cmake/project.cmake)'             'project(fg_phase66_toolchain_probe)' > phase66-probe/CMakeLists.txt
