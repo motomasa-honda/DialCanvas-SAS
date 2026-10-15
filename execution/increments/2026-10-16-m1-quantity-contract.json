@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-16",
+  "scope": "32-row review addendum, not unified 429-row production BOM",
+  "source_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "mcp23017_breakouts": 2,
+  "uln2003_module_candidates": 7,
+  "phase_pulldowns": 28,
+  "m1_6pin_carrier_connectors": 7,
+  "carrier_crimp_contacts": 42,
+  "motor_axis_fuses_retained": 7,
+  "base_429_master_bom_file": "MISSING_IN_HANDOFF",
+  "status": "PARTIAL_REVIEW_ONLY",
+  "m1_motor_power": "INHIBITED",
+  "manufacturing_gates_closed": 0,
+  "software_evidence_passed": 11
+}
