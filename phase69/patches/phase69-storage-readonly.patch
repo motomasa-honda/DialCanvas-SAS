@@ -1,0 +1,198 @@
+--- a/firmware/main/app_main.c
++++ b/firmware/main/app_main.c
+@@ -20,6 +20,7 @@
+ #include "fg_intent.h"
+ #include "fg_output_guard.h"
+ #include "fg_journal.h"
++#include "fg_dial_raw_backend.h"
+ #include "fg_clock.h"
+ #include "fg_tzif.h"
+ #include "fg_tz_default.h"
+@@ -240,6 +241,27 @@
+  gpio_config_t out={.pin_bit_mask=(1ULL<<ARM)|(1ULL<<HB),.mode=GPIO_MODE_OUTPUT,.pull_down_en=GPIO_PULLDOWN_ENABLE};ESP_ERROR_CHECK(gpio_config(&out));
+  gpio_config_t in={.pin_bit_mask=(1ULL<<FAULT)|(1ULL<<SW1)|(1ULL<<SW2),.mode=GPIO_MODE_INPUT};ESP_ERROR_CHECK(gpio_config(&in));
+  ESP_ERROR_CHECK(nvs_flash_init());
++ /* Read-only RAW slot recovery must run BEFORE starting the 5ms mechanism
++  * loop: hashing up to two 10MiB partitions can stall flash access. No
++  * transport or write callback is installed. Physical ARM remains LOW. */
++ fg_dial_raw_context boot_dials;
++ fg_dial_record active_dial;
++ if (fg_dial_raw_init_readonly(&boot_dials)) {
++  fg_dial_boot_state boot_state = fg_dial_raw_boot_probe(&boot_dials, &active_dial);
++  switch (boot_state) {
++   case FG_DIAL_BOOT_EMPTY:
++    ESP_LOGI(TAG, "RAW A/B: no committed dial; factory fallback required"); break;
++   case FG_DIAL_BOOT_ACTIVE:
++    ESP_LOGI(TAG, "RAW A/B: read-only recovered generation %llu in slot %u",
++             (unsigned long long)active_dial.generation,(unsigned)active_dial.slot); break;
++   case FG_DIAL_BOOT_INVALID:
++    ESP_LOGE(TAG, "RAW A/B: invalid metadata/media, no user dial activated"); break;
++   default:
++    ESP_LOGE(TAG, "RAW A/B: NVS or partition I/O error, no user dial activated"); break;
++  }
++ } else {
++  ESP_LOGI(TAG, "RAW A/B: unavailable in current partition map (no write attempted)");
++ }
+  intent_queue=xQueueCreate(8,sizeof(fg_intent));
+  journal_queue=xQueueCreate(2,sizeof(fgp_fault_ring));
+  if(!intent_queue||!journal_queue){gpio_set_level(ARM,0);abort();}
+--- a/firmware/main/fg_dial_raw_backend.c
++++ b/firmware/main/fg_dial_raw_backend.c
+@@ -10,15 +10,19 @@
+ 
+ #define FG_ERASE_SECTOR 4096u
+ #define FG_IO_CHUNK 1024u
++/* Phase68 accepted review layout, not the old 5MiB-OTA production map. */
++#define FG_RAW_A_OFFSET 0x00A10000u
++#define FG_RAW_B_OFFSET 0x01410000u
++#define FG_RAW_SLOT_SIZE 0x00A00000u
+ 
+ static bool good_slot(fg_dial_raw_context *ctx, unsigned slot) {
+-    return ctx && slot < 2u && ctx->slots[slot] &&
++    return ctx && ctx->initialized && slot < 2u && ctx->slots[slot] &&
+            ctx->slots[slot]->size >= FG_DIAL_PACKAGE_LIMIT &&
+            (ctx->slots[slot]->size % FG_ERASE_SECTOR) == 0u;
+ }
+ static bool read_record(void *context, unsigned index, fg_dial_record *out) {
+     fg_dial_raw_context *ctx = (fg_dial_raw_context *)context;
+-    if (!ctx || !out || index > 1u || ctx->metadata_io_failed) return false;
++    if (!ctx || !ctx->initialized || !out || index > 1u || ctx->metadata_io_failed) return false;
+     nvs_handle_t nvs;
+     esp_err_t err = nvs_open("fg_dials", NVS_READONLY, &nvs);
+     /* On first boot the namespace may not exist; that is different from an
+@@ -37,7 +41,7 @@
+ }
+ static bool write_record(void *context, unsigned index, const fg_dial_record *rec) {
+     fg_dial_raw_context *ctx = (fg_dial_raw_context *)context;
+-    if (!ctx || ctx->metadata_io_failed || !rec || index > 1u) return false;
++    if (!ctx || !ctx->initialized || ctx->metadata_io_failed || !rec || index > 1u) return false;
+     nvs_handle_t nvs;
+     if (nvs_open("fg_dials", NVS_READWRITE, &nvs) != ESP_OK) return false;
+     esp_err_t err = nvs_set_blob(nvs, index ? "ptr1" : "ptr0", rec, sizeof(*rec));
+@@ -94,25 +98,45 @@
+ }
+ static bool validate(void *context, const uint8_t *data, size_t size, uint8_t digest[32]) {
+     fg_dial_raw_context *ctx = (fg_dial_raw_context *)context;
+-    return ctx && ctx->validate && ctx->validate(ctx->validate_context, data, size, digest);
++    return ctx && ctx->initialized && ctx->validate && ctx->validate(ctx->validate_context, data, size, digest);
+ }
+-bool fg_dial_raw_init(fg_dial_raw_context *ctx,
+-                      fg_dial_semantic_validator validator, void *validator_context) {
+-    if (!ctx || !validator) return false;
+-    memset(ctx, 0, sizeof(*ctx));
++static bool locate_slots(fg_dial_raw_context *ctx) {
++    if (!ctx) return false;
++    ctx->initialized = false;
+     ctx->slots[0] = esp_partition_find_first(ESP_PARTITION_TYPE_DATA,
+                     ESP_PARTITION_SUBTYPE_ANY, "dial_slot_a");
+     ctx->slots[1] = esp_partition_find_first(ESP_PARTITION_TYPE_DATA,
+                     ESP_PARTITION_SUBTYPE_ANY, "dial_slot_b");
++    /* Exact candidate layout is required. Merely large-enough or partially
++     * initialized slots MUST NOT expose erasure/writes. This also protects
++     * against swapping the two partition labels or using an old flash map. */
++    if (!ctx->slots[0] || !ctx->slots[1] || ctx->slots[0] == ctx->slots[1] ||
++        ctx->slots[0]->address != FG_RAW_A_OFFSET ||
++        ctx->slots[1]->address != FG_RAW_B_OFFSET ||
++        ctx->slots[0]->size != FG_RAW_SLOT_SIZE ||
++        ctx->slots[1]->size != FG_RAW_SLOT_SIZE ||
++        (FG_RAW_A_OFFSET % FG_ERASE_SECTOR) ||
++        (FG_RAW_B_OFFSET % FG_ERASE_SECTOR) ||
++        (FG_RAW_SLOT_SIZE % FG_ERASE_SECTOR) ||
++        ((uint64_t)FG_RAW_A_OFFSET + FG_RAW_SLOT_SIZE > FG_RAW_B_OFFSET) ||
++        ((uint64_t)FG_RAW_B_OFFSET + FG_RAW_SLOT_SIZE > 0x02000000ULL))
++        return false;
++    ctx->initialized = true;
++    return true;
++}
++bool fg_dial_raw_init(fg_dial_raw_context *ctx,
++                      fg_dial_semantic_validator validator, void *validator_context) {
++    if (!ctx) return false;
++    memset(ctx, 0, sizeof(*ctx));
++    if (!validator || !locate_slots(ctx)) return false;
+     ctx->validate = validator;
+     ctx->validate_context = validator_context;
+-    if (!good_slot(ctx, 0u) || !good_slot(ctx, 1u) ||
+-        ctx->slots[0] == ctx->slots[1]) return false;
+-    uint64_t a0 = ctx->slots[0]->address;
+-    uint64_t a1 = ctx->slots[1]->address;
+-    uint64_t b0 = a0 + ctx->slots[0]->size;
+-    uint64_t b1 = a1 + ctx->slots[1]->size;
+-    return b0 <= a1 || b1 <= a0;
++    return true;
++}
++bool fg_dial_raw_init_readonly(fg_dial_raw_context *ctx) {
++    if (!ctx) return false;
++    memset(ctx, 0, sizeof(*ctx));
++    return locate_slots(ctx);
+ }
+ void fg_dial_raw_bind(fg_dial_raw_context *ctx, fg_dial_io *io) {
+     if (!io) return;
+@@ -127,8 +151,38 @@
+     io->validate_input = validate;
+ }
+ 
++void fg_dial_raw_bind_readonly(fg_dial_raw_context *ctx, fg_dial_io *io) {
++    if (!io) return;
++    memset(io, 0, sizeof(*io));
++    if (!good_slot(ctx, 0u) || !good_slot(ctx, 1u)) return;
++    io->ctx = ctx;
++    io->read_record = read_record;
++    io->verify_slot = verify_slot;
++    /* Do not expose write_record/write_slot/validate_input/capacity: a
++     * read-only boot probe cannot accidentally perform a dial install. */
++}
++fg_dial_boot_state fg_dial_raw_boot_probe(fg_dial_raw_context *ctx,
++                                          fg_dial_record *active) {
++    if (!ctx || !ctx->initialized || !active) return FG_DIAL_BOOT_LAYOUT_ERROR;
++    fg_dial_io io;
++    fg_dial_raw_bind_readonly(ctx, &io);
++    memset(active, 0, sizeof(*active));
++    bool valid = fg_dial_active(&io, active);
++    if (ctx->metadata_io_failed) {
++        memset(active, 0, sizeof(*active));
++        return FG_DIAL_BOOT_IO_ERROR;
++    }
++    if (valid) return FG_DIAL_BOOT_ACTIVE;
++    fg_dial_record raw;
++    for (unsigned i = 0; i < 2; i++) {
++        if (read_record(ctx, i, &raw)) return FG_DIAL_BOOT_INVALID;
++        if (ctx->metadata_io_failed) return FG_DIAL_BOOT_IO_ERROR;
++    }
++    return FG_DIAL_BOOT_EMPTY;
++}
++
+ uint32_t fg_dial_raw_budget(const fg_dial_raw_context *ctx) {
+-    if (!ctx || !ctx->slots[0] || !ctx->slots[1]) return 0;
++    if (!ctx || !ctx->initialized || !ctx->slots[0] || !ctx->slots[1]) return 0;
+     /* Nominal 2 x 10 MiB + 1 MiB separate reserve; checked by partition audit. */
+     if (ctx->slots[0]->size < FG_DIAL_PACKAGE_LIMIT ||
+         ctx->slots[1]->size < FG_DIAL_PACKAGE_LIMIT) return 0;
+--- a/firmware/main/fg_dial_raw_backend.h
++++ b/firmware/main/fg_dial_raw_backend.h
+@@ -17,6 +17,8 @@
+     void *validate_context;
+     /* Latches unexpected NVS read failures; must reinitialize after repair. */
+     bool metadata_io_failed;
++    /* Set ONLY after all two-slot address/size/overlap checks succeed. */
++    bool initialized;
+ } fg_dial_raw_context;
+ 
+ /* Called after nvs_flash_init() in a dedicated updater task, not at boot
+@@ -25,6 +27,17 @@
+                       fg_dial_semantic_validator validate,
+                       void *validate_context);
+ void fg_dial_raw_bind(fg_dial_raw_context *ctx, fg_dial_io *io);
++/* Non-mutating startup inspection; never exposes a write callback or a ZIP
++ * validator. The authenticated product upload endpoint is NOT implemented. */
++bool fg_dial_raw_init_readonly(fg_dial_raw_context *ctx);
++void fg_dial_raw_bind_readonly(fg_dial_raw_context *ctx, fg_dial_io *io);
++typedef enum {
++    FG_DIAL_BOOT_LAYOUT_ERROR=0, FG_DIAL_BOOT_EMPTY,
++    FG_DIAL_BOOT_ACTIVE, FG_DIAL_BOOT_INVALID, FG_DIAL_BOOT_IO_ERROR
++} fg_dial_boot_state;
++fg_dial_boot_state fg_dial_raw_boot_probe(fg_dial_raw_context *ctx,
++                                          fg_dial_record *active);
++
+ /* Logical quota includes 1MiB dedicated flash reserve (not part of user slots). */
+ uint32_t fg_dial_raw_budget(const fg_dial_raw_context *ctx);
+ #endif
