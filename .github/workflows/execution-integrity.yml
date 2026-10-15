@@ -1,0 +1,24 @@
+name: Forest Guardian progress board integrity
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/execution-integrity.yml'
+      - 'execution/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-progress:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify immutable source archive
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Check scoped evidence and 7x6 connector inspection traveler
+        run: |
+          set -euo pipefail
+          python3 -m py_compile execution/guard.py
+          python3 execution/guard.py
