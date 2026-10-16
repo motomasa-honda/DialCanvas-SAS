@@ -82,3 +82,8 @@ Counts now **17 DONE_SCOPE, 7 WORKING, 20 OPEN, 4 HARDWARE_WAIT** (48 unchanged)
 ## G3-06 9 BACK_WOOD layers original D7 outlet REVIEW / NO-CUT FAIL
 
 [Corrected fan engineering gate](fan_full_thickness_2026-10-16/README.md): 3 previously 3mm body-clear 30mm FAN spots have only 0.167 / 0.446 / 0.167% of outlet circular area OPEN THROUGH Z137..145. All 8 prior body-clear points are rejected for unmodified rearwood exhaust; physical duct requires new source-verified design. V2 80mA/92mA max steady and V3 45mA/54mA max steady are provisional official Sunon candidates, NOT verified startup or closed-case thermal. G3-06 OPEN, no cut/power/purchase, scoped 19/48, manufacturer0/6, motor eFuse EN LOW.
+
+
+## G1-05/06 electrical safety rearm latch native KiCad partial (2026-10-16)
+
+[Actual 85-pad / 29-net Phase75 manufacturer pin register, hold conditions and ZIP](g1_interlock_2026-10-16/README.md). Pinned Phase72/73/74 source generated a NEW KiCad9 pad-number design with TI SN74LVC2G74DCUR U_ARM flip-flop and NO rearm 2-pin switch. Physical CLK/D debounce/qualifier NOT wired, PG fault latch NOT wired, U_ARM.Q isolated; U7.EN remains GND and manufacturing0/6. Local full source generator, native KiCad9 and 10 ideal unit tests plus 20k random transitions PASS; GitHub checks only summarized G1 contract. G1-05/G1-06 stay WORKING, 19/48 scope.
