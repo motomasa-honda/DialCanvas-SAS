@@ -1,4 +1,4 @@
-# ADR-0003 — G5-05 HTTPS資格情報の独立暗号化NVSと遠隔起動禁止
+# ADR-0003: G5-05 HTTPS資格情報の独立暗号化NVSと遠隔起動禁止
 
 - 登録日: 2026-10-17
 - 状態: PROVISIONAL（実機・製造承認前）
@@ -15,7 +15,7 @@
 2. 未使用予約領域の先頭に `nvs_keys` (4KiB; ESP-IDF data/nvs_keys, encrypted) と専用 `fg_cfg` (32KiB; data/nvs, **partition flag encryptedを付けない**) を追加し、残りのreservedは継続保持する。
 3. 専用 `fg_cfg` には `fg_secure_web` 名前空間でSSID/Wi-Fiパスワード/TLS証明書/鍵のみを格納する。既存の `nvs` は故障履歴等を保持する。
 4. 製品は `CONFIG_NVS_ENCRYPTION` とFlash Encryption保護スキームの両方を満たすときのみ `nvs_flash_read_security_cfg` による正規のNVS鍵取得、`nvs_flash_secure_init_partition("fg_cfg")` と `nvs_open_from_partition("fg_cfg")` を使用する。それ以外はWi-Fi/HTTPSを **fail-closed**。
-5. 製造未承認の段階では `POST /v1/motors/start` と `POST /v1/fault/clear` は権限の有無にかかわらず423で拒否し、制御キューに一切流さない。STOPは認証したOPERATOR以上でのみキュー経由。物理停止/個別交換の方針を維持する。
+5. 製造未承認の段階では `POST /v1/motors/start` と `POST /v1/fault/clear` は認証済みでも423で拒否（未認証・権限不足は先に401/403を返す）し、制御キューに一切流さない。STOPは認証したOPERATOR以上でのみキュー経由。物理停止/個別交換の方針を維持する。
 6. 個体ごとの暗号化NVSイメージはリポジトリ外のローカル環境でのみ生成し、本番キーはGitHub/CIに投入しない。CIでは期限付きの偽TLS証明書と偽SSIDのみを使用し、生成ファイルをジョブ終了時に消去する。
 
 ## 不採用
