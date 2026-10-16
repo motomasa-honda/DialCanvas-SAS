@@ -31,6 +31,7 @@ jobs:
           kicad-cli sch export netlist --format kicadxml -o "$OUT/review.net.xml" "$SRC"
           kicad-cli sch export svg --output "$OUT/svg" "$SRC"
           kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
+          python3 execution/g1_82_integrated_review/validate_native_netlist.py "$OUT"
           python3 - <<'PY'
           import json,glob,os
           o='execution/g1_82_integrated_review/native_evidence'
