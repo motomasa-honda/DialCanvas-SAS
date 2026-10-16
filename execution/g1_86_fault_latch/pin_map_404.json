@@ -3824,10 +3824,11 @@
     "source_ref": "U21",
     "source_pin": 1,
     "source_net": "B86__INV_NC",
-    "review_net": "B86__INV_NC",
+    "review_net": "unconnected-(U21-NC-Pad1)",
     "kicad_ref": "U21",
     "wire_end_x": "160.02",
-    "wire_end_y": "876.3"
+    "wire_end_y": "876.3",
+    "no_connect_marker": true
   },
   {
     "group": "B86",

@@ -17,7 +17,7 @@
       "3V3_AON"
     ],
     "U21": [
-      "B86__INV_NC",
+      "unconnected-(U21-NC-Pad1)",
       "B77__QUAL_CLR_N",
       "GND",
       "B86__TRIP_ASSERT",
@@ -136,5 +136,7 @@
     "efuse_en": "U7.1 to R_EN_PD and GND",
     "oe_28": "HIGH PULLED DISABLED",
     "main": "UNCHANGED"
-  }
+  },
+  "kicad_native_nc": "U21.1 NC manufacturer pad, no electrical wire; KiCad native unconnected-(U21-NC-Pad1)",
+  "page": "User 1200 x 1000 mm (oversize REVIEW ONLY; no plotted template release)"
 }

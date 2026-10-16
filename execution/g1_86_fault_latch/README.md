@@ -9,3 +9,9 @@
 FFの理想真理値表と100,000ランダム遷移をPythonで実行、ただしアナログ/SPICE/実機でのフェイルセーフは証明しない。製造承認0/6、19/48、SW11/14、U7.1 EN=10k GND、28相/OE=HIGH固定、main/発注/加工/PCB製造/通電/書込み禁止。
 
 TI datasheets: https://www.ti.com/lit/ds/symlink/sn74lvc2g02.pdf ・ https://www.ti.com/lit/ds/symlink/sn74lvc1g04.pdf ・ https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf
+
+## G1-86 NC端子のKiCad本体照合是正
+
+初回KiCad9実CLIでは、メーカー指定のU21.1 = NCを電気ネットB86__INV_NCにつながる配線として表記すると、KiCad native XMLは `unconnected-(U21-NC-Pad1)` として返した。**NCピンを導通させるよう見せかけない**ため、その1端子の仮配線・ラベルを外して正規KiCad `no_connect` をピン先端に置き、KiCadが実際に出力する未接続ネットを端子マップに登録した。旧374端子の配線は不変。
+
+追加した9部品の行がA0用紙から下にはみ出していたため、回路図を**Userカスタム1200×1000mm**へ変更した（製造用型紙ではない）。XML全404端子照合、no-connect1個、実線403本、ラベル403個をCIで検証。これで「KiCad NCの扱いを弱いpin typeに偽装してPASS」とはしない。
