@@ -22,6 +22,20 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends kicad
           kicad-cli version
+      - name: Register review symbols for headless KiCad9 CLI
+        run: |
+          set -euo pipefail
+          CONF="$HOME/.config/kicad/9.0"
+          mkdir -p "$CONF"
+          SYMBOL_LIB="$GITHUB_WORKSPACE/execution/g1_82_integrated_review/FG_REVIEW.kicad_sym"
+          test -f "$SYMBOL_LIB"
+          cat > "$CONF/sym-lib-table" <<EOF
+          (sym_lib_table
+            (version 7)
+            (lib (name "FG_REVIEW")(type "KiCad")(uri "$SYMBOL_LIB")(options "")(descr "Non-manufacturing pin boxes"))
+          )
+          EOF
+          test -s "$CONF/sym-lib-table"
       - name: Native KiCad9 load, netlist, SVG and ERC report (no false electrical pass)
         run: |
           set -euo pipefail
