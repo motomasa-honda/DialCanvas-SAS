@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-16",
+  "design": "Four permanent sidewood anchoring cleats / seven removable lock bars, two fastener alternatives",
+  "source_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "solid_count": 1774,
+  "wood_side_parts": [
+    "WOOD_SIDE_LEFT",
+    "WOOD_SIDE_RIGHT"
+  ],
+  "wood_sides_nominal_thickness_mm": 12,
+  "four_anchors": [
+    {
+      "side": "L",
+      "center_y": 30,
+      "foot_xyz_bbox": [
+        12,
+        21,
+        126,
+        21,
+        39,
+        136
+      ]
+    },
+    {
+      "side": "L",
+      "center_y": 170,
+      "foot_xyz_bbox": [
+        12,
+        161,
+        126,
+        21,
+        179,
+        136
+      ]
+    },
+    {
+      "side": "R",
+      "center_y": 30,
+      "foot_xyz_bbox": [
+        249,
+        21,
+        126,
+        258,
+        39,
+        136
+      ]
+    },
+    {
+      "side": "R",
+      "center_y": 170,
+      "foot_xyz_bbox": [
+        249,
+        161,
+        126,
+        258,
+        179,
+        136
+      ]
+    }
+  ],
+  "eight_blind_wood_axes": {
+    "per_anchor": 2,
+    "anchor_y_offsets_mm": [
+      -4.5,
+      4.5
+    ],
+    "screw_axis": "X",
+    "z_mm": 131,
+    "nominal_blind_depth_mm": 6,
+    "nominal_remain_wood_skin_mm": 6,
+    "drill_pilot_size": "NOT_APPROVED",
+    "nominal_tool_probe_diameter_mm": 5,
+    "nominal_tool_access_length_mm": 24,
+    "source_fixed_d7_collision_count": 0
+  },
+  "separate_axis_slots": [
+    {
+      "axis": 1,
+      "x": 85,
+      "y": 40
+    },
+    {
+      "axis": 2,
+      "x": 55,
+      "y": 140
+    },
+    {
+      "axis": 3,
+      "x": 135,
+      "y": 140
+    },
+    {
+      "axis": 4,
+      "x": 225,
+      "y": 130
+    },
+    {
+      "axis": 5,
+      "x": 140,
+      "y": 85
+    },
+    {
+      "axis": 6,
+      "x": 50,
+      "y": 85
+    },
+    {
+      "axis": 7,
+      "x": 140,
+      "y": 40
+    }
+  ],
+  "rejected_m2_proposal": {
+    "head_diameter_mm": 3.8,
+    "head_height_mm": 1.2,
+    "ear_seats": 14,
+    "d7_fixed_clashes_after_fan_and_cover_removed": 0,
+    "violations_5mm_reserved_envelope": 14,
+    "violations_original_48x35_rearwood_relief": 14,
+    "disposition": "REJECT_ALL_14_NOT_FABRICABLE_AS_DRAWN"
+  },
+  "conditional_clip_proposal": {
+    "retainer_count": 14,
+    "per_axis": 2,
+    "finger_width_x_mm": 1.7,
+    "source_d7_nominal_fixed_collision_count": 0,
+    "violations_5mm_reserved_envelope": 0,
+    "violations_original_48x35_rearwood_relief": 0,
+    "snap_guide_engagement": "NEEDS_ACTUAL_RELIEF_AND_FLEXURE_DESIGN",
+    "spring_stress": "NOT_TESTED",
+    "long_term_latch_strength": "NOT_TESTED",
+    "reversible_without_six_other_axes": "CAD_SCOPE_ONLY"
+  },
+  "artifacts": {
+    "delta_zip": "Forest_Guardian_4Anchor_7Axis_Lock_Design_2026-10-16.zip",
+    "delta_sha256": "04b946487c5b7009311fd5177f8b7aa348ddb40ca487b174647a2a8a7af4739b",
+    "integrated_zip": "Forest_Guardian_Integrated_With_Anchor_Lock_2026-10-16.zip",
+    "integrated_sha256": "034618d3aa1fc4a837cca9c2aad855939b00eea6e33f94260d6441cea780533f",
+    "native_solid_source": "M1_SERVICE_ANCHORS_AND_14_LOCKS_REVIEW.scad",
+    "in_band_option_source": "M1_IN_BAND_14_CLIPS_VOLUME_SCREEN.scad",
+    "verified_a3_sheets": 2,
+    "standalone_delta_file_count": 26
+  },
+  "acceptance": {
+    "scoped_complete": 16,
+    "scope_total": 48,
+    "manufacturer_gate_closed": 0,
+    "manufacturer_gate_total": 6,
+    "software_review_pass": 11,
+    "software_review_total": 14,
+    "motor_eFuse_en": "LOW",
+    "no_fabrication": true,
+    "no_purchase": true,
+    "no_flash": true,
+    "no_main_merge": true
+  },
+  "ci_claim_scope": "Static review-evidence contract ONLY. Source D7 solids checked locally during artifact generation; this GitHub CI does NOT rerun full CAD."
+}
