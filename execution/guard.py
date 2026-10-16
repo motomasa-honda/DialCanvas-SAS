@@ -30,6 +30,6 @@ for x in w:
     assert x["carrier_connector"]==f"J_M1_{a}"
     assert (x["module_physical_pin"],x["cut_length_mm"],x["inspection"])==("UNVERIFIED","TBD","NOT_TESTED")
     assert x["signal"]==(f"PH{n-1}" if n<5 else (f"{a}_COMMON_FUSED_5V" if n==5 else "GND"))
-print("PASS: 48 frozen tasks; 16 scoped only / 8 working / 20 open / 4 hardware wait")
+print("PASS: 48 frozen tasks; 17 scoped only / 7 working / 20 open / 4 hardware wait")
 print("PASS: seven isolated modules, 42 traceable unmeasured terminals")
 print("PASS: manufacturing release 0/6; review software 11/14; NO power enable")
