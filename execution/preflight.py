@@ -11,6 +11,7 @@ checks = [
     "execution/g6_02_7panel_2026-10-16/check_contract.py",
     "execution/g6_03_80_source_faces/check_contract.py",
     "execution/g5_frame_2026-10-16/check_contract.py",
+    "execution/g5_fivepiece_2026-10-16/check_contract.py",
     "execution/cassettes/check_manifest.py",
     "execution/bracket_chassis_2026-10-16/check_contract.py",
     "execution/anchor_lock_2026-10-16/check_contract.py",
