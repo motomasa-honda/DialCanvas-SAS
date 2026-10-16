@@ -1,17 +1,21 @@
 {
-  "version": "v1.0",
+  "version": "v1.1",
   "updated_date": "2026-10-16",
   "task_total": 48,
-  "scoped_evidence_done": 16,
-  "working": 8,
+  "scoped_evidence_done": 17,
+  "working": 7,
   "open": 20,
   "hardware_wait": 4,
   "new_this_turn": [
-    "G2-06"
+    "G4-02"
   ],
   "manufacturer_release_closed": 0,
   "manufacturer_release_total": 6,
   "software_evidence_passed": 11,
   "software_evidence_total": 14,
-  "gh_guard_scope": "process consistency only, not safety validation"
+  "gh_guard_scope": "process consistency only, not safety validation",
+  "new_evidence": "execution/bom_reconciled_2026-10-16/source_contract.json",
+  "prior_new_completed": [
+    "G2-06"
+  ]
 }
