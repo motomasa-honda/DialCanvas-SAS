@@ -1,0 +1,24 @@
+name: Forest Guardian G5 external jig + 23 source panel edge screen
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g5-jig-g604-review.yml'
+      - 'execution/g5_jig_g604_2026-10-16/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-seat-geometry-and-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify immutable firmware source remains unchanged
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Calculate seat/source geometry and load-screen integrity; enforce unqualified holds
+        run: |
+          set -euo pipefail
+          python3 execution/g5_jig_g604_2026-10-16/check_contract.py
+          python3 execution/preflight.py

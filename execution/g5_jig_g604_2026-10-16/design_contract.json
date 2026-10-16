@@ -1,0 +1,187 @@
+{
+  "revision": "G5_FIXTURE_8_SEATS_G6_04_PANEL_SOURCE_SCREEN_20261016",
+  "original_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_3d_solids": 1774,
+  "fixture": {
+    "base_mm": [
+      270,
+      190,
+      8
+    ],
+    "global_min_z_reference_mm": 116,
+    "eight_source_contact_datums": [
+      {
+        "datum": "XBAR_F1",
+        "part": "CROSSBAR",
+        "x_mm": 40,
+        "y_mm": 15,
+        "z_mm": 127,
+        "wood_jig_spacer_mm": 11
+      },
+      {
+        "datum": "XBAR_M",
+        "part": "CROSSBAR",
+        "x_mm": 130,
+        "y_mm": 15,
+        "z_mm": 127,
+        "wood_jig_spacer_mm": 11
+      },
+      {
+        "datum": "XBAR_F2",
+        "part": "CROSSBAR",
+        "x_mm": 230,
+        "y_mm": 15,
+        "z_mm": 127,
+        "wood_jig_spacer_mm": 11
+      },
+      {
+        "datum": "SIDE_LEFT_R",
+        "part": "SIDE_LEFT",
+        "x_mm": 19.5,
+        "y_mm": 120,
+        "z_mm": 130,
+        "wood_jig_spacer_mm": 14
+      },
+      {
+        "datum": "SIDE_RIGHT_R",
+        "part": "SIDE_RIGHT",
+        "x_mm": 252,
+        "y_mm": 120,
+        "z_mm": 130,
+        "wood_jig_spacer_mm": 14
+      },
+      {
+        "datum": "G5_LEFT_S",
+        "part": "G5_LEFT",
+        "x_mm": 112.5,
+        "y_mm": 44,
+        "z_mm": 130,
+        "wood_jig_spacer_mm": 14
+      },
+      {
+        "datum": "G5_RIGHT_L",
+        "part": "G5_RIGHT",
+        "x_mm": 167.5,
+        "y_mm": 58,
+        "z_mm": 116,
+        "wood_jig_spacer_mm": 0
+      },
+      {
+        "datum": "G5_RIGHT_T",
+        "part": "G5_RIGHT",
+        "x_mm": 167.5,
+        "y_mm": 89,
+        "z_mm": 116,
+        "wood_jig_spacer_mm": 0
+      }
+    ],
+    "product_component": false,
+    "accuracy_qualified": false,
+    "joining_qualified": false
+  },
+  "frame": {
+    "internal_joint_faces_mm2": [
+      9,
+      9,
+      18,
+      18
+    ],
+    "external_g5_guide_joints": 2,
+    "external_sidewood_anchor_joints": 4,
+    "assumed_steel_frame_mass_g": 153.546,
+    "m2_head_direct_3mm_strip": "REJECTED"
+  },
+  "load_matrix": {
+    "payload_kg": [
+      0.1,
+      0.2,
+      0.35,
+      0.5
+    ],
+    "inertial_acceleration_g": [
+      1,
+      5,
+      10
+    ],
+    "hypothetical_shared_joint_count": [
+      2,
+      4
+    ],
+    "rows_expected": 24,
+    "global_gravity_m_s2": 9.80665,
+    "joint_strength": "NOT_COMPUTABLE_FROM_F_MEAN"
+  },
+  "g6_04": {
+    "all_panels": 23,
+    "constant_panels": [
+      "P3",
+      "TRAY",
+      "BEZEL_WOOD_FRONT_BOTTOM",
+      "BEZEL_WOOD_FRONT_LEFT",
+      "BEZEL_WOOD_FRONT_RIGHT",
+      "BEZEL_WOOD_FRONT_TOP",
+      "BEZEL_WOOD_REAR_BOTTOM",
+      "BEZEL_WOOD_REAR_LEFT",
+      "BEZEL_WOOD_REAR_RIGHT",
+      "BEZEL_WOOD_REAR_TOP",
+      "REAR_GRILLE",
+      "BATTERY_LID",
+      "BUTTON_PLATE_1",
+      "BUTTON_PLATE_2"
+    ],
+    "stepped_panels": [
+      "BACK_WOOD",
+      "WOOD_SIDE_LEFT",
+      "WOOD_SIDE_RIGHT",
+      "WOOD_BOTTOM",
+      "WOOD_TOP",
+      "FRONT_DIFFUSER_L",
+      "FRONT_DIFFUSER_R",
+      "SIDE_GRILLE_1",
+      "SIDE_GRILLE_2"
+    ],
+    "real_source_low_high_area_checked_in_distributed_zip": true,
+    "bezel_source_z1_xy_contact_mm2": {
+      "BOTTOM": 810,
+      "LEFT": 567,
+      "RIGHT": 567,
+      "TOP": 810
+    },
+    "nominal_paper_tab_width_mm": 5,
+    "nominal_paper_tab_pitch_mm": 30,
+    "product_glue": "NOT_APPROVED",
+    "task_status": "OPEN"
+  },
+  "candidate_processes": [
+    "precise laser welding of five metal pieces",
+    "brazed fixtured steel assembly",
+    "one piece 3D CNC machined steel frame",
+    "sheet-metal fold requiring redesign",
+    "plastic nonfunctional fit-up print"
+  ],
+  "safety": {
+    "manufacture_gate": 0,
+    "manufacture_gate_total": 6,
+    "scoped_done": 19,
+    "scoped_total": 48,
+    "software_review_pass": 11,
+    "g3_04": "WORKING",
+    "g3_05": "WORKING",
+    "g6_04": "OPEN",
+    "electric_motor_efuse_en": "LOW",
+    "no_cut": true,
+    "no_purchase": true,
+    "no_power": true,
+    "no_flash": true,
+    "no_main_merge": true
+  },
+  "delivery": {
+    "name": "Forest_Guardian_G5_Jig_And_G6-04_Engineering_2026-10-16.zip",
+    "byte_count": 1113226,
+    "sha256": "4bdf806da657877e45013b9972c04d32377b75295792161d037a2ef598607239",
+    "files": 23,
+    "history_name": "Forest_Guardian_Integrated_Handoff_G5_Jig_G6-04_2026-10-16.zip",
+    "history_sha256": "22e4bcef6c8ec856ca0fb1d9aa8feb3e0a6c5ad97517e8ec3ff46281de163d8f"
+  },
+  "validation_boundary": "Actual original D7 65MB JSON re-read/hash and panel face areas computed locally in reproducible ZIP; CI only recomputes eight seat positions against prior 13-member nominal geometry, and ledger/safety invariants; not fabricated, no pull testing."
+}
