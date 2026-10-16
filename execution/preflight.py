@@ -12,6 +12,7 @@ checks = [
     "execution/g6_03_80_source_faces/check_contract.py",
     "execution/g6_06_build_service_sequence/check_contract.py",
     "execution/g5_05_access_core/check_contract.py",
+    "execution/g5_05_https_api/check_contract.py",
     "execution/g5_frame_2026-10-16/check_contract.py",
     "execution/g5_fivepiece_2026-10-16/check_contract.py",
     "execution/g5_jig_g604_2026-10-16/check_contract.py",
