@@ -44,6 +44,16 @@ jobs:
           idf.py -C firmware build >/tmp/g5-net-build.log 2>&1 || { tail -200 /tmp/g5-net-build.log; exit 1; }
           test -s firmware/build/forest_guardian_review.bin
           sha256sum firmware/build/forest_guardian_review.bin
+          # The existing 3.5MiB RAW A/B review partition candidate is an actual limit,
+          # not an aspirational note. This check fails on a firmware size regression.
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('firmware/build/forest_guardian_review.bin')
+          actual=p.stat().st_size
+          capacity=0x380000
+          print(f'ESP32P4_APP_BYTES={actual} RAW_AB_SLOT_BYTES={capacity} REMAINING={capacity-actual}')
+          assert actual>0 and actual<capacity, 'Compiled HTTPS/Hosted product exceeds the unapproved RAW A/B slot capacity'
+          PY
           grep -q 'fg_net_service.c' firmware/build/compile_commands.json
           grep -q 'fg_hosted_wifi.c' firmware/build/compile_commands.json
           echo "PASS real P4 Hosted-WiFi target product compiled / TLS only when protected credentials exist / NO BOARD TEST"

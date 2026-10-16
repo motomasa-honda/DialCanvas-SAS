@@ -17,3 +17,7 @@
 **G5-05の残完了条件**：承認したprovisioningと機密保持、実ボードP4/C6の相互接続+IP再接続、検証されたTLSハンドシェイク、認証付き6 API+欠権/悪用時拒否、電源隔離済みHILで単一writer経路のログ、確定した運用リセット/鍵失効。
 
 参考一次資料: https://docs.waveshare.net/ESP32-P4-WIFI6-Touch-LCD-XC/ESP-IDF/ 、 https://docs.espressif.com/projects/esp-idf/en/v5.5.1/esp32/api-reference/storage/nvs_encryption.html
+
+## 追加の必須検査：製品バイナリがRAW A/B候補に収まること
+
+ESP32-C6 Hosted・HTTPS追加により実ビルドサイズが増えるため、G5-05の実製品ビルドCIで `0x380000` bytes（3.5MiB）を超えたら**失敗**させる。これはPhase68/69の既存RAW A/B候補の真の境界であり、模擬テストではない。ただし格納可能は実デバイスのOTA/ロールバック成功を意味しない。後工程G5-06は別途未完了。
