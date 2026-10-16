@@ -28,3 +28,7 @@ TI一次資料： https://www.ti.com/lit/ds/symlink/sn74lvc2g02.pdf ・ https://
 ## G1-87 ネイティブKiCad9初回ERCで検出された配置不整合の修正
 
 初回GitHub Actions run 38901429955 では実KiCadの404既存端子 +42新端子のXML検証へ入った際、KiCad9 ERCは `endpoint_off_grid=6` を検出。新しいC23/C24の中心y=1030.16mmが50mil接続格子上ではなく、**設計上の端子ネット割当は変更せず** y=1031.24mm に補正（ラベル、配線、記号位置、プロパティ位置と対応表を同時変更）。`check_contract.py`に新規42端子すべての1.27mm単位チェックを追加して再発防止。これは既存安全条件の緩和ではなく製図座標の是正。
+
+## G1-87 実KiCad ERC 19件の厳密ロック
+
+[実KiCad9 run 38901785460](https://github.com/motomasa-honda/DialCanvas-SAS/actions/runs/38901785460/job/116975542750)で446実端子/124記号/119ネットに対して、旧G1-86と同じERC**19件**（単独レビューラベル16、電源の実供給元未定義3）を確認。`erc_open_register.json`に製造HOLD理由として全指摘のネット名・pin番号を固定。今後の新しいERC違反や既存指摘の予期せぬ消滅は**GitHub CIを失敗させて再審査を要求**。例外リストによるERC抑制は行わない。

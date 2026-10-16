@@ -19,5 +19,27 @@ assert len(r.findall("./nets/net"))==119
 issue=json.loads((o/"erc.json").read_text())
 types=collections.Counter(v["type"] for sh in issue["sheets"] for v in sh["violations"])
 assert not types["endpoint_off_grid"] and not types["lib_symbol_issues"],types
+import re
+ledger=json.loads((d/"erc_open_register.json").read_text())
+issues=[v for sh in issue["sheets"] for v in sh["violations"]]
+assert len(issues)==ledger["expected_count"]==19
+assert dict(types)==ledger["expected_types"],("new or absent native ERC errors",types)
+labs=[];powp=[]
+for v in issues:
+ if v["type"]=="label_dangling":
+  m=re.findall(r"Label '([^']+)'",v["items"][0]["description"])
+  assert len(m)==1,v
+  labs.append(m[0])
+ elif v["type"]=="power_pin_not_driven":
+  m=re.fullmatch(r"Symbol (U\d+) Pin (\d+) \[([^,]+), Power input, Line\]",v["items"][0]["description"])
+  assert m,v
+  powp.append(f"{m.group(1)}.{m.group(2)}:{m.group(3)}")
+ else:
+  raise AssertionError(("Unexpected KiCad electrical error",v))
+assert sorted(labs)==ledger["expected_label_nets"],("unreviewed NC labels",labs)
+assert sorted(powp)==ledger["expected_power_inputs"],("unexpected power pin",powp)
+assert ledger["motor_cutoff"]=="NONE"
+print("PASS strict KiCad ERC ledger: 16 dangling labels + 3 undriven power pins; none suppressed")
+
 print("PASS: actual KiCad9 XML export 446 pads, 124 symbols, 119 nets same as source delta")
 print("HOLD REAL ELECTRICAL ERC FINDINGS:",dict(sorted(types.items())))
