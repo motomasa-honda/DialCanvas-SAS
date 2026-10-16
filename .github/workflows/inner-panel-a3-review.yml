@@ -1,0 +1,35 @@
+name: Forest Guardian seven real inner A3 panel evidence (G6-02)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/inner-panel-a3-review.yml'
+      - 'execution/g6_02_7panel_2026-10-16/**'
+      - 'execution/tasks.csv'
+      - 'execution/progress.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-review-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protect original immutable Phase67 firmware reference
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Validate G6-02 source sheet register, G5 source material fault and exact 18/48 board
+        run: |
+          set -euo pipefail
+          mkdir -p execution/g6_02_7panel_2026-10-16/evidence
+          python3 execution/g6_02_7panel_2026-10-16/check_contract.py | tee execution/g6_02_7panel_2026-10-16/evidence/contract.log
+          python3 execution/guard.py | tee execution/g6_02_7panel_2026-10-16/evidence/ledger.log
+          echo 'REAL_1774_SOLID_REBUILD=ONLY_IN_DELIVERABLE_ZIP; NOT_ON_THIS_GITHUB_RUN' > execution/g6_02_7panel_2026-10-16/evidence/scope.txt
+      - name: Archive evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forest-guardian-g6-02-seven-A3-source-review-only
+          path: execution/g6_02_7panel_2026-10-16/evidence/
+          if-no-files-found: warn
