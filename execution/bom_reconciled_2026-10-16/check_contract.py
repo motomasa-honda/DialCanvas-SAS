@@ -28,12 +28,23 @@ sha=c["source_sha256"]
 assert sha["d7/cad/assembly.json"]=="20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f"
 assert all(len(x)==64 for x in sha.values())
 p=json.loads((e/"progress.json").read_text())
-assert (p["scoped_evidence_done"],p["working"],p["open"],p["hardware_wait"])==(17,7,20,4)
+# Historical BOM closure remains valid as other independent scopes progress.
+# Verify the current ledger and milestone contract, NOT the historic 17/48 snapshot.
+with (e/"tasks.csv").open(encoding="utf-8-sig",newline="") as f:
+    tasks=list(csv.DictReader(f))
+stat=Counter(row["Status"] for row in tasks)
+assert len(tasks)==48 and len({row["ID"] for row in tasks})==48
+assert (p["scoped_evidence_done"],p["working"],p["open"],p["hardware_wait"]) == (
+    stat["DONE_SCOPE"],stat["WORKING"],stat["OPEN"],stat["HARDWARE_WAIT"])
+assert sum(stat.values())==48
+assert stat["DONE_SCOPE"]>=c["statuses"]["done_scope"]
+assert next(row for row in tasks if row["ID"]=="G4-02")["Status"]=="DONE_SCOPE"
+assert next(row for row in tasks if row["ID"]=="G4-08")["Status"]=="OPEN"
 assert p["manufacturer_release_closed"]==0 and p["software_evidence_passed"]==11
 assert c["statuses"]["G4_02"]=="DONE_SCOPE"
 assert c["statuses"]["G4_08"]=="OPEN"
 assert c["statuses"]["manufacturing_closed"]==0
 assert c["ordering"].startswith("HOLD")
 print("PASS: 59 exact old DRIVER component refs, 429+18+source RTC, original data SHA registered")
-print("PASS: G4-02 narrowly closed with 17/48; G4-08 manufacture OPEN, safety 0/6")
+print(f"PASS: G4-02 remains scoped DONE at current {stat['DONE_SCOPE']}/48; G4-08 remains OPEN, safety 0/6")
 print("NOTE: full 448-row source binary regeneration was verified in downloadable artifact ZIP, not in this GitHub CI")
