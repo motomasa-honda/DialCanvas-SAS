@@ -70,7 +70,14 @@ assert next(row for row in tasks if row["ID"]=="G6-06")["Status"]=="DONE_SCOPE"
 assert next(row for row in tasks if row["ID"]=="G6-07")["Status"]=="HARDWARE_WAIT"
 assert next(row for row in tasks if row["ID"]=="G6-08")["Status"]=="OPEN"
 assert next(row for row in tasks if row["ID"]=="G2-07")["Status"]=="OPEN"
-assert p["scoped_evidence_done"]==20 and p["open"]==18 and p["working"]==6 and p["hardware_wait"]==4
+# G6-06's historical completion remains true when later independent work starts.
+# Validate the CURRENT 48-task arithmetic via guard.py, not frozen G6-06 snapshot.
+from collections import Counter
+states=Counter(x["Status"] for x in tasks)
+assert p["scoped_evidence_done"]==states["DONE_SCOPE"]>=20
+assert p["working"]==states["WORKING"] and p["open"]==states["OPEN"]
+assert p["hardware_wait"]==states["HARDWARE_WAIT"]==4
+assert sum(states.values())==48
 assert p["manufacturer_release_closed"]==0 and p["software_evidence_passed"]==11
 print("PASS G6-06 actual completion: all 80 named source parts covered once, 17 topologically ordered assembly stages")
 print("PASS seven independent 15-stage service travellers (105 actions), with exact 42 original 6-pin connection references")
