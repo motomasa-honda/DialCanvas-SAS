@@ -12,10 +12,10 @@ Exactly **48 independently scoped deliverables**: eight in each of the six D7 ma
 | G3 Mechanical/wood/thermal | 3 | 2 | 2 | 1 | OPEN |
 | G4 BOM, specs, fabrication drawings | 2 | 1 | 5 | 0 | OPEN |
 | G5 Product SW integration | 4 | 1 | 2 | 1 | OPEN |
-| G6 All A3 patterns and assembly sequence | 2 | 0 | 5 | 1 | OPEN |
-| **TOTAL** | **18/48** | **6** | **20** | **4** | **0/6 closed** |
+| G6 All A3 patterns and assembly sequence | 3 | 0 | 4 | 1 | OPEN |
+| **TOTAL** | **19/48** | **6** | **19** | **4** | **0/6 closed** |
 
-The current **18 scoped passes** include previous 16 reviewed milestones plus NEW G4-02 full original BOM reconciliation and NEW G6-02 seven-panel internal A3 review drawing set. These are **NOT 18 complete manufacturable assemblies** or a cleared hardware safety review. Software evidence **11/14**, remaining SW09, SW12, SW14.
+The current **19 scoped passes** include previous 16 reviewed milestones plus NEW G4-02 full original BOM reconciliation and NEW G6-02 seven-panel internal A3 review drawing set. These are **NOT 18 complete manufacturable assemblies** or a cleared hardware safety review. Software evidence **11/14**, remaining SW09, SW12, SW14.
 
 ## The change to execution
 - **Build lane (primary):** progress actual engineering artifacts in G2/G3/G4/G5/G6 even if G1's physical latch is unfinished; next G4-02 M1 BOM, G3-05 wood machining/tool access, G6-02 interior templates.
@@ -61,3 +61,7 @@ Counts now **17 DONE_SCOPE, 7 WORKING, 20 OPEN, 4 HARDWARE_WAIT** (48 unchanged)
 ## NEW verified scoped completion: G6-02, seven actual internal source-CAD A3 sheets (2026-10-16)
 
 [Detailed source-traced scope and G5 critical original-opening redline](g6_02_7panel_2026-10-16/README.md). All seven real internal D7 geometry sections were produced in **A3 PDF+DXF editable formats**, including the recovered 68 original machining operations without edit and eight nominal anchors/seven rearwood relief candidate overlays. D7 original SHA rechecked, 7 PDF physical media readbacks and DXF reopen checks PASS in companion ZIP. **G5 BACK_WOOD: 81.346% of proposed 48×35mm pocket is already OPEN in original**: do not perform seven uniform cuts. Only G6-02 is DONE_SCOPE; G6-08 and G3-05 remain incomplete. **18/48 done, 6 working, 20 open, 4 hardware wait; 0/6 manufacturing and 11/14 software.** No power, cutting, purchasing, fabrication, flash or main merge.
+
+## G6-03 DONE_SCOPE — D7 all named interior/gear/lighting/sensor components, both real faces (2026-10-16)
+
+**19/48 DONE_SCOPE** (G6-03 OPEN→DONE_SCOPE). Immutable actual D7 1,774 original solids were used locally to generate **80 uniquely identified physical panel/gear/LED/sensor/lighting components × LOW/HIGH = 160 distinct side projections** as 1:1 A3 PDFs and 160 native DXFs; matched 160-page A3 book, source face geometry JSON, physical page and 160 DXF source-area readback. [Full scoped evidence and engineering limitations](g6_03_80_source_faces/README.md). G5-back Z144.99 has **zero material** in the proposed pocket; new G5 2x steel3×6×65 support webs satisfy nominal source D7 clearance but actual strength/fatigue remain unqualified. M2 stop V2 improves conservative 40mm board worst clearance from -0.1 to +0.55mm with thread residual wall thickness <0.6mm **NOT strength accepted**. Manufacturing remains **0/6**, software review **11/14**, all motor eFuse EN LOW; G6-08/CNC/printing, G3 structure, G1 electrical stay OPEN. Deliverable ZIP source+all native drawings is linked in the conversation; GitHub static source-index check cannot substitute original D7 geometry recomputation.

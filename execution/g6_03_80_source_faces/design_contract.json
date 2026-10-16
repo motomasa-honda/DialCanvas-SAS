@@ -1,0 +1,171 @@
+{
+  "status": "DONE_SCOPE_DRAWING_SOURCE_ONLY",
+  "task": "G6-03",
+  "date": "2026-10-16",
+  "original_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "original_d7_solids": 1774,
+  "source_named_physical_component_count": 80,
+  "source_face_count": 160,
+  "pdf_A3_count": 160,
+  "editable_dxf_count": 160,
+  "joined_A3_book_pages": 160,
+  "component_groups": {
+    "core": [
+      "P3",
+      "TRAY",
+      "BACK_WOOD",
+      "WOOD_SIDE_LEFT",
+      "WOOD_SIDE_RIGHT",
+      "WOOD_BOTTOM",
+      "WOOD_TOP"
+    ],
+    "bezel": [
+      "BEZEL_WOOD_FRONT_BOTTOM",
+      "BEZEL_WOOD_FRONT_LEFT",
+      "BEZEL_WOOD_FRONT_RIGHT",
+      "BEZEL_WOOD_FRONT_TOP",
+      "BEZEL_WOOD_REAR_BOTTOM",
+      "BEZEL_WOOD_REAR_LEFT",
+      "BEZEL_WOOD_REAR_RIGHT",
+      "BEZEL_WOOD_REAR_TOP"
+    ],
+    "cover": [
+      "FRONT_DIFFUSER_L",
+      "FRONT_DIFFUSER_R",
+      "SIDE_GRILLE_1",
+      "SIDE_GRILLE_2",
+      "REAR_GRILLE",
+      "BATTERY_LID",
+      "BUTTON_PLATE_1",
+      "BUTTON_PLATE_2"
+    ],
+    "gear": [
+      "GEAR_G1",
+      "GEAR_G2",
+      "GEAR_G3",
+      "GEAR_G4",
+      "GEAR_G5",
+      "GEAR_G6",
+      "GEAR_G7"
+    ],
+    "ledBoards": [
+      "LED_BOARD_L_1",
+      "LED_BOARD_L_2",
+      "LED_BOARD_R_1",
+      "LED_BOARD_R_2"
+    ],
+    "leds": [
+      "LED_L_1",
+      "LED_L_2",
+      "LED_L_3",
+      "LED_L_4",
+      "LED_L_5",
+      "LED_L_6",
+      "LED_L_7",
+      "LED_L_8",
+      "LED_L_9",
+      "LED_L_10",
+      "LED_R_1",
+      "LED_R_2",
+      "LED_R_3",
+      "LED_R_4",
+      "LED_R_5",
+      "LED_R_6",
+      "LED_R_7",
+      "LED_R_8",
+      "LED_R_9",
+      "LED_R_10"
+    ],
+    "sensor": [
+      "SENSOR_BAND_G1",
+      "SENSOR_BAND_G2",
+      "SENSOR_BAND_G3",
+      "SENSOR_BAND_G4",
+      "SENSOR_BAND_G5",
+      "SENSOR_BAND_G6",
+      "SENSOR_BAND_G7",
+      "SENSOR_TONGUE_G1",
+      "SENSOR_TONGUE_G2",
+      "SENSOR_TONGUE_G3",
+      "SENSOR_TONGUE_G4",
+      "SENSOR_TONGUE_G5",
+      "SENSOR_TONGUE_G6",
+      "SENSOR_TONGUE_G7"
+    ],
+    "lightWood": [
+      "WOOD_FLANGE_LIGHT_L_24.0",
+      "WOOD_FLANGE_LIGHT_L_173.5",
+      "WOOD_FLANGE_LIGHT_R_24.0",
+      "WOOD_FLANGE_LIGHT_R_173.5",
+      "WOOD_PLUG_LIGHT_L_24.0",
+      "WOOD_PLUG_LIGHT_L_173.5",
+      "WOOD_PLUG_LIGHT_R_24.0",
+      "WOOD_PLUG_LIGHT_R_173.5",
+      "WOOD_RECEIVER_LIGHT_L_24.0",
+      "WOOD_RECEIVER_LIGHT_L_173.5",
+      "WOOD_RECEIVER_LIGHT_R_24.0",
+      "WOOD_RECEIVER_LIGHT_R_173.5"
+    ]
+  },
+  "source_panel_examples": {
+    "BACK_WOOD_LOWER_Z137_01_mm2": 40241.161,
+    "BACK_WOOD_UPPER_Z144_99_mm2": 35622.983,
+    "WOOD_SIDE_LEFT_OUTER_X0_01_mm2": 12933.167,
+    "WOOD_SIDE_LEFT_INNER_X11_99_mm2": 13904.476,
+    "P3_FRONT_AND_REAR_mm2": 30849.054
+  },
+  "g5": {
+    "review_pocket_mm": [
+      48,
+      35
+    ],
+    "z140_8_existing_opening_pct": 81.346,
+    "z144_99_wood_mm2": 0,
+    "decision": "NO_G5_BACKWOOD_CUT",
+    "candidate_two_frame_webs_each_mm": [
+      3,
+      6,
+      65
+    ],
+    "d7_1774_fixed_nominal_obstruction": 0,
+    "other_six_sled_nominal_overlap": 0,
+    "beam_deflection_ASSUMPTION_steel100g5g_mm": 0.0831,
+    "physical_strength": "NOT_TESTED"
+  },
+  "secondary_keeper_V2": {
+    "nominal_conservative_pcb_width_mm": 40,
+    "parts_tolerance_mm_each": 0.2,
+    "previous_worst_clearance_mm": -0.1,
+    "new_worst_clearance_mm": 0.55,
+    "axes_nominal_D7_hits": 0,
+    "thread_boss_left_meat_mm": 0.575,
+    "thread_boss_right_meat_mm": 0.525,
+    "retention_strength": "NOT_TESTED",
+    "actual_PCB_measurement": "NOT_AVAILABLE"
+  },
+  "release": {
+    "scoped_done": 19,
+    "scoped_total": 48,
+    "working": 6,
+    "open": 19,
+    "hardware_wait": 4,
+    "manufacturer_gates_closed": 0,
+    "software_evidence_passed": 11,
+    "motor_power": "EFUSE_EN_HELD_LOW",
+    "woodcutting": false,
+    "buying": false,
+    "pcb_fabrication": false,
+    "hardware_flash": false,
+    "merge_main": false
+  },
+  "zip": {
+    "name": "Forest_Guardian_G6-03_80Parts_160Faces_G5_KeeperV2_19of48_2026-10-16.zip",
+    "bytes": 5660814,
+    "sha256": "bc1f6479fa1bafad927cf2aef77b93ad756d6b6cd737e5483df2d7860833f715",
+    "file_count": 343,
+    "integrated_name": "Forest_Guardian_Integrated_Handoff_19of48_2026-10-16.zip",
+    "integrated_bytes": 122247362,
+    "integrated_sha256": "814c4e4a0519c370ace21c254f5e09c53054a7030d2cc97d175deeaea0a44cd0"
+  },
+  "ci_limit": "Native 160 A3 PDF + 160 DXF + full D7 geometry validation performed with supplied 343-file ZIP; GitHub CI checks grounded 80-ID source register and scope, not original 65MB CAD or physical manufacturing."
+}
