@@ -16,7 +16,8 @@ static bool commit(fg_web_access *a,unsigned role,const uint8_t hash[32]){
  a->credentials=proposed;return true;
 }
 void fg_web_access_init(fg_web_access *a,fg_web_credentials existing,fg_web_save_fn save,fg_web_random_fn random,void *ctx){
- if(!a)return;memset(a,0,sizeof(*a));a->credentials=existing;a->save=save;a->random=random;a->io_context=ctx;
+ if(!a)return;
+ memset(a,0,sizeof(*a));a->credentials=existing;a->save=save;a->random=random;a->io_context=ctx;
 }
 void fg_web_access_expire(fg_web_access *a,uint64_t now){
  if(a&&a->open&&now>=a->window_end_ms){a->open=false;a->local_code=0;}
@@ -52,7 +53,8 @@ fg_web_result fg_web_issue_role(fg_web_access *a,fg_web_role actor,fg_web_role t
  memcpy(token,raw,32);wipe(raw,32);wipe(hash,32);return FG_WEB_OK;
 }
 fg_web_role fg_web_authenticate(const fg_web_access *a,const uint8_t *token,size_t size){
- if(!a||!token||size!=32)return FG_WEB_NO_ROLE;uint8_t hash[32];
+ if(!a||!token||size!=32)return FG_WEB_NO_ROLE;
+ uint8_t hash[32];
  if(!digest(token,hash))return FG_WEB_NO_ROLE;
  fg_web_role role=FG_WEB_NO_ROLE;
  for(unsigned i=0;i<FG_WEB_ROLE_COUNT;i++){
