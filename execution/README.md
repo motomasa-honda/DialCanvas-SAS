@@ -77,3 +77,8 @@ Counts now **17 DONE_SCOPE, 7 WORKING, 20 OPEN, 4 HARDWARE_WAIT** (48 unchanged)
 ## G5 actual external jig + G6-04 panel edge & joint face review (2026-10-16)
 
 [Engineering ZIP source and scope](g5_jig_g604_2026-10-16/README.md): eight exact-source fixture seating datums (0/11/14mm spacers; production jig not approved), 4 four metal butt coupon specs and 6 external connections unresolved, 24 assumed loads with heavy153.546g steel selfweight, 5 potential manufacturing processes/quotes. Original 23 panel exterior/interior ring lengths and thickness classification were derived from real 80 source face geometry: **14 constant sections / 9 stepped**; 4 wood-bezel front/rear CAD contacts are **810/567/567/810mm2** but **NO PRODUCT GLUE ACCEPTED**. G3-04/G3-05 remain WORKING and G6-04 remains OPEN. **19/48**, manufacturing0/6, software11/14, no motor power or release.
+
+
+## G3-06 9 BACK_WOOD layers original D7 outlet REVIEW / NO-CUT FAIL
+
+[Corrected fan engineering gate](fan_full_thickness_2026-10-16/README.md): 3 previously 3mm body-clear 30mm FAN spots have only 0.167 / 0.446 / 0.167% of outlet circular area OPEN THROUGH Z137..145. All 8 prior body-clear points are rejected for unmodified rearwood exhaust; physical duct requires new source-verified design. V2 80mA/92mA max steady and V3 45mA/54mA max steady are provisional official Sunon candidates, NOT verified startup or closed-case thermal. G3-06 OPEN, no cut/power/purchase, scoped 19/48, manufacturer0/6, motor eFuse EN LOW.

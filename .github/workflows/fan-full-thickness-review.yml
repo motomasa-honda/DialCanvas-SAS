@@ -1,0 +1,25 @@
+name: Forest Guardian nine actual original rearwood fan airflow strata review
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/fan-full-thickness-review.yml'
+      - 'execution/fan_full_thickness_2026-10-16/**'
+      - 'execution/g5_jig_g604_2026-10-16/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fan-aperture-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Original source unchanged
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Verify no false manufacturing pass from fan-body fit
+        run: |
+          set -euo pipefail
+          python3 execution/fan_full_thickness_2026-10-16/check_contract.py
+          python3 execution/preflight.py

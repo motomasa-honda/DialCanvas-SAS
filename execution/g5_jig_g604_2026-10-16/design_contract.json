@@ -269,6 +269,8 @@
     "actual_fan_part_number": "NOT_SELECTED",
     "airflow_and_temperature": "NOT_MEASURED",
     "rearwood_vent_machining": "NOT_APPROVED",
-    "status": "G3-06_OPEN"
+    "status": "G3-06_OPEN",
+    "backwood_no_cut_vent": "REJECTED_ALL_THREE",
+    "corrected_scope": "Only 30mm geometric body clearance. Nine original backwood solid strata leave <=0.446 percent circular through aperture. Do not treat three positions as functional cooling options."
   }
 }

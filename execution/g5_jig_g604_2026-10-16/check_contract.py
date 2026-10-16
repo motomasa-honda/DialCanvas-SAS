@@ -64,6 +64,7 @@ assert fan["actual_fan_part_number"]=="NOT_SELECTED"
 assert fan["airflow_and_temperature"]=="NOT_MEASURED"
 assert fan["rearwood_vent_machining"]=="NOT_APPROVED"
 assert fan["status"]=="G3-06_OPEN"
+assert fan["backwood_no_cut_vent"]=="REJECTED_ALL_THREE"
 print("PASS 8 source-member fit datum coordinates; 24 non-certifying load cases and 4 unqualified butt faces")
 print("PASS 23 named D7 panels = 14 constant + 9 stepped, 4 source face contact areas")
 print("HOLD manufacturing 0/6, scoped review 19/48, glue and weld strength NOT QUALIFIED")

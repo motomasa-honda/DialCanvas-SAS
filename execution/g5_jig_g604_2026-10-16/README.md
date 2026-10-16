@@ -20,3 +20,12 @@ D7全1,774ソリッド、7軸50×41保守矩形、G5支持フレームの既存1
 各30×30mm背板原本領域は木480mm²＋既存空洞420mm²で、換気穴・ブラケット・ファン固定が未設計。**旧ファン109mAは分岐100mAを9mA超えるため、実物選定と給電回路再設計までは稼働不可**。DXF編集用配置図、A3原寸図、二段階原本走査CSV/再生成コードをZIPに収録。
 
 G3-06 OPEN、製造0/6、SW11/14、7軸交換A案は不変。GHの静的検証は元65MB D7モデルを再走査せず、結果の出典と禁止条件の整合性のみを確認。
+
+
+## Previous 30mm FAN 3 body-clear locations corrected
+
+Legacy 30mm fan candidates at (95,90), (95,95), (95,100) were ONLY nominal 3mm body-clear checks. They are NOT exhaust installation designs. A new actual original-D7 audit (1774 solids, SHA256 20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f) re-read all 9 contiguous BACK_WOOD XY material slices from Z137 to 145mm.
+
+The manufacturer's actual outlet diameter is 29.3mm (nominal 674.256mm²). Source nine-layer through-clear projections are **1.129 / 3.006 / 1.129 mm²**, or **0.167 / 0.446 / 0.167%**. Five other prior body-clear sites have 0mm². All eight original no-cut locations are **REJECTED AS UNMODIFIED-BACKWOOD EXHAUST**, not a ban on redesigned side-grille or certified new backwood vent.
+
+See ../fan_full_thickness_2026-10-16/README.md . The original placement candidate check is NOT a vent engineering acceptance.
