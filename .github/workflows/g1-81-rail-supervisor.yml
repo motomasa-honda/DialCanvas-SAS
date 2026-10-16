@@ -1,0 +1,23 @@
+name: Forest Guardian G1-81 independent motor rail supervisor review only
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g1-81-rail-supervisor.yml'
+      - 'execution/g1_81_rail_supervisor/**'
+      - 'execution/g1_phase77_140pins/**'
+      - 'execution/g1_28phase_disabled/**'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g1-81-physical-pad-register-hold:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: TI package physical pin map and 10 deliberate miswires
+        run: |
+          set -euo pipefail
+          python3 execution/g1_81_rail_supervisor/check_contract.py
+          python3 execution/preflight.py
