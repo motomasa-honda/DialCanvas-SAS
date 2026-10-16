@@ -24,3 +24,7 @@
 残る本当に重要な設計：PG立上げ後・独立5V監視からFAULTトリップへの物理合流、物理起動期限タイマー、AON喪失と3V3再投入時のcold POR、QUAL_CLR_N stuck-high・STOP短絡診断、承認済み正規メーカーfootprintとERC全クリア・PCB DRC・HIL。U7.1 ENはGNDへ10kΩ、28相/OEはHIGHで電源無効のまま。**G1-05/06 WORKING、19/48、製造0/6**、Draft PR #2でmainは変更禁止、購買・加工・製造・通電は行わない。
 
 TI一次資料： https://www.ti.com/lit/ds/symlink/sn74lvc2g02.pdf ・ https://www.ti.com/lit/ds/symlink/sn74lvc1g04.pdf ・ https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf ・ https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf
+
+## G1-87 ネイティブKiCad9初回ERCで検出された配置不整合の修正
+
+初回GitHub Actions run 38901429955 では実KiCadの404既存端子 +42新端子のXML検証へ入った際、KiCad9 ERCは `endpoint_off_grid=6` を検出。新しいC23/C24の中心y=1030.16mmが50mil接続格子上ではなく、**設計上の端子ネット割当は変更せず** y=1031.24mm に補正（ラベル、配線、記号位置、プロパティ位置と対応表を同時変更）。`check_contract.py`に新規42端子すべての1.27mm単位チェックを追加して再発防止。これは既存安全条件の緩和ではなく製図座標の是正。

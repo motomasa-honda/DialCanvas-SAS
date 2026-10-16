@@ -4430,7 +4430,7 @@
     "review_net": "3V3_AON",
     "kicad_ref": "C23",
     "wire_end_x": "48.26",
-    "wire_end_y": "1028.89"
+    "wire_end_y": "1029.97"
   },
   {
     "group": "B87",
@@ -4440,7 +4440,7 @@
     "review_net": "GND",
     "kicad_ref": "C23",
     "wire_end_x": "48.26",
-    "wire_end_y": "1031.43"
+    "wire_end_y": "1032.51"
   },
   {
     "group": "B87",
@@ -4450,7 +4450,7 @@
     "review_net": "3V3_AON",
     "kicad_ref": "C24",
     "wire_end_x": "160.02",
-    "wire_end_y": "1028.89"
+    "wire_end_y": "1029.97"
   },
   {
     "group": "B87",
@@ -4460,6 +4460,6 @@
     "review_net": "GND",
     "kicad_ref": "C24",
     "wire_end_x": "160.02",
-    "wire_end_y": "1031.43"
+    "wire_end_y": "1032.51"
   }
 ]

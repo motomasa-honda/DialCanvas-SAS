@@ -20,6 +20,12 @@ assert len({x["review_net"] for x in current})==119
 assert len(re.findall(r'\(wire \(pts',sch))==443
 assert len(re.findall(r'\(label "',sch))==443
 assert len(re.findall(r'\(no_connect ',sch))==3
+# Future additions must sit on actual 50mil KiCad 1.27mm connection grid.
+for p in current[404:]:
+ assert abs(float(p["wire_end_x"])/1.27-round(float(p["wire_end_x"])/1.27))<1e-6
+ assert abs(float(p["wire_end_y"])/1.27-round(float(p["wire_end_y"])/1.27))<1e-6
+assert "(paper \"User\" 1450 1200)" in sch
+
 for part in c["components"]:
  got=sorted((p for p in current if p["kicad_ref"]==part["ref"]),key=lambda v:v["source_pin"])
  assert [p["review_net"] for p in got]==part["pins"]
