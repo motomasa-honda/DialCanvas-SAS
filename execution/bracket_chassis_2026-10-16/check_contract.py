@@ -11,7 +11,6 @@ assert d["failures_in_old_architecture"]["straight_p3_post_search_no_candidate_a
 v=d["new_nominal_design"]
 assert v["per_axis_removable_sled"]["count"]==7
 assert v["per_axis_removable_sled"]["individual_plus_z_retract_mm"]==55
-assert v["fixed_perimeter_frame"]["nominal_d7_fixed_overlap_count"] if False else True
 assert v["fixed_perimeter_frame"]["static_D7_overlap_count"]==0
 assert v["fixed_guides"]["count"]==14
 assert v["source_routed_webs"]["count"]==14
