@@ -11,14 +11,16 @@ p=json.loads((root/"progress.json").read_text())
 assert len(t)==48 and len({x["ID"] for x in t})==48
 assert Counter(x["Gate"] for x in t)=={f"G{i}":8 for i in range(1,7)}
 counts=Counter(x["Status"] for x in t)
-assert counts=={"DONE_SCOPE":17,"WORKING":7,"OPEN":20,"HARDWARE_WAIT":4},counts
+assert counts=={"DONE_SCOPE":18,"WORKING":6,"OPEN":20,"HARDWARE_WAIT":4},counts
 assert p["task_total"]==48
 for key,state in [("scoped_evidence_done","DONE_SCOPE"),("working","WORKING"),("open","OPEN"),("hardware_wait","HARDWARE_WAIT")]:
     assert p[key]==counts[state]
 assert all(x["Evidence"] and x["Limit"] for x in t)
-assert p["new_this_turn"]==["G4-02"]
+assert p["new_this_turn"]==["G6-02"]
 assert next(x for x in t if x["ID"]=="G2-06")["Status"]=="DONE_SCOPE"
 assert next(x for x in t if x["ID"]=="G4-02")["Status"]=="DONE_SCOPE"
+assert next(x for x in t if x["ID"]=="G6-02")["Status"]=="DONE_SCOPE"
+assert next(x for x in t if x["ID"]=="G6-08")["Status"]=="OPEN"
 assert next(x for x in t if x["ID"]=="G4-08")["Status"]=="OPEN"
 assert p["manufacturer_release_closed"]==0 and p["manufacturer_release_total"]==6
 assert p["software_evidence_passed"]==11 and p["software_evidence_total"]==14
@@ -30,6 +32,6 @@ for x in w:
     assert x["carrier_connector"]==f"J_M1_{a}"
     assert (x["module_physical_pin"],x["cut_length_mm"],x["inspection"])==("UNVERIFIED","TBD","NOT_TESTED")
     assert x["signal"]==(f"PH{n-1}" if n<5 else (f"{a}_COMMON_FUSED_5V" if n==5 else "GND"))
-print("PASS: 48 frozen tasks; 17 scoped only / 7 working / 20 open / 4 hardware wait")
+print("PASS: 48 frozen tasks; 18 scoped only / 6 working / 20 open / 4 hardware wait")
 print("PASS: seven isolated modules, 42 traceable unmeasured terminals")
 print("PASS: manufacturing release 0/6; review software 11/14; NO power enable")
