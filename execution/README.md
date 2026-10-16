@@ -91,3 +91,8 @@ Counts now **17 DONE_SCOPE, 7 WORKING, 20 OPEN, 4 HARDWARE_WAIT** (48 unchanged)
 ## G1-77 실제 physical CLK/D/release wiring + 140 pad actual net register (2026-10-16)
 
 [実140端子・39ネット配線とメーカー端子番号を検査するGitHub CI](g1_phase77_140pins/README.md)。前回の85端子Phase75 KiCad9から **U_ARM.CLKとD以外の旧端子接続を一切変えず**、接点RC+TI Schmitt、故障後のボタン解放を記憶するU_RELEASE_FF、HB2 AND NOT_ARM AND RELEASE_SEEN をU_ARM.Dに実接続した部分回路を生成。**新38シンボル/140物理端子/39ネット**、12の故意な誤配線検知と20,000理想状態検証。**native KiCad/ERC/実機は不合格扱いのまま**、モーターeFuse ENはGND。GitHubでは140端子実ネットリストと部分回路の安全条件を実検査し、フルKiCad原本とソース再生成は今回の検証済み43ファイルZIPに保存。正式19/48、G1-05/G1-06 WORKING、製造ゲート0/6。
+
+
+## G1-78 7×4 motor phase output isolation review (2026-10-16)
+
+[G1 actual 28 output buffer pins and TI manufacturer source](g1_28phase_disabled/README.md): 4×SN74LVC244APWR 20pin PW 8-channel 3-state buffers =32 available lines, **28 used, 4 unused**, 4× OE1/OE2 held HIGH on 3V3 through pulldowns? Correction: **OE pullups**. 28 output 10k to ground, 4 chip decoupling 100nF. Real 208 physical terminals/63 nets fully in GitHub and reviewed with 28/28 channel source pin map; native separate KiCad partial schematic plus 50k ideal disable states and 6 mutation tests in independently regenerable ZIP. High-Z + pull-down is not hardware acceptance without real input leakage, power-on sequence and actual ERC/DRC. Do NOT connect U_ARM.Q to OE: G1-05/06 WORKING, G1-07 OPEN, 19/48 scoped, manufacturing 0/6, U7.EN grounded.
