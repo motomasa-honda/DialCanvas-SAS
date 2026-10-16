@@ -25,3 +25,9 @@ The Github [`design_contract.json`](design_contract.json) and [`check_motion.py`
 **Immediate next mechanical design step:** secondary captive anti-backslide stop that remains wholly within fixed 5mm reservation and rearwood pocket, with measurable release force and repairability for one axis without touching six others. In parallel qualify sidewood blind screw pullout, cooling/vent and independent electrical safety.
 
 **Integrity update:** compact ZIP 24 files, 123,931 bytes, all 23 content files verified by included `VERIFY.py` SHA manifest (plus the manifest file itself). Complete-history archive `Forest_Guardian_Integrated_With_Bayonet_2026-10-16.zip`, 115,310,580 bytes, SHA256 `6126a4a35ea08dcdf312881cb0930f915c844fac88606dfa80b23a4582ed533b`. Both local ZIP archive integrity checks PASS.
+
+## GitHub Actions and final all-history evidence
+
+[Run 38841326432 — SUCCESS](https://github.com/motomasa-honda/DialCanvas-SAS/actions/runs/38841326432) independently executed **3,416** real key-contact states, **14** blocked positive-pull tests and **42** broken-geometry negative tests. Artifact ID **12021198888** (digest `sha256:23f37889a76de812abb73091c2f8a6172ca499732a3c33aaa96cf7bcb1c5ee32`). Source D7-original 1,774 solids were **NOT recomputed inside this particular CI**, and keeper/force remain UNKNOWN.
+
+Final complete-history archive `Forest_Guardian_Integrated_With_Bayonet_2026-10-16.zip`, **115,311,876 bytes**, SHA256 `aa15d1910113232951d9cd861031424bdb59fa67a80006cd609fba59f3f8028e`, includes unchanged prior integrated archive, verified new 24-entry CAD ZIP, and downloaded CI artifact as three nested ZIPs plus handoff notes. No main branch merge.
