@@ -11,13 +11,15 @@ p=json.loads((root/"progress.json").read_text())
 assert len(t)==48 and len({x["ID"] for x in t})==48
 assert Counter(x["Gate"] for x in t)=={f"G{i}":8 for i in range(1,7)}
 counts=Counter(x["Status"] for x in t)
-assert counts=={"DONE_SCOPE":16,"WORKING":8,"OPEN":20,"HARDWARE_WAIT":4},counts
+assert counts=={"DONE_SCOPE":17,"WORKING":7,"OPEN":20,"HARDWARE_WAIT":4},counts
 assert p["task_total"]==48
 for key,state in [("scoped_evidence_done","DONE_SCOPE"),("working","WORKING"),("open","OPEN"),("hardware_wait","HARDWARE_WAIT")]:
     assert p[key]==counts[state]
 assert all(x["Evidence"] and x["Limit"] for x in t)
-assert p["new_this_turn"]==["G2-06"]
+assert p["new_this_turn"]==["G4-02"]
 assert next(x for x in t if x["ID"]=="G2-06")["Status"]=="DONE_SCOPE"
+assert next(x for x in t if x["ID"]=="G4-02")["Status"]=="DONE_SCOPE"
+assert next(x for x in t if x["ID"]=="G4-08")["Status"]=="OPEN"
 assert p["manufacturer_release_closed"]==0 and p["manufacturer_release_total"]==6
 assert p["software_evidence_passed"]==11 and p["software_evidence_total"]==14
 assert len(w)==42 and len({x["branch_id"] for x in w})==42
