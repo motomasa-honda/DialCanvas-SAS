@@ -1,0 +1,52 @@
+name: Forest Guardian 14-key bayonet real kinematic regression
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/bayonet-key-motion.yml'
+      - 'execution/bayonet_2026-10-16/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  seven-axis-motion:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable Phase67 source check
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Recompute 14 positive locks + 3416 insertion/slide/extraction states
+        run: |
+          set -euo pipefail
+          python3 -m py_compile execution/bayonet_2026-10-16/check_motion.py
+          python3 execution/bayonet_2026-10-16/check_motion.py | tee execution/bayonet_2026-10-16/ci-stdout.log
+          python3 - <<'PY'
+          import json
+          p="execution/bayonet_2026-10-16/evidence/result.json"
+          with open(p) as f:d=json.load(f)
+          assert d["status"]=="PASS_NOMINAL_KEY_INSERT_SLIDE_CAPTURE_UNSLIDE"
+          assert (d["axes"],d["positive_keys"])==(7,14)
+          assert d["kinematic_collision_free_samples"]==3416
+          assert d["detected_deliberate_design_faults"]==42
+          assert d["latched_plus_Z_blocked"]==14
+          assert d["antislide_keeper"]=="NOT_DESIGNED"
+          assert d["physical_strength"]=="NOT_TESTED"
+          assert d["original_D7_collision"]=="NOT_RECOMPUTED_IN_GITHUB"
+          assert (d["manufacturing_gates_closed"],d["software_evidence_passed"],d["outcome_done"])==(0,11,16)
+          PY
+      - name: Record scope and blockers
+        if: always()
+        run: |
+          printf '%s\n' "MECHANICAL_CAD_NOMINAL=CHECKED" "SECONDARY_ANTISLIDE=NOT_DESIGNED" "PHYSICAL_MOTOR_ENERGIZING=PROHIBITED" "ORIGINAL_1774_D7_SHAPES=NOT_RECOMPUTED_HERE" "MANUFACTURING_RELEASE=0/6" > execution/bayonet_2026-10-16/scope.txt
+      - name: Upload review-only evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forest-guardian-bayonet-kinematics-only
+          path: |
+            execution/bayonet_2026-10-16/evidence/
+            execution/bayonet_2026-10-16/ci-stdout.log
+            execution/bayonet_2026-10-16/scope.txt
+          if-no-files-found: warn
