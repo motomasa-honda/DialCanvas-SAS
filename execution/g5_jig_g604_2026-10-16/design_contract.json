@@ -176,12 +176,12 @@
     "no_main_merge": true
   },
   "delivery": {
-    "name": "Forest_Guardian_G5_Jig_And_G6-04_Engineering_2026-10-16.zip",
-    "byte_count": 1124171,
-    "sha256": "7b64af68158bc10edaa045548c63f612383519ef4e4904be0e68f4bcc733c578",
-    "files": 38,
-    "history_name": "Forest_Guardian_Integrated_Handoff_G5_Jig_G6-04_2026-10-16.zip",
-    "history_sha256": "c91126653447ed5af17798cff4463a7ba89d3592a6d31fc3cfb0317ce08babae"
+    "name": "Forest_Guardian_G5_Jig_G6-04_And_Fan_Engineering_2026-10-16.zip",
+    "byte_count": 1246140,
+    "sha256": "75b75b75a3a0a209e8d81a087346ebd4a7dd86caea735490dc3321302aecc17b",
+    "files": 49,
+    "history_name": "Forest_Guardian_Integrated_Handoff_G5_Jig_G6-04_Fan_2026-10-16.zip",
+    "history_sha256": "22decdbf086676db66280eb525b50b2839b71ddf5323fab41b58ef9a569b40e8"
   },
   "validation_boundary": "Actual original D7 65MB JSON re-read/hash and panel face areas computed locally in reproducible ZIP; CI only recomputes eight seat positions against prior 13-member nominal geometry, and ledger/safety invariants; not fabricated, no pull testing.",
   "joint_test_coupons": {
@@ -234,5 +234,41 @@
     "only_shape_tested": true,
     "stress_and_weld_strength": "NOT_QUALIFIED",
     "clamp_method": "NOT_DESIGNED"
+  },
+  "fan_g3_06_source_screen": {
+    "body_xyz_mm": [
+      30,
+      30,
+      10
+    ],
+    "body_z_mm": [
+      125,
+      135
+    ],
+    "alternatives_centers_xy_mm": [
+      [
+        95,
+        90
+      ],
+      [
+        95,
+        95
+      ],
+      [
+        95,
+        100
+      ]
+    ],
+    "individual_driver_clearance_min_mm": 3,
+    "source_fixed_projected_clearance_at_least_mm": 3,
+    "candidates_are_alternatives": true,
+    "rearwood_source_wood_in_30x30_mm2": 480,
+    "rearwood_original_void_mm2": 420,
+    "original_fan_candidate_current_mA": 109,
+    "branch_limit_mA": 100,
+    "actual_fan_part_number": "NOT_SELECTED",
+    "airflow_and_temperature": "NOT_MEASURED",
+    "rearwood_vent_machining": "NOT_APPROVED",
+    "status": "G3-06_OPEN"
   }
 }

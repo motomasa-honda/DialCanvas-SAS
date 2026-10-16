@@ -52,6 +52,18 @@ assert sum(x["stl_halves"] for x in classes)==q["total_independent_watertight_st
 assert all(x["each_half_length_mm"]==30 and x["stl_halves"]==2 for x in classes)
 assert q["only_shape_tested"] and q["stress_and_weld_strength"]=="NOT_QUALIFIED"
 assert q["clamp_method"]=="NOT_DESIGNED"
+fan=d["fan_g3_06_source_screen"]
+assert fan["body_xyz_mm"]==[30,30,10] and fan["body_z_mm"]==[125,135]
+assert fan["alternatives_centers_xy_mm"]==[[95,90],[95,95],[95,100]]
+assert fan["individual_driver_clearance_min_mm"]>=3
+assert fan["source_fixed_projected_clearance_at_least_mm"]>=3
+assert fan["rearwood_source_wood_in_30x30_mm2"]==480
+assert fan["rearwood_original_void_mm2"]==420
+assert fan["original_fan_candidate_current_mA"]>fan["branch_limit_mA"]
+assert fan["actual_fan_part_number"]=="NOT_SELECTED"
+assert fan["airflow_and_temperature"]=="NOT_MEASURED"
+assert fan["rearwood_vent_machining"]=="NOT_APPROVED"
+assert fan["status"]=="G3-06_OPEN"
 print("PASS 8 source-member fit datum coordinates; 24 non-certifying load cases and 4 unqualified butt faces")
 print("PASS 23 named D7 panels = 14 constant + 9 stepped, 4 source face contact areas")
 print("HOLD manufacturing 0/6, scoped review 19/48, glue and weld strength NOT QUALIFIED")
