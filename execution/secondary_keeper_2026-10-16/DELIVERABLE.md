@@ -1,0 +1,13 @@
+# Secondary M2x5 headless stop — output manifest, 2026-10-16
+
+**Actual downloadable source and CAD**: `Forest_Guardian_Secondary_Keeper_Design_2026-10-16.zip` (22 entries, 121,464 bytes) SHA256 **`fce29b5b2fbad71b2df86ecf9aa1e5500071c3e15ced0e19c5c22da851e7dae1`**.
+
+Contents: source-reading SHA-pinned D7 recomputation script (`build.py`), 7-axis parametric native OpenSCAD file, G1 boss OpenSCAD/STL watertight specimen, 1:1 two-page A3 PDF, editable 7-axis DXF, 7-axis 3D preview PNG, seven boss/bit source-core collision rows, **714 installed/removed motion positions**, tolerance alternative table, hypothetical load stress, preliminary BOM, operation/failure steps, standalone verifier and per-file SHA-256 manifest. Local generated package was ZIP.testzip() and its 21 data-file checksums verified. OpenSCAD CSG compiled and DXF/A3 read-back checked. GitHub separately keeps versioned [compact seven-axis native SCAD](M1_7AXIS_ANTISLIDE_STOP_REVIEW.scad).
+
+**Design HOLD despite tests passing:** Screw prevented 2.5mm reverse release for 7 axes in 714 nominal motion steps, but all unnotched existing sleds collide with new fixed bosses during 55mm withdrawal. A through-height slot resolves that *nominal* collision and creates a **0.3mm nominal margin** to 40mm board, which **FAILS ±0.2mm two-part tolerance** by **-0.1mm**. Nominal 35mm board would improve margin to2.8mm (worst2.4mm), but the physical MTR-09-024 sample has not been measured. Guide material/M2 thread, fastener backing out under vibration, wood strength and thermal/electrical safety all unqualified.
+
+**Source D7:** original 1,774 solids, SHA256 `20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f`, remains unmodified. Local generator ran full original projection collision audits, but GitHub CI **does not** contain original D7 geometry; it verifies derived constraints and native lightweight CAD only.
+
+**Project gates:** 16/48 narrowly scoped done, manufacturing 0/6, software review 11/14. eFuse EN remains LOW. No purchase, manufacture, motor power, flashing, main merge. Draft PR #2 remains Draft.
+
+**Required next decision by technical measurement, not user preference:** measure selected driver module physical PCB, holes, connectors and height; then redesign the stop/notch with manufacturing clearance, evaluate actual M2 fastener self-loosening control and positive retention with a real materials/test coupon.
