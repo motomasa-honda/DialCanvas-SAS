@@ -1,0 +1,7 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "FG_REVIEW")(type "KiCad")(uri "${KIPRJMOD}/FG_REVIEW.kicad_sym")(options "")(descr "Review passive connectors"))
+  (lib (name "FG_TI")(type "KiCad")(uri "${KIPRJMOD}/FG_TI.kicad_sym")(options "")(descr "TPS259474"))
+  (lib (name "FG_FAULT")(type "KiCad")(uri "${KIPRJMOD}/FG_FAULT.kicad_sym")(options "")(descr "TI latch and comb gates"))
+  (lib (name "FG_SWITCH")(type "KiCad")(uri "${KIPRJMOD}/FG_SWITCH.kicad_sym")(options "")(descr "TI Schmitt input"))
+)
