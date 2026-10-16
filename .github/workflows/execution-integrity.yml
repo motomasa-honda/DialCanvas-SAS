@@ -20,5 +20,5 @@ jobs:
       - name: Check scoped evidence and 7x6 connector inspection traveler
         run: |
           set -euo pipefail
-          python3 -m py_compile execution/guard.py
-          python3 execution/guard.py
+          python3 -m py_compile execution/preflight.py
+          python3 execution/preflight.py
