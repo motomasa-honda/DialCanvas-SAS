@@ -8,7 +8,11 @@ d=json.loads((Path(__file__).parent/"design_contract.json").read_text())
 prev=json.loads((Path(__file__).parent.parent/"g5_fivepiece_2026-10-16"/"design_contract.json").read_text())
 assert d["original_sha256"]=="20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f"
 assert d["source_3d_solids"]==1774 and prev["source_solids"]==1774
-parts=prev["groups"];boxes={x["name"]:x for x in prev["original_bounding_cuboids"]}
+parts=prev["groups"]
+# Prior CAD register is a 7-item positional array [name,x0,y0,z0,x1,y1,z1], not a dictionary.
+keys=("name","xlo","ylo","zlo","xhi","yhi","zhi")
+boxes={row[0]:dict(zip(keys,row)) for row in prev["original_bounding_cuboids"]}
+assert len(boxes)==13 and all(len(row)==7 for row in prev["original_bounding_cuboids"])
 fix=d["fixture"];assert fix["base_mm"]==[270,190,8] and fix["global_min_z_reference_mm"]==116
 seats=fix["eight_source_contact_datums"];assert len(seats)==8 and len({x["datum"] for x in seats})==8
 for s in seats:
