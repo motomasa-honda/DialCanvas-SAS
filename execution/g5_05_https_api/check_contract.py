@@ -8,7 +8,10 @@ assert 'httpd_ssl_start(&s->server,&cfg)' in api
 assert 'cfg.transport_mode=HTTPD_SSL_TRANSPORT_SECURE' in api
 assert 'httpd_start(' not in api
 assert 'if(xQueueSend(s->intent_queue,&i,0)!=pdTRUE)' in api
-assert 'FG_INTENT_START_ALL' in api and '"202 Accepted"' in api
+assert '"202 Accepted"' in api and 'FG_INTENT_STOP_ALL' in api
+assert '"423 Locked"' in api
+assert 'motor_power_interlock_not_qualified' in api and 'physical_fault_clear_required' in api
+assert 'i.kind=FG_INTENT_START_ALL' not in api and 'i.kind=FG_INTENT_CLEAR_FAULT' not in api
 assert '"/v1/pair"' in api and '"/v1/status"' in api
 assert '"Bearer "' not in api or 'Bearer ' in api
 assert 'fg_web_permit(role,"POST",r->uri)' in api

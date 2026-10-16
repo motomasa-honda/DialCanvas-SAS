@@ -19,14 +19,15 @@ def parse(data):
   rows[n]=(ty,sub,int(off,0),int(sz,0),r[5].strip() if len(r)==6 else "")
  return rows
 prev=parse(raw);now=parse((d/"partition-nvs-encrypted-raw-ab-review.csv").read_text())
-assert len(prev)==9 and len(now)==10
-assert set(now)==set(prev)|{"nvs_keys"}
+assert len(prev)==9 and len(now)==11
+assert set(now)==set(prev)|{"nvs_keys","fg_cfg"}
 for name in prev:
  if name=="reserved":continue
  assert now[name]==prev[name],("Critical source partition changed",name)
 assert now["nvs_keys"]==("data","nvs_keys",0x1E10000,0x1000,"encrypted")
+assert now["fg_cfg"]==("data","nvs",0x1E11000,0x8000,"")
 assert prev["reserved"]==("data","0x40",0x1E10000,0x1F0000,"")
-assert now["reserved"]==("data","0x40",0x1E11000,0x1EF000,"")
+assert now["reserved"]==("data","0x40",0x1E19000,0x1E7000,"")
 items=sorted(now.items(),key=lambda p:p[1][2])
 assert items[0][1][2]==0x9000
 for (n,a),(m,b) in zip(items,items[1:]):
@@ -37,5 +38,5 @@ with (exe/"tasks.csv").open(encoding="utf-8-sig",newline="") as f:tasks=list(csv
 p=json.loads((exe/"progress.json").read_text())
 assert next(x for x in tasks if x["ID"]=="G5-05")["Status"]=="WORKING"
 assert p["scoped_evidence_done"]==20 and p["manufacturer_release_closed"]==0
-print("PASS G5-05 exact SHA-frozen RAW A/B source: 8 partitions byte-identical, 4KiB encrypted nvs_keys isolated in reserved")
+print("PASS G5-05 exact SHA-frozen RAW A/B source: 8 partitions byte-identical, 4KiB encrypted nvs_keys + independent 32KiB fg_cfg in reserved")
 print("PASS contiguous, 4KiB aligned 32MiB partition table; no app reduction, no flash, no efuse")

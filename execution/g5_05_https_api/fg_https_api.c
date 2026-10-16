@@ -127,9 +127,14 @@ static esp_err_t command_post(httpd_req_t *r){
  if(!fg_web_permit(role,"POST",r->uri))return forbidden(r,role,"POST");
  if(r->content_len!=0)return answer(r,"400 Bad Request","{\"error\":\"body_not_supported\"}");
  fg_intent i={.authenticated=true,.explicit_request=true};
- if(strcmp(r->uri,"/v1/motors/start")==0)i.kind=FG_INTENT_START_ALL;
- else if(strcmp(r->uri,"/v1/motors/stop")==0)i.kind=FG_INTENT_STOP_ALL;
- else if(strcmp(r->uri,"/v1/fault/clear")==0)i.kind=FG_INTENT_CLEAR_FAULT;
+ /* Real M1 physical interlock + 7-axis HIL are NOT cleared.
+  * Remote start and remote fault clear must never enter the 5ms control queue
+  * before a separate reviewed hardware release. Local STOP remains available. */
+ if(strcmp(r->uri,"/v1/motors/start")==0)
+  return answer(r,"423 Locked","{\"error\":\"motor_power_interlock_not_qualified\"}");
+ if(strcmp(r->uri,"/v1/fault/clear")==0)
+  return answer(r,"423 Locked","{\"error\":\"physical_fault_clear_required\"}");
+ if(strcmp(r->uri,"/v1/motors/stop")==0)i.kind=FG_INTENT_STOP_ALL;
  else return answer(r,"404 Not Found","{\"error\":\"unknown_intent\"}");
  /* Network task is producer ONLY. Start sequence assigned by sole control task. */
  if(xQueueSend(s->intent_queue,&i,0)!=pdTRUE)

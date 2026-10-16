@@ -1,5 +1,5 @@
 #pragma once
-/* The secret-loader is disabled unless ESP-IDF default NVS is encrypted.
+/* The secret-loader requires independent NVS partition fg_cfg protected by NVS XTS.
  * No hard-coded test password or private key ever enters a product build. */
 #include "fg_hosted_wifi.h"
 #include "fg_https_api.h"

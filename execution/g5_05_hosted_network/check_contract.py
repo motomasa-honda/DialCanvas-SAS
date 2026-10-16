@@ -13,7 +13,11 @@ assert 'esp_wifi_set_storage(WIFI_STORAGE_RAM)' in wifi
 assert 'WIFI_AUTH_WPA2_PSK' in wifi
 assert 'unsigned n=atomic_fetch_add(&s->disconnect_count,1u)+1u;' in wifi
 assert '#if !defined(CONFIG_NVS_ENCRYPTION) || !CONFIG_NVS_ENCRYPTION' in secret
-assert 'nvs_open("fg_secure_web",NVS_READONLY,&h)' in secret
+assert 'nvs_open_from_partition("fg_cfg","fg_secure_web",NVS_READONLY,&h)' in secret
+assert 'nvs_flash_secure_init_partition("fg_cfg",&cfg)' in secret
+assert 'nvs_flash_read_security_cfg(key_part,&cfg)' in secret
+assert 'ESP_PARTITION_SUBTYPE_DATA_NVS_KEYS' in secret
+assert 'nvs_open("fg_secure_web",NVS_READONLY,&h)' not in secret
 assert 'nvs_get_blob(h,"tls_key"' in secret
 assert 'fg_https_stop(api)' in secret
 assert 'fg_https_start_if_ready(api,true,s->cert,s->cert_len' in secret

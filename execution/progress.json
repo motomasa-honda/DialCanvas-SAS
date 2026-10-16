@@ -1,6 +1,6 @@
 {
   "version": "v1.3",
-  "updated_date": "2026-10-16",
+  "updated_date": "2026-10-17",
   "task_total": 48,
   "scoped_evidence_done": 20,
   "working": 7,
@@ -23,5 +23,6 @@
     "G6-02",
     "G4-02"
   ],
-  "new_working_evidence": "execution/g5_05_access_core/README.md"
+  "new_working_evidence": "execution/g5_05_secure_partition/README.md",
+  "g5_05_last_review": "2026-10-17: independent encrypted fg_cfg 32KiB review, offline encrypted NVS mock, remote START/FAULT CLEAR locked; hardware pending"
 }

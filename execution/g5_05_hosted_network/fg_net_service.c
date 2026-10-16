@@ -1,6 +1,8 @@
 #include "fg_net_service.h"
 #include <string.h>
 #include "nvs.h"
+#include "nvs_flash.h"
+#include "esp_partition.h"
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -18,15 +20,33 @@ bool fg_net_load_protected_nvs(fg_net_credentials *s){
   * Enabling NVS encryption can need flash-encryption/eFuse provisioning:
   * DO NOT enable or flash without independent user manufacturing approval.
   */
-#if !defined(CONFIG_NVS_ENCRYPTION) || !CONFIG_NVS_ENCRYPTION
- ESP_LOGW(TAG,"encrypted NVS not configured; no WiFi, no TLS, no plaintext fallback");
+#if !defined(CONFIG_NVS_ENCRYPTION) || !CONFIG_NVS_ENCRYPTION || \
+    !defined(CONFIG_NVS_SEC_KEY_PROTECT_USING_FLASH_ENC) || \
+    !CONFIG_NVS_SEC_KEY_PROTECT_USING_FLASH_ENC
+ ESP_LOGW(TAG,"Flash Encryption-protected NVS is not provisioned; WiFi and TLS stay disabled");
  return false;
 #else
+ /* G5-05: NEVER read TLS private keys or WiFi password from general NVS.
+  * Key partition must exist AND have already been provisioned by an approved
+  * manufacturing process. Never generate/erase keys from this network task. */
+ const esp_partition_t *key_part=esp_partition_find_first(
+     ESP_PARTITION_TYPE_DATA,ESP_PARTITION_SUBTYPE_DATA_NVS_KEYS,"nvs_keys");
+ if(!key_part)return false;
+ nvs_sec_cfg_t cfg={0};
+ if(nvs_flash_read_security_cfg(key_part,&cfg)!=ESP_OK){
+  wipe(&cfg,sizeof(cfg));return false;
+ }
+ esp_err_t init=nvs_flash_secure_init_partition("fg_cfg",&cfg);
+ wipe(&cfg,sizeof(cfg));
+ if(init!=ESP_OK){
+  ESP_LOGE(TAG,"dedicated secure NVS partition cannot be initialized; offline");
+  return false;
+ }
  memset(s->ssid,0,sizeof(s->ssid));
  memset(s->password,0,sizeof(s->password));
  s->cert_len=s->key_len=0;
  nvs_handle_t h;
- if(nvs_open("fg_secure_web",NVS_READONLY,&h)!=ESP_OK)return false;
+ if(nvs_open_from_partition("fg_cfg","fg_secure_web",NVS_READONLY,&h)!=ESP_OK)return false;
  size_t ssid_len=sizeof(s->ssid),pw_len=sizeof(s->password);
  size_t cert_len=sizeof(s->cert),key_len=sizeof(s->private_key);
  esp_err_t e1=nvs_get_str(h,"sta_ssid",s->ssid,&ssid_len);

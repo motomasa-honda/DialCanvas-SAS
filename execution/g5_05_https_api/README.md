@@ -21,3 +21,8 @@ ESP-IDF HTTPS公式: https://docs.espressif.com/projects/esp-idf/en/v5.5.5/esp32
 Waveshare Wi-Fi: https://docs.waveshare.net/ESP32-P4-WIFI6-Touch-LCD-XC/ESP-IDF/
 
 実ビルド証拠はGitHub Actionsで残す。進捗は20/48、G5-05 WORKING、製造0/6、eFuse EN LOW / 28相OE HIGH、HW通電やmain mergeはしない。
+
+
+## 2026-10-17 現物安全審査までの遠隔API制限
+
+`POST /v1/motors/start` と `POST /v1/fault/clear` は**認証済みでも423 Locked**。M1 eFuseの独立停止・故障復旧・7軸HILが未合格なので、ソフトウェアの認証だけで遠隔起動／遠隔故障解除を許さない。既存のsourceは実GPIOへの直接操作を許可しないが、故障復旧要求までネットワークから通る設計は不適切だった。`POST /v1/motors/stop` は制御キューへ許可する。今後のHILを通った場合のみ正式にSTART/CLEARの設計審査を再実施する。

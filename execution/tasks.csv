@@ -35,7 +35,7 @@ ID,Gate,Deliverable,Status,Evidence,Limit
 "G5-02","G5","ESP32-P4製品候補ターゲットビルド","DONE_SCOPE","Phase69 CI","実機書込みなし"
 "G5-03","G5","RAW A/B区画候補ターゲットビルド","DONE_SCOPE","Phase68 CI","物理電源断未"
 "G5-04","G5","GPIO28 80ms HB候補ターゲットビルド","DONE_SCOPE","Phase73 CI","WDI実波形未"
-"G5-05","G5","HTTPS pairing/権限API","WORKING","G5-05 local physical pairing + persisted token digest and role ACL code integrated into actual ESP32-P4 target; native/host CI","HTTPS server, network provisioning, TLS certificate and product REST handler 未実装。G5-05 DONEではない"
+"G5-05","G5","HTTPS pairing/権限API","WORKING","G5-05: physical PIN + role ACL + HTTPS 6 endpoints + P4-C6 Hosted build 1040880B verified; fg_cfg independent encrypted NVS & offline-provisioning review CI","実機C6接続/TLS E2E/初期暗号化鍵プロビジョニング未完。遠隔START/FAULT CLEARは423 Locked、G1安全回路HIL待ち。G5-05非DONE"
 "G5-06","G5","署名OTA/rollback","OPEN","SW12","実装未"
 "G5-07","G5","UI/文字盤/RTC/実ネットワーク統合","WORKING","D7-S01","実機UI確認なし"
 "G5-08","G5","SW14独立遮断の実機故障注入","HARDWARE_WAIT","SW14","実M1必要"
