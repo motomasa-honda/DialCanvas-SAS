@@ -28,6 +28,28 @@ viols=[i for s in erc["sheets"] for i in s["violations"]]
 tally=collections.Counter(v["type"] for v in viols)
 assert tally["endpoint_off_grid"]==0,tally
 assert tally["lib_symbol_issues"]==0,tally
+import re
+lock=json.loads((dir/"erc_open_register.json").read_text())
+assert len(viols)==lock["expected_count"]==18
+assert dict(tally)==lock["expected_error_types"],("new KiCad ERC finding class or count",tally)
+labels=[]
+power=[]
+for i in viols:
+    if i["type"]=="label_dangling":
+        label_matches=re.findall(r"Label '([^']+)'",i["items"][0]["description"])
+        assert len(label_matches)==1
+        labels.append(label_matches[0])
+    elif i["type"]=="power_pin_not_driven":
+        match=re.fullmatch(r"Symbol (U\d+) Pin (\d+) \[([^,]+), Power input, Line\]",i["items"][0]["description"])
+        assert match,i
+        power.append(f"{match.group(1)}.{match.group(2)}:{match.group(3)}")
+    else:
+        raise AssertionError(("unreviewed ERC error",i))
+assert sorted(labels)==lock["expected_label_nets"]
+assert sorted(power)==lock["expected_power_inputs"]
+assert lock["safety"]["manufacturing_closed"]==0 and not lock["safety"]["power_enabled"]
+print("PASS: exact native ERC HOLD ledger, no unreviewed exceptions; 16 NC labels + 2 missing power drivers")
+
 print("PASS genuine KiCad9 exported XML 374 physical pads /103 components /104 nets EXACT")
 print("REAL KiCad ERC {} findings by category {}".format(len(viols),dict(tally)))
 print("NO MANUFACTURING APPROVAL: all results candidate-only, board/M1 live tests missing.")
