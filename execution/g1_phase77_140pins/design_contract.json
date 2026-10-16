@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-16",
+  "scope": "G1-05/G1-06 implementation IN PROGRESS; electrical G1-77 140 pad 39 net manufacturer pin review",
+  "baseline_original_pads": 85,
+  "baseline_original_nets": 29,
+  "current_pads": 140,
+  "current_nets": 39,
+  "actual_component_symbol_count": 38,
+  "added_pads": 55,
+  "changed_old_pad_nets": [
+    "U_ARM.1",
+    "U_ARM.2"
+  ],
+  "native_kiCad_schematic_filename": "fg_G1_phase77_release_required_rearm_partial.kicad_sch",
+  "native_kiCad_schematic_sha256": "d9ed0998a904b5450b4c8eee96c4b3468c2f0efe949cf6e19379e31fa7ee20a9",
+  "preserved_baseline_sha256": "5a1c8086110b44f807f6193648ef6552363d5b7dd282faf180cb8ab066b2c05d",
+  "source_pin_netlist_sha256": "10a2edb12d5ce380d575a1579483130e7cf6e52fbffff7de5547cb0e2e52431f",
+  "material": {
+    "sources": {
+      "ff": "https://www.ti.com/lit/ds/symlink/sn74lvc2g74.pdf",
+      "schmitt": "https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf",
+      "inverter": "https://www.ti.com/lit/ds/symlink/sn74lvc1g04.pdf",
+      "and": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf"
+    },
+    "sku_by_ref": {
+      "U_ARM": "SN74LVC2G74DCUR",
+      "U_RELEASE_FF": "SN74LVC2G74DCUR",
+      "U_REARM_SCH": "SN74LVC1G17DBVR",
+      "U_RELEASE_INV": "SN74LVC1G04DBVR",
+      "U_ARM_INV": "SN74LVC1G04DBVR",
+      "U_ARM_AND": "SN74LVC1G08DBVR",
+      "U_D_FINAL_AND": "SN74LVC1G08DBVR"
+    },
+    "manufacturer_pin_maps": {
+      "U_ARM": {
+        "1": "CLK",
+        "2": "D",
+        "3": "Q_N",
+        "4": "GND",
+        "5": "Q",
+        "6": "CLR_N",
+        "7": "PRE_N",
+        "8": "VCC"
+      },
+      "U_RELEASE_FF": {
+        "1": "CLK",
+        "2": "D",
+        "3": "Q_N",
+        "4": "GND",
+        "5": "Q",
+        "6": "CLR_N",
+        "7": "PRE_N",
+        "8": "VCC"
+      },
+      "U_REARM_SCH": {
+        "1": "NC",
+        "2": "A",
+        "3": "GND",
+        "4": "Y",
+        "5": "VCC"
+      },
+      "U_RELEASE_INV": {
+        "1": "NC",
+        "2": "A",
+        "3": "GND",
+        "4": "Y",
+        "5": "VCC"
+      },
+      "U_ARM_INV": {
+        "1": "NC",
+        "2": "A",
+        "3": "GND",
+        "4": "Y",
+        "5": "VCC"
+      },
+      "U_ARM_AND": {
+        "1": "A",
+        "2": "B",
+        "3": "GND",
+        "4": "Y",
+        "5": "VCC"
+      },
+      "U_D_FINAL_AND": {
+        "1": "A",
+        "2": "B",
+        "3": "GND",
+        "4": "Y",
+        "5": "VCC"
+      }
+    }
+  },
+  "boot_release_mechanism": "Asynchronously cleared U_RELEASE_FF must see fresh Schmitt FALL event (inverted RISING clock) before U_ARM.D may go HIGH.",
+  "actual_hardware_status": "NOT_BUILT",
+  "output_efuse_status": "U7.1 remains only R_EN_PD 10k to GND; no U_ARM.Q connection",
+  "next_mandatory_gates": [
+    "independent physical PG-after-start fault memory",
+    "motor-off rail valid sense distinct from PG pull-up",
+    "independent 28-phase driver inhibition",
+    "power-up clock/CLR analog race and debounce/ESD/weld diagnostics",
+    "native KiCad CLI ERC and real PCB footprint/DRC",
+    "real HIL + fault-injection and current-limit acceptance"
+  ],
+  "test_scope": {
+    "local_regenerated_native_kicad": true,
+    "local_unchanged_baseline_85_except_2": true,
+    "local_random_states": 20000,
+    "local_injected_faults": 12,
+    "local_rc_screen_cases": 6,
+    "local_fresh_extract_verify_pass": true,
+    "github_static_140_pins_and_39_net_register": true,
+    "native_erc_performed": false,
+    "pcb_drc_performed": false
+  },
+  "artifact": {
+    "filename": "Forest_Guardian_G1_Phase77_140Pins_Rearm_Engineering_2026-10-16.zip",
+    "sha256": "a03c7de50d13050af05053ddaf0b68137bf87a29df839a81d3875409bfd0239a",
+    "bytes": 138329,
+    "files": 43
+  },
+  "safety": {
+    "scope_done": 19,
+    "scope_total": 48,
+    "g1_05": "WORKING",
+    "g1_06": "WORKING",
+    "manufacturing_gates_closed": 0,
+    "sw_evidence": 11,
+    "efuse_en": "GND_ONLY",
+    "purchase": false,
+    "cut": false,
+    "power": false,
+    "flash": false,
+    "merge_main": false
+  }
+}

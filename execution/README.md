@@ -87,3 +87,7 @@ Counts now **17 DONE_SCOPE, 7 WORKING, 20 OPEN, 4 HARDWARE_WAIT** (48 unchanged)
 ## G1-05/06 electrical safety rearm latch native KiCad partial (2026-10-16)
 
 [Actual 85-pad / 29-net Phase75 manufacturer pin register, hold conditions and ZIP](g1_interlock_2026-10-16/README.md). Pinned Phase72/73/74 source generated a NEW KiCad9 pad-number design with TI SN74LVC2G74DCUR U_ARM flip-flop and NO rearm 2-pin switch. Physical CLK/D debounce/qualifier NOT wired, PG fault latch NOT wired, U_ARM.Q isolated; U7.EN remains GND and manufacturing0/6. Local full source generator, native KiCad9 and 10 ideal unit tests plus 20k random transitions PASS; GitHub checks only summarized G1 contract. G1-05/G1-06 stay WORKING, 19/48 scope.
+
+## G1-77 실제 physical CLK/D/release wiring + 140 pad actual net register (2026-10-16)
+
+[実140端子・39ネット配線とメーカー端子番号を検査するGitHub CI](g1_phase77_140pins/README.md)。前回の85端子Phase75 KiCad9から **U_ARM.CLKとD以外の旧端子接続を一切変えず**、接点RC+TI Schmitt、故障後のボタン解放を記憶するU_RELEASE_FF、HB2 AND NOT_ARM AND RELEASE_SEEN をU_ARM.Dに実接続した部分回路を生成。**新38シンボル/140物理端子/39ネット**、12の故意な誤配線検知と20,000理想状態検証。**native KiCad/ERC/実機は不合格扱いのまま**、モーターeFuse ENはGND。GitHubでは140端子実ネットリストと部分回路の安全条件を実検査し、フルKiCad原本とソース再生成は今回の検証済み43ファイルZIPに保存。正式19/48、G1-05/G1-06 WORKING、製造ゲート0/6。

@@ -15,6 +15,7 @@ checks = [
     "execution/g5_jig_g604_2026-10-16/check_contract.py",
     "execution/fan_full_thickness_2026-10-16/check_contract.py",
     "execution/g1_interlock_2026-10-16/check_contract.py",
+    "execution/g1_phase77_140pins/check_contract.py",
     "execution/cassettes/check_manifest.py",
     "execution/bracket_chassis_2026-10-16/check_contract.py",
     "execution/anchor_lock_2026-10-16/check_contract.py",
