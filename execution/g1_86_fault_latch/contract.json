@@ -1,0 +1,140 @@
+{
+  "purpose": "G1-86 independent fault-priority dual NOR latch on existing watchdog/STOP/POR QUAL_CLR_N, NO ACTUATION",
+  "old_pads": 374,
+  "new_pads": 30,
+  "total_pads": 404,
+  "components": 112,
+  "nets": 110,
+  "pin_nets": {
+    "U20": [
+      "B86__RESET_EFFECTIVE",
+      "B86__FAULT_QBAR",
+      "B86__FAULT_QBAR",
+      "GND",
+      "B86__TRIP_ASSERT",
+      "B86__FAULT_Q",
+      "B86__FAULT_Q",
+      "3V3_AON"
+    ],
+    "U21": [
+      "B86__INV_NC",
+      "B77__QUAL_CLR_N",
+      "GND",
+      "B86__TRIP_ASSERT",
+      "3V3_AON"
+    ],
+    "U22": [
+      "B86__CLEAR_REQUEST",
+      "B77__QUAL_CLR_N",
+      "GND",
+      "B86__RESET_EFFECTIVE",
+      "3V3_AON"
+    ],
+    "C16": [
+      "3V3_AON",
+      "GND"
+    ],
+    "C17": [
+      "3V3_AON",
+      "GND"
+    ],
+    "C18": [
+      "3V3_AON",
+      "GND"
+    ],
+    "J18": [
+      "B86__CLEAR_REQUEST",
+      "GND"
+    ],
+    "R53": [
+      "B86__CLEAR_REQUEST",
+      "GND"
+    ],
+    "R54": [
+      "B86__FAULT_Q",
+      "GND"
+    ]
+  },
+  "manufacturer": {
+    "U20": {
+      "name": "SN74LVC2G02DCUR",
+      "pins": [
+        "1A",
+        "1B",
+        "2Y",
+        "GND",
+        "2A",
+        "2B",
+        "1Y",
+        "VCC"
+      ],
+      "types": [
+        "input",
+        "input",
+        "output",
+        "power_in",
+        "input",
+        "input",
+        "output",
+        "power_in"
+      ]
+    },
+    "U21": {
+      "name": "SN74LVC1G04DBVR",
+      "pins": [
+        "NC",
+        "A",
+        "GND",
+        "Y",
+        "VCC"
+      ],
+      "types": [
+        "no_connect",
+        "input",
+        "power_in",
+        "output",
+        "power_in"
+      ]
+    },
+    "U22": {
+      "name": "SN74LVC1G08DBVR",
+      "pins": [
+        "A",
+        "B",
+        "GND",
+        "Y",
+        "VCC"
+      ],
+      "types": [
+        "input",
+        "input",
+        "power_in",
+        "output",
+        "power_in"
+      ]
+    }
+  },
+  "formulas": [
+    "TRIP_ASSERT = NOT QUAL_CLR_N",
+    "RESET_EFFECTIVE = CLEAR_REQUEST AND QUAL_CLR_N",
+    "FAULT_Q = NOR(RESET_EFFECTIVE,FAULT_QBAR)",
+    "FAULT_QBAR = NOR(TRIP_ASSERT,FAULT_Q)"
+  ],
+  "limitations": [
+    "manual CLEAR connector input not release qualified",
+    "held clear plus recovered health automatically resets; do not connect without edge qualification",
+    "no PG-after-start",
+    "common-mode stuck-high QUAL_CLR_N undetected",
+    "latch powerup races and gate propagation not HIL verified",
+    "no manufacturer footprints",
+    "FAULT_Q status-only NOT EN nor OE"
+  ],
+  "safety": {
+    "done": 19,
+    "total": 48,
+    "manufacturer_gates_closed": 0,
+    "efuse_en": "U7.1 to R_EN_PD and GND",
+    "oe_28": "HIGH PULLED DISABLED",
+    "main": "UNCHANGED"
+  }
+}

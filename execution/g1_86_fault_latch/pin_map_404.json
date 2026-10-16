@@ -1,0 +1,4042 @@
+[
+  {
+    "group": "B77",
+    "source_ref": "C_AND_DEC",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C1",
+    "wire_end_x": "48.26",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_AND_DEC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C1",
+    "wire_end_x": "48.26",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_ARM_DEC",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C2",
+    "wire_end_x": "160.02",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_ARM_DEC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C2",
+    "wire_end_x": "160.02",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_FINAL_AND_DEC",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C3",
+    "wire_end_x": "271.78",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_FINAL_AND_DEC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C3",
+    "wire_end_x": "271.78",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_INV_DEC",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C4",
+    "wire_end_x": "383.54",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_INV_DEC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C4",
+    "wire_end_x": "383.54",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_REARM_RC",
+    "source_pin": 1,
+    "source_net": "REARM_RC_NODE",
+    "review_net": "B77__REARM_RC_NODE",
+    "kicad_ref": "C5",
+    "wire_end_x": "495.3",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_REARM_RC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C5",
+    "wire_end_x": "495.3",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_REL_FF_DEC",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C6",
+    "wire_end_x": "607.06",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_REL_FF_DEC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C6",
+    "wire_end_x": "607.06",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_REL_INV_DEC",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C7",
+    "wire_end_x": "718.82",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_REL_INV_DEC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C7",
+    "wire_end_x": "718.82",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_SCH_DEC",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C8",
+    "wire_end_x": "830.58",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "C_SCH_DEC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C8",
+    "wire_end_x": "830.58",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "J_ARM_REQ",
+    "source_pin": 1,
+    "source_net": "ARM_REQ_UNQUALIFIED",
+    "review_net": "B77__ARM_REQ_UNQUALIFIED",
+    "kicad_ref": "J1",
+    "wire_end_x": "942.34",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "J_ARM_REQ",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "J1",
+    "wire_end_x": "942.34",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "J_REARM",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "J2",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "59.69"
+  },
+  {
+    "group": "B77",
+    "source_ref": "J_REARM",
+    "source_pin": 2,
+    "source_net": "REARM_RAW",
+    "review_net": "B77__REARM_RAW",
+    "kicad_ref": "J2",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "62.23"
+  },
+  {
+    "group": "B77",
+    "source_ref": "J_STOP",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "J3",
+    "wire_end_x": "48.26",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "J_STOP",
+    "source_pin": 2,
+    "source_net": "STOP_NC_SENSE",
+    "review_net": "B77__STOP_NC_SENSE",
+    "kicad_ref": "J3",
+    "wire_end_x": "48.26",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_5V_RST_PU",
+    "source_pin": 1,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "R1",
+    "wire_end_x": "160.02",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_5V_RST_PU",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R1",
+    "wire_end_x": "160.02",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_ARM_Q_PD_10K",
+    "source_pin": 1,
+    "source_net": "ARM_LATCH_Q_ISOLATED",
+    "review_net": "B77__ARM_LATCH_Q_ISOLATED",
+    "kicad_ref": "R2",
+    "wire_end_x": "271.78",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_ARM_Q_PD_10K",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R2",
+    "wire_end_x": "271.78",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_ARM_REQ_PD",
+    "source_pin": 1,
+    "source_net": "ARM_REQ_UNQUALIFIED",
+    "review_net": "B77__ARM_REQ_UNQUALIFIED",
+    "kicad_ref": "R3",
+    "wire_end_x": "383.54",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_ARM_REQ_PD",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R3",
+    "wire_end_x": "383.54",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_EN_PD",
+    "source_pin": 1,
+    "source_net": "U7_EN_CLAMPED_DISABLED",
+    "review_net": "B77__U7_EN_CLAMPED_DISABLED",
+    "kicad_ref": "R4",
+    "wire_end_x": "495.3",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_EN_PD",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R4",
+    "wire_end_x": "495.3",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_PG_PU",
+    "source_pin": 1,
+    "source_net": "EFUSE_PG_OD",
+    "review_net": "B77__EFUSE_PG_OD",
+    "kicad_ref": "R5",
+    "wire_end_x": "607.06",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_PG_PU",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R5",
+    "wire_end_x": "607.06",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_PGTH_BOT",
+    "source_pin": 1,
+    "source_net": "PGTH_SENSE",
+    "review_net": "B77__PGTH_SENSE",
+    "kicad_ref": "R6",
+    "wire_end_x": "718.82",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_PGTH_BOT",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R6",
+    "wire_end_x": "718.82",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_PGTH_TOP",
+    "source_pin": 1,
+    "source_net": "5V_MOTOR",
+    "review_net": "5V_MOTOR",
+    "kicad_ref": "R7",
+    "wire_end_x": "830.58",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_PGTH_TOP",
+    "source_pin": 2,
+    "source_net": "PGTH_SENSE",
+    "review_net": "B77__PGTH_SENSE",
+    "kicad_ref": "R7",
+    "wire_end_x": "830.58",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_POR_PU",
+    "source_pin": 1,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "R8",
+    "wire_end_x": "942.34",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_POR_PU",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R8",
+    "wire_end_x": "942.34",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_REARM_PD_10K",
+    "source_pin": 1,
+    "source_net": "REARM_RAW",
+    "review_net": "B77__REARM_RAW",
+    "kicad_ref": "R9",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "133.35"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_REARM_PD_10K",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R9",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "135.89"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_REARM_RC",
+    "source_pin": 1,
+    "source_net": "REARM_RAW",
+    "review_net": "B77__REARM_RAW",
+    "kicad_ref": "R10",
+    "wire_end_x": "48.26",
+    "wire_end_y": "207.01"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_REARM_RC",
+    "source_pin": 2,
+    "source_net": "REARM_RC_NODE",
+    "review_net": "B77__REARM_RC_NODE",
+    "kicad_ref": "R10",
+    "wire_end_x": "48.26",
+    "wire_end_y": "209.55"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_STOP_PD",
+    "source_pin": 1,
+    "source_net": "STOP_NC_SENSE",
+    "review_net": "B77__STOP_NC_SENSE",
+    "kicad_ref": "R11",
+    "wire_end_x": "160.02",
+    "wire_end_y": "207.01"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_STOP_PD",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R11",
+    "wire_end_x": "160.02",
+    "wire_end_y": "209.55"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_WD_CWD",
+    "source_pin": 1,
+    "source_net": "WD_200MS_CWD",
+    "review_net": "B77__WD_200MS_CWD",
+    "kicad_ref": "R12",
+    "wire_end_x": "271.78",
+    "wire_end_y": "207.01"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_WD_CWD",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R12",
+    "wire_end_x": "271.78",
+    "wire_end_y": "209.55"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_WDO_PU",
+    "source_pin": 1,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "R13",
+    "wire_end_x": "383.54",
+    "wire_end_y": "207.01"
+  },
+  {
+    "group": "B77",
+    "source_ref": "R_WDO_PU",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R13",
+    "wire_end_x": "383.54",
+    "wire_end_y": "209.55"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_5V",
+    "source_pin": 1,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U1",
+    "wire_end_x": "495.3",
+    "wire_end_y": "201.93"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_5V",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U1",
+    "wire_end_x": "495.3",
+    "wire_end_y": "204.47"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_5V",
+    "source_pin": 3,
+    "source_net": "STOP_NC_SENSE",
+    "review_net": "B77__STOP_NC_SENSE",
+    "kicad_ref": "U1",
+    "wire_end_x": "495.3",
+    "wire_end_y": "207.01"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_5V",
+    "source_pin": 4,
+    "source_net": "U_5V_CT_NC",
+    "review_net": "B77__U_5V_CT_NC",
+    "kicad_ref": "U1",
+    "wire_end_x": "495.3",
+    "wire_end_y": "209.55"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_5V",
+    "source_pin": 5,
+    "source_net": "5V_RAW",
+    "review_net": "B77__5V_RAW",
+    "kicad_ref": "U1",
+    "wire_end_x": "495.3",
+    "wire_end_y": "212.09"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_5V",
+    "source_pin": 6,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U1",
+    "wire_end_x": "495.3",
+    "wire_end_y": "214.63"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM",
+    "source_pin": 1,
+    "source_net": "REARM_DEBOUNCED_CLK",
+    "review_net": "B77__REARM_DEBOUNCED_CLK",
+    "kicad_ref": "U2",
+    "wire_end_x": "607.06",
+    "wire_end_y": "199.39"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM",
+    "source_pin": 2,
+    "source_net": "ARM_D_QUALIFIED_AFTER_RELEASE",
+    "review_net": "B77__ARM_D_QUALIFIED_AFTER_RELEASE",
+    "kicad_ref": "U2",
+    "wire_end_x": "607.06",
+    "wire_end_y": "201.93"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM",
+    "source_pin": 3,
+    "source_net": "ARM_Q_N_UNUSED",
+    "review_net": "B77__ARM_Q_N_UNUSED",
+    "kicad_ref": "U2",
+    "wire_end_x": "607.06",
+    "wire_end_y": "204.47"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM",
+    "source_pin": 4,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U2",
+    "wire_end_x": "607.06",
+    "wire_end_y": "207.01"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM",
+    "source_pin": 5,
+    "source_net": "ARM_LATCH_Q_ISOLATED",
+    "review_net": "B77__ARM_LATCH_Q_ISOLATED",
+    "kicad_ref": "U2",
+    "wire_end_x": "607.06",
+    "wire_end_y": "209.55"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM",
+    "source_pin": 6,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U2",
+    "wire_end_x": "607.06",
+    "wire_end_y": "212.09"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM",
+    "source_pin": 7,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U2",
+    "wire_end_x": "607.06",
+    "wire_end_y": "214.63"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM",
+    "source_pin": 8,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U2",
+    "wire_end_x": "607.06",
+    "wire_end_y": "217.17"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_AND",
+    "source_pin": 1,
+    "source_net": "HB_TWO_EDGE_Q_ISOLATED",
+    "review_net": "B77__HB_TWO_EDGE_Q_ISOLATED",
+    "kicad_ref": "U3",
+    "wire_end_x": "718.82",
+    "wire_end_y": "203.2"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_AND",
+    "source_pin": 2,
+    "source_net": "ARM_REQUEST_INVERTED",
+    "review_net": "B77__ARM_REQUEST_INVERTED",
+    "kicad_ref": "U3",
+    "wire_end_x": "718.82",
+    "wire_end_y": "205.74"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_AND",
+    "source_pin": 3,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U3",
+    "wire_end_x": "718.82",
+    "wire_end_y": "208.28"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_AND",
+    "source_pin": 4,
+    "source_net": "HB2_ARM_LOW_PREQUAL",
+    "review_net": "B77__HB2_ARM_LOW_PREQUAL",
+    "kicad_ref": "U3",
+    "wire_end_x": "718.82",
+    "wire_end_y": "210.82"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_AND",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U3",
+    "wire_end_x": "718.82",
+    "wire_end_y": "213.36"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_INV",
+    "source_pin": 1,
+    "source_net": "NC_ARM_INV",
+    "review_net": "B77__NC_ARM_INV",
+    "kicad_ref": "U4",
+    "wire_end_x": "830.58",
+    "wire_end_y": "203.2"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_INV",
+    "source_pin": 2,
+    "source_net": "ARM_REQ_UNQUALIFIED",
+    "review_net": "B77__ARM_REQ_UNQUALIFIED",
+    "kicad_ref": "U4",
+    "wire_end_x": "830.58",
+    "wire_end_y": "205.74"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_INV",
+    "source_pin": 3,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U4",
+    "wire_end_x": "830.58",
+    "wire_end_y": "208.28"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_INV",
+    "source_pin": 4,
+    "source_net": "ARM_REQUEST_INVERTED",
+    "review_net": "B77__ARM_REQUEST_INVERTED",
+    "kicad_ref": "U4",
+    "wire_end_x": "830.58",
+    "wire_end_y": "210.82"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_ARM_INV",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U4",
+    "wire_end_x": "830.58",
+    "wire_end_y": "213.36"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_D_FINAL_AND",
+    "source_pin": 1,
+    "source_net": "HB2_ARM_LOW_PREQUAL",
+    "review_net": "B77__HB2_ARM_LOW_PREQUAL",
+    "kicad_ref": "U5",
+    "wire_end_x": "942.34",
+    "wire_end_y": "203.2"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_D_FINAL_AND",
+    "source_pin": 2,
+    "source_net": "RELEASE_SEEN_Q",
+    "review_net": "B77__RELEASE_SEEN_Q",
+    "kicad_ref": "U5",
+    "wire_end_x": "942.34",
+    "wire_end_y": "205.74"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_D_FINAL_AND",
+    "source_pin": 3,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U5",
+    "wire_end_x": "942.34",
+    "wire_end_y": "208.28"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_D_FINAL_AND",
+    "source_pin": 4,
+    "source_net": "ARM_D_QUALIFIED_AFTER_RELEASE",
+    "review_net": "B77__ARM_D_QUALIFIED_AFTER_RELEASE",
+    "kicad_ref": "U5",
+    "wire_end_x": "942.34",
+    "wire_end_y": "210.82"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_D_FINAL_AND",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U5",
+    "wire_end_x": "942.34",
+    "wire_end_y": "213.36"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_EDGE",
+    "source_pin": 1,
+    "source_net": "HB_FALL_EDGE_RISING",
+    "review_net": "B77__HB_FALL_EDGE_RISING",
+    "kicad_ref": "U6",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "199.39"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_EDGE",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U6",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "201.93"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_EDGE",
+    "source_pin": 3,
+    "source_net": "HB_EDGE1_Q_N_UNUSED",
+    "review_net": "B77__HB_EDGE1_Q_N_UNUSED",
+    "kicad_ref": "U6",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "204.47"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_EDGE",
+    "source_pin": 4,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U6",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "207.01"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_EDGE",
+    "source_pin": 5,
+    "source_net": "HB_EDGE1_Q",
+    "review_net": "B77__HB_EDGE1_Q",
+    "kicad_ref": "U6",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "209.55"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_EDGE",
+    "source_pin": 6,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U6",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "212.09"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_EDGE",
+    "source_pin": 7,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U6",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "214.63"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_EDGE",
+    "source_pin": 8,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U6",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "217.17"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_HB_INV",
+    "source_pin": 1,
+    "source_net": "U_HB_INV_MANUFACTURER_NC",
+    "review_net": "B77__U_HB_INV_MANUFACTURER_NC",
+    "kicad_ref": "U7",
+    "wire_end_x": "48.26",
+    "wire_end_y": "276.86"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_HB_INV",
+    "source_pin": 2,
+    "source_net": "GPIO28_HEARTBEAT",
+    "review_net": "B77__GPIO28_HEARTBEAT",
+    "kicad_ref": "U7",
+    "wire_end_x": "48.26",
+    "wire_end_y": "279.4"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_HB_INV",
+    "source_pin": 3,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U7",
+    "wire_end_x": "48.26",
+    "wire_end_y": "281.94"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_HB_INV",
+    "source_pin": 4,
+    "source_net": "HB_FALL_EDGE_RISING",
+    "review_net": "B77__HB_FALL_EDGE_RISING",
+    "kicad_ref": "U7",
+    "wire_end_x": "48.26",
+    "wire_end_y": "284.48"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_HB_INV",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U7",
+    "wire_end_x": "48.26",
+    "wire_end_y": "287.02"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_POR",
+    "source_pin": 1,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U8",
+    "wire_end_x": "160.02",
+    "wire_end_y": "275.59"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_POR",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U8",
+    "wire_end_x": "160.02",
+    "wire_end_y": "278.13"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_POR",
+    "source_pin": 3,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U8",
+    "wire_end_x": "160.02",
+    "wire_end_y": "280.67"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_POR",
+    "source_pin": 4,
+    "source_net": "POR_CT_NC_FIXED_DELAY",
+    "review_net": "B77__POR_CT_NC_FIXED_DELAY",
+    "kicad_ref": "U8",
+    "wire_end_x": "160.02",
+    "wire_end_y": "283.21"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_POR",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U8",
+    "wire_end_x": "160.02",
+    "wire_end_y": "285.75"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_POR",
+    "source_pin": 6,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U8",
+    "wire_end_x": "160.02",
+    "wire_end_y": "288.29"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_REARM_SCH",
+    "source_pin": 1,
+    "source_net": "NC_SCH",
+    "review_net": "B77__NC_SCH",
+    "kicad_ref": "U9",
+    "wire_end_x": "271.78",
+    "wire_end_y": "276.86"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_REARM_SCH",
+    "source_pin": 2,
+    "source_net": "REARM_RC_NODE",
+    "review_net": "B77__REARM_RC_NODE",
+    "kicad_ref": "U9",
+    "wire_end_x": "271.78",
+    "wire_end_y": "279.4"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_REARM_SCH",
+    "source_pin": 3,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U9",
+    "wire_end_x": "271.78",
+    "wire_end_y": "281.94"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_REARM_SCH",
+    "source_pin": 4,
+    "source_net": "REARM_DEBOUNCED_CLK",
+    "review_net": "B77__REARM_DEBOUNCED_CLK",
+    "kicad_ref": "U9",
+    "wire_end_x": "271.78",
+    "wire_end_y": "284.48"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_REARM_SCH",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U9",
+    "wire_end_x": "271.78",
+    "wire_end_y": "287.02"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_FF",
+    "source_pin": 1,
+    "source_net": "RELEASE_EDGE_CLK",
+    "review_net": "B77__RELEASE_EDGE_CLK",
+    "kicad_ref": "U10",
+    "wire_end_x": "383.54",
+    "wire_end_y": "273.05"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_FF",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U10",
+    "wire_end_x": "383.54",
+    "wire_end_y": "275.59"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_FF",
+    "source_pin": 3,
+    "source_net": "RELEASE_Q_N_UNUSED",
+    "review_net": "B77__RELEASE_Q_N_UNUSED",
+    "kicad_ref": "U10",
+    "wire_end_x": "383.54",
+    "wire_end_y": "278.13"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_FF",
+    "source_pin": 4,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U10",
+    "wire_end_x": "383.54",
+    "wire_end_y": "280.67"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_FF",
+    "source_pin": 5,
+    "source_net": "RELEASE_SEEN_Q",
+    "review_net": "B77__RELEASE_SEEN_Q",
+    "kicad_ref": "U10",
+    "wire_end_x": "383.54",
+    "wire_end_y": "283.21"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_FF",
+    "source_pin": 6,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U10",
+    "wire_end_x": "383.54",
+    "wire_end_y": "285.75"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_FF",
+    "source_pin": 7,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U10",
+    "wire_end_x": "383.54",
+    "wire_end_y": "288.29"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_FF",
+    "source_pin": 8,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U10",
+    "wire_end_x": "383.54",
+    "wire_end_y": "290.83"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_INV",
+    "source_pin": 1,
+    "source_net": "NC_RELEASE_INV",
+    "review_net": "B77__NC_RELEASE_INV",
+    "kicad_ref": "U11",
+    "wire_end_x": "495.3",
+    "wire_end_y": "276.86"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_INV",
+    "source_pin": 2,
+    "source_net": "REARM_DEBOUNCED_CLK",
+    "review_net": "B77__REARM_DEBOUNCED_CLK",
+    "kicad_ref": "U11",
+    "wire_end_x": "495.3",
+    "wire_end_y": "279.4"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_INV",
+    "source_pin": 3,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U11",
+    "wire_end_x": "495.3",
+    "wire_end_y": "281.94"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_INV",
+    "source_pin": 4,
+    "source_net": "RELEASE_EDGE_CLK",
+    "review_net": "B77__RELEASE_EDGE_CLK",
+    "kicad_ref": "U11",
+    "wire_end_x": "495.3",
+    "wire_end_y": "284.48"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RELEASE_INV",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U11",
+    "wire_end_x": "495.3",
+    "wire_end_y": "287.02"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RUN",
+    "source_pin": 1,
+    "source_net": "HB_FALL_EDGE_RISING",
+    "review_net": "B77__HB_FALL_EDGE_RISING",
+    "kicad_ref": "U12",
+    "wire_end_x": "607.06",
+    "wire_end_y": "273.05"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RUN",
+    "source_pin": 2,
+    "source_net": "HB_EDGE1_Q",
+    "review_net": "B77__HB_EDGE1_Q",
+    "kicad_ref": "U12",
+    "wire_end_x": "607.06",
+    "wire_end_y": "275.59"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RUN",
+    "source_pin": 3,
+    "source_net": "RUN_Q_N_UNUSED",
+    "review_net": "B77__RUN_Q_N_UNUSED",
+    "kicad_ref": "U12",
+    "wire_end_x": "607.06",
+    "wire_end_y": "278.13"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RUN",
+    "source_pin": 4,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U12",
+    "wire_end_x": "607.06",
+    "wire_end_y": "280.67"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RUN",
+    "source_pin": 5,
+    "source_net": "HB_TWO_EDGE_Q_ISOLATED",
+    "review_net": "B77__HB_TWO_EDGE_Q_ISOLATED",
+    "kicad_ref": "U12",
+    "wire_end_x": "607.06",
+    "wire_end_y": "283.21"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RUN",
+    "source_pin": 6,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U12",
+    "wire_end_x": "607.06",
+    "wire_end_y": "285.75"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RUN",
+    "source_pin": 7,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U12",
+    "wire_end_x": "607.06",
+    "wire_end_y": "288.29"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_RUN",
+    "source_pin": 8,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U12",
+    "wire_end_x": "607.06",
+    "wire_end_y": "290.83"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_WD",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U13",
+    "wire_end_x": "718.82",
+    "wire_end_y": "273.05"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_WD",
+    "source_pin": 2,
+    "source_net": "WD_200MS_CWD",
+    "review_net": "B77__WD_200MS_CWD",
+    "kicad_ref": "U13",
+    "wire_end_x": "718.82",
+    "wire_end_y": "275.59"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_WD",
+    "source_pin": 3,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U13",
+    "wire_end_x": "718.82",
+    "wire_end_y": "278.13"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_WD",
+    "source_pin": 4,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U13",
+    "wire_end_x": "718.82",
+    "wire_end_y": "280.67"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_WD",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U13",
+    "wire_end_x": "718.82",
+    "wire_end_y": "283.21"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_WD",
+    "source_pin": 6,
+    "source_net": "GPIO28_HEARTBEAT",
+    "review_net": "B77__GPIO28_HEARTBEAT",
+    "kicad_ref": "U13",
+    "wire_end_x": "718.82",
+    "wire_end_y": "285.75"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_WD",
+    "source_pin": 7,
+    "source_net": "QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U13",
+    "wire_end_x": "718.82",
+    "wire_end_y": "288.29"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U_WD",
+    "source_pin": 8,
+    "source_net": "WD_ENOUT_NO_CONNECT_PER_TI",
+    "review_net": "B77__WD_ENOUT_NO_CONNECT_PER_TI",
+    "kicad_ref": "U13",
+    "wire_end_x": "718.82",
+    "wire_end_y": "290.83"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 1,
+    "source_net": "U7_EN_CLAMPED_DISABLED",
+    "review_net": "B77__U7_EN_CLAMPED_DISABLED",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "270.51"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 2,
+    "source_net": "REQUIRES_OVLO_PARTS",
+    "review_net": "B77__REQUIRES_OVLO_PARTS",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "273.05"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 3,
+    "source_net": "EFUSE_PG_OD",
+    "review_net": "B77__EFUSE_PG_OD",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "275.59"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 4,
+    "source_net": "PGTH_SENSE",
+    "review_net": "B77__PGTH_SENSE",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "278.13"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 5,
+    "source_net": "5V_RAW",
+    "review_net": "B77__5V_RAW",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "280.67"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 6,
+    "source_net": "5V_MOTOR",
+    "review_net": "5V_MOTOR",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "283.21"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 7,
+    "source_net": "REQUIRES_DVDT_DESIGN",
+    "review_net": "B77__REQUIRES_DVDT_DESIGN",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "285.75"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 8,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "288.29"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 9,
+    "source_net": "REQUIRES_ILIM_R",
+    "review_net": "B77__REQUIRES_ILIM_R",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "290.83"
+  },
+  {
+    "group": "B77",
+    "source_ref": "U7",
+    "source_pin": 10,
+    "source_net": "REQUIRES_ITIMER_C",
+    "review_net": "B77__REQUIRES_ITIMER_C",
+    "kicad_ref": "U14",
+    "wire_end_x": "830.58",
+    "wire_end_y": "293.37"
+  },
+  {
+    "group": "B78",
+    "source_ref": "C_BUF1",
+    "source_pin": 1,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C9",
+    "wire_end_x": "942.34",
+    "wire_end_y": "280.67"
+  },
+  {
+    "group": "B78",
+    "source_ref": "C_BUF1",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C9",
+    "wire_end_x": "942.34",
+    "wire_end_y": "283.21"
+  },
+  {
+    "group": "B78",
+    "source_ref": "C_BUF2",
+    "source_pin": 1,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C10",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "280.67"
+  },
+  {
+    "group": "B78",
+    "source_ref": "C_BUF2",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C10",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "283.21"
+  },
+  {
+    "group": "B78",
+    "source_ref": "C_BUF3",
+    "source_pin": 1,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C11",
+    "wire_end_x": "48.26",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "C_BUF3",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C11",
+    "wire_end_x": "48.26",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "C_BUF4",
+    "source_pin": 1,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C12",
+    "wire_end_x": "160.02",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "C_BUF4",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C12",
+    "wire_end_x": "160.02",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G1",
+    "source_pin": 1,
+    "source_net": "MCU_G1_PHASE1",
+    "review_net": "B78__MCU_G1_PHASE1",
+    "kicad_ref": "J4",
+    "wire_end_x": "271.78",
+    "wire_end_y": "351.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G1",
+    "source_pin": 2,
+    "source_net": "MCU_G1_PHASE2",
+    "review_net": "B78__MCU_G1_PHASE2",
+    "kicad_ref": "J4",
+    "wire_end_x": "271.78",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G1",
+    "source_pin": 3,
+    "source_net": "MCU_G1_PHASE3",
+    "review_net": "B78__MCU_G1_PHASE3",
+    "kicad_ref": "J4",
+    "wire_end_x": "271.78",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G1",
+    "source_pin": 4,
+    "source_net": "MCU_G1_PHASE4",
+    "review_net": "B78__MCU_G1_PHASE4",
+    "kicad_ref": "J4",
+    "wire_end_x": "271.78",
+    "wire_end_y": "359.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G2",
+    "source_pin": 1,
+    "source_net": "MCU_G2_PHASE1",
+    "review_net": "B78__MCU_G2_PHASE1",
+    "kicad_ref": "J5",
+    "wire_end_x": "383.54",
+    "wire_end_y": "351.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G2",
+    "source_pin": 2,
+    "source_net": "MCU_G2_PHASE2",
+    "review_net": "B78__MCU_G2_PHASE2",
+    "kicad_ref": "J5",
+    "wire_end_x": "383.54",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G2",
+    "source_pin": 3,
+    "source_net": "MCU_G2_PHASE3",
+    "review_net": "B78__MCU_G2_PHASE3",
+    "kicad_ref": "J5",
+    "wire_end_x": "383.54",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G2",
+    "source_pin": 4,
+    "source_net": "MCU_G2_PHASE4",
+    "review_net": "B78__MCU_G2_PHASE4",
+    "kicad_ref": "J5",
+    "wire_end_x": "383.54",
+    "wire_end_y": "359.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G3",
+    "source_pin": 1,
+    "source_net": "MCU_G3_PHASE1",
+    "review_net": "B78__MCU_G3_PHASE1",
+    "kicad_ref": "J6",
+    "wire_end_x": "495.3",
+    "wire_end_y": "351.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G3",
+    "source_pin": 2,
+    "source_net": "MCU_G3_PHASE2",
+    "review_net": "B78__MCU_G3_PHASE2",
+    "kicad_ref": "J6",
+    "wire_end_x": "495.3",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G3",
+    "source_pin": 3,
+    "source_net": "MCU_G3_PHASE3",
+    "review_net": "B78__MCU_G3_PHASE3",
+    "kicad_ref": "J6",
+    "wire_end_x": "495.3",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G3",
+    "source_pin": 4,
+    "source_net": "MCU_G3_PHASE4",
+    "review_net": "B78__MCU_G3_PHASE4",
+    "kicad_ref": "J6",
+    "wire_end_x": "495.3",
+    "wire_end_y": "359.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G4",
+    "source_pin": 1,
+    "source_net": "MCU_G4_PHASE1",
+    "review_net": "B78__MCU_G4_PHASE1",
+    "kicad_ref": "J7",
+    "wire_end_x": "607.06",
+    "wire_end_y": "351.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G4",
+    "source_pin": 2,
+    "source_net": "MCU_G4_PHASE2",
+    "review_net": "B78__MCU_G4_PHASE2",
+    "kicad_ref": "J7",
+    "wire_end_x": "607.06",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G4",
+    "source_pin": 3,
+    "source_net": "MCU_G4_PHASE3",
+    "review_net": "B78__MCU_G4_PHASE3",
+    "kicad_ref": "J7",
+    "wire_end_x": "607.06",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G4",
+    "source_pin": 4,
+    "source_net": "MCU_G4_PHASE4",
+    "review_net": "B78__MCU_G4_PHASE4",
+    "kicad_ref": "J7",
+    "wire_end_x": "607.06",
+    "wire_end_y": "359.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G5",
+    "source_pin": 1,
+    "source_net": "MCU_G5_PHASE1",
+    "review_net": "B78__MCU_G5_PHASE1",
+    "kicad_ref": "J8",
+    "wire_end_x": "718.82",
+    "wire_end_y": "351.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G5",
+    "source_pin": 2,
+    "source_net": "MCU_G5_PHASE2",
+    "review_net": "B78__MCU_G5_PHASE2",
+    "kicad_ref": "J8",
+    "wire_end_x": "718.82",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G5",
+    "source_pin": 3,
+    "source_net": "MCU_G5_PHASE3",
+    "review_net": "B78__MCU_G5_PHASE3",
+    "kicad_ref": "J8",
+    "wire_end_x": "718.82",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G5",
+    "source_pin": 4,
+    "source_net": "MCU_G5_PHASE4",
+    "review_net": "B78__MCU_G5_PHASE4",
+    "kicad_ref": "J8",
+    "wire_end_x": "718.82",
+    "wire_end_y": "359.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G6",
+    "source_pin": 1,
+    "source_net": "MCU_G6_PHASE1",
+    "review_net": "B78__MCU_G6_PHASE1",
+    "kicad_ref": "J9",
+    "wire_end_x": "830.58",
+    "wire_end_y": "351.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G6",
+    "source_pin": 2,
+    "source_net": "MCU_G6_PHASE2",
+    "review_net": "B78__MCU_G6_PHASE2",
+    "kicad_ref": "J9",
+    "wire_end_x": "830.58",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G6",
+    "source_pin": 3,
+    "source_net": "MCU_G6_PHASE3",
+    "review_net": "B78__MCU_G6_PHASE3",
+    "kicad_ref": "J9",
+    "wire_end_x": "830.58",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G6",
+    "source_pin": 4,
+    "source_net": "MCU_G6_PHASE4",
+    "review_net": "B78__MCU_G6_PHASE4",
+    "kicad_ref": "J9",
+    "wire_end_x": "830.58",
+    "wire_end_y": "359.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G7",
+    "source_pin": 1,
+    "source_net": "MCU_G7_PHASE1",
+    "review_net": "B78__MCU_G7_PHASE1",
+    "kicad_ref": "J10",
+    "wire_end_x": "942.34",
+    "wire_end_y": "351.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G7",
+    "source_pin": 2,
+    "source_net": "MCU_G7_PHASE2",
+    "review_net": "B78__MCU_G7_PHASE2",
+    "kicad_ref": "J10",
+    "wire_end_x": "942.34",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G7",
+    "source_pin": 3,
+    "source_net": "MCU_G7_PHASE3",
+    "review_net": "B78__MCU_G7_PHASE3",
+    "kicad_ref": "J10",
+    "wire_end_x": "942.34",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MCU_G7",
+    "source_pin": 4,
+    "source_net": "MCU_G7_PHASE4",
+    "review_net": "B78__MCU_G7_PHASE4",
+    "kicad_ref": "J10",
+    "wire_end_x": "942.34",
+    "wire_end_y": "359.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G1",
+    "source_pin": 1,
+    "source_net": "MODULE_G1_PHASE1",
+    "review_net": "B78__MODULE_G1_PHASE1",
+    "kicad_ref": "J11",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "351.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G1",
+    "source_pin": 2,
+    "source_net": "MODULE_G1_PHASE2",
+    "review_net": "B78__MODULE_G1_PHASE2",
+    "kicad_ref": "J11",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "354.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G1",
+    "source_pin": 3,
+    "source_net": "MODULE_G1_PHASE3",
+    "review_net": "B78__MODULE_G1_PHASE3",
+    "kicad_ref": "J11",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "356.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G1",
+    "source_pin": 4,
+    "source_net": "MODULE_G1_PHASE4",
+    "review_net": "B78__MODULE_G1_PHASE4",
+    "kicad_ref": "J11",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "359.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G2",
+    "source_pin": 1,
+    "source_net": "MODULE_G2_PHASE1",
+    "review_net": "B78__MODULE_G2_PHASE1",
+    "kicad_ref": "J12",
+    "wire_end_x": "48.26",
+    "wire_end_y": "425.45"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G2",
+    "source_pin": 2,
+    "source_net": "MODULE_G2_PHASE2",
+    "review_net": "B78__MODULE_G2_PHASE2",
+    "kicad_ref": "J12",
+    "wire_end_x": "48.26",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G2",
+    "source_pin": 3,
+    "source_net": "MODULE_G2_PHASE3",
+    "review_net": "B78__MODULE_G2_PHASE3",
+    "kicad_ref": "J12",
+    "wire_end_x": "48.26",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G2",
+    "source_pin": 4,
+    "source_net": "MODULE_G2_PHASE4",
+    "review_net": "B78__MODULE_G2_PHASE4",
+    "kicad_ref": "J12",
+    "wire_end_x": "48.26",
+    "wire_end_y": "433.07"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G3",
+    "source_pin": 1,
+    "source_net": "MODULE_G3_PHASE1",
+    "review_net": "B78__MODULE_G3_PHASE1",
+    "kicad_ref": "J13",
+    "wire_end_x": "160.02",
+    "wire_end_y": "425.45"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G3",
+    "source_pin": 2,
+    "source_net": "MODULE_G3_PHASE2",
+    "review_net": "B78__MODULE_G3_PHASE2",
+    "kicad_ref": "J13",
+    "wire_end_x": "160.02",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G3",
+    "source_pin": 3,
+    "source_net": "MODULE_G3_PHASE3",
+    "review_net": "B78__MODULE_G3_PHASE3",
+    "kicad_ref": "J13",
+    "wire_end_x": "160.02",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G3",
+    "source_pin": 4,
+    "source_net": "MODULE_G3_PHASE4",
+    "review_net": "B78__MODULE_G3_PHASE4",
+    "kicad_ref": "J13",
+    "wire_end_x": "160.02",
+    "wire_end_y": "433.07"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G4",
+    "source_pin": 1,
+    "source_net": "MODULE_G4_PHASE1",
+    "review_net": "B78__MODULE_G4_PHASE1",
+    "kicad_ref": "J14",
+    "wire_end_x": "271.78",
+    "wire_end_y": "425.45"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G4",
+    "source_pin": 2,
+    "source_net": "MODULE_G4_PHASE2",
+    "review_net": "B78__MODULE_G4_PHASE2",
+    "kicad_ref": "J14",
+    "wire_end_x": "271.78",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G4",
+    "source_pin": 3,
+    "source_net": "MODULE_G4_PHASE3",
+    "review_net": "B78__MODULE_G4_PHASE3",
+    "kicad_ref": "J14",
+    "wire_end_x": "271.78",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G4",
+    "source_pin": 4,
+    "source_net": "MODULE_G4_PHASE4",
+    "review_net": "B78__MODULE_G4_PHASE4",
+    "kicad_ref": "J14",
+    "wire_end_x": "271.78",
+    "wire_end_y": "433.07"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G5",
+    "source_pin": 1,
+    "source_net": "MODULE_G5_PHASE1",
+    "review_net": "B78__MODULE_G5_PHASE1",
+    "kicad_ref": "J15",
+    "wire_end_x": "383.54",
+    "wire_end_y": "425.45"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G5",
+    "source_pin": 2,
+    "source_net": "MODULE_G5_PHASE2",
+    "review_net": "B78__MODULE_G5_PHASE2",
+    "kicad_ref": "J15",
+    "wire_end_x": "383.54",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G5",
+    "source_pin": 3,
+    "source_net": "MODULE_G5_PHASE3",
+    "review_net": "B78__MODULE_G5_PHASE3",
+    "kicad_ref": "J15",
+    "wire_end_x": "383.54",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G5",
+    "source_pin": 4,
+    "source_net": "MODULE_G5_PHASE4",
+    "review_net": "B78__MODULE_G5_PHASE4",
+    "kicad_ref": "J15",
+    "wire_end_x": "383.54",
+    "wire_end_y": "433.07"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G6",
+    "source_pin": 1,
+    "source_net": "MODULE_G6_PHASE1",
+    "review_net": "B78__MODULE_G6_PHASE1",
+    "kicad_ref": "J16",
+    "wire_end_x": "495.3",
+    "wire_end_y": "425.45"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G6",
+    "source_pin": 2,
+    "source_net": "MODULE_G6_PHASE2",
+    "review_net": "B78__MODULE_G6_PHASE2",
+    "kicad_ref": "J16",
+    "wire_end_x": "495.3",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G6",
+    "source_pin": 3,
+    "source_net": "MODULE_G6_PHASE3",
+    "review_net": "B78__MODULE_G6_PHASE3",
+    "kicad_ref": "J16",
+    "wire_end_x": "495.3",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G6",
+    "source_pin": 4,
+    "source_net": "MODULE_G6_PHASE4",
+    "review_net": "B78__MODULE_G6_PHASE4",
+    "kicad_ref": "J16",
+    "wire_end_x": "495.3",
+    "wire_end_y": "433.07"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G7",
+    "source_pin": 1,
+    "source_net": "MODULE_G7_PHASE1",
+    "review_net": "B78__MODULE_G7_PHASE1",
+    "kicad_ref": "J17",
+    "wire_end_x": "607.06",
+    "wire_end_y": "425.45"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G7",
+    "source_pin": 2,
+    "source_net": "MODULE_G7_PHASE2",
+    "review_net": "B78__MODULE_G7_PHASE2",
+    "kicad_ref": "J17",
+    "wire_end_x": "607.06",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G7",
+    "source_pin": 3,
+    "source_net": "MODULE_G7_PHASE3",
+    "review_net": "B78__MODULE_G7_PHASE3",
+    "kicad_ref": "J17",
+    "wire_end_x": "607.06",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "J_MODULE_G7",
+    "source_pin": 4,
+    "source_net": "MODULE_G7_PHASE4",
+    "review_net": "B78__MODULE_G7_PHASE4",
+    "kicad_ref": "J17",
+    "wire_end_x": "607.06",
+    "wire_end_y": "433.07"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_OE_PULL1",
+    "source_pin": 1,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "R14",
+    "wire_end_x": "718.82",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_OE_PULL1",
+    "source_pin": 2,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R14",
+    "wire_end_x": "718.82",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_OE_PULL2",
+    "source_pin": 1,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "R15",
+    "wire_end_x": "830.58",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_OE_PULL2",
+    "source_pin": 2,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R15",
+    "wire_end_x": "830.58",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_OE_PULL3",
+    "source_pin": 1,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "R16",
+    "wire_end_x": "942.34",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_OE_PULL3",
+    "source_pin": 2,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R16",
+    "wire_end_x": "942.34",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_OE_PULL4",
+    "source_pin": 1,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "R17",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "427.99"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_OE_PULL4",
+    "source_pin": 2,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R17",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "430.53"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G1_1",
+    "source_pin": 1,
+    "source_net": "MODULE_G1_PHASE1",
+    "review_net": "B78__MODULE_G1_PHASE1",
+    "kicad_ref": "R18",
+    "wire_end_x": "48.26",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G1_1",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R18",
+    "wire_end_x": "48.26",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G1_2",
+    "source_pin": 1,
+    "source_net": "MODULE_G1_PHASE2",
+    "review_net": "B78__MODULE_G1_PHASE2",
+    "kicad_ref": "R19",
+    "wire_end_x": "160.02",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G1_2",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R19",
+    "wire_end_x": "160.02",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G1_3",
+    "source_pin": 1,
+    "source_net": "MODULE_G1_PHASE3",
+    "review_net": "B78__MODULE_G1_PHASE3",
+    "kicad_ref": "R20",
+    "wire_end_x": "271.78",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G1_3",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R20",
+    "wire_end_x": "271.78",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G1_4",
+    "source_pin": 1,
+    "source_net": "MODULE_G1_PHASE4",
+    "review_net": "B78__MODULE_G1_PHASE4",
+    "kicad_ref": "R21",
+    "wire_end_x": "383.54",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G1_4",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R21",
+    "wire_end_x": "383.54",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G2_1",
+    "source_pin": 1,
+    "source_net": "MODULE_G2_PHASE1",
+    "review_net": "B78__MODULE_G2_PHASE1",
+    "kicad_ref": "R22",
+    "wire_end_x": "495.3",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G2_1",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R22",
+    "wire_end_x": "495.3",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G2_2",
+    "source_pin": 1,
+    "source_net": "MODULE_G2_PHASE2",
+    "review_net": "B78__MODULE_G2_PHASE2",
+    "kicad_ref": "R23",
+    "wire_end_x": "607.06",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G2_2",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R23",
+    "wire_end_x": "607.06",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G2_3",
+    "source_pin": 1,
+    "source_net": "MODULE_G2_PHASE3",
+    "review_net": "B78__MODULE_G2_PHASE3",
+    "kicad_ref": "R24",
+    "wire_end_x": "718.82",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G2_3",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R24",
+    "wire_end_x": "718.82",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G2_4",
+    "source_pin": 1,
+    "source_net": "MODULE_G2_PHASE4",
+    "review_net": "B78__MODULE_G2_PHASE4",
+    "kicad_ref": "R25",
+    "wire_end_x": "830.58",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G2_4",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R25",
+    "wire_end_x": "830.58",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G3_1",
+    "source_pin": 1,
+    "source_net": "MODULE_G3_PHASE1",
+    "review_net": "B78__MODULE_G3_PHASE1",
+    "kicad_ref": "R26",
+    "wire_end_x": "942.34",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G3_1",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R26",
+    "wire_end_x": "942.34",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G3_2",
+    "source_pin": 1,
+    "source_net": "MODULE_G3_PHASE2",
+    "review_net": "B78__MODULE_G3_PHASE2",
+    "kicad_ref": "R27",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "501.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G3_2",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R27",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "504.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G3_3",
+    "source_pin": 1,
+    "source_net": "MODULE_G3_PHASE3",
+    "review_net": "B78__MODULE_G3_PHASE3",
+    "kicad_ref": "R28",
+    "wire_end_x": "48.26",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G3_3",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R28",
+    "wire_end_x": "48.26",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G3_4",
+    "source_pin": 1,
+    "source_net": "MODULE_G3_PHASE4",
+    "review_net": "B78__MODULE_G3_PHASE4",
+    "kicad_ref": "R29",
+    "wire_end_x": "160.02",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G3_4",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R29",
+    "wire_end_x": "160.02",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G4_1",
+    "source_pin": 1,
+    "source_net": "MODULE_G4_PHASE1",
+    "review_net": "B78__MODULE_G4_PHASE1",
+    "kicad_ref": "R30",
+    "wire_end_x": "271.78",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G4_1",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R30",
+    "wire_end_x": "271.78",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G4_2",
+    "source_pin": 1,
+    "source_net": "MODULE_G4_PHASE2",
+    "review_net": "B78__MODULE_G4_PHASE2",
+    "kicad_ref": "R31",
+    "wire_end_x": "383.54",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G4_2",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R31",
+    "wire_end_x": "383.54",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G4_3",
+    "source_pin": 1,
+    "source_net": "MODULE_G4_PHASE3",
+    "review_net": "B78__MODULE_G4_PHASE3",
+    "kicad_ref": "R32",
+    "wire_end_x": "495.3",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G4_3",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R32",
+    "wire_end_x": "495.3",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G4_4",
+    "source_pin": 1,
+    "source_net": "MODULE_G4_PHASE4",
+    "review_net": "B78__MODULE_G4_PHASE4",
+    "kicad_ref": "R33",
+    "wire_end_x": "607.06",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G4_4",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R33",
+    "wire_end_x": "607.06",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G5_1",
+    "source_pin": 1,
+    "source_net": "MODULE_G5_PHASE1",
+    "review_net": "B78__MODULE_G5_PHASE1",
+    "kicad_ref": "R34",
+    "wire_end_x": "718.82",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G5_1",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R34",
+    "wire_end_x": "718.82",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G5_2",
+    "source_pin": 1,
+    "source_net": "MODULE_G5_PHASE2",
+    "review_net": "B78__MODULE_G5_PHASE2",
+    "kicad_ref": "R35",
+    "wire_end_x": "830.58",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G5_2",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R35",
+    "wire_end_x": "830.58",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G5_3",
+    "source_pin": 1,
+    "source_net": "MODULE_G5_PHASE3",
+    "review_net": "B78__MODULE_G5_PHASE3",
+    "kicad_ref": "R36",
+    "wire_end_x": "942.34",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G5_3",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R36",
+    "wire_end_x": "942.34",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G5_4",
+    "source_pin": 1,
+    "source_net": "MODULE_G5_PHASE4",
+    "review_net": "B78__MODULE_G5_PHASE4",
+    "kicad_ref": "R37",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "575.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G5_4",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R37",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "577.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G6_1",
+    "source_pin": 1,
+    "source_net": "MODULE_G6_PHASE1",
+    "review_net": "B78__MODULE_G6_PHASE1",
+    "kicad_ref": "R38",
+    "wire_end_x": "48.26",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G6_1",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R38",
+    "wire_end_x": "48.26",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G6_2",
+    "source_pin": 1,
+    "source_net": "MODULE_G6_PHASE2",
+    "review_net": "B78__MODULE_G6_PHASE2",
+    "kicad_ref": "R39",
+    "wire_end_x": "160.02",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G6_2",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R39",
+    "wire_end_x": "160.02",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G6_3",
+    "source_pin": 1,
+    "source_net": "MODULE_G6_PHASE3",
+    "review_net": "B78__MODULE_G6_PHASE3",
+    "kicad_ref": "R40",
+    "wire_end_x": "271.78",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G6_3",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R40",
+    "wire_end_x": "271.78",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G6_4",
+    "source_pin": 1,
+    "source_net": "MODULE_G6_PHASE4",
+    "review_net": "B78__MODULE_G6_PHASE4",
+    "kicad_ref": "R41",
+    "wire_end_x": "383.54",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G6_4",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R41",
+    "wire_end_x": "383.54",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G7_1",
+    "source_pin": 1,
+    "source_net": "MODULE_G7_PHASE1",
+    "review_net": "B78__MODULE_G7_PHASE1",
+    "kicad_ref": "R42",
+    "wire_end_x": "495.3",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G7_1",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R42",
+    "wire_end_x": "495.3",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G7_2",
+    "source_pin": 1,
+    "source_net": "MODULE_G7_PHASE2",
+    "review_net": "B78__MODULE_G7_PHASE2",
+    "kicad_ref": "R43",
+    "wire_end_x": "607.06",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G7_2",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R43",
+    "wire_end_x": "607.06",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G7_3",
+    "source_pin": 1,
+    "source_net": "MODULE_G7_PHASE3",
+    "review_net": "B78__MODULE_G7_PHASE3",
+    "kicad_ref": "R44",
+    "wire_end_x": "718.82",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G7_3",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R44",
+    "wire_end_x": "718.82",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G7_4",
+    "source_pin": 1,
+    "source_net": "MODULE_G7_PHASE4",
+    "review_net": "B78__MODULE_G7_PHASE4",
+    "kicad_ref": "R45",
+    "wire_end_x": "830.58",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "R_PD_G7_4",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R45",
+    "wire_end_x": "830.58",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 1,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "626.11"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 2,
+    "source_net": "MCU_G1_PHASE1",
+    "review_net": "B78__MCU_G1_PHASE1",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "628.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 3,
+    "source_net": "MODULE_G2_PHASE4",
+    "review_net": "B78__MODULE_G2_PHASE4",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "631.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 4,
+    "source_net": "MCU_G1_PHASE2",
+    "review_net": "B78__MCU_G1_PHASE2",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "633.73"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 5,
+    "source_net": "MODULE_G2_PHASE3",
+    "review_net": "B78__MODULE_G2_PHASE3",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "636.27"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 6,
+    "source_net": "MCU_G1_PHASE3",
+    "review_net": "B78__MCU_G1_PHASE3",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "638.81"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 7,
+    "source_net": "MODULE_G2_PHASE2",
+    "review_net": "B78__MODULE_G2_PHASE2",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "641.35"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 8,
+    "source_net": "MCU_G1_PHASE4",
+    "review_net": "B78__MCU_G1_PHASE4",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "643.89"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 9,
+    "source_net": "MODULE_G2_PHASE1",
+    "review_net": "B78__MODULE_G2_PHASE1",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "646.43"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 10,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 11,
+    "source_net": "MCU_G2_PHASE1",
+    "review_net": "B78__MCU_G2_PHASE1",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 12,
+    "source_net": "MODULE_G1_PHASE4",
+    "review_net": "B78__MODULE_G1_PHASE4",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "654.05"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 13,
+    "source_net": "MCU_G2_PHASE2",
+    "review_net": "B78__MCU_G2_PHASE2",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "656.59"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 14,
+    "source_net": "MODULE_G1_PHASE3",
+    "review_net": "B78__MODULE_G1_PHASE3",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "659.13"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 15,
+    "source_net": "MCU_G2_PHASE3",
+    "review_net": "B78__MCU_G2_PHASE3",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "661.67"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 16,
+    "source_net": "MODULE_G1_PHASE2",
+    "review_net": "B78__MODULE_G1_PHASE2",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "664.21"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 17,
+    "source_net": "MCU_G2_PHASE4",
+    "review_net": "B78__MCU_G2_PHASE4",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "666.75"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 18,
+    "source_net": "MODULE_G1_PHASE1",
+    "review_net": "B78__MODULE_G1_PHASE1",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "669.29"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 19,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "671.83"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF1",
+    "source_pin": 20,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U15",
+    "wire_end_x": "942.34",
+    "wire_end_y": "674.37"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 1,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "626.11"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 2,
+    "source_net": "MCU_G3_PHASE1",
+    "review_net": "B78__MCU_G3_PHASE1",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "628.65"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 3,
+    "source_net": "MODULE_G4_PHASE4",
+    "review_net": "B78__MODULE_G4_PHASE4",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "631.19"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 4,
+    "source_net": "MCU_G3_PHASE2",
+    "review_net": "B78__MCU_G3_PHASE2",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "633.73"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 5,
+    "source_net": "MODULE_G4_PHASE3",
+    "review_net": "B78__MODULE_G4_PHASE3",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "636.27"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 6,
+    "source_net": "MCU_G3_PHASE3",
+    "review_net": "B78__MCU_G3_PHASE3",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "638.81"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 7,
+    "source_net": "MODULE_G4_PHASE2",
+    "review_net": "B78__MODULE_G4_PHASE2",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "641.35"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 8,
+    "source_net": "MCU_G3_PHASE4",
+    "review_net": "B78__MCU_G3_PHASE4",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "643.89"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 9,
+    "source_net": "MODULE_G4_PHASE1",
+    "review_net": "B78__MODULE_G4_PHASE1",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "646.43"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 10,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "648.97"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 11,
+    "source_net": "MCU_G4_PHASE1",
+    "review_net": "B78__MCU_G4_PHASE1",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "651.51"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 12,
+    "source_net": "MODULE_G3_PHASE4",
+    "review_net": "B78__MODULE_G3_PHASE4",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "654.05"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 13,
+    "source_net": "MCU_G4_PHASE2",
+    "review_net": "B78__MCU_G4_PHASE2",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "656.59"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 14,
+    "source_net": "MODULE_G3_PHASE3",
+    "review_net": "B78__MODULE_G3_PHASE3",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "659.13"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 15,
+    "source_net": "MCU_G4_PHASE3",
+    "review_net": "B78__MCU_G4_PHASE3",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "661.67"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 16,
+    "source_net": "MODULE_G3_PHASE2",
+    "review_net": "B78__MODULE_G3_PHASE2",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "664.21"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 17,
+    "source_net": "MCU_G4_PHASE4",
+    "review_net": "B78__MCU_G4_PHASE4",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "666.75"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 18,
+    "source_net": "MODULE_G3_PHASE1",
+    "review_net": "B78__MODULE_G3_PHASE1",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "669.29"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 19,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "671.83"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF2",
+    "source_pin": 20,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U16",
+    "wire_end_x": "1054.1",
+    "wire_end_y": "674.37"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 1,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "699.77"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 2,
+    "source_net": "MCU_G5_PHASE1",
+    "review_net": "B78__MCU_G5_PHASE1",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "702.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 3,
+    "source_net": "MODULE_G6_PHASE4",
+    "review_net": "B78__MODULE_G6_PHASE4",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "704.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 4,
+    "source_net": "MCU_G5_PHASE2",
+    "review_net": "B78__MCU_G5_PHASE2",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "707.39"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 5,
+    "source_net": "MODULE_G6_PHASE3",
+    "review_net": "B78__MODULE_G6_PHASE3",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "709.93"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 6,
+    "source_net": "MCU_G5_PHASE3",
+    "review_net": "B78__MCU_G5_PHASE3",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "712.47"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 7,
+    "source_net": "MODULE_G6_PHASE2",
+    "review_net": "B78__MODULE_G6_PHASE2",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "715.01"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 8,
+    "source_net": "MCU_G5_PHASE4",
+    "review_net": "B78__MCU_G5_PHASE4",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "717.55"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 9,
+    "source_net": "MODULE_G6_PHASE1",
+    "review_net": "B78__MODULE_G6_PHASE1",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "720.09"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 10,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "722.63"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 11,
+    "source_net": "MCU_G6_PHASE1",
+    "review_net": "B78__MCU_G6_PHASE1",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "725.17"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 12,
+    "source_net": "MODULE_G5_PHASE4",
+    "review_net": "B78__MODULE_G5_PHASE4",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "727.71"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 13,
+    "source_net": "MCU_G6_PHASE2",
+    "review_net": "B78__MCU_G6_PHASE2",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "730.25"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 14,
+    "source_net": "MODULE_G5_PHASE3",
+    "review_net": "B78__MODULE_G5_PHASE3",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "732.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 15,
+    "source_net": "MCU_G6_PHASE3",
+    "review_net": "B78__MCU_G6_PHASE3",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "735.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 16,
+    "source_net": "MODULE_G5_PHASE2",
+    "review_net": "B78__MODULE_G5_PHASE2",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "737.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 17,
+    "source_net": "MCU_G6_PHASE4",
+    "review_net": "B78__MCU_G6_PHASE4",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "740.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 18,
+    "source_net": "MODULE_G5_PHASE1",
+    "review_net": "B78__MODULE_G5_PHASE1",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "742.95"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 19,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "745.49"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF3",
+    "source_pin": 20,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U17",
+    "wire_end_x": "48.26",
+    "wire_end_y": "748.03"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 1,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "699.77"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 2,
+    "source_net": "MCU_G7_PHASE1",
+    "review_net": "B78__MCU_G7_PHASE1",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "702.31"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 3,
+    "source_net": "UNUSED_U_BUF4_Y8",
+    "review_net": "B78__UNUSED_U_BUF4_Y8",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "704.85"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 4,
+    "source_net": "MCU_G7_PHASE2",
+    "review_net": "B78__MCU_G7_PHASE2",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "707.39"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 5,
+    "source_net": "UNUSED_U_BUF4_Y7",
+    "review_net": "B78__UNUSED_U_BUF4_Y7",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "709.93"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 6,
+    "source_net": "MCU_G7_PHASE3",
+    "review_net": "B78__MCU_G7_PHASE3",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "712.47"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 7,
+    "source_net": "UNUSED_U_BUF4_Y6",
+    "review_net": "B78__UNUSED_U_BUF4_Y6",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "715.01"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 8,
+    "source_net": "MCU_G7_PHASE4",
+    "review_net": "B78__MCU_G7_PHASE4",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "717.55"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 9,
+    "source_net": "UNUSED_U_BUF4_Y5",
+    "review_net": "B78__UNUSED_U_BUF4_Y5",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "720.09"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 10,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "722.63"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 11,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "725.17"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 12,
+    "source_net": "MODULE_G7_PHASE4",
+    "review_net": "B78__MODULE_G7_PHASE4",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "727.71"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 13,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "730.25"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 14,
+    "source_net": "MODULE_G7_PHASE3",
+    "review_net": "B78__MODULE_G7_PHASE3",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "732.79"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 15,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "735.33"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 16,
+    "source_net": "MODULE_G7_PHASE2",
+    "review_net": "B78__MODULE_G7_PHASE2",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "737.87"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 17,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "740.41"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 18,
+    "source_net": "MODULE_G7_PHASE1",
+    "review_net": "B78__MODULE_G7_PHASE1",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "742.95"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 19,
+    "source_net": "PHASE_OE_N_FIXED_HIGH",
+    "review_net": "B78__PHASE_OE_N_FIXED_HIGH",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "745.49"
+  },
+  {
+    "group": "B78",
+    "source_ref": "U_BUF4",
+    "source_pin": 20,
+    "source_net": "VCC_3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U18",
+    "wire_end_x": "160.02",
+    "wire_end_y": "748.03"
+  },
+  {
+    "group": "B81",
+    "source_ref": "C_RAIL_DEC",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C13",
+    "wire_end_x": "271.78",
+    "wire_end_y": "722.63"
+  },
+  {
+    "group": "B81",
+    "source_ref": "C_RAIL_DEC",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C13",
+    "wire_end_x": "271.78",
+    "wire_end_y": "725.17"
+  },
+  {
+    "group": "B81",
+    "source_ref": "R_RAIL_BOT",
+    "source_pin": 1,
+    "source_net": "RAIL_SENSE_DIV",
+    "review_net": "B81__RAIL_SENSE_DIV",
+    "kicad_ref": "R46",
+    "wire_end_x": "383.54",
+    "wire_end_y": "722.63"
+  },
+  {
+    "group": "B81",
+    "source_ref": "R_RAIL_BOT",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R46",
+    "wire_end_x": "383.54",
+    "wire_end_y": "725.17"
+  },
+  {
+    "group": "B81",
+    "source_ref": "R_RAIL_MR_PU",
+    "source_pin": 1,
+    "source_net": "MR_INACTIVE_HIGH",
+    "review_net": "B81__MR_INACTIVE_HIGH",
+    "kicad_ref": "R47",
+    "wire_end_x": "495.3",
+    "wire_end_y": "722.63"
+  },
+  {
+    "group": "B81",
+    "source_ref": "R_RAIL_MR_PU",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R47",
+    "wire_end_x": "495.3",
+    "wire_end_y": "725.17"
+  },
+  {
+    "group": "B81",
+    "source_ref": "R_RAIL_OK_PU",
+    "source_pin": 1,
+    "source_net": "RAIL_OK_N_SUPERVISOR",
+    "review_net": "B81__RAIL_OK_N_SUPERVISOR",
+    "kicad_ref": "R48",
+    "wire_end_x": "607.06",
+    "wire_end_y": "722.63"
+  },
+  {
+    "group": "B81",
+    "source_ref": "R_RAIL_OK_PU",
+    "source_pin": 2,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "R48",
+    "wire_end_x": "607.06",
+    "wire_end_y": "725.17"
+  },
+  {
+    "group": "B81",
+    "source_ref": "R_RAIL_TOP",
+    "source_pin": 1,
+    "source_net": "5V_MOTOR",
+    "review_net": "5V_MOTOR",
+    "kicad_ref": "R49",
+    "wire_end_x": "718.82",
+    "wire_end_y": "722.63"
+  },
+  {
+    "group": "B81",
+    "source_ref": "R_RAIL_TOP",
+    "source_pin": 2,
+    "source_net": "RAIL_SENSE_DIV",
+    "review_net": "B81__RAIL_SENSE_DIV",
+    "kicad_ref": "R49",
+    "wire_end_x": "718.82",
+    "wire_end_y": "725.17"
+  },
+  {
+    "group": "B81",
+    "source_ref": "U_RAIL_SV",
+    "source_pin": 1,
+    "source_net": "RAIL_OK_N_SUPERVISOR",
+    "review_net": "B81__RAIL_OK_N_SUPERVISOR",
+    "kicad_ref": "U19",
+    "wire_end_x": "830.58",
+    "wire_end_y": "717.55"
+  },
+  {
+    "group": "B81",
+    "source_ref": "U_RAIL_SV",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U19",
+    "wire_end_x": "830.58",
+    "wire_end_y": "720.09"
+  },
+  {
+    "group": "B81",
+    "source_ref": "U_RAIL_SV",
+    "source_pin": 3,
+    "source_net": "MR_INACTIVE_HIGH",
+    "review_net": "B81__MR_INACTIVE_HIGH",
+    "kicad_ref": "U19",
+    "wire_end_x": "830.58",
+    "wire_end_y": "722.63"
+  },
+  {
+    "group": "B81",
+    "source_ref": "U_RAIL_SV",
+    "source_pin": 4,
+    "source_net": "CT_OPEN_20MS_CANDIDATE",
+    "review_net": "B81__CT_OPEN_20MS_CANDIDATE",
+    "kicad_ref": "U19",
+    "wire_end_x": "830.58",
+    "wire_end_y": "725.17"
+  },
+  {
+    "group": "B81",
+    "source_ref": "U_RAIL_SV",
+    "source_pin": 5,
+    "source_net": "RAIL_SENSE_DIV",
+    "review_net": "B81__RAIL_SENSE_DIV",
+    "kicad_ref": "U19",
+    "wire_end_x": "830.58",
+    "wire_end_y": "727.71"
+  },
+  {
+    "group": "B81",
+    "source_ref": "U_RAIL_SV",
+    "source_pin": 6,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U19",
+    "wire_end_x": "830.58",
+    "wire_end_y": "730.25"
+  },
+  {
+    "group": "B85",
+    "source_ref": "R_OVLO_HIGH",
+    "source_pin": 1,
+    "source_net": "B77__5V_RAW",
+    "review_net": "B77__5V_RAW",
+    "kicad_ref": "R50",
+    "wire_end_x": "48.26",
+    "wire_end_y": "796.29"
+  },
+  {
+    "group": "B85",
+    "source_ref": "R_OVLO_HIGH",
+    "source_pin": 2,
+    "source_net": "B77__REQUIRES_OVLO_PARTS",
+    "review_net": "B77__REQUIRES_OVLO_PARTS",
+    "kicad_ref": "R50",
+    "wire_end_x": "48.26",
+    "wire_end_y": "798.83"
+  },
+  {
+    "group": "B85",
+    "source_ref": "R_OVLO_LOW",
+    "source_pin": 1,
+    "source_net": "B77__REQUIRES_OVLO_PARTS",
+    "review_net": "B77__REQUIRES_OVLO_PARTS",
+    "kicad_ref": "R51",
+    "wire_end_x": "160.02",
+    "wire_end_y": "796.29"
+  },
+  {
+    "group": "B85",
+    "source_ref": "R_OVLO_LOW",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R51",
+    "wire_end_x": "160.02",
+    "wire_end_y": "798.83"
+  },
+  {
+    "group": "B85",
+    "source_ref": "R_ILM_LIMIT",
+    "source_pin": 1,
+    "source_net": "B77__REQUIRES_ILIM_R",
+    "review_net": "B77__REQUIRES_ILIM_R",
+    "kicad_ref": "R52",
+    "wire_end_x": "271.78",
+    "wire_end_y": "796.29"
+  },
+  {
+    "group": "B85",
+    "source_ref": "R_ILM_LIMIT",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R52",
+    "wire_end_x": "271.78",
+    "wire_end_y": "798.83"
+  },
+  {
+    "group": "B85",
+    "source_ref": "C_DVDT",
+    "source_pin": 1,
+    "source_net": "B77__REQUIRES_DVDT_DESIGN",
+    "review_net": "B77__REQUIRES_DVDT_DESIGN",
+    "kicad_ref": "C14",
+    "wire_end_x": "383.54",
+    "wire_end_y": "796.29"
+  },
+  {
+    "group": "B85",
+    "source_ref": "C_DVDT",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C14",
+    "wire_end_x": "383.54",
+    "wire_end_y": "798.83"
+  },
+  {
+    "group": "B85",
+    "source_ref": "C_ITIMER",
+    "source_pin": 1,
+    "source_net": "B77__REQUIRES_ITIMER_C",
+    "review_net": "B77__REQUIRES_ITIMER_C",
+    "kicad_ref": "C15",
+    "wire_end_x": "495.3",
+    "wire_end_y": "796.29"
+  },
+  {
+    "group": "B85",
+    "source_ref": "C_ITIMER",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C15",
+    "wire_end_x": "495.3",
+    "wire_end_y": "798.83"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U20",
+    "source_pin": 1,
+    "source_net": "B86__RESET_EFFECTIVE",
+    "review_net": "B86__RESET_EFFECTIVE",
+    "kicad_ref": "U20",
+    "wire_end_x": "48.26",
+    "wire_end_y": "872.49"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U20",
+    "source_pin": 2,
+    "source_net": "B86__FAULT_QBAR",
+    "review_net": "B86__FAULT_QBAR",
+    "kicad_ref": "U20",
+    "wire_end_x": "48.26",
+    "wire_end_y": "875.03"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U20",
+    "source_pin": 3,
+    "source_net": "B86__FAULT_QBAR",
+    "review_net": "B86__FAULT_QBAR",
+    "kicad_ref": "U20",
+    "wire_end_x": "48.26",
+    "wire_end_y": "877.57"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U20",
+    "source_pin": 4,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U20",
+    "wire_end_x": "48.26",
+    "wire_end_y": "880.11"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U20",
+    "source_pin": 5,
+    "source_net": "B86__TRIP_ASSERT",
+    "review_net": "B86__TRIP_ASSERT",
+    "kicad_ref": "U20",
+    "wire_end_x": "48.26",
+    "wire_end_y": "882.65"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U20",
+    "source_pin": 6,
+    "source_net": "B86__FAULT_Q",
+    "review_net": "B86__FAULT_Q",
+    "kicad_ref": "U20",
+    "wire_end_x": "48.26",
+    "wire_end_y": "885.19"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U20",
+    "source_pin": 7,
+    "source_net": "B86__FAULT_Q",
+    "review_net": "B86__FAULT_Q",
+    "kicad_ref": "U20",
+    "wire_end_x": "48.26",
+    "wire_end_y": "887.73"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U20",
+    "source_pin": 8,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U20",
+    "wire_end_x": "48.26",
+    "wire_end_y": "890.27"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U21",
+    "source_pin": 1,
+    "source_net": "B86__INV_NC",
+    "review_net": "B86__INV_NC",
+    "kicad_ref": "U21",
+    "wire_end_x": "160.02",
+    "wire_end_y": "876.3"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U21",
+    "source_pin": 2,
+    "source_net": "B77__QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U21",
+    "wire_end_x": "160.02",
+    "wire_end_y": "878.84"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U21",
+    "source_pin": 3,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U21",
+    "wire_end_x": "160.02",
+    "wire_end_y": "881.38"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U21",
+    "source_pin": 4,
+    "source_net": "B86__TRIP_ASSERT",
+    "review_net": "B86__TRIP_ASSERT",
+    "kicad_ref": "U21",
+    "wire_end_x": "160.02",
+    "wire_end_y": "883.92"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U21",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U21",
+    "wire_end_x": "160.02",
+    "wire_end_y": "886.46"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U22",
+    "source_pin": 1,
+    "source_net": "B86__CLEAR_REQUEST",
+    "review_net": "B86__CLEAR_REQUEST",
+    "kicad_ref": "U22",
+    "wire_end_x": "271.78",
+    "wire_end_y": "876.3"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U22",
+    "source_pin": 2,
+    "source_net": "B77__QUAL_CLR_N",
+    "review_net": "B77__QUAL_CLR_N",
+    "kicad_ref": "U22",
+    "wire_end_x": "271.78",
+    "wire_end_y": "878.84"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U22",
+    "source_pin": 3,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "U22",
+    "wire_end_x": "271.78",
+    "wire_end_y": "881.38"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U22",
+    "source_pin": 4,
+    "source_net": "B86__RESET_EFFECTIVE",
+    "review_net": "B86__RESET_EFFECTIVE",
+    "kicad_ref": "U22",
+    "wire_end_x": "271.78",
+    "wire_end_y": "883.92"
+  },
+  {
+    "group": "B86",
+    "source_ref": "U22",
+    "source_pin": 5,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "U22",
+    "wire_end_x": "271.78",
+    "wire_end_y": "886.46"
+  },
+  {
+    "group": "B86",
+    "source_ref": "C16",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C16",
+    "wire_end_x": "383.54",
+    "wire_end_y": "880.11"
+  },
+  {
+    "group": "B86",
+    "source_ref": "C16",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C16",
+    "wire_end_x": "383.54",
+    "wire_end_y": "882.65"
+  },
+  {
+    "group": "B86",
+    "source_ref": "C17",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C17",
+    "wire_end_x": "495.3",
+    "wire_end_y": "880.11"
+  },
+  {
+    "group": "B86",
+    "source_ref": "C17",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C17",
+    "wire_end_x": "495.3",
+    "wire_end_y": "882.65"
+  },
+  {
+    "group": "B86",
+    "source_ref": "C18",
+    "source_pin": 1,
+    "source_net": "3V3_AON",
+    "review_net": "3V3_AON",
+    "kicad_ref": "C18",
+    "wire_end_x": "607.06",
+    "wire_end_y": "880.11"
+  },
+  {
+    "group": "B86",
+    "source_ref": "C18",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "C18",
+    "wire_end_x": "607.06",
+    "wire_end_y": "882.65"
+  },
+  {
+    "group": "B86",
+    "source_ref": "J18",
+    "source_pin": 1,
+    "source_net": "B86__CLEAR_REQUEST",
+    "review_net": "B86__CLEAR_REQUEST",
+    "kicad_ref": "J18",
+    "wire_end_x": "718.82",
+    "wire_end_y": "880.11"
+  },
+  {
+    "group": "B86",
+    "source_ref": "J18",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "J18",
+    "wire_end_x": "718.82",
+    "wire_end_y": "882.65"
+  },
+  {
+    "group": "B86",
+    "source_ref": "R53",
+    "source_pin": 1,
+    "source_net": "B86__CLEAR_REQUEST",
+    "review_net": "B86__CLEAR_REQUEST",
+    "kicad_ref": "R53",
+    "wire_end_x": "830.58",
+    "wire_end_y": "880.11"
+  },
+  {
+    "group": "B86",
+    "source_ref": "R53",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R53",
+    "wire_end_x": "830.58",
+    "wire_end_y": "882.65"
+  },
+  {
+    "group": "B86",
+    "source_ref": "R54",
+    "source_pin": 1,
+    "source_net": "B86__FAULT_Q",
+    "review_net": "B86__FAULT_Q",
+    "kicad_ref": "R54",
+    "wire_end_x": "942.34",
+    "wire_end_y": "880.11"
+  },
+  {
+    "group": "B86",
+    "source_ref": "R54",
+    "source_pin": 2,
+    "source_net": "GND",
+    "review_net": "GND",
+    "kicad_ref": "R54",
+    "wire_end_x": "942.34",
+    "wire_end_y": "882.65"
+  }
+]
