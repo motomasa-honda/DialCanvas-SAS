@@ -45,6 +45,13 @@ assert (s["manufacture_gate"],s["scoped_done"],s["scoped_total"],s["software_rev
 assert s["g3_04"]==s["g3_05"]=="WORKING" and s["g6_04"]=="OPEN"
 assert s["electric_motor_efuse_en"]=="LOW"
 assert all(s[k] for k in ["no_cut","no_purchase","no_power","no_flash","no_main_merge"])
+q=d["joint_test_coupons"];classes=q["classes"]
+assert len(classes)==3 and [x["face_mm2"] for x in classes]==[9,18,18]
+assert [x["normal"] for x in classes]==["Y","Y","Z"]
+assert sum(x["stl_halves"] for x in classes)==q["total_independent_watertight_stl"]==6
+assert all(x["each_half_length_mm"]==30 and x["stl_halves"]==2 for x in classes)
+assert q["only_shape_tested"] and q["stress_and_weld_strength"]=="NOT_QUALIFIED"
+assert q["clamp_method"]=="NOT_DESIGNED"
 print("PASS 8 source-member fit datum coordinates; 24 non-certifying load cases and 4 unqualified butt faces")
 print("PASS 23 named D7 panels = 14 constant + 9 stepped, 4 source face contact areas")
 print("HOLD manufacturing 0/6, scoped review 19/48, glue and weld strength NOT QUALIFIED")

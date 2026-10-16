@@ -1,0 +1,4 @@
+class,joint_refs,section_x_mm,section_other_mm,normal,face_mm2,half_count,half_length_mm,qualification
+J1_J2_9mm2_Y_BUTT,J1+J2,3,3,Y,9,2,30,STL_ONLY_NOT_TESTED
+J3_18mm2_Y_BUTT,J3,3,6,Y,18,2,30,STL_ONLY_NOT_TESTED
+J4_18mm2_Z_BUTT,J4,3,6,Z,18,2,30,STL_ONLY_NOT_TESTED

@@ -177,11 +177,62 @@
   },
   "delivery": {
     "name": "Forest_Guardian_G5_Jig_And_G6-04_Engineering_2026-10-16.zip",
-    "byte_count": 1113226,
-    "sha256": "4bdf806da657877e45013b9972c04d32377b75295792161d037a2ef598607239",
-    "files": 23,
+    "byte_count": 1124171,
+    "sha256": "7b64af68158bc10edaa045548c63f612383519ef4e4904be0e68f4bcc733c578",
+    "files": 38,
     "history_name": "Forest_Guardian_Integrated_Handoff_G5_Jig_G6-04_2026-10-16.zip",
-    "history_sha256": "22e4bcef6c8ec856ca0fb1d9aa8feb3e0a6c5ad97517e8ec3ff46281de163d8f"
+    "history_sha256": "c91126653447ed5af17798cff4463a7ba89d3592a6d31fc3cfb0317ce08babae"
   },
-  "validation_boundary": "Actual original D7 65MB JSON re-read/hash and panel face areas computed locally in reproducible ZIP; CI only recomputes eight seat positions against prior 13-member nominal geometry, and ledger/safety invariants; not fabricated, no pull testing."
+  "validation_boundary": "Actual original D7 65MB JSON re-read/hash and panel face areas computed locally in reproducible ZIP; CI only recomputes eight seat positions against prior 13-member nominal geometry, and ledger/safety invariants; not fabricated, no pull testing.",
+  "joint_test_coupons": {
+    "classes": [
+      {
+        "code": "J1_J2_9mm2_Y_BUTT",
+        "section_mm": [
+          3,
+          3
+        ],
+        "normal": "Y",
+        "source_joints": [
+          "J1",
+          "J2"
+        ],
+        "face_mm2": 9,
+        "each_half_length_mm": 30,
+        "stl_halves": 2
+      },
+      {
+        "code": "J3_18mm2_Y_BUTT",
+        "section_mm": [
+          3,
+          6
+        ],
+        "normal": "Y",
+        "source_joints": [
+          "J3"
+        ],
+        "face_mm2": 18,
+        "each_half_length_mm": 30,
+        "stl_halves": 2
+      },
+      {
+        "code": "J4_18mm2_Z_BUTT",
+        "section_mm": [
+          3,
+          6
+        ],
+        "normal": "Z",
+        "source_joints": [
+          "J4"
+        ],
+        "face_mm2": 18,
+        "each_half_length_mm": 30,
+        "stl_halves": 2
+      }
+    ],
+    "total_independent_watertight_stl": 6,
+    "only_shape_tested": true,
+    "stress_and_weld_strength": "NOT_QUALIFIED",
+    "clamp_method": "NOT_DESIGNED"
+  }
 }
