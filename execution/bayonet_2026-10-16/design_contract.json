@@ -1,0 +1,96 @@
+{
+  "revision": "7-axis M1 bayonet real key/guide CSG + independent kinematic review",
+  "date": "2026-10-16",
+  "source_d7_solids": 1774,
+  "source_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "axes": [
+    {
+      "id": 1,
+      "x": 85,
+      "y": 40
+    },
+    {
+      "id": 2,
+      "x": 55,
+      "y": 140
+    },
+    {
+      "id": 3,
+      "x": 135,
+      "y": 140
+    },
+    {
+      "id": 4,
+      "x": 225,
+      "y": 130
+    },
+    {
+      "id": 5,
+      "x": 140,
+      "y": 85
+    },
+    {
+      "id": 6,
+      "x": 50,
+      "y": 85
+    },
+    {
+      "id": 7,
+      "x": 140,
+      "y": 40
+    }
+  ],
+  "key_count": 14,
+  "guide_count": 14,
+  "slide_y_mm": 2.5,
+  "nominal_key_x_overlap_mm": 0.6,
+  "guide_rail_z": [
+    123,
+    136.5
+  ],
+  "guide_boss_z": [
+    134.3,
+    136.65
+  ],
+  "window_z": [
+    134.85,
+    135.7
+  ],
+  "entry_z": [
+    135.7,
+    136.75
+  ],
+  "key_z": [
+    135,
+    135.5
+  ],
+  "nominal_guide_lip_z_mm": 0.95,
+  "key_width_y_mm": 1,
+  "nominal_remaining_boss_x_mm": 1.15,
+  "original_reservation_mm": 5,
+  "pocket_xy_mm": [
+    48,
+    35
+  ],
+  "sled_nominal_rear_extraction_mm": 55,
+  "source_geometry_check": "LOCAL_D7_FULL_1774_SOLID_PROJECTED_CHECK_PASS_NOT_RECOMPUTED_BY_GITHUB",
+  "production_secondary_antislide_keeper": "NOT_DESIGNED",
+  "engineering_adhesive_or_wood_pullout": "NOT_QUALIFIED",
+  "actual_vendor_card": "NOT_MEASURED",
+  "material_allowable_stress": "UNSPECIFIED",
+  "electrical_interlock": "UNBUILT_EN_LOW",
+  "release": {
+    "manufacturing_gates_closed": 0,
+    "software_evidence_passed": 11,
+    "scoped_work_done": 16,
+    "scoped_work_total": 48,
+    "hardware_tests": "NOT_RUN",
+    "fabrication": false,
+    "power": false,
+    "purchase": false,
+    "flash": false,
+    "main_merge": false
+  },
+  "user_delta_zip": "Forest_Guardian_Seven_Axis_Bayonet_Engineering_2026-10-16.zip",
+  "delta_sha256": "6ae84aa0e5c0ae20fb7e0f466a1d695bfccdfaa0d1a35d1e7e7093665969620b"
+}
