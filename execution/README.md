@@ -12,10 +12,10 @@ Exactly **48 independently scoped deliverables**: eight in each of the six D7 ma
 | G3 Mechanical/wood/thermal | 3 | 2 | 2 | 1 | OPEN |
 | G4 BOM, specs, fabrication drawings | 2 | 1 | 5 | 0 | OPEN |
 | G5 Product SW integration | 4 | 1 | 2 | 1 | OPEN |
-| G6 All A3 patterns and assembly sequence | 1 | 1 | 5 | 1 | OPEN |
-| **TOTAL** | **17/48** | **7** | **20** | **4** | **0/6 closed** |
+| G6 All A3 patterns and assembly sequence | 2 | 0 | 5 | 1 | OPEN |
+| **TOTAL** | **18/48** | **6** | **20** | **4** | **0/6 closed** |
 
-These **16 scoped passes** include **15 prior source-evidenced partial deliverables plus one NEW document this turn (G2-06)**. DO NOT report them as 16 finished manufacturing assemblies, a 33% product completion metric, or a cleared hardware safety review. Software evidence **11/14**, remaining SW09, SW12, SW14.
+The current **18 scoped passes** include previous 16 reviewed milestones plus NEW G4-02 full original BOM reconciliation and NEW G6-02 seven-panel internal A3 review drawing set. These are **NOT 18 complete manufacturable assemblies** or a cleared hardware safety review. Software evidence **11/14**, remaining SW09, SW12, SW14.
 
 ## The change to execution
 - **Build lane (primary):** progress actual engineering artifacts in G2/G3/G4/G5/G6 even if G1's physical latch is unfinished; next G4-02 M1 BOM, G3-05 wood machining/tool access, G6-02 interior templates.
@@ -57,3 +57,7 @@ New downloadable **source-based 3D** design and **rear wood** reinforcement arti
 G4-02 is now **DONE_SCOPE**: every original DRIVER implementation line (**59**) mapped 1:1 into retired/replace/transfer/safety redesign; 28 old R_PD are superseded by exactly 28 M1-phase pull-downs, 4 old TBD drivers retired, 7 existing separate motor fuses retained and 2 MCP breakouts added with no duplicate original DIP28 purchase. The original master BOM omitted old RTC `U609 RX8900` despite the PCB assembly BOM listing it; its exact source line was **recovered**. Integrated audit = **429+18+1=448 source-based rows**, **NO manufacturing release**. The recovered 68 historical wood operations are indexed; their new M1 machining integration is still incomplete. See [full reconciliation and known source conflict](bom_reconciled_2026-10-16/README.md).
 
 Counts now **17 DONE_SCOPE, 7 WORKING, 20 OPEN, 4 HARDWARE_WAIT** (48 unchanged), manufacturing **0/6**, software evidence **11/14**. Previous README historical first-baseline 16/48 description remains a historical milestone, not the latest state. All purchase, power, cutting, flash and main merge forbidden.
+
+## NEW verified scoped completion: G6-02, seven actual internal source-CAD A3 sheets (2026-10-16)
+
+[Detailed source-traced scope and G5 critical original-opening redline](g6_02_7panel_2026-10-16/README.md). All seven real internal D7 geometry sections were produced in **A3 PDF+DXF editable formats**, including the recovered 68 original machining operations without edit and eight nominal anchors/seven rearwood relief candidate overlays. D7 original SHA rechecked, 7 PDF physical media readbacks and DXF reopen checks PASS in companion ZIP. **G5 BACK_WOOD: 81.346% of proposed 48×35mm pocket is already OPEN in original**: do not perform seven uniform cuts. Only G6-02 is DONE_SCOPE; G6-08 and G3-05 remain incomplete. **18/48 done, 6 working, 20 open, 4 hardware wait; 0/6 manufacturing and 11/14 software.** No power, cutting, purchasing, fabrication, flash or main merge.
