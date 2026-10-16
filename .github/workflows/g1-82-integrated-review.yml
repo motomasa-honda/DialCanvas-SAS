@@ -1,0 +1,24 @@
+name: G1-82 native KiCad 364-pad integrated review (STRUCTURAL ONLY)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g1-82-integrated-review.yml'
+      - 'execution/g1_82_integrated_review/**'
+      - 'execution/g1_phase77_140pins/**'
+      - 'execution/g1_28phase_disabled/**'
+      - 'execution/g1_81_rail_supervisor/**'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-364-pin-native-file-structure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 364 native symbol pins and original hardware-disabled registers
+        run: |
+          set -euo pipefail
+          python3 execution/g1_82_integrated_review/check_integrated.py
+          python3 execution/preflight.py

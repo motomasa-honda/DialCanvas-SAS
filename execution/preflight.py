@@ -20,6 +20,7 @@ checks = [
     "execution/g1_79_output_low_screen/check_contract.py",
     "execution/g1_80_startup_interlock/check_contract.py",
     "execution/g1_81_rail_supervisor/check_contract.py",
+    "execution/g1_82_integrated_review/check_integrated.py",
     "execution/cassettes/check_manifest.py",
     "execution/bracket_chassis_2026-10-16/check_contract.py",
     "execution/anchor_lock_2026-10-16/check_contract.py",
