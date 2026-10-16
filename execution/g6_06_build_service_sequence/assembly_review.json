@@ -1,0 +1,331 @@
+[
+  {
+    "id": "A01",
+    "title": "作業禁止境界の確定と端子の識別",
+    "groups": [],
+    "depends": [],
+    "inspection": "G1-05/06, G2-08, G3-08未完了時は製造/切削/通電禁止。レビュー用手順のみ",
+    "seq": 1,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A02",
+    "title": "D7原本/68木工加工命令と未承認変更の固定",
+    "groups": [],
+    "depends": [
+      "A01"
+    ],
+    "inspection": "D7原本SHA・1774 solids・68 original opsを照合、図面原本にない穴を追加しない",
+    "seq": 2,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A03",
+    "title": "最小構造板・木部を支持治具へ配置する設計順序",
+    "groups": [
+      "core"
+    ],
+    "depends": [
+      "A02"
+    ],
+    "inspection": "P3,TRAY,BACK_WOOD,側板2,上下板2の幾何上の基準面と未承認のネジ径を明示",
+    "seq": 3,
+    "source_parts": [
+      "P3",
+      "TRAY",
+      "BACK_WOOD",
+      "WOOD_SIDE_LEFT",
+      "WOOD_SIDE_RIGHT",
+      "WOOD_BOTTOM",
+      "WOOD_TOP"
+    ],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A04",
+    "title": "外観ベゼル構造の順序",
+    "groups": [
+      "bezel"
+    ],
+    "depends": [
+      "A03"
+    ],
+    "inspection": "8ベゼル材の仮配列。無垢/突板の部位区分と接着条件はG6-04未確定",
+    "seq": 4,
+    "source_parts": [
+      "BEZEL_WOOD_FRONT_BOTTOM",
+      "BEZEL_WOOD_FRONT_LEFT",
+      "BEZEL_WOOD_FRONT_RIGHT",
+      "BEZEL_WOOD_FRONT_TOP",
+      "BEZEL_WOOD_REAR_BOTTOM",
+      "BEZEL_WOOD_REAR_LEFT",
+      "BEZEL_WOOD_REAR_RIGHT",
+      "BEZEL_WOOD_REAR_TOP"
+    ],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A05",
+    "title": "5分割G5フレームを個別位置で確認",
+    "groups": [],
+    "depends": [
+      "A03"
+    ],
+    "inspection": "CROSSBAR, SIDE_LEFT/RIGHT, G5_LEFT/RIGHTの5分割。4界面接合強度はNOT_TESTED、加工禁止",
+    "seq": 5,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A06",
+    "title": "7個の独立カセット固定ガイド仮位置",
+    "groups": [],
+    "depends": [
+      "A05"
+    ],
+    "inspection": "G1..G7のXY、55mm+Z、他6軸非干渉。G5追加ポケット禁止。工具/ブラケット公差未承認",
+    "seq": 6,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A07",
+    "title": "旧60mmファン移設依存を確認",
+    "groups": [],
+    "depends": [
+      "A06"
+    ],
+    "inspection": "元ファン据置状態では7軸同時配置不可。109mA > 100mA の未解決給電問題を解消するまでHOLD",
+    "seq": 7,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A08",
+    "title": "7モータの論理端子6極ずつ順番確認",
+    "groups": [],
+    "depends": [
+      "A06",
+      "A07"
+    ],
+    "inspection": "J_M1_G1...G7の42枝。実pin・電線長・圧着・実機導通は全てUNVERIFIED/TBD",
+    "seq": 8,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A09",
+    "title": "独立安全電源/制御基板の無通電統合条件照合",
+    "groups": [],
+    "depends": [
+      "A08"
+    ],
+    "inspection": "eFuse EN GND/OE HIGHのまま。PCB/ERC/DRC/HIL未合格のため装着完了を主張しない",
+    "seq": 9,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A10",
+    "title": "LED基板とLED20個の位置と配列検査",
+    "groups": [
+      "ledBoards",
+      "leds"
+    ],
+    "depends": [
+      "A03",
+      "A08"
+    ],
+    "inspection": "LED基板4と点光源20の順序・配光をレビュー。点灯/熱性能は検証不可",
+    "seq": 10,
+    "source_parts": [
+      "LED_BOARD_L_1",
+      "LED_BOARD_L_2",
+      "LED_BOARD_R_1",
+      "LED_BOARD_R_2",
+      "LED_L_1",
+      "LED_L_2",
+      "LED_L_3",
+      "LED_L_4",
+      "LED_L_5",
+      "LED_L_6",
+      "LED_L_7",
+      "LED_L_8",
+      "LED_L_9",
+      "LED_L_10",
+      "LED_R_1",
+      "LED_R_2",
+      "LED_R_3",
+      "LED_R_4",
+      "LED_R_5",
+      "LED_R_6",
+      "LED_R_7",
+      "LED_R_8",
+      "LED_R_9",
+      "LED_R_10"
+    ],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A11",
+    "title": "7軸センサ片14点の配置順序",
+    "groups": [
+      "sensor"
+    ],
+    "depends": [
+      "A06",
+      "A08"
+    ],
+    "inspection": "SENSOR_BAND/TONGUE×7の名札対応とゼロ通電位置検査",
+    "seq": 11,
+    "source_parts": [
+      "SENSOR_BAND_G1",
+      "SENSOR_BAND_G2",
+      "SENSOR_BAND_G3",
+      "SENSOR_BAND_G4",
+      "SENSOR_BAND_G5",
+      "SENSOR_BAND_G6",
+      "SENSOR_BAND_G7",
+      "SENSOR_TONGUE_G1",
+      "SENSOR_TONGUE_G2",
+      "SENSOR_TONGUE_G3",
+      "SENSOR_TONGUE_G4",
+      "SENSOR_TONGUE_G5",
+      "SENSOR_TONGUE_G6",
+      "SENSOR_TONGUE_G7"
+    ],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A12",
+    "title": "照明木部12点の接続順序",
+    "groups": [
+      "lightWood"
+    ],
+    "depends": [
+      "A10"
+    ],
+    "inspection": "12灯具用木部。取り合い接着/板厚はG6-04に明示的引渡し",
+    "seq": 12,
+    "source_parts": [
+      "WOOD_FLANGE_LIGHT_L_24.0",
+      "WOOD_FLANGE_LIGHT_L_173.5",
+      "WOOD_FLANGE_LIGHT_R_24.0",
+      "WOOD_FLANGE_LIGHT_R_173.5",
+      "WOOD_PLUG_LIGHT_L_24.0",
+      "WOOD_PLUG_LIGHT_L_173.5",
+      "WOOD_PLUG_LIGHT_R_24.0",
+      "WOOD_PLUG_LIGHT_R_173.5",
+      "WOOD_RECEIVER_LIGHT_L_24.0",
+      "WOOD_RECEIVER_LIGHT_L_173.5",
+      "WOOD_RECEIVER_LIGHT_R_24.0",
+      "WOOD_RECEIVER_LIGHT_R_173.5"
+    ],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A13",
+    "title": "回転歯車7点を支持治具上で非通電合せ",
+    "groups": [
+      "gear"
+    ],
+    "depends": [
+      "A06",
+      "A11"
+    ],
+    "inspection": "GEAR_G1..G7は装飾歯車; 突出量/噛合い/トルク未検証。個別モジュール交換で取り外さない",
+    "seq": 13,
+    "source_parts": [
+      "GEAR_G1",
+      "GEAR_G2",
+      "GEAR_G3",
+      "GEAR_G4",
+      "GEAR_G5",
+      "GEAR_G6",
+      "GEAR_G7"
+    ],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A14",
+    "title": "残りカバー/グリル8点を仮合せ",
+    "groups": [
+      "cover"
+    ],
+    "depends": [
+      "A04",
+      "A10",
+      "A11",
+      "A12",
+      "A13"
+    ],
+    "inspection": "共通背面カバー/グリルは整備時に取り外し可、ただし個別モータカセット/歯車は不動",
+    "seq": 14,
+    "source_parts": [
+      "FRONT_DIFFUSER_L",
+      "FRONT_DIFFUSER_R",
+      "SIDE_GRILLE_1",
+      "SIDE_GRILLE_2",
+      "REAR_GRILLE",
+      "BATTERY_LID",
+      "BUTTON_PLATE_1",
+      "BUTTON_PLATE_2"
+    ],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A15",
+    "title": "各軸55mm独立抜差しの図面審査",
+    "groups": [],
+    "depends": [
+      "A14"
+    ],
+    "inspection": "7軸×55mm+Z移動を既存幾何候補で照合; 実モジュール・実配線・ねじ頭工具検証HARDWARE_WAIT",
+    "seq": 15,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A16",
+    "title": "部品漏れゼロと未合格ゲートの移管",
+    "groups": [],
+    "depends": [
+      "A15"
+    ],
+    "inspection": "source80/80, 7×6 terminals, 未確定項目=G2-03/04/05/07,G3-04/05/06/07,G4-04/06,G6-04/05/07/08",
+    "seq": 16,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  },
+  {
+    "id": "A17",
+    "title": "再組立とリリース禁止条件の最終レビュー",
+    "groups": [],
+    "depends": [
+      "A16"
+    ],
+    "inspection": "未承認寸法と安全系を0完了で保持し、購買/加工/通電/ファーム書込/Main merge全て禁止",
+    "seq": 17,
+    "source_parts": [],
+    "physical_status": "PROCEDURE_ONLY_NOT_ASSEMBLED",
+    "operation_authorized": false
+  }
+]

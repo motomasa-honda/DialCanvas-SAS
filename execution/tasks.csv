@@ -44,6 +44,6 @@ ID,Gate,Deliverable,Status,Evidence,Limit
 "G6-03","G6","全パネルの前後投影","DONE_SCOPE","D7正本1774ソリッド・80設計部品（構造板23/歯車7/LED基板4+LED20/センサ14/照明木部12）×表裏=160原本CAD形状；A3実寸PDF160+DXF160+160頁集成・全形状SHA/PDF/DXF再読込PASS","部品仕上げ・寸法公差・実物1:1印刷・現物交換試験・G6-08製造図はOPEN；G5裏面が既存開口・削孔不可"
 "G6-04","G6","板厚/側帯/糊代/接着先","OPEN","D7-P02","外装のみ"
 "G6-05","G6","配線/サービス型紙レイヤー","OPEN","GATE2","物理ルートOPEN"
-"G6-06","G6","組立と個別交換順序","OPEN","D7-P02","工具試験未"
+"G6-06","G6","組立と個別交換順序","DONE_SCOPE","G6-06 80-source-part+17-stage exact order/7-axis 105-step travelers/42-pin traveler source-validated, CI check_contract.py PASS","設計順序のみ完了。物理カセット55mm/工具/締付/配線/冷却/強度未検証。G2-07,G3-08,G6-07,G6-08 OPEN/HARDWARE_WAIT"
 "G6-07","G6","全量A3型紙の実印刷","HARDWARE_WAIT","GATE6","現物・プリント必要"
 "G6-08","G6","全量A3出図パッケージ","OPEN","GATE6","内部全量不足"

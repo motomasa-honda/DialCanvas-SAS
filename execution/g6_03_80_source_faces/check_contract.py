@@ -21,7 +21,12 @@ assert d["secondary_keeper_V2"]["new_worst_clearance_mm"]>.5
 assert d["secondary_keeper_V2"]["thread_boss_left_meat_mm"]<.6
 assert d["secondary_keeper_V2"]["retention_strength"]=="NOT_TESTED"
 r=d["release"]
+# Historical G6-03 evidence is frozen at the 19/48 closure snapshot.
+# Current 48-scope counts evolve and are validated by execution/guard.py.
 assert (r["scoped_done"],r["scoped_total"],r["working"],r["open"],r["hardware_wait"])==(19,48,6,19,4)
+current_progress=json.loads((Path(__file__).parent.parent/"progress.json").read_text())
+assert current_progress["scoped_evidence_done"]>=r["scoped_done"]
+assert current_progress["manufacturer_release_closed"]==0
 assert r["manufacturer_gates_closed"]==0 and r["software_evidence_passed"]==11
 assert r["motor_power"]=="EFUSE_EN_HELD_LOW"
 assert not any(r[k] for k in ("woodcutting","buying","pcb_fabrication","hardware_flash","merge_main"))

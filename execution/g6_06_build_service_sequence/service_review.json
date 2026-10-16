@@ -1,0 +1,2102 @@
+[
+  {
+    "axis": "G1",
+    "step": "S01",
+    "order": 1,
+    "operation": "投入可能な系統を全てOFFし絶縁・無電圧である証拠を要求",
+    "check_id": "ALL_POWER_ISOLATED",
+    "hold_note": "実配線の無電圧検証はHARDWARE_WAIT",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S02",
+    "order": 2,
+    "operation": "前面透明保護板/歯車は動かさない、後部のみ共通背面カバーへのアクセスを確認",
+    "check_id": "GEARS_STAY_FIXED",
+    "hold_note": "作業許可のない試作品では分解実行しない",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S03",
+    "order": 3,
+    "operation": "共通後部BACK_WOODカバーと背面グリルの取り外し工程を参照",
+    "check_id": "COMMON_BACK_REMOVABLE",
+    "hold_note": "ネジ位置や工具条件はG6-04/08未完了",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S04",
+    "order": 4,
+    "operation": "旧60mmファン移設済の条件を監査（移設していなければ即HOLD）",
+    "check_id": "FAN_RELOCATION_PRECONDITION",
+    "hold_note": "ファン電流/給電/熱はG3-06未解決",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S05",
+    "order": 5,
+    "operation": "G1 だけ識別ラベルを確認（座標X=85,Y=40）",
+    "check_id": "AXIS_IDENTIFIED",
+    "hold_note": "現物位置誤識別防止",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S06",
+    "order": 6,
+    "operation": "G1 J_M1_G1 だけの6系統1..6を相互に混線させないことを確認",
+    "check_id": "SIX_PIN_MAP_IDENTIFIED",
+    "hold_note": "ピン順、実切断長、クランプ/ストレインリリーフは未確定",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S07",
+    "order": 7,
+    "operation": "引抜き前にコネクタを無通電で解放し、ケーブルの曲げRと保持具条件をチェック",
+    "check_id": "CABLE_NOT_TAUT",
+    "hold_note": "現物配線長TBDにつきHOLD",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S08",
+    "order": 8,
+    "operation": "G1専用2本のsecondary keeper候補を実工具で解除する手順を参照",
+    "check_id": "KEEPER_ONLY_THIS_AXIS",
+    "hold_note": "M2ボス実肉厚/工具クリアランス未検証",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S09",
+    "order": 9,
+    "operation": "G1のロックバーだけを解除し、残り6軸の固定状態を維持",
+    "check_id": "SINGLE_AXIS_BAR_RELEASED",
+    "hold_note": "実工具と材料強度は未検証",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S10",
+    "order": 10,
+    "operation": "G1を背面 +Z に55mm独立で引き抜く経路を図面照合",
+    "check_id": "SWEEP_55MM",
+    "hold_note": "実ハーネスとコネクタ干渉は未検証",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S11",
+    "order": 11,
+    "operation": "G1の単独モジュール交換と受入寸法を記録",
+    "check_id": "ONE_MODULE_ONLY",
+    "hold_note": "モジュール実寸未取得、SKUはPROVISIONAL",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S12",
+    "order": 12,
+    "operation": "G1を -Z に戻し個別ロックバー/keeperを再装着する想定手順",
+    "check_id": "RELOCK_SINGLE_AXIS",
+    "hold_note": "実ロック耐力/締付トルク不明・装着未承認",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S13",
+    "order": 13,
+    "operation": "G1に紐づく6端子を原Pin1..6で戻し導通確認票と突合",
+    "check_id": "SIX_PINS_RECHECK",
+    "hold_note": "G2-08実導通/HILは待ち",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S14",
+    "order": 14,
+    "operation": "残り6軸のカセット・歯車・P3は一切取り外していないことを確認",
+    "check_id": "OTHER_SIX_UNTOUCHED",
+    "hold_note": "7軸独立交換の設計不変条件",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G1",
+    "step": "S15",
+    "order": 15,
+    "operation": "背面カバー復元。未合格電装/熱/強度の限り通電しない",
+    "check_id": "REASSEMBLE_NO_POWER",
+    "hold_note": "G3-08/G5-08ハード受入待ち",
+    "axis_center_mm": [
+      85,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S01",
+    "order": 1,
+    "operation": "投入可能な系統を全てOFFし絶縁・無電圧である証拠を要求",
+    "check_id": "ALL_POWER_ISOLATED",
+    "hold_note": "実配線の無電圧検証はHARDWARE_WAIT",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S02",
+    "order": 2,
+    "operation": "前面透明保護板/歯車は動かさない、後部のみ共通背面カバーへのアクセスを確認",
+    "check_id": "GEARS_STAY_FIXED",
+    "hold_note": "作業許可のない試作品では分解実行しない",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S03",
+    "order": 3,
+    "operation": "共通後部BACK_WOODカバーと背面グリルの取り外し工程を参照",
+    "check_id": "COMMON_BACK_REMOVABLE",
+    "hold_note": "ネジ位置や工具条件はG6-04/08未完了",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S04",
+    "order": 4,
+    "operation": "旧60mmファン移設済の条件を監査（移設していなければ即HOLD）",
+    "check_id": "FAN_RELOCATION_PRECONDITION",
+    "hold_note": "ファン電流/給電/熱はG3-06未解決",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S05",
+    "order": 5,
+    "operation": "G2 だけ識別ラベルを確認（座標X=55,Y=140）",
+    "check_id": "AXIS_IDENTIFIED",
+    "hold_note": "現物位置誤識別防止",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S06",
+    "order": 6,
+    "operation": "G2 J_M1_G2 だけの6系統1..6を相互に混線させないことを確認",
+    "check_id": "SIX_PIN_MAP_IDENTIFIED",
+    "hold_note": "ピン順、実切断長、クランプ/ストレインリリーフは未確定",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S07",
+    "order": 7,
+    "operation": "引抜き前にコネクタを無通電で解放し、ケーブルの曲げRと保持具条件をチェック",
+    "check_id": "CABLE_NOT_TAUT",
+    "hold_note": "現物配線長TBDにつきHOLD",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S08",
+    "order": 8,
+    "operation": "G2専用2本のsecondary keeper候補を実工具で解除する手順を参照",
+    "check_id": "KEEPER_ONLY_THIS_AXIS",
+    "hold_note": "M2ボス実肉厚/工具クリアランス未検証",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S09",
+    "order": 9,
+    "operation": "G2のロックバーだけを解除し、残り6軸の固定状態を維持",
+    "check_id": "SINGLE_AXIS_BAR_RELEASED",
+    "hold_note": "実工具と材料強度は未検証",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S10",
+    "order": 10,
+    "operation": "G2を背面 +Z に55mm独立で引き抜く経路を図面照合",
+    "check_id": "SWEEP_55MM",
+    "hold_note": "実ハーネスとコネクタ干渉は未検証",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S11",
+    "order": 11,
+    "operation": "G2の単独モジュール交換と受入寸法を記録",
+    "check_id": "ONE_MODULE_ONLY",
+    "hold_note": "モジュール実寸未取得、SKUはPROVISIONAL",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S12",
+    "order": 12,
+    "operation": "G2を -Z に戻し個別ロックバー/keeperを再装着する想定手順",
+    "check_id": "RELOCK_SINGLE_AXIS",
+    "hold_note": "実ロック耐力/締付トルク不明・装着未承認",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S13",
+    "order": 13,
+    "operation": "G2に紐づく6端子を原Pin1..6で戻し導通確認票と突合",
+    "check_id": "SIX_PINS_RECHECK",
+    "hold_note": "G2-08実導通/HILは待ち",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S14",
+    "order": 14,
+    "operation": "残り6軸のカセット・歯車・P3は一切取り外していないことを確認",
+    "check_id": "OTHER_SIX_UNTOUCHED",
+    "hold_note": "7軸独立交換の設計不変条件",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G2",
+    "step": "S15",
+    "order": 15,
+    "operation": "背面カバー復元。未合格電装/熱/強度の限り通電しない",
+    "check_id": "REASSEMBLE_NO_POWER",
+    "hold_note": "G3-08/G5-08ハード受入待ち",
+    "axis_center_mm": [
+      55,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S01",
+    "order": 1,
+    "operation": "投入可能な系統を全てOFFし絶縁・無電圧である証拠を要求",
+    "check_id": "ALL_POWER_ISOLATED",
+    "hold_note": "実配線の無電圧検証はHARDWARE_WAIT",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S02",
+    "order": 2,
+    "operation": "前面透明保護板/歯車は動かさない、後部のみ共通背面カバーへのアクセスを確認",
+    "check_id": "GEARS_STAY_FIXED",
+    "hold_note": "作業許可のない試作品では分解実行しない",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S03",
+    "order": 3,
+    "operation": "共通後部BACK_WOODカバーと背面グリルの取り外し工程を参照",
+    "check_id": "COMMON_BACK_REMOVABLE",
+    "hold_note": "ネジ位置や工具条件はG6-04/08未完了",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S04",
+    "order": 4,
+    "operation": "旧60mmファン移設済の条件を監査（移設していなければ即HOLD）",
+    "check_id": "FAN_RELOCATION_PRECONDITION",
+    "hold_note": "ファン電流/給電/熱はG3-06未解決",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S05",
+    "order": 5,
+    "operation": "G3 だけ識別ラベルを確認（座標X=135,Y=140）",
+    "check_id": "AXIS_IDENTIFIED",
+    "hold_note": "現物位置誤識別防止",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S06",
+    "order": 6,
+    "operation": "G3 J_M1_G3 だけの6系統1..6を相互に混線させないことを確認",
+    "check_id": "SIX_PIN_MAP_IDENTIFIED",
+    "hold_note": "ピン順、実切断長、クランプ/ストレインリリーフは未確定",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S07",
+    "order": 7,
+    "operation": "引抜き前にコネクタを無通電で解放し、ケーブルの曲げRと保持具条件をチェック",
+    "check_id": "CABLE_NOT_TAUT",
+    "hold_note": "現物配線長TBDにつきHOLD",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S08",
+    "order": 8,
+    "operation": "G3専用2本のsecondary keeper候補を実工具で解除する手順を参照",
+    "check_id": "KEEPER_ONLY_THIS_AXIS",
+    "hold_note": "M2ボス実肉厚/工具クリアランス未検証",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S09",
+    "order": 9,
+    "operation": "G3のロックバーだけを解除し、残り6軸の固定状態を維持",
+    "check_id": "SINGLE_AXIS_BAR_RELEASED",
+    "hold_note": "実工具と材料強度は未検証",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S10",
+    "order": 10,
+    "operation": "G3を背面 +Z に55mm独立で引き抜く経路を図面照合",
+    "check_id": "SWEEP_55MM",
+    "hold_note": "実ハーネスとコネクタ干渉は未検証",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S11",
+    "order": 11,
+    "operation": "G3の単独モジュール交換と受入寸法を記録",
+    "check_id": "ONE_MODULE_ONLY",
+    "hold_note": "モジュール実寸未取得、SKUはPROVISIONAL",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S12",
+    "order": 12,
+    "operation": "G3を -Z に戻し個別ロックバー/keeperを再装着する想定手順",
+    "check_id": "RELOCK_SINGLE_AXIS",
+    "hold_note": "実ロック耐力/締付トルク不明・装着未承認",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S13",
+    "order": 13,
+    "operation": "G3に紐づく6端子を原Pin1..6で戻し導通確認票と突合",
+    "check_id": "SIX_PINS_RECHECK",
+    "hold_note": "G2-08実導通/HILは待ち",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S14",
+    "order": 14,
+    "operation": "残り6軸のカセット・歯車・P3は一切取り外していないことを確認",
+    "check_id": "OTHER_SIX_UNTOUCHED",
+    "hold_note": "7軸独立交換の設計不変条件",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G3",
+    "step": "S15",
+    "order": 15,
+    "operation": "背面カバー復元。未合格電装/熱/強度の限り通電しない",
+    "check_id": "REASSEMBLE_NO_POWER",
+    "hold_note": "G3-08/G5-08ハード受入待ち",
+    "axis_center_mm": [
+      135,
+      140
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S01",
+    "order": 1,
+    "operation": "投入可能な系統を全てOFFし絶縁・無電圧である証拠を要求",
+    "check_id": "ALL_POWER_ISOLATED",
+    "hold_note": "実配線の無電圧検証はHARDWARE_WAIT",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S02",
+    "order": 2,
+    "operation": "前面透明保護板/歯車は動かさない、後部のみ共通背面カバーへのアクセスを確認",
+    "check_id": "GEARS_STAY_FIXED",
+    "hold_note": "作業許可のない試作品では分解実行しない",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S03",
+    "order": 3,
+    "operation": "共通後部BACK_WOODカバーと背面グリルの取り外し工程を参照",
+    "check_id": "COMMON_BACK_REMOVABLE",
+    "hold_note": "ネジ位置や工具条件はG6-04/08未完了",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S04",
+    "order": 4,
+    "operation": "旧60mmファン移設済の条件を監査（移設していなければ即HOLD）",
+    "check_id": "FAN_RELOCATION_PRECONDITION",
+    "hold_note": "ファン電流/給電/熱はG3-06未解決",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S05",
+    "order": 5,
+    "operation": "G4 だけ識別ラベルを確認（座標X=225,Y=130）",
+    "check_id": "AXIS_IDENTIFIED",
+    "hold_note": "現物位置誤識別防止",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S06",
+    "order": 6,
+    "operation": "G4 J_M1_G4 だけの6系統1..6を相互に混線させないことを確認",
+    "check_id": "SIX_PIN_MAP_IDENTIFIED",
+    "hold_note": "ピン順、実切断長、クランプ/ストレインリリーフは未確定",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S07",
+    "order": 7,
+    "operation": "引抜き前にコネクタを無通電で解放し、ケーブルの曲げRと保持具条件をチェック",
+    "check_id": "CABLE_NOT_TAUT",
+    "hold_note": "現物配線長TBDにつきHOLD",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S08",
+    "order": 8,
+    "operation": "G4専用2本のsecondary keeper候補を実工具で解除する手順を参照",
+    "check_id": "KEEPER_ONLY_THIS_AXIS",
+    "hold_note": "M2ボス実肉厚/工具クリアランス未検証",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S09",
+    "order": 9,
+    "operation": "G4のロックバーだけを解除し、残り6軸の固定状態を維持",
+    "check_id": "SINGLE_AXIS_BAR_RELEASED",
+    "hold_note": "実工具と材料強度は未検証",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S10",
+    "order": 10,
+    "operation": "G4を背面 +Z に55mm独立で引き抜く経路を図面照合",
+    "check_id": "SWEEP_55MM",
+    "hold_note": "実ハーネスとコネクタ干渉は未検証",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S11",
+    "order": 11,
+    "operation": "G4の単独モジュール交換と受入寸法を記録",
+    "check_id": "ONE_MODULE_ONLY",
+    "hold_note": "モジュール実寸未取得、SKUはPROVISIONAL",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S12",
+    "order": 12,
+    "operation": "G4を -Z に戻し個別ロックバー/keeperを再装着する想定手順",
+    "check_id": "RELOCK_SINGLE_AXIS",
+    "hold_note": "実ロック耐力/締付トルク不明・装着未承認",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S13",
+    "order": 13,
+    "operation": "G4に紐づく6端子を原Pin1..6で戻し導通確認票と突合",
+    "check_id": "SIX_PINS_RECHECK",
+    "hold_note": "G2-08実導通/HILは待ち",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S14",
+    "order": 14,
+    "operation": "残り6軸のカセット・歯車・P3は一切取り外していないことを確認",
+    "check_id": "OTHER_SIX_UNTOUCHED",
+    "hold_note": "7軸独立交換の設計不変条件",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G4",
+    "step": "S15",
+    "order": 15,
+    "operation": "背面カバー復元。未合格電装/熱/強度の限り通電しない",
+    "check_id": "REASSEMBLE_NO_POWER",
+    "hold_note": "G3-08/G5-08ハード受入待ち",
+    "axis_center_mm": [
+      225,
+      130
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G5",
+    "step": "S01",
+    "order": 1,
+    "operation": "投入可能な系統を全てOFFし絶縁・無電圧である証拠を要求",
+    "check_id": "ALL_POWER_ISOLATED",
+    "hold_note": "実配線の無電圧検証はHARDWARE_WAIT",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S02",
+    "order": 2,
+    "operation": "前面透明保護板/歯車は動かさない、後部のみ共通背面カバーへのアクセスを確認",
+    "check_id": "GEARS_STAY_FIXED",
+    "hold_note": "作業許可のない試作品では分解実行しない",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S03",
+    "order": 3,
+    "operation": "共通後部BACK_WOODカバーと背面グリルの取り外し工程を参照",
+    "check_id": "COMMON_BACK_REMOVABLE",
+    "hold_note": "ネジ位置や工具条件はG6-04/08未完了",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S04",
+    "order": 4,
+    "operation": "旧60mmファン移設済の条件を監査（移設していなければ即HOLD）",
+    "check_id": "FAN_RELOCATION_PRECONDITION",
+    "hold_note": "ファン電流/給電/熱はG3-06未解決",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S05",
+    "order": 5,
+    "operation": "G5 だけ識別ラベルを確認（座標X=140,Y=85）",
+    "check_id": "AXIS_IDENTIFIED",
+    "hold_note": "現物位置誤識別防止",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S06",
+    "order": 6,
+    "operation": "G5 J_M1_G5 だけの6系統1..6を相互に混線させないことを確認",
+    "check_id": "SIX_PIN_MAP_IDENTIFIED",
+    "hold_note": "ピン順、実切断長、クランプ/ストレインリリーフは未確定",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S07",
+    "order": 7,
+    "operation": "引抜き前にコネクタを無通電で解放し、ケーブルの曲げRと保持具条件をチェック",
+    "check_id": "CABLE_NOT_TAUT",
+    "hold_note": "現物配線長TBDにつきHOLD",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S08",
+    "order": 8,
+    "operation": "G5専用2本のsecondary keeper候補を実工具で解除する手順を参照",
+    "check_id": "KEEPER_ONLY_THIS_AXIS",
+    "hold_note": "M2ボス実肉厚/工具クリアランス未検証",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S09",
+    "order": 9,
+    "operation": "G5のロックバーだけを解除し、残り6軸の固定状態を維持",
+    "check_id": "SINGLE_AXIS_BAR_RELEASED",
+    "hold_note": "実工具と材料強度は未検証",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S10",
+    "order": 10,
+    "operation": "G5を背面 +Z に55mm独立で引き抜く経路を図面照合",
+    "check_id": "SWEEP_55MM",
+    "hold_note": "実ハーネスとコネクタ干渉は未検証",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S11",
+    "order": 11,
+    "operation": "G5の単独モジュール交換と受入寸法を記録",
+    "check_id": "ONE_MODULE_ONLY",
+    "hold_note": "モジュール実寸未取得、SKUはPROVISIONAL",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S12",
+    "order": 12,
+    "operation": "G5を -Z に戻し個別ロックバー/keeperを再装着する想定手順",
+    "check_id": "RELOCK_SINGLE_AXIS",
+    "hold_note": "実ロック耐力/締付トルク不明・装着未承認",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S13",
+    "order": 13,
+    "operation": "G5に紐づく6端子を原Pin1..6で戻し導通確認票と突合",
+    "check_id": "SIX_PINS_RECHECK",
+    "hold_note": "G2-08実導通/HILは待ち",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S14",
+    "order": 14,
+    "operation": "残り6軸のカセット・歯車・P3は一切取り外していないことを確認",
+    "check_id": "OTHER_SIX_UNTOUCHED",
+    "hold_note": "7軸独立交換の設計不変条件",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G5",
+    "step": "S15",
+    "order": 15,
+    "operation": "背面カバー復元。未合格電装/熱/強度の限り通電しない",
+    "check_id": "REASSEMBLE_NO_POWER",
+    "hold_note": "G3-08/G5-08ハード受入待ち",
+    "axis_center_mm": [
+      140,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "BACK_WOOD G5 has 81.346% existing void. DO NOT CUT 48x35x3 pocket"
+  },
+  {
+    "axis": "G6",
+    "step": "S01",
+    "order": 1,
+    "operation": "投入可能な系統を全てOFFし絶縁・無電圧である証拠を要求",
+    "check_id": "ALL_POWER_ISOLATED",
+    "hold_note": "実配線の無電圧検証はHARDWARE_WAIT",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S02",
+    "order": 2,
+    "operation": "前面透明保護板/歯車は動かさない、後部のみ共通背面カバーへのアクセスを確認",
+    "check_id": "GEARS_STAY_FIXED",
+    "hold_note": "作業許可のない試作品では分解実行しない",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S03",
+    "order": 3,
+    "operation": "共通後部BACK_WOODカバーと背面グリルの取り外し工程を参照",
+    "check_id": "COMMON_BACK_REMOVABLE",
+    "hold_note": "ネジ位置や工具条件はG6-04/08未完了",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S04",
+    "order": 4,
+    "operation": "旧60mmファン移設済の条件を監査（移設していなければ即HOLD）",
+    "check_id": "FAN_RELOCATION_PRECONDITION",
+    "hold_note": "ファン電流/給電/熱はG3-06未解決",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S05",
+    "order": 5,
+    "operation": "G6 だけ識別ラベルを確認（座標X=50,Y=85）",
+    "check_id": "AXIS_IDENTIFIED",
+    "hold_note": "現物位置誤識別防止",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S06",
+    "order": 6,
+    "operation": "G6 J_M1_G6 だけの6系統1..6を相互に混線させないことを確認",
+    "check_id": "SIX_PIN_MAP_IDENTIFIED",
+    "hold_note": "ピン順、実切断長、クランプ/ストレインリリーフは未確定",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S07",
+    "order": 7,
+    "operation": "引抜き前にコネクタを無通電で解放し、ケーブルの曲げRと保持具条件をチェック",
+    "check_id": "CABLE_NOT_TAUT",
+    "hold_note": "現物配線長TBDにつきHOLD",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S08",
+    "order": 8,
+    "operation": "G6専用2本のsecondary keeper候補を実工具で解除する手順を参照",
+    "check_id": "KEEPER_ONLY_THIS_AXIS",
+    "hold_note": "M2ボス実肉厚/工具クリアランス未検証",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S09",
+    "order": 9,
+    "operation": "G6のロックバーだけを解除し、残り6軸の固定状態を維持",
+    "check_id": "SINGLE_AXIS_BAR_RELEASED",
+    "hold_note": "実工具と材料強度は未検証",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S10",
+    "order": 10,
+    "operation": "G6を背面 +Z に55mm独立で引き抜く経路を図面照合",
+    "check_id": "SWEEP_55MM",
+    "hold_note": "実ハーネスとコネクタ干渉は未検証",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S11",
+    "order": 11,
+    "operation": "G6の単独モジュール交換と受入寸法を記録",
+    "check_id": "ONE_MODULE_ONLY",
+    "hold_note": "モジュール実寸未取得、SKUはPROVISIONAL",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S12",
+    "order": 12,
+    "operation": "G6を -Z に戻し個別ロックバー/keeperを再装着する想定手順",
+    "check_id": "RELOCK_SINGLE_AXIS",
+    "hold_note": "実ロック耐力/締付トルク不明・装着未承認",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S13",
+    "order": 13,
+    "operation": "G6に紐づく6端子を原Pin1..6で戻し導通確認票と突合",
+    "check_id": "SIX_PINS_RECHECK",
+    "hold_note": "G2-08実導通/HILは待ち",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S14",
+    "order": 14,
+    "operation": "残り6軸のカセット・歯車・P3は一切取り外していないことを確認",
+    "check_id": "OTHER_SIX_UNTOUCHED",
+    "hold_note": "7軸独立交換の設計不変条件",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G6",
+    "step": "S15",
+    "order": 15,
+    "operation": "背面カバー復元。未合格電装/熱/強度の限り通電しない",
+    "check_id": "REASSEMBLE_NO_POWER",
+    "hold_note": "G3-08/G5-08ハード受入待ち",
+    "axis_center_mm": [
+      50,
+      85
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S01",
+    "order": 1,
+    "operation": "投入可能な系統を全てOFFし絶縁・無電圧である証拠を要求",
+    "check_id": "ALL_POWER_ISOLATED",
+    "hold_note": "実配線の無電圧検証はHARDWARE_WAIT",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S02",
+    "order": 2,
+    "operation": "前面透明保護板/歯車は動かさない、後部のみ共通背面カバーへのアクセスを確認",
+    "check_id": "GEARS_STAY_FIXED",
+    "hold_note": "作業許可のない試作品では分解実行しない",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S03",
+    "order": 3,
+    "operation": "共通後部BACK_WOODカバーと背面グリルの取り外し工程を参照",
+    "check_id": "COMMON_BACK_REMOVABLE",
+    "hold_note": "ネジ位置や工具条件はG6-04/08未完了",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S04",
+    "order": 4,
+    "operation": "旧60mmファン移設済の条件を監査（移設していなければ即HOLD）",
+    "check_id": "FAN_RELOCATION_PRECONDITION",
+    "hold_note": "ファン電流/給電/熱はG3-06未解決",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S05",
+    "order": 5,
+    "operation": "G7 だけ識別ラベルを確認（座標X=140,Y=40）",
+    "check_id": "AXIS_IDENTIFIED",
+    "hold_note": "現物位置誤識別防止",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S06",
+    "order": 6,
+    "operation": "G7 J_M1_G7 だけの6系統1..6を相互に混線させないことを確認",
+    "check_id": "SIX_PIN_MAP_IDENTIFIED",
+    "hold_note": "ピン順、実切断長、クランプ/ストレインリリーフは未確定",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S07",
+    "order": 7,
+    "operation": "引抜き前にコネクタを無通電で解放し、ケーブルの曲げRと保持具条件をチェック",
+    "check_id": "CABLE_NOT_TAUT",
+    "hold_note": "現物配線長TBDにつきHOLD",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S08",
+    "order": 8,
+    "operation": "G7専用2本のsecondary keeper候補を実工具で解除する手順を参照",
+    "check_id": "KEEPER_ONLY_THIS_AXIS",
+    "hold_note": "M2ボス実肉厚/工具クリアランス未検証",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S09",
+    "order": 9,
+    "operation": "G7のロックバーだけを解除し、残り6軸の固定状態を維持",
+    "check_id": "SINGLE_AXIS_BAR_RELEASED",
+    "hold_note": "実工具と材料強度は未検証",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S10",
+    "order": 10,
+    "operation": "G7を背面 +Z に55mm独立で引き抜く経路を図面照合",
+    "check_id": "SWEEP_55MM",
+    "hold_note": "実ハーネスとコネクタ干渉は未検証",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S11",
+    "order": 11,
+    "operation": "G7の単独モジュール交換と受入寸法を記録",
+    "check_id": "ONE_MODULE_ONLY",
+    "hold_note": "モジュール実寸未取得、SKUはPROVISIONAL",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S12",
+    "order": 12,
+    "operation": "G7を -Z に戻し個別ロックバー/keeperを再装着する想定手順",
+    "check_id": "RELOCK_SINGLE_AXIS",
+    "hold_note": "実ロック耐力/締付トルク不明・装着未承認",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S13",
+    "order": 13,
+    "operation": "G7に紐づく6端子を原Pin1..6で戻し導通確認票と突合",
+    "check_id": "SIX_PINS_RECHECK",
+    "hold_note": "G2-08実導通/HILは待ち",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S14",
+    "order": 14,
+    "operation": "残り6軸のカセット・歯車・P3は一切取り外していないことを確認",
+    "check_id": "OTHER_SIX_UNTOUCHED",
+    "hold_note": "7軸独立交換の設計不変条件",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  },
+  {
+    "axis": "G7",
+    "step": "S15",
+    "order": 15,
+    "operation": "背面カバー復元。未合格電装/熱/強度の限り通電しない",
+    "check_id": "REASSEMBLE_NO_POWER",
+    "hold_note": "G3-08/G5-08ハード受入待ち",
+    "axis_center_mm": [
+      140,
+      40
+    ],
+    "required_retraction_plus_z_mm": 55,
+    "other_axis_module_removal_allowed": false,
+    "gears_or_p3_removed_allowed": false,
+    "common_rear_cover_removed_allowed": true,
+    "status": "PROCEDURE_ONLY",
+    "actual_trial": "NOT_TESTED",
+    "cutting_approval": false,
+    "wood_pocket_rule": "48x35x3 rear pocket candidate ONLY; NO machining approval"
+  }
+]

@@ -2,25 +2,25 @@
   "version": "v1.3",
   "updated_date": "2026-10-16",
   "task_total": 48,
-  "scoped_evidence_done": 19,
+  "scoped_evidence_done": 20,
   "working": 6,
-  "open": 19,
+  "open": 18,
   "hardware_wait": 4,
   "new_this_turn": [
-    "G6-03"
+    "G6-06"
   ],
   "manufacturer_release_closed": 0,
   "manufacturer_release_total": 6,
   "software_evidence_passed": 11,
   "software_evidence_total": 14,
   "gh_guard_scope": "process consistency only, not safety validation",
-  "new_evidence": "execution/g6_03_80_source_faces/design_contract.json",
+  "new_evidence": "execution/g6_06_build_service_sequence/evidence_contract.json",
   "prior_new_completed": [
     "G2-06"
   ],
   "previous_scoped_milestones": [
-    "G2-06",
-    "G4-02",
-    "G6-02"
+    "G6-03",
+    "G6-02",
+    "G4-02"
   ]
 }
