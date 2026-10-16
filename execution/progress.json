@@ -3,8 +3,8 @@
   "updated_date": "2026-10-16",
   "task_total": 48,
   "scoped_evidence_done": 20,
-  "working": 6,
-  "open": 18,
+  "working": 7,
+  "open": 17,
   "hardware_wait": 4,
   "new_this_turn": [
     "G6-06"
@@ -22,5 +22,6 @@
     "G6-03",
     "G6-02",
     "G4-02"
-  ]
+  ],
+  "new_working_evidence": "execution/g5_05_access_core/README.md"
 }
