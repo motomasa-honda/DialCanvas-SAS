@@ -33,6 +33,27 @@ issues=[v for s in erc["sheets"] for v in s["violations"]]
 tally=collections.Counter(v["type"] for v in issues)
 assert tally.get("endpoint_off_grid",0)==0,tally
 assert tally.get("lib_symbol_issues",0)==0,tally
+import re
+register=json.loads((here/"erc_open_register.json").read_text())
+assert register["count"]==20
+expected_erc=set(register["tracked_label_nets"])
+actual_erc=set()
+for issue in issues:
+    assert issue["type"]=="label_dangling",("unexpected ERC class",issue["type"])
+    assert issue["severity"]=="error"
+    matches=re.findall(r"Label '([^']+)'",issue["items"][0]["description"])
+    assert len(matches)==1,issue
+    assert matches[0] not in actual_erc,("duplicate ERC issue",matches[0])
+    actual_erc.add(matches[0])
+assert len(issues)==20,("ERC issue count changed; update blocker status deliberately",len(issues))
+assert actual_erc==expected_erc,("ERC unresolved issue changed",actual_erc^expected_erc)
+assert set(register["statuses"]["real_efuse_analog_design_blockers"])=={
+    "B77__REQUIRES_OVLO_PARTS","B77__REQUIRES_DVDT_DESIGN",
+    "B77__REQUIRES_ILIM_R","B77__REQUIRES_ITIMER_C"
+}
+assert register["release"]["efuse_en"]=="GND_ONLY"
+assert register["release"]["manufacturing_gates_closed"]==0
+
 print("PASS: Genuine KiCad9 XML nets EXACTLY match 98 components/104 nets/364 pins")
 print("REAL ERC: {} findings by type: {}".format(len(issues),dict(sorted(tally.items()))))
 if issues:print("HOLD: ERC violations remain; physical electrical safety is NOT approved")
