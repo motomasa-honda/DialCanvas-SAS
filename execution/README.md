@@ -10,10 +10,10 @@ Exactly **48 independently scoped deliverables**: eight in each of the six D7 ma
 | G1 Real electrical / PCB | 4 | 2 | 2 | 0 | OPEN |
 | G2 Complete physical harness | 3 | 0 | 4 | 1 | OPEN |
 | G3 Mechanical/wood/thermal | 3 | 2 | 2 | 1 | OPEN |
-| G4 BOM, specs, fabrication drawings | 1 | 2 | 5 | 0 | OPEN |
+| G4 BOM, specs, fabrication drawings | 2 | 1 | 5 | 0 | OPEN |
 | G5 Product SW integration | 4 | 1 | 2 | 1 | OPEN |
 | G6 All A3 patterns and assembly sequence | 1 | 1 | 5 | 1 | OPEN |
-| **TOTAL** | **16/48** | **8** | **20** | **4** | **0/6 closed** |
+| **TOTAL** | **17/48** | **7** | **20** | **4** | **0/6 closed** |
 
 These **16 scoped passes** include **15 prior source-evidenced partial deliverables plus one NEW document this turn (G2-06)**. DO NOT report them as 16 finished manufacturing assemblies, a 33% product completion metric, or a cleared hardware safety review. Software evidence **11/14**, remaining SW09, SW12, SW14.
 
@@ -49,3 +49,11 @@ New downloadable **source-based 3D** design and **rear wood** reinforcement arti
 ## Actual positive key mechanics, 14/14 — 2026-10-16
 
 [Seven-axis bayonet native CAD + CI](bayonet_2026-10-16/README.md): replaced nonfunctional thin clip envelopes with matched rigid keys + fixed-rail entry slots and undercut guide lips on **both sides of all 7 axes**. Source-verified local D7 fixed-geometry audit PASS; 14/14 full entry-slide-capture-reverse NOMINAL kinematics PASS (3,416 sample states). **Run 38841326432 SUCCESS**, 42 injected geometry failures detected. But the **secondary reverse-slide keeper IS UNDESIGNED**, and min 0.60mm positive hook overlap / 0.95mm lip must be physically qualified. `G3-04` remains WORKING (not DONE_SCOPE) and `16/48`, manufacturing `0/6`, software `11/14` remain unchanged. Review sheet + native 3D & STL are in the user engineering ZIP; direct GitHub native CAD model is a small G1 and minimal 7-axis model, not the full source D7 project.
+
+## Confirmed new scoped completion G4-02 — 2026-10-16
+
+**SOURCE RECOVERY BREAKTHROUGH**: The old 429-line `d7/bom/unified-bom.csv`, original 18-line `d7/bom/m1-module-bom-addendum.csv`, and 68 original wood machining operations were found INSIDE the nested `forest-guardian-chatgpt-handoff.zip` in the Phase67 legacy baseline. The contained 65,483,374-byte `d7/cad/assembly.json` was recomputed to the unchanged D7 SHA256 `20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f`.
+
+G4-02 is now **DONE_SCOPE**: every original DRIVER implementation line (**59**) mapped 1:1 into retired/replace/transfer/safety redesign; 28 old R_PD are superseded by exactly 28 M1-phase pull-downs, 4 old TBD drivers retired, 7 existing separate motor fuses retained and 2 MCP breakouts added with no duplicate original DIP28 purchase. The original master BOM omitted old RTC `U609 RX8900` despite the PCB assembly BOM listing it; its exact source line was **recovered**. Integrated audit = **429+18+1=448 source-based rows**, **NO manufacturing release**. The recovered 68 historical wood operations are indexed; their new M1 machining integration is still incomplete. See [full reconciliation and known source conflict](bom_reconciled_2026-10-16/README.md).
+
+Counts now **17 DONE_SCOPE, 7 WORKING, 20 OPEN, 4 HARDWARE_WAIT** (48 unchanged), manufacturing **0/6**, software evidence **11/14**. Previous README historical first-baseline 16/48 description remains a historical milestone, not the latest state. All purchase, power, cutting, flash and main merge forbidden.
