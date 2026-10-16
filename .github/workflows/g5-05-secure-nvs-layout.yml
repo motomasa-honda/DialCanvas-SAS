@@ -1,0 +1,30 @@
+name: G5-05 actual IDF encrypted-NVS partition parser (unapproved, NO FLASH)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g5-05-secure-nvs-layout.yml'
+      - 'execution/g5_05_secure_partition/**'
+      - 'phase67-source/firmware.tar.gz'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g5-05-nvs-keys-native-partition-parser-no-flash:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare exact source RAW A/B and validate review partition using native IDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 execution/g5_05_secure_partition/check_partition.py
+          python3 execution/preflight.py
+          source /opt/esp/idf/export.sh
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" --flash-size 32MB execution/g5_05_secure_partition/partition-nvs-encrypted-raw-ab-review.csv /tmp/fg-secure-review.bin
+          test -s /tmp/fg-secure-review.bin
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" /tmp/fg-secure-review.bin | grep -q 'nvs_keys'
+          echo "PASS actual IDF partition parser: candidate only, no flash, no eFuse"
