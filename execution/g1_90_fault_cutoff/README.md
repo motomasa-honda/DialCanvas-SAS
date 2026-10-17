@@ -21,3 +21,6 @@ Generator consumes original G1-89 native KiCad (which reproducibly generates G1-
 Scope G1-05/G1-06 stays WORKING, 20/48 formally done, 0/6 manufacturing gate. NO purchases, fabrication, power-on, flashing, or main merge. Always apply safety hold.
 
 **Remaining power-sequencing safety gate:** TPS3808 RESET_N is undefined below its power-on-reset supply threshold; this logic OR does NOT make 3V3_AON missing safe by itself. U7 EN's unconditional R4 pull-down is the currently enforced no-power guarantee. Independent AON brownout-to-power shutdown, `FAULT_Q` latch settling, logic output contention, worst-case sink/driver thresholds, and hardware HIL remain blockers.
+
+## G1-89電圧閾値是正の継承（2026-10-18）
+本回路の親G1-89はMR=実eFuse EN直結の不整合を改修済み。U33.3 MRは3V3_AON、SENSEは実U14.1 ENの12k/10k分圧で、EN起動前に監視の開始条件を検出する。G1-90のeFuse ENシンクQ1も同一の実ENへ接続されており、故障時は監視SENSEも落ちる。逆にこれらは実運転許可、AON低下時の安全性、故障の全条件成立を証明しない。

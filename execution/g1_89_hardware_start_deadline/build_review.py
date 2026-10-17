@@ -63,18 +63,27 @@ def main():
     s=one(s,'(paper "User" 1450 1200)','(paper "User" 1450 1500)')
     extra=[]
     x=63.5;y=1268.73
-    # DBV pins 1=RESET_N 2=GND 3=MR_N 4=CT 5=SENSE 6=VDD
-    wires=["B88__MONITOR_ACTIVE","GND","B77__U7_EN_CLAMPED_DISABLED",
-           "B89__STARTUP_CT","B89__AON_SENSE_DIV","3V3_AON"]
+    # DBV pins 1=RESET_N 2=GND 3=MR_N 4=CT 5=SENSE 6=VDD.
+    # Critical G1-89 repair: TPS3808 MR digital VIH>=0.7*3V3=2.31V,
+    # while TPS259474 eFuse EN may assert at 1.183V.
+    # MR is tied to its own well-defined AON VDD, while high-accuracy
+    # adjustable SENSE sees the SAME physical eFuse EN via a divider.
+    # This starts the timer before the minimum eFuse turn-on threshold;
+    # neither MCU software nor PG can postpone the hardware deadline.
+    wires=["B88__MONITOR_ACTIVE","GND","3V3_AON",
+           "B89__STARTUP_CT","B89__EN_SENSE_DIV","3V3_AON"]
     for n,net in enumerate(wires,1):
         prior.pin(rows,extra,"U33",n,net,x-15.24,y+(n-3.5)*2.54)
     extra.append(sym("U33","FG_TIMER:TPS3808G01DBVR","TPS3808G01DBVR",x,y,6))
-    # Nominal 3.03V AON threshold. Delay nominal ~389ms after actual EN.
-    parts=[("R57","64K9_1PCT_SENSE_TOP",["3V3_AON","B89__AON_SENSE_DIV"]),
-           ("R58","10K_1PCT_SENSE_BOT",["B89__AON_SENSE_DIV","GND"]),
+    # SENSE falling threshold nominal 0.405V; for EN divider 12k/10k,
+    # equivalent EN threshold is 0.891V typical (worst tolerance <0.920V),
+    # safely below eFuse EN rising min 1.183V. R4 permanent PD retained.
+    # 68nF gives ~389ms nominal delay, NOT a guaranteed max <=500ms.
+    parts=[("R57","12K_1PCT_EN_SENSE_TOP",["B77__U7_EN_CLAMPED_DISABLED","B89__EN_SENSE_DIV"]),
+           ("R58","10K_1PCT_EN_SENSE_BOT",["B89__EN_SENSE_DIV","GND"]),
            ("C30","68NF_LOW_LEAKAGE_CT",["B89__STARTUP_CT","GND"]),
            ("C31","100NF_VDD_DECOUPLING",["3V3_AON","GND"]),
-           ("C32","1NF_SENSE_FILTER",["B89__AON_SENSE_DIV","GND"])]
+           ("C32","1NF_SENSE_FILTER",["B89__EN_SENSE_DIV","GND"])]
     for i,(ref,value,nets) in enumerate(parts):
         x=175.26+i*111.76
         for n,net in enumerate(nets,1):
@@ -85,5 +94,5 @@ def main():
     (D/"pin_map_499.json").write_text(json.dumps(rows,indent=2)+"\n")
     (D/(NEW+".kicad_sch")).write_text(s.rstrip()[:-1]+"\n"+"\n".join(extra)+"\n)\n")
     print("PASS: KiCad G1-89 499 true pads/141 symbols; J19 removed; R56 pull-up, actual TPS3808 DBV.")
-    print("HOLD: U7 ENABLE STILL LOW; all 28 OE disabled; no motor can be energized.")
+    print("HOLD: U7 EN still R4 to GND, 28 OE disabled. 3V3 cold POR, analog delay and safety HIL not accepted.")
 if __name__=="__main__":main()

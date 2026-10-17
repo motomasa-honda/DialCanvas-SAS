@@ -1,14 +1,28 @@
-# G1-89 — Hardware startup deadline wired to PG/rail safety monitor (review only)
+# G1-89 — 電源起動監視タイマーの閾値修正（実KiCad候補、非通電）
 
-## Removed an unsafe bypass and filled the physical timer gap
-G1-88 exposed MONITOR_ACTIVE on J19 and pulled it down permanently. This revision eliminates J19 entirely and rewires R56 as a TI-required 10k pull-up. The real open-drain reset output of U33 now drives MONITOR_ACTIVE. With U7 EN LOW, MONITOR_ACTIVE remains inactive, so no motor power is released.
+## 既存回路の危険な不整合を解消
 
-U33 TI TPS3808G01DBVR physical pins: 1 RESET_N, 2 GND, 3 MR_N, 4 CT, 5 SENSE, 6 VDD. MR_N is connected to the ACTUAL eFuse U7 EN net, not software and not PG. The 68nF CT capacitor C30 gives nominal 68/175 + 0.0005 = ~0.389 seconds; the 64.9k/10k divider on 3V3_AON gives nominal detection threshold ~3.033V. C31 local 100nF decoupling, C32 1nF SENSE filter.
+以前のG1-89ではTPS3808G01DBVRのMR（U33.3）をTPS259474L eFuseのEN/UVLOに直結していました。TI一次資料によると、TPS259474のEN有効化は1.183Vから起こり得る一方、TPS3808のMR HIGH保証はVDD=3.3Vなら2.31V以上です。したがって**モーター電源だけ有効となって起動タイマーが始まらない窓**があり、変更前の設計はそのまま稼働させられません。
 
-The timer does not wait for PG before starting: failure to establish PG can trip the already-connected G1-88 NOR fault latch at the deadline. PG loss after the deadline also trips. This is a conditional design: actual motor enable is still hard disabled. The real worst-case timer, capacitor tolerance, AON brownout and startup races are NOT proven.
+今回は**回路端子の物理接続を次のように修正**します。
 
-Manufacturer basis: https://www.ti.com/lit/ds/symlink/tps3808.pdf and https://www.ti.com/product/TPS3808 . TPS3808 open-drain RESET_N requires 10k–1M pull-up; 68nF gives only a TYPICAL delay, not guaranteed <=500ms. Manufacturer DBV pinout verified, DRV pinout NOT substituted.
+- **U33.3 MR_N → 3V3_AON**（U33.6 VDDと同じレール、通常動作中は常時HIGH）。
+- **U33.5 SENSE → B89__EN_SENSE_DIV**（デジタルMRではなく高精度0.405VのアナログSENSEで本物のEN電圧を観測）。
+- **R57=12kΩ±1%**を実eFuse EN（U14.1と同ネット）～SENSE間、**R58=10kΩ±1%**をSENSE～GND間。C32=1nFはこのSENSEに接続。起動タイマCT C30=68nFは従来維持。
+- J19廃止、RESET_NのR56=10kΩプルアップは従来維持。**R4=10kΩでENをGNDへ固定する既存安全措置と8本の/OE無効は維持。**
 
-Reproducible: python3 execution/g1_89_hardware_start_deadline/build_review.py regenerates G1-88 as the exact base then actual native KiCad G1-89 and all 499 physical pads/141 symbols. CI exports genuine KiCad9 SVG/netlist/ERC and compares all pins. No native ERC warnings suppressed.
+閾値の公称値は0.405×(1+12/10)=**0.891V**。TPS3808G01のVIT±2%、各抵抗±1%を組み合わせた最悪範囲は概ね0.873～0.919Vとなり、TPS259474の**EN立上り下限1.183Vより低い**。ゆえにENが実際にeFuseを有効化し得る前にSENSEがタイマ開始を検知する構成です。ただしコンデンサ、温度、SENSE漏れ電流、実EN駆動源・電源ランプはHILでの照合が必要であり**時間保証ではありません**。
 
-**Not done:** physical U7 EN cutoff and phase OE gates, independent real power sourcing, cold power-up fault latch POR, STOP-short monitor, PCB footprints/DRC, thermal load/HIL. Keep G1-05/06 WORKING, 20/48 DONE_SCOPE, manufacturing 0/6. Do not buy, power, fabricate, flash or merge main.
+U33からのRESET_N解除でMONITOR_ACTIVEがHIGHになり、G1-88のPG×独立5V健全性監視を有効にします。元PG信号に依存して監視を開始することはありません。
+
+## 出典（TIメーカー一次資料）
+
+- TPS3808 最新データシート Rev.N, 2026-08: https://www.ti.com/lit/ds/symlink/tps3808.pdf （5 pin definition、6.5 electrical / MR VIH 0.7×VDD、TPS3808G01 ±2% VIT、CT time）。
+- TPS25947 最新データシート Rev.C, 2026-05: https://www.ti.com/lit/ds/symlink/tps25947.pdf （6.5 electrical / VUVLO rising 1.183–1.223V）。
+- 基準G1-88→G1-89を実生成、回路内すべての499物理端子と141部品を本物のKiCad9 XML/ERCで確認。G1-90の全522端子149部品も再照合。ERC違反の握りつぶし禁止。
+
+## 未完了と禁止事項
+
+*タイマー遅延68nF→約389msは公称値。最大500ms保証ではない。* 実負荷・eFuse立上り時間・AON電源喪失中のロジック未定義、EN実駆動回路、故障遮断FETオン抵抗、PCBメーカーfootprint/ERC19件/DRC/実機HILは未完了。U33が3V3_AONをSENSEで監視しなくなったため、**AON独立ブラウンアウト検知の設計・検証が別途必要**。ENには追加した12k+10k分圧が抵抗負荷として並列接続されるため、将来駆動回路はR4と併せて3.3V時に約0.48mAのソース能力が必要。
+
+G1-05/G1-06はWORKING、20/48 DONE_SCOPE、製造0/6。現物通電・購買・製造・書込み・mainマージは禁止。

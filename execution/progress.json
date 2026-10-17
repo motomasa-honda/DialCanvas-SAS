@@ -26,5 +26,6 @@
   "new_working_evidence": "execution/g5_06_signed_ota/README.md",
   "g5_05_last_review": "2026-10-17: independent encrypted fg_cfg 32KiB review, offline encrypted NVS mock, remote START/FAULT CLEAR locked; hardware pending",
   "g5_06_last_review": "2026-10-17: signed ESP32-P4 build passed; rollback failure/image-state query failure now blocks app_main startup; physical rollback/HIL still HOLD",
-  "g1_88_last_review": "2026-10-18: KiCad G1-88 post-start PG+rail fault review candidate, physical monitor arming/timer NOT BUILT; G1-05/06 WORKING"
+  "g1_88_last_review": "2026-10-18: KiCad G1-88 post-start PG+rail fault review candidate, physical monitor arming/timer NOT BUILT; G1-05/06 WORKING",
+  "g1_89_threshold_fix_review": "2026-10-18: U33 MR tied to 3V3_AON; SENSE now monitors U14 actual EN via 12k/10k (typ 0.891V, worst <0.93V vs eFuse min 1.183V); parent G1-90 cutoff pin map adjusted; power OFF, G1-05/06 WORKING"
 }
