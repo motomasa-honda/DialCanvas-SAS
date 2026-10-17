@@ -24,7 +24,7 @@ assert 'fg_ota_stage(source,&ops,bytes,false,false)' in port
 assert '"fg_ota_port.c"' in patch and 'REQUIRES app_update' in patch
 with (p.parent/"tasks.csv").open(encoding="utf-8-sig",newline="") as f:tasks=list(csv.DictReader(f))
 state=next(x["Status"] for x in tasks if x["ID"]=="G5-06")
-assert state in ("OPEN","WORKING")
+assert state=="WORKING"
 progress=json.loads((p.parent/"progress.json").read_text())
 assert progress["manufacturer_release_closed"]==0 and progress["scoped_evidence_done"]==20
 print("PASS G5-06 real IDF OTA port staged: inactive A/B only, IDF signature and rollback mandatory, HIL false")

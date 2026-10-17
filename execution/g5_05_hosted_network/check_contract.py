@@ -30,7 +30,11 @@ assert not any(x in wifi+secret+patch for x in ('esp_efuse_write','esp_efuse_bur
 with (root.parent/"tasks.csv").open(encoding="utf-8-sig",newline="") as f:t=list(csv.DictReader(f))
 pr=json.loads((root.parent/"progress.json").read_text())
 assert next(x["Status"] for x in t if x["ID"]=="G5-05")=="WORKING"
-assert (pr["scoped_evidence_done"],pr["working"],pr["open"],pr["hardware_wait"])==(20,7,17,4)
+from collections import Counter
+counts=Counter(x["Status"] for x in t)
+assert (pr["scoped_evidence_done"],pr["working"],pr["open"],pr["hardware_wait"])==(
+ counts["DONE_SCOPE"],counts["WORKING"],counts["OPEN"],counts["HARDWARE_WAIT"])
+assert pr["scoped_evidence_done"]>=20 and pr["manufacturer_release_closed"]==0
 assert pr["manufacturer_release_closed"]==0
 print("PASS G5-05 real-network source fail-closed: encrypted NVS+IP+TLS prerequisites, offline on loss")
 print("HOLD actual P4/C6 firmware interoperability, key provisioning, real TLS handshake & E2E")

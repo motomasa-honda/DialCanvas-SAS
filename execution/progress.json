@@ -3,8 +3,8 @@
   "updated_date": "2026-10-17",
   "task_total": 48,
   "scoped_evidence_done": 20,
-  "working": 7,
-  "open": 17,
+  "working": 8,
+  "open": 16,
   "hardware_wait": 4,
   "new_this_turn": [
     "G6-06"
@@ -23,6 +23,7 @@
     "G6-02",
     "G4-02"
   ],
-  "new_working_evidence": "execution/g5_05_secure_partition/README.md",
-  "g5_05_last_review": "2026-10-17: independent encrypted fg_cfg 32KiB review, offline encrypted NVS mock, remote START/FAULT CLEAR locked; hardware pending"
+  "new_working_evidence": "execution/g5_06_signed_ota/README.md",
+  "g5_05_last_review": "2026-10-17: independent encrypted fg_cfg 32KiB review, offline encrypted NVS mock, remote START/FAULT CLEAR locked; hardware pending",
+  "g5_06_last_review": "2026-10-17: native P4 OTA port & RSA3072 synthetic tamper test successful, no signed production mode, real rollback HIL hold"
 }

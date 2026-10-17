@@ -1,4 +1,4 @@
-# G5-06 署名付きOTA・ロールバック — 実製品への最小構成統合（WORKING候補）
+# G5-06 署名付きOTA・ロールバック — 実製品への最小構成統合（WORKING：署名済み実機更新は未承認）
 
 **今回の完了条件**は「ESP32-P4実製品のOTA実行経路をトランザクションとして実装し、改竄された署名、途中切断、誤区画、未承認通電のときに**起動対象を変更しない**こと」。本リポジトリのRAW A/Bアプリ各3.5MiB、`otadata` 8KiBを利用。更新先は`esp_ota_get_next_update_partition`で選び、現実の区画位置 0x10000/0x390000、サイズ0x380000、subtype app/ota_0,ota_1 を同時一致で確認する。文字盤データのA/B(各10MiB)は**OTAアプリ区画と無関係で、書込み禁止**。
 
@@ -24,3 +24,7 @@
 参考：[ESP-IDF OTA](https://docs.espressif.com/projects/esp-idf/en/v5.5/esp32p4/api-reference/system/ota.html) ／ [ESP-IDF Signed Apps](https://docs.espressif.com/projects/esp-idf/en/v5.5/esp32p4/api-reference/kconfig-reference.html)。
 
 **無許可の実機フラッシュ/eFuse/通電はゼロ。PR #2はDraft、20/48 DONE_SCOPE、製造0/6、eFuse EN LOWと28相/OE HIGHを維持。**
+
+## 2026-10-17：正式WORKING移行の検証証拠
+
+[GitHub Actions run 38994400580/job/117283621612](https://github.com/motomasa-honda/DialCanvas-SAS/actions/runs/38994400580/job/117283621612)：ESP32-P4製品ビルド成功、OTAを含む1,040,976バイトのアプリが3.5MiB A/B内に格納可能、Espressif RSA3072の一時テスト鍵で署名検証成功/改ざん拒否、ホストで更新中断・署名検証失敗・区画上限と誤起動選択を検査。これは正真正銘の本体ソース組込みだが、**現行ファームウェアの署名付き更新モードは無効**。サーバー/個体鍵/実電源断/実機復帰は未試験につき G5-06 `WORKING`、20/48の完了数は増やさない。

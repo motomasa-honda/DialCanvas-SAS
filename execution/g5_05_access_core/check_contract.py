@@ -11,7 +11,11 @@ assert all(z in script for z in ("fg_web_open_local_pairing","fg_web_access_init
 tasks=list(csv.DictReader((root.parent/"tasks.csv").open(encoding="utf-8-sig",newline="")))
 p=json.loads((root.parent/"progress.json").read_text())
 assert next(x for x in tasks if x["ID"]=="G5-05")["Status"]=="WORKING"
-assert next(x for x in tasks if x["ID"]=="G5-06")["Status"]=="OPEN"
-assert (p["scoped_evidence_done"],p["working"],p["open"],p["hardware_wait"])==(20,7,17,4)
+assert next(x for x in tasks if x["ID"]=="G5-06")["Status"]=="WORKING"
+from collections import Counter
+counts=Counter(x["Status"] for x in tasks)
+assert (p["scoped_evidence_done"],p["working"],p["open"],p["hardware_wait"])==(
+ counts["DONE_SCOPE"],counts["WORKING"],counts["OPEN"],counts["HARDWARE_WAIT"])
+assert p["scoped_evidence_done"]>=20 and p["manufacturer_release_closed"]==0
 assert p["manufacturer_release_closed"]==0
 print("PASS G5-05 role core scoped WORKING; no fake HTTPS completed claim or motor hardware validation")
