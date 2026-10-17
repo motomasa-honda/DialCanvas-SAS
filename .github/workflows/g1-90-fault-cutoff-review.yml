@@ -48,7 +48,7 @@ jobs:
           )
           EOF
           kicad-cli version
-      - name: Real KiCad9 XML netlist, ERC, SVG cross-check 515 source pads
+      - name: Real KiCad9 XML netlist, ERC, SVG cross-check 522 source pads
         run: |
           set -euo pipefail
           SRC=execution/g1_90_fault_cutoff/forest_guardian_g1_90_fault_cutoff_review.kicad_sch
@@ -65,5 +65,5 @@ jobs:
           path: |
             execution/g1_90_fault_cutoff/native_evidence/
             execution/g1_90_fault_cutoff/forest_guardian_g1_90_fault_cutoff_review.kicad_sch
-            execution/g1_90_fault_cutoff/pin_map_515.json
+            execution/g1_90_fault_cutoff/pin_map_522.json
           if-no-files-found: warn

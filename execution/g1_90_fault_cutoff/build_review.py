@@ -82,10 +82,11 @@ def main():
     for n,net in enumerate(["B90__FAULT_FET_GATE","GND","B77__U7_EN_CLAMPED_DISABLED"],1):
         pin(rows,extra,"Q1",n,net,x-15.24,y+(n-2)*2.54)
     extra.append(inst("Q1","FG_CUTOFF:2N7002_PG_SOT23_REVIEW","2N7002_INFINEON",x,y,3))
-    # Fault signal is physically connected to one gate; divider low when
-    # upstream FAULT_Q is floating (not treated as certified cold-start safe).
+    # The source OR logic after U35 intentionally treats TRIP as primary
+    # protection even when the NOR fault latch output has not yet settled.
+    # This STILL does not certify behavior when AON logic itself is unpowered.
     parts=[
-      ("R59","330R_FAULT_GATE_SERIES",["B86__FAULT_Q","B90__FAULT_FET_GATE"]),
+      ("R59","330R_FAULT_GATE_SERIES",["B90__CUT_REQUEST_OR","B90__FAULT_FET_GATE"]),
       ("R60","100K_FET_GS_PULLDOWN",["B90__FAULT_FET_GATE","GND"]),
       ("R61","10K_OE_SAFE_DISABLE_PULLUP",["B90__OE_DISABLE_NOT_RELEASED","3V3_AON"]),
       ("C33","100NF_U34_DECOUPLING",["3V3_AON","GND"]),
@@ -96,18 +97,31 @@ def main():
             pin(rows,extra,ref,n,net,px-15.24,y+(n-1.5)*2.54)
         extra.append(inst(ref,"FG_REVIEW:PAD2",value,px,y,2))
     # Existing G1-88 manufacturer-labelled SN74LVC1G32DBVR OR:
-    # 1=FAULT_Q high, 2=OE_DISABLE pullup high, 4 = COMMON 8 OE_N
+    # 1=FAULT or direct TRIP (from U35), 2=hard-disable pullup, 4=8 OE_N
     x=622.3
-    oe_nets=["B86__FAULT_Q","B90__OE_DISABLE_NOT_RELEASED","GND",
+    oe_nets=["B90__CUT_REQUEST_OR","B90__OE_DISABLE_NOT_RELEASED","GND",
              "B78__PHASE_OE_N_FIXED_HIGH","3V3_AON"]
     for n,net in enumerate(oe_nets,1):
         pin(rows,extra,"U34",n,net,x-15.24,y+(n-3)*2.54)
     extra.append(inst("U34","FG_FAULT:SN74LVC1G32DBVR","SN74LVC1G32DBVR",x,y,5))
-    assert len(rows)==515 and len({p["kicad_ref"] for p in rows})==147
-    assert len({(p["kicad_ref"],p["source_pin"]) for p in rows})==515
+    # Important cold-start/fault-propagation hardening: relying only on
+    # FAULT_Q is unsafe while the NOR latch is initializing or propagating.
+    # U35 directly ORs the pre-latch TRIP_COMBINED with latched FAULT_Q.
+    # Both eFuse sink and /OE must react to either HIGH source.
+    x=734.06
+    for n,net in enumerate(["B86__FAULT_Q","B88__TRIP_COMBINED","GND",
+                            "B90__CUT_REQUEST_OR","3V3_AON"],1):
+        pin(rows,extra,"U35",n,net,x-15.24,y+(n-3)*2.54)
+    extra.append(inst("U35","FG_FAULT:SN74LVC1G32DBVR","SN74LVC1G32DBVR",x,y,5))
+    x=845.82
+    for n,net in enumerate(["3V3_AON","GND"],1):
+        pin(rows,extra,"C34",n,net,x-15.24,y+(n-1.5)*2.54)
+    extra.append(inst("C34","FG_REVIEW:PAD2","100NF_U35_DECOUPLING",x,y,2))
+    assert len(rows)==522 and len({p["kicad_ref"] for p in rows})==149
+    assert len({(p["kicad_ref"],p["source_pin"]) for p in rows})==522
     s=s.rstrip()[:-1]+"\n"+"\n".join(extra)+"\n)\n"
     (D/(NEW+".kicad_sch")).write_text(s)
-    (D/"pin_map_515.json").write_text(json.dumps(rows,indent=2)+"\n")
-    print("PASS: G1-90 physically wired FET Q1 fault-to-EN + OR U34 fault-to-all 8 OE_N, 515 pads/147 parts.")
-    print("HOLD: ALL motor enabling forbidden. EN still R4 pull-down, OE U34 input2 pulled HIGH.")
+    (D/"pin_map_522.json").write_text(json.dumps(rows,indent=2)+"\n")
+    print("PASS: G1-90 522 pads/149 parts, original TRIP and FAULT_Q hard-OR to eFuse sink and all 8 OE_N.")
+    print("HOLD: U14 EN remains R4-to-GND, U34 input2 pullup HIGH; 28 phase outputs disabled.")
 if __name__=="__main__": main()
