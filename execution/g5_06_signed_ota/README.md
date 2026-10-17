@@ -28,3 +28,7 @@
 ## 2026-10-17：正式WORKING移行の検証証拠
 
 [GitHub Actions run 38994400580/job/117283621612](https://github.com/motomasa-honda/DialCanvas-SAS/actions/runs/38994400580/job/117283621612)：ESP32-P4製品ビルド成功、OTAを含む1,040,976バイトのアプリが3.5MiB A/B内に格納可能、Espressif RSA3072の一時テスト鍵で署名検証成功/改ざん拒否、ホストで更新中断・署名検証失敗・区画上限と誤起動選択を検査。これは正真正銘の本体ソース組込みだが、**現行ファームウェアの署名付き更新モードは無効**。サーバー/個体鍵/実電源断/実機復帰は未試験につき G5-06 `WORKING`、20/48の完了数は増やさない。
+
+## 検証強化：実ESP32-P4の**署名検証有効モード**を別CIで試験する
+
+前段の署名済データ生成テストは、通常の製品ビルドが実際に署名検証を**要求する**設定で動くことまで証明しなかった。このため別CIジョブで、**一時RSA3072鍵**を生成し、`CONFIG_SECURE_SIGNED_APPS_NO_SECURE_BOOT`＋`CONFIG_SECURE_SIGNED_ON_UPDATE_NO_SECURE_BOOT`＋`CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE` を**試験用構築時だけ**有効にして、ESP32-P4製品全体をビルドする。実ビルドの署名検証・1bit改ざん拒否・3.5MiB区画サイズを確認し、実物の公開鍵と秘密鍵をGitHubに登録しない。ハードSecure BootやeFuse Anti-Rollbackはこの試験では**無効**。製造・通電・デバイスへの書き込みは引き続き禁止。

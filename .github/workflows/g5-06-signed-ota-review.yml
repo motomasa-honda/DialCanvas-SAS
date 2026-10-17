@@ -91,3 +91,70 @@ jobs:
             exit 1
           fi
           echo "PASS tamper rejected; TEST-ONLY key and signed image deleted on EXIT; no production signer or device"
+
+  g5-06-real-signed-app-and-rollback-build-no-device:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build genuine RSA3072-signed ESP32-P4 rollback-enabled product with disposable key
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          umask 077
+          WORK="$(mktemp -d)"
+          export WORK
+          trap 'rm -rf "$WORK"' EXIT
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          python3 execution/g5_05_access_core/apply_product.py firmware
+          python3 execution/g5_05_https_api/apply_https_product.py firmware
+          python3 execution/g5_05_hosted_network/apply_network_product.py firmware
+          python3 execution/g5_06_signed_ota/apply_product.py firmware
+          espsecure.py generate_signing_key --version 2 --scheme rsa3072 "$WORK/test-only-sbv2.pem" >/dev/null
+          cat >> firmware/sdkconfig.defaults <<EOF
+          CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
+          CONFIG_SECURE_SIGNED_APPS_NO_SECURE_BOOT=y
+          CONFIG_SECURE_SIGNED_APPS_RSA_SCHEME=y
+          CONFIG_SECURE_SIGNED_ON_UPDATE_NO_SECURE_BOOT=y
+          CONFIG_SECURE_SIGNED_ON_BOOT_NO_SECURE_BOOT=y
+          CONFIG_SECURE_BOOT_BUILD_SIGNED_BINARIES=y
+          CONFIG_SECURE_BOOT_SIGNING_KEY="$WORK/test-only-sbv2.pem"
+          EOF
+          idf.py -C firmware set-target esp32p4 >/tmp/fg_ota_signed_target.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          cfg=Path("firmware/sdkconfig").read_text()
+          needs=[
+            "CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y",
+            "CONFIG_SECURE_SIGNED_APPS_NO_SECURE_BOOT=y",
+            "CONFIG_SECURE_SIGNED_ON_UPDATE_NO_SECURE_BOOT=y",
+            "CONFIG_SECURE_SIGNED_ON_BOOT_NO_SECURE_BOOT=y",
+            "CONFIG_SECURE_BOOT_BUILD_SIGNED_BINARIES=y"
+          ]
+          for flag in needs:assert flag in cfg,flag
+          assert "CONFIG_SECURE_BOOT=y" not in cfg
+          assert "CONFIG_BOOTLOADER_APP_ANTI_ROLLBACK=y" not in cfg
+          print("PASS signed-app and rollback config accepted; hardware Secure Boot and eFuse antirollback remain OFF")
+          PY
+          idf.py -C firmware build >/tmp/fg_ota_signed_build.log 2>&1 || { tail -130 /tmp/fg_ota_signed_build.log; exit 1; }
+          test -s firmware/build/forest_guardian_review.bin
+          espsecure.py verify_signature --version 2 --keyfile "$WORK/test-only-sbv2.pem" firmware/build/forest_guardian_review.bin >/dev/null
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          signed=Path("firmware/build/forest_guardian_review.bin").read_bytes()
+          assert 0<len(signed)<0x380000
+          corrupted=bytearray(signed)
+          corrupted[128]^=0x80
+          Path(os.environ["WORK"],"mutated.bin").write_bytes(corrupted)
+          print(f"PASS signed RSA3072 ESP32-P4 production-source build {len(signed)} B < OTA 3.5MiB slot")
+          PY
+          if espsecure.py verify_signature --version 2 --keyfile "$WORK/test-only-sbv2.pem" "$WORK/mutated.bin" >/dev/null 2>&1; then
+            echo "FAIL signed-mode target artifact allowed tampered data"
+            exit 1
+          fi
+          echo "PASS genuine IDF signed-mode+rollback-build and tamper rejection; disposable key deleted, NO DEVICE FLASH/EFUSE"
