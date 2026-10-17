@@ -1,0 +1,48 @@
+name: G5-05 actual ESP32-P4 physical pairing and ACL integration
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g5-05-security-product-build.yml'
+      - 'execution/g5_05_access_core/**'
+      - 'execution/tasks.csv'
+      - 'execution/progress.json'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g5-05-host-auth-and-esp32p4-product-build:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Host-compile security tests and validate tracked progress
+        shell: bash
+        run: |
+          set -euo pipefail
+          apt-get update -qq
+          apt-get install -y --no-install-recommends libssl-dev build-essential
+          gcc -std=c11 -Wall -Wextra -Werror -DFG_WEB_HOST_TEST -Iexecution/g5_05_access_core execution/g5_05_access_core/fg_web_access.c execution/g5_05_access_core/fg_web_access_host_test.c -lcrypto -o /tmp/fg-web-access-host
+          /tmp/fg-web-access-host
+          python3 execution/preflight.py
+          python3 tests/check_design.py
+      - name: Exact baseline SHA / real original product integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          python3 execution/g5_05_access_core/apply_product.py firmware
+          ! grep -E '^\s*httpd_(ssl_)?start\(' firmware/main/app_main.c
+      - name: Build REAL ESP32-P4 product with pairing/NVS module
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          idf.py -C firmware set-target esp32p4 > /tmp/g505-settarget.log 2>&1
+          idf.py -C firmware build > /tmp/g505-build.log 2>&1 || { tail -150 /tmp/g505-build.log; exit 1; }
+          test -s firmware/build/forest_guardian_review.bin
+          sha256sum firmware/build/forest_guardian_review.bin
+          echo 'PASS PRODUCT TARGET BUILD / NO HTTPS LISTENER / NO FLASH / NO HARDWARE AUTHORISATION'

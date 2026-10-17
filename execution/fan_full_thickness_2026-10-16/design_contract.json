@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-16",
+  "source_original_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_original_solid_count": 1774,
+  "wood_z_layers": [
+    [
+      137,
+      139.6
+    ],
+    [
+      139.6,
+      140
+    ],
+    [
+      140,
+      141.5
+    ],
+    [
+      141.5,
+      142
+    ],
+    [
+      142,
+      143
+    ],
+    [
+      143,
+      144.1
+    ],
+    [
+      144.1,
+      144.15
+    ],
+    [
+      144.15,
+      144.2
+    ],
+    [
+      144.2,
+      145
+    ]
+  ],
+  "fan_outlet_diameter_mm": 29.3,
+  "fan_outlet_area_mm2": 674.25647,
+  "candidate_data": [
+    {
+      "cx": 95,
+      "cy": 90,
+      "through_mm2": 1.129053,
+      "through_percent": 0.167453
+    },
+    {
+      "cx": 95,
+      "cy": 95,
+      "through_mm2": 3.005695,
+      "through_percent": 0.445782
+    },
+    {
+      "cx": 95,
+      "cy": 100,
+      "through_mm2": 1.129053,
+      "through_percent": 0.167453
+    },
+    {
+      "cx": 230,
+      "cy": 40,
+      "through_mm2": 0,
+      "through_percent": 0
+    },
+    {
+      "cx": 215,
+      "cy": 175,
+      "through_mm2": 0,
+      "through_percent": 0
+    },
+    {
+      "cx": 220,
+      "cy": 175,
+      "through_mm2": 0,
+      "through_percent": 0
+    },
+    {
+      "cx": 225,
+      "cy": 175,
+      "through_mm2": 0,
+      "through_percent": 0
+    },
+    {
+      "cx": 230,
+      "cy": 175,
+      "through_mm2": 0,
+      "through_percent": 0
+    }
+  ],
+  "mounting": {
+    "manufacturer_holes": 3,
+    "manufacturer_hole_diameter_mm": 3.2,
+    "manufacturer_hole_pitch_mm": 24,
+    "max_three_hole_centers_on_original_outer_wood": 2,
+    "fully_native_fastened_candidate": false
+  },
+  "sunon_catalog": "https://www.sunon.com/jp/MANAGE/Docs/PRODUCT/325/504/DC%20Fan_20260210%28255-E%29.pdf",
+  "individual_sources": {
+    "V2": "https://www.fansco.com/datasheets/sunon/MF30100V2-1000U-A99.pdf",
+    "V3": "https://www.fansco.com/datasheets/sunon/MF30100V3-1000U-A99.pdf"
+  },
+  "current_mA": {
+    "V1_rated": 120,
+    "V2_rated": 80,
+    "V2_individual_max_steady": 92,
+    "V3_rated": 45,
+    "V3_individual_max_steady": 54,
+    "branch_limit": 100,
+    "starting_peak_test": "NOT_DONE",
+    "motor_stall_test": "NOT_DONE",
+    "actual_closed_case_thermal": "NOT_DONE",
+    "other_branch_loads": "NOT_VERIFIED"
+  },
+  "engineering": {
+    "body_only_screen": "PRIOR_3_SITES_NOMINALLY_CLEAR",
+    "full_thickness_vent": "REJECT_ALL_8_PRIOR_SITES_AS_NO_CUT_EXHAUST",
+    "source_sample_faces": 9,
+    "original_mesh_geometry_test": "LOCAL_ONLY_D7_FULL_REBUILD",
+    "g3_06": "OPEN",
+    "scoped_done": 19,
+    "scope_total": 48,
+    "manufacture_closed": 0,
+    "software_evidence": 11,
+    "efuse_en": "LOW",
+    "purchasing": false,
+    "cutting": false,
+    "power": false,
+    "flashing": false,
+    "main_merge": false
+  },
+  "artifact": {
+    "name": "Forest_Guardian_G3-06_SUNON_FullThickness_Fan_Review_2026-10-16.zip",
+    "sha256": "73fc73fc528e95d175fc9a85f6c82cee7ea946d8206379008ebcdf78072ba852",
+    "bytes": 524076,
+    "file_count": 12,
+    "native_source_file": "D7_BACK_WOOD_9_SOURCE_LAYERS.json.gz"
+  },
+  "limits": "Github only checks numeric source-record contract. Exact nine-layer full D7 shape union, 72 sampled layer clearances and 12 fastener permutations are independently recomputed from exact geometry in downloadable artifact, not this CI."
+}

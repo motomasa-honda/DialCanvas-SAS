@@ -1,0 +1,46 @@
+name: Forest Guardian secondary anti-slide keeper CAD and tolerance review
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/secondary-keeper-review.yml'
+      - 'execution/secondary_keeper_2026-10-16/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  keeper-reviewed-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable original firmware source unchanged
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Recompute 714 secondary-stop kinematic states and preserved failure gates
+        run: |
+          set -euo pipefail
+          python3 -m py_compile execution/secondary_keeper_2026-10-16/check_motion.py
+          python3 execution/secondary_keeper_2026-10-16/check_motion.py | tee execution/secondary_keeper_2026-10-16/ci.log
+      - name: Native OpenSCAD 7-axis model syntax and CSG export
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends openscad
+          openscad -o /tmp/fg_keeper_review.csg execution/secondary_keeper_2026-10-16/M1_7AXIS_ANTISLIDE_STOP_REVIEW.scad 2>&1 | tee execution/secondary_keeper_2026-10-16/openscad.log
+          test -s /tmp/fg_keeper_review.csg
+          stat --printf='native_csg_export_bytes=%s\n' /tmp/fg_keeper_review.csg | tee -a execution/secondary_keeper_2026-10-16/openscad.log
+      - name: Mark manufacturing as NOT approved despite nominal pass
+        if: always()
+        run: |
+          printf '%s\n' 'SECONDARY_M2_HEADLESS=GEOMETRY_CANDIDATE_ONLY' 'BOARD_WIDTH_40MM_WITH_PM0.2_STACK=FAIL_NEGATIVE_CLEARANCE' 'SCREW_SELF_LOOSENING=NOT_TESTED' 'FULL_D7_1774_SOLID_RECOMPUTE=NOT_RUN_IN_CI' 'MOTOR_EFUSE_EN=LOW' 'MANUFACTURING_GATES=0/6' > execution/secondary_keeper_2026-10-16/ci-scope.txt
+      - name: Preserve review-only CI evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forest-guardian-keeper-cad-review-not-release
+          path: |
+            execution/secondary_keeper_2026-10-16/ci.log
+            execution/secondary_keeper_2026-10-16/openscad.log
+            execution/secondary_keeper_2026-10-16/ci-scope.txt
+          if-no-files-found: warn

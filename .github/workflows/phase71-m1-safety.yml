@@ -1,0 +1,41 @@
+name: Phase71 M1 safety review-only interface contract
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/phase71-m1-safety.yml'
+      - 'phase71/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  m1-safety-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify prior immutable product input archive and official eFuse pinout contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p phase71-evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          python3 -m py_compile phase71/check_safety.py
+          python3 phase71/check_safety.py | tee phase71-evidence/stdout.log
+          python3 - <<'PY'
+          import json
+          d=json.load(open("phase71-evidence/safety-contract-report.json"))
+          assert d["status"]=="PASS_STATIC_512_STATE_CHECKS"
+          assert d["efuse_pin_variant"]["PG"]==3
+          assert d["efuse_pin_variant"]["PGTH"]==4
+          assert "FLT" not in d["efuse_pin_variant"]
+          assert d["tested_state_cases"]==512
+          assert d["manufacturing_gates_closed"]==0
+          PY
+          echo 'Phase71 STATIC CONTRACT PASS; hardware NOT TESTED' > phase71-evidence/scope.txt
+      - name: Preserve Phase71 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase71-m1-safety-contract-evidence
+          path: phase71-evidence/
+          if-no-files-found: warn

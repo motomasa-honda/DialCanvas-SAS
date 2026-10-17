@@ -1,0 +1,145 @@
+{
+  "design_id": "FG-M1-KPR-20261016",
+  "date": "2026-10-16",
+  "status": "CAD_CANDIDATE_NOT_FOR_MANUFACTURE",
+  "original_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solid_count": 1774,
+  "axes": [
+    {
+      "axis": 1,
+      "x": 85,
+      "y": 40
+    },
+    {
+      "axis": 2,
+      "x": 55,
+      "y": 140
+    },
+    {
+      "axis": 3,
+      "x": 135,
+      "y": 140
+    },
+    {
+      "axis": 4,
+      "x": 225,
+      "y": 130
+    },
+    {
+      "axis": 5,
+      "x": 140,
+      "y": 85
+    },
+    {
+      "axis": 6,
+      "x": 50,
+      "y": 85
+    },
+    {
+      "axis": 7,
+      "x": 140,
+      "y": 40
+    }
+  ],
+  "per_axis": {
+    "bayonet_keys": 2,
+    "independent_headless_stop_candidate": "M2x5",
+    "counter_body_x_offsets": [
+      20.5,
+      24
+    ],
+    "counter_body_y_offsets": [
+      -3.75,
+      0.2
+    ],
+    "counter_body_z_mm": [
+      134,
+      138
+    ],
+    "screw_axis_xy_offsets": [
+      22.25,
+      -1.1
+    ],
+    "screw_radius_mm": 1,
+    "stud_installed_z": [
+      134.35,
+      139.35
+    ],
+    "stud_nominal_rearwood_relief_gap_mm": 0.65,
+    "locked_bar_y_offsets": [
+      0.5,
+      4.5
+    ],
+    "bar_z_mm": [
+      138.05,
+      139.35
+    ],
+    "bar_reverse_unlock_travel_mm": 2.5,
+    "nominal_return_y_until_contact_mm": 0.6,
+    "right_sled_entire_z_sweep_notch_x_offsets": [
+      20.3,
+      22.3
+    ],
+    "right_sled_notch_y_offsets": [
+      -3.9,
+      0.35
+    ],
+    "review_driver_tool_diameter_mm": 2.4,
+    "review_tool_length_mm": 24
+  },
+  "verified_with_full_d7_locally": {
+    "fixed_wood_fan_exclusions": [
+      "BACK_WOOD",
+      "REAR_GRILLE",
+      "BACK_OUTER_*",
+      "BACK_INNER_*",
+      "BACK_CAPTIVE_*",
+      "BACK_BRIDGE_*",
+      "FAN_*"
+    ],
+    "fixed_core_boss_collisions": 0,
+    "fixed_core_tool_collisions": 0,
+    "conditionally_clear_axes": 7,
+    "source_geometry_checked_in_Github": false
+  },
+  "kinematic_test": {
+    "steps_total": 714,
+    "no_complete_unlock_with_screw": 7,
+    "full_unlock_without_screw": 7,
+    "old_unnotched_sled_hits": 7,
+    "new_nominal_notched_sled_clear": 7
+  },
+  "tolerance_analysis": {
+    "conservative_board_width_mm": 40,
+    "conservative_board_notch_nominal_margin_mm": 0.3,
+    "worst_margin_with_two_parts_each_pm_0_2_mm": -0.1,
+    "alternate_catalog_board_width_mm": 35,
+    "alternate_nominal_margin_mm": 2.8,
+    "alternate_worst_margin_pm_0_2_mm": 2.4,
+    "actual_module_measurement": "NOT_AVAILABLE"
+  },
+  "hardware_issues": [
+    "M2 headless fastener material/tap/strip strength not qualified",
+    "M2 screw reverse-turn vibration and drop-out not qualified",
+    "40mm mechanical envelope fails 0.2mm/part tolerance budget",
+    "native fixed boss interrupts existing sled right side wall, structural life not qualified",
+    "Fan relocation, wood back-pocket depth and physical 55mm interchange pending",
+    "Motor independent trip latch and eFuse PG/STOP not built"
+  ],
+  "status_counts": {
+    "done_scope": 16,
+    "all_scope": 48,
+    "manufacturing_done": 0,
+    "manufacturing_total": 6,
+    "software_passed": 11,
+    "software_total": 14
+  },
+  "controls": {
+    "purchase_allowed": false,
+    "manufacture_allowed": false,
+    "power_allowed": false,
+    "flash_allowed": false,
+    "merge_allowed": false,
+    "efuse_en": "LOW"
+  }
+}

@@ -1,0 +1,23 @@
+name: Forest Guardian G1-79 weak pulldown quantitative hold screen
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g1-79-output-low-screen.yml'
+      - 'execution/g1_79_output_low_screen/**'
+      - 'execution/g1_28phase_disabled/**'
+      - 'execution/g1_phase77_140pins/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  weak-pulldown-review-hold:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Quantitative DC screen and 28 independent fault injections
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s execution/g1_79_output_low_screen -p 'test_*.py' -v
+          python3 execution/g1_79_output_low_screen/screen.py
+          python3 execution/preflight.py

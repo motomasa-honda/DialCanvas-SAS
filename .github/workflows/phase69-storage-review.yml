@@ -1,0 +1,77 @@
+name: Phase69 RAW boot recovery and fail-closed target review
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/phase69-storage-review.yml'
+      - 'phase69/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  phase69-storage-target:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Integrity check, apply source patch and isolate RAW candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p phase69-evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          echo 'a1a788917068b9d47176f06d030eda0404a8920eb95bb2d7855828b29cfa26d0  firmware/partition.csv' | sha256sum -c -
+          echo 'ca74001e27ff1e3f22d0d3f5aa7a5237804d900403f0e6cc7b3e175732a1cdcd  phase69/patches/phase69-storage-readonly.patch' | sha256sum -c -
+          git apply --check phase69/patches/phase69-storage-readonly.patch
+          git apply phase69/patches/phase69-storage-readonly.patch
+          echo '8178cd6b91a05298a28e8fe40c075526febd8b7c0b28447149278fc49b8e44f8  firmware/main/app_main.c' | sha256sum -c -
+          echo '829b54380f542c7f098b1077806f62dab51f8ec399db4280df9f2547206ce0d7  firmware/main/fg_dial_raw_backend.c' | sha256sum -c -
+          echo '2ff1dd2d65d49a63da16d35e6726b615e87075b0f39f2b5ffb9accd9121e21ed  firmware/main/fg_dial_raw_backend.h' | sha256sum -c -
+          echo '38f5771c3d9feb8c09ae13e405f1cf1db7e0c8b05986fc44a3efd339cca452d7  firmware/partition-review-raw-ab.csv' | sha256sum -c -
+          cp firmware/partition-review-raw-ab.csv firmware/partition.csv
+          grep -q 'fg_dial_raw_boot_probe' firmware/main/app_main.c
+          printf '%s\n' 'SOURCE_PATCH=VERIFIED' 'BUILD_MODE=RAW_A_B_CANDIDATE' 'DEVICE_FLASH=NOT_TESTED' 'AUTH_UPLOAD=DISABLED' > phase69-evidence/scope.txt
+      - name: Real ESP32-P4 product build with read-only boot recovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          idf.py --version | tee phase69-evidence/idf-version.txt
+          idf.py --version | grep -q '5.5.2'
+          idf.py -C firmware set-target esp32p4 2>&1 | tee phase69-evidence/set-target.log
+          idf.py -C firmware build 2>&1 | tee phase69-evidence/build.log
+          test -s firmware/build/forest_guardian_review.bin
+          test -s firmware/build/partition_table/partition-table.bin
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path("firmware/build")
+          app=root/"forest_guardian_review.bin"
+          table=root/"partition_table/partition-table.bin"
+          size=app.stat().st_size
+          assert 0<size<0x380000,f"App does not fit 3.5MiB OTA candidate: {size}"
+          # The partition CSV is unchanged from Phase68's verified RAW A/B.
+          cfg=Path("firmware/sdkconfig").read_text()
+          assert 'CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partition.csv"' in cfg
+          assert 'CONFIG_ESPTOOLPY_FLASHSIZE_32MB=y' in cfg
+          data={"status":"TARGET_BUILD_PASS_NOT_HARDWARE","app_bytes":size,
+                "margin_bytes":0x380000-size,
+                "app_sha256":hashlib.sha256(app.read_bytes()).hexdigest(),
+                "partition_sha256":hashlib.sha256(table.read_bytes()).hexdigest(),
+                "boot_probe":"compiled and linked in app_main; NO physical execution",
+                "manufacturer_gpio_clearance":False,
+                "physical_powercut_pass":False,
+                "manufacturing_gates_closed":0}
+          Path("phase69-evidence/result.json").write_text(json.dumps(data,indent=2)+"\n")
+          print(json.dumps(data,indent=2))
+          PY
+          echo 'PASS_TARGET_BUILD_NO_FLASH' > phase69-evidence/status.txt
+      - name: Retain evidence, even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase69-storage-review-evidence
+          path: phase69-evidence/
+          if-no-files-found: warn

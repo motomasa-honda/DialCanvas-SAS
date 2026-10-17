@@ -1,0 +1,14 @@
+# G5-05 REVIEW ONLY. No flash, efuse, encryption enabling, erasure, or migration.
+# Exact old RAW A/B operational regions retained. Key region uses reserved space.
+# Name,Type,SubType,Offset,Size,Flags
+nvs,data,nvs,0x9000,0x4000,
+otadata,data,ota,0xD000,0x2000,
+phy_init,data,phy,0xF000,0x1000,
+app_a,app,ota_0,0x10000,0x380000,
+app_b,app,ota_1,0x390000,0x380000,
+dial_default,data,spiffs,0x710000,0x300000,
+dial_slot_a,data,0x41,0xA10000,0xA00000,
+dial_slot_b,data,0x42,0x1410000,0xA00000,
+nvs_keys,data,nvs_keys,0x1E10000,0x1000,encrypted
+fg_cfg,data,nvs,0x1E11000,0x8000,
+reserved,data,0x40,0x1E19000,0x1E7000,

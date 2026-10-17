@@ -1,0 +1,43 @@
+name: G5-05 verified HTTPS routes and physical display target-build
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g5-05-https-api-build.yml'
+      - 'execution/g5_05_https_api/**'
+      - 'execution/g5_05_access_core/**'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g5-05-https-esp32p4-compiled-api-hold:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact scope checks and existing security host test
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 execution/g5_05_https_api/check_contract.py
+          python3 execution/preflight.py
+          python3 tests/check_design.py
+          apt-get update -qq && apt-get install -y --no-install-recommends libssl-dev build-essential
+          gcc -std=c11 -Wall -Wextra -Werror -DFG_WEB_HOST_TEST -Iexecution/g5_05_access_core execution/g5_05_access_core/fg_web_access.c execution/g5_05_access_core/fg_web_access_host_test.c -lcrypto -o /tmp/fg-web-acl
+          /tmp/fg-web-acl
+      - name: Real 34-file product patch and native ESP32-P4 HTTPS target build
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          python3 execution/g5_05_access_core/apply_product.py firmware
+          python3 execution/g5_05_https_api/apply_https_product.py firmware
+          source /opt/esp/idf/export.sh
+          idf.py -C firmware set-target esp32p4 >/tmp/g5-https-target.log 2>&1
+          idf.py -C firmware build >/tmp/g5-https-build.log 2>&1 || { tail -200 /tmp/g5-https-build.log; exit 1; }
+          test -s firmware/build/forest_guardian_review.bin
+          sha256sum firmware/build/forest_guardian_review.bin
+          echo "PASS native ESP32-P4 build, real HTTPS handlers and local pairing UI / NO NETWORK CERT OR HARDWARE TEST"

@@ -1,0 +1,68 @@
+name: Forest Guardian G1-82 genuine KiCad9 native parse and ERC evidence
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g1-82-kicad-native-erc.yml'
+      - 'execution/g1_82_integrated_review/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-kicad9-parser-erc-observations:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install official KiCad 9 Ubuntu PPA (NOT KiCad 8)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends software-properties-common
+          sudo add-apt-repository -y ppa:kicad/kicad-9.0-releases
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends kicad
+          kicad-cli version
+      - name: Register review symbols for headless KiCad9 CLI
+        run: |
+          set -euo pipefail
+          CONF="$HOME/.config/kicad/9.0"
+          mkdir -p "$CONF"
+          SYMBOL_LIB="$GITHUB_WORKSPACE/execution/g1_82_integrated_review/FG_REVIEW.kicad_sym"
+          test -f "$SYMBOL_LIB"
+          cat > "$CONF/sym-lib-table" <<EOF
+          (sym_lib_table
+            (version 7)
+            (lib (name "FG_REVIEW")(type "KiCad")(uri "$SYMBOL_LIB")(options "")(descr "Non-manufacturing pin boxes"))
+          )
+          EOF
+          test -s "$CONF/sym-lib-table"
+      - name: Native KiCad9 load, netlist, SVG and ERC report (no false electrical pass)
+        run: |
+          set -euo pipefail
+          SRC=execution/g1_82_integrated_review/forest_guardian_g1_82_review.kicad_sch
+          OUT=execution/g1_82_integrated_review/native_evidence
+          mkdir -p "$OUT" "$OUT/svg"
+          kicad-cli sch export netlist --format kicadxml -o "$OUT/review.net.xml" "$SRC"
+          kicad-cli sch export svg --output "$OUT/svg" "$SRC"
+          kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
+          python3 execution/g1_82_integrated_review/validate_native_netlist.py "$OUT"
+          python3 - <<'PY'
+          import json,glob,os
+          o='execution/g1_82_integrated_review/native_evidence'
+          d=json.load(open(o+'/erc.json'))
+          print('ERC JSON root fields:',sorted(d) if isinstance(d,dict) else 'non-dict')
+          if not isinstance(d,dict):raise SystemExit('ERC report wrong type')
+          print('ERC report fields:',list(d.keys()))
+          print('Native XML bytes',os.path.getsize(o+'/review.net.xml'))
+          svgs=glob.glob(o+'/svg/*.svg')
+          if not svgs:raise SystemExit('KiCad native SVG failed to export')
+          print('Native SVG count',len(svgs))
+          print('NOTE: ERC report was produced; violations are NOT cleared and manufacturing remains on HOLD.')
+          PY
+      - name: Upload authentic native outputs for engineering review (not manufacturing)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g1-82-native-kicad9-erc-raw-evidence
+          path: execution/g1_82_integrated_review/native_evidence/
+          if-no-files-found: warn

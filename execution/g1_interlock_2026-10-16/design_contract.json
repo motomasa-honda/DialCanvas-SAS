@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-16",
+  "scope": "G1 safety electrical implementation effort / no task closed",
+  "source": "Phase74 pinned partial native review 71 pads 24 nets",
+  "old_pads": 71,
+  "old_nets": 24,
+  "new_pads": 85,
+  "new_nets": 29,
+  "added_pads": 14,
+  "latch": {
+    "sku": "SN74LVC2G74DCUR",
+    "ref": "U_ARM",
+    "datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc2g74.pdf",
+    "pinmap": {
+      "1": "REARM_SHAPED_NOT_BUILT",
+      "2": "ARM_D_UNIMPLEMENTED",
+      "3": "ARM_Q_N_UNUSED",
+      "4": "GND",
+      "5": "ARM_LATCH_Q_ISOLATED",
+      "6": "QUAL_CLR_N",
+      "7": "3V3_AON",
+      "8": "3V3_AON"
+    }
+  },
+  "critical_existing": {
+    "U7.1": "U7_EN_CLAMPED_DISABLED",
+    "R_EN_PD.1": "U7_EN_CLAMPED_DISABLED",
+    "R_EN_PD.2": "GND",
+    "U7.3": "EFUSE_PG_OD",
+    "U7.4": "PGTH_SENSE",
+    "U_WD.7": "QUAL_CLR_N",
+    "U_5V.1": "QUAL_CLR_N"
+  },
+  "dynamic_tests": {
+    "unit": 10,
+    "random": 20000,
+    "exhaustive_256_times_states": 5,
+    "mutation": 8,
+    "result": "LOCAL_PASS_LOGIC_ONLY"
+  },
+  "native_kicad": {
+    "filename": "fg_G1_phase75_isolated_manual_latch_partial.kicad_sch",
+    "sha256": "5a1c8086110b44f807f6193648ef6552363d5b7dd282faf180cb8ab066b2c05d",
+    "source_rebuilt_and_verified_in_ZIP": true,
+    "actual_KiCad_ERC": "NOT_RUN",
+    "pcb_DRC": "NOT_RUN",
+    "footprint": "UNASSIGNED"
+  },
+  "unbuilt": [
+    "physical debounce on REARM CLK",
+    "physical D qualifying 2 HB edges + ARM LOW",
+    "PG falling physical latched fault and startup timeout",
+    "independent 28 phase driver gate",
+    "U7.EN physical power gate kept OFF",
+    "single-channel STOP welded-short diagnostics",
+    "real component bias transient timing ERC and footprint"
+  ],
+  "archive": {
+    "name": "Forest_Guardian_G1_Independent_Latch_85Pins_Review_2026-10-16.zip",
+    "sha256": "9e21d7beb0491a64feed7e505ab7ef9da679c12f9e7dc7ea729b9a8fdae31409",
+    "bytes": 54132,
+    "files": 21
+  },
+  "project_state": {
+    "done_scope": 19,
+    "total": 48,
+    "g1_05": "WORKING",
+    "g1_06": "WORKING",
+    "manufacturing": 0,
+    "software": 11,
+    "efuse_EN": "LOW",
+    "order": false,
+    "cut": false,
+    "power": false,
+    "flash": false,
+    "main_merge": false
+  },
+  "github_ci_limited": "Checks only immutable source-derived pin contract and safety state; original KiCad bytes and ideal test simulation in verified ZIP not copied into GitHub."
+}

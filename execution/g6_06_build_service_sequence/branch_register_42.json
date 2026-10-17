@@ -1,0 +1,422 @@
+[
+  {
+    "axis": "G1",
+    "branch": "M1-G1-CTRL-IN1",
+    "connector": "J_M1_G1",
+    "pin": 1,
+    "signal": "PH0",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G1",
+    "branch": "M1-G1-CTRL-IN2",
+    "connector": "J_M1_G1",
+    "pin": 2,
+    "signal": "PH1",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G1",
+    "branch": "M1-G1-CTRL-IN3",
+    "connector": "J_M1_G1",
+    "pin": 3,
+    "signal": "PH2",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G1",
+    "branch": "M1-G1-CTRL-IN4",
+    "connector": "J_M1_G1",
+    "pin": 4,
+    "signal": "PH3",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G1",
+    "branch": "M1-G1-MOTOR-SUPPLY",
+    "connector": "J_M1_G1",
+    "pin": 5,
+    "signal": "G1_COMMON_FUSED_5V",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G1",
+    "branch": "M1-G1-MOTOR-RETURN",
+    "connector": "J_M1_G1",
+    "pin": 6,
+    "signal": "GND",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G2",
+    "branch": "M1-G2-CTRL-IN1",
+    "connector": "J_M1_G2",
+    "pin": 1,
+    "signal": "PH0",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G2",
+    "branch": "M1-G2-CTRL-IN2",
+    "connector": "J_M1_G2",
+    "pin": 2,
+    "signal": "PH1",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G2",
+    "branch": "M1-G2-CTRL-IN3",
+    "connector": "J_M1_G2",
+    "pin": 3,
+    "signal": "PH2",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G2",
+    "branch": "M1-G2-CTRL-IN4",
+    "connector": "J_M1_G2",
+    "pin": 4,
+    "signal": "PH3",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G2",
+    "branch": "M1-G2-MOTOR-SUPPLY",
+    "connector": "J_M1_G2",
+    "pin": 5,
+    "signal": "G2_COMMON_FUSED_5V",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G2",
+    "branch": "M1-G2-MOTOR-RETURN",
+    "connector": "J_M1_G2",
+    "pin": 6,
+    "signal": "GND",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G3",
+    "branch": "M1-G3-CTRL-IN1",
+    "connector": "J_M1_G3",
+    "pin": 1,
+    "signal": "PH0",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G3",
+    "branch": "M1-G3-CTRL-IN2",
+    "connector": "J_M1_G3",
+    "pin": 2,
+    "signal": "PH1",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G3",
+    "branch": "M1-G3-CTRL-IN3",
+    "connector": "J_M1_G3",
+    "pin": 3,
+    "signal": "PH2",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G3",
+    "branch": "M1-G3-CTRL-IN4",
+    "connector": "J_M1_G3",
+    "pin": 4,
+    "signal": "PH3",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G3",
+    "branch": "M1-G3-MOTOR-SUPPLY",
+    "connector": "J_M1_G3",
+    "pin": 5,
+    "signal": "G3_COMMON_FUSED_5V",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G3",
+    "branch": "M1-G3-MOTOR-RETURN",
+    "connector": "J_M1_G3",
+    "pin": 6,
+    "signal": "GND",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G4",
+    "branch": "M1-G4-CTRL-IN1",
+    "connector": "J_M1_G4",
+    "pin": 1,
+    "signal": "PH0",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G4",
+    "branch": "M1-G4-CTRL-IN2",
+    "connector": "J_M1_G4",
+    "pin": 2,
+    "signal": "PH1",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G4",
+    "branch": "M1-G4-CTRL-IN3",
+    "connector": "J_M1_G4",
+    "pin": 3,
+    "signal": "PH2",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G4",
+    "branch": "M1-G4-CTRL-IN4",
+    "connector": "J_M1_G4",
+    "pin": 4,
+    "signal": "PH3",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G4",
+    "branch": "M1-G4-MOTOR-SUPPLY",
+    "connector": "J_M1_G4",
+    "pin": 5,
+    "signal": "G4_COMMON_FUSED_5V",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G4",
+    "branch": "M1-G4-MOTOR-RETURN",
+    "connector": "J_M1_G4",
+    "pin": 6,
+    "signal": "GND",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G5",
+    "branch": "M1-G5-CTRL-IN1",
+    "connector": "J_M1_G5",
+    "pin": 1,
+    "signal": "PH0",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G5",
+    "branch": "M1-G5-CTRL-IN2",
+    "connector": "J_M1_G5",
+    "pin": 2,
+    "signal": "PH1",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G5",
+    "branch": "M1-G5-CTRL-IN3",
+    "connector": "J_M1_G5",
+    "pin": 3,
+    "signal": "PH2",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G5",
+    "branch": "M1-G5-CTRL-IN4",
+    "connector": "J_M1_G5",
+    "pin": 4,
+    "signal": "PH3",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G5",
+    "branch": "M1-G5-MOTOR-SUPPLY",
+    "connector": "J_M1_G5",
+    "pin": 5,
+    "signal": "G5_COMMON_FUSED_5V",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G5",
+    "branch": "M1-G5-MOTOR-RETURN",
+    "connector": "J_M1_G5",
+    "pin": 6,
+    "signal": "GND",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G6",
+    "branch": "M1-G6-CTRL-IN1",
+    "connector": "J_M1_G6",
+    "pin": 1,
+    "signal": "PH0",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G6",
+    "branch": "M1-G6-CTRL-IN2",
+    "connector": "J_M1_G6",
+    "pin": 2,
+    "signal": "PH1",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G6",
+    "branch": "M1-G6-CTRL-IN3",
+    "connector": "J_M1_G6",
+    "pin": 3,
+    "signal": "PH2",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G6",
+    "branch": "M1-G6-CTRL-IN4",
+    "connector": "J_M1_G6",
+    "pin": 4,
+    "signal": "PH3",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G6",
+    "branch": "M1-G6-MOTOR-SUPPLY",
+    "connector": "J_M1_G6",
+    "pin": 5,
+    "signal": "G6_COMMON_FUSED_5V",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G6",
+    "branch": "M1-G6-MOTOR-RETURN",
+    "connector": "J_M1_G6",
+    "pin": 6,
+    "signal": "GND",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G7",
+    "branch": "M1-G7-CTRL-IN1",
+    "connector": "J_M1_G7",
+    "pin": 1,
+    "signal": "PH0",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G7",
+    "branch": "M1-G7-CTRL-IN2",
+    "connector": "J_M1_G7",
+    "pin": 2,
+    "signal": "PH1",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G7",
+    "branch": "M1-G7-CTRL-IN3",
+    "connector": "J_M1_G7",
+    "pin": 3,
+    "signal": "PH2",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G7",
+    "branch": "M1-G7-CTRL-IN4",
+    "connector": "J_M1_G7",
+    "pin": 4,
+    "signal": "PH3",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G7",
+    "branch": "M1-G7-MOTOR-SUPPLY",
+    "connector": "J_M1_G7",
+    "pin": 5,
+    "signal": "G7_COMMON_FUSED_5V",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  },
+  {
+    "axis": "G7",
+    "branch": "M1-G7-MOTOR-RETURN",
+    "connector": "J_M1_G7",
+    "pin": 6,
+    "signal": "GND",
+    "physical_pin": "UNVERIFIED",
+    "cut_length": "TBD",
+    "inspection": "NOT_TESTED"
+  }
+]

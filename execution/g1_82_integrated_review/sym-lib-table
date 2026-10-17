@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "FG_REVIEW")(type "KiCad")(uri "${KIPRJMOD}/FG_REVIEW.kicad_sym")(options "")(descr "NON-MANUFACTURING PIN-BOX REVIEW LIBRARY"))
+)

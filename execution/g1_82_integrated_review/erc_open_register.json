@@ -1,0 +1,63 @@
+{
+  "scope": "G1-84 ERC unresolved exact set; not electrical clearance or hardware safety",
+  "kicad": "9.0.9",
+  "count": 20,
+  "issue_type": "label_dangling",
+  "statuses": {
+    "real_efuse_analog_design_blockers": [
+      "B77__REQUIRES_OVLO_PARTS",
+      "B77__REQUIRES_DVDT_DESIGN",
+      "B77__REQUIRES_ILIM_R",
+      "B77__REQUIRES_ITIMER_C"
+    ],
+    "clock_timing_candidate": [
+      "B81__CT_OPEN_20MS_CANDIDATE"
+    ],
+    "intentionally_single_terminal_review_nodes": [
+      "B77__U_HB_INV_MANUFACTURER_NC",
+      "B77__POR_CT_NC_FIXED_DELAY",
+      "B77__NC_SCH",
+      "B77__RELEASE_Q_N_UNUSED",
+      "B77__U_5V_CT_NC",
+      "B77__NC_RELEASE_INV",
+      "B77__ARM_Q_N_UNUSED",
+      "B77__RUN_Q_N_UNUSED",
+      "B78__UNUSED_U_BUF4_Y8",
+      "B78__UNUSED_U_BUF4_Y7",
+      "B78__UNUSED_U_BUF4_Y6",
+      "B78__UNUSED_U_BUF4_Y5",
+      "B77__WD_ENOUT_NO_CONNECT_PER_TI",
+      "B77__NC_ARM_INV",
+      "B77__HB_EDGE1_Q_N_UNUSED"
+    ]
+  },
+  "tracked_label_nets": [
+    "B77__ARM_Q_N_UNUSED",
+    "B77__HB_EDGE1_Q_N_UNUSED",
+    "B77__NC_ARM_INV",
+    "B77__NC_RELEASE_INV",
+    "B77__NC_SCH",
+    "B77__POR_CT_NC_FIXED_DELAY",
+    "B77__RELEASE_Q_N_UNUSED",
+    "B77__REQUIRES_DVDT_DESIGN",
+    "B77__REQUIRES_ILIM_R",
+    "B77__REQUIRES_ITIMER_C",
+    "B77__REQUIRES_OVLO_PARTS",
+    "B77__RUN_Q_N_UNUSED",
+    "B77__U_5V_CT_NC",
+    "B77__U_HB_INV_MANUFACTURER_NC",
+    "B77__WD_ENOUT_NO_CONNECT_PER_TI",
+    "B78__UNUSED_U_BUF4_Y5",
+    "B78__UNUSED_U_BUF4_Y6",
+    "B78__UNUSED_U_BUF4_Y7",
+    "B78__UNUSED_U_BUF4_Y8",
+    "B81__CT_OPEN_20MS_CANDIDATE"
+  ],
+  "release": {
+    "done_scope": 19,
+    "total_scope": 48,
+    "manufacturing_gates_closed": 0,
+    "efuse_en": "GND_ONLY",
+    "phase_oe": "FIXED_HIGH"
+  }
+}

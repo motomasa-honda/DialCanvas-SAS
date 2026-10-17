@@ -1,0 +1,44 @@
+name: Phase73 dual-edge recovery circuit contract
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/phase73-edge-review.yml'
+      - 'phase73/**'
+      - 'phase72/vendor_contract.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-edge-static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify preserved Phase67 input
+        run: |
+          set -euo pipefail
+          mkdir -p phase73/evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Manufacturer pad-accurate two-edge/static regressions
+        run: |
+          set -euo pipefail
+          python3 -m py_compile phase73/check_qualifier.py
+          python3 phase73/check_qualifier.py | tee phase73/evidence/ci-stdout.log
+          python3 - <<'PY'
+          import json
+          d=json.load(open("phase73/evidence/result.json"))
+          assert d["result"]=="PASS_LOGICAL_TWO_EDGE_REVIEW_ONLY"
+          assert d["pins"]==59 and d["nets"]==22
+          assert d["vector_steps"]==10240 and d["negative_mutations"]==6
+          assert d["eFuse_EN"]=="HELD_LOW"
+          assert d["manufacturing_gates_closed"]==0 and d["software_evidence_closed"]==11
+          assert d["kicad_erc"]=="NOT_RUN" and d["qualified_fault_latch"]=="NOT_IMPLEMENTED"
+          PY
+          echo 'LOGIC_ONLY=PASS; REAL_ELECTRICAL_QUALIFICATION=NOT_TESTED; NOT_SAFE_TO_ENERGIZE' > phase73/evidence/scope.txt
+      - name: Always preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase73-two-edge-static-evidence
+          path: phase73/evidence/
+          if-no-files-found: warn

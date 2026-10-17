@@ -1,0 +1,39 @@
+{
+  "scope": "ONLY M1 source reconciliation to close G4-02; NOT manufacturing release",
+  "date": "2026-10-16",
+  "provenance": "Phase67 ZIP -> BASELINE/Forest_Guardian_Handoff_2026-10-14.zip -> BASELINE/forest-guardian-chatgpt-handoff.zip -> d7 originals",
+  "source_sha256": {
+    "d7/bom/unified-bom.csv": "b40a43a41eca06d83ffcf8b21378dbba6b64bdbb7a1244ed935baab4cf913879",
+    "d7/bom/m1-module-bom-addendum.csv": "2aceeee4bbdf4b71263544423cca0a6037a791c476b2fff94ad0320265701c87",
+    "d7/bom/pcb-assembly-bom.csv": "0d5ca67721cd200cbb101e4b71566057cead4a104567650a7317db69fe3c42fd",
+    "d7/cad/wood-receiver-design.json": "3789fce2ab940a14d86987ecdac8365b57c9ae9816ea918ce8b41dcb77831da5",
+    "d7/cad/assembly.json": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f"
+  },
+  "counts": {
+    "base_bom": 429,
+    "m1_addendum": 18,
+    "missing_old_master_rtc_recovered": 1,
+    "integrated_review": 448,
+    "old_driver_refs_mapped": 59,
+    "wood_receivers": 24,
+    "wood_machining_operations": 68,
+    "retained_independent_fuses": 7,
+    "legacy_pulldowns_superseded": 28,
+    "m1_pulldowns_added": 28
+  },
+  "source_gap": "E_RTC absent from old 429 master despite DRIVER PCB assembly U609=RX8900SA; restored explicitly as one traced row, no unverified part invention.",
+  "vendor_discrepancy": "M1-02 original says MTR-09-024 40x20mm and links MTR-09-004; later source says seller nominal 35x31mm. First article dimension UNVERIFIED; no silent overwrite.",
+  "statuses": {
+    "G4_02": "DONE_SCOPE",
+    "G4_08": "OPEN",
+    "G3_05": "WORKING",
+    "G6_02": "WORKING",
+    "done_scope": 17,
+    "working": 7,
+    "open": 20,
+    "hardware_wait": 4,
+    "manufacturing_closed": 0,
+    "software_evidence_passed": 11
+  },
+  "ordering": "HOLD_ALL_NO_BUY_NO_CUT_NO_POWER"
+}

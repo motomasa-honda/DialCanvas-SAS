@@ -1,0 +1,55 @@
+name: Phase67 Forest Guardian ESP32-P4 full source build
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/phase67-product-build.yml'
+      - 'phase67-source/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  forest-guardian-product:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and extract unmodified product source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p phase67-evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          sha256sum phase67-source/firmware.tar.gz > phase67-evidence/source-sha256.txt
+          tar -tzf phase67-source/firmware.tar.gz | tee phase67-evidence/source-members.txt
+          tar -xzf phase67-source/firmware.tar.gz
+          test -f firmware/main/app_main.c
+          test -f firmware/main/idf_component.yml
+      - name: Build actual Forest Guardian product firmware
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          idf.py --version | tee phase67-evidence/idf-version.txt
+          idf.py -C firmware set-target esp32p4 2>&1 | tee phase67-evidence/set-target.log
+          idf.py -C firmware build 2>&1 | tee phase67-evidence/product-build.log
+          test -s firmware/build/forest_guardian_review.bin
+          sha256sum firmware/build/forest_guardian_review.bin > phase67-evidence/product-bin-sha256.txt
+          wc -c firmware/build/forest_guardian_review.bin > phase67-evidence/product-bin-size.txt
+          python3 - <<'PY'
+          import os
+          size=os.path.getsize('firmware/build/forest_guardian_review.bin')
+          limit=0x380000
+          print(f'BIN_SIZE={size} APP_3_5MiB_CAPACITY={limit} FITS_RAW_AB_CANDIDATE={size<limit}')
+          if size>=limit:
+              raise SystemExit('Firmware does not fit 3.5MiB raw A/B partition candidate')
+          PY
+          printf '%s\n' 'TARGET=esp32p4' 'SOURCE=Phase66 34 files' 'FULL_FIRMWARE_COMPILE=PASS' 'HARDWARE_FLASH=NOT_TESTED' > phase67-evidence/scope.txt
+      - name: Preserve evidence on success and failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase67-product-build-evidence
+          path: phase67-evidence/
+          if-no-files-found: warn

@@ -1,0 +1,99 @@
+name: Phase70 XC Rev1.1 pin contract and M1 independent-axis net audit
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/phase70-xc-m1-static.yml'
+      - 'phase70/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  phase70-xc-m1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract SHA-pinned unchanged Phase67 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p phase70-evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          echo 'e36aa448179ee6af980e7b289b305a686a21b42c84e79332aef4d5d1a6a24036  firmware/main/fg_board_pins.h' | sha256sum -c -
+      - name: XC hardware pin allocation and independent M1 logical safety regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' 2>&1 | tee phase70-evidence/static-check.log
+          import csv,hashlib,json,re
+          from pathlib import Path
+          header=Path("firmware/main/fg_board_pins.h").read_text()
+          observed={k:int(v) for k,v in re.findall(r'^#define\s+(FG_PIN_\w+)\s+GPIO_NUM_(\d+)',header,re.M)}
+          expected={"FG_PIN_ARM":32,"FG_PIN_HEARTBEAT":28,"FG_PIN_FAULT":22,
+                    "FG_PIN_SW1":29,"FG_PIN_SW2":30,"FG_PIN_MCP_SDA":20,"FG_PIN_MCP_SCL":21}
+          c6={6,14,15,16,17,18,19,54}
+          occupied=c6|{0,1,7,8,9,10,11,12,13,23,26,27,33,35,37,38,39,40,41,42,43,44,45,53}
+          reviewed_header={20,21,22,28,29,30,32}
+          def assert_pins(a):
+              assert a==expected,"Firmware pin assignments changed from XC Rev1.1 review contract"
+              assert len(set(a.values()))==7,"duplicate GPIO assignment"
+              assert not (set(a.values()) & occupied),"onboard peripheral pin collision"
+              assert set(a.values())<=reviewed_header,"pin not in reviewed J8 subset"
+          assert_pins(observed)
+          # These are real negative mutations: the checker MUST fail for each.
+          for role,pin in [("FG_PIN_MCP_SDA",14),("FG_PIN_ARM",26),("FG_PIN_SW1",22),("FG_PIN_FAULT",21)]:
+              mutant=dict(observed);mutant[role]=pin
+              try:assert_pins(mutant)
+              except AssertionError:pass
+              else:raise AssertionError(f"Safety mutation accepted: {role}={pin}")
+          rows=[]
+          mcp_used=set()
+          for axis in range(1,8):
+              mp=(axis-1)//4
+              block=(axis-1)%4
+              port='A' if block<2 else 'B'
+              for ph in range(4):
+                  bit=(block%2)*4+ph
+                  channel=f"MCP{mp}_{port}{bit}"
+                  assert channel not in mcp_used
+                  mcp_used.add(channel)
+                  rows += [
+                     (channel,f"MCP{mp}.{port}{bit}",axis,ph),
+                     (channel,f"R_PD_G{axis}_PH{ph}.1",axis,ph),
+                     (channel,f"J_M1_G{axis}.{ph+1}",axis,ph),
+                     (f"G{axis}_COIL_{ph}",f"M1-G{axis}.OUT{ph+1} [PIN UNKNOWN]",axis,ph),
+                     (f"G{axis}_COIL_{ph}",f"JM{axis}.{ph+1}",axis,ph),
+                  ]
+              rows += [
+                 (f"G{axis}_COMMON",f"F_M{axis}.2",axis,-1),
+                 (f"G{axis}_COMMON",f"J_M1_FUSED_IN.{axis}",axis,-1),
+                 (f"G{axis}_COMMON",f"J_M1_G{axis}.5",axis,-1),
+                 (f"G{axis}_COMMON",f"JM{axis}.5",axis,-1),
+                 ("GND",f"J_M1_G{axis}.6",axis,-1),
+              ]
+          assert len(mcp_used)==28 and len(rows)==175
+          with open("phase70-evidence/m1-ci-netlist.csv","w",newline="") as f:
+              w=csv.writer(f);w.writerow(["net","terminal","axis","phase"]);w.writerows(rows)
+          report={
+             "status":"PASS_STATIC_XC_REV11_REVIEW",
+             "schematic":"https://files.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC/ESP32-P4-WIFI6-Touch-LCD-XC-Schematic.pdf",
+             "board_revision":"Rev1.1 schematic; actual board PCB rev not observed",
+             "project_gpio":observed,
+             "c6_p4_gpio_reserved":sorted(c6),
+             "c6_collision":False,
+             "motor_axes":7,"unique_mcp_phase_channels":28,"axis_fuse_commons":7,
+             "m1_model_scope":"LOGICAL_ONLY: no module pinout, routed PCB, electrical ERC or physical measurements",
+             "manufacturing_gates_closed":0,"software_evidence_closed":11,
+             "physical_gpio_voltage_boot_fault_watchdog":"NOT_TESTED"
+          }
+          Path("phase70-evidence/report.json").write_text(json.dumps(report,indent=2)+"\n")
+          print(json.dumps(report,indent=2))
+          PY
+      - name: Retain evidence also if failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase70-xc-m1-static-evidence
+          path: phase70-evidence/
+          if-no-files-found: warn

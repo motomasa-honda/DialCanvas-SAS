@@ -1,0 +1,30 @@
+{
+  "version": "v1.3",
+  "updated_date": "2026-10-17",
+  "task_total": 48,
+  "scoped_evidence_done": 20,
+  "working": 8,
+  "open": 16,
+  "hardware_wait": 4,
+  "new_this_turn": [
+    "G6-06"
+  ],
+  "manufacturer_release_closed": 0,
+  "manufacturer_release_total": 6,
+  "software_evidence_passed": 11,
+  "software_evidence_total": 14,
+  "gh_guard_scope": "process consistency only, not safety validation",
+  "new_evidence": "execution/g6_06_build_service_sequence/evidence_contract.json",
+  "prior_new_completed": [
+    "G2-06"
+  ],
+  "previous_scoped_milestones": [
+    "G6-03",
+    "G6-02",
+    "G4-02"
+  ],
+  "new_working_evidence": "execution/g5_06_signed_ota/README.md",
+  "g5_05_last_review": "2026-10-17: independent encrypted fg_cfg 32KiB review, offline encrypted NVS mock, remote START/FAULT CLEAR locked; hardware pending",
+  "g5_06_last_review": "2026-10-17: signed ESP32-P4 build passed; rollback failure/image-state query failure now blocks app_main startup; physical rollback/HIL still HOLD",
+  "g1_88_last_review": "2026-10-18: KiCad G1-88 post-start PG+rail fault review candidate, physical monitor arming/timer NOT BUILT; G1-05/06 WORKING"
+}

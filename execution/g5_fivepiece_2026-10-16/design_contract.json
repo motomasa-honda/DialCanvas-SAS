@@ -1,0 +1,272 @@
+{
+  "name": "G5 five separated 3D load-carrying metal manufacturing concept",
+  "date": "2026-10-16",
+  "source_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solids": 1774,
+  "historical_members": 13,
+  "historical_positive_volume_overlap_joints": 12,
+  "groups": {
+    "CROSSBAR": [
+      "FRONT_CROSSBAR"
+    ],
+    "SIDE_LEFT": [
+      "SIDE_FRAME_LEFT",
+      "FRONT_LEFT_FRAME_COUPLER"
+    ],
+    "SIDE_RIGHT": [
+      "SIDE_FRAME_RIGHT",
+      "FRONT_RIGHT_FRAME_COUPLER"
+    ],
+    "G5_LEFT": [
+      "LEFT_FRONT_WEB",
+      "LEFT_JOG",
+      "LEFT_TO_G5_GUIDE"
+    ],
+    "G5_RIGHT": [
+      "RIGHT_ROOT_Z_RISER",
+      "RIGHT_LOWER_WEB",
+      "RIGHT_LOWER_TO_TIP",
+      "RIGHT_REAR_Z_RISER",
+      "RIGHT_TO_G5_GUIDE"
+    ]
+  },
+  "original_bounding_cuboids": [
+    [
+      "FRONT_CROSSBAR",
+      18,
+      12,
+      127,
+      253,
+      18,
+      136
+    ],
+    [
+      "SIDE_FRAME_LEFT",
+      18,
+      18,
+      130,
+      21,
+      186,
+      133
+    ],
+    [
+      "SIDE_FRAME_RIGHT",
+      251,
+      18,
+      130,
+      254,
+      186,
+      133
+    ],
+    [
+      "FRONT_LEFT_FRAME_COUPLER",
+      18,
+      16,
+      130,
+      21,
+      22,
+      133
+    ],
+    [
+      "FRONT_RIGHT_FRAME_COUPLER",
+      250,
+      16,
+      130,
+      253,
+      22,
+      133
+    ],
+    [
+      "LEFT_FRONT_WEB",
+      111,
+      17,
+      130,
+      114,
+      63,
+      136
+    ],
+    [
+      "LEFT_JOG",
+      111,
+      61.5,
+      130,
+      117,
+      68,
+      136
+    ],
+    [
+      "LEFT_TO_G5_GUIDE",
+      114,
+      66,
+      130,
+      117,
+      85,
+      136
+    ],
+    [
+      "RIGHT_ROOT_Z_RISER",
+      166,
+      12,
+      116,
+      169,
+      18,
+      136
+    ],
+    [
+      "RIGHT_LOWER_WEB",
+      166,
+      17,
+      116,
+      169,
+      90,
+      123
+    ],
+    [
+      "RIGHT_LOWER_TO_TIP",
+      166,
+      89,
+      116,
+      169,
+      95,
+      123
+    ],
+    [
+      "RIGHT_REAR_Z_RISER",
+      163,
+      93,
+      116,
+      169,
+      99,
+      136
+    ],
+    [
+      "RIGHT_TO_G5_GUIDE",
+      163,
+      95,
+      130,
+      166,
+      100,
+      136
+    ]
+  ],
+  "parts": [
+    {
+      "part": "CROSSBAR",
+      "volume_mm3": 12690,
+      "steel_g": 99.616
+    },
+    {
+      "part": "SIDE_LEFT",
+      "volume_mm3": 1512,
+      "steel_g": 11.869
+    },
+    {
+      "part": "SIDE_RIGHT",
+      "volume_mm3": 1524,
+      "steel_g": 11.963
+    },
+    {
+      "part": "G5_LEFT",
+      "volume_mm3": 1323,
+      "steel_g": 10.386
+    },
+    {
+      "part": "G5_RIGHT",
+      "volume_mm3": 2511,
+      "steel_g": 19.711
+    }
+  ],
+  "internal_butt_interfaces": [
+    {
+      "a": "CROSSBAR",
+      "b": "SIDE_LEFT",
+      "type": "Y18_BUTT",
+      "area_mm2": 9,
+      "qualification": "NOT_TESTED"
+    },
+    {
+      "a": "CROSSBAR",
+      "b": "SIDE_RIGHT",
+      "type": "Y18_BUTT",
+      "area_mm2": 9,
+      "qualification": "NOT_TESTED"
+    },
+    {
+      "a": "CROSSBAR",
+      "b": "G5_LEFT",
+      "type": "Y18_BUTT",
+      "area_mm2": 18,
+      "qualification": "NOT_TESTED"
+    },
+    {
+      "a": "CROSSBAR",
+      "b": "G5_RIGHT",
+      "type": "Z127_BUTT",
+      "area_mm2": 18,
+      "qualification": "NOT_TESTED"
+    }
+  ],
+  "grouped_3d_union_equal_original_13_across_all_z_intervals": true,
+  "new_independent_part_3d_positive_volume_intersection_count": 0,
+  "source_d7_fixed_hits_excluding_removable_cover_and_fan": 0,
+  "independent_stl_is_watertight": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "steel_volume_mm3": 19560,
+  "steel_generic_density_g_cm3": 7.85,
+  "steel_mass_g": 153.546,
+  "aluminium_density_g_cm3": 2.7,
+  "aluminium_mass_g": 52.812,
+  "physical_fastener_candidate": {
+    "material_width_mm": 3,
+    "assumed_M2_head_diameter_mm": 3.8,
+    "assumed_each_side_tolerance_mm": 0.2,
+    "required_width_mm": 4.2,
+    "missing_width_mm": 1.2,
+    "disposition": "REJECT_DIRECT_HEAD_BOLT_ON_3MM_STRIPS"
+  },
+  "additional_external_joints": {
+    "g5_fixed_side_guides": 2,
+    "sidewood_anchor_cleats": 4,
+    "min_count": 6,
+    "qualified": 0
+  },
+  "structural_hold": [
+    "4 butt faces 9/9/18/18 mm2 have no approved weld/brazing or strength test",
+    "2 G5 side guide joints and 4 sidewood anchor cleats are separate and unqualified",
+    "Right height stepped member requires 3D processing; laser 2D alone inadequate",
+    "Steel frame alone 153.546g exceeds previous 100g single payload assumption",
+    "FAN_MAX_BODY and FAN_GUARD_TARGET still collide, relocation and 109mA vs 100mA OPEN",
+    "Real module, M2 V2 thread boss wall, wiring, 55mm physical exchange, electrical STOP latch unbuilt"
+  ],
+  "manufacturer_release": {
+    "g3_04": "WORKING",
+    "g3_05": "WORKING",
+    "done_scope": 19,
+    "total": 48,
+    "working": 6,
+    "open": 19,
+    "hardware_wait": 4,
+    "manufacturing_closed": 0,
+    "software_evidence": 11,
+    "motor_efuse_en": "LOW",
+    "cutting": false,
+    "power": false,
+    "flash": false,
+    "purchase": false,
+    "merge_main": false
+  },
+  "artifacts": {
+    "delta": "Forest_Guardian_G5_5Pieces_4Joints_Engineering_2026-10-16.zip",
+    "delta_sha256": "43976036543d86170f04431474080a9571fac11492841ebcc7631260b9231e30",
+    "delta_bytes": 40953,
+    "delta_file_count": 22,
+    "historical": "Forest_Guardian_Integrated_Handoff_G5_5Pieces_2026-10-16.zip",
+    "historical_sha256": "ee2c4dec635c3bc7df60ff97e5c36757c61039dff290ae66a2383ea31b2615b9"
+  },
+  "verification_boundary": "Full original 1774 D7 solids, all-z disjoint union, five STL watertight tests, native DXF/PDF and SHA recomputed LOCALLY by source scripts in user ZIP, NOT by GitHub static manifest test."
+}

@@ -1,0 +1,36 @@
+name: Forest Guardian recovered 429-to-M1 BOM reconciliation
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/bom-reconciliation-integrity.yml'
+      - 'execution/bom_reconciled_2026-10-16/**'
+      - 'execution/progress.json'
+      - 'execution/tasks.csv'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bom-source-trace-and-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify original Phase67 firmware immutability
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Run manifest-source classification and frozen progress check
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p execution/bom_reconciled_2026-10-16/evidence
+          python3 execution/bom_reconciled_2026-10-16/check_contract.py | tee execution/bom_reconciled_2026-10-16/evidence/ci.log
+          python3 execution/guard.py | tee execution/bom_reconciled_2026-10-16/evidence/ledger.log
+      - name: Preserve review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forest-guardian-m1-bom-59-ref-and-17of48-static-review
+          path: execution/bom_reconciled_2026-10-16/evidence/
+          if-no-files-found: warn

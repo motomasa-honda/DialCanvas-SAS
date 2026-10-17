@@ -1,0 +1,35 @@
+{
+  "description": "G1-81 isolated rail supervisor physical-pad connection PROPOSAL; no native KiCad or PCB",
+  "nets": {
+    "3V3_AON": [
+      "U_RAIL_SV.6",
+      "R_RAIL_OK_PU.2",
+      "R_RAIL_MR_PU.2",
+      "C_RAIL_DEC.1"
+    ],
+    "GND": [
+      "U_RAIL_SV.2",
+      "R_RAIL_BOT.2",
+      "C_RAIL_DEC.2"
+    ],
+    "5V_MOTOR": [
+      "R_RAIL_TOP.1"
+    ],
+    "RAIL_SENSE_DIV": [
+      "U_RAIL_SV.5",
+      "R_RAIL_TOP.2",
+      "R_RAIL_BOT.1"
+    ],
+    "RAIL_OK_N_SUPERVISOR": [
+      "U_RAIL_SV.1",
+      "R_RAIL_OK_PU.1"
+    ],
+    "MR_INACTIVE_HIGH": [
+      "U_RAIL_SV.3",
+      "R_RAIL_MR_PU.1"
+    ],
+    "CT_OPEN_20MS_CANDIDATE": [
+      "U_RAIL_SV.4"
+    ]
+  }
+}

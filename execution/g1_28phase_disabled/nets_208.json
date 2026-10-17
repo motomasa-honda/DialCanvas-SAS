@@ -1,0 +1,339 @@
+{
+  "source": "TI SN74LVC244A Feb2026 manufacturer PW 20-pin physical A/Y/OE netmap, 28 actual G1..G7 phase ports",
+  "nets": {
+    "VCC_3V3_AON": [
+      "U_BUF1.20",
+      "C_BUF1.1",
+      "R_OE_PULL1.2",
+      "U_BUF2.20",
+      "C_BUF2.1",
+      "R_OE_PULL2.2",
+      "U_BUF3.20",
+      "C_BUF3.1",
+      "R_OE_PULL3.2",
+      "U_BUF4.20",
+      "C_BUF4.1",
+      "R_OE_PULL4.2"
+    ],
+    "GND": [
+      "U_BUF1.10",
+      "C_BUF1.2",
+      "R_PD_G1_1.2",
+      "R_PD_G1_2.2",
+      "R_PD_G1_3.2",
+      "R_PD_G1_4.2",
+      "R_PD_G2_1.2",
+      "R_PD_G2_2.2",
+      "R_PD_G2_3.2",
+      "R_PD_G2_4.2",
+      "U_BUF2.10",
+      "C_BUF2.2",
+      "R_PD_G3_1.2",
+      "R_PD_G3_2.2",
+      "R_PD_G3_3.2",
+      "R_PD_G3_4.2",
+      "R_PD_G4_1.2",
+      "R_PD_G4_2.2",
+      "R_PD_G4_3.2",
+      "R_PD_G4_4.2",
+      "U_BUF3.10",
+      "C_BUF3.2",
+      "R_PD_G5_1.2",
+      "R_PD_G5_2.2",
+      "R_PD_G5_3.2",
+      "R_PD_G5_4.2",
+      "R_PD_G6_1.2",
+      "R_PD_G6_2.2",
+      "R_PD_G6_3.2",
+      "R_PD_G6_4.2",
+      "U_BUF4.10",
+      "C_BUF4.2",
+      "R_PD_G7_1.2",
+      "R_PD_G7_2.2",
+      "R_PD_G7_3.2",
+      "R_PD_G7_4.2",
+      "U_BUF4.11",
+      "U_BUF4.13",
+      "U_BUF4.15",
+      "U_BUF4.17"
+    ],
+    "PHASE_OE_N_FIXED_HIGH": [
+      "U_BUF1.1",
+      "U_BUF1.19",
+      "R_OE_PULL1.1",
+      "U_BUF2.1",
+      "U_BUF2.19",
+      "R_OE_PULL2.1",
+      "U_BUF3.1",
+      "U_BUF3.19",
+      "R_OE_PULL3.1",
+      "U_BUF4.1",
+      "U_BUF4.19",
+      "R_OE_PULL4.1"
+    ],
+    "MCU_G1_PHASE1": [
+      "U_BUF1.2",
+      "J_MCU_G1.1"
+    ],
+    "MODULE_G1_PHASE1": [
+      "U_BUF1.18",
+      "J_MODULE_G1.1",
+      "R_PD_G1_1.1"
+    ],
+    "MCU_G1_PHASE2": [
+      "U_BUF1.4",
+      "J_MCU_G1.2"
+    ],
+    "MODULE_G1_PHASE2": [
+      "U_BUF1.16",
+      "J_MODULE_G1.2",
+      "R_PD_G1_2.1"
+    ],
+    "MCU_G1_PHASE3": [
+      "U_BUF1.6",
+      "J_MCU_G1.3"
+    ],
+    "MODULE_G1_PHASE3": [
+      "U_BUF1.14",
+      "J_MODULE_G1.3",
+      "R_PD_G1_3.1"
+    ],
+    "MCU_G1_PHASE4": [
+      "U_BUF1.8",
+      "J_MCU_G1.4"
+    ],
+    "MODULE_G1_PHASE4": [
+      "U_BUF1.12",
+      "J_MODULE_G1.4",
+      "R_PD_G1_4.1"
+    ],
+    "MCU_G2_PHASE1": [
+      "U_BUF1.11",
+      "J_MCU_G2.1"
+    ],
+    "MODULE_G2_PHASE1": [
+      "U_BUF1.9",
+      "J_MODULE_G2.1",
+      "R_PD_G2_1.1"
+    ],
+    "MCU_G2_PHASE2": [
+      "U_BUF1.13",
+      "J_MCU_G2.2"
+    ],
+    "MODULE_G2_PHASE2": [
+      "U_BUF1.7",
+      "J_MODULE_G2.2",
+      "R_PD_G2_2.1"
+    ],
+    "MCU_G2_PHASE3": [
+      "U_BUF1.15",
+      "J_MCU_G2.3"
+    ],
+    "MODULE_G2_PHASE3": [
+      "U_BUF1.5",
+      "J_MODULE_G2.3",
+      "R_PD_G2_3.1"
+    ],
+    "MCU_G2_PHASE4": [
+      "U_BUF1.17",
+      "J_MCU_G2.4"
+    ],
+    "MODULE_G2_PHASE4": [
+      "U_BUF1.3",
+      "J_MODULE_G2.4",
+      "R_PD_G2_4.1"
+    ],
+    "MCU_G3_PHASE1": [
+      "U_BUF2.2",
+      "J_MCU_G3.1"
+    ],
+    "MODULE_G3_PHASE1": [
+      "U_BUF2.18",
+      "J_MODULE_G3.1",
+      "R_PD_G3_1.1"
+    ],
+    "MCU_G3_PHASE2": [
+      "U_BUF2.4",
+      "J_MCU_G3.2"
+    ],
+    "MODULE_G3_PHASE2": [
+      "U_BUF2.16",
+      "J_MODULE_G3.2",
+      "R_PD_G3_2.1"
+    ],
+    "MCU_G3_PHASE3": [
+      "U_BUF2.6",
+      "J_MCU_G3.3"
+    ],
+    "MODULE_G3_PHASE3": [
+      "U_BUF2.14",
+      "J_MODULE_G3.3",
+      "R_PD_G3_3.1"
+    ],
+    "MCU_G3_PHASE4": [
+      "U_BUF2.8",
+      "J_MCU_G3.4"
+    ],
+    "MODULE_G3_PHASE4": [
+      "U_BUF2.12",
+      "J_MODULE_G3.4",
+      "R_PD_G3_4.1"
+    ],
+    "MCU_G4_PHASE1": [
+      "U_BUF2.11",
+      "J_MCU_G4.1"
+    ],
+    "MODULE_G4_PHASE1": [
+      "U_BUF2.9",
+      "J_MODULE_G4.1",
+      "R_PD_G4_1.1"
+    ],
+    "MCU_G4_PHASE2": [
+      "U_BUF2.13",
+      "J_MCU_G4.2"
+    ],
+    "MODULE_G4_PHASE2": [
+      "U_BUF2.7",
+      "J_MODULE_G4.2",
+      "R_PD_G4_2.1"
+    ],
+    "MCU_G4_PHASE3": [
+      "U_BUF2.15",
+      "J_MCU_G4.3"
+    ],
+    "MODULE_G4_PHASE3": [
+      "U_BUF2.5",
+      "J_MODULE_G4.3",
+      "R_PD_G4_3.1"
+    ],
+    "MCU_G4_PHASE4": [
+      "U_BUF2.17",
+      "J_MCU_G4.4"
+    ],
+    "MODULE_G4_PHASE4": [
+      "U_BUF2.3",
+      "J_MODULE_G4.4",
+      "R_PD_G4_4.1"
+    ],
+    "MCU_G5_PHASE1": [
+      "U_BUF3.2",
+      "J_MCU_G5.1"
+    ],
+    "MODULE_G5_PHASE1": [
+      "U_BUF3.18",
+      "J_MODULE_G5.1",
+      "R_PD_G5_1.1"
+    ],
+    "MCU_G5_PHASE2": [
+      "U_BUF3.4",
+      "J_MCU_G5.2"
+    ],
+    "MODULE_G5_PHASE2": [
+      "U_BUF3.16",
+      "J_MODULE_G5.2",
+      "R_PD_G5_2.1"
+    ],
+    "MCU_G5_PHASE3": [
+      "U_BUF3.6",
+      "J_MCU_G5.3"
+    ],
+    "MODULE_G5_PHASE3": [
+      "U_BUF3.14",
+      "J_MODULE_G5.3",
+      "R_PD_G5_3.1"
+    ],
+    "MCU_G5_PHASE4": [
+      "U_BUF3.8",
+      "J_MCU_G5.4"
+    ],
+    "MODULE_G5_PHASE4": [
+      "U_BUF3.12",
+      "J_MODULE_G5.4",
+      "R_PD_G5_4.1"
+    ],
+    "MCU_G6_PHASE1": [
+      "U_BUF3.11",
+      "J_MCU_G6.1"
+    ],
+    "MODULE_G6_PHASE1": [
+      "U_BUF3.9",
+      "J_MODULE_G6.1",
+      "R_PD_G6_1.1"
+    ],
+    "MCU_G6_PHASE2": [
+      "U_BUF3.13",
+      "J_MCU_G6.2"
+    ],
+    "MODULE_G6_PHASE2": [
+      "U_BUF3.7",
+      "J_MODULE_G6.2",
+      "R_PD_G6_2.1"
+    ],
+    "MCU_G6_PHASE3": [
+      "U_BUF3.15",
+      "J_MCU_G6.3"
+    ],
+    "MODULE_G6_PHASE3": [
+      "U_BUF3.5",
+      "J_MODULE_G6.3",
+      "R_PD_G6_3.1"
+    ],
+    "MCU_G6_PHASE4": [
+      "U_BUF3.17",
+      "J_MCU_G6.4"
+    ],
+    "MODULE_G6_PHASE4": [
+      "U_BUF3.3",
+      "J_MODULE_G6.4",
+      "R_PD_G6_4.1"
+    ],
+    "MCU_G7_PHASE1": [
+      "U_BUF4.2",
+      "J_MCU_G7.1"
+    ],
+    "MODULE_G7_PHASE1": [
+      "U_BUF4.18",
+      "J_MODULE_G7.1",
+      "R_PD_G7_1.1"
+    ],
+    "MCU_G7_PHASE2": [
+      "U_BUF4.4",
+      "J_MCU_G7.2"
+    ],
+    "MODULE_G7_PHASE2": [
+      "U_BUF4.16",
+      "J_MODULE_G7.2",
+      "R_PD_G7_2.1"
+    ],
+    "MCU_G7_PHASE3": [
+      "U_BUF4.6",
+      "J_MCU_G7.3"
+    ],
+    "MODULE_G7_PHASE3": [
+      "U_BUF4.14",
+      "J_MODULE_G7.3",
+      "R_PD_G7_3.1"
+    ],
+    "MCU_G7_PHASE4": [
+      "U_BUF4.8",
+      "J_MCU_G7.4"
+    ],
+    "MODULE_G7_PHASE4": [
+      "U_BUF4.12",
+      "J_MODULE_G7.4",
+      "R_PD_G7_4.1"
+    ],
+    "UNUSED_U_BUF4_Y5": [
+      "U_BUF4.9"
+    ],
+    "UNUSED_U_BUF4_Y6": [
+      "U_BUF4.7"
+    ],
+    "UNUSED_U_BUF4_Y7": [
+      "U_BUF4.5"
+    ],
+    "UNUSED_U_BUF4_Y8": [
+      "U_BUF4.3"
+    ]
+  }
+}

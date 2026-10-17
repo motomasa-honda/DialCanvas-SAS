@@ -1,0 +1,33 @@
+{
+  "version": "G1-82",
+  "date": "2026-10-16",
+  "source_sha": {
+    "b77": "52ad235148ad9f30f5eaa47ce6d8a07a65f017f2",
+    "b78": "7ee2f9c5ff1339f2fa6157d732a9353389a392fd",
+    "b81": "337313eb23687ed5862acf324797facf62377697"
+  },
+  "sources": {
+    "B77": 140,
+    "B78": 208,
+    "B81": 16
+  },
+  "pads": 364,
+  "symbols": 98,
+  "merged_nets": 104,
+  "assumed_net_aliases": [
+    "B78:VCC_3V3_AON -> 3V3_AON",
+    "B77/B81:3V3_AON -> 3V3_AON",
+    "all:GND -> GND",
+    "B77/B81:5V_MOTOR -> 5V_MOTOR"
+  ],
+  "safety": {
+    "done_scope": 19,
+    "total_scope": 48,
+    "manufacturing_closed": 0,
+    "efuse_en": "GND_ONLY",
+    "phase_oe": "FIXED_HIGH",
+    "native_erc": false,
+    "pcb_drc": false,
+    "hardware": false
+  }
+}
