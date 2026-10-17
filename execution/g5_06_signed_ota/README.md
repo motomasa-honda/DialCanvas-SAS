@@ -32,3 +32,7 @@
 ## 検証強化：実ESP32-P4の**署名検証有効モード**を別CIで試験する
 
 前段の署名済データ生成テストは、通常の製品ビルドが実際に署名検証を**要求する**設定で動くことまで証明しなかった。このため別CIジョブで、**一時RSA3072鍵**を生成し、`CONFIG_SECURE_SIGNED_APPS_NO_SECURE_BOOT`＋`CONFIG_SECURE_SIGNED_ON_UPDATE_NO_SECURE_BOOT`＋`CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE` を**試験用構築時だけ**有効にして、ESP32-P4製品全体をビルドする。実ビルドの署名検証・1bit改ざん拒否・3.5MiB区画サイズを確認し、実物の公開鍵と秘密鍵をGitHubに登録しない。ハードSecure BootやeFuse Anti-Rollbackはこの試験では**無効**。製造・通電・デバイスへの書き込みは引き続き禁止。
+
+## 重要なRAW A/B統合修正（2026-10-17）
+
+現行の元製品`firmware/partition.csv`は旧5MiB A/B (`app_b=0x510000`) であり、G5-06のソースが要求する新3.5MiB A/B (`app_b=0x390000`) と一致しないことを発見。コンパイルだけで成功と判定すると、実機では `fg_ota_native_stage_for_review` が区画不一致で必ず拒否する。**OTAは起動先の物理アドレスと一致して初めて意味がある**。専用CIはオリジナルSHAを保全し、展開したコピーだけ `partition-review-raw-ab.csv`へ差し替えて完全ビルドする。署名モードの方は、同じアプリ領域を維持しつつ独立`fg_cfg/nvs_keys`も備えた統合区画レビュー案を使う。両方ともIDFネイティブパーティションBINと元CSVを比較して、電源・実機書込を一切伴わない。正式な製造/暗号化承認は依然0/6。

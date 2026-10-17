@@ -43,6 +43,10 @@ jobs:
           python3 execution/g5_05_https_api/apply_https_product.py firmware
           python3 execution/g5_05_hosted_network/apply_network_product.py firmware
           python3 execution/g5_06_signed_ota/apply_product.py firmware
+          # The immutable original has obsolete 5MiB OTA slots. DO NOT test OTA
+          # under that map: candidate RAW A/B slot geometry is an essential precondition.
+          test "$(sha256sum firmware/partition-review-raw-ab.csv | cut -d' ' -f1)" = '38f5771c3d9feb8c09ae13e405f1cf1db7e0c8b05986fc44a3efd339cca452d7'
+          cp firmware/partition-review-raw-ab.csv firmware/partition.csv
           grep -q 'fg_ota_boot_guard_unqualified' firmware/main/app_main.c
           grep -q '"fg_ota_port.c"' firmware/main/CMakeLists.txt
           source /opt/esp/idf/export.sh
@@ -51,6 +55,10 @@ jobs:
           grep -q 'fg_ota_port.c' firmware/build/compile_commands.json
           grep -q 'fg_ota_gate.c' firmware/build/compile_commands.json
           test -s firmware/build/forest_guardian_review.bin
+          # Native IDF generated partition table must MATCH candidate byte-for-byte.
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" --offset 0x8000 firmware/partition.csv /tmp/g506_raw_ab.bin
+          cmp /tmp/g506_raw_ab.bin firmware/build/partition_table/partition-table.bin
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" firmware/build/partition_table/partition-table.bin | grep -q 'app_b.*0x00390000.*0x00380000'
           python3 - <<'PY'
           from pathlib import Path
           size=Path("firmware/build/forest_guardian_review.bin").stat().st_size
@@ -114,6 +122,10 @@ jobs:
           python3 execution/g5_05_https_api/apply_https_product.py firmware
           python3 execution/g5_05_hosted_network/apply_network_product.py firmware
           python3 execution/g5_06_signed_ota/apply_product.py firmware
+          # Coherent OTA + dedicated future HTTPS protected NVS partition REVIEW.
+          # Never modify the SHA-frozen product archive, only CI's ephemeral copy.
+          cp execution/g5_05_secure_partition/partition-nvs-encrypted-raw-ab-review.csv firmware/partition.csv
+          python3 execution/g5_05_secure_partition/check_partition.py
           espsecure.py generate_signing_key --version 2 --scheme rsa3072 "$WORK/test-only-sbv2.pem" >/dev/null
           cat >> firmware/sdkconfig.defaults <<EOF
           CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
@@ -142,6 +154,9 @@ jobs:
           PY
           idf.py -C firmware build >/tmp/fg_ota_signed_build.log 2>&1 || { tail -130 /tmp/fg_ota_signed_build.log; exit 1; }
           test -s firmware/build/forest_guardian_review.bin
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" --offset 0x8000 firmware/partition.csv /tmp/g506_signed_ab.bin
+          cmp /tmp/g506_signed_ab.bin firmware/build/partition_table/partition-table.bin
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" firmware/build/partition_table/partition-table.bin | grep -q 'fg_cfg'
           espsecure.py verify_signature --version 2 --keyfile "$WORK/test-only-sbv2.pem" firmware/build/forest_guardian_review.bin >/dev/null
           python3 - <<'PY'
           from pathlib import Path
