@@ -15,6 +15,7 @@ checks = [
     "execution/g5_05_https_api/check_contract.py",
     "execution/g5_05_hosted_network/check_contract.py",
     "execution/g5_05_secure_partition/check_partition.py",
+    "execution/g5_06_signed_ota/check_contract.py",
     "execution/g5_frame_2026-10-16/check_contract.py",
     "execution/g5_fivepiece_2026-10-16/check_contract.py",
     "execution/g5_jig_g604_2026-10-16/check_contract.py",

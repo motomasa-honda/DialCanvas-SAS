@@ -1,0 +1,93 @@
+name: G5-06 real P4 signed OTA transaction build and negative signature proof
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g5-06-signed-ota-review.yml'
+      - 'execution/g5_06_signed_ota/**'
+      - 'execution/g5_05_access_core/**'
+      - 'execution/g5_05_https_api/**'
+      - 'execution/g5_05_hosted_network/**'
+      - 'execution/preflight.py'
+      - 'execution/tasks.csv'
+      - 'execution/progress.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g5-06-signed-ota-p4-native-build-rollback-not-released:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - name: Host test transactional OTA safety gates before firmware build
+        shell: bash
+        run: |
+          set -euo pipefail
+          gcc -std=c11 -Wall -Wextra -Werror -pedantic \
+            -Iexecution/g5_06_signed_ota \
+            execution/g5_06_signed_ota/fg_ota_gate.c \
+            execution/g5_06_signed_ota/test_ota_gate.c -o /tmp/fg_ota_gate_test
+          /tmp/fg_ota_gate_test
+          python3 execution/g5_06_signed_ota/check_contract.py
+          python3 execution/preflight.py
+          python3 tests/check_design.py
+      - name: Patch genuine original P4/C6 product firmware source; native IDF target compile
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          python3 execution/g5_05_access_core/apply_product.py firmware
+          python3 execution/g5_05_https_api/apply_https_product.py firmware
+          python3 execution/g5_05_hosted_network/apply_network_product.py firmware
+          python3 execution/g5_06_signed_ota/apply_product.py firmware
+          grep -q 'fg_ota_boot_guard_unqualified' firmware/main/app_main.c
+          grep -q '"fg_ota_port.c"' firmware/main/CMakeLists.txt
+          source /opt/esp/idf/export.sh
+          idf.py -C firmware set-target esp32p4 >/tmp/fg_ota_settarget.log 2>&1
+          idf.py -C firmware build >/tmp/fg_ota_build.log 2>&1 || { tail -150 /tmp/fg_ota_build.log; exit 1; }
+          grep -q 'fg_ota_port.c' firmware/build/compile_commands.json
+          grep -q 'fg_ota_gate.c' firmware/build/compile_commands.json
+          test -s firmware/build/forest_guardian_review.bin
+          python3 - <<'PY'
+          from pathlib import Path
+          size=Path("firmware/build/forest_guardian_review.bin").stat().st_size
+          print(f"APP_BYTES={size} A_B_SLOT=3670016 REMAINING={3670016-size}")
+          assert size<0x380000
+          config=Path("firmware/sdkconfig").read_text()
+          assert 'CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y' not in config
+          assert 'CONFIG_SECURE_SIGNED_ON_UPDATE_NO_SECURE_BOOT=y' not in config
+          print("HOLD release remains unsigned review-only and self-disables OTA writes")
+          PY
+          sha256sum firmware/build/forest_guardian_review.bin
+      - name: Genuine RSA3072 Espressif image sign/verify and tamper rejection (synthetic CI key)
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          umask 077
+          WORK="$(mktemp -d)"
+          export WORK
+          trap 'rm -rf "$WORK"' EXIT
+          espsecure.py generate_signing_key --version 2 --scheme rsa3072 "$WORK/test-only-key.pem" >/dev/null
+          espsecure.py sign_data --version 2 --keyfile "$WORK/test-only-key.pem" \
+            --output "$WORK/signed.bin" firmware/build/forest_guardian_review.bin >/dev/null
+          espsecure.py verify_signature --version 2 --keyfile "$WORK/test-only-key.pem" "$WORK/signed.bin" >/dev/null
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          d=Path(os.environ['WORK'])
+          raw=bytearray((d/'signed.bin').read_bytes())
+          assert len(raw)>4096
+          raw[256]^=0x20
+          (d/'tampered.bin').write_bytes(raw)
+          assert len(raw)<=0x380000
+          print(f"PASS IDF RSA3072 signature verified on synthetic signed firmware image, length {len(raw)} bytes")
+          PY
+          if espsecure.py verify_signature --version 2 --keyfile "$WORK/test-only-key.pem" "$WORK/tampered.bin" >/dev/null 2>&1; then
+            echo "FAIL tampered firmware signature was accepted"
+            exit 1
+          fi
+          echo "PASS tamper rejected; TEST-ONLY key and signed image deleted on EXIT; no production signer or device"
