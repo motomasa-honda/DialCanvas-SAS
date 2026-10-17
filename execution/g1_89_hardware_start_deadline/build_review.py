@@ -46,6 +46,11 @@ def main():
     s=one(s,f'(label "GND" (at {q["wire_end_x"]} {q["wire_end_y"]} 0)',
             f'(label "3V3_AON" (at {q["wire_end_x"]} {q["wire_end_y"]} 0)')
     q["review_net"]=q["source_net"]="3V3_AON"
+    # Set manufacturer switching-test RESET load to 100k, also valid for
+    # TPS3808 RESET_N open-drain 10k..1M recommended range.
+    # Parent G1-88's "10K_PULLDOWN_DISABLED" value was stale after rewiring.
+    s=one(s,'(property "Value" "10K_PULLDOWN_DISABLED"',
+            '(property "Value" "100K_RESET_N_PULLUP"')
     # Copy precise 6-pin geometries of the already-native KiCad 9 PAD6.
     native=obj(s,'(symbol "FG_REVIEW:PAD6"')
     u33=native.replace("FG_REVIEW:PAD6","FG_TIMER:TPS3808G01DBVR").replace("PAD6_","TPS3808G01DBVR_")
@@ -78,10 +83,12 @@ def main():
     # SENSE falling threshold nominal 0.405V; for EN divider 12k/10k,
     # equivalent EN threshold is 0.891V typical (worst tolerance <0.920V),
     # safely below eFuse EN rising min 1.183V. R4 permanent PD retained.
-    # 68nF gives ~389ms nominal delay, NOT a guaranteed max <=500ms.
+    # FIXED DELAY: TPS3808 CT pulled to VDD through 40k..200k resistor
+    # gives 300ms nominal; TI specs min 180/max 420ms over rated range
+    # with specified reset loading. Unlike 68nF, timing has a rated MAX.
     parts=[("R57","12K_1PCT_EN_SENSE_TOP",["B77__U7_EN_CLAMPED_DISABLED","B89__EN_SENSE_DIV"]),
            ("R58","10K_1PCT_EN_SENSE_BOT",["B89__EN_SENSE_DIV","GND"]),
-           ("C30","68NF_LOW_LEAKAGE_CT",["B89__STARTUP_CT","GND"]),
+           ("R62","100K_CT_TO_VDD_300MS_FIXED",["B89__STARTUP_CT","3V3_AON"]),
            ("C31","100NF_VDD_DECOUPLING",["3V3_AON","GND"]),
            ("C32","1NF_SENSE_FILTER",["B89__EN_SENSE_DIV","GND"])]
     for i,(ref,value,nets) in enumerate(parts):
@@ -93,6 +100,6 @@ def main():
     assert len(rows)==499 and len({x["kicad_ref"] for x in rows})==141
     (D/"pin_map_499.json").write_text(json.dumps(rows,indent=2)+"\n")
     (D/(NEW+".kicad_sch")).write_text(s.rstrip()[:-1]+"\n"+"\n".join(extra)+"\n)\n")
-    print("PASS: KiCad G1-89 499 true pads/141 symbols; J19 removed; R56 pull-up, actual TPS3808 DBV.")
+    print("PASS: KiCad G1-89 499 true pads/141 symbols, J19 removed; 100k RESET_N R56 and 100k CT-to-VDD R62 for rated 180..420ms.")
     print("HOLD: U7 EN still R4 to GND, 28 OE disabled. 3V3 cold POR, analog delay and safety HIL not accepted.")
 if __name__=="__main__":main()
