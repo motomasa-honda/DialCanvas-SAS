@@ -25,5 +25,5 @@
   ],
   "new_working_evidence": "execution/g5_06_signed_ota/README.md",
   "g5_05_last_review": "2026-10-17: independent encrypted fg_cfg 32KiB review, offline encrypted NVS mock, remote START/FAULT CLEAR locked; hardware pending",
-  "g5_06_last_review": "2026-10-17: native P4 OTA port & RSA3072 synthetic tamper test successful, no signed production mode, real rollback HIL hold"
+  "g5_06_last_review": "2026-10-17: signed ESP32-P4 build passed; rollback failure/image-state query failure now blocks app_main startup; physical rollback/HIL still HOLD"
 }

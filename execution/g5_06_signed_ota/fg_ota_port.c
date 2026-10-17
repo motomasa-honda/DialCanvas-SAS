@@ -82,21 +82,37 @@ fg_ota_result fg_ota_native_stage_for_review(const fg_ota_source *source,size_t 
   * fg_ota_stage to return before esp_ota_begin/erase/write. */
  return fg_ota_stage(source,&ops,bytes,false,false);
 }
-void fg_ota_boot_guard_unqualified(void){
+bool fg_ota_boot_guard_unqualified(void){
 #if defined(CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE) && CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE
  const esp_partition_t *running=esp_ota_get_running_partition();
- if(!running)return;
- esp_ota_img_states_t state=ESP_OTA_IMG_UNDEFINED;
- if(esp_ota_get_state_partition(running,&state)!=ESP_OK)return;
- if(state==ESP_OTA_IMG_PENDING_VERIFY){
-  /* Motor safety HIL is NOT qualified. New app may never mark itself VALID.
-   * Attempt return to prior confirmed application now; if unavailable remain
-   * in safe/locked state, never fabricate a successful self-test. */
-  ESP_LOGE(TAG,"New OTA image is not physically qualified: request rollback");
-  esp_err_t e=esp_ota_mark_app_invalid_rollback_and_reboot();
-  if(e!=ESP_OK)ESP_LOGE(TAG,"Rollback impossible (%d); remain review locked",(int)e);
+ if(!running){
+  ESP_LOGE(TAG,"Cannot identify running app for OTA health; block application startup");
+  return false;
  }
+ esp_ota_img_states_t state=ESP_OTA_IMG_UNDEFINED;
+ esp_err_t status=esp_ota_get_state_partition(running,&state);
+ if(status!=ESP_OK){
+  ESP_LOGE(TAG,"Cannot verify OTA image state (%d); block startup",(int)status);
+  return false;
+ }
+ if(state==ESP_OTA_IMG_PENDING_VERIFY){
+  /* Only an approved physical HIL can confirm a candidate app. The rollback
+   * call should reboot; if it returns, recovery failed. NEVER run normal
+   * application startup after a failed or unavailable rollback. */
+  ESP_LOGE(TAG,"Unqualified OTA first boot: request rollback");
+  esp_err_t e=esp_ota_mark_app_invalid_rollback_and_reboot();
+  ESP_LOGE(TAG,"Rollback did not reboot (%d); block application startup",(int)e);
+  return false;
+ }
+ if(state!=ESP_OTA_IMG_VALID&&state!=ESP_OTA_IMG_UNDEFINED){
+  ESP_LOGE(TAG,"Unsafe OTA app state %d; block application startup",(int)state);
+  return false;
+ }
+ return true;
 #else
- ESP_LOGI(TAG,"OTA rollback not enabled; OTA operations remain disabled");
+ /* Unsigned review firmware has all OTA writes disabled (two physical HIL
+  * gates false). Ordinary local GUI can start, but OTA is never authorized. */
+ ESP_LOGI(TAG,"OTA rollback disabled: update writes remain hard-disabled");
+ return true;
 #endif
 }

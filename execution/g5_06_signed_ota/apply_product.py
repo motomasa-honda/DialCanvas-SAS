@@ -19,7 +19,7 @@ change_once('#include "fg_net_service.h"',
 change_once('ESP_ERROR_CHECK(nvs_flash_init());',
             'ESP_ERROR_CHECK(nvs_flash_init());\n'
             ' /* Never mark unsigned/unreviewed new app VALID on first boot. */\n'
-            ' fg_ota_boot_guard_unqualified();')
+            ' if(!fg_ota_boot_guard_unqualified()){gpio_set_level(ARM,0);return;}')
 assert build.count('"fg_net_service.c"')==1
 build=build.replace('"fg_net_service.c"','"fg_net_service.c" "fg_ota_gate.c" "fg_ota_port.c"')
 assert "REQUIRES esp_wifi" in build
@@ -29,7 +29,7 @@ for name in ("fg_ota_gate.c","fg_ota_gate.h","fg_ota_port.c","fg_ota_port.h"):
  assert not target.exists(),name
  target.write_text((d/name).read_text())
 app.write_text(text);cm.write_text(build)
-assert text.count("fg_ota_boot_guard_unqualified();")==1
+assert text.count("if(!fg_ota_boot_guard_unqualified()){gpio_set_level(ARM,0);return;}")==1
 assert text.count("fg_intent_apply(&ctl,&intent,ctx)")==1
 assert "FG_OTA_ALLOW_UNVERIFIED" not in text
 print("PASS G5-06 actual product CMake + boot-first-review guard integrated, physical gate remains false")

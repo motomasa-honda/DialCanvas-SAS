@@ -17,6 +17,11 @@ assert 'esp_ota_begin(target,bytes,&s->handle)' in port
 assert 'esp_ota_end(s->handle)' in port
 assert 'esp_ota_set_boot_partition(s->target)' in port
 assert 'esp_ota_mark_app_invalid_rollback_and_reboot()' in port
+assert 'bool fg_ota_boot_guard_unqualified(void)' in port
+assert 'if(status!=ESP_OK)' in port and 'return false;' in port
+assert 'if(state!=ESP_OTA_IMG_VALID&&state!=ESP_OTA_IMG_UNDEFINED)' in port
+assert 'Rollback did not reboot' in port
+assert 'if(!fg_ota_boot_guard_unqualified()){gpio_set_level(ARM,0);return;}' in patch
 assert 'esp_ota_mark_app_valid_cancel_rollback' not in port
 assert 'CONFIG_SECURE_SIGNED_ON_UPDATE_NO_SECURE_BOOT' in port
 assert 'CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE' in port

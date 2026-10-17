@@ -40,3 +40,9 @@
 ## 署名ビルドの初回CI診断（2026-10-17）
 
 ESP32-P4の署名モード候補CIで、`CONFIG_SECURE_SIGNED_ON_BOOT_NO_SECURE_BOOT` を設定しても有効化されなかったため、試験は意図的に失敗した。**G5-06で必要なのはOTA時の署名検証と初回起動ロールバック**であり、起動時の追加署名再検証はこのモードで必須とはしない。`CONFIG_SECURE_SIGNED_APPS_NO_SECURE_BOOT`、`CONFIG_SECURE_SIGNED_ON_UPDATE_NO_SECURE_BOOT`、`CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE` の3つは元のログ上で有効だった。追加の署名起動フラグだけを試験モードから外し、再ビルドする。必要ないKconfig選択肢で製品完成を遅らせない。
+
+## G5-06 安全修正：ロールバック不成立なら通常起動へ進めない（2026-10-17）
+
+初回署名更新後 `ESP_OTA_IMG_PENDING_VERIFY` で `esp_ota_mark_app_invalid_rollback_and_reboot()` が失敗または復帰不能だった場合、旧実装はログ出力後に app_main を続行する欠陥があった。`fg_ota_boot_guard_unqualified()` を成否付きに変更し、PENDING_VERIFY のロールバック要求が戻った場合・署名更新済イメージ状態取得失敗・INVALID/ABORTED/NEW は `false` を返す。呼出側は物理 ARM LOW を再指定して `app_main` から戻り、UI/ネットワーク/制御タスクの通常初期化を禁止。`VALID`/初期`UNDEFINED`のみ通過。未署名レビュー構成ではOTA書込が依然物理HIL偽値で拒否されるため、通常レビューGUI起動のみ許可する。
+
+ESP-IDF実ビルドで構文/リンクを検証しても、実際のブートローダー戻り先・電源断・タスク停止安全性のHIL証拠にはならない。**G5-06 WORKING、20/48、製造0/6、eFuse EN LOW。**
