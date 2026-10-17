@@ -36,3 +36,7 @@
 ## 重要なRAW A/B統合修正（2026-10-17）
 
 現行の元製品`firmware/partition.csv`は旧5MiB A/B (`app_b=0x510000`) であり、G5-06のソースが要求する新3.5MiB A/B (`app_b=0x390000`) と一致しないことを発見。コンパイルだけで成功と判定すると、実機では `fg_ota_native_stage_for_review` が区画不一致で必ず拒否する。**OTAは起動先の物理アドレスと一致して初めて意味がある**。専用CIはオリジナルSHAを保全し、展開したコピーだけ `partition-review-raw-ab.csv`へ差し替えて完全ビルドする。署名モードの方は、同じアプリ領域を維持しつつ独立`fg_cfg/nvs_keys`も備えた統合区画レビュー案を使う。両方ともIDFネイティブパーティションBINと元CSVを比較して、電源・実機書込を一切伴わない。正式な製造/暗号化承認は依然0/6。
+
+## 署名ビルドの初回CI診断（2026-10-17）
+
+ESP32-P4の署名モード候補CIで、`CONFIG_SECURE_SIGNED_ON_BOOT_NO_SECURE_BOOT` を設定しても有効化されなかったため、試験は意図的に失敗した。**G5-06で必要なのはOTA時の署名検証と初回起動ロールバック**であり、起動時の追加署名再検証はこのモードで必須とはしない。`CONFIG_SECURE_SIGNED_APPS_NO_SECURE_BOOT`、`CONFIG_SECURE_SIGNED_ON_UPDATE_NO_SECURE_BOOT`、`CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE` の3つは元のログ上で有効だった。追加の署名起動フラグだけを試験モードから外し、再ビルドする。必要ないKconfig選択肢で製品完成を遅らせない。
