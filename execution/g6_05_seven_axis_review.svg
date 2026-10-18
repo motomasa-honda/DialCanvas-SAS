@@ -1,32 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="270mm" height="190mm" viewBox="0 0 270 190">
-<rect width="270" height="190" fill="white" stroke="black" stroke-width=".5"/>
-<g id="nominal-50x41-envelope">
-<rect x="60" y="19.5" width="50" height="41" fill="none" stroke="#888" stroke-dasharray="2 1" stroke-width=".5"/>
-<rect x="30" y="119.5" width="50" height="41" fill="none" stroke="#888" stroke-dasharray="2 1" stroke-width=".5"/>
-<rect x="110" y="119.5" width="50" height="41" fill="none" stroke="#888" stroke-dasharray="2 1" stroke-width=".5"/>
-<rect x="200" y="109.5" width="50" height="41" fill="none" stroke="#888" stroke-dasharray="2 1" stroke-width=".5"/>
-<rect x="115" y="64.5" width="50" height="41" fill="none" stroke="#888" stroke-dasharray="2 1" stroke-width=".5"/>
-<rect x="25" y="64.5" width="50" height="41" fill="none" stroke="#888" stroke-dasharray="2 1" stroke-width=".5"/>
-<rect x="115" y="19.5" width="50" height="41" fill="none" stroke="#888" stroke-dasharray="2 1" stroke-width=".5"/>
+<rect x="0" y="0" width="270" height="190" fill="white" stroke="black" stroke-width=".5"/>
+<g id="axis_centers">
+<circle cx="85" cy="40" r="1.6" fill="#111"/>
+<circle cx="55" cy="140" r="1.6" fill="#111"/>
+<circle cx="135" cy="140" r="1.6" fill="#111"/>
+<circle cx="225" cy="130" r="1.6" fill="#111"/>
+<circle cx="140" cy="85" r="1.6" fill="#111"/>
+<circle cx="50" cy="85" r="1.6" fill="#111"/>
+<circle cx="140" cy="40" r="1.6" fill="#111"/>
 </g>
-<g id="axis-centers">
-<circle cx="85" cy="40" r="1.5" fill="black"/>
-<circle cx="55" cy="140" r="1.5" fill="black"/>
-<circle cx="135" cy="140" r="1.5" fill="black"/>
-<circle cx="225" cy="130" r="1.5" fill="black"/>
-<circle cx="140" cy="85" r="1.5" fill="black"/>
-<circle cx="50" cy="85" r="1.5" fill="black"/>
-<circle cx="140" cy="40" r="1.5" fill="black"/>
+<g id="service_envelopes_candidate">
+<rect x="60" y="19.5" width="50" height="41" fill="none" stroke="#777" stroke-dasharray="2 1" stroke-width=".5"/>
+<rect x="30" y="119.5" width="50" height="41" fill="none" stroke="#777" stroke-dasharray="2 1" stroke-width=".5"/>
+<rect x="110" y="119.5" width="50" height="41" fill="none" stroke="#777" stroke-dasharray="2 1" stroke-width=".5"/>
+<rect x="200" y="109.5" width="50" height="41" fill="none" stroke="#777" stroke-dasharray="2 1" stroke-width=".5"/>
+<rect x="115" y="64.5" width="50" height="41" fill="none" stroke="#777" stroke-dasharray="2 1" stroke-width=".5"/>
+<rect x="25" y="64.5" width="50" height="41" fill="none" stroke="#777" stroke-dasharray="2 1" stroke-width=".5"/>
+<rect x="115" y="19.5" width="50" height="41" fill="none" stroke="#777" stroke-dasharray="2 1" stroke-width=".5"/>
 </g>
-<g id="logical-42-branches" font-size="3">
-<text x="88" y="37">G1: J_M1_G1 1-6</text>
-<text x="58" y="137">G2: J_M1_G2 1-6</text>
-<text x="138" y="137">G3: J_M1_G3 1-6</text>
-<text x="228" y="127">G4: J_M1_G4 1-6</text>
-<text x="143" y="82">G5: J_M1_G5 1-6</text>
-<text x="53" y="82">G6: J_M1_G6 1-6</text>
-<text x="143" y="37">G7: J_M1_G7 1-6</text>
+<g id="logical_connectors">
+<text x="88" y="38" font-size="4">G1 / J_M1_G1</text>
+<text x="88" y="43" font-size="2.4">J_M1_G1:1 PH0 [UNVERIFIED]</text>
+<text x="88" y="46" font-size="2.4">J_M1_G1:2 PH1 [UNVERIFIED]</text>
+<text x="88" y="49" font-size="2.4">J_M1_G1:3 PH2 [UNVERIFIED]</text>
+<text x="88" y="52" font-size="2.4">J_M1_G1:4 PH3 [UNVERIFIED]</text>
+<text x="88" y="55" font-size="2.4">J_M1_G1:5 G1_COMMON_FUSED_5V [UNVERIFIED]</text>
+<text x="88" y="58" font-size="2.4">J_M1_G1:6 GND [UNVERIFIED]</text>
+<text x="58" y="138" font-size="4">G2 / J_M1_G2</text>
+<text x="58" y="143" font-size="2.4">J_M1_G2:1 PH0 [UNVERIFIED]</text>
+<text x="58" y="146" font-size="2.4">J_M1_G2:2 PH1 [UNVERIFIED]</text>
+<text x="58" y="149" font-size="2.4">J_M1_G2:3 PH2 [UNVERIFIED]</text>
+<text x="58" y="152" font-size="2.4">J_M1_G2:4 PH3 [UNVERIFIED]</text>
+<text x="58" y="155" font-size="2.4">J_M1_G2:5 G2_COMMON_FUSED_5V [UNVERIFIED]</text>
+<text x="58" y="158" font-size="2.4">J_M1_G2:6 GND [UNVERIFIED]</text>
+<text x="138" y="138" font-size="4">G3 / J_M1_G3</text>
+<text x="138" y="143" font-size="2.4">J_M1_G3:1 PH0 [UNVERIFIED]</text>
+<text x="138" y="146" font-size="2.4">J_M1_G3:2 PH1 [UNVERIFIED]</text>
+<text x="138" y="149" font-size="2.4">J_M1_G3:3 PH2 [UNVERIFIED]</text>
+<text x="138" y="152" font-size="2.4">J_M1_G3:4 PH3 [UNVERIFIED]</text>
+<text x="138" y="155" font-size="2.4">J_M1_G3:5 G3_COMMON_FUSED_5V [UNVERIFIED]</text>
+<text x="138" y="158" font-size="2.4">J_M1_G3:6 GND [UNVERIFIED]</text>
+<text x="228" y="128" font-size="4">G4 / J_M1_G4</text>
+<text x="228" y="133" font-size="2.4">J_M1_G4:1 PH0 [UNVERIFIED]</text>
+<text x="228" y="136" font-size="2.4">J_M1_G4:2 PH1 [UNVERIFIED]</text>
+<text x="228" y="139" font-size="2.4">J_M1_G4:3 PH2 [UNVERIFIED]</text>
+<text x="228" y="142" font-size="2.4">J_M1_G4:4 PH3 [UNVERIFIED]</text>
+<text x="228" y="145" font-size="2.4">J_M1_G4:5 G4_COMMON_FUSED_5V [UNVERIFIED]</text>
+<text x="228" y="148" font-size="2.4">J_M1_G4:6 GND [UNVERIFIED]</text>
+<text x="143" y="83" font-size="4">G5 / J_M1_G5</text>
+<text x="143" y="88" font-size="2.4">J_M1_G5:1 PH0 [UNVERIFIED]</text>
+<text x="143" y="91" font-size="2.4">J_M1_G5:2 PH1 [UNVERIFIED]</text>
+<text x="143" y="94" font-size="2.4">J_M1_G5:3 PH2 [UNVERIFIED]</text>
+<text x="143" y="97" font-size="2.4">J_M1_G5:4 PH3 [UNVERIFIED]</text>
+<text x="143" y="100" font-size="2.4">J_M1_G5:5 G5_COMMON_FUSED_5V [UNVERIFIED]</text>
+<text x="143" y="103" font-size="2.4">J_M1_G5:6 GND [UNVERIFIED]</text>
+<text x="53" y="83" font-size="4">G6 / J_M1_G6</text>
+<text x="53" y="88" font-size="2.4">J_M1_G6:1 PH0 [UNVERIFIED]</text>
+<text x="53" y="91" font-size="2.4">J_M1_G6:2 PH1 [UNVERIFIED]</text>
+<text x="53" y="94" font-size="2.4">J_M1_G6:3 PH2 [UNVERIFIED]</text>
+<text x="53" y="97" font-size="2.4">J_M1_G6:4 PH3 [UNVERIFIED]</text>
+<text x="53" y="100" font-size="2.4">J_M1_G6:5 G6_COMMON_FUSED_5V [UNVERIFIED]</text>
+<text x="53" y="103" font-size="2.4">J_M1_G6:6 GND [UNVERIFIED]</text>
+<text x="143" y="38" font-size="4">G7 / J_M1_G7</text>
+<text x="143" y="43" font-size="2.4">J_M1_G7:1 PH0 [UNVERIFIED]</text>
+<text x="143" y="46" font-size="2.4">J_M1_G7:2 PH1 [UNVERIFIED]</text>
+<text x="143" y="49" font-size="2.4">J_M1_G7:3 PH2 [UNVERIFIED]</text>
+<text x="143" y="52" font-size="2.4">J_M1_G7:4 PH3 [UNVERIFIED]</text>
+<text x="143" y="55" font-size="2.4">J_M1_G7:5 G7_COMMON_FUSED_5V [UNVERIFIED]</text>
+<text x="143" y="58" font-size="2.4">J_M1_G7:6 GND [UNVERIFIED]</text>
 </g>
-<text x="4" y="186" font-size="3">REVIEW ONLY - physical route/pins/cable lengths unverified; 55mm +Z candidate</text>
+<text x="4" y="185" font-size="3">REVIEW ONLY: +Z 55mm sweep unverified; no physical wire routes or manufacturing release</text>
 </svg>
