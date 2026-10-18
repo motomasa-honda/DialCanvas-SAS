@@ -138,9 +138,6 @@ def engineering_review_readiness(d):
     # the measured motor branch alone, nor below ideal 3V3 output power / VIN.
     if z["board_measured_peak_input_a"] < z["board_measured_peak_motor_a"]:
         return "FAIL_MEASURED_INPUT_BELOW_MOTOR_BRANCH"
-    if (z["board_measured_peak_input_a"] * z["five_volt_raw_min_during_transient_v"]
-            < z["controller_3v3_peak_a"] * 3.3):
-        return "FAIL_MEASURED_INPUT_BELOW_CONTROLLER_OUTPUT_POWER"
     # The eFuse ILIM rating must be MANUFACTURER MINIMUM, not 3334/R typ.
     motor_bound=7*z["actual_driver_max_simultaneous_phases"]*z["motor_peak_phase_current_a"]
     if z["board_measured_peak_motor_a"]>motor_bound:
@@ -149,6 +146,9 @@ def engineering_review_readiness(d):
         return "FAIL_EFUSE_MINIMUM_WITH_HEADROOM"
     if z["controller_3v3_peak_a"]>=TPS62933_OUTPUT_MAX_A*(1-RESERVE):
         return "FAIL_BUCK_3V3_WITH_HEADROOM"
+    if (z["board_measured_peak_input_a"] * z["five_volt_raw_min_during_transient_v"]
+            < z["controller_3v3_peak_a"] * 3.3):
+        return "FAIL_MEASURED_INPUT_BELOW_CONTROLLER_OUTPUT_POWER"
     theoretical=input_current_requirement(
         motor_bound,z["controller_3v3_peak_a"],z["buck_min_efficiency"],
         v_input=z["five_volt_raw_min_during_transient_v"])
