@@ -15,6 +15,12 @@ assert set(m)-{(x["kicad_ref"],x["source_pin"]) for x in orig}==expected
 def net(r,n):return m[r,n]
 assert net("U45",1)=="unconnected-(U45-RT-Pad1)"
 assert net("U45",2)==net("U45",3)==net("J20",1)==net("U14",5)=="B77__5V_RAW"
+# Independent always-on rail regression guard: controller buck input MUST be
+# upstream of the switched motor eFuse, not back-powered by motor 5V_MOTOR.
+# Preserve physical isolation even when other 5V labels evolve later.
+assert net("U45",3)!=net("U14",6)== "5V_MOTOR"
+assert net("U45",4)==net("J20",2)=="GND"
+assert net("U45",8)!="5V_MOTOR"
 assert net("U45",4)==net("J20",2)==net("R4",2)=="GND"
 assert net("U45",5)==net("L1",1)==net("C50",2)=="B95__BUCK_SW"
 assert net("U45",6)==net("C50",1)=="B95__BUCK_BST"
