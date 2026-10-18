@@ -1,4 +1,5 @@
 // Forest Guardian M1 seven-axis secondary anti-slide M2x5 headless-stud design review.
+// 2026-10-19 candidate: outboard boss and X-screened cassette notch.
 // NOT for fabrication. Full 1,774 D7 source solids are not embedded in this lightweight SCAD.
 // Required independent sequence: remove cover, unscrew Gx stud, reverse Y 2.5mm, remove bar, +Z55mm sled.
 $fn=28;
@@ -11,7 +12,7 @@ module guide(x,y,side){
     translate([rx,y-14,123])cube([1.2,28,13.5]);
     translate([wx,by-.8,134.85])cube([.87,4.6,.85]);
     translate([wx,by-.7,135.70])cube([.87,1.4,1.05]);
-    if(side>0)translate([x+22.25,y-1.1,134])cylinder(r=1.025,h=4.1);
+    if(side>0)translate([x+23.15,y-1.1,134])cylinder(r=1.025,h=4.1);
   }
   color([.1,.53,.64]) difference(){
     translate([side<0?x-24.75:x+23,by-1,134.3])cube([1.75,4.85,2.35]);
@@ -24,14 +25,16 @@ module sled(x,y){color([.48,.76,.22,.85])difference(){
     cube([44,35,15]);translate([1.6,1.6,-.1])cube([40.8,31.8,15.2]);
   }
   // The entire side-wall HEIGHT has to be relieved or the fixed boss blocks +Z removal.
-  translate([x+20.3,y-3.9,122.9])cube([2,4.25,15.2]);
+  // Outboard-shifted fixed boss x=21.5..24.8; 20.6..22.5 notch
+  // clears the 40mm board envelope at nominal +/-0.2mm/part tolerance.
+  translate([x+20.6,y-3.9,122.9])cube([1.9,4.25,15.2]);
 }}
 module screw_boss(x,y){
  color([.05,.50,.64])difference(){
-   translate([x+20.5,y-3.75,134])cube([3.5,3.95,4]);
-   translate([x+22.25,y-1.1,133.9])cylinder(r=1.025,h=5);
+   translate([x+21.5,y-3.75,134])cube([3.3,3.95,4]);
+   translate([x+23.15,y-1.1,133.9])cylinder(r=1.025,h=5);
  }
- if(!stud_removed)color([.94,.61,.08])translate([x+22.25,y-1.1,134.35])cylinder(r=1,h=5);
+ if(!stud_removed)color([.94,.61,.08])translate([x+23.15,y-1.1,134.35])cylinder(r=1,h=5);
 }
 module bar(x,y){color([.67,.21,.67])translate([x-24,y-2+sy(),138.05])cube([48,4,1.3]);}
 module keyed_parts(x,y){

@@ -1,6 +1,6 @@
 {
-  "design_id": "FG-M1-KPR-20261016",
-  "date": "2026-10-16",
+  "design_id": "FG-M1-KPR-20261019",
+  "date": "2026-10-19",
   "status": "CAD_CANDIDATE_NOT_FOR_MANUFACTURE",
   "original_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
   "source_solid_count": 1774,
@@ -45,8 +45,8 @@
     "bayonet_keys": 2,
     "independent_headless_stop_candidate": "M2x5",
     "counter_body_x_offsets": [
-      20.5,
-      24
+      21.5,
+      24.8
     ],
     "counter_body_y_offsets": [
       -3.75,
@@ -57,7 +57,7 @@
       138
     ],
     "screw_axis_xy_offsets": [
-      22.25,
+      23.15,
       -1.1
     ],
     "screw_radius_mm": 1,
@@ -77,8 +77,8 @@
     "bar_reverse_unlock_travel_mm": 2.5,
     "nominal_return_y_until_contact_mm": 0.6,
     "right_sled_entire_z_sweep_notch_x_offsets": [
-      20.3,
-      22.3
+      20.6,
+      22.5
     ],
     "right_sled_notch_y_offsets": [
       -3.9,
@@ -88,19 +88,12 @@
     "review_tool_length_mm": 24
   },
   "verified_with_full_d7_locally": {
-    "fixed_wood_fan_exclusions": [
-      "BACK_WOOD",
-      "REAR_GRILLE",
-      "BACK_OUTER_*",
-      "BACK_INNER_*",
-      "BACK_CAPTIVE_*",
-      "BACK_BRIDGE_*",
-      "FAN_*"
-    ],
-    "fixed_core_boss_collisions": 0,
-    "fixed_core_tool_collisions": 0,
-    "conditionally_clear_axes": 7,
-    "source_geometry_checked_in_Github": false
+    "previous_revision_boss_x_offsets": [20.5, 24],
+    "previous_revision_fixed_core_boss_collisions": 0,
+    "previous_revision_fixed_core_tool_collisions": 0,
+    "current_outboard_boss_revision_recomputed_against_full_d7": false,
+    "source_geometry_checked_in_Github": false,
+    "current_revision_release_effect": "FULL_D7_CLEARANCE_MUST_BE_RECOMPUTED; OLD_ZERO_COLLISION_RESULT_DOES_NOT_COVER_SHIFTED_BOSS"
   },
   "kinematic_test": {
     "steps_total": 714,
@@ -111,26 +104,34 @@
   },
   "tolerance_analysis": {
     "conservative_board_width_mm": 40,
-    "conservative_board_notch_nominal_margin_mm": 0.3,
-    "worst_margin_with_two_parts_each_pm_0_2_mm": -0.1,
+    "conservative_board_notch_nominal_margin_mm": 0.6,
+    "worst_margin_with_two_parts_each_pm_0_2_mm": 0.2,
     "assumed_per_part_tolerance_mm": 0.2,
     "notch_only_feasibility_with_two_parts_each_pm_0_2_mm": {
       "board_edge_min_notch_x_offset_mm": 20.4,
-      "fixed_boss_edge_max_notch_x_offset_mm": 20.1,
-      "feasible_interval": false,
-      "gap_between_constraints_mm": 0.3,
-      "disposition": "NO_NOTCH_ONLY_SOLUTION_FOR_40MM_BOARD_AND_FIXED_BOSS; REDESIGN_BOSS_LOCATION_OR_USE_MEASURED_SMALLER_MODULE"
+      "fixed_boss_edge_max_notch_x_offset_mm": 21.1,
+      "feasible_interval": true,
+      "available_interval_width_mm": 0.7,
+      "selected_notch_start_mm": 20.6,
+      "selected_notch_worst_board_clearance_mm": 0.2,
+      "selected_boss_shift_outboard_mm": 1.0,
+      "selected_notch_end_mm": 22.5,
+      "cassette_outer_wall_x_offset_mm": 22,
+      "notch_end_worst_clearance_to_wall_mm": 0.1,
+      "selected_boss_worst_case_wall_thickness_mm": 0.425,
+      "remaining_y_z_tolerance_review": "NOT_ANALYZED_BY_THIS_XY_SCREEN",
+      "disposition": "CONDITIONAL_NOMINAL_TOLERANCE_CANDIDATE; FULL_D7_CLEARANCE_AND_PHYSICAL_SAMPLE_NOT_VERIFIED"
     },
     "alternate_catalog_board_width_mm": 35,
     "alternate_nominal_margin_mm": 2.8,
     "alternate_worst_margin_pm_0_2_mm": 2.4,
-    "alternate_board_tolerance_window_mm": [17.9, 20.1],
+    "alternate_board_tolerance_window_mm": [17.9, 21.1],
     "actual_module_measurement": "NOT_AVAILABLE"
   },
   "hardware_issues": [
     "M2 headless fastener material/tap/strip strength not qualified",
     "M2 screw reverse-turn vibration and drop-out not qualified",
-    "40mm mechanical envelope fails 0.2mm/part tolerance budget",
+    "candidate retains 0.2mm worst-case 40mm board X clearance under assumed ±0.2mm/part only; Y/Z tolerance stack unverified",
     "native fixed boss interrupts existing sled right side wall, structural life not qualified",
     "Fan relocation, wood back-pocket depth and physical 55mm interchange pending",
     "Motor independent trip latch and eFuse PG/STOP not built"

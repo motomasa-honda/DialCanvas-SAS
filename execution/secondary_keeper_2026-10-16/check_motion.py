@@ -3,6 +3,7 @@
 import json, itertools, pathlib, math
 p=pathlib.Path(__file__).resolve().parent
 a=json.loads((p/"design_contract.json").read_text())
+scad=(p/"M1_7AXIS_ANTISLIDE_STOP_REVIEW.scad").read_text()
 s=a["per_axis"]; axes=a["axes"];v=a["kinematic_test"];h=a["tolerance_analysis"];r=a["controls"]
 assert a["original_d7_sha256"]=="20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f"
 assert a["source_solid_count"]==1774
@@ -10,15 +11,19 @@ assert len(axes)==7 and sorted(z["axis"] for z in axes)==list(range(1,8))
 assert len({(z["x"],z["y"]) for z in axes})==7
 assert s["bayonet_keys"]==2 and s["independent_headless_stop_candidate"]=="M2x5"
 assert (s["screw_radius_mm"],s["bar_reverse_unlock_travel_mm"])==(1,2.5)
-assert s["screw_axis_xy_offsets"]==[22.25,-1.1]
-assert s["counter_body_x_offsets"]==[20.5,24] and s["counter_body_y_offsets"]==[-3.75,0.2]
+assert s["screw_axis_xy_offsets"]==[23.15,-1.1]
+assert s["counter_body_x_offsets"]==[21.5,24.8] and s["counter_body_y_offsets"]==[-3.75,0.2]
 assert s["counter_body_z_mm"]==[134,138]
 assert s["stud_installed_z"]==[134.35,139.35]
 assert s["bar_z_mm"]==[138.05,139.35]
-assert s["right_sled_entire_z_sweep_notch_x_offsets"]==[20.3,22.3]
+assert s["right_sled_entire_z_sweep_notch_x_offsets"]==[20.6,22.5]
 assert s["right_sled_notch_y_offsets"]==[-3.9,0.35]
-assert a["verified_with_full_d7_locally"]["fixed_core_boss_collisions"]==0
-assert a["verified_with_full_d7_locally"]["fixed_core_tool_collisions"]==0
+assert "translate([x+20.6,y-3.9,122.9])cube([1.9,4.25,15.2]);" in scad
+assert "translate([x+21.5,y-3.75,134])cube([3.3,3.95,4]);" in scad
+assert scad.count("x+23.15,y-1.1") == 3 # guide bore, boss bore, installed stop
+assert "translate([x-24,y-2+sy(),138.05])cube([48,4,1.3]);" in scad
+assert a["verified_with_full_d7_locally"]["previous_revision_fixed_core_boss_collisions"]==0
+assert a["verified_with_full_d7_locally"]["previous_revision_fixed_core_tool_collisions"]==0
 assert not a["verified_with_full_d7_locally"]["source_geometry_checked_in_Github"]
 samples=0;blocked=0;released=0;clashes_without_notch=0
 for axis in axes:
@@ -28,8 +33,16 @@ for axis in axes:
  assert math.isclose(gap,.6,abs_tol=1e-8)
  tool_gap=.5-(-1.1+s["review_driver_tool_diameter_mm"]/2)
  assert math.isclose(tool_gap,.4,abs_tol=1e-8) # no tool collision at locked bar edge nominal
- assert (s["counter_body_x_offsets"][0]<22 and s["counter_body_y_offsets"][0]<0.35)
- assert s["right_sled_entire_z_sweep_notch_x_offsets"][0]<20.4
+ assert s["counter_body_x_offsets"][0]>20.4
+ assert s["counter_body_x_offsets"][1]<=25 # stays inside the reserved 5mm module margin
+ assert s["counter_body_y_offsets"][0]<0.35
+ # The shifted screw still overlaps the 48mm bar and has >=0.6mm bore wall.
+ screw_x=s["screw_axis_xy_offsets"][0]
+ screw_bar_overlap=min(24,screw_x+s["screw_radius_mm"])-max(-24,screw_x-s["screw_radius_mm"])
+ wall=min(screw_x-1.025-s["counter_body_x_offsets"][0],
+          s["counter_body_x_offsets"][1]-(screw_x+1.025))
+ assert screw_bar_overlap>1.8 and wall>=.6
+ assert s["right_sled_entire_z_sweep_notch_x_offsets"][0]<s["counter_body_x_offsets"][0]
  assert s["right_sled_entire_z_sweep_notch_x_offsets"][1]>22
  assert s["right_sled_notch_y_offsets"][0]<s["counter_body_y_offsets"][0]
  assert s["right_sled_notch_y_offsets"][1]>s["counter_body_y_offsets"][1]
@@ -48,32 +61,42 @@ for axis in axes:
   else:assert reached_full;released+=1
 assert (samples,blocked,released,clashes_without_notch)==(714,7,7,7)
 assert (v["steps_total"],v["no_complete_unlock_with_screw"],v["full_unlock_without_screw"])==(714,7,7)
-# Critical design failure must be persisted even when geometry checks pass.
+# Conditional X-only tolerance screen; no Y/Z or full-D7 clearance claim.
 assert h["conservative_board_width_mm"]==40
-assert math.isclose(20.3-40/2,.3,abs_tol=1e-7)
-assert math.isclose(.3-2*.2,-.1,abs_tol=1e-7)
-assert h["worst_margin_with_two_parts_each_pm_0_2_mm"]<0
-assert math.isclose(20.3-35/2-2*.2,2.4,abs_tol=1e-7)
-trade=h["notch_only_feasibility_with_two_parts_each_pm_0_2_mm"]
+notch_start=s["right_sled_entire_z_sweep_notch_x_offsets"][0]
+notch_end=s["right_sled_entire_z_sweep_notch_x_offsets"][1]
 tolerance=h["assumed_per_part_tolerance_mm"]
+nominal_board_gap=notch_start-h["conservative_board_width_mm"]/2
+worst_board_gap=nominal_board_gap-2*tolerance
+assert math.isclose(nominal_board_gap,.6,abs_tol=1e-7)
+assert math.isclose(worst_board_gap,.2,abs_tol=1e-7)
+assert math.isclose(h["worst_margin_with_two_parts_each_pm_0_2_mm"],worst_board_gap,abs_tol=1e-7)
+trade=h["notch_only_feasibility_with_two_parts_each_pm_0_2_mm"]
 board_min=h["conservative_board_width_mm"]/2+2*tolerance
 boss_max=s["counter_body_x_offsets"][0]-2*tolerance
 assert math.isclose(board_min,20.4,abs_tol=1e-7)
-assert math.isclose(boss_max,20.1,abs_tol=1e-7)
+assert math.isclose(boss_max,21.1,abs_tol=1e-7)
 assert math.isclose(trade["board_edge_min_notch_x_offset_mm"],board_min,abs_tol=1e-7)
 assert math.isclose(trade["fixed_boss_edge_max_notch_x_offset_mm"],boss_max,abs_tol=1e-7)
-assert math.isclose(trade["gap_between_constraints_mm"],board_min-boss_max,abs_tol=1e-7)
-assert not trade["feasible_interval"] and board_min>boss_max
-assert trade["disposition"].startswith("NO_NOTCH_ONLY_SOLUTION")
+assert trade["feasible_interval"] and board_min<boss_max
+assert math.isclose(trade["available_interval_width_mm"],boss_max-board_min,abs_tol=1e-7)
+assert math.isclose(trade["selected_notch_start_mm"],notch_start,abs_tol=1e-7)
+assert math.isclose(trade["selected_notch_worst_board_clearance_mm"],worst_board_gap,abs_tol=1e-7)
+notch_end_worst_gap=notch_end-trade["cassette_outer_wall_x_offset_mm"]-2*tolerance
+assert math.isclose(notch_end_worst_gap,trade["notch_end_worst_clearance_to_wall_mm"],abs_tol=1e-7)
+nominal_wall=min(s["screw_axis_xy_offsets"][0]-1.025-s["counter_body_x_offsets"][0],
+                s["counter_body_x_offsets"][1]-(s["screw_axis_xy_offsets"][0]+1.025))
+assert math.isclose(nominal_wall-tolerance,trade["selected_boss_worst_case_wall_thickness_mm"],abs_tol=1e-7)
+assert s["counter_body_x_offsets"][1]<=25
 small_board_min=h["alternate_catalog_board_width_mm"]/2+2*tolerance
 assert math.isclose(small_board_min,h["alternate_board_tolerance_window_mm"][0],abs_tol=1e-7)
 assert math.isclose(boss_max,h["alternate_board_tolerance_window_mm"][1],abs_tol=1e-7)
 assert small_board_min<boss_max
 assert h["actual_module_measurement"]=="NOT_AVAILABLE"
+assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_recomputed_against_full_d7"] is False
 assert a["status_counts"]=={"done_scope":16,"all_scope":48,"manufacturing_done":0,"manufacturing_total":6,"software_passed":11,"software_total":14}
 assert all(r[x] is False for x in ("purchase_allowed","manufacture_allowed","power_allowed","flash_allowed","merge_allowed"))
 assert r["efuse_en"]=="LOW"
 print("PASS nominal: 7 independent headless stop positions, 714 keyed locking states, 7 no-notch clashes")
-print("FAIL design acceptance AS INTENDED: 40mm module x 2*0.2mm tolerances => -0.1mm clearance")
-print("FAIL NOTCH-ONLY TOLERANCE WINDOW: 40mm board requires notch start >=20.4mm; fixed boss requires <=20.1mm; infeasible by 0.3mm")
-print("BLOCKED: no physical screw vibration retention, real PCB, wood/fan, native D7 recompute, eFuse power")
+print("PASS conditional X-only screen: 40mm envelope worst-case clearance 0.2mm; shifted boss/notch fit within nominal 5mm reservation")
+print("BLOCKED: Y/Z tolerances, shifted boss vs full D7, physical PCB/fastener, wood/fan, vibration and eFuse power remain unverified")

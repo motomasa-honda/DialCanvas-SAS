@@ -11,3 +11,7 @@ Contents: source-reading SHA-pinned D7 recomputation script (`build.py`), 7-axis
 **Project gates:** 16/48 narrowly scoped done, manufacturing 0/6, software review 11/14. eFuse EN remains LOW. No purchase, manufacture, motor power, flashing, main merge. Draft PR #2 remains Draft.
 
 **Required next decision by technical measurement, not user preference:** measure selected driver module physical PCB, holes, connectors and height; then redesign the stop/notch with manufacturing clearance, evaluate actual M2 fastener self-loosening control and positive retention with a real materials/test coupon.
+
+## 2026-10-19 revision note
+
+The X-only candidate was revised: boss X offsets are now `21.5..24.8`, screw X center `23.15`, and cassette notch `20.6..22.5`. Under assumed ±0.2mm two-part X tolerances this gives 0.2mm worst-case board clearance and 0.1mm notch clearance past the cassette wall. This does **not** replace or validate the downloadable 2026-10-16 ZIP, and does not establish Y/Z tolerance, updated full-D7 collision, physical PCB fit, fastener strength, or manufacturing acceptance. New current CAD is the checked-in `.scad` plus `design_contract.json`; overall status remains HOLD.
