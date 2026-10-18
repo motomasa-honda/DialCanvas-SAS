@@ -25,3 +25,9 @@ Status: BLOCKED — source discrepancy unresolved; not a hardware acceptance.
 - [ ] Review branch tests pass; existing safety HOLD remains until separate physical acceptance.
 
 No checklist item is marked complete by this document. No manufacturing gate or 48-item ledger state is changed.
+
+## External identification search — 2026-10-18
+
+Search terms: exact `MTR-09-024` and `MTR-09-004` motor manufacturer datasheets. No attributable manufacturer document for either exact identifier was found in the returned results. Generic `MTR` results (including unrelated industrial linear-track products) are not evidence for these SKUs. The repository default-branch code search also returned no match for `MTR-09-024`; this does not establish absence on the review branch.
+
+**Disposition:** both SKUs remain UNKNOWN; neither may be assigned a voltage/current/phase configuration. Next evidence should come from the actual source BOM, procurement record, motor label or vendor drawing associated with the review branch. This is a search result, not a completed qualification or a new ledger item.
