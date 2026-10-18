@@ -23,6 +23,8 @@ assert 'network_ready' in api and 'certlen<32' in api
 with (root.parent/"tasks.csv").open(encoding="utf-8-sig",newline="") as f:tasks=list(csv.DictReader(f))
 p=json.loads((root.parent/"progress.json").read_text())
 assert next(x for x in tasks if x["ID"]=="G5-05")["Status"]=="WORKING"
-assert p["scoped_evidence_done"]==20 and p["manufacturer_release_closed"]==0
+assert p["scoped_evidence_done"]==sum(t["Status"]=="DONE_SCOPE" for t in tasks)
+assert p["task_total"]==len(tasks)==48
+assert p["manufacturer_release_closed"]==0
 print("PASS HTTPS secure-only route product adapter, paired role auth, control queue only, no direct GPIO")
 print("HOLD no external Wi-Fi transport or provisioned server TLS key, no real traffic/HIL")
