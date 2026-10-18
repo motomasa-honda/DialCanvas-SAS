@@ -55,6 +55,8 @@ TIのTPS259474LRPWR正確品番ページは `ILIM > 1A` で電流制限精度±1
 
 根拠と丸めを `efuse_accuracy_audit.json` に記録し、`check_efuse_accuracy_audit.py` が0.850Aと1.004Aの差、および2.21kΩの保証最小値が未確定であることを検査する。解決にはTIからTPS259474LRPWの2.21kΩ設定に適用される保証範囲を得るか、保証範囲の明記された設定値へ再設計し、電流・配線・コネクタ・熱を再評価する必要がある。モーターENはLOWのまま。G1-05/G1-06はWORKING、製造ゲート0/6。
 
+Rev.C Table 6-5の**保証値が表記された5つの抵抗点だけ**を `efuse_accuracy_audit.json` に追記した。検査は各min/typ/max値と昇順の抵抗点を照合し、現行2.21kΩが表の値でないこと、保証最小値がnullであることを確認する。別抵抗点からの補間や公称式による保証値生成はしない。この表は再設計候補の根拠であり、負荷電流・始動電流・故障遮断適合性を確定しないため、抵抗値の変更は保留。
+
 一次資料： [TI TPS25947 Rev.C datasheet](https://www.ti.com/lit/ds/symlink/tps25947.pdf) の電気特性表（p.9）、ILM式(7)（p.32）、および [TI TPS259474LRPWR product page](https://www.ti.com/product/TPS25947/part-details/TPS259474LRPWR)。
 
 ## 2026-10-19 — G1-77/G1-78安全信号のG1-95統合ネット照合

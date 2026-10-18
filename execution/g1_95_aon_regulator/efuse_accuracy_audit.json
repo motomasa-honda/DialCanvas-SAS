@@ -22,7 +22,20 @@
     "table_max_limit_a": 1.15,
     "min_deviation_from_equation_percent": -15.36
   },
-  "finding": "The 3.32kΩ electrical-characteristics row does not agree with applying the product-page ±10% claim to the 3334/R equation. The source does not provide a guaranteed min/max row at the design's 2.21kΩ value. Do not infer a guaranteed minimum for 2.21kΩ by interpolation, extrapolation, or taking the product-page headline at face value.",
+  "datasheet_guaranteed_setpoints": {
+    "source_locator": "TI TPS25947 Rev.C, Table 6-5, datasheet p.9; URL above",
+    "limits_are_table_values_not_interpolated": true,
+    "rows": [
+      {"r_ilm_ohm": 6650, "min_a": 0.425, "typ_a": 0.500, "max_a": 0.575},
+      {"r_ilm_ohm": 3320, "min_a": 0.850, "typ_a": 1.007, "max_a": 1.150},
+      {"r_ilm_ohm": 1650, "min_a": 1.800, "typ_a": 2.028, "max_a": 2.200},
+      {"r_ilm_ohm": 750, "min_a": 3.960, "typ_a": 4.452, "max_a": 4.840},
+      {"r_ilm_ohm": 549, "min_a": 5.400, "typ_a": 6.068, "max_a": 6.600}
+    ],
+    "current_design_r_ilm_is_an_exact_table_setpoint": false,
+    "current_design_guaranteed_min_a": null
+  },
+  "finding": "The 3.32kΩ electrical-characteristics row does not agree with applying the product-page ±10% claim to the 3334/R equation. Rev.C Table 6-5 provides min/typ/max values only at the five exact resistor setpoints recorded here; the design's 2.21kΩ value is not one of them. Do not infer a guaranteed minimum for 2.21kΩ by interpolation, extrapolation, or taking the product-page headline at face value.",
   "design_value_r_ilm_ohm": 2210,
   "design_equation_typical_a_not_guaranteed": 1.508597,
   "design_guaranteed_min_a": null,
