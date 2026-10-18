@@ -33,6 +33,7 @@ jobs:
           python3 execution/g1_95_aon_regulator/build_review.py
           python3 execution/g1_95_aon_regulator/check_contract.py
           python3 execution/g1_95_aon_regulator/check_motor_current_budget.py
+          python3 execution/g1_95_aon_regulator/test_input_power_consistency.py
           python3 execution/g1_95_aon_regulator/test_motor_feasibility.py
           python3 execution/g1_95_aon_regulator/motor_feasibility.py --output execution/g1_95_aon_regulator/native_evidence/motor_candidate_matrix.json
           python3 execution/preflight.py
