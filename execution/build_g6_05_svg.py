@@ -24,11 +24,15 @@ for s in layout["slots"]:
     node(service,"rect",x=x-25,y=y-20.5,width=50,height=41,fill="none",stroke="#777",stroke_dasharray="2 1",stroke_width=".5")
     node(centers,"circle",cx=x,cy=y,r=1.6,fill="#111")
     t=node(labels,"text",x=x+3,y=y-2,font_size=4); t.text=axis+" / J_M1_"+axis
-    t=node(labels,"text",x=x+3,y=y+3,font_size=2.8); t.text="1-4 PH0-3; 5 5V; 6 GND"
+    for j,b in enumerate(sorted(six,key=lambda b:b["pin"])):
+        t=node(labels,"text",x=x+3,y=y+3+j*3,font_size=2.4)
+        t.text=f'{b["connector"]}:{b["pin"]} {b["signal"]} [UNVERIFIED]'
 note=node(svg,"text",x=4,y=185,font_size=3); note.text="REVIEW ONLY: +Z 55mm sweep unverified; no physical wire routes or manufacturing release"
 out=root/"g6_05_seven_axis_review.svg"
 ET.ElementTree(svg).write(out,encoding="utf-8",xml_declaration=True)
 check=ET.parse(out).getroot()
 assert len(check.findall(".//{"+ns+"}circle"))==7
 assert len(check.findall(".//{"+ns+"}rect"))==8
+assert len(check.findall(".//{"+ns+"}text"))==50
+assert sum("UNVERIFIED" in (e.text or "") for e in check.findall(".//{"+ns+"}text"))==42
 print("PASS seven centers, seven 50x41mm nominal envelopes, 42 logical pins; HOLD physical routing")
