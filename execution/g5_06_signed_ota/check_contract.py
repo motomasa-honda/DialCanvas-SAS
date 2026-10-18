@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """G5-06 only real acceptance constraints; review stage NOT marked DONE."""
 import csv,json
+from collections import Counter
 from pathlib import Path
 p=Path(__file__).resolve().parent
 core=(p/"fg_ota_gate.c").read_text()
@@ -31,6 +32,12 @@ with (p.parent/"tasks.csv").open(encoding="utf-8-sig",newline="") as f:tasks=lis
 state=next(x["Status"] for x in tasks if x["ID"]=="G5-06")
 assert state=="WORKING"
 progress=json.loads((p.parent/"progress.json").read_text())
-assert progress["manufacturer_release_closed"]==0 and progress["scoped_evidence_done"]==20
+counts=Counter(task["Status"] for task in tasks)
+assert len(tasks)==progress["task_total"]==48
+assert progress["scoped_evidence_done"]==counts["DONE_SCOPE"]
+assert progress["working"]==counts["WORKING"]
+assert progress["open"]==counts["OPEN"]
+assert progress["hardware_wait"]==counts["HARDWARE_WAIT"]
+assert progress["manufacturer_release_closed"]==0
 print("PASS G5-06 real IDF OTA port staged: inactive A/B only, IDF signature and rollback mandatory, HIL false")
 print("HOLD no network update consumer, production signer, approved HIL, signed bootloader, or power-cycle test")

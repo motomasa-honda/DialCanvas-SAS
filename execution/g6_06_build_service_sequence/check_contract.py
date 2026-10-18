@@ -74,11 +74,11 @@ assert next(row for row in tasks if row["ID"]=="G2-07")["Status"]=="OPEN"
 # Validate the CURRENT 48-task arithmetic via guard.py, not frozen G6-06 snapshot.
 from collections import Counter
 states=Counter(x["Status"] for x in tasks)
-assert p["scoped_evidence_done"]==states["DONE_SCOPE"]>=20
+assert p["scoped_evidence_done"]==states["DONE_SCOPE"]
 assert p["working"]==states["WORKING"] and p["open"]==states["OPEN"]
 assert p["hardware_wait"]==states["HARDWARE_WAIT"]==4
 assert sum(states.values())==48
 assert p["manufacturer_release_closed"]==0 and p["software_evidence_passed"]==11
 print("PASS G6-06 actual completion: all 80 named source parts covered once, 17 topologically ordered assembly stages")
 print("PASS seven independent 15-stage service travellers (105 actions), with exact 42 original 6-pin connection references")
-print("PASS existing cooling/G5/55mm/other six axle and NO-PHYSICAL-FAB-HIL gates retained; project 20/48, manufacture 0/6")
+print(f"PASS existing cooling/G5/55mm/other six axle and NO-PHYSICAL-FAB-HIL gates retained; project {states['DONE_SCOPE']}/48, manufacture 0/6")
