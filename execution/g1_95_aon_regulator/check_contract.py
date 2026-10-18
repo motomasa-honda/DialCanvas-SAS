@@ -3,8 +3,10 @@
 import json,sys,collections,xml.etree.ElementTree as ET
 from pathlib import Path
 from check_efuse_accuracy_audit import verify as verify_efuse_accuracy_audit
+from check_phase_chain_integration import verify as verify_phase_chain_integration
 D=Path(__file__).resolve().parent
 verify_efuse_accuracy_audit()
+verify_phase_chain_integration()
 orig=json.loads((D.parent/"g1_94_native_erc_cleanup/pin_map_618_clean.json").read_text())
 rows=json.loads((D/"pin_map_648.json").read_text())
 assert len(orig)==618 and len(rows)==648 and rows[:618]==orig

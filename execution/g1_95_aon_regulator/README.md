@@ -56,3 +56,9 @@ TIのTPS259474LRPWR正確品番ページは `ILIM > 1A` で電流制限精度±1
 根拠と丸めを `efuse_accuracy_audit.json` に記録し、`check_efuse_accuracy_audit.py` が0.850Aと1.004Aの差、および2.21kΩの保証最小値が未確定であることを検査する。解決にはTIからTPS259474LRPWの2.21kΩ設定に適用される保証範囲を得るか、保証範囲の明記された設定値へ再設計し、電流・配線・コネクタ・熱を再評価する必要がある。モーターENはLOWのまま。G1-05/G1-06はWORKING、製造ゲート0/6。
 
 一次資料： [TI TPS25947 Rev.C datasheet](https://www.ti.com/lit/ds/symlink/tps25947.pdf) の電気特性表（p.9）、ILM式(7)（p.32）、および [TI TPS259474LRPWR product page](https://www.ti.com/product/TPS25947/part-details/TPS259474LRPWR)。
+
+## 2026-10-19 — G1-77/G1-78安全信号のG1-95統合ネット照合
+
+G1-95の648端子マップを生成し、Phase77の140端子/39ネットとPhase78の208端子/63ネットを、`source_ref + source_pin + source_net`単位で相互照合する `check_phase_chain_integration.py` を追加した。両群348端子すべてが完全一致し、15個の意図的NC、共通電源ネット、7軸28相、4つのバッファ/OE電源ネットを区別して検査する。さらにARM latch Q→U39→U41→R66/R68→TPS259474 ENの端点ネット列を追跡し、ENの二重pulldownを確認する。Phase78の12個のOE端子も同一のフェイルクローズ候補ネットに維持。
+
+この検査は実ソースのネット登録と論理ゲート間の接続名を確認するもので、ゲート論理の電気特性、受動値、故障時しきい値・伝搬時間、KiCadネイティブERC、フットプリント/PCB、実測/HIL、安全なモーター運転を証明しない。G1-05/G1-06はWORKING、製造ゲート0/6、モーターEN無効を維持する。
