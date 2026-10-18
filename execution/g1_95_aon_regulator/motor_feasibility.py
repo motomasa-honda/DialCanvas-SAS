@@ -90,6 +90,27 @@ def evaluate_report(current, source):
     missing = sorted(k for k, v in measured.items() if v is None)
     report = {
         "scope": "ENGINEERING_CANDIDATE_SCREEN_ONLY",
+        "audited_manufacturer_motor_candidate": {
+            "status": "REJECTED_FOR_CURRENT_M1_DRIVER_AND_POWER_ENVELOPE",
+            "manufacturer": "Oriental Motor",
+            "exact_order_code": "PKP223U09A2",
+            "source": "https://catalog.orientalmotor.com/item/2-phase-unipolar-stepper-motors/shop-pkp-series-2-phase-unipolar-stepper-motors/pkp223u09a2",
+            "listed_frame_mm": 28,
+            "listed_motor_length_mm": 32,
+            "listed_leads": 6,
+            "listed_winding_current_a_per_phase": 0.95,
+            "listed_winding_resistance_ohm_per_phase": 3.11,
+            "listed_motor_voltage_v": 2.95,
+            "gearhead": "NONE",
+            "seven_axes_two_phases_theoretical_current_a": round(AXES * 2 * 0.95, 2),
+            "rejection_reasons": [
+                "0.95A/phase exceeds the ULN2003A 0.5A/channel rating used by the candidate driver topology",
+                "13.3A for seven axes at two phases each exceeds the current eFuse typical 1.509A by a wide margin",
+                "Exact SKU has no gearhead and is not a drop-in mechanical replacement",
+            ],
+            "selected": False,
+            "source_is_manufacturer_sales_catalog_not_independent_measurement": True,
+        },
         "motor_identity_review": {
             "status": "HOLD_MOTOR_MODEL_AND_MANUFACTURER_UNIDENTIFIED",
             "candidate_motor_model_from_board_compatibility_only": "28BYJ-48",

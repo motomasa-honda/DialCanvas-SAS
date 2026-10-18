@@ -64,3 +64,11 @@ Rev.C Table 6-5の**保証値が表記された5つの抵抗点だけ**を `efus
 G1-95の648端子マップを生成し、Phase77の140端子/39ネットとPhase78の208端子/63ネットを、`source_ref + source_pin + source_net`単位で相互照合する `check_phase_chain_integration.py` を追加した。両群348端子すべてが完全一致し、15個の意図的NC、共通電源ネット、7軸28相、4つのバッファ/OE電源ネットを区別して検査する。さらにARM latch Q→U39→U41→R66/R68→TPS259474 ENの端点ネット列を追跡し、ENの二重pulldownを確認する。Phase78の12個のOE端子も同一のフェイルクローズ候補ネットに維持。
 
 この検査は実ソースのネット登録と論理ゲート間の接続名を確認するもので、ゲート論理の電気特性、受動値、故障時しきい値・伝搬時間、KiCadネイティブERC、フットプリント/PCB、実測/HIL、安全なモーター運転を証明しない。G1-05/G1-06はWORKING、製造ゲート0/6、モーターEN無効を維持する。
+
+## 2026-10-19 — 製造元モーター型番の適合性スクリーニング
+
+Oriental Motorの製品カタログで具体的な発注型番 `PKP223U09A2` を確認した。公開値は28mm枠、モーター長32mm、6リード、0.95A/相、2.95V、3.11Ω/相で、掲載品自体はギヤヘッドなし。7軸×2相の単純同時通電上限は13.3Aとなる。これは現候補のULN2003A各出力500mA定格およびeFuse公称1.509Aを超えるため、この製品を現行回路に採用しない。高電流能力の別ドライバ・電源・遮断設計とモーター/歯車の機械再設計を一体で行わない限り不適合である。
+
+この照合はメーカー掲載値の机上比較であり、試料測定、現行部品との物理互換、ギヤード型番の可用性/寿命、実機温度を検証していない。`motor_feasibility.py` のレビュー出力に不適合根拠を追加し、テストで値・不採用状態を固定した。代替モーターの選定は未完了で、G1-05/G1-06 WORKING、モーター電源無効を維持する。
+
+一次資料: [Oriental Motor PKP223U09A2 product listing](https://catalog.orientalmotor.com/item/2-phase-unipolar-stepper-motors/shop-pkp-series-2-phase-unipolar-stepper-motors/pkp223u09a2)（仕様/結線/外形/販売情報）、[TI ULN2003A datasheet](https://www.ti.com/lit/ds/symlink/uln2003a.pdf)（出力電流定格）。
