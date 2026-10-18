@@ -32,7 +32,7 @@
     "Verify 5V_RAW supply/cable/connector rating covers simultaneous motor and 3V3 demand with margins",
     "Execute instrumented eFuse startup/stall/STOP/PG-loss/brownout HIL with current and temperature logs"
   ],
-  "output": "HOLD_UNMEASURED_AND_UNSPECIFIED",
+  "output": "HOLD_MISSING_MEASUREMENTS",
   "evidence_provenance": {},
   "physical_test_results": {},
   "acceptance_status": "NOT_READY_FOR_ENGINEERING_REVIEW",

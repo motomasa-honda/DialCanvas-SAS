@@ -97,8 +97,14 @@ def validate_evidence(d,verify_files=True):
     assert isinstance(d["evidence_provenance"],dict)
     assert isinstance(d["physical_test_results"],dict)
     assert len(d["physical_tests_required"])==6
-    assert d["output"]=="HOLD_UNMEASURED_AND_UNSPECIFIED"
-    assert d["acceptance_status"]=="NOT_READY_FOR_ENGINEERING_REVIEW"
+    # These fields must equal the CALCULATED decision, not a forever-null
+    # placeholder. A complete provenance-backed file can progress to review.
+    decision=engineering_review_readiness(d)
+    status=("READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASE"
+            if decision=="READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASE"
+            else "NOT_READY_FOR_ENGINEERING_REVIEW")
+    assert d["output"]==decision,(d["output"],decision)
+    assert d["acceptance_status"]==status,(d["acceptance_status"],status)
     for field,value in d["unverified_field_values"].items():
         evidence=d["evidence_provenance"].get(field)
         if value is None:
@@ -177,6 +183,8 @@ class Contract(unittest.TestCase):
              recorded_utc="2026-10-18T00:00:00Z")
         d["evidence_provenance"]={k:provenance.copy() for k in z}
         d["physical_test_results"]={str(i):dict(status="PASS",evidence=provenance.copy()) for i in range(6)}
+        d["output"]=engineering_review_readiness(d)
+        d["acceptance_status"]="READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASE"
         return d
 
     def test_missing_provenance_is_rejected(self):
@@ -193,8 +201,10 @@ class Contract(unittest.TestCase):
     def test_physical_failure_is_not_review_ready(self):
         d=self.mock_complete(self.baseline())
         d["physical_test_results"]["4"]["status"]="FAIL"
+        d["output"]=engineering_review_readiness(d)
+        d["acceptance_status"]="NOT_READY_FOR_ENGINEERING_REVIEW"
         validate_evidence(d,verify_files=False)
-        self.assertEqual(engineering_review_readiness(d),"HOLD_MISSING_PHYSICAL_TESTS")
+        self.assertEqual(d["output"],"HOLD_MISSING_PHYSICAL_TESTS")
     def test_voltage_brownout_is_rejected(self):
         d=self.mock_complete(self.baseline())
         d["unverified_field_values"]["five_volt_raw_min_during_transient_v"]=3.5
@@ -221,7 +231,8 @@ class Contract(unittest.TestCase):
         self.assertFalse(d["hardware_release"])
         self.assertEqual(d["manufacturer_release_gates_closed"],0)
         self.assertNotIn("RELEASE",engineering_review_readiness(d).replace("_NOT_POWER_RELEASE",""))
-        self.assertEqual(d["output"],"HOLD_UNMEASURED_AND_UNSPECIFIED")
+        self.assertEqual(d["output"],"READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASE")
+        self.assertEqual(d["acceptance_status"],"READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASE")
 
 if __name__=="__main__":
     evidence=json.loads(EVIDENCE.read_text())
