@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "scope": "TI TPS259474 current-limit accuracy source audit; review only",
+  "audited_date": "2026-10-18",
+  "sku": "TPS259474LRPW",
+  "sources": {
+    "ti_datasheet_rev_c": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+    "ti_exact_variant_product_page": "https://www.ti.com/product/TPS25947/part-details/TPS259474LRPWR"
+  },
+  "published_claim": {
+    "source": "TI exact-variant product page",
+    "claim": "Adjustable threshold 0.5A to 6A; ±10% accuracy for ILIM > 1A",
+    "applies_to_design_candidate": "TPS259474LRPW and tape-and-reel ordering variant TPS259474LRPWR share the same RPW package and silicon family variant; ordering suffix only differs"
+  },
+  "datasheet_electrical_characteristics": {
+    "test_condition": "-40C <= TJ <= 125C; VIN=12V; stated table default conditions",
+    "r_ilm_ohm": 3320,
+    "equation_constant_ohm_amp": 3334,
+    "equation_nominal_limit_a": 1.004217,
+    "table_min_limit_a": 0.85,
+    "table_typ_limit_a": 1.007,
+    "table_max_limit_a": 1.15,
+    "min_deviation_from_equation_percent": -15.36
+  },
+  "finding": "The 3.32kΩ electrical-characteristics row does not agree with applying the product-page ±10% claim to the 3334/R equation. The source does not provide a guaranteed min/max row at the design's 2.21kΩ value. Do not infer a guaranteed minimum for 2.21kΩ by interpolation, extrapolation, or taking the product-page headline at face value.",
+  "design_value_r_ilm_ohm": 2210,
+  "design_equation_typical_a_not_guaranteed": 1.508597,
+  "design_guaranteed_min_a": null,
+  "disposition": "HOLD_TPS259474_MINIMUM_CURRENT_UNRESOLVED",
+  "required_resolution": [
+    "Obtain written TI clarification for TPS259474LRPW current-limit accuracy and the 2.21kΩ setpoint over the specified operating range, or select a resistor/setpoint with an applicable guaranteed electrical-characteristics limit.",
+    "Re-evaluate the motor, branch, connector, wiring and thermal protection envelope before changing R_ILM.",
+    "Keep the unverified measured-evidence field efuse_min_current_limit_a null until supported by an attributable manufacturer specification and the applicable configuration is fixed.",
+    "Perform instrumented no-load and fault-injection HIL after the circuit, motor SKU and current profile are resolved."
+  ],
+  "safety": {
+    "motor_power_enabled": false,
+    "hardware_release": false,
+    "manufacturer_release_gates_closed": 0,
+    "task_status_changes": false
+  }
+}

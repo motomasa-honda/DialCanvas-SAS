@@ -46,3 +46,13 @@ eFuseは `3334/R` の公称値ではなくメーカー保証最低制限電流�
 7軸・同時通電1～4相、仮定60/80/100/160mAの計16条件について、現在のR_ILM=2.21kΩに基づく**公称**eFuse値と20%電流余裕から、必要な**メーカー保証最低電流制限**を計算する。2相/軸×80mAなら電流合計1.12A、保証最低制限は1.40A超が必要。2相/軸×100mAなら1.40A、既存eFuse公称約1.509Aに対して20%の余裕を満たさない。これらの入力は**全て仮想シナリオ**であって、実測や仕様選定ではない。
 
 生成コマンド：`python3 execution/g1_95_aon_regulator/motor_feasibility.py --output execution/g1_95_aon_regulator/native_evidence/motor_candidate_matrix.json`。テスト：`python3 execution/g1_95_aon_regulator/test_motor_feasibility.py`。G1-95の短期feature PRで通常の電源回路テストと一緒に専用CIを走らせる。元の11件の未測定値・証拠台帳は変更せず、許可していないモーター通電・部品購買・製造の状態は不変。G1-05/G1-06はWORKING、全体20/48、製造0/6。
+
+## 2026-10-18 — TI電流制限精度の一次資料不一致（選定HOLD）
+
+TIのTPS259474LRPWR正確品番ページは `ILIM > 1A` で電流制限精度±10%と記載する。一方、同じメーカーのTPS25947 Rev.C（2026年5月改訂）電気特性表は `R_ILM=3.32kΩ` に対し最小0.850A/標準1.007A/最大1.150Aを記載する。式 `3334/R` の同抵抗公称値は1.004Aで、表の最小値はそこから約−15.36%。表条件は `-40°C ≤ TJ ≤ 125°C, VIN=12V`。
+
+この差を解釈で消さない。現行 `R_ILM=2.21kΩ` の式による約1.509Aは引き続き**計算上の公称値のみ**であり、該当抵抗値の保証最小電流は一次資料から確定できないため `efuse_min_current_limit_a` をnullのままにする。±10%を適用した値、隣接表の線形補間、代表値を保証下限として用いることは禁止。
+
+根拠と丸めを `efuse_accuracy_audit.json` に記録し、`check_efuse_accuracy_audit.py` が0.850Aと1.004Aの差、および2.21kΩの保証最小値が未確定であることを検査する。解決にはTIからTPS259474LRPWの2.21kΩ設定に適用される保証範囲を得るか、保証範囲の明記された設定値へ再設計し、電流・配線・コネクタ・熱を再評価する必要がある。モーターENはLOWのまま。G1-05/G1-06はWORKING、製造ゲート0/6。
+
+一次資料： [TI TPS25947 Rev.C datasheet](https://www.ti.com/lit/ds/symlink/tps25947.pdf) の電気特性表（p.9）、ILM式(7)（p.32）、および [TI TPS259474LRPWR product page](https://www.ti.com/product/TPS25947/part-details/TPS259474LRPWR)。
