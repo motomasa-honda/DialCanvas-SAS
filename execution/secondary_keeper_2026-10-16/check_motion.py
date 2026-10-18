@@ -54,10 +54,26 @@ assert math.isclose(20.3-40/2,.3,abs_tol=1e-7)
 assert math.isclose(.3-2*.2,-.1,abs_tol=1e-7)
 assert h["worst_margin_with_two_parts_each_pm_0_2_mm"]<0
 assert math.isclose(20.3-35/2-2*.2,2.4,abs_tol=1e-7)
+trade=h["notch_only_feasibility_with_two_parts_each_pm_0_2_mm"]
+tolerance=h["assumed_per_part_tolerance_mm"]
+board_min=h["conservative_board_width_mm"]/2+2*tolerance
+boss_max=s["counter_body_x_offsets"][0]-2*tolerance
+assert math.isclose(board_min,20.4,abs_tol=1e-7)
+assert math.isclose(boss_max,20.1,abs_tol=1e-7)
+assert math.isclose(trade["board_edge_min_notch_x_offset_mm"],board_min,abs_tol=1e-7)
+assert math.isclose(trade["fixed_boss_edge_max_notch_x_offset_mm"],boss_max,abs_tol=1e-7)
+assert math.isclose(trade["gap_between_constraints_mm"],board_min-boss_max,abs_tol=1e-7)
+assert not trade["feasible_interval"] and board_min>boss_max
+assert trade["disposition"].startswith("NO_NOTCH_ONLY_SOLUTION")
+small_board_min=h["alternate_catalog_board_width_mm"]/2+2*tolerance
+assert math.isclose(small_board_min,h["alternate_board_tolerance_window_mm"][0],abs_tol=1e-7)
+assert math.isclose(boss_max,h["alternate_board_tolerance_window_mm"][1],abs_tol=1e-7)
+assert small_board_min<boss_max
 assert h["actual_module_measurement"]=="NOT_AVAILABLE"
 assert a["status_counts"]=={"done_scope":16,"all_scope":48,"manufacturing_done":0,"manufacturing_total":6,"software_passed":11,"software_total":14}
 assert all(r[x] is False for x in ("purchase_allowed","manufacture_allowed","power_allowed","flash_allowed","merge_allowed"))
 assert r["efuse_en"]=="LOW"
 print("PASS nominal: 7 independent headless stop positions, 714 keyed locking states, 7 no-notch clashes")
 print("FAIL design acceptance AS INTENDED: 40mm module x 2*0.2mm tolerances => -0.1mm clearance")
+print("FAIL NOTCH-ONLY TOLERANCE WINDOW: 40mm board requires notch start >=20.4mm; fixed boss requires <=20.1mm; infeasible by 0.3mm")
 print("BLOCKED: no physical screw vibration retention, real PCB, wood/fan, native D7 recompute, eFuse power")

@@ -113,9 +113,18 @@
     "conservative_board_width_mm": 40,
     "conservative_board_notch_nominal_margin_mm": 0.3,
     "worst_margin_with_two_parts_each_pm_0_2_mm": -0.1,
+    "assumed_per_part_tolerance_mm": 0.2,
+    "notch_only_feasibility_with_two_parts_each_pm_0_2_mm": {
+      "board_edge_min_notch_x_offset_mm": 20.4,
+      "fixed_boss_edge_max_notch_x_offset_mm": 20.1,
+      "feasible_interval": false,
+      "gap_between_constraints_mm": 0.3,
+      "disposition": "NO_NOTCH_ONLY_SOLUTION_FOR_40MM_BOARD_AND_FIXED_BOSS; REDESIGN_BOSS_LOCATION_OR_USE_MEASURED_SMALLER_MODULE"
+    },
     "alternate_catalog_board_width_mm": 35,
     "alternate_nominal_margin_mm": 2.8,
     "alternate_worst_margin_pm_0_2_mm": 2.4,
+    "alternate_board_tolerance_window_mm": [17.9, 20.1],
     "actual_module_measurement": "NOT_AVAILABLE"
   },
   "hardware_issues": [

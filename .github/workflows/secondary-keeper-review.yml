@@ -43,7 +43,7 @@ jobs:
       - name: Mark manufacturing as NOT approved despite nominal pass
         if: always()
         run: |
-          printf '%s\n' 'SECONDARY_M2_HEADLESS=GEOMETRY_CANDIDATE_ONLY' 'BOARD_WIDTH_40MM_WITH_PM0.2_STACK=FAIL_NEGATIVE_CLEARANCE' 'SCREW_SELF_LOOSENING=NOT_TESTED' 'FULL_D7_1774_SOLID_RECOMPUTE=NOT_RUN_IN_CI' 'MOTOR_EFUSE_EN=LOW' 'MANUFACTURING_GATES=0/6' > execution/secondary_keeper_2026-10-16/ci-scope.txt
+          printf '%s\n' 'SECONDARY_M2_HEADLESS=GEOMETRY_CANDIDATE_ONLY' 'BOARD_WIDTH_40MM_WITH_PM0.2_STACK=FAIL_NEGATIVE_CLEARANCE' 'NOTCH_ONLY_TOLERANCE_WINDOW=INFEASIBLE_0.3MM' 'SCREW_SELF_LOOSENING=NOT_TESTED' 'FULL_D7_1774_SOLID_RECOMPUTE=NOT_RUN_IN_CI' 'MOTOR_EFUSE_EN=LOW' 'MANUFACTURING_GATES=0/6' > execution/secondary_keeper_2026-10-16/ci-scope.txt
       - name: Preserve review-only CI evidence
         if: always()
         uses: actions/upload-artifact@v4
