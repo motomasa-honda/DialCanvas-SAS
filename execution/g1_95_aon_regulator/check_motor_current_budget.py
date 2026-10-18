@@ -133,7 +133,9 @@ def engineering_review_readiness(d):
            for i in range(6)):return "HOLD_MISSING_PHYSICAL_TESTS"
     if z["five_volt_raw_min_during_transient_v"]<TPS62933_VIN_MIN_V:
         return "FAIL_BUCK_INPUT_UNDERVOLTAGE"
-    # Peak motor, controller and input samples need not be simultaneous.\n    # Source sizing below uses a conservative combined design envelope;\n    # time-aligned current traces remain a required physical HIL test.\n    # The eFuse ILIM rating must be MANUFACTURER MINIMUM, not 3334/R typ.
+    # Peak samples may not be simultaneous.
+    # Use conservative combined source sizing; confirm with HIL traces.
+    # Use the guaranteed eFuse minimum, not the typical estimate.
     motor_bound=7*z["actual_driver_max_simultaneous_phases"]*z["motor_peak_phase_current_a"]
     if z["board_measured_peak_motor_a"]>motor_bound:
         motor_bound=z["board_measured_peak_motor_a"]
