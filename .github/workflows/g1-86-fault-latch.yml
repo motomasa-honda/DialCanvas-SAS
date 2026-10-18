@@ -1,7 +1,10 @@
 name: Forest Guardian G1-86 fault-priority NOR native KiCad review
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/g1-86-fault-latch.yml'
       - 'execution/g1_86_fault_latch/**'
       - 'execution/preflight.py'

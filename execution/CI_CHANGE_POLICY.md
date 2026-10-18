@@ -30,3 +30,7 @@
 - Draft PR維持、`main`変更・製造・購買・モーター通電は禁止
 
 この文書は運用規則であり、物理安全性や設計完成の証拠ではない。
+
+## 2026-10-18 — PR累積差分をやめるCI選択実行
+
+48本を `push` の変更パス+対象ブランチに変更し、PRでは常時動く軽量 `ci-scope-gate.yml` に固定。全体回帰は `execution/ci/full-regression.marker` の変更をpushし全48本を起動する。既存ジョブのテスト内容・pass/fail基準・KiCad ERC監査は変更しない。詳細は `execution/ci/README.md`。この節の変更時点で安全G1-05/06はWORKING、20/48、製造ゲート0/6。旧版に記載の18/48は2026-10-16の履歴値であり現行値ではない。GitHub branch protectionはAPI権限不足で取得できておらずmainマージ禁止継続。

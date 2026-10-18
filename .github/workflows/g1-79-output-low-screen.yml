@@ -1,7 +1,10 @@
 name: Forest Guardian G1-79 weak pulldown quantitative hold screen
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/g1-79-output-low-screen.yml'
       - 'execution/g1_79_output_low_screen/**'
       - 'execution/g1_28phase_disabled/**'

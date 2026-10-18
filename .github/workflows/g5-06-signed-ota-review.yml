@@ -1,7 +1,10 @@
 name: G5-06 real P4 signed OTA transaction build and negative signature proof
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/g5-06-signed-ota-review.yml'
       - 'execution/g5_06_signed_ota/**'
       - 'execution/g5_05_access_core/**'

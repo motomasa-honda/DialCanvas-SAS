@@ -1,7 +1,10 @@
 name: G5-05 verified HTTPS routes and physical display target-build
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/g5-05-https-api-build.yml'
       - 'execution/g5_05_https_api/**'
       - 'execution/g5_05_access_core/**'

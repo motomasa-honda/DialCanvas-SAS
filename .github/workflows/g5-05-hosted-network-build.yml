@@ -1,7 +1,10 @@
 name: G5-05 actual P4-C6 Hosted WiFi plus TLS product build HOLD
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/g5-05-hosted-network-build.yml'
       - 'execution/g5_05_hosted_network/**'
       - 'execution/g5_05_https_api/**'

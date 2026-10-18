@@ -1,7 +1,10 @@
 name: G1-85 TI TPS259474L actual 4 analog pin candidate native KiCad review
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/g1-85-analog-kicad-review.yml'
       - 'execution/g1_85_efuse_analog/**'
       - 'execution/g1_82_integrated_review/pin_map_364.json'

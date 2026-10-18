@@ -1,7 +1,10 @@
 name: Forest Guardian recovered 429-to-M1 BOM reconciliation
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/bom-reconciliation-integrity.yml'
       - 'execution/bom_reconciled_2026-10-16/**'
       - 'execution/progress.json'

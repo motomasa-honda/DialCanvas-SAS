@@ -1,7 +1,10 @@
 name: Phase67 Forest Guardian ESP32-P4 full source build
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/phase67-product-build.yml'
       - 'phase67-source/**'
   workflow_dispatch:

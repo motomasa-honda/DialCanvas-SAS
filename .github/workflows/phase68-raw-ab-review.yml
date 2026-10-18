@@ -1,7 +1,10 @@
 name: Phase68 Forest Guardian RAW A-B isolated build
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/phase68-raw-ab-review.yml'
       - 'phase68/**'
   workflow_dispatch:

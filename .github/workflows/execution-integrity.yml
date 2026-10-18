@@ -1,7 +1,10 @@
 name: Forest Guardian progress board integrity
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/execution-integrity.yml'
       - 'execution/**'
   workflow_dispatch:

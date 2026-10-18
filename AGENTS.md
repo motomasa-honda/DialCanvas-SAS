@@ -15,3 +15,10 @@
 - Draft PR #2は長期継続PRであり、`pull_request.paths` が累積差分全体に一致するため1回のPR更新で多数のCIが動く。原則、変更を一括コミットし、確認完了したHEADに対するCIを報告する。過去の失敗を黙って無視せず原因と修正コミットを記録する。
 - 静的検査PASSを、実際のKiCad ERC/DRC、木工強度、モータ通電、製造ゲートの完了と混同しない。M1 eFuse EN LOW、製造/購買/通電/フラッシュ/mainマージ禁止は維持。
 - 詳細は `execution/CI_CHANGE_POLICY.md` を参照。
+
+## 差分CIと全体回帰テスト（2026-10-18）
+
+- 旧48本のワークフローは作業ブランチの `push.paths` 差分実行。PRは独立した軽量 `ci-scope-gate.yml` を常時実行し、全体回帰を省略してよいと誤認しない。
+- 正式DONE_SCOPE判定、構成統合、製造前に全体回帰が必要なら `execution/ci/full-regression.marker` を更新してpushし48本すべての完了を確認。
+- 新規CIは必ず変更ファイルと依存パス、共通full-regression.marker、自分自身のYAMLを `push.paths` に登録する。安全回路の変更は関連KiCad/ERCとEN/OE禁止不変条件を必須にする。
+- mainのbranch protectionは権限から取得できないため、必須チェックの設定はマージ前に別途照合。mainへのマージ禁止は維持する。

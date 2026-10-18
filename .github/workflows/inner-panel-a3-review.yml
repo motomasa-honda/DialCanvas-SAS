@@ -1,7 +1,10 @@
 name: Forest Guardian seven real inner A3 panel evidence (G6-02)
 on:
-  pull_request:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
     paths:
+      - 'execution/ci/full-regression.marker'
       - '.github/workflows/inner-panel-a3-review.yml'
       - 'execution/g6_02_7panel_2026-10-16/**'
       - 'execution/tasks.csv'
