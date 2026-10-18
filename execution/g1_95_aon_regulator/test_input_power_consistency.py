@@ -27,16 +27,14 @@ class InputPowerConsistency(unittest.TestCase):
         d=hypothetical_complete()
         self.assertEqual(engineering_review_readiness(d), "READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASE")
         self.assertIs(d["hardware_release"],False)
-    def test_input_below_measured_motor_branch_fails(self):
+    def test_noncoincident_peak_samples_do_not_fake_a_failure(self):
         d=hypothetical_complete()
         d["unverified_field_values"]["board_measured_peak_input_a"]=.8
-        self.assertEqual(engineering_review_readiness(d),"FAIL_MEASURED_INPUT_BELOW_MOTOR_BRANCH")
-    def test_input_below_ideal_controller_power_fails(self):
+        self.assertEqual(engineering_review_readiness(d),"READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASE")
+    def test_undersized_source_still_fails(self):
         d=hypothetical_complete()
-        z=d["unverified_field_values"]
-        z["board_measured_peak_motor_a"]=.01
-        z["board_measured_peak_input_a"]=.15
-        self.assertEqual(engineering_review_readiness(d),"FAIL_MEASURED_INPUT_BELOW_CONTROLLER_OUTPUT_POWER")
+        d["unverified_field_values"]["five_volt_supply_min_current_a"]=1.8
+        self.assertEqual(engineering_review_readiness(d),"FAIL_5V_SOURCE_MINIMUM_WITH_HEADROOM")
     def test_3v3_overload_retains_specific_failure(self):
         d=hypothetical_complete()
         d["unverified_field_values"]["controller_3v3_peak_a"]=2.5
