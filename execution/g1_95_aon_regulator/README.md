@@ -38,3 +38,11 @@ eFuseは `3334/R` の公称値ではなくメーカー保証最低制限電流�
 ## 受入状態の固定文字列を排除
 
 今後実測値と物理試験が全て入力された場合、outputとacceptance_statusは測定値から求めた判定に**一致しなければならない**。従来の永久HOLD文字列は未測定時だけ使用し、結果の書換え漏れ・根拠のないREADY宣言を自動的に拒否する。READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASEは技術レビュー開始を意味し、モーター電源・製造解禁を一切意味しない。
+
+## 2026-10-18 — 実機部品選定を前進させる電流条件と型番の衝突監査
+
+既存G4-02のソース契約に、同一候補モーターの `MTR-09-024` と外部リンク `MTR-09-004` のSKU不一致、寸法40×20mmと35×31mmの不一致が残っている。型番を推測で決めることは避け、`motor_feasibility.py` が2候補を自動検出して製造HOLDを維持する。
+
+7軸・同時通電1～4相、仮定60/80/100/160mAの計16条件について、現在のR_ILM=2.21kΩに基づく**公称**eFuse値と20%電流余裕から、必要な**メーカー保証最低電流制限**を計算する。2相/軸×80mAなら電流合計1.12A、保証最低制限は1.40A超が必要。2相/軸×100mAなら1.40A、既存eFuse公称約1.509Aに対して20%の余裕を満たさない。これらの入力は**全て仮想シナリオ**であって、実測や仕様選定ではない。
+
+生成コマンド：`python3 execution/g1_95_aon_regulator/motor_feasibility.py --output execution/g1_95_aon_regulator/native_evidence/motor_candidate_matrix.json`。テスト：`python3 execution/g1_95_aon_regulator/test_motor_feasibility.py`。G1-95の短期feature PRで通常の電源回路テストと一緒に専用CIを走らせる。元の11件の未測定値・証拠台帳は変更せず、許可していないモーター通電・部品購買・製造の状態は不変。G1-05/G1-06はWORKING、全体20/48、製造0/6。
