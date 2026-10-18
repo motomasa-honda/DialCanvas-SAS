@@ -55,6 +55,19 @@ assert '(pin power_in line' in sym and '(pin power_out line' in sym
 assert "PWR_FLAG" not in sym and "PWR_FLAG" not in (D/"forest_guardian_g1_95_aon_regulator_review.kicad_sch").read_text()
 # TI 0.8V FB typical; 31.2k/10k E96 resistors yield 3.296V.
 assert abs(0.8*(1+31200/10000)-3.296)<1e-12
+# Datasheet TPS62933 ±1% FB reference at 25C, plus 1% E96 divider.
+# This bound is conditional on the specified reference test temperature and
+# does NOT include regulator load, layout, input ripple or temperature drift.
+vref_nominal=0.8
+fb_top=31200
+fb_bot=10000
+vout_low=vref_nominal*0.99*(1+fb_top*0.99/(fb_bot*1.01))
+vout_high=vref_nominal*1.01*(1+fb_top*1.01/(fb_bot*0.99))
+assert 3.135 < vout_low < 3.296 < vout_high < 3.465, (vout_low,vout_high)
+# The supply is independently generated from unswitched 5V_RAW; do not
+# misread ±5% nominal divider check as a motor-energy release signoff.
+assert net("U45",3)==net("U14",5)=="B77__5V_RAW"
+assert net("U45",3)!=net("U14",6)=="5V_MOTOR"
 # Crucial adverse scenario: motor eFuse current-limiting cannot be
 # accepted from motor count alone. Existing TI RILM 2.21k gives typical
 # 3334 / 2210 = 1.509 A. CONDITIONAL examples, NOT actual motor BOM.
