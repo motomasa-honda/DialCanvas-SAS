@@ -37,6 +37,8 @@ assert now["app_a"][3]==now["app_b"][3]==0x380000
 with (exe/"tasks.csv").open(encoding="utf-8-sig",newline="") as f:tasks=list(csv.DictReader(f))
 p=json.loads((exe/"progress.json").read_text())
 assert next(x for x in tasks if x["ID"]=="G5-05")["Status"]=="WORKING"
-assert p["scoped_evidence_done"]==20 and p["manufacturer_release_closed"]==0
+assert p["task_total"]==len(tasks)==48
+assert p["scoped_evidence_done"]==sum(t["Status"]=="DONE_SCOPE" for t in tasks)
+assert p["manufacturer_release_closed"]==0
 print("PASS G5-05 exact SHA-frozen RAW A/B source: 8 partitions byte-identical, 4KiB encrypted nvs_keys + independent 32KiB fg_cfg in reserved")
 print("PASS contiguous, 4KiB aligned 32MiB partition table; no app reduction, no flash, no efuse")
