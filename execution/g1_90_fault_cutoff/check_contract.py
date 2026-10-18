@@ -14,6 +14,15 @@ assert len({(p["kicad_ref"],p["source_pin"]) for p in pins})==522
 assert len({p["kicad_ref"] for p in pins})==149
 def net(ref,n):return next(x["review_net"] for x in pins if x["kicad_ref"]==ref and x["source_pin"]==n)
 assert net("Q1",1)==net("R59",2)==net("R60",1)=="B90__FAULT_FET_GATE"
+# DMN2056U (Diodes Incorporated DS38480) allows lower-voltage gate-drive
+# candidate: MAX Rds(on) 45mOhm @VGS2.5V or 85mOhm @VGS1.5V,
+# both qualified ONLY at TA25C and specified high drain current.
+f=(d/"forest_guardian_g1_90_fault_cutoff_review.kicad_sch").read_text()
+lib=(d/"FG_CUTOFF.kicad_sym").read_text()
+assert 'DMN2056U' in f and 'DMN2056U' in lib
+assert '2N7002' not in f and '2N7002' not in lib
+assert 0.045 < 0.085
+# No claim of guaranteed sink VDS at undefined future EN drive currents/temperatures.
 assert net("R54",1)==net("U20",6)==net("U35",1)=="B86__FAULT_Q"
 assert net("U35",2)==net("U31",4)==net("U20",5)==net("U23",1)=="B88__TRIP_COMBINED"
 assert net("U35",4)==net("R59",1)==net("U34",1)=="B90__CUT_REQUEST_OR"

@@ -46,23 +46,25 @@ def inst(ref,library,value,x,y,n):
       f'    (property "FG_Source_Ref" "B90:{ref}" (at {f(x)} {f(y)} 0) (effects (font (size 1 1)) (hide yes)))\n'
       f'    (instances (project "{NEW}" (path "/{ROOT}" (reference "{ref}") (unit 1))))\n  )')
 def fet_library():
-    # Verified INFINEON 2N7002 PG-SOT23: 1 GATE 2 SOURCE 3 DRAIN.
+    # Diodes Incorporated DMN2056U SOT23: 1 GATE, 2 SOURCE, 3 DRAIN.
+    # DS38480: RDS(on) <=45mOhm at VGS=2.5V, <=85mOhm at VGS=1.5V,
+    # 25C and stated drain-current test conditions. Ambient HIL still HOLD.
     # Review symbol uses manufacturer pin NUMBER but no PCB footprint.
-    inside = '''(symbol "2N7002_PG_SOT23_REVIEW" (pin_numbers (hide yes)) (pin_names (offset 0) (hide yes)) (in_bom no) (on_board no)
+    inside = '''(symbol "DMN2056U_PG_SOT23_REVIEW" (pin_numbers (hide yes)) (pin_names (offset 0) (hide yes)) (in_bom no) (on_board no)
       (property "Reference" "Q" (at 0 10.16 0) (effects (font (size 1.27 1.27))))
-      (property "Value" "2N7002_INFINEON_PG_SOT23" (at 0 -10.16 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "DMN2056U_DIODES_PG_SOT23" (at 0 -10.16 0) (effects (font (size 1.27 1.27))))
       (property "Footprint" "" (at 0 0 0) (effects (font (size 1 1))))
-      (symbol "2N7002_PG_SOT23_REVIEW_0_1"
+      (symbol "DMN2056U_PG_SOT23_REVIEW_0_1"
        (rectangle (start -7.62 5.08) (end 7.62 -5.08)
           (stroke (width 0.254) (type default)) (fill (type background))))
-      (symbol "2N7002_PG_SOT23_REVIEW_1_1"
+      (symbol "DMN2056U_PG_SOT23_REVIEW_1_1"
        (pin input line (at -10.16 2.54 0) (length 2.54) (name "GATE" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))
        (pin passive line (at -10.16 0 0) (length 2.54) (name "SOURCE" (effects (font (size 1 1)))) (number "2" (effects (font (size 1 1)))))
        (pin passive line (at -10.16 -2.54 0) (length 2.54) (name "DRAIN" (effects (font (size 1 1)))) (number "3" (effects (font (size 1 1)))))
       )
     )'''
     (D/"FG_CUTOFF.kicad_sym").write_text('(kicad_symbol_lib\n (version 20231120)\n (generator "kicad_symbol_editor")\n'+inside+'\n)\n')
-    return inside.replace('(symbol "2N7002_PG_SOT23_REVIEW"', '(symbol "FG_CUTOFF:2N7002_PG_SOT23_REVIEW"',1)
+    return inside.replace('(symbol "DMN2056U_PG_SOT23_REVIEW"', '(symbol "FG_CUTOFF:DMN2056U_PG_SOT23_REVIEW"',1)
 
 def main():
     # Execute parent in a separate Python process to preserve import isolation
@@ -76,12 +78,12 @@ def main():
     at=close(s,s.index("(lib_symbols"))
     s=s[:at-1]+"\n"+fet+"\n "+s[at-1:]
     extra=[]
-    # Dedicated fault-asserted 2N7002 drain sinks the *actual* U14 EN net.
+    # Dedicated fault-asserted DMN2056U drain sinks the *actual* U14 EN net.
     # U14 EN still has original R4 10k pull-DOWN; no actuation is possible.
     x=63.5;y=1422.4
     for n,net in enumerate(["B90__FAULT_FET_GATE","GND","B77__U7_EN_CLAMPED_DISABLED"],1):
         pin(rows,extra,"Q1",n,net,x-15.24,y+(n-2)*2.54)
-    extra.append(inst("Q1","FG_CUTOFF:2N7002_PG_SOT23_REVIEW","2N7002_INFINEON",x,y,3))
+    extra.append(inst("Q1","FG_CUTOFF:DMN2056U_PG_SOT23_REVIEW","DMN2056U_DIODES",x,y,3))
     # The source OR logic after U35 intentionally treats TRIP as primary
     # protection even when the NOR fault latch output has not yet settled.
     # This STILL does not certify behavior when AON logic itself is unpowered.
