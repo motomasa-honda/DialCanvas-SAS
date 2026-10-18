@@ -21,6 +21,18 @@ assert net("U45",2)==net("U45",3)==net("J20",1)==net("U14",5)=="B77__5V_RAW"
 assert net("U45",3)!=net("U14",6)== "5V_MOTOR"
 assert net("U45",4)==net("J20",2)=="GND"
 assert net("U45",8)!="5V_MOTOR"
+# Cross-stage physical power-domain invariant:
+# G1-89/G1-91/G1-93 supervisors and the NOR fault latch MUST derive
+# their VDD from the independent always-on buck output, not eFuse VOUT.
+# A superficial test only on U45 input does not catch a later downstream
+# rewire silently returning fault logic to switched 5V_MOTOR.
+assert net("U14",6)=="5V_MOTOR"
+assert net("U45",2)==net("U45",3)==net("U14",5)=="B77__5V_RAW"
+for ref,pin in (("U20",8),("U33",6),("U36",6),("U42",6),("U43",5)):
+ assert net(ref,pin)==net("L1",2)=="3V3_AON",(ref,pin,net(ref,pin))
+assert net("U14",6)!=net("L1",2)
+assert net("U14",6)!=net("J20",1)
+
 assert net("U45",4)==net("J20",2)==net("R4",2)=="GND"
 assert net("U45",5)==net("L1",1)==net("C50",2)=="B95__BUCK_SW"
 assert net("U45",6)==net("C50",1)=="B95__BUCK_BST"
