@@ -21,7 +21,8 @@
     "five_volt_supply_sku": null,
     "five_volt_supply_min_current_a": null,
     "board_measured_peak_input_a": null,
-    "board_measured_peak_motor_a": null
+    "board_measured_peak_motor_a": null,
+    "five_volt_raw_min_during_transient_v": null
   },
   "physical_tests_required": [
     "Read and verify actual motor SKU, phase winding resistance and rated maximum phase current",
@@ -31,5 +32,9 @@
     "Verify 5V_RAW supply/cable/connector rating covers simultaneous motor and 3V3 demand with margins",
     "Execute instrumented eFuse startup/stall/STOP/PG-loss/brownout HIL with current and temperature logs"
   ],
-  "output": "HOLD_UNMEASURED_AND_UNSPECIFIED"
+  "output": "HOLD_UNMEASURED_AND_UNSPECIFIED",
+  "evidence_provenance": {},
+  "physical_test_results": {},
+  "acceptance_status": "NOT_READY_FOR_ENGINEERING_REVIEW",
+  "acceptance_model": "v2: all 11 measured fields require traceable SHA256; manufacturer min, motor envelope, 20% headroom, VIN>=3.8V and six physical test reports for review-readiness only, NEVER automatic motor power release"
 }
