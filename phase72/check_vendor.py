@@ -19,7 +19,7 @@ for name,pins in expected.items():
     assert tuple(part["pins"])==pins, f"Vendor pad order changed: {name}"
     assert data["datasheets"][part["sku"]].startswith("https://www.ti.com/lit/ds/")
 assert "FLT" not in data["parts"]["U7"]["pins"],"TPS259474 has PG/PGTH, NOT FLT"
-w=data["watchdog"];s=data["safety_hold"];m=data["motor_modules"];e=data["evidence"]
+w=data["watchdog"];s=data["safety_hold"];m=data["stepper_driver_boards"];e=data["evidence"]
 assert (w["falling_edge_ms_min"],w["falling_edge_ms_typ"],w["falling_edge_ms_max"]) == (170,200,230)
 assert (w["reset_ms_min"],w["reset_ms_max"]) == (170,230)
 assert w["en_tied_to_3v3"] and w["set1_tied_to_3v3"],"Firmware must not disable watchdog"
@@ -29,8 +29,10 @@ assert not s["arm_direct_efuse_en"]
 assert s["real_second_edge_qualifier"]=="NOT_BUILT" and s["required_heartbeat_edges"]==2
 assert s["five_volt_supervisor"]=="NOT_BUILT" and s["pg_startup_blank_fault_latch"]=="NOT_BUILT"
 assert s["physical_rearm"]=="NOT_BUILT" and s["external_fault_to_gpio22"]=="NOT_BUILT"
-assert m["selected_sku"]=="MTR-09-024" and m["listed_mm"]==[35,31]
-assert m["other_sku"]=="MTR-09-004" and m["other_listed_mm"]==[40,20]
+assert m["selected_candidate_sku"]=="MTR-09-024" and m["listed_mm"]==[35,31]
+assert m["other_candidate_sku"]=="MTR-09-004" and m["other_listed_mm"]==[40,20]
+assert m["category"].startswith("ULN2003 stepper-driver board") and "NOT a motor SKU" in m["category"]
+assert m["motor_model"] is None and not m["motor_electrical_values_verified"]
 assert m["conservative_pre_measurement_envelope_mm"]==[40,31]
 assert m["independent_axes"]==7 and m["independent_fuses"]==7
 assert m["removal_test_envelope_mm"]==55 and not m["dimensions_measured"]

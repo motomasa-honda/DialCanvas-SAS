@@ -110,13 +110,14 @@
     "five_volt_supervisor": "NOT_BUILT",
     "pg_startup_blank_fault_latch": "NOT_BUILT"
   },
-  "motor_modules": {
-    "selected_sku": "MTR-09-024",
+  "stepper_driver_boards": {
+    "selected_candidate_sku": "MTR-09-024",
+    "category": "ULN2003 stepper-driver board; seller catalog SKU, NOT a motor SKU",
     "listed_mm": [
       35,
       31
     ],
-    "other_sku": "MTR-09-004",
+    "other_candidate_sku": "MTR-09-004",
     "other_listed_mm": [
       40,
       20
@@ -128,7 +129,9 @@
     "independent_axes": 7,
     "independent_fuses": 7,
     "removal_test_envelope_mm": 55,
-    "dimensions_measured": false
+    "dimensions_measured": false,
+    "motor_model": null,
+    "motor_electrical_values_verified": false
   },
   "evidence": {
     "manufacturing_gates_closed": 0,

@@ -18,8 +18,15 @@ class MotorFeasibilityTests(unittest.TestCase):
         result=evaluate_report(self.current,self.source)
         self.assertFalse(result["hardware_release"])
         self.assertEqual(result["manufacturer_release_gates_closed"],0)
-        self.assertEqual(result["motor_sku_review"]["recorded_skus"],
+        self.assertEqual(result["motor_identity_review"]["status"],
+                         "HOLD_MOTOR_MODEL_AND_MANUFACTURER_UNIDENTIFIED")
+        self.assertEqual(result["motor_identity_review"]["motor_part_sku"],None)
+        self.assertFalse(result["motor_identity_review"]["candidate_is_selected"])
+        self.assertEqual(result["driver_board_review"]["seller_skus"],
                          ["MTR-09-004","MTR-09-024"])
+        self.assertFalse(result["seller_motor_listing_review"]["selected"])
+        self.assertEqual(result["seller_motor_listing_review"]["listed_voltage_values_v"],[5,12])
+        self.assertEqual(result["seller_motor_listing_review"]["listed_dc_resistance_ohm_values"],[50,200])
         self.assertEqual(len(result["hypothetical_combinations"]),16)
         self.assertEqual(len(result["current_model"]["physical_evidence_missing_fields"]),11)
         self.assertFalse(result["current_model"]["rated_efuse_min_available"])
@@ -57,7 +64,12 @@ class MotorFeasibilityTests(unittest.TestCase):
 
     def test_vendor_reference_change_fails_closed(self):
         src=copy.deepcopy(self.source)
-        src["vendor_discrepancy"]="No discrepancy"
+        src["stepper_driver_boards"]["selected_candidate_sku"]="UNKNOWN"
+        with self.assertRaises(ValueError):evaluate_report(self.current,src)
+
+    def test_conflicting_motor_variant_is_never_selected(self):
+        src=copy.deepcopy(self.source)
+        src["stepper_driver_boards"]["separate_seller_motor_listing"]["selected"]=True
         with self.assertRaises(ValueError):evaluate_report(self.current,src)
 
     def test_release_cannot_be_set_by_matrix_generation(self):

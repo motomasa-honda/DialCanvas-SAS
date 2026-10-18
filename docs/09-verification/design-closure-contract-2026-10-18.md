@@ -14,7 +14,7 @@ Do not add phases or requirements solely to improve the progress count. Preserve
 6. **Handoff:** versioned drawings, source CAD, fabrication outputs, assembly instructions, verification plan, known risks and a sign-off checklist.
 
 ## Blocking dependencies — resolve before claiming closure
-- Reconcile the conflicting motor SKUs MTR-09-024 and MTR-09-004 against manufacturer evidence.
+- Separate the MTR-09-024 / MTR-09-004 ULN2003 driver-board variants from the actual motor; identify the motor by attributable manufacturer/order code and verify its electrical and mechanical specifications.
 - Record actual motor starting/stall/current envelopes and 5V supply/eFuse limits; assumed current cases are not measured acceptance.
 - Validate true motor-rail fault sensing, independent power interruption, fault latching and safe re-arm at schematic level.
 - Close actual KiCad ERC/PCB DRC, footprints, power integrity and thermals.

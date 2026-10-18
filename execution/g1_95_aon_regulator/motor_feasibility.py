@@ -7,7 +7,6 @@ a proven eFuse minimum, a resolved SKU or permission to enable any motor.
 import argparse
 import json
 import math
-import re
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -71,10 +70,15 @@ def evaluate_report(current, source):
         raise ValueError("Assumptions differ from approved G1-05 review baseline")
     assert current["hardware_release"] is False
     assert current["manufacturer_release_gates_closed"] == 0
-    source_note = source["vendor_discrepancy"]
-    skus = sorted(set(re.findall(r"MTR-\d{2}-\d{3}", source_note)))
-    if skus != ["MTR-09-004", "MTR-09-024"]:
-        raise ValueError("Original motor source conflict unexpectedly changed")
+    board = source["stepper_driver_boards"]
+    skus = sorted([board["selected_candidate_sku"], board["other_candidate_sku"]])
+    if skus != ["MTR-09-004", "MTR-09-024"] or board["category"].find("NOT a motor SKU") < 0:
+        raise ValueError("Driver-board variant identity contract changed")
+    if board["motor_model"] is not None or board["motor_electrical_values_verified"]:
+        raise ValueError("A reseller board listing cannot fabricate motor identity/electrical acceptance")
+    seller_motor = board["separate_seller_motor_listing"]
+    if seller_motor["selected"] or seller_motor["listed_voltage_values_v"] != [5, 12] or seller_motor["listed_dc_resistance_ohm_values"] != [50, 200]:
+        raise ValueError("Conflicting seller motor variants must remain unselected and electrically unqualified")
     r_ilm = positive_number(assumed["r_ilm_ohm"], "r_ilm_ohm")
     # 3334/R is only a typical and must not be adopted as a guaranteed limit.
     typical = 3334.0 / r_ilm
@@ -86,11 +90,31 @@ def evaluate_report(current, source):
     missing = sorted(k for k, v in measured.items() if v is None)
     report = {
         "scope": "ENGINEERING_CANDIDATE_SCREEN_ONLY",
-        "motor_sku_review": {
-            "status": "HOLD_TWO_CONFLICTING_SOURCE_SKUS",
+        "motor_identity_review": {
+            "status": "HOLD_MOTOR_MODEL_AND_MANUFACTURER_UNIDENTIFIED",
+            "candidate_motor_model_from_board_compatibility_only": "28BYJ-48",
+            "candidate_is_selected": False,
+            "motor_part_sku": None,
+            "motor_electrical_rating": "UNVERIFIED",
+            "action": "Identify one exact motor manufacturer/order code and qualify its voltage, winding/current, mechanical and supplier-lot data",
+        },
+        "driver_board_review": {
+            "status": "SELLER_VARIANTS_IDENTIFIED_NOT_PHYSICALLY_QUALIFIED",
             "source": "execution/bom_reconciled_2026-10-16/source_contract.json",
-            "recorded_skus": skus,
-            "action": "Manufacturer part identity, mechanical dimensions and winding/current rating must be cross-verified; no vendor choice made",
+            "seller_skus": skus,
+            "m1_candidate_sku": board["selected_candidate_sku"],
+            "listed_board_dimensions_mm": {"MTR-09-024": board["listed_mm"], "MTR-09-004": board["other_listed_mm"]},
+            "physical_dimensions_verified": False,
+            "action": "Treat MTR-09-024 and MTR-09-004 as different ULN2003 board variants; verify sample, connector, pinout and exact mounted envelope before BOM/CAD freeze",
+        },
+        "seller_motor_listing_review": {
+            "status": "REJECTED_AS_ELECTRICAL_SOURCE_UNTIL_VARIANT_RESOLVED",
+            "seller_sku": seller_motor["seller_sku"],
+            "model_claim": seller_motor["model_claim"],
+            "listed_voltage_values_v": seller_motor["listed_voltage_values_v"],
+            "listed_dc_resistance_ohm_values": seller_motor["listed_dc_resistance_ohm_values"],
+            "selected": False,
+            "source": seller_motor["source"],
         },
         "current_model": {
             "efuse_r_ilm_ohm": r_ilm,
@@ -101,7 +125,7 @@ def evaluate_report(current, source):
             "physical_evidence_missing_fields": missing,
         },
         "hypothetical_combinations": table,
-        "decision": "HOLD_MOTOR_SKU_AND_EFUSE_MIN_AND_PHYSICAL_ACCEPTANCE",
+        "decision": "HOLD_MOTOR_IDENTITY_AND_EFUSE_MIN_AND_PHYSICAL_ACCEPTANCE",
         "hardware_release": False,
         "manufacturer_release_gates_closed": 0,
         "notes": "Never infer measured or guaranteed currents from demo phase currents or eFuse typical formula; do not change EN/OE pull-down/disable circuits",
@@ -136,7 +160,7 @@ def main():
         print(f"WROTE conditional candidate matrix {p} (16 scenarios; NO HW RELEASE)")
     else:
         print(text)
-    print("HOLD: supplier SKU conflict; eFuse minimum not verified; 6 physical tests not passed.")
+    print("HOLD: motor part/electrical identity unresolved; driver-board samples unverified; eFuse minimum and 6 physical tests outstanding.")
 
 
 if __name__ == "__main__":

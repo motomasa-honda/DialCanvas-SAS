@@ -22,7 +22,32 @@
     "m1_pulldowns_added": 28
   },
   "source_gap": "E_RTC absent from old 429 master despite DRIVER PCB assembly U609=RX8900SA; restored explicitly as one traced row, no unverified part invention.",
-  "vendor_discrepancy": "M1-02 original says MTR-09-024 40x20mm and links MTR-09-004; later source says seller nominal 35x31mm. First article dimension UNVERIFIED; no silent overwrite.",
+  "vendor_discrepancy": "M1-02 identifies driver-board seller SKU MTR-09-024 but links the different MTR-09-004 board listing that gives 40x20mm; the MTR-09-024 listing gives 35x31mm. These are ULN2003 driver-board variants, not motor SKUs. Catalog dimensions remain unmeasured; actual motor manufacturer/model and electrical rating remain unverified.",
+  "stepper_driver_boards": {
+    "category": "ULN2003 stepper-driver board; seller catalog SKU, NOT a motor SKU",
+    "selected_candidate_sku": "MTR-09-024",
+    "listed_mm": [35, 31],
+    "other_candidate_sku": "MTR-09-004",
+    "other_listed_mm": [40, 20],
+    "seller_sources": {
+      "MTR-09-024": "https://electropeak.com/five-wire-four-phase-uln2003stepper-motor-driver-board",
+      "MTR-09-004": "https://electropeak.com/ul2003-4-phase-stepper-motor-driver"
+    },
+    "physical_dimensions_measured": false,
+    "motor_model": null,
+    "motor_electrical_values_verified": false,
+    "compatibility_claim_only": "28BYJ-48",
+    "separate_seller_motor_listing": {
+      "seller_sku": "MTR-05-008",
+      "model_claim": "28BYJ-48",
+      "source": "https://electropeak.com/28byj-48-4-phase-5-wire-stepper-motor-5v-12v-dc",
+      "selected": false,
+      "listed_voltage_values_v": [5, 12],
+      "listed_dc_resistance_ohm_values": [50, 200],
+      "listed_current_claim_ma": 50,
+      "interpretation": "Seller page combines conflicting variant data; not an accepted motor electrical specification"
+    }
+  },
   "statuses": {
     "G4_02": "DONE_SCOPE",
     "G4_08": "OPEN",
