@@ -71,8 +71,8 @@
       4.5
     ],
     "bar_z_mm": [
-      138.05,
-      139.35
+      138.6,
+      139.9
     ],
     "bar_reverse_unlock_travel_mm": 2.5,
     "nominal_return_y_until_contact_mm": 0.6,
@@ -81,14 +81,17 @@
       22.5
     ],
     "right_sled_notch_y_offsets": [
-      -3.9,
-      0.35
+      -4.2,
+      0.65
     ],
     "review_driver_tool_diameter_mm": 2.4,
     "review_tool_length_mm": 24
   },
   "verified_with_full_d7_locally": {
-    "previous_revision_boss_x_offsets": [20.5, 24],
+    "previous_revision_boss_x_offsets": [
+      20.5,
+      24
+    ],
     "previous_revision_fixed_core_boss_collisions": 0,
     "previous_revision_fixed_core_tool_collisions": 0,
     "current_outboard_boss_revision_recomputed_against_full_d7": false,
@@ -125,13 +128,35 @@
     "alternate_catalog_board_width_mm": 35,
     "alternate_nominal_margin_mm": 2.8,
     "alternate_worst_margin_pm_0_2_mm": 2.4,
-    "alternate_board_tolerance_window_mm": [17.9, 21.1],
-    "actual_module_measurement": "NOT_AVAILABLE"
+    "alternate_board_tolerance_window_mm": [
+      17.9,
+      21.1
+    ],
+    "actual_module_measurement": "NOT_AVAILABLE",
+    "remaining_y_z_tolerance_review": "ANALYZED_PARAMETRICALLY_WITH_ASSUMED_PM_0_2_MM_PER_PART; PHYSICAL_PROCESS_CAPABILITY_NOT_VERIFIED",
+    "yz_clearance_screen": {
+      "assumed_per_part_tolerance_mm": 0.2,
+      "boss_y_offsets_mm": [
+        -3.75,
+        0.2
+      ],
+      "notch_y_offsets_mm": [
+        -4.2,
+        0.65
+      ],
+      "boss_to_notch_nominal_clearance_each_side_mm": 0.45,
+      "boss_to_notch_worst_clearance_each_side_mm": 0.05,
+      "sled_notch_top_z_mm": 138.1,
+      "lock_bar_bottom_z_mm": 138.6,
+      "sled_to_bar_nominal_clearance_z_mm": 0.5,
+      "sled_to_bar_worst_clearance_z_mm": 0.1,
+      "status": "PARAMETRIC_SCREEN_ONLY; CLEARANCE_IS_SMALL_AND_DEPENDS_ON_UNVERIFIED_PART_PROCESS_TOLERANCES"
+    }
   },
   "hardware_issues": [
     "M2 headless fastener material/tap/strip strength not qualified",
     "M2 screw reverse-turn vibration and drop-out not qualified",
-    "candidate retains 0.2mm worst-case 40mm board X clearance under assumed ±0.2mm/part only; Y/Z tolerance stack unverified",
+    "candidate retains 0.2mm worst-case X, 0.05mm worst-case Y and 0.1mm worst-case Z clearance under assumed \u00b10.2mm/part; actual process capability and physical sample unverified",
     "native fixed boss interrupts existing sled right side wall, structural life not qualified",
     "Fan relocation, wood back-pocket depth and physical 55mm interchange pending",
     "Motor independent trip latch and eFuse PG/STOP not built"

@@ -15,3 +15,7 @@ Contents: source-reading SHA-pinned D7 recomputation script (`build.py`), 7-axis
 ## 2026-10-19 revision note
 
 The X-only candidate was revised: boss X offsets are now `21.5..24.8`, screw X center `23.15`, and cassette notch `20.6..22.5`. Under assumed ±0.2mm two-part X tolerances this gives 0.2mm worst-case board clearance and 0.1mm notch clearance past the cassette wall. This does **not** replace or validate the downloadable 2026-10-16 ZIP, and does not establish Y/Z tolerance, updated full-D7 collision, physical PCB fit, fastener strength, or manufacturing acceptance. New current CAD is the checked-in `.scad` plus `design_contract.json`; overall status remains HOLD.
+
+## 2026-10-19 conditional Y/Z CAD revision (HOLD)
+
+The prior Y-notch margins (0.15mm nominal each side) and bar-to-sled Z gap (0.05mm) were insufficient under the assumed ±0.2mm-per-part screen. Current checked-in candidate expands the through-height notch to Y `−4.2..+0.65` and raises the lock bar/guide crossbars 0.55mm to Z `138.6`. The independent checker derives 0.05mm worst-case Y clearance on each boss side and 0.1mm worst-case Z clearance over the cassette wall, while retaining 0.75mm nominal vertical overlap with the installed screw. These clearances are parametric findings only; process capability, actual dimensions, shifted-boss full-D7 collision, physical service and strength remain unverified. The older ZIP and its drawings are not updated by this source-only revision. Do not manufacture from them or treat this candidate as released.

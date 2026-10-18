@@ -15,13 +15,13 @@ assert s["screw_axis_xy_offsets"]==[23.15,-1.1]
 assert s["counter_body_x_offsets"]==[21.5,24.8] and s["counter_body_y_offsets"]==[-3.75,0.2]
 assert s["counter_body_z_mm"]==[134,138]
 assert s["stud_installed_z"]==[134.35,139.35]
-assert s["bar_z_mm"]==[138.05,139.35]
+assert s["bar_z_mm"]==[138.6,139.9]
 assert s["right_sled_entire_z_sweep_notch_x_offsets"]==[20.6,22.5]
-assert s["right_sled_notch_y_offsets"]==[-3.9,0.35]
-assert "translate([x+20.6,y-3.9,122.9])cube([1.9,4.25,15.2]);" in scad
+assert s["right_sled_notch_y_offsets"]==[-4.2,0.65]
+assert "translate([x+20.6,y-4.2,122.9])cube([1.9,4.85,15.2]);" in scad
 assert "translate([x+21.5,y-3.75,134])cube([3.3,3.95,4]);" in scad
 assert scad.count("x+23.15,y-1.1") == 3 # guide bore, boss bore, installed stop
-assert "translate([x-24,y-2+sy(),138.05])cube([48,4,1.3]);" in scad
+assert "translate([x-24,y-2+sy(),138.6])cube([48,4,1.3]);" in scad
 assert a["verified_with_full_d7_locally"]["previous_revision_fixed_core_boss_collisions"]==0
 assert a["verified_with_full_d7_locally"]["previous_revision_fixed_core_tool_collisions"]==0
 assert not a["verified_with_full_d7_locally"]["source_geometry_checked_in_Github"]
@@ -93,10 +93,28 @@ assert math.isclose(small_board_min,h["alternate_board_tolerance_window_mm"][0],
 assert math.isclose(boss_max,h["alternate_board_tolerance_window_mm"][1],abs_tol=1e-7)
 assert small_board_min<boss_max
 assert h["actual_module_measurement"]=="NOT_AVAILABLE"
+# Conditional Y/Z tolerance screen for notch-to-boss and sled-to-bar separation.
+yz=h["yz_clearance_screen"]
+tol=yz["assumed_per_part_tolerance_mm"]
+boss_y=s["counter_body_y_offsets"]
+notch_y=s["right_sled_notch_y_offsets"]
+y_lower= boss_y[0]-notch_y[0]
+y_upper= notch_y[1]-boss_y[1]
+assert math.isclose(y_lower,.45,abs_tol=1e-7) and math.isclose(y_upper,.45,abs_tol=1e-7)
+assert math.isclose(min(y_lower,y_upper)-2*tol,.05,abs_tol=1e-7)
+notch_top=122.9+15.2
+bar_bottom=s["bar_z_mm"][0]
+z_gap=bar_bottom-notch_top
+assert math.isclose(notch_top,138.1,abs_tol=1e-7)
+assert math.isclose(z_gap,.5,abs_tol=1e-7)
+assert math.isclose(z_gap-2*tol,.1,abs_tol=1e-7)
+assert math.isclose(yz["boss_to_notch_worst_clearance_each_side_mm"],.05,abs_tol=1e-7)
+assert math.isclose(yz["sled_to_bar_worst_clearance_z_mm"],.1,abs_tol=1e-7)
+assert s["bar_z_mm"][1]==s["stud_installed_z"][1]+.55
 assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_recomputed_against_full_d7"] is False
 assert a["status_counts"]=={"done_scope":16,"all_scope":48,"manufacturing_done":0,"manufacturing_total":6,"software_passed":11,"software_total":14}
 assert all(r[x] is False for x in ("purchase_allowed","manufacture_allowed","power_allowed","flash_allowed","merge_allowed"))
 assert r["efuse_en"]=="LOW"
 print("PASS nominal: 7 independent headless stop positions, 714 keyed locking states, 7 no-notch clashes")
-print("PASS conditional X-only screen: 40mm envelope worst-case clearance 0.2mm; shifted boss/notch fit within nominal 5mm reservation")
-print("BLOCKED: Y/Z tolerances, shifted boss vs full D7, physical PCB/fastener, wood/fan, vibration and eFuse power remain unverified")
+print("PASS conditional XYZ parametric screen: X 0.2mm, Y 0.05mm, Z 0.1mm worst-case clearance at assumed ±0.2mm/part")
+print("BLOCKED: physical process capability, shifted boss vs full D7, PCB/fastener, wood/fan, vibration and eFuse power remain unverified")
