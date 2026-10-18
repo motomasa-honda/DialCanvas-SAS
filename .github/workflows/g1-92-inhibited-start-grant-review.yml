@@ -1,0 +1,71 @@
+name: G1-92 real inhibited START grant to U14 EN KiCad review
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g1-92-inhibited-start-grant-review.yml'
+      - 'execution/g1_92_inhibited_start_grant/**'
+      - 'execution/g1_91_aon_supervisor/**'
+      - 'execution/g1_90_fault_cutoff/**'
+      - 'execution/g1_89_hardware_start_deadline/**'
+      - 'execution/g1_88_pg_rail_fault/**'
+      - 'execution/g1_87_rearm_release/**'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g1-92-real-inhibited-start-grant:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate real KiCad parent circuit and inhibit source with two 68k limiters
+        run: |
+          set -euo pipefail
+          python3 execution/g1_92_inhibited_start_grant/build_review.py
+          python3 execution/g1_92_inhibited_start_grant/check_contract.py
+          python3 execution/preflight.py
+      - name: Install genuine KiCad9 and full review symbol library
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends software-properties-common
+          sudo add-apt-repository -y ppa:kicad/kicad-9.0-releases
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends kicad
+          ROOT="$GITHUB_WORKSPACE/execution/g1_87_rearm_release"
+          G88="$GITHUB_WORKSPACE/execution/g1_88_pg_rail_fault"
+          G89="$GITHUB_WORKSPACE/execution/g1_89_hardware_start_deadline"
+          G90="$GITHUB_WORKSPACE/execution/g1_90_fault_cutoff"
+          mkdir -p "$HOME/.config/kicad/9.0"
+          cat > "$HOME/.config/kicad/9.0/sym-lib-table" <<EOF
+          (sym_lib_table
+           (version 7)
+           (lib (name "FG_REVIEW")(type "KiCad")(uri "$ROOT/FG_REVIEW.kicad_sym")(options "")(descr "Review only"))
+           (lib (name "FG_TI")(type "KiCad")(uri "$ROOT/FG_TI.kicad_sym")(options "")(descr "eFuse"))
+           (lib (name "FG_FAULT")(type "KiCad")(uri "$G88/FG_FAULT.kicad_sym")(options "")(descr "Fault"))
+           (lib (name "FG_TIMER")(type "KiCad")(uri "$G89/FG_TIMER.kicad_sym")(options "")(descr "Supervisor"))
+           (lib (name "FG_CUTOFF")(type "KiCad")(uri "$G90/FG_CUTOFF.kicad_sym")(options "")(descr "FET sink"))
+           (lib (name "FG_SWITCH")(type "KiCad")(uri "$ROOT/FG_SWITCH.kicad_sym")(options "")(descr "Schmitt"))
+          )
+          EOF
+          kicad-cli version
+      - name: Actual KiCad9 netlist SVG ERC and exact 579-pad comparison
+        run: |
+          set -euo pipefail
+          SRC=execution/g1_92_inhibited_start_grant/forest_guardian_g1_92_start_grant_inhibited_review.kicad_sch
+          OUT=execution/g1_92_inhibited_start_grant/native_evidence
+          mkdir -p "$OUT/svg"
+          kicad-cli sch export netlist --format kicadxml -o "$OUT/native.net.xml" "$SRC"
+          kicad-cli sch export svg --output "$OUT/svg" "$SRC"
+          kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
+          python3 execution/g1_92_inhibited_start_grant/check_contract.py "$OUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g1-92-native-inhibited-start-grant-579-pad-review
+          path: |
+            execution/g1_92_inhibited_start_grant/native_evidence/
+            execution/g1_92_inhibited_start_grant/pin_map_579.json
+            execution/g1_92_inhibited_start_grant/forest_guardian_g1_92_start_grant_inhibited_review.kicad_sch
+          if-no-files-found: warn
