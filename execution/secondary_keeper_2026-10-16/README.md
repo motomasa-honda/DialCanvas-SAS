@@ -16,7 +16,7 @@ The original 40mm *conservative* board envelope had only 0.3mm clearance to the 
 
 Other blockers: M2 tap/engagement material and prevailing torque, screw self-loosening, corner/shear, shell warp, heat creep, rearwood pocket Z140 gives just 0.65mm nominal headless clearance, fan relocation/airflow, electrical independent eFuse latch/PG/STOP bench proof.
 
-**Progress invariants:** 16/48 narrowly scoped done, 8 working, 20 open, 4 hardware-wait; manufacturer gates **0/6**, software evidence **11/14**. U7 motor eFuse EN held LOW; no manufacturing, drilling, purchasing, energizing, flashing or merging `main`. PR stays Draft.
+**Project ledger at 2026-10-19 continuation:** 21/48 narrowly scoped done, 8 working, 15 open, 4 hardware-wait; manufacturer gates **0/6**, software evidence **11/14**. These counts are cross-checked against `execution/tasks.csv` and `execution/progress.json`. U7 motor eFuse EN held LOW; no manufacturing, drilling, purchasing, energizing, flashing or merging `main`. PR stays Draft.
 
 The hardware design remains **NOT ACCEPTED**. Next tasks are full-D7 collision recomputation for the shifted boss, measurement of the selected module and manufacturing process capability, plus anti-loosening and structural fixture tests.
 

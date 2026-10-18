@@ -162,7 +162,10 @@
     "Motor independent trip latch and eFuse PG/STOP not built"
   ],
   "status_counts": {
-    "done_scope": 16,
+    "done_scope": 21,
+    "working": 8,
+    "open": 15,
+    "hardware_wait": 4,
     "all_scope": 48,
     "manufacturing_done": 0,
     "manufacturing_total": 6,

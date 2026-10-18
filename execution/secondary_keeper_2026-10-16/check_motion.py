@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Recompute seven headless-stop motion constraints. NOT original 1774 D7 solids, not physical proof."""
-import json, itertools, pathlib, math
+import json, itertools, pathlib, math, csv, collections
 p=pathlib.Path(__file__).resolve().parent
 a=json.loads((p/"design_contract.json").read_text())
 scad=(p/"M1_7AXIS_ANTISLIDE_STOP_REVIEW.scad").read_text()
@@ -61,7 +61,7 @@ for axis in axes:
   else:assert reached_full;released+=1
 assert (samples,blocked,released,clashes_without_notch)==(714,7,7,7)
 assert (v["steps_total"],v["no_complete_unlock_with_screw"],v["full_unlock_without_screw"])==(714,7,7)
-# Conditional X-only tolerance screen; no Y/Z or full-D7 clearance claim.
+# Conditional tolerance screens; neither full-D7 nor physical process capability.
 assert h["conservative_board_width_mm"]==40
 notch_start=s["right_sled_entire_z_sweep_notch_x_offsets"][0]
 notch_end=s["right_sled_entire_z_sweep_notch_x_offsets"][1]
@@ -112,7 +112,18 @@ assert math.isclose(yz["boss_to_notch_worst_clearance_each_side_mm"],.05,abs_tol
 assert math.isclose(yz["sled_to_bar_worst_clearance_z_mm"],.1,abs_tol=1e-7)
 assert s["bar_z_mm"][1]==s["stud_installed_z"][1]+.55
 assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_recomputed_against_full_d7"] is False
-assert a["status_counts"]=={"done_scope":16,"all_scope":48,"manufacturing_done":0,"manufacturing_total":6,"software_passed":11,"software_total":14}
+progress=json.loads((p.parent/"progress.json").read_text())
+with (p.parent/"tasks.csv").open(newline="") as f:
+ task_counts=collections.Counter(row["Status"] for row in csv.DictReader(f))
+assert a["status_counts"]=={
+ "done_scope":progress["scoped_evidence_done"],"working":progress["working"],
+ "open":progress["open"],"hardware_wait":progress["hardware_wait"],
+ "all_scope":progress["task_total"],"manufacturing_done":progress["manufacturer_release_closed"],
+ "manufacturing_total":progress["manufacturer_release_total"],
+ "software_passed":progress["software_evidence_passed"],"software_total":progress["software_evidence_total"]}
+assert task_counts==collections.Counter({
+ "DONE_SCOPE":progress["scoped_evidence_done"],"WORKING":progress["working"],
+ "OPEN":progress["open"],"HARDWARE_WAIT":progress["hardware_wait"]})
 assert all(r[x] is False for x in ("purchase_allowed","manufacture_allowed","power_allowed","flash_allowed","merge_allowed"))
 assert r["efuse_en"]=="LOW"
 print("PASS nominal: 7 independent headless stop positions, 714 keyed locking states, 7 no-notch clashes")
