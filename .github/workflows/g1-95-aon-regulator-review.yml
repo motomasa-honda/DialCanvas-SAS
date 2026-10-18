@@ -1,0 +1,81 @@
+name: G1-95 manufacturer pin real AON regulator source KiCad review
+on:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - '.github/workflows/g1-95-aon-regulator-review.yml'
+      - 'execution/g1_95_aon_regulator/**'
+      - 'execution/g1_94_native_erc_cleanup/**'
+      - 'execution/g1_93_inhibited_phase_grant/**'
+      - 'execution/ci/full-regression.marker'
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - '.github/workflows/g1-95-aon-regulator-review.yml'
+      - 'execution/g1_95_aon_regulator/**'
+      - 'execution/g1_94_native_erc_cleanup/**'
+      - 'execution/g1_93_inhibited_phase_grant/**'
+      - 'execution/ci/full-regression.marker'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  manufacturer-real-aon-buck-unpowered-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reproduce true 648 pad KiCad and off invariants
+        run: |
+          set -euo pipefail
+          python3 execution/g1_95_aon_regulator/build_review.py
+          python3 execution/g1_95_aon_regulator/check_contract.py
+          python3 execution/preflight.py
+      - name: Install KiCad9 and all source libraries
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends software-properties-common
+          sudo add-apt-repository -y ppa:kicad/kicad-9.0-releases
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends kicad
+          ROOT="$GITHUB_WORKSPACE/execution/g1_87_rearm_release"
+          G88="$GITHUB_WORKSPACE/execution/g1_88_pg_rail_fault"
+          G89="$GITHUB_WORKSPACE/execution/g1_89_hardware_start_deadline"
+          G90="$GITHUB_WORKSPACE/execution/g1_90_fault_cutoff"
+          G95="$GITHUB_WORKSPACE/execution/g1_95_aon_regulator"
+          mkdir -p "$HOME/.config/kicad/9.0"
+          cat > "$HOME/.config/kicad/9.0/sym-lib-table" <<EOF
+          (sym_lib_table
+           (version 7)
+           (lib (name "FG_REVIEW")(type "KiCad")(uri "$ROOT/FG_REVIEW.kicad_sym")(options "")(descr "Review"))
+           (lib (name "FG_TI")(type "KiCad")(uri "$ROOT/FG_TI.kicad_sym")(options "")(descr "eFuse"))
+           (lib (name "FG_FAULT")(type "KiCad")(uri "$G88/FG_FAULT.kicad_sym")(options "")(descr "Fault"))
+           (lib (name "FG_TIMER")(type "KiCad")(uri "$G89/FG_TIMER.kicad_sym")(options "")(descr "Supervisor"))
+           (lib (name "FG_CUTOFF")(type "KiCad")(uri "$G90/FG_CUTOFF.kicad_sym")(options "")(descr "FET"))
+           (lib (name "FG_POWER")(type "KiCad")(uri "$G95/FG_POWER.kicad_sym")(options "")(descr "AON buck"))
+           (lib (name "FG_SWITCH")(type "KiCad")(uri "$ROOT/FG_SWITCH.kicad_sym")(options "")(descr "Schmitt"))
+          )
+          EOF
+          kicad-cli version
+      - name: Real KiCad9 native netlist 648 pins plus ERC and SVG
+        run: |
+          set -euo pipefail
+          SRC=execution/g1_95_aon_regulator/forest_guardian_g1_95_aon_regulator_review.kicad_sch
+          OUT=execution/g1_95_aon_regulator/native_evidence
+          mkdir -p "$OUT/svg"
+          kicad-cli sch export netlist --format kicadxml -o "$OUT/native.net.xml" "$SRC"
+          kicad-cli sch export svg --output "$OUT/svg" "$SRC"
+          kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
+          python3 execution/g1_95_aon_regulator/check_contract.py "$OUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g1-95-physical-aon-buck-unpowered-kicad-review
+          path: |
+            execution/g1_95_aon_regulator/native_evidence/
+            execution/g1_95_aon_regulator/forest_guardian_g1_95_aon_regulator_review.kicad_sch
+            execution/g1_95_aon_regulator/pin_map_648.json
+          if-no-files-found: warn
