@@ -5,14 +5,19 @@ This outputs a set of hypothetical screening envelopes, NOT measured current,
 a proven eFuse minimum, a resolved SKU or permission to enable any motor.
 """
 import argparse
+import hashlib
 import json
 import math
+import re
+import tarfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 CURRENT = HERE / "motor_current_acceptance.json"
 SOURCE = ROOT / "execution/bom_reconciled_2026-10-16/source_contract.json"
+PRODUCT_ARCHIVE = ROOT / "phase67-source/firmware.tar.gz"
+PRODUCT_ARCHIVE_SHA256 = "a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3"
 AXES = 7
 RESERVE = .20
 CASES_MA = (60, 80, 100, 160)
@@ -64,6 +69,40 @@ def size_candidate(phase_ma, simultaneous_phases, nominal_limit_a, manufacturer_
     }
 
 
+def firmware_wave_drive_screen():
+    """Extract the SHA-pinned product controller's phase cadence, never execute hardware."""
+    digest = hashlib.sha256(PRODUCT_ARCHIVE.read_bytes()).hexdigest()
+    if digest != PRODUCT_ARCHIVE_SHA256:
+        raise ValueError("ESP32-P4 product firmware archive SHA changed; review the new source before screening")
+    with tarfile.open(PRODUCT_ARCHIVE, "r:gz") as archive:
+        source = archive.extractfile("firmware/main/control.c")
+        if source is None:
+            raise ValueError("pinned product archive lacks firmware/main/control.c")
+        control = source.read().decode("utf-8")
+    period_match = re.search(r"period_us\[7\]\s*=\s*\{([^}]+)\}", control)
+    direction_match = re.search(r"direction\[7\]\s*=\s*\{([^}]+)\}", control)
+    if not period_match or not direction_match:
+        raise ValueError("cannot derive seven-axis timing/direction from product controller")
+    periods = [int(x.strip()) for x in period_match.group(1).split(",") if x.strip()]
+    directions = [int(x.strip()) for x in direction_match.group(1).split(",") if x.strip()]
+    one_hot = "c->phase[i]=(uint8_t)(1u<<c->phase_index[i])" in control
+    if len(periods) != 7 or len(directions) != 7 or not one_hot:
+        raise ValueError("product controller is no longer the expected seven-axis one-hot sequencer")
+    steps_s = [round(1_000_000 / period, 6) for period in periods]
+    output_rpm = [round(rate * 60 / 516, 6) for rate in steps_s]
+    return {
+        "source_archive_sha256": digest,
+        "mode": "ONE_HOT_WAVE_DRIVE_ONE_PHASE_PER_AXIS",
+        "period_us": periods,
+        "direction_sign_by_axis": directions,
+        "steps_per_second_by_axis": steps_s,
+        "candidate_516_step_output_rpm_by_axis": output_rpm,
+        "all_candidate_speeds_below_supplier_5v_guidance_6rpm": max(output_rpm) < 6,
+        "logical_28_phase_interface_review": "ONE_PHASE_LINE_PER_AXIS_IS_COMPATIBLE; DRIVER_BOARD_INPUT_AND_COMMON_PIN_SAMPLE_UNVERIFIED",
+        "hardware_release": False,
+    }
+
+
 def evaluate_report(current, source):
     assumed = current["assumptions"]
     if assumed["motor_axes"] != AXES or assumed["headroom_target_fraction"] != RESERVE:
@@ -80,6 +119,7 @@ def evaluate_report(current, source):
     if seller_motor["selected"] or seller_motor["listed_voltage_values_v"] != [5, 12] or seller_motor["listed_dc_resistance_ohm_values"] != [50, 200]:
         raise ValueError("Conflicting seller motor variants must remain unselected and electrically unqualified")
     r_ilm = positive_number(assumed["r_ilm_ohm"], "r_ilm_ohm")
+    wave_drive = firmware_wave_drive_screen()
     # 3334/R is only a typical and must not be adopted as a guaranteed limit.
     typical = 3334.0 / r_ilm
     measured = current["unverified_field_values"]
@@ -107,9 +147,11 @@ def evaluate_report(current, source):
             "winding_resistance_tolerance": "NOT_PUBLISHED",
             "one_phase_ohmic_current_estimate_per_axis_a": round(5 / 42, 6),
             "seven_axis_one_phase_ohmic_current_estimate_a": round(7 * 5 / 42, 6),
+            "one_phase_required_guaranteed_efuse_min_a_exclusive_for_20pct_reserve": round((7 * 5 / 42) / (1 - RESERVE), 6),
             "seven_axis_two_phase_ohmic_current_estimate_a": round(7 * 2 * 5 / 42, 6),
             "two_phase_result_vs_current_efuse_typical": "EXCEEDS_1.509A_TYPICAL_BEFORE_MARGIN",
             "one_phase_result_vs_current_efuse_typical": "WITHIN_20PCT_TYPICAL_SCREEN_ONLY; GUARANTEED_MIN_UNKNOWN",
+            "firmware_wave_drive_screen": wave_drive,
             "selected_for_production": False,
             "hardware_release": False,
             "remaining_qualification": [
