@@ -44,6 +44,7 @@ jobs:
           set -euo pipefail
           python3 execution/g1_94_native_erc_cleanup/build_review.py
           python3 execution/g1_94_native_erc_cleanup/check_contract.py
+          python3 execution/g1_94_native_erc_cleanup/check_supply_blockers.py
           python3 execution/preflight.py
       - name: Install actual KiCad9 full original review symbol tables
         run: |
@@ -79,7 +80,8 @@ jobs:
           kicad-cli sch export netlist --format kicadxml -o "$OUT/native.net.xml" "$SRC"
           kicad-cli sch export svg --output "$OUT/svg" "$SRC"
           kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
-          python3 execution/g1_94_native_erc_cleanup/check_contract.py "$OUT"
+          python3 execution/g1_94_native_erc_cleanup/check_contract.py
+          python3 execution/g1_94_native_erc_cleanup/check_supply_blockers.py "$OUT"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
