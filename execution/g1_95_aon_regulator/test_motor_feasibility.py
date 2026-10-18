@@ -35,6 +35,18 @@ class MotorFeasibilityTests(unittest.TestCase):
         self.assertEqual(candidate["status"],"REJECTED_FOR_CURRENT_M1_DRIVER_AND_POWER_ENVELOPE")
         self.assertFalse(candidate["selected"])
         self.assertEqual(candidate["gearhead"],"NONE")
+        supplier=result["conditional_supplier_motor_candidate"]
+        self.assertEqual(supplier["supplier_product_id"],"858")
+        self.assertEqual(supplier["listed_connection"],"5-pin unipolar")
+        self.assertEqual(supplier["listed_reduction_ratio"],16.128)
+        self.assertEqual(supplier["listed_steps_per_output_revolution"],516)
+        self.assertEqual(supplier["listed_envelope_mm"],
+                         {"diameter":28,"body_height":20,"shaft_length":9,"shaft_diameter":5})
+        self.assertAlmostEqual(supplier["seven_axis_one_phase_ohmic_current_estimate_a"],.833333)
+        self.assertAlmostEqual(supplier["seven_axis_two_phase_ohmic_current_estimate_a"],1.666667)
+        self.assertFalse(supplier["selected_for_production"])
+        self.assertFalse(supplier["hardware_release"])
+        self.assertIn("OEM_MANUFACTURER_NOT_IDENTIFIED",supplier["source_class"])
         self.assertEqual(len(result["hypothetical_combinations"]),16)
         self.assertEqual(len(result["current_model"]["physical_evidence_missing_fields"]),11)
         self.assertFalse(result["current_model"]["rated_efuse_min_available"])

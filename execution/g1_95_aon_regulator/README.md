@@ -72,3 +72,11 @@ Oriental Motorの製品カタログで具体的な発注型番 `PKP223U09A2` を
 この照合はメーカー掲載値の机上比較であり、試料測定、現行部品との物理互換、ギヤード型番の可用性/寿命、実機温度を検証していない。`motor_feasibility.py` のレビュー出力に不適合根拠を追加し、テストで値・不採用状態を固定した。代替モーターの選定は未完了で、G1-05/G1-06 WORKING、モーター電源無効を維持する。
 
 一次資料: [Oriental Motor PKP223U09A2 product listing](https://catalog.orientalmotor.com/item/2-phase-unipolar-stepper-motors/shop-pkp-series-2-phase-unipolar-stepper-motors/pkp223u09a2)（仕様/結線/外形/販売情報）、[TI ULN2003A datasheet](https://www.ti.com/lit/ds/symlink/uln2003a.pdf)（出力電流定格）。
+
+## 2026-10-19 — 小型ギヤ付きステッパーの調達品番候補
+
+Adafruit販売品 Product ID 858 は、5V・5ピンユニポーラ・1/16.128減速・516ステップ/出力回転・28mm径×高さ20mm・5mm径出力軸として掲載され、5Vで6rpm未満の運転案内がある。掲載約42Ω/巻線から計算した単相励磁の理想抵抗電流は約119mA/軸、7軸合計約0.833A。二相同時励磁では約1.667Aとなり、現行eFuseの計算上の公称1.509Aを余裕なしでも超える。よって本候補を試す場合もファームウェア/駆動シーケンスは一相ずつの励磁に限定した条件で評価し、実トルク・始動余裕が足りなければ採用しない。
+
+これはOEM製造元・巻線抵抗許容差・最大電流が未確認の**販売者カタログ候補**であって、発注BOMの確定ではない。単相電流の値も販売ページの概略抵抗からの机上計算で、保証電流・実消費・eFuse保証最小値を示さない。まず受入試料で抵抗、全コイルシーケンスの電流、歯車列負荷での始動/連続運転、温度、騒音、軸結合を評価する。現状のカセット設計は同品番の実物穴位置/全長/コネクタを取り込んでいないため、機械適合も未確認。量産選定・電源有効化・購買承認は行わない。
+
+一次資料: [Adafruit Product 858](https://www.adafruit.com/product/858)（販売型番、寸法、減速比、運転条件、概略抵抗）、[TI ULN2003A datasheet](https://www.ti.com/lit/ds/symlink/uln2003a.pdf)（単出力電流定格）。機械・調達・電気の試料確認が済むまではG1-05/G1-06 WORKING、G3-04 WORKING、G4-04 OPEN、G1 EN LOWとする。
