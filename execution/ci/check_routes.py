@@ -34,14 +34,18 @@ def main():
         assert "      - '"+MARKER+"'\n" in h,p
         assert ("      - '"+p.as_posix().split(str(BASE)+"/")[-1]+"'\n") in h,p
         assert re.search(r"(?m)^  workflow_dispatch:\s*$",h),p
-        assert not re.search(r"(?m)^  pull_request:\s*$",h),p
+        # Feature PRs MUST target the long-lived review branch; only
+        # their THREE-DOT change set (not accumulated main PR) is considered.
+        assert re.search(r"(?m)^  pull_request:\s*$",h),p
+        assert h.count("      - '"+BRANCH+"'\n")==2,p
+        assert h.count("      - '"+MARKER+"'\n")==2,p
         assert not re.search(r"(?m)^    paths-ignore:\s*$",h),p
     gate=header(DIR/SELF)
     assert re.search(r"(?m)^  pull_request:\s*$",gate)
     assert re.search(r"(?m)^  push:\s*$",gate)
     assert (BASE/"execution"/"preflight.py").is_file()
     assert (BASE/"tests"/"check_design.py").is_file()
-    print(f"PASS CI routing: {len(scoped)} scoped push-only checks; marker dispatches ALL by push; 1 lightweight always-on PR gate")
+    print(f"PASS CI routing: {len(scoped)} scoped feature-PR+native-push checks; marker triggers ALL in a feature PR; lightweight main/feature PR gate")
     print("HOLD: branch protection rules not available for inspection; no manufacturing/power release; explicit full marker when finishing task")
 
 if __name__=="__main__":

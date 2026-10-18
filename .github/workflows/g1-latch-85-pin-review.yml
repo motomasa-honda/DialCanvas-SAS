@@ -8,6 +8,13 @@ on:
       - '.github/workflows/g1-latch-85-pin-review.yml'
       - 'execution/g1_interlock_2026-10-16/**'
   workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g1-latch-85-pin-review.yml'
+      - 'execution/g1_interlock_2026-10-16/**'
 permissions:
   contents: read
 jobs:

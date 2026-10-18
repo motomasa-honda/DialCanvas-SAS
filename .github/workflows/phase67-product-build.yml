@@ -8,6 +8,13 @@ on:
       - '.github/workflows/phase67-product-build.yml'
       - 'phase67-source/**'
   workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase67-product-build.yml'
+      - 'phase67-source/**'
 permissions:
   contents: read
 jobs:

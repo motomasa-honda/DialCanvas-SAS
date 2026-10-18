@@ -34,3 +34,7 @@
 ## 2026-10-18 — PR累積差分をやめるCI選択実行
 
 48本を `push` の変更パス+対象ブランチに変更し、PRでは常時動く軽量 `ci-scope-gate.yml` に固定。全体回帰は `execution/ci/full-regression.marker` の変更をpushし全48本を起動する。既存ジョブのテスト内容・pass/fail基準・KiCad ERC監査は変更しない。詳細は `execution/ci/README.md`。この節の変更時点で安全G1-05/06はWORKING、20/48、製造ゲート0/6。旧版に記載の18/48は2026-10-16の履歴値であり現行値ではない。GitHub branch protectionはAPI権限不足で取得できておらずmainマージ禁止継続。
+
+## 2026-10-18 — GitHub連携経由push非発火の修正（実測）
+
+GitHub連携の `update_ref` からpushトリガーが発火せず、軽量PRゲートのみ実行されることを実測。**push差分だけに依存する設計は不適合**。従来48本に `pull_request.branches: review/forest-guardian-phase66-idf` と同じ `paths` を追加し、短期feature PRを**長期レビュー作業ブランチへ向ける**。これでfeature PRの3-dot差分によって関連テストのみ実行。長期 Draft PR #2（base main）は軽量 `ci-scope-gate` のみ。feature PRのCI成功後にだけreviewブランチへ統合する。全体回帰は専用 `full-regression.marker` を変更したfeature PRで48本一斉に起動。`workflow_dispatch` や本来のGit pushも残す。全体回帰が未実施のまま正式DONEとしない。branch protectionの内容は読み出し不可のまま、mainへのマージ禁止。

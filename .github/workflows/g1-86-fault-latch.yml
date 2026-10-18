@@ -9,6 +9,14 @@ on:
       - 'execution/g1_86_fault_latch/**'
       - 'execution/preflight.py'
   workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g1-86-fault-latch.yml'
+      - 'execution/g1_86_fault_latch/**'
+      - 'execution/preflight.py'
 permissions:
   contents: read
 jobs:

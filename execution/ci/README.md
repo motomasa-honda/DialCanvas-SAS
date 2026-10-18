@@ -26,3 +26,15 @@
 ## Pushトリガーの実行経路検証
 
 GitHub連携を介する参照更新については、pushイベントの実行を推測しない。作業ブランチの実際の差分コミットに紐づいたCI結果を取得し、PR側の軽量チェックと区別する。Pushチェックが発火しなければpush専用選択実行方式を採用せず、PR由来の選択実行を検討する。
+
+## 2026-10-18 重要な実行経路の修正：GitHub連携pushは発火しなかった
+
+GitHub連携を使ったコミット更新 `a535a2c` → `b253241` で、軽量PRチェックしか走らずpushイベントを確認できなかった。そこで**正式運用は短期PRの差分評価**とする。やり方：
+
+1. 最新の `review/forest-guardian-phase66-idf` から小さなfeatureブランチを作る。
+2. 一つの目的に絞ったコミットをfeatureブランチへ反映する。
+3. base=`review/forest-guardian-phase66-idf` で**短期PR**を作る。`pull_request.paths` はこのPRの新規差分のみを使い、48本のうち対象となるワークフローだけ起動する。軽量PRゲートも並走。
+4. 必須CIの成功をコミットSHA/PRに照合してからreviewブランチへ統合する。`main`へのマージは禁ずる。
+5. 節目で48本全件を走らせる場合は `execution/ci/full-regression.marker` を変更したfeature PRをreviewブランチ宛に作成してCIを確認する。直接のGitHub連携update_ref（push）に頼らない。
+
+従来節の「push差分」が通常のGit pushを行う環境で有効である点は変わらないが、**GitHub連携経由の開発では短期PRを正規経路とする**。同期時の主PRは軽量ゲートのみ。主PRのrequired check/branch保護状況は未取得、確認までmainマージ禁止。

@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - main
+      - 'review/forest-guardian-phase66-idf'
   push:
     branches:
       - 'review/forest-guardian-phase66-idf'

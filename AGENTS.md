@@ -18,7 +18,7 @@
 
 ## 差分CIと全体回帰テスト（2026-10-18）
 
-- 旧48本のワークフローは作業ブランチの `push.paths` 差分実行。PRは独立した軽量 `ci-scope-gate.yml` を常時実行し、全体回帰を省略してよいと誤認しない。
-- 正式DONE_SCOPE判定、構成統合、製造前に全体回帰が必要なら `execution/ci/full-regression.marker` を更新してpushし48本すべての完了を確認。
-- 新規CIは必ず変更ファイルと依存パス、共通full-regression.marker、自分自身のYAMLを `push.paths` に登録する。安全回路の変更は関連KiCad/ERCとEN/OE禁止不変条件を必須にする。
+- GitHub連携由来のpushイベントは動作確認できなかったため、正式経路は**短期feature PR → review/forest-guardian-phase66-idf**。旧48本はこのreviewブランチ宛のPR三点差分に基づく `pull_request.paths` で対象のみ実行。長期PR #2（base main）は軽量 `ci-scope-gate.yml` のみ。通常Git pushも追加で対応するが連携によるupdate_refには依存しない。
+- 正式DONE_SCOPE判定、構成統合、製造前に全体回帰が必要なら `execution/ci/full-regression.marker` を変更した短期PRをreviewブランチ宛に作成し48本すべての完了を確認。
+- 新規CIは必ず変更ファイルと依存パス、共通full-regression.marker、自分自身のYAMLをreviewブランチ宛 `pull_request.paths` と `push.paths` の両方に登録する。安全回路の変更は関連KiCad/ERCとEN/OE禁止不変条件を必須にする。
 - mainのbranch protectionは権限から取得できないため、必須チェックの設定はマージ前に別途照合。mainへのマージ禁止は維持する。
