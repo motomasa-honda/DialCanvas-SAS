@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Regression: reject impossible power accounting without claiming real measurements."""
-import copy
 import json
 import unittest
 from pathlib import Path
@@ -38,6 +37,10 @@ class InputPowerConsistency(unittest.TestCase):
         z["board_measured_peak_motor_a"]=.01
         z["board_measured_peak_input_a"]=.15
         self.assertEqual(engineering_review_readiness(d),"FAIL_MEASURED_INPUT_BELOW_CONTROLLER_OUTPUT_POWER")
+    def test_3v3_overload_retains_specific_failure(self):
+        d=hypothetical_complete()
+        d["unverified_field_values"]["controller_3v3_peak_a"]=2.5
+        self.assertEqual(engineering_review_readiness(d),"FAIL_BUCK_3V3_WITH_HEADROOM")
     def test_missing_evidence_never_released(self):
         d=json.loads((HERE/"motor_current_acceptance.json").read_text())
         self.assertEqual(engineering_review_readiness(d),"HOLD_MISSING_MEASUREMENTS")
