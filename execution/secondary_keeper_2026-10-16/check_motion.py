@@ -143,12 +143,16 @@ assert min(item["plate_to_50x41_service_reserve_gap_mm"] for item in fan_candida
 progress=json.loads((p.parent/"progress.json").read_text())
 with (p.parent/"tasks.csv").open(newline="") as f:
  task_counts=collections.Counter(row["Status"] for row in csv.DictReader(f))
-assert a["status_counts"]=={
- "done_scope":progress["scoped_evidence_done"],"working":progress["working"],
- "open":progress["open"],"hardware_wait":progress["hardware_wait"],
- "all_scope":progress["task_total"],"manufacturing_done":progress["manufacturer_release_closed"],
- "manufacturing_total":progress["manufacturer_release_total"],
- "software_passed":progress["software_evidence_passed"],"software_total":progress["software_evidence_total"]}
+# The audit's status_counts is an immutable snapshot from when that evidence
+# was generated. Keep it internally consistent and monotonic, but never pin
+# the live project ledger to that historical snapshot.
+snapshot=a["status_counts"]
+assert sum(snapshot[k] for k in ("done_scope","working","open","hardware_wait"))==snapshot["all_scope"]==48
+assert snapshot["done_scope"] <= progress["scoped_evidence_done"]
+assert snapshot["manufacturing_done"]==progress["manufacturer_release_closed"]==0
+assert snapshot["manufacturing_total"]==progress["manufacturer_release_total"]==6
+assert snapshot["software_passed"]==progress["software_evidence_passed"]==11
+assert snapshot["software_total"]==progress["software_evidence_total"]==14
 assert task_counts==collections.Counter({
  "DONE_SCOPE":progress["scoped_evidence_done"],"WORKING":progress["working"],
  "OPEN":progress["open"],"HARDWARE_WAIT":progress["hardware_wait"]})

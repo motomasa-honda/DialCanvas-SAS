@@ -25,7 +25,7 @@ ID,Gate,Deliverable,Status,Evidence,Limit
 "G3-08","G3","実機7軸稼働/温度/強度受入","HARDWARE_WAIT","GATE3","現物必要"
 "G4-01","G4","D7 BOM 429行分類台帳","DONE_SCOPE","D7-B01","M1統合BOM未完成"
 "G4-02","G4","M1差分と旧M3部品のBOM統合","DONE_SCOPE","D7正本429+M1差分18+PCB実装U609補完1を448行へ統合・DRIVER59部品全照合・68木工工程復元；source-bom-reconciliation VERIFY PASS","製造全量BOM G4-08はOPEN・RTCの旧正本欠落明示・M1 SKU価格ERC/DRC製造禁止"
-"G4-03","G4","安全IC受動素子の部品確定","WORKING","FG-P72-002","回路試験未"
+"G4-03","G4","安全IC受動素子の部品確定","DONE_SCOPE","execution/g4_03_passive_selection_2026-10-19/README.md; passive_bom.csv; check_contract.py PASS","部品候補の型番/定格選定まで。回路安全・保証最小ILM・footprint/PCB/熱/HIL/製造は未承認"
 "G4-04","G4","全SKU/代替/受入寸法","OPEN","FG-P68-012; fan relocation interface_contract.json","SUNON V3はスクリーニング候補のみ。代替SKU・購入承認・受入実寸/公差未確定"
 "G4-05","G4","M1 PCB工程票/基板積層","OPEN","D7-E04","M1新基板未完成"
 "G4-06","G4","木材/ネジなど統合加工図","OPEN","D7-M02","木材受入/加工条件OPEN"

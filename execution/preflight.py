@@ -28,6 +28,7 @@ checks = [
     "execution/g1_81_rail_supervisor/check_contract.py",
     "execution/g1_82_integrated_review/check_integrated.py",
     "execution/g1_85_efuse_analog/check_contract.py",
+    "execution/g4_03_passive_selection_2026-10-19/check_contract.py",
     "execution/g1_86_fault_latch/check_contract.py",
     "execution/g1_87_rearm_release/check_contract.py",
     "execution/cassettes/check_manifest.py",
