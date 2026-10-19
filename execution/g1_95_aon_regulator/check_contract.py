@@ -20,7 +20,29 @@ def verify_generated_source_manifest():
  assert sum(x["bytes"] for x in files)==manifest["total_bytes"]==3236649
  return len(files)
 
+def verify_native_erc_finding_register():
+ evidence=json.loads((D/"native_erc_findings_39192223351.json").read_text(encoding="utf-8"))
+ assert evidence["review_only"] is True
+ assert evidence["workflow_run_id"]==39192223351
+ assert evidence["workflow_head_sha"]=="4c0c0de5dafcdc1aa9955da27162792c845ac8f7"
+ assert evidence["kicad_version"]=="9.0.9"
+ assert evidence["source_schematic_sha256"]==next(
+  row["sha256"] for row in json.loads((D/"native_source_manifest.json").read_text(encoding="utf-8"))["files"]
+  if row["path"]=="execution/g1_95_aon_regulator/forest_guardian_g1_95_aon_regulator_review.kicad_sch")
+ assert evidence["erc_summary"]=={"errors":3,"warnings":0,"exclusions":0}
+ expected={
+  ("U14",5,"IN","/B77__5V_RAW"),
+  ("U14",8,"GND","/GND"),
+  ("U20",8,"VCC","/3V3_AON"),
+ }
+ actual={(x["ref"],x["pin"],x["signal"],x["net"]) for x in evidence["findings"]
+         if x["severity"]=="error" and x["type"]=="power_pin_not_driven"}
+ assert len(evidence["findings"])==3 and actual==expected
+ assert "Do not add PWR_FLAG" in evidence["interpretation"]
+ return len(actual)
+
 manifest_count=verify_generated_source_manifest()
+erc_finding_count=verify_native_erc_finding_register()
 verify_efuse_accuracy_audit()
 verify_phase_chain_integration()
 orig=json.loads((D.parent/"g1_94_native_erc_cleanup/pin_map_618_clean.json").read_text())
@@ -98,6 +120,7 @@ assert 7*2*.160>provisional_limit
 # 3.3V regulator is upstream of the motor eFuse but adds load to 5V input.
 print("PASS: genuine pins U45 1..8, upstream 5V input+return J20, 3V3 buck passives; 648/194; eFuse EN+OE OFF")
 print(f"PASS: reproducible G1-88..95 generated-source manifest ({manifest_count} files, SHA256 and byte counts)")
+print(f"PASS: KiCad9/ERC evidence source-bound; exactly {erc_finding_count} known undriven power pins preserved as blockers")
 print(f"HOLD: R_ILM 2.21k sets motor current limit ~{provisional_limit:.3f}A typical; 7x2-phase threshold {per_phase_one*1000:.1f}mA/phase before headroom; actual motor peak UNKNOWN")
 if len(sys.argv)>1:
  o=Path(sys.argv[1]);root=ET.parse(o/"native.net.xml").getroot()
@@ -113,6 +136,7 @@ if len(sys.argv)>1:
  types=collections.Counter(z["type"] for z in issues)
  assert not types["label_dangling"] and not types["endpoint_off_grid"] and not types["lib_symbol_issues"],types
  assert not types["multiple_net_names"] and not types["pin_conflict"],types
- assert types["power_pin_not_driven"]>=3,types
+ assert types["power_pin_not_driven"]==erc_finding_count==3,types
+ assert sum(types.values())==erc_finding_count,types
  print("PASS real KiCad9 netlist 648/194; real ERC (not waived, power sources OPEN):",dict(types))
 print("HOLD: product circuit full G1-05/06 WORKING, no real power source, supply current measurement, footprints/PCB/HIL")
