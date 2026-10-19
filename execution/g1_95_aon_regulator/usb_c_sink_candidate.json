@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "scope": "G1-05 USB-C 5V input controller candidate; review only",
+  "status": "PROVISIONAL_DESIGN_CANDIDATE",
+  "manufacturing_release": false,
+  "purchase_authorized": false,
+  "motor_power_enabled": false,
+  "manufacturer_release_gates_closed": 0,
+  "candidate": {
+    "manufacturer": "STMicroelectronics",
+    "order_code": "STUSB4500LQTR",
+    "package": "QFN-24 EP (4x4 mm)",
+    "manufacturer_marketing_status": "Active",
+    "function": "5V-only USB Type-C sink controller",
+    "maximum_supported_input": {
+      "voltage_v": 5,
+      "current_a": 3,
+      "power_w": 15
+    },
+    "source_current_advertisements_detected": [
+      "default",
+      "1.5A",
+      "3A"
+    ],
+    "source_current_is_detected_not_limited": true,
+    "external_vbus_path_switch_required": true,
+    "vbus_voltage_monitoring_and_detach_fault_path_control": true,
+    "usb_pd_higher_voltage_request": false,
+    "reported_distributor_availability": "No distributor stock reported on ST product page as checked 2026-10-19; verify current sourcing before procurement"
+  },
+  "source_documents": {
+    "datasheet": "https://www.st.com/resource/en/datasheet/stusb4500l.pdf",
+    "product_page": "https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html",
+    "datasheet_revision": "DS13102 Rev 6, February 2022",
+    "checked_date": "2026-10-19"
+  },
+  "unresolved_design_inputs": {
+    "type_c_receptacle_mpn": null,
+    "external_pmos_mpn_and_safe_operating_area": null,
+    "vbus_tvs_and_connector_esd_selection": null,
+    "adapter_sku_and_guaranteed_rating": null,
+    "actual_board_max_input_current": null,
+    "rp_current_to_motor_permission_hardware_logic": null,
+    "motor_sku_and_measured_current": null,
+    "complete_usb_c_input_schematic_and_native_erc": null,
+    "pcb_footprint_and_layout": null,
+    "thermal_and_hil_evidence": null
+  },
+  "decision": "Use STUSB4500LQTR as the preferred 5V-only Type-C sink-controller candidate for the next input-interface schematic iteration. Do not treat the advertised-current indication as an input current limiter or as proof the whole clock load fits. Keep motor power disabled until adapter capability, complete system input budget, independent motor inhibit behavior, eFuse guaranteed limits, and HIL are verified.",
+  "reject_or_hold_conditions": [
+    "If the source only advertises default or 1.5A, the design has no permission to enable motor power.",
+    "Even at a 3A advertisement, motor power stays disabled until the measured worst-case whole-device input budget and required headroom pass.",
+    "The STUSB4500L VBUS_EN_SNK path is not by itself a load-current limiter; retain separate overcurrent protection and verify external PMOS path ratings.",
+    "Do not add PWR_FLAG to the existing review schematic as a substitute for modeling this input path."
+  ]
+}

@@ -31,6 +31,7 @@ checks = [
     "execution/g4_03_passive_selection_2026-10-19/check_contract.py",
     "execution/g1_95_aon_regulator/check_efuse_accuracy_audit.py",
     "execution/g1_95_aon_regulator/check_motor_current_budget.py",
+    "execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py",
     "execution/g1_95_aon_regulator/test_input_power_consistency.py",
     "execution/g1_95_aon_regulator/test_motor_feasibility.py",
     "execution/g1_95_aon_regulator/test_wave_drive_product.py",

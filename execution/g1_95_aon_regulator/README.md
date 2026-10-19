@@ -108,3 +108,20 @@ CI generated the native netlist and ERC artifact for the 648-pin review schemati
 These findings mean the source/return for the incoming 5V_RAW and GND, and the 3V3_AON supply source, are not represented as driven in this schematic. They are not proof of a powered-circuit defect in an assembled system, but they prevent an ERC-clean claim. Do not add PWR_FLAG solely to suppress them: first define the real input source/connectors and rail source in the integrated design, then rerun KiCad ERC. The extracted details and provenance are recorded in `native_erc_findings_39192223351.json` (workflow head SHA, KiCad version, artifact digest, schematic digest, and net-mapped findings).
 
 This CI result does not establish PCB DRC, electrical safety, motor-current limits, thermal performance, or hardware operation. The schematic remains review-only and motor power remains disabled (eFuse EN grounded).
+
+## USB-C入力コントローラー候補（2026-10-19、未確定）
+
+次の入力回路候補として、ST **STUSB4500LQTR**（QFN-24 EP 4×4 mm）を選定候補にした。STの製品情報では同品番はActive / volume production、データシートでは5V専用sink、最大3A（15W）、sourceのdefault/1.5A/3A電流広告検出、VBUS監視、外付けP-MOS向けVBUS_EN_SNKを規定する。USB-Cだけを使う時計に対して、PDで高電圧を要求しない候補になる。
+
+**3A検出は負荷電流を3Aに制限する機能ではない。** 外付けP-MOSの定格、入力保護、実5Vアダプター、USB-C電流広告への安全な動作、7軸と表示/制御/LED/ファンを含む全体電流予算は未設計・未測定である。したがってdefaultまたは1.5A広告時はモーター許可なし、3A広告時も実測予算・20%余裕・電流保護・安全HILの合格まではモーター電源を無効のままにする。STUSB4500LのVBUS_EN_SNKは適切なVBUS範囲/接続状態で電源経路を制御する機能であり、負荷過電流保護とは扱わない。
+
+| 項目 | 現時点 |
+|---|---|
+| コントローラー候補 | STUSB4500LQTR、メーカー製品ページ上Active |
+| 5V source current advertisement | default / 1.5A / 3Aを検出。装置負荷を制限しない |
+| USB-Cレセプタクル、外付けP-MOS、VBUS TVS/ESD | 部品未選定 |
+| 5VアダプターSKU・保証定格 | 未選定 |
+| 全システム最大電流・余裕・HIL | 未検証、モーター電源HOLD |
+| 製造/購買/通電 | 未承認 |
+
+一次資料: [STUSB4500L データシート DS13102 Rev.6](https://www.st.com/resource/en/datasheet/stusb4500l.pdf)、[ST 製品ページ（品番状態・パッケージ）](https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html)。検査は `python3 execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py`。
