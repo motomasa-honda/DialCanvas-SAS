@@ -110,6 +110,19 @@
         "scope": "exact centerline/material intersection only; no radial-clearance or driver-tool clearance claim",
         "source": "evidence/full_d7_shifted_boss_intersections.json"
       },
+      "proposed_local_backwood_relief_screen": {
+        "candidate_source": "evidence/keeper_wood_relief_candidate.json",
+        "review_cutter_overlay": "KEEPER_BACK_WOOD_RELIEF_CANDIDATE.scad",
+        "boss_x_offsets_mm": [21.3, 24.6],
+        "stud_center_offsets_mm": [22.95, -1.1],
+        "seat_size_mm": [4.1, 4.75],
+        "seat_center_offset_mm": [22.95, -1.775],
+        "seat_z_mm": [137.0, 138.6],
+        "rear_clearance_bore_diameter_mm": 3.2,
+        "source_bound_screen": "7/7 seats contained in existing wood; 7/7 bore square envelopes pass full-wood/full-void slice check; conservative fixed-part driver corridor clear after removable grille; minimum seat-to-existing-boundary 1.5542mm",
+        "remaining": "candidate X shift and machining not integrated into keeper/D7; axis-5 original fan/gasket clash; strength/grain/tolerance/physical fit and service not verified",
+        "disposition": "REVIEW_ONLY_NOT_FOR_MANUFACTURE"
+      },
     "disposition": "FAILS_UNMODIFIED_D7_CLEARANCE; wood relief and fan relocation or boss redraw required; no fabrication",
     "source_geometry_checked_in_Github": false,
     "current_revision_release_effect": "FULL_D7_CLEARANCE_MUST_BE_RECOMPUTED; OLD_ZERO_COLLISION_RESULT_DOES_NOT_COVER_SHIFTED_BOSS"

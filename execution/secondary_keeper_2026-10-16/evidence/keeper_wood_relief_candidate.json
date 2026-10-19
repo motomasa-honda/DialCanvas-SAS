@@ -1,0 +1,656 @@
+{
+  "audit": "candidate_seven_keeper_backwood_seats_and_rear_tool_bores",
+  "source_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solid_count": 1774,
+  "status": "GEOMETRY_SCREEN_ONLY_NOT_FOR_MANUFACTURE",
+  "proposed_geometry": {
+    "boss_xy_offsets_mm": {
+      "x": [
+        21.3,
+        24.6
+      ],
+      "y": [
+        -3.75,
+        0.2
+      ]
+    },
+    "boss_nominal_backwood_overlap_z_mm": [
+      137.0,
+      138.0
+    ],
+    "seat_size_mm": [
+      4.1,
+      4.75
+    ],
+    "seat_center_offset_mm": [
+      22.95,
+      -1.775
+    ],
+    "seat_z_mm": [
+      137.0,
+      138.6
+    ],
+    "seat_depth_mm": 1.5999999999999943,
+    "seat_margin_each_side_vs_boss_mm": [
+      0.39999999999999947,
+      0.3999999999999999
+    ],
+    "stud_center_offset_mm": [
+      22.95,
+      -1.1
+    ],
+    "stud_z_mm": [
+      134.35,
+      139.35
+    ],
+    "rear_clearance_bore_diameter_mm": 3.2,
+    "review_driver_diameter_mm": 2.4,
+    "nominal_diameter_clearance_mm": 0.8000000000000003,
+    "rear_wood_z_mm": [
+      137.0,
+      145.0
+    ],
+    "boss_shift_from_current_x_mm": -0.2
+  },
+  "axis_results": {
+    "1": {
+      "seat_xy_world_mm": [
+        105.9,
+        110.0,
+        35.85,
+        40.6
+      ],
+      "seat_z_mm": [
+        137.0,
+        138.6
+      ],
+      "seat_area_mm2": 19.474999999999998,
+      "seat_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 1.5999999999999943,
+          "intersection_area_mm2": 19.475000000000364
+        }
+      ],
+      "seat_entirely_in_existing_wood": true,
+      "seat_to_nearest_existing_wood_boundary_mm": 14.2949,
+      "bore_xy_world_mm": [
+        106.35,
+        109.55,
+        37.3,
+        40.5
+      ],
+      "bore_square_area_mm2": 10.240000000000002,
+      "bore_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 2.5999999999999943,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 7,
+          "z_overlap_mm": 0.4000000000000057,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 8,
+          "z_overlap_mm": 1.5,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 9,
+          "z_overlap_mm": 0.5,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 10,
+          "z_overlap_mm": 1,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 11,
+          "z_overlap_mm": 1.0999999999999943,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 12,
+          "z_overlap_mm": 0.05000000000001137,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 13,
+          "z_overlap_mm": 0.04999999999998295,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 14,
+          "z_overlap_mm": 0.8000000000000114,
+          "intersection_area_mm2": 10.239999999999782
+        }
+      ],
+      "bore_path_is_full_wood_or_full_void_at_every_layer": true
+    },
+    "2": {
+      "seat_xy_world_mm": [
+        75.9,
+        80.0,
+        135.85,
+        140.6
+      ],
+      "seat_z_mm": [
+        137.0,
+        138.6
+      ],
+      "seat_area_mm2": 19.474999999999998,
+      "seat_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 1.5999999999999943,
+          "intersection_area_mm2": 19.475000000000364
+        }
+      ],
+      "seat_entirely_in_existing_wood": true,
+      "seat_to_nearest_existing_wood_boundary_mm": 18.2361,
+      "bore_xy_world_mm": [
+        76.35,
+        79.55,
+        137.3,
+        140.5
+      ],
+      "bore_square_area_mm2": 10.240000000000002,
+      "bore_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 2.5999999999999943,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 7,
+          "z_overlap_mm": 0.4000000000000057,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 8,
+          "z_overlap_mm": 1.5,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 9,
+          "z_overlap_mm": 0.5,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 10,
+          "z_overlap_mm": 1,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 11,
+          "z_overlap_mm": 1.0999999999999943,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 12,
+          "z_overlap_mm": 0.05000000000001137,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 13,
+          "z_overlap_mm": 0.04999999999998295,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 14,
+          "z_overlap_mm": 0.8000000000000114,
+          "intersection_area_mm2": 10.239999999999782
+        }
+      ],
+      "bore_path_is_full_wood_or_full_void_at_every_layer": true
+    },
+    "3": {
+      "seat_xy_world_mm": [
+        155.9,
+        160.0,
+        135.85,
+        140.6
+      ],
+      "seat_z_mm": [
+        137.0,
+        138.6
+      ],
+      "seat_area_mm2": 19.474999999999998,
+      "seat_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 1.5999999999999943,
+          "intersection_area_mm2": 19.474999999998545
+        }
+      ],
+      "seat_entirely_in_existing_wood": true,
+      "seat_to_nearest_existing_wood_boundary_mm": 6.839,
+      "bore_xy_world_mm": [
+        156.35,
+        159.55,
+        137.3,
+        140.5
+      ],
+      "bore_square_area_mm2": 10.240000000000002,
+      "bore_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 2.5999999999999943,
+          "intersection_area_mm2": 10.239999999997963
+        },
+        {
+          "source_index": 7,
+          "z_overlap_mm": 0.4000000000000057,
+          "intersection_area_mm2": 10.239999999997963
+        },
+        {
+          "source_index": 8,
+          "z_overlap_mm": 1.5,
+          "intersection_area_mm2": 10.239999999997963
+        },
+        {
+          "source_index": 9,
+          "z_overlap_mm": 0.5,
+          "intersection_area_mm2": 10.239999999997963
+        },
+        {
+          "source_index": 10,
+          "z_overlap_mm": 1,
+          "intersection_area_mm2": 10.239999999997963
+        },
+        {
+          "source_index": 11,
+          "z_overlap_mm": 1.0999999999999943,
+          "intersection_area_mm2": 10.239999999997963
+        },
+        {
+          "source_index": 12,
+          "z_overlap_mm": 0.05000000000001137,
+          "intersection_area_mm2": 10.239999999997963
+        },
+        {
+          "source_index": 13,
+          "z_overlap_mm": 0.04999999999998295,
+          "intersection_area_mm2": 10.239999999997963
+        },
+        {
+          "source_index": 14,
+          "z_overlap_mm": 0.8000000000000114,
+          "intersection_area_mm2": 10.239999999997963
+        }
+      ],
+      "bore_path_is_full_wood_or_full_void_at_every_layer": true
+    },
+    "4": {
+      "seat_xy_world_mm": [
+        245.9,
+        250.0,
+        125.85,
+        130.6
+      ],
+      "seat_z_mm": [
+        137.0,
+        138.6
+      ],
+      "seat_area_mm2": 19.474999999999998,
+      "seat_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 1.5999999999999943,
+          "intersection_area_mm2": 19.474999999998545
+        }
+      ],
+      "seat_entirely_in_existing_wood": true,
+      "seat_to_nearest_existing_wood_boundary_mm": 7.0,
+      "bore_xy_world_mm": [
+        246.35,
+        249.55,
+        127.3,
+        130.5
+      ],
+      "bore_square_area_mm2": 10.240000000000002,
+      "bore_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 2.5999999999999943,
+          "intersection_area_mm2": 10.2400000000016
+        },
+        {
+          "source_index": 7,
+          "z_overlap_mm": 0.4000000000000057,
+          "intersection_area_mm2": 10.2400000000016
+        },
+        {
+          "source_index": 8,
+          "z_overlap_mm": 1.5,
+          "intersection_area_mm2": 10.2400000000016
+        },
+        {
+          "source_index": 9,
+          "z_overlap_mm": 0.5,
+          "intersection_area_mm2": 10.2400000000016
+        },
+        {
+          "source_index": 10,
+          "z_overlap_mm": 1,
+          "intersection_area_mm2": 10.2400000000016
+        },
+        {
+          "source_index": 11,
+          "z_overlap_mm": 1.0999999999999943,
+          "intersection_area_mm2": 10.2400000000016
+        },
+        {
+          "source_index": 12,
+          "z_overlap_mm": 0.05000000000001137,
+          "intersection_area_mm2": 10.2400000000016
+        },
+        {
+          "source_index": 13,
+          "z_overlap_mm": 0.04999999999998295,
+          "intersection_area_mm2": 10.2400000000016
+        },
+        {
+          "source_index": 14,
+          "z_overlap_mm": 0.8000000000000114,
+          "intersection_area_mm2": 10.2400000000016
+        }
+      ],
+      "bore_path_is_full_wood_or_full_void_at_every_layer": true
+    },
+    "5": {
+      "seat_xy_world_mm": [
+        160.9,
+        165.0,
+        80.85,
+        85.6
+      ],
+      "seat_z_mm": [
+        137.0,
+        138.6
+      ],
+      "seat_area_mm2": 19.474999999999998,
+      "seat_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 1.5999999999999943,
+          "intersection_area_mm2": 19.475000000000364
+        }
+      ],
+      "seat_entirely_in_existing_wood": true,
+      "seat_to_nearest_existing_wood_boundary_mm": 1.5542,
+      "bore_xy_world_mm": [
+        161.35,
+        164.55,
+        82.3,
+        85.5
+      ],
+      "bore_square_area_mm2": 10.240000000000002,
+      "bore_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 2.5999999999999943,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 7,
+          "z_overlap_mm": 0.4000000000000057,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 8,
+          "z_overlap_mm": 1.5,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 9,
+          "z_overlap_mm": 0.5,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 10,
+          "z_overlap_mm": 1,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 11,
+          "z_overlap_mm": 1.0999999999999943,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 12,
+          "z_overlap_mm": 0.05000000000001137,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 13,
+          "z_overlap_mm": 0.04999999999998295,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 14,
+          "z_overlap_mm": 0.8000000000000114,
+          "intersection_area_mm2": 0.0
+        }
+      ],
+      "bore_path_is_full_wood_or_full_void_at_every_layer": true
+    },
+    "6": {
+      "seat_xy_world_mm": [
+        70.9,
+        75.0,
+        80.85,
+        85.6
+      ],
+      "seat_z_mm": [
+        137.0,
+        138.6
+      ],
+      "seat_area_mm2": 19.474999999999998,
+      "seat_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 1.5999999999999943,
+          "intersection_area_mm2": 19.475000000000364
+        }
+      ],
+      "seat_entirely_in_existing_wood": true,
+      "seat_to_nearest_existing_wood_boundary_mm": 31.9879,
+      "bore_xy_world_mm": [
+        71.35,
+        74.55,
+        82.3,
+        85.5
+      ],
+      "bore_square_area_mm2": 10.240000000000002,
+      "bore_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 2.5999999999999943,
+          "intersection_area_mm2": 10.239999999998872
+        },
+        {
+          "source_index": 7,
+          "z_overlap_mm": 0.4000000000000057,
+          "intersection_area_mm2": 10.239999999998872
+        },
+        {
+          "source_index": 8,
+          "z_overlap_mm": 1.5,
+          "intersection_area_mm2": 10.239999999998872
+        },
+        {
+          "source_index": 9,
+          "z_overlap_mm": 0.5,
+          "intersection_area_mm2": 10.239999999998872
+        },
+        {
+          "source_index": 10,
+          "z_overlap_mm": 1,
+          "intersection_area_mm2": 10.239999999998872
+        },
+        {
+          "source_index": 11,
+          "z_overlap_mm": 1.0999999999999943,
+          "intersection_area_mm2": 10.239999999998872
+        },
+        {
+          "source_index": 12,
+          "z_overlap_mm": 0.05000000000001137,
+          "intersection_area_mm2": 10.239999999998872
+        },
+        {
+          "source_index": 13,
+          "z_overlap_mm": 0.04999999999998295,
+          "intersection_area_mm2": 10.239999999998872
+        },
+        {
+          "source_index": 14,
+          "z_overlap_mm": 0.8000000000000114,
+          "intersection_area_mm2": 10.239999999998872
+        }
+      ],
+      "bore_path_is_full_wood_or_full_void_at_every_layer": true
+    },
+    "7": {
+      "seat_xy_world_mm": [
+        160.9,
+        165.0,
+        35.85,
+        40.6
+      ],
+      "seat_z_mm": [
+        137.0,
+        138.6
+      ],
+      "seat_area_mm2": 19.474999999999998,
+      "seat_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 1.5999999999999943,
+          "intersection_area_mm2": 19.475000000000364
+        }
+      ],
+      "seat_entirely_in_existing_wood": true,
+      "seat_to_nearest_existing_wood_boundary_mm": 15.1846,
+      "bore_xy_world_mm": [
+        161.35,
+        164.55,
+        37.3,
+        40.5
+      ],
+      "bore_square_area_mm2": 10.240000000000002,
+      "bore_layers": [
+        {
+          "source_index": 6,
+          "z_overlap_mm": 2.5999999999999943,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 7,
+          "z_overlap_mm": 0.4000000000000057,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 8,
+          "z_overlap_mm": 1.5,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 9,
+          "z_overlap_mm": 0.5,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 10,
+          "z_overlap_mm": 1,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 11,
+          "z_overlap_mm": 1.0999999999999943,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 12,
+          "z_overlap_mm": 0.05000000000001137,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 13,
+          "z_overlap_mm": 0.04999999999998295,
+          "intersection_area_mm2": 10.239999999999782
+        },
+        {
+          "source_index": 14,
+          "z_overlap_mm": 0.8000000000000114,
+          "intersection_area_mm2": 10.239999999999782
+        }
+      ],
+      "bore_path_is_full_wood_or_full_void_at_every_layer": true
+    }
+  },
+  "all_seats_inside_original_wood": true,
+  "all_bore_envelopes_are_full_wood_or_full_void": true,
+  "rear_driver_square_corridor_fixed_nonwood_intersections": {
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": []
+  },
+  "rear_driver_square_corridor_removable_grille_intersections": {
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": [],
+    "5": [
+      {
+        "source_index": 5,
+        "solid_id": "REAR_GRILLE",
+        "overlap_volume_mm3": 8.192
+      }
+    ],
+    "6": [],
+    "7": []
+  },
+  "boss_candidate_full_source_intersections_by_axis": {
+    "1": [
+      "BACK_WOOD"
+    ],
+    "2": [
+      "BACK_WOOD"
+    ],
+    "3": [
+      "BACK_WOOD"
+    ],
+    "4": [
+      "BACK_WOOD"
+    ],
+    "5": [
+      "BACK_WOOD",
+      "FAN_MAX_BODY",
+      "FAN_GASKET"
+    ],
+    "6": [
+      "BACK_WOOD"
+    ],
+    "7": [
+      "BACK_WOOD"
+    ]
+  },
+  "explicit_remaining_blocker": "axis 5 boss still overlaps original FAN_MAX_BODY/FAN_GASKET; relocated fan source/position is not represented in immutable D7",
+  "limitations": [
+    "the 3.2mm square bore envelope is conservative relative to the 2.4mm round driver",
+    "the common removable rear grille must be removed before tool access as specified by G6-06 service sequence",
+    "no wood strength, grain, breakout, machining process capability or fastener load verified",
+    "no physical module measurement, full tool handle envelope, vibration, heat or 55mm exchange test",
+    "fan relocation and altered keeper CAD must be integrated and re-audited before accepting the candidate"
+  ],
+  "disposition": "WOOD_RELIEF_SCREEN_PASS; AXIS5_FAN_RELOCATION_REQUIRED; NOT_RELEASED"
+}
