@@ -125,3 +125,13 @@ This CI result does not establish PCB DRC, electrical safety, motor-current limi
 | 製造/購買/通電 | 未承認 |
 
 一次資料: [STUSB4500L データシート DS13102 Rev.6](https://www.st.com/resource/en/datasheet/stusb4500l.pdf)、[ST 製品ページ（品番状態・パッケージ）](https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html)。検査は `python3 execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py`。
+
+## USB-C入力候補のメーカー端子マップ（2026-10-19、回路未設計）
+
+ST DS13102 Rev.6 Figure 2/Table 1 からSTUSB4500L QFN-24 EPの24信号ピンと露出パッドを `usb_c_sink_candidate.json` に転記し、`check_usb_c_sink_candidate.py` で全25端子のピン番号・名称を完全一致照合する。外付けP-MOS候補STL9P3LLH6についてもメーカー資料の8端子（S=1/2/3、G=4、D=5/6/7/8）を記録し、端子割当と型番を検査する。これは端子ライブラリ作成時の照合基準であり、配線済みネットリストやKiCad記号、フットプリントはまだ存在しない。
+
+STのFigure 9は一般的な実装例としてSTL9P3LLH6と保護部品を描いているが、USB 3およびバッテリーチャージャーを含む。Forest Guardianは5V電源入力専用なので、その図を本機の完成回路として転用せず、コネクタ、VBUS/CC保護、FETのゲート/放電回路、入力保護と電流予算を別途確定する。ST自身も同ページで例は出発点であり、顧客側で全システム実装と検証が必要と明記する。
+
+STL9P3LLH6の資料上の -30V、最大15mΩ、-9Aは素子表の仕様で、基板の連続電流能力や熱条件を意味しない。P-MOSとSTUSB候補は未選定扱い、メーカー端子マップのみのレビュー証拠である。全システム負荷、USB-C source広告の扱い、定格アダプター、保護回路、受入試験を確定するまでは、USB-C入力回路、PCB製造、購買、モーター電源を承認しない。
+
+一次資料: [STUSB4500L DS13102 Rev.6](https://www.st.com/resource/en/datasheet/stusb4500l.pdf) Figure 2/Table 1/Figure 9、[STUSB4500L製品ページ](https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html)、[STL9P3LLH6 DS10145 Rev.3](https://www.st.com/resource/en/datasheet/stl9p3llh6.pdf)。検査は `python3 execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py`。端子マップ検査はPASS、ネイティブERC・回路全体レビュー・製品受入は未実行。

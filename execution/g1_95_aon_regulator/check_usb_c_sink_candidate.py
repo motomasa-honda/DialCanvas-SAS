@@ -22,10 +22,41 @@ assert c["external_vbus_path_switch_required"] is True
 assert c["usb_pd_higher_voltage_request"] is False
 assert candidate["source_documents"]["datasheet"].endswith("stusb4500l.pdf")
 assert candidate["source_documents"]["product_page"].startswith("https://www.st.com/")
-assert all(v is None for v in candidate["unresolved_design_inputs"].values())
+assert candidate["source_documents"]["mosfet_datasheet"].endswith("stl9p3llh6.pdf")
+pin_map = candidate["manufacturer_pin_map"]
+assert pin_map["source"].startswith("ST DS13102 Rev 6, Figure 2/Table 1")
+assert pin_map["footprint_selection"] == "NOT_SELECTED"
+assert pin_map["net_assignment"].startswith("NOT_DESIGNED")
+expected_pin_map = {
+    "1": "CC1DB", "2": "CC1", "3": "NU", "4": "CC2", "5": "CC2DB",
+    "6": "RESET", "7": "SCL", "8": "SDA", "9": "DISCH", "10": "GND",
+    "11": "ATTACH", "12": "ADDR0", "13": "ADDR1", "14": "RP_1A5",
+    "15": "GPIO", "16": "VBUS_EN_SNK", "17": "A_B_SIDE",
+    "18": "VBUS_VS_DISCH", "19": "ALERT", "20": "RP_3A",
+    "21": "VREG_1V2", "22": "VSYS", "23": "VREG_2V7", "24": "VDD",
+    "EP": "GND",
+}
+assert pin_map["pins"] == expected_pin_map, "STUSB4500L QFN-24 EP pin mapping drifted"
+fet = candidate["external_pmos_candidate"]
+assert fet["order_code"] == "STL9P3LLH6"
+assert fet["manufacturer_pin_map"] == {
+    "1": "S", "2": "S", "3": "S", "4": "G",
+    "5": "D", "6": "D", "7": "D", "8": "D",
+}
+assert fet["datasheet_claims"] == {"vds_v": -30, "rds_on_max_ohm": 0.015, "id_a": -9}
+assert "not a usable board current" in fet["claims_scope"]
+unresolved = candidate["unresolved_design_inputs"]
+for key in ("type_c_receptacle_mpn", "external_pmos_mpn_and_safe_operating_area",
+            "vbus_tvs_and_connector_esd_selection", "adapter_sku_and_guaranteed_rating",
+            "actual_board_max_input_current", "rp_current_to_motor_permission_hardware_logic",
+            "motor_sku_and_measured_current", "thermal_and_hil_evidence"):
+    assert unresolved[key] is None, key
+assert unresolved["usb_c_sink_pin_net_assignment"].startswith("NOT_DESIGNED")
+assert unresolved["complete_usb_c_input_schematic_and_native_erc"] is None
+assert unresolved["pcb_footprint_and_layout"] is None
 acceptance = json.loads((D / "motor_current_acceptance.json").read_text(encoding="utf-8"))
 for key in ("motor_sku", "efuse_min_current_limit_a", "five_volt_supply_sku",
             "five_volt_supply_min_current_a", "board_measured_peak_input_a"):
     assert acceptance["unverified_field_values"][key] is None, key
 assert acceptance["hardware_release"] is False
-print("PASS USB-C source candidate is evidence-backed, 5V-only, and remains non-limiting/non-release; all supply/current inputs HOLD")
+print("PASS USB-C review contract: exact 25-pad ST pin map + 8-pad P-MOS map; no netlist/footprint/current/safety release implied")

@@ -32,7 +32,9 @@
     "datasheet": "https://www.st.com/resource/en/datasheet/stusb4500l.pdf",
     "product_page": "https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html",
     "datasheet_revision": "DS13102 Rev 6, February 2022",
-    "checked_date": "2026-10-19"
+    "checked_date": "2026-10-19",
+    "mosfet_datasheet": "https://www.st.com/resource/en/datasheet/stl9p3llh6.pdf",
+    "stusb_typical_application": "Figure 9, implementation example, ST DS13102 Rev 6, page 15/31"
   },
   "unresolved_design_inputs": {
     "type_c_receptacle_mpn": null,
@@ -44,13 +46,71 @@
     "motor_sku_and_measured_current": null,
     "complete_usb_c_input_schematic_and_native_erc": null,
     "pcb_footprint_and_layout": null,
-    "thermal_and_hil_evidence": null
+    "thermal_and_hil_evidence": null,
+    "qfn24_ep_footprint_and_land_pattern": "NOT_SELECTED; follow ST recommended footprint then independently review paste/assembly and verify against selected fabricator process",
+    "usb_c_sink_pin_net_assignment": "NOT_DESIGNED; manufacturer pin names mapped only",
+    "power_path_fet_safe_operating_area_and_thermal": "UNVERIFIED; datasheet headline drain current is not a board capability"
   },
-  "decision": "Use STUSB4500LQTR as the preferred 5V-only Type-C sink-controller candidate for the next input-interface schematic iteration. Do not treat the advertised-current indication as an input current limiter or as proof the whole clock load fits. Keep motor power disabled until adapter capability, complete system input budget, independent motor inhibit behavior, eFuse guaranteed limits, and HIL are verified.",
+  "decision": "Use STUSB4500LQTR as the preferred 5V-only Type-C sink-controller candidate for the next input-interface schematic iteration. Do not treat the advertised-current indication as an input current limiter or as proof the whole clock load fits. Keep motor power disabled until adapter capability, complete system input budget, independent motor inhibit behavior, eFuse guaranteed limits, and HIL are verified. The STUSB4500L QFN-24 EP pin-name map and STL9P3LLH6 manufacturer pin map are recorded as source-linked candidate data only; no circuit net assignment or manufacturing footprint is approved.",
   "reject_or_hold_conditions": [
     "If the source only advertises default or 1.5A, the design has no permission to enable motor power.",
     "Even at a 3A advertisement, motor power stays disabled until the measured worst-case whole-device input budget and required headroom pass.",
     "The STUSB4500L VBUS_EN_SNK path is not by itself a load-current limiter; retain separate overcurrent protection and verify external PMOS path ratings.",
     "Do not add PWR_FLAG to the existing review schematic as a substitute for modeling this input path."
-  ]
+  ],
+  "manufacturer_pin_map": {
+    "source": "ST DS13102 Rev 6, Figure 2/Table 1; QFN-24 EP top view",
+    "pins": {
+      "1": "CC1DB",
+      "2": "CC1",
+      "3": "NU",
+      "4": "CC2",
+      "5": "CC2DB",
+      "6": "RESET",
+      "7": "SCL",
+      "8": "SDA",
+      "9": "DISCH",
+      "10": "GND",
+      "11": "ATTACH",
+      "12": "ADDR0",
+      "13": "ADDR1",
+      "14": "RP_1A5",
+      "15": "GPIO",
+      "16": "VBUS_EN_SNK",
+      "17": "A_B_SIDE",
+      "18": "VBUS_VS_DISCH",
+      "19": "ALERT",
+      "20": "RP_3A",
+      "21": "VREG_1V2",
+      "22": "VSYS",
+      "23": "VREG_2V7",
+      "24": "VDD",
+      "EP": "GND"
+    },
+    "footprint_selection": "NOT_SELECTED",
+    "net_assignment": "NOT_DESIGNED; do not infer circuit connectivity from this pin-name map"
+  },
+  "external_pmos_candidate": {
+    "manufacturer": "STMicroelectronics",
+    "order_code": "STL9P3LLH6",
+    "package": "PowerFLAT 3.3x3.3",
+    "manufacturer_pin_map": {
+      "1": "S",
+      "2": "S",
+      "3": "S",
+      "4": "G",
+      "5": "D",
+      "6": "D",
+      "7": "D",
+      "8": "D"
+    },
+    "datasheet_claims": {
+      "vds_v": -30,
+      "rds_on_max_ohm": 0.015,
+      "id_a": -9
+    },
+    "claims_scope": "Manufacturer device ratings only; not a usable board current, thermal, SOA, connector, or protection approval",
+    "role": "STUSB4500L Figure 9 implementation-example P-channel VBUS switch device candidate",
+    "status": "PROVISIONAL_CANDIDATE_NOT_SELECTED_FOR_PRODUCTION"
+  }
 }
