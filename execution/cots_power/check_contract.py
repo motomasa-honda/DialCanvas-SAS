@@ -2,10 +2,12 @@
 """Check COTS source boundaries, unchanged inhibition, and optional native output."""
 import argparse
 import json
+import re
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
 from power_budget import estimate, positive
+from build_review import terminal
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -33,6 +35,10 @@ def verify_data():
     import csv
     tasks = {r["ID"]: r for r in csv.DictReader((ROOT / "execution/tasks.csv").open())}
     assert set(data["task_ids"]) <= set(tasks)
+    observation = json.loads((HERE / "native_observation_39217395526.json").read_text())
+    pins, drawing = [], []
+    terminal(pins, drawing, "U46", "SHDN", "SHDN", None, 48.26, 2747.01, nc=True)
+    assert pins[0]["review_net"] == observation["actual_shdn_net"]
     print("PASS COTS catalog/load boundaries; no purchase/power/release; current ledger IDs retained")
 
 
@@ -50,7 +56,7 @@ def verify_generated(output, native=None):
     assert net("U46", "VIN") == net("J20", 1) == net("U14", 5) == "B77__5V_RAW"
     assert net("U46", "GND") == net("J20", 2) == net("R4", 2) == "GND"
     assert net("U46", "VOUT") == "3V3_AON"
-    assert net("U46", "SHDN") == "unconnected-(U46-SHDN-PadSHDN)"
+    assert net("U46", "SHDN") == "unconnected-(U46-PadSHDN)"
     assert net("U14", 6) == "5V_MOTOR" and net("U14", 6) != net("U46", "VIN")
     for ref, pin in (("U20", 8), ("U33", 6), ("U36", 6), ("U42", 6), ("U43", 5)):
         assert net(ref, pin) == net("U46", "VOUT")
@@ -79,6 +85,9 @@ def verify_generated(output, native=None):
         # This is an exact open-issue register, NOT an ERC clean acceptance.
         assert len(issues) == 2, issues
         assert all(v["type"] == "power_pin_not_driven" and v["severity"] == "error" for v in issues), issues
+        actual_pins = {tuple(re.match(r"Symbol (\S+) Pin (\S+)", i["description"]).groups())
+                       for v in issues for i in v["items"]}
+        assert actual_pins == {("U14", "5"), ("U14", "8")}, actual_pins
         print("PASS native netlist matches source; ERC has 2 acknowledged input/return power-source errors; NOT ERC clean")
 
 

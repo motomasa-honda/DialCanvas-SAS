@@ -1,0 +1,20 @@
+{
+  "workflow_run_id": 39217395526,
+  "workflow_head_sha": "2058e4101b13b9ff70bc0b01e8ed20c468fec44f",
+  "job_id": 117944367088,
+  "job_conclusion": "failure",
+  "failure": "Verifier expected duplicate SHDN name in unconnected net; KiCad omits it when pin name equals pin number",
+  "kicad_version": "9.0.9",
+  "artifact_id": 12170461088,
+  "artifact_sha256": "4212de789b896c8cfd49b150a38dfd86eaf14e2181f5ccfaec79e6deed594cc9",
+  "source_schematic_sha256": "e0756331a046cef04d052514fac1f99ce90d3560f0dee6489d80b22b0f28cf2e",
+  "native_netlist_sha256": "527d0ac0ace492ae6dfa16b29d3cd72c81440213d78a97f6cd9fef023855e890",
+  "actual_shdn_net": "unconnected-(U46-PadSHDN)",
+  "actual_terminal_count": 624,
+  "erc_errors": [
+    {"type": "power_pin_not_driven", "ref": "U14", "pin": "5", "signal": "IN", "net": "B77__5V_RAW"},
+    {"type": "power_pin_not_driven", "ref": "U14", "pin": "8", "signal": "GND", "net": "GND"}
+  ],
+  "physical_safety_accepted": false,
+  "notes": "Downloaded artifact CRC/SHA checked locally. Source was exported successfully; job failure was exact net-name verification, not an ERC-clean result. The naming fix changes generated mapping only, not the schematic or motor inhibition. Subsequent CI result is tracked by its own HEAD."
+}

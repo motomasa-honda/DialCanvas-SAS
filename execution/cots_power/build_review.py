@@ -82,7 +82,10 @@ def instance(ref, lib, value, x, y):
 def terminal(rows, drawing, ref, pin, label, net, x, y, nc=False):
     end = number(x + 5.08)
     x, y = number(x), number(y)
-    actual_net = f"unconnected-({ref}-{label}-Pad{pin})" if nc else net
+    # KiCad9 omits a duplicate name when the pin name equals its number.
+    # Observed in native run 39217395526: SHDN/SHDN -> (U46-PadSHDN).
+    identity = f"{ref}-Pad{pin}" if str(pin) == label else f"{ref}-{label}-Pad{pin}"
+    actual_net = f"unconnected-({identity})" if nc else net
     rows.append(dict(group="COTS", source_ref=ref, source_pin=pin,
                      source_net=actual_net, review_net=actual_net, kicad_ref=ref,
                      wire_end_x=x, wire_end_y=y))

@@ -65,7 +65,9 @@ python3 execution/cots_power/power_budget.py --output execution/cots_power/gener
 
 ローカル：原回路接続保持、上流AON/EN/OE抑止、全負荷の欠測/入力定格不足/過電圧・瞬低の検出を確認。標準KiCad CLIはこの環境にない。apt導入も実行環境の権限制約で利用できず、ローカルnative ERCとは記録しない。
 
-関連する既存G1-95ワークフロー1本に代替回路のnative netlist/ERC/SVG処理を追加し、同じKiCad導入を共有する。旧G1-95のERC3件は旧版のまま照合し、新候補は未実装入力/帰路のERC2件を**予想される未解決条件**として照合する。CI実行前にこの予想を実測結果とは記録しない。ERC検査で全不具合を無視したり、完了扱いにする変更はしない。結果・SHAは対応PRのチェック履歴で確定する。
+既存G1-95のKiCadワークフロー1本を拡張し、代替回路のnative netlist/ERC/SVG処理を同じKiCad導入で実行する。このPRのパスフィルターでは全22ワークフローが起動し、初回HEADでは21件成功、1件失敗（この検証の未接続名予測誤り）。旧G1-95のERC3件は旧版のまま照合し、新候補は未実装入力/帰路のERC2件を**予想される未解決条件**として照合する。初回CIでの実出力と失敗原因、訂正後の再実行結果を区別して記録する。ERC検査で全不具合を無視したり、完了扱いにする変更はしない。
+
+初回CI [39217395526](https://github.com/motomasa-honda/DialCanvas-SAS/actions/runs/39217395526) は検証側の未接続名予測で失敗。KiCad9は名前と番号が同じSHDN端子を `unconnected-(U46-PadSHDN)` と出力するため、余分な名前を含む予測を修正した。取得した実netlist624端子とERC2件（U14.5の入力源、U14.8の帰路）を修正後の検証に入力してローカルPASS。回路自体のSHAは不変。失敗結果、元HEAD、artifact SHAと実出力は `native_observation_39217395526.json` に記録する。これはnative出力の再照合であり、ローカルでKiCadを実行した証拠ではない。
 
 PCB/フットプリント/DRC/実機試験は未実行。48項目の状態は今回変更せず、製造ゲートも閉じない。
 
