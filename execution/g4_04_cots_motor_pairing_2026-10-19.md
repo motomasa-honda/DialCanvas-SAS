@@ -58,7 +58,7 @@ Adafruit #858は約42Ω/相なので、現行1相パターンのモーター分�
 
 - 販売元掲載：US$0.36、在庫あり表示。ULN2003N、4入力、4表示LED、XH-5Pモーターソケット、TTL入力、40×20mm。
 - #858側はメーカーが「0.1インチ間隔の5ピンケーブル端子」とするが、端子シリーズ/ハウジングは明記しない。MTR-09-004のXH-5P（2.50mm pitch）へ直接挿せるとは仮定しない。交換式アダプターハーネスで接続する案は、モーター側の実コネクタ嵌合とピン導通、モーター共通線/各相と基板端子の対応を現物で同定するまで保留。
-- 基板入力は販売元がTTL対応を掲載する一方、搭載ULN2003Nの正確なメーカー/型番と保証VIH、3.3V GPIO直結の保証条件は未確認。購入BOM/配線表にはまだ固定しない。
+- 販売元ページ内のIC表記は「ULN2003N」と「ULN2003A」が混在し、実装品のメーカー/完全型番・改版は確定できない。TIのULN2003A資料には3.3V GPIOを使う代表アプリケーション例があるため、同等の2.7kΩ入力品なら直結可能性は高い。ただしこれはMTR-09-004実装品の保証ではなく、Toshiba ULN2003APGの2.7kΩ入力仕様とも実装同一性を示さない。現物刻印と回路/入力電流を照合するまでは3.3V GPIO直結を未認定とし、購入BOM/配線表には固定しない。
 - 40×20mm外形は販売元値。実基板リビジョン、取付穴、部品高さ、軸とのカセット干渉は未確認。
 
 ### ElectroPeak MTR-09-024
@@ -88,7 +88,7 @@ Adafruit #858は約42Ω/相なので、現行1相パターンのモーター分�
 #858 と MTR-09-004 のペアはまだ受入れ済み構成ではない。確定BOM、基板レイアウト、製造図へ移す前に必要：
 
 1. モーターとボードのコネクタ嵌合、ピン順、VCC/GND/4相の分離を一次資料または現物で確認。
-2. 既存CADにモーター28×20mm本体、軸、ボード35×31mm、コネクタ、ハーネス、工具および55mmサービス包絡を統合し、干渉を検査。
+2. 既存CADにモーター28×20mm本体、軸、優先評価基板40×20mm（MTR-09-024代替35×31mmも比較）、コネクタ、ハーネス、工具および55mmサービス包絡を統合し、干渉を検査。
 3. 7軸同時駆動時の実測電流、保持・始動トルク、温度、騒音、連続動作を電源予算・遮断器の保証値と照合。
 4. 同一SKUを7軸分調達できる現行価格・在庫・代替品と日本への実着費用を確認。
 
@@ -99,9 +99,10 @@ Adafruit #858は約42Ω/相なので、現行1相パターンのモーター分�
 - Adafruit, [Small Reduction Stepper Motor #858](https://www.adafruit.com/product/858) — 5V、速度、寸法、抵抗、トルク、価格。
 - DigiKey Japan, [Adafruit 858 listing](https://www.digikey.jp/en/products/detail/adafruit-industries-llc/858/5629414) — 日本価格、在庫、製品ID。
 - ElectroPeak, [MTR-09-004 UL2003 4-Phase Stepper Motor Driver](https://electropeak.com/ul2003-4-phase-stepper-motor-driver) — 販売元掲載のXH-5P、TTL、40×20mm、価格/在庫表示。
+- TI, [ULN2003A datasheet](https://www.ti.com/jp/lit/gpn/uln2003a) — 3.3V GPIO application example; this is conditional family-level evidence, not identification/acceptance of the ElectroPeak board's installed IC.
+- Toshiba, [ULN2003APG product page](https://toshiba.semicon-storage.com/jp/semiconductor/product/linear-ics/transistor-arrays/detail.ULN2003APG.html) — product input resistor 2.7kΩ and similar replacement context; not proof that this IC is fitted on MTR-09-004.
 - ElectroPeak, [ULN2003 Stepper Motor Driver Board MTR-09-024](https://electropeak.com/five-wire-four-phase-uln2003stepper-motor-driver-board) — 代替SKU、基板サイズ、価格。
 - Akizuki, [28BYJ-48 5V](https://akizukidenshi.com/catalog/g/g113256/) and linked [28BYJ48-W01 specification](https://akizukidenshi.com/goodsaffix/28BYJ48-W01.pdf) — domestic price/availability, XH connector, 22Ω winding resistance and mechanical/electrical data.
-- ElectroPeak, [MTR-09-004](https://electropeak.com/ul2003-4-phase-stepper-motor-driver) — separate driver SKU, XH-5P, TTL listing and dimensions.
 - Yahoo! Shopping, [Easttract MEA0050 complete motor/driver set](https://store.shopping.yahoo.co.jp/e-struct/mea0050.html) — set contents, price, shipping and quantity limit.
 - Seeed, [105990072 product](https://www.seeedstudio.com/Gear-Stepper-Motor-Driver-Pack-p-3200.html) and [manufacturer Wiki](https://wiki.seeedstudio.com/Gear_Stepper_Motor_Driver_Pack/) — set identity, motor data, power pins, control pins, drawing.
 - Marutsu, [Seeed 105990072 domestic listing](https://www.marutsu.co.jp/pc/i/1558561/) — Japan price and stock observed 2026-10-19.
