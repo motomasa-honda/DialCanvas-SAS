@@ -3,7 +3,7 @@ ID,Gate,Deliverable,Status,Evidence,Limit
 "G1-02","G1","XC Rev1.1 GPIO静的非競合","DONE_SCOPE","Phase70 CI","実基板の電気試験は未"
 "G1-03","G1","TI安全ICメーカー端子表","DONE_SCOPE","Phase72 CI","footprint/実部品未"
 "G1-04","G1","M1制御28相7軸論理配線","DONE_SCOPE","Phase70 CI","モジュール実ピンは未"
-"G1-05","G1","M1回路図全統合","WORKING","Phase74 partial","独立安全回路未"
+"G1-05","G1","M1回路図全統合","WORKING","G1-88..95 generated KiCad source chain reproduced locally (21 outputs, SHA match); G1-95 648-pin source-map integration PASS; eFuse/current/wave-drive checks PASS","未給電候補図。実5V源/定格、モーターSKU/実測、eFuse保証最小値、KiCad ERC/DRC/HIL未。EN GND保持"
 "G1-06","G1","物理ラッチ/停止安全回路","WORKING","FG-P74-002","電源ENはGND保持"
 "G1-07","G1","M1 PCB/実footprint/ERC/DRC","OPEN","FG-P68-004","基板未設計"
 "G1-08","G1","M1 PCB製造出力一式","OPEN","GATE1","Gerber等未生成"
