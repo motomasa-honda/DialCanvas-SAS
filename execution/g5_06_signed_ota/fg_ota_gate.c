@@ -26,6 +26,13 @@ fg_ota_result fg_ota_stage(const fg_ota_source *source,fg_ota_ops *io,
   }
   sent+=(size_t)got;
  }
+ /* Content-Length is not a byte-integrity guarantee. Reject trailing body
+  * bytes (or a transport error) before authenticating/selecting the image. */
+ int32_t trailing=source->read(source->context,buf,1);
+ if(trailing!=0){
+  io->abort(io->context);
+  return FG_OTA_SOURCE_FAILURE;
+ }
  /* esp_ota_end consumes the handle even when signature verification fails;
   * do not double-abort. The old boot selection is unchanged on failure. */
  if(!io->finish_verified(io->context))

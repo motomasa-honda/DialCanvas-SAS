@@ -70,6 +70,12 @@ int main(void){
  m=fresh(2049);m.fail_read_at=2;
  assert(run(&m,2049,true,true)==FG_OTA_SOURCE_FAILURE);
  assert(m.aborted==1&&m.end==0&&m.selected==0);
+ m=fresh(2050);
+ assert(run(&m,2049,true,true)==FG_OTA_SOURCE_FAILURE);
+ assert(m.written==2049&&m.aborted==1&&m.end==0&&m.selected==0);
+ m=fresh(2049);m.fail_read_at=4;
+ assert(run(&m,2049,true,true)==FG_OTA_SOURCE_FAILURE);
+ assert(m.written==2049&&m.aborted==1&&m.end==0&&m.selected==0);
  m=fresh(2049);m.fail_write_at=2;
  assert(run(&m,2049,true,true)==FG_OTA_FLASH_FAILURE);
  assert(m.aborted==1&&m.end==0&&m.selected==0);
@@ -82,6 +88,6 @@ int main(void){
  m=fresh(FG_OTA_SLOT_CAPACITY);
  assert(run(&m,FG_OTA_SLOT_CAPACITY,true,true)==FG_OTA_STAGED_PENDING_REBOOT);
  assert(m.written==FG_OTA_SLOT_CAPACITY&&m.end==1&&m.selected==1);
- puts("PASS OTA transactional host: HIL/config gate blocks flash, exact slot limit, signed end before select, 3 failure abort paths");
+ puts("PASS OTA transactional host: HIL/config gate blocks flash, exact slot limit, source EOF exact, signed end before select, failure paths abort safely");
  return 0;
 }

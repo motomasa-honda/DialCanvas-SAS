@@ -11,6 +11,9 @@ assert 'if(!motors_off_proven||!independent_hil_approved||!io->ready' in core
 assert core.index("io->finish_verified") < core.index("io->select_next_boot")
 assert 'io->abort(io->context)' in core
 assert 'FG_OTA_SLOT_CAPACITY' in core
+assert 'trailing=source->read(source->context,buf,1)' in core
+assert 'if(trailing!=0)' in core and 'io->abort(io->context)' in core
+assert 'true transport EOF' in (p/"fg_ota_gate.h").read_text()
 assert 'esp_ota_get_next_update_partition(NULL)' in port
 assert 'esp_ota_get_running_partition()' in port
 assert 'esp_ota_get_state_partition(running,&state)' in port

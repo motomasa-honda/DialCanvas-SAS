@@ -19,6 +19,8 @@ typedef enum {
  FG_OTA_STAGED_PENDING_REBOOT
 } fg_ota_result;
 typedef int32_t (*fg_ota_reader)(void *ctx,uint8_t *buffer,size_t capacity);
+/* read() must return 0 only at true transport EOF, including after the
+ * declared image byte count. Positive short reads are allowed. */
 typedef struct {void *context;fg_ota_reader read;} fg_ota_source;
 typedef struct {
  void *context;
