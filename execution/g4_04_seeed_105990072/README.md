@@ -18,6 +18,12 @@ The driver PCB (35.0 × 19.3 mm) separately fits within 40 × 31 mm, with 2.5 mm
 
 This makes a motor face-plate geometrically plausible within the reservation, but does not fit the separate 35 × 19.3 mm driver PCB: the two remain overlapping XY projections. PCB edge retention, Z-stack, screw-head/washer/tool envelopes, plate material/thickness/strength, motor-to-gear coupler, D7 55 mm sweep, and process tolerances remain unqualified. The SCAD file is a review candidate only; no fastener or machining dimensions are released.
 
+### Driver-board edge-window screen
+
+`check_board_edge_capture.py` parses the archived EAGLE package tPlace line/circle proxies and through-hole/SMD copper bounds for the populated-board components, then checks two candidate edge-lip contact windows with a 0.30 mm planar clearance. `BOARD_EDGE_CAPTURE_REVIEW.scad` is a visual locator for those windows; it is not the vendor 3D geometry and must not be used as a finished retainer. `test_board_edge_capture.py` injects a deliberate copper collision and a clear case to verify the screen rejects/accepts the expected cases. The generated `board_edge_capture_screen.json` records source hash, bounds, and limitations.
+
+Both windows clear the selected source proxies and copper shapes. This only identifies candidate contact regions: the vendor source has no 3D courtyard/height data, and board thickness, solder projections, clip material/spring force, insertion path, cable exit, tools, vibration, motor-driver Z stack, and the D7 55 mm service sweep remain unchecked. No retaining clip geometry or manufacturing dimension is released. G4-04/FG-026 remain OPEN.
+
 Run `python3 execution/g4_04_seeed_105990072/check_axis_envelope.py` to regenerate [`axis_envelope_screen.json`](axis_envelope_screen.json). It is a static drawing-based fit screen only.
 
 The exact EAGLE footprints and board/schematic connectivity resolve the headers as follows. “IN1” through “IN4” refer to the ULN2003 input pins 1B through 4B respectively.
