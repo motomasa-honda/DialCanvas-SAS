@@ -1,10 +1,26 @@
 #!/usr/bin/env python3
 """G1-95 strict source circuit and motor hard-off; no false ERC clearance."""
-import json,sys,collections,xml.etree.ElementTree as ET
+import json,sys,collections,xml.etree.ElementTree as ET,hashlib
 from pathlib import Path
 from check_efuse_accuracy_audit import verify as verify_efuse_accuracy_audit
 from check_phase_chain_integration import verify as verify_phase_chain_integration
 D=Path(__file__).resolve().parent
+ROOT=D.parents[1]
+
+def verify_generated_source_manifest():
+ manifest=json.loads((D/"native_source_manifest.json").read_text(encoding="utf-8"))
+ assert manifest["status"]=="GENERATED_REVIEW_ONLY_NO_MANUFACTURING_RELEASE"
+ files=manifest["files"]
+ assert len(files)==21 and len({x["path"] for x in files})==21
+ for row in files:
+  path=ROOT/row["path"]
+  payload=path.read_bytes()
+  assert len(payload)==row["bytes"],row["path"]
+  assert hashlib.sha256(payload).hexdigest()==row["sha256"],row["path"]
+ assert sum(x["bytes"] for x in files)==manifest["total_bytes"]==3236649
+ return len(files)
+
+manifest_count=verify_generated_source_manifest()
 verify_efuse_accuracy_audit()
 verify_phase_chain_integration()
 orig=json.loads((D.parent/"g1_94_native_erc_cleanup/pin_map_618_clean.json").read_text())
@@ -81,6 +97,7 @@ assert 0.10 < per_phase_one < 0.11
 assert 7*2*.160>provisional_limit
 # 3.3V regulator is upstream of the motor eFuse but adds load to 5V input.
 print("PASS: genuine pins U45 1..8, upstream 5V input+return J20, 3V3 buck passives; 648/194; eFuse EN+OE OFF")
+print(f"PASS: reproducible G1-88..95 generated-source manifest ({manifest_count} files, SHA256 and byte counts)")
 print(f"HOLD: R_ILM 2.21k sets motor current limit ~{provisional_limit:.3f}A typical; 7x2-phase threshold {per_phase_one*1000:.1f}mA/phase before headroom; actual motor peak UNKNOWN")
 if len(sys.argv)>1:
  o=Path(sys.argv[1]);root=ET.parse(o/"native.net.xml").getroot()
