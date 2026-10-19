@@ -6,7 +6,7 @@ Disposition: **COTS候補の価格・電力比較まで。部品受入・回路�
 
 ## 現時点の低価格候補
 
-7軸の独立交換構造を保ち、1軸につき市販モーター1個と市販ULN2003ドライバーボード1枚を組み合わせる。現時点の低価格スクリーニング候補は **Adafruit #858 + ElectroPeak MTR-09-024**。専用モーターも専用ドライバーPCBも作らずに済む。
+7軸の独立交換構造を保ち、1軸につき市販モーター1個と市販ULN2003ドライバーボード1枚を組み合わせる。これまでの候補群の中では **Adafruit #858 + ElectroPeak MTR-09-024** が、低電流側の仕様が追える低価格候補。専用モーターも専用ドライバーPCBも作らずに済む。ただし今回さらに安い国内流通品も発見したため、最安構成と電源適合候補は分けて評価する。
 
 US掲載価格の部材小計は、Adafruit #858が1–9個でUS$4.95、MTR-09-024がUS$0.36。7軸で **US$37.17**。送料・税・日本への実着価格を含まない単純比較値であり、見積・発注額ではない。MTR-09-024はMTR-09-004とは別基板の販売SKU。混用しない。
 
@@ -16,13 +16,28 @@ US掲載価格の部材小計は、Adafruit #858が1–9個でUS$4.95、MTR-09-0
 
 | 構成 | 価格・掲載在庫（2026-10-19） | 7軸分の部材小計 | 電力・調達評価 |
 |---|---|---:|---|
-| Adafruit #858 + ElectroPeak MTR-09-024 | US$4.95 + US$0.36 / 軸。日本のDigiKeyではモーター税込¥891 / 個 | US掲載値US$37.17（送料・税別） | 最安スクリーニング候補。異なるメーカー間のコネクタ嵌合・ピン順・固定寸法が未検証。ドライバー7枚の日本実着価格も未確定 |
+| Adafruit #858 + ElectroPeak MTR-09-024 | US$4.95 + US$0.36 / 軸。日本のDigiKeyではモーター税込¥891 / 個 | US掲載値US$37.17（送料・税別） | 42Ω/相の低電流側仕様が追える候補。異なるメーカー間のコネクタ嵌合・ピン順・固定寸法が未検証。ドライバー7枚の日本実着価格も未確定 |
 | Seeed 105990072 Gear Stepper Motor Driver Pack | マルツ税込¥1,117 / 個、掲載在庫25個 | ¥7,819（税込、送料別） | モーター・ドライバー・ケーブルが同梱され、1軸単位の完成COTSセット。抵抗21Ω±7%を5Vに当てた理想計算では7軸単相で約1.67A、抵抗下限では約1.79A。既存eFuseの典型ILM 1.509Aを超えるため、現行電源構成では受入れできない。実電流・保証限界は未検証 |
 | Whadda WPI401 | Velleman公式€7.90 / 個（個人向け直接購入不可の表示）。DigiKey Marketplace US$9.58 / 個 | Marketplace表示を7個へ適用するとUS$67.06 | 5Vモーター＋ULN2003基板＋ケーブルのセット。マニュアルは50Ω±7%を掲載するため理想計算電流はSeeedより低い。一方、step/rev・減速比・電圧の表記に不整合があり、価格・寸法・仕様の根拠が候補より弱い |
 
 価格・在庫は掲載値で、変動する。通貨換算はしていない。マルツは税込3,300円以上の購入で送料無料と掲載しているため、Seeed品7個を同一注文する場合は商品価格¥7,819が該当条件を超える。調達総額の確定ではない。
 
 Seeedのモーター巻線について、メーカーWikiの抵抗値表記は単位を省略しているが、同梱モーターのCX28BYJ48データシートの表示は5VDC・21Ω。ドライバー基板のトランジスター電圧降下で実電流は理想計算より小さくなる。しかし7軸全ての実測最大電流、ドライバー/LED負荷、eFuseの保証最小ILMが揃っていないため、Seeedセットは現行電源で承認できない。
+
+## さらに安価な国内流通品のスクリーニング
+
+| 構成 | 価格・数量情報（2026-10-19閲覧） | 判断 |
+|---|---|---|
+| 秋月 28BYJ-48 5V（販売コード113256）+ ElectroPeak MTR-09-004 | モーター税込¥250/個、MTR-09-004 US$0.36/枚。秋月ページは在庫僅少・11月中旬入荷予定で、閲覧時の購入可能数は7軸分未満。モーター端子はXH、MTR-09-004販売ページはXH-5P・TTL入力・40×20mmを掲載 | **価格だけならさらに安いが、現行電源の候補から除外。** 秋月リンク先の28BYJ48-W01仕様書は22Ω±7%/相。5V/22Ωの抵抗ベース計算は227mA/相、7軸1相で約1.59Aとなり、eFuse典型1.509Aを超える。ドライバーの電圧降下を無視したスクリーニング値であり実測値ではない。モーターSKU・基板SKUの組合せも受入れ試験前。 |
+| イーストラクト Yahoo!店 MEA0050 完成セット | 税込¥987/セット、全国送料無料。商品ページの購入上限3点 | 5Vの28BYJ-48-5Vとドライバーモジュールの一体セットで、個別基板・コネクタを探す必要がない。ただし7軸分を同一販売枠からそろえられず、相抵抗・最大電流の掲載もないため、7軸電源計算へ採用できない。 |
+
+## ファームウェアの励磁数と電源判定
+
+既存の製品ファームウェア検査は、7軸の出力を **one-hot wave-drive（1軸につき論理1相）** と判定し、テストもそのパターンを検証する。一方、motor_current_acceptance.json と電源予算は物理ドライバー過渡を含む測定前の保守仮定として2相/軸を保持しているため、部品比較は両方を区別する。
+
+Adafruit #858は約42Ω/相なので、現行1相パターンのモーター分だけなら理想値は約0.833A/7軸。eFuse典型値1.509Aから20%を引いた暫定予算1.207Aに対し、共有5V_RAW上のbuck入力、LED、ドライバー表示LED等に残るのは約0.374A。残負荷とeFuse保証最小値が未確定なので、**モーター分のスクリーニングは通るが、電源適合判定は保留**。2相/軸の保守仮定では約1.67Aとなり典型値を超える。
+
+秋月28BYJ48-W01（22Ω）とSeeed 105990072（21Ω）は、1相/軸の理想計算でもそれぞれ約1.59A、約1.67Aとなるため、現行eFuseの典型値に対する一次スクリーニングを通らない。いずれもドライバー電圧降下を含む実測ではなく、型番・電流・電源の最終受入れを置き換えない。
 
 ## 仕様・電力のスクリーニング
 
@@ -72,6 +87,9 @@ Seeedのモーター巻線について、メーカーWikiの抵抗値表記は�
 - Adafruit, [Small Reduction Stepper Motor #858](https://www.adafruit.com/product/858) — 5V、速度、寸法、抵抗、トルク、価格。
 - DigiKey Japan, [Adafruit 858 listing](https://www.digikey.jp/en/products/detail/adafruit-industries-llc/858/5629414) — 日本価格、在庫、製品ID。
 - ElectroPeak, [ULN2003 Stepper Motor Driver Board MTR-09-024](https://electropeak.com/five-wire-four-phase-uln2003stepper-motor-driver-board) — 販売SKU、基板サイズ、価格。
+- Akizuki, [28BYJ-48 5V](https://akizukidenshi.com/catalog/g/g113256/) and linked [28BYJ48-W01 specification](https://akizukidenshi.com/goodsaffix/28BYJ48-W01.pdf) — domestic price/availability, XH connector, 22Ω winding resistance and mechanical/electrical data.
+- ElectroPeak, [MTR-09-004](https://electropeak.com/ul2003-4-phase-stepper-motor-driver) — separate driver SKU, XH-5P, TTL listing and dimensions.
+- Yahoo! Shopping, [Easttract MEA0050 complete motor/driver set](https://store.shopping.yahoo.co.jp/e-struct/mea0050.html) — set contents, price, shipping and quantity limit.
 - Seeed, [105990072 product](https://www.seeedstudio.com/Gear-Stepper-Motor-Driver-Pack-p-3200.html) and [manufacturer Wiki](https://wiki.seeedstudio.com/Gear_Stepper_Motor_Driver_Pack/) — set identity, motor data, power pins, control pins, drawing.
 - Marutsu, [Seeed 105990072 domestic listing](https://www.marutsu.co.jp/pc/i/1558561/) — Japan price and stock observed 2026-10-19.
 - Mouser Japan, [Seeed 105990072 listing](https://www.mouser.jp/ja/ProductDetail/Seeed-Studio/105990072?qs=0lSvoLzn4L99CUdct3Gvjw%3D%3D) — exact product number and stock cross-check.
