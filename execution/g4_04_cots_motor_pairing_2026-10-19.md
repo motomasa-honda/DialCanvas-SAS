@@ -6,9 +6,9 @@ Disposition: **COTS候補の価格・電力比較まで。部品受入・回路�
 
 ## 現時点の低価格候補
 
-7軸の独立交換構造を保ち、1軸につき市販モーター1個と市販ULN2003ドライバーボード1枚を組み合わせる。これまでの候補群の中では **Adafruit #858 + ElectroPeak MTR-09-024** が、低電流側の仕様が追える低価格候補。専用モーターも専用ドライバーPCBも作らずに済む。ただし今回さらに安い国内流通品も発見したため、最安構成と電源適合候補は分けて評価する。
+7軸の独立交換構造を保ち、1軸につき市販モーター1個と市販ULN2003ドライバーボード1枚を組み合わせる。これまでの候補群の中では **Adafruit #858 + ElectroPeak MTR-09-004** を低電流側の優先評価候補とする。MTR-09-004は販売元がXH-5P端子、TTL入力、40×20mmを明記し、MTR-09-024より機械・信号の情報が多い。どちらも専用モーター/専用ドライバーPCBを作らないCOTS構成だが、#858とXH-5P基板の直接嵌合は確認できないため、モジュールを加工せず既製コネクタで作る交換式アダプターハーネスを次の評価対象にする。ただし今回さらに安い国内流通品も発見したため、最安構成と電源適合候補は分けて評価する。
 
-US掲載価格の部材小計は、Adafruit #858が1–9個でUS$4.95、MTR-09-024がUS$0.36。7軸で **US$37.17**。送料・税・日本への実着価格を含まない単純比較値であり、見積・発注額ではない。MTR-09-024はMTR-09-004とは別基板の販売SKU。混用しない。
+US掲載価格の部材小計は、Adafruit #858が1–9個でUS$4.95、MTR-09-004がUS$0.36。7軸で **US$37.17**。送料・税・日本への実着価格を含まない単純比較値であり、見積・発注額ではない。MTR-09-024はMTR-09-004とは別基板の販売SKU。混用しない。
 
 日本のDigiKey製品ページではAdafruit #858を税込¥891、147個在庫として掲載。ドライバーは別売であり、7枚を含めた国内実着見積は未取得。
 
@@ -16,7 +16,8 @@ US掲載価格の部材小計は、Adafruit #858が1–9個でUS$4.95、MTR-09-0
 
 | 構成 | 価格・掲載在庫（2026-10-19） | 7軸分の部材小計 | 電力・調達評価 |
 |---|---|---:|---|
-| Adafruit #858 + ElectroPeak MTR-09-024 | US$4.95 + US$0.36 / 軸。日本のDigiKeyではモーター税込¥891 / 個 | US掲載値US$37.17（送料・税別） | 42Ω/相の低電流側仕様が追える候補。異なるメーカー間のコネクタ嵌合・ピン順・固定寸法が未検証。ドライバー7枚の日本実着価格も未確定 |
+| Adafruit #858 + ElectroPeak MTR-09-004（優先評価） | US$4.95 + US$0.36 / 軸。日本のDigiKeyではモーター税込¥891 / 個 | US掲載値US$37.17（送料・税別） | 42Ω/相の低電流候補。基板はXH-5P・TTL・40×20mmと掲載。#858の0.1インチ5端子とは直接嵌合未確認で、交換式アダプターハーネス候補。ドライバー7枚の日本実着価格も未確定 |
+| Adafruit #858 + ElectroPeak MTR-09-024（代替） | US$4.95 + US$0.36 / 軸 | 同額、送料・税別 | 35×31mm。モーター端子・ピン順・VIHの掲載根拠が#004より少なく、採用優先度を下げる。
 | Seeed 105990072 Gear Stepper Motor Driver Pack | マルツ税込¥1,117 / 個、掲載在庫25個 | ¥7,819（税込、送料別） | モーター・ドライバー・ケーブルが同梱され、1軸単位の完成COTSセット。抵抗21Ω±7%を5Vに当てた理想計算では7軸単相で約1.67A、抵抗下限では約1.79A。既存eFuseの典型ILM 1.509Aを超えるため、現行電源構成では受入れできない。実電流・保証限界は未検証 |
 | Whadda WPI401 | Velleman公式€7.90 / 個（個人向け直接購入不可の表示）。DigiKey Marketplace US$9.58 / 個 | Marketplace表示を7個へ適用するとUS$67.06 | 5Vモーター＋ULN2003基板＋ケーブルのセット。マニュアルは50Ω±7%を掲載するため理想計算電流はSeeedより低い。一方、step/rev・減速比・電圧の表記に不整合があり、価格・寸法・仕様の根拠が候補より弱い |
 
@@ -53,6 +54,13 @@ Adafruit #858は約42Ω/相なので、現行1相パターンのモーター分�
 - 1相wave-driveならモーター枝の抵抗ベース理想値は約0.833A。これはモーター枝のeFuse制限とのスクリーニングである。3.3V buckはeFuse上流の5V_RAWから給電されるため、5V_RAW供給源の容量はモーター枝電流にbuck入力・LED・制御/表示基板等の電流を加えて別途評価する。各実負荷、電源定格、eFuse保証最小値が未確認のため、現状は電源適合を確定できない。
 - 既存ファームウェアの1軸1相wave-driveと論理方式は合う候補。ただし実トルク、速度、発熱、脱調、寿命の受入れは未実施。
 
+### ElectroPeak MTR-09-004（優先評価基板）
+
+- 販売元掲載：US$0.36、在庫あり表示。ULN2003N、4入力、4表示LED、XH-5Pモーターソケット、TTL入力、40×20mm。
+- #858側はメーカーが「0.1インチ間隔の5ピンケーブル端子」とするが、端子シリーズ/ハウジングは明記しない。MTR-09-004のXH-5P（2.50mm pitch）へ直接挿せるとは仮定しない。交換式アダプターハーネスで接続する案は、モーター側の実コネクタ嵌合とピン導通、モーター共通線/各相と基板端子の対応を現物で同定するまで保留。
+- 基板入力は販売元がTTL対応を掲載する一方、搭載ULN2003Nの正確なメーカー/型番と保証VIH、3.3V GPIO直結の保証条件は未確認。購入BOM/配線表にはまだ固定しない。
+- 40×20mm外形は販売元値。実基板リビジョン、取付穴、部品高さ、軸とのカセット干渉は未確認。
+
 ### ElectroPeak MTR-09-024
 
 - 販売元掲載：ULN2003 DIPを使う4相ステッパードライバーボード、価格US$0.36、基板寸法35×31mm。
@@ -75,9 +83,9 @@ Adafruit #858は約42Ω/相なので、現行1相パターンのモーター分�
 
 ## 現行設計への結論
 
-**専用モーター／専用ドライバーを作らず、既製品の組合せを軸ごとに使う方針を維持する。** Adafruit #858 + MTR-09-024は部材単価上の最安スクリーニング候補として残すが、現電源条件への適合は未成立。既存電流受入れ表の2相/軸仮定でモーター枝の抵抗ベース理想値がeFuse典型ILIMを上回る。1相/軸ではモーター枝の典型値ベース一次スクリーニングには入るが、eFuse保証最小ILIMと実負荷は未確認。さらにeFuse上流の5V_RAW電源は、モーター枝とbuck入力、その他の5V負荷を合算した容量確認が必要。Seeed 105990072も1相のモーター理想値だけで典型ILIMを上回るため現状では選定しない。したがって価格順位は「受入れ候補」の順位ではない。MTR-09-024の実ピン・コネクタ証拠と、駆動相数を固定した7軸電流検証を残す。
+**専用モーター／専用ドライバーを作らず、既製品の組合せを軸ごとに使う方針を維持する。** Adafruit #858 + MTR-09-004を優先評価ペア、MTR-09-024を代替基板として比較する。現電源条件への適合は未成立。既存電流受入れ表の2相/軸仮定でモーター枝の抵抗ベース理想値がeFuse典型ILIMを上回る。1相/軸ではモーター枝の典型値ベース一次スクリーニングには入るが、eFuse保証最小ILIMと実負荷は未確認。さらにeFuse上流の5V_RAW電源は、モーター枝とbuck入力、その他の5V負荷を合算した容量確認が必要。Seeed 105990072も1相のモーター理想値だけで典型ILIMを上回るため現状では選定しない。したがって価格順位は「受入れ候補」の順位ではない。MTR-09-004の実コネクタ/端子マップ/3.3V入力保証確認、適合アダプターハーネス、駆動相数を固定した7軸電流検証を残す。
 
-#858 と MTR-09-024 のペアはまだ受入れ済み構成ではない。確定BOM、基板レイアウト、製造図へ移す前に必要：
+#858 と MTR-09-004 のペアはまだ受入れ済み構成ではない。確定BOM、基板レイアウト、製造図へ移す前に必要：
 
 1. モーターとボードのコネクタ嵌合、ピン順、VCC/GND/4相の分離を一次資料または現物で確認。
 2. 既存CADにモーター28×20mm本体、軸、ボード35×31mm、コネクタ、ハーネス、工具および55mmサービス包絡を統合し、干渉を検査。
@@ -90,7 +98,8 @@ Adafruit #858は約42Ω/相なので、現行1相パターンのモーター分�
 
 - Adafruit, [Small Reduction Stepper Motor #858](https://www.adafruit.com/product/858) — 5V、速度、寸法、抵抗、トルク、価格。
 - DigiKey Japan, [Adafruit 858 listing](https://www.digikey.jp/en/products/detail/adafruit-industries-llc/858/5629414) — 日本価格、在庫、製品ID。
-- ElectroPeak, [ULN2003 Stepper Motor Driver Board MTR-09-024](https://electropeak.com/five-wire-four-phase-uln2003stepper-motor-driver-board) — 販売SKU、基板サイズ、価格。
+- ElectroPeak, [MTR-09-004 UL2003 4-Phase Stepper Motor Driver](https://electropeak.com/ul2003-4-phase-stepper-motor-driver) — 販売元掲載のXH-5P、TTL、40×20mm、価格/在庫表示。
+- ElectroPeak, [ULN2003 Stepper Motor Driver Board MTR-09-024](https://electropeak.com/five-wire-four-phase-uln2003stepper-motor-driver-board) — 代替SKU、基板サイズ、価格。
 - Akizuki, [28BYJ-48 5V](https://akizukidenshi.com/catalog/g/g113256/) and linked [28BYJ48-W01 specification](https://akizukidenshi.com/goodsaffix/28BYJ48-W01.pdf) — domestic price/availability, XH connector, 22Ω winding resistance and mechanical/electrical data.
 - ElectroPeak, [MTR-09-004](https://electropeak.com/ul2003-4-phase-stepper-motor-driver) — separate driver SKU, XH-5P, TTL listing and dimensions.
 - Yahoo! Shopping, [Easttract MEA0050 complete motor/driver set](https://store.shopping.yahoo.co.jp/e-struct/mea0050.html) — set contents, price, shipping and quantity limit.
