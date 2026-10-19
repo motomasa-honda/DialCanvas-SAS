@@ -32,5 +32,7 @@
   "g1_89_threshold_fix_review": "2026-10-18: U33 MR tied to 3V3_AON; SENSE now monitors U14 actual EN via 12k/10k (typ 0.891V, worst <0.93V vs eFuse min 1.183V); parent G1-90 cutoff pin map adjusted; power OFF, G1-05/06 WORKING",
   "g1_89_fixed_delay_review": "2026-10-18: replaced U33 CT 68nF GND capacitor C30 with R62 100k to 3V3_AON, TI fixed 300ms mode (specified 180..420ms); RESET_N R56 100k; EN analog threshold remains <eFuse activation; 20/48 0/6, unpowered",
   "g1_90_fet_candidate": "2026-10-18: Q1 review candidate switched 2N7002 to Diodes DMN2056U SOT23 G1/S2/D3; specified max RDS 45mOhm@2.5V and 85mOhm@1.5V (25C only). R4 eFuse EN LOW, 8 OE disabled; bench/HIL/thermal unresolved",
-  "g6_05_review_scope": "7 axis centers, 7 candidate envelopes, 42 individually labeled logical pins; physical routing and manufacturing explicitly HOLD"
+  "g6_05_review_scope": "7 axis centers, 7 candidate envelopes, 42 individually labeled logical pins; physical routing and manufacturing explicitly HOLD",
+  "secondary_keeper_2026_10_19_commit": "9ac6df76d2f61ab390a6ef22f5382dca4751292b",
+  "secondary_keeper_2026_10_19_verification": "Local PASS: 714-state motion/parameter check; 6 clearance tests; 3 relief tests; OpenSCAD default and overlay CSG exports; guard/routes/JSON/diff checks. PR run 39187606523 quick-revision-integrity SUCCESS."
 }
