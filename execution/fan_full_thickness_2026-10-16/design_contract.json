@@ -104,12 +104,15 @@
     "V2": "https://www.fansco.com/datasheets/sunon/MF30100V2-1000U-A99.pdf",
     "V3": "https://www.fansco.com/datasheets/sunon/MF30100V3-1000U-A99.pdf"
   },
+  "individual_source_class": "Distributor-hosted manufacturer-format product PDFs; not retrieved from the SUNON primary domain. Use official SUNON catalog values for catalog ratings; do not treat listed individual maximum current as a guaranteed design bound.",
   "current_mA": {
     "V1_rated": 120,
     "V2_rated": 80,
     "V2_individual_max_steady": 92,
+    "V2_individual_max_source_class": "Distributor-hosted PDF; not primary manufacturer source and not a guaranteed system bound",
     "V3_rated": 45,
     "V3_individual_max_steady": 54,
+    "V3_individual_max_source_class": "Distributor-hosted PDF; not primary manufacturer source and not a guaranteed system bound",
     "branch_limit": 100,
     "starting_peak_test": "NOT_DONE",
     "motor_stall_test": "NOT_DONE",

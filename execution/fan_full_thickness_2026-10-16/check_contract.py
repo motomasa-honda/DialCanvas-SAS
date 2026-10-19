@@ -21,6 +21,9 @@ c=d["current_mA"]
 assert c["V1_rated"]>c["branch_limit"]==100
 assert c["V2_rated"]==80 and c["V2_individual_max_steady"]==92
 assert c["V3_rated"]==45 and c["V3_individual_max_steady"]==54
+assert "not retrieved from the SUNON primary domain" in d["individual_source_class"]
+assert "not a guaranteed system bound" in c["V2_individual_max_source_class"]
+assert "not a guaranteed system bound" in c["V3_individual_max_source_class"]
 assert c["starting_peak_test"]==c["motor_stall_test"]==c["actual_closed_case_thermal"]=="NOT_DONE"
 e=d["engineering"]
 assert e["full_thickness_vent"]=="REJECT_ALL_8_PRIOR_SITES_AS_NO_CUT_EXHAUST"
@@ -30,5 +33,5 @@ assert not any(e[k] for k in ("purchasing","cutting","power","flashing","main_me
 old=json.loads((Path(__file__).parent.parent/"g5_jig_g604_2026-10-16"/"design_contract.json").read_text())
 assert old["fan_g3_06_source_screen"]["backwood_no_cut_vent"]=="REJECTED_ALL_THREE"
 print("PASS: three D7 body-clear positions are NO-CUT airflow FAIL; all 8 candidate through apertures <0.5%")
-print("PASS: manufacturer catalog 3 holes and V3/V2 only provisional steady-state current")
+print("PASS: manufacturer catalog ratings separated from distributor-hosted maximum-current listings")
 print("PASS: G3-06 OPEN, manufacture0/6, 19/48, EN LOW; original 9-shape recompute in artifact ZIP")
