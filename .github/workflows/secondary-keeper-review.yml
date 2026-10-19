@@ -32,6 +32,8 @@ jobs:
           set -euo pipefail
           python3 -m py_compile execution/secondary_keeper_2026-10-16/check_motion.py
           python3 execution/secondary_keeper_2026-10-16/check_motion.py | tee execution/secondary_keeper_2026-10-16/ci.log
+          python3 -m py_compile execution/secondary_keeper_2026-10-16/audit_full_d7_clearance.py execution/secondary_keeper_2026-10-16/test_clearance_audit.py
+          python3 execution/secondary_keeper_2026-10-16/test_clearance_audit.py
       - name: Native OpenSCAD 7-axis model syntax and CSG export
         run: |
           set -euo pipefail

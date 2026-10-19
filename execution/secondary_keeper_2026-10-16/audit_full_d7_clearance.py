@@ -63,11 +63,17 @@ def geometry_polygons(geometry: dict) -> list[list[list[list[float]]]]:
     return [coords] if geometry["type"] == "Polygon" else coords
 
 
-def boss_intersections(source: dict) -> dict:
+def boss_intersections(source: dict, x_offset: tuple[float, float] = (21.5, 24.8),
+                       y_offset: tuple[float, float] = (-3.75, 0.2),
+                       z_range: tuple[float, float] = (134.0, 138.0)) -> dict:
+    if not (x_offset[0] < x_offset[1] and y_offset[0] < y_offset[1] and z_range[0] < z_range[1]):
+        raise ValueError("boss envelope bounds must be strictly increasing")
     by_axis: dict[str, list[dict]] = {}
     for axis_number, x, y in AXES:
-        # Current reviewed outboard boss, rectangular envelope, Z 134..138 mm.
-        bx0, bx1, by0, by1, bz0, bz1 = x + 21.5, x + 24.8, y - 3.75, y + 0.2, 134.0, 138.0
+        # Axis-relative rectangular envelope; caller supplies candidate bounds.
+        bx0, bx1 = x + x_offset[0], x + x_offset[1]
+        by0, by1 = y + y_offset[0], y + y_offset[1]
+        bz0, bz1 = z_range
         hits: dict[str, float] = defaultdict(float)
         for solid in source["solids"]:
             frame = solid["axis"]
@@ -100,6 +106,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("assembly_json", type=Path, help="canonical D7/cad/assembly.json from the immutable handoff")
     parser.add_argument("--output", type=Path, help="optional JSON report path")
+    parser.add_argument("--x-offset", nargs=2, type=float, metavar=("MIN", "MAX"),
+                        default=(21.5, 24.8), help="boss X bounds relative to each axis (mm)")
+    parser.add_argument("--y-offset", nargs=2, type=float, metavar=("MIN", "MAX"),
+                        default=(-3.75, 0.2), help="boss Y bounds relative to each axis (mm)")
+    parser.add_argument("--z-range", nargs=2, type=float, metavar=("MIN", "MAX"),
+                        default=(134.0, 138.0), help="boss absolute Z bounds (mm)")
+    parser.add_argument("--require-clear", action="store_true",
+                        help="exit nonzero if any source solid intersects the candidate bosses")
     args = parser.parse_args()
 
     digest = hashlib.sha256(args.assembly_json.read_bytes()).hexdigest()
@@ -109,34 +123,31 @@ def main() -> None:
     if len(source.get("solids", [])) != 1774:
         raise SystemExit("FAIL: expected 1,774 source solids")
 
-    hits = boss_intersections(source)
-    expected = {
-        str(axis): ([{"solid_id": "BACK_WOOD", "overlap_volume_mm3": 13.035}]
-                    if axis != 5 else [
-                        {"solid_id": "BACK_WOOD", "overlap_volume_mm3": 13.035},
-                        {"solid_id": "FAN_GASKET", "overlap_volume_mm3": 13.035},
-                        {"solid_id": "FAN_MAX_BODY", "overlap_volume_mm3": 26.07},
-                    ])
-        for axis, _, _ in AXES
-    }
-    if hits != expected:
-        raise SystemExit("FAIL: source intersection result differs from reviewed expected geometry: "
-                         + json.dumps(hits, sort_keys=True))
+    try:
+        hits = boss_intersections(source, tuple(args.x_offset), tuple(args.y_offset), tuple(args.z_range))
+    except ValueError as exc:
+        raise SystemExit(f"FAIL: {exc}") from exc
+    collision_count = sum(len(items) for items in hits.values())
 
     report = {
-        "audit": "current_outboard_boss_vs_immutable_D7_source",
+        "audit": "candidate_boss_vs_immutable_D7_source",
         "source_sha256": digest,
         "source_solid_count": len(source["solids"]),
-        "boss_envelope_relative_to_each_axis_mm": {"x": [21.5, 24.8], "y": [-3.75, 0.2], "z": [134, 138]},
+        "boss_envelope_relative_to_each_axis_mm": {"x": args.x_offset, "y": args.y_offset,
+                                                    "z_absolute": args.z_range},
         "axis_intersections": hits,
-        "fixed_core_collisions_excluding_known_removal_or_redesign_items": 0,
+        "source_solid_intersection_count": collision_count,
         "known_unresolved_interferences": {
-            "back_wood_boss_overlap_axes": list(range(1, 8)),
-            "existing_fan_body_and_gasket_overlap_axis": 5,
+            "back_wood_boss_overlap_axes": [int(axis) for axis, solids in hits.items()
+                                            if any(hit["solid_id"] == "BACK_WOOD" for hit in solids)],
+            "fan_body_or_gasket_boss_overlap_axes": [int(axis) for axis, solids in hits.items()
+                                                      if any(hit["solid_id"] in {"FAN_MAX_BODY", "FAN_GASKET"}
+                                                             for hit in solids)],
         },
         "tool_corridor": "NOT_CHECKED_BY_THIS_BOSS_VOLUME_AUDIT",
         "physical_fit_or_strength": "NOT_TESTED",
-        "disposition": "FAILS_UNMODIFIED_D7_CLEARANCE; REQUIRES_BACK_WOOD_RELIEF_AND_FAN_RELOCATION_OR_BOSS_REDRAW; NOT_FOR_MANUFACTURE",
+        "disposition": ("FAILS_SOURCE_CLEARANCE; REDESIGN_REQUIRED; NOT_FOR_MANUFACTURE"
+                        if collision_count else "BOSS_VOLUME_CLEAR_ONLY; OTHER_CLEARANCES_AND_PHYSICAL_ACCEPTANCE_OPEN"),
         "progress": {"tasks": 48, "done_scope": 21, "working": 8, "open": 15,
                       "hardware_wait": 4, "manufacturing_gates_closed": 0, "manufacturing_gates_total": 6},
     }
@@ -145,7 +156,9 @@ def main() -> None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(text, encoding="utf-8")
     print(text, end="")
-    print("PASS: rehashed all 1,774 canonical solids and reproduced 7 wood + axis-5 fan conflicts")
+    print(f"AUDIT_COMPLETE: rehashed and checked all 1,774 canonical solids; boss/source intersections={collision_count}")
+    if args.require_clear and collision_count:
+        raise SystemExit(2)
 
 
 if __name__ == "__main__":
