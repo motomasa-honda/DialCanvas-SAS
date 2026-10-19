@@ -6,6 +6,14 @@ The vendor EAGLE source contains a panelized board file. Parsing the smallest cl
 
 The separately published motor drawing identifies model `CX28BYJ48-08`: body Ø28±0.1 mm, two mounting holes Ø4.2±0.15 mm at 35±0.2 mm centers, body depth 19.1±0.2 mm, shaft Ø5±0.1 mm with 13.5±0.2 mm projection, and Ø9±0.2 mm shaft boss. The factory lead is shown as 250±10 mm, UL1061 26AWG. These are source drawing dimensions, not measured incoming parts.
 
+## Motor fit against the existing axis reservation
+
+`check_axis_envelope.py` derives a conservative plan envelope from the drawing's maximum hole-center spacing plus maximum hole diameter, and the maximum body diameter. The resulting motor envelope is **39.55 × 28.10 mm**. When aligned with the existing 40 × 31 mm axis cassette candidate, the 35 mm mounting-hole direction must run along the 50 mm reservation axis: the nominal margin is only **0.225 mm** on each side within the 40 mm dimension and **1.45 mm** within 31 mm. Rotating it 90° exceeds the 31 mm cassette dimension by 8.55 mm. The complete 50 × 41 mm reservation still has at least 5 mm nominal margin around the selected motor orientation.
+
+The driver PCB (35.0 × 19.3 mm) separately fits within 40 × 31 mm, with 2.5 mm and 5.85 mm margins per side. These are overlapping XY projections of two different parts: the motor and driver board need a real Z-stack/bracket layout. The 0.225 mm margin is consumed by ordinary mounting hardware and cannot serve as a fastener or tool allowance. This result sets an orientation constraint and identifies a cassette packaging conflict; it does not establish motor retention, a manufacturable bracket, tolerance capability, or the required 55 mm exchange path. The next mechanical model must fit the motor fixing hardware and independently retained driver board inside the unchanged 50 × 41 mm reserve, then rerun the D7 sweep.
+
+Run `python3 execution/g4_04_seeed_105990072/check_axis_envelope.py` to regenerate [`axis_envelope_screen.json`](axis_envelope_screen.json). It is a static drawing-based fit screen only.
+
 The exact EAGLE footprints and board/schematic connectivity resolve the headers as follows. “IN1” through “IN4” refer to the ULN2003 input pins 1B through 4B respectively.
 
 | Connector | Pad | Signal / connection | Pitch |

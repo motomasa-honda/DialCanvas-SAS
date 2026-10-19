@@ -1,0 +1,68 @@
+{
+  "status": "STATIC_PLAN_ENVELOPE_SCREEN_ONLY",
+  "source_evidence": "cad_evidence.json; official Seeed 105990072 EAGLE and CX28BYJ48-08 drawing fields",
+  "basis": {
+    "mounting_span_upper_mm": 35.2,
+    "mounting_hole_diameter_upper_mm": 4.3500000000000005,
+    "motor_outer_span_upper_mm": 39.550000000000004,
+    "motor_body_diameter_upper_mm": 28.1,
+    "driver_board_nominal_mm": [
+      35.0,
+      19.3
+    ],
+    "cassette_candidate_mm": [
+      40.0,
+      31.0
+    ],
+    "axis_reservation_mm": [
+      50.0,
+      41.0
+    ]
+  },
+  "motor_orientations": [
+    {
+      "orientation": "mounting-hole span along envelope X",
+      "motor_envelope_mm": [
+        39.550000000000004,
+        28.1
+      ],
+      "within_40x31_cassette_margin_each_side_mm": [
+        0.22499999999999787,
+        1.4499999999999993
+      ],
+      "within_50x41_axis_reservation_margin_each_side_mm": [
+        5.224999999999998,
+        6.449999999999999
+      ]
+    },
+    {
+      "orientation": "mounting-hole span along envelope Y",
+      "motor_envelope_mm": [
+        28.1,
+        39.550000000000004
+      ],
+      "within_40x31_cassette_margin_each_side_mm": [
+        5.949999999999999,
+        -4.275000000000002
+      ],
+      "within_50x41_axis_reservation_margin_each_side_mm": [
+        10.95,
+        0.7249999999999979
+      ]
+    }
+  ],
+  "driver_board_clearance_each_side_mm": {
+    "within_40x31_cassette": [
+      2.5,
+      5.85
+    ],
+    "within_50x41_axis_reservation": [
+      7.5,
+      10.85
+    ]
+  },
+  "design_disposition": "Orient the motor mounting-hole span along the 50mm cassette/reservation direction. Its conservative 39.55x28.1mm plan envelope nominally fits the 40x31mm candidate envelope, with only 0.225mm and 1.45mm per-side nominal geometric margin before screw heads, washers, retainer walls, process tolerance, wiring or tool access.",
+  "stacking_constraint": "The motor and the 35x19.3mm driver PCB are separate overlapping plan envelopes; this check does not place them in Z or establish a common bracket. A vertical/axial arrangement, component height, connector projection and cable bend envelope still need source dimensions or received-part measurement.",
+  "service_constraint": "No 55mm extraction sweep is evaluated. Existing 55mm is module displacement and remains unaccepted until the combined motor, board, harness, fastener and tool envelope is integrated against full D7 geometry and physically exchanged.",
+  "manufacturing_status": "NOT_A_MANUFACTURING_RELEASE; source dimensions only, no process capability or received-unit verification"
+}
