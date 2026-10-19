@@ -94,3 +94,17 @@ SHA固定された `phase67-source/firmware.tar.gz` を確認したところ、�
 `test_wave_drive_product.py` は元アーカイブSHAを検査し、一時ディレクトリへ `control.c/.h` を取り出してホストCコンパイルする。20秒相当のスケジュールを模擬し、7軸出力のone-hot維持、正逆相順、周期と計算RPM、STARTING中/STOP/FAULTで相出力ゼロを検査する。元ソースを変更せず、ビルドは物理GPIO/ドライバ/モーター試験の代替にならない。
 
 検証コマンド：`python3 execution/g1_95_aon_regulator/test_wave_drive_product.py`。結果例：`PASS ... 2.326..3.721 RPM (calculated), no physical motor test`。次の物理設計依存はドライバ基板の実コネクタ/共通端子確認、試料の各相電流・ワンホット始動トルク測定、eFuse保証最小値である。
+
+## KiCad 9.0.9 native ERC result — workflow 39192223351 (2026-10-19)
+
+CI generated the native netlist and ERC artifact for the 648-pin review schematic. Inspecting the ERC JSON and mapping its pin UUIDs through the accompanying netlist found **3 errors, 0 warnings, 0 exclusions**:
+
+| Component pin | Net | Finding |
+|---|---|---|
+| U14.5 IN | `/B77__5V_RAW` | `power_pin_not_driven` |
+| U14.8 GND | `/GND` | `power_pin_not_driven` |
+| U20.8 VCC | `/3V3_AON` | `power_pin_not_driven` |
+
+These findings mean the source/return for the incoming 5V_RAW and GND, and the 3V3_AON supply source, are not represented as driven in this schematic. They are not proof of a powered-circuit defect in an assembled system, but they prevent an ERC-clean claim. Do not add PWR_FLAG solely to suppress them: first define the real input source/connectors and rail source in the integrated design, then rerun KiCad ERC. The extracted details and provenance are recorded in `native_erc_findings_39192223351.json` (workflow head SHA, KiCad version, artifact digest, schematic digest, and net-mapped findings).
+
+This CI result does not establish PCB DRC, electrical safety, motor-current limits, thermal performance, or hardware operation. The schematic remains review-only and motor power remains disabled (eFuse EN grounded).

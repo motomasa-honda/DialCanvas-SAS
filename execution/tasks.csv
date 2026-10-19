@@ -3,7 +3,7 @@ ID,Gate,Deliverable,Status,Evidence,Limit
 "G1-02","G1","XC Rev1.1 GPIO静的非競合","DONE_SCOPE","Phase70 CI","実基板の電気試験は未"
 "G1-03","G1","TI安全ICメーカー端子表","DONE_SCOPE","Phase72 CI","footprint/実部品未"
 "G1-04","G1","M1制御28相7軸論理配線","DONE_SCOPE","Phase70 CI","モジュール実ピンは未"
-"G1-05","G1","M1回路図全統合","WORKING","G1-88..95 generated KiCad source chain reproduced locally; native_source_manifest 21-output SHA/size contract; G1-95 648-pin source-map integration PASS; eFuse/current/wave-drive checks PASS; dedicated KiCad9 CI run 39192223351 SUCCESS (native 648-pin netlist, ERC and SVG export contract)","未給電候補図。実5V源/定格、モーターSKU/実測、eFuse保証最小値、ERC所見の評価/DRC/HIL未。CIはネイティブ成果物出力の契約成功であり、回路無欠陥・安全性を意味しない。EN GND保持"
+"G1-05","G1","M1回路図全統合","WORKING","G1-88..95 source chain/21-output manifest PASS; local 648-pin mapping and motor-off invariants PASS; KiCad9 CI run 39192223351 produced native netlist/ERC/SVG. ERC JSON inspection: 3 power_pin_not_driven errors (U14.5 /5V_RAW, U14.8 /GND, U20.8 /3V3_AON), 0 warnings","Review-only/unpowered. Upstream 5V_RAW/GND/3V3_AON source pins are not represented as driven; no ERC-clean claim. Real 5V source/rating, motor SKU/current, eFuse guaranteed minimum, PCB DRC and HIL remain open. EN GND; no motor power"
 "G1-06","G1","物理ラッチ/停止安全回路","WORKING","FG-P74-002","電源ENはGND保持"
 "G1-07","G1","M1 PCB/実footprint/ERC/DRC","OPEN","FG-P68-004","基板未設計"
 "G1-08","G1","M1 PCB製造出力一式","OPEN","GATE1","Gerber等未生成"
