@@ -28,7 +28,21 @@ def verify_data():
     motor = data["sources"]["motor"]
     assert motor["distributor_sku"].endswith("M0155-8561")
     assert motor["verified_specs"]["kit_contents"] == "one motor + one driver board"
-    assert motor["verified_specs"]["board_outline_mm"] is None
+    assert motor["verified_specs"]["board_outline_mm"] == [35.0, 19.3]
+    cad_evidence = json.loads((ROOT / motor["board_outline_source"]).read_text())
+    assert cad_evidence["source"]["manufacturer_part_number"] == "105990072"
+    assert cad_evidence["nominal_pcb_envelope_mm"] == {"x": 35.0, "y": 19.3}
+    assert cad_evidence["control_header"]["pin_count"] == 7
+    assert cad_evidence["motor_connector"]["pin_count"] == 5
+    assert cad_evidence["mounting_holes_inside_pcb_outline"] == []
+    mechanical = cad_evidence["motor_mechanical_drawing"]
+    assert mechanical["model"] == "CX28BYJ48-08"
+    assert mechanical["mounting_hole_center_distance_mm"] == {"nominal": 35.0, "tolerance": 0.2}
+    assert mechanical["shaft_diameter_mm"] == {"nominal": 5.0, "tolerance": 0.1}
+    assert mechanical["motor_housing_pitch_mm"] == 2.5
+    assert mechanical["board_J4_EAGLE_pad_pitch_mm"] == 2.54
+    assert mechanical["first_to_fifth_pitch_delta_mm"] == 0.16
+    assert mechanical["direct_mating_accepted"] is False
     assert data["adapter"]["rated_v"] == 5 and data["adapter"]["rated_a"] == 5
     for source in data["sources"].values():
         assert "url" in source or (ROOT / source["path"]).is_file()

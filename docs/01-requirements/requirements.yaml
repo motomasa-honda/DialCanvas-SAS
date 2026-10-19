@@ -28,7 +28,7 @@
     {"id":"FG-023","status":"FIXED","text":"歯車を電動でゆっくり回し、時計回りと反時計回りを混在させる。","verification":["V-04"]},
     {"id":"FG-024","status":"PROVISIONAL","text":"回転周期は 1 回転 10〜60 秒を目標とする。","verification":["V-04"]},
     {"id":"FG-025","status":"FIXED","text":"歯車同士の噛み合いを必須とせず、現行A案として7軸のモータードライバーモジュールを1軸ずつ独立交換でき、歯車・P3主要構造・他6軸を外さず保守できる構成を維持する。","verification":["V-04"]},
-    {"id":"FG-026","status":"OPEN","text":"7軸モーター/ドライバーの設計候補をSeeed 105990072に固定し、基板外形・実端子・負荷トルク・ハブ/歯車への結合を受け入れる。","open_question":"OQ-05","verification":["V-04"]},
+    {"id":"FG-026","status":"OPEN","text":"7軸モーター/ドライバー候補Seeed 105990072のメーカー図で基板名目外形35x19.3mm、ピン対応、モーター寸法を確認。モーター側2.5mm XHP-5と基板側2.54mm J4の直結は未承認。実品寸法/版、アダプター、取付穴なし基板の個別保持、負荷トルク、ハブ/歯車結合を受け入れる。","open_question":"OQ-05","verification":["V-04"]},
     {"id":"FG-027","status":"OPEN","text":"7軸個別駆動での正逆回転、必要トルク、軸結合と独立交換の機構成立性を検証する。","open_question":"OQ-06","verification":["V-04"]},
     {"id":"FG-028","status":"FIXED","text":"歯車は通常常時回転とし、ユーザーが ON/OFF を操作できる。","verification":["V-04"]},
     {"id":"FG-029","status":"FIXED","text":"わずかな動作音を許容する。","verification":["V-04"]},

@@ -1,0 +1,152 @@
+{
+  "source": {
+    "vendor": "Seeed Studio",
+    "manufacturer_part_number": "105990072",
+    "archive_url": "https://files.seeedstudio.com/wiki/Gear-Stepper-Motor-Driver-Pack/res/Stepper%20Motor%20Driver.rar",
+    "archive_sha256": "f6af3a9ed06699d1207d472549dd99a3df253096359e75fd2d36d4bd2b0d8214",
+    "board_sha256": "ec07e553c8490e80b768d6a479272a607c1b97883517cb185444147cedd14a6e",
+    "schematic_sha256": "abc26676b0c1a318bf7b25afc4031b88acb5235dae5a764bf794e9c58a5ff81f",
+    "motor_mechanical_drawing_url": "https://files.seeedstudio.com/wiki/Gear-Stepper-Motor-Driver-Pack/res/CX28BYJ48.pdf",
+    "motor_mechanical_drawing_sha256_retrieved_2026_10_19": "46a8edcd5f390fd939e0c58e0a4ef337a88b0e88081d1fad2c23816c940dd7cf",
+    "archive_is_unmodified": true,
+    "extraction_note": "The vendor archive is panelized; geometry is taken from the smallest closed layer-20 rectangle enclosing the named circuit components, not the full panel envelope."
+  },
+  "nominal_pcb_envelope_mm": {
+    "x": 35.0,
+    "y": 19.3
+  },
+  "motor_mechanical_drawing": {
+    "model": "CX28BYJ48-08",
+    "body_diameter_mm": {
+      "nominal": 28.0,
+      "tolerance": 0.1
+    },
+    "mounting_hole_center_distance_mm": {
+      "nominal": 35.0,
+      "tolerance": 0.2
+    },
+    "mounting_holes": {
+      "count": 2,
+      "diameter_mm": {
+        "nominal": 4.2,
+        "tolerance": 0.15
+      },
+      "centered_on_body_axis": true
+    },
+    "body_depth_mm": {
+      "nominal": 19.1,
+      "tolerance": 0.2
+    },
+    "shaft_diameter_mm": {
+      "nominal": 5.0,
+      "tolerance": 0.1
+    },
+    "shaft_projection_mm": {
+      "nominal": 13.5,
+      "tolerance": 0.2
+    },
+    "shaft_boss_diameter_mm": {
+      "nominal": 9.0,
+      "tolerance": 0.2
+    },
+    "output_axis_perpendicularity_deg": {
+      "nominal": 90,
+      "tolerance": 1
+    },
+    "factory_lead_length_mm": {
+      "nominal": 250,
+      "tolerance": 10
+    },
+    "factory_wire": "UL1061 26AWG",
+    "motor_lead_housing": "JST XH XHP-5 per vendor drawing; stated 2.5 mm pitch",
+    "motor_housing_pitch_mm": 2.5,
+    "board_J4_EAGLE_pad_pitch_mm": 2.54,
+    "pitch_delta_per_interval_mm": 0.04,
+    "first_to_fifth_pitch_delta_mm": 0.16,
+    "direct_mating_accepted": false,
+    "drawing_interpretation_note": "Dimensions transcribed from the vendor CX28BYJ48.pdf drawing and not yet checked against a received motor. The connector pitch mismatch is a source-document discrepancy requiring a mating-part decision or adapter harness; do not force mate."
+  },
+  "within_project_reserved_axis_envelope_mm": {
+    "x": 50.0,
+    "y": 41.0
+  },
+  "centered_bare_pcb_clearance_mm": {
+    "x_each_side": 7.5,
+    "y_each_side": 10.85
+  },
+  "mounting_holes_inside_pcb_outline": [],
+  "control_header": {
+    "package": "H7-2.54",
+    "pin_count": 7,
+    "pitch_mm": 2.54,
+    "maximum_drill_mm": 0.889,
+    "board_element_rotation": "R180",
+    "pin_map": {
+      "1": {
+        "function": "VM",
+        "eagle_net": "VM",
+        "uln2003_pin": null
+      },
+      "2": {
+        "function": "VCC",
+        "eagle_net": "VCC",
+        "uln2003_pin": "COM"
+      },
+      "3": {
+        "function": "GND",
+        "eagle_net": "GND",
+        "uln2003_pin": "E"
+      },
+      "4": {
+        "function": "IN4",
+        "eagle_net": "N$3",
+        "uln2003_pin": "4B"
+      },
+      "5": {
+        "function": "IN3",
+        "eagle_net": "N$7",
+        "uln2003_pin": "3B"
+      },
+      "6": {
+        "function": "IN2",
+        "eagle_net": "N$6",
+        "uln2003_pin": "2B"
+      },
+      "7": {
+        "function": "IN1",
+        "eagle_net": "N$5",
+        "uln2003_pin": "1B"
+      }
+    }
+  },
+  "motor_connector": {
+    "package": "JST5-2.54",
+    "pin_count": 5,
+    "pitch_mm": 2.54,
+    "maximum_drill_mm": 0.8128,
+    "board_element_rotation": "R270",
+    "pin_map": {
+      "1": {
+        "eagle_net": "VMOTOR",
+        "uln2003_pin": null
+      },
+      "2": {
+        "eagle_net": "N$14",
+        "uln2003_pin": "4C"
+      },
+      "3": {
+        "eagle_net": "N$2",
+        "uln2003_pin": "3C"
+      },
+      "4": {
+        "eagle_net": "N$1",
+        "uln2003_pin": "2C"
+      },
+      "5": {
+        "eagle_net": "N$11",
+        "uln2003_pin": "1C"
+      }
+    }
+  },
+  "evidence_scope": "Vendor-source static CAD/netlist parse only. No manufactured-board revision, as-received dimensions, connector mating clearance, load torque, temperature, or powered behavior accepted."
+}

@@ -6,7 +6,7 @@
 | 歯車の噛み合い | 必須要求は置換済み | [変更履歴](../01-requirements/change-history.md) |
 | 歯車駆動・保守 | 現行A案：7軸のドライバーモジュールを個別交換。歯車/P3/他6軸を外さない。旧1モーター案は履歴 | [ADR-0004](../../adr/0004-module-first-system-review.md) |
 | 表示器・基板 | Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C（SKU 31523）を一品製作用の表示・制御モジュールに選定。タッチは未使用。実表示・寸法適合は未受入 | [メーカー仕様](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[未決定事項 OQ-04](../01-requirements/open-questions.md) |
-| 歯車モーター・ドライバー | Seeed Gear Stepper Motor Driver Pack（MPN 105990072）を7軸分の一品製作用候補に選定。1キットにモーター1個とドライバー基板1枚。基板外形/端子、トルク、結合、全軸電流は未受入 | [Seeed仕様](https://wiki.seeedstudio.com/Gear_Stepper_Motor_Driver_Pack/)、[未決定事項 OQ-05](../01-requirements/open-questions.md) |
+| 歯車モーター・ドライバー | Seeed Gear Stepper Motor Driver Pack（MPN 105990072）を7軸分の一品製作用候補に選定。公式EAGLEは基板名目35×19.3mm、J5 7ピン/J4 5ピン。モーター図面はØ28、35mm取付ピッチ。モーター側XHP-5=2.5mmと基板J4=2.54mmのピッチ差があり直結未承認。基板穴なし。実品寸法/版、嵌合、保持、負荷/結合、全軸電流は未受入 | [メーカーCAD解析・残課題](../../execution/g4_04_seeed_105990072/README.md)、[Seeed仕様](https://wiki.seeedstudio.com/Gear_Stepper_Motor_Driver_Pack/)、[未決定事項 OQ-05](../01-requirements/open-questions.md) |
 | 電源・照明・保持部品 | 完成モジュール/標準部材を優先。候補のまま旧回路を削除しない | [ADR-0004](../../adr/0004-module-first-system-review.md) |
 | 専用製作の範囲 | 外装・装飾歯車円板・ベゼル・共通カセット/アダプター・固有ソフトが中心。安全接続は同等性レビュー後 | [全体監査](../02-architecture/module-first-audit-2026-10-19.md) |
 
