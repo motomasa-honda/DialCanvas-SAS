@@ -1,0 +1,56 @@
+name: Phase74 5V supervisor NC STOP static electrical contract
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase74-stop-5v-review.yml'
+      - 'phase74/**'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase74-stop-5v-review.yml'
+      - 'phase74/**'
+permissions:
+  contents: read
+jobs:
+  phase74-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify unmodified Phase67 reference source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p phase74/evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Test TI pad contract, STOP continuity and power-on no-auto approval
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile phase74/check_stop_5v.py
+          python3 phase74/check_stop_5v.py | tee phase74/evidence/ci-test.log
+          python3 - <<'PY'
+          import json
+          with open('phase74/evidence/result.json') as f: d=json.load(f)
+          assert d['result']=='PASS_5V_STOP_STATIC_AND_ABSTRACT_MODEL'
+          assert (d['terminals'],d['nets'])==(71,24)
+          assert d['fault_mutations_rejected']==8 and d['boolean_invariants']==512
+          assert d['motor_U7_EN']=='CLAMPED_LOW'
+          assert not d['single_NC_contact_welded_short_detectable']
+          assert d['native_kicad_erc']=='NOT_RUN'
+          assert d['manufacturing_gates_closed']==0 and d['software_evidence_closed']==11
+          PY
+          printf '%s\n' 'STATIC_MODEL=PASS' 'STOP_SHORT_OR_WELD=UNDETECTABLE' 'PHYSICAL_FAULT_LATCH=NOT_BUILT' 'REAL_KICAD_ERC=NOT_RUN' 'HARDWARE_POWER=PROHIBITED' > phase74/evidence/disposition.txt
+      - name: Upload immutable review evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase74-stop-5v-review-evidence
+          path: phase74/evidence/
+          if-no-files-found: warn

@@ -1,0 +1,129 @@
+name: Phase68 Forest Guardian RAW A-B isolated build
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase68-raw-ab-review.yml'
+      - 'phase68/**'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase68-raw-ab-review.yml'
+      - 'phase68/**'
+permissions:
+  contents: read
+jobs:
+  raw-ab-review:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify immutable source and isolate candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p phase68-evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          test -f firmware/partition.csv
+          test "$(sha256sum firmware/partition.csv | cut -d' ' -f1)" = 'a1a788917068b9d47176f06d030eda0404a8920eb95bb2d7855828b29cfa26d0'
+          test "$(sha256sum firmware/partition-review-raw-ab.csv | cut -d' ' -f1)" = '38f5771c3d9feb8c09ae13e405f1cf1db7e0c8b05986fc44a3efd339cca452d7'
+          cp -a firmware firmware-raw-ab
+          cp firmware-raw-ab/partition-review-raw-ab.csv firmware-raw-ab/partition.csv
+          cmp firmware/partition-review-raw-ab.csv firmware-raw-ab/partition.csv
+          printf '%s\n' 'REVIEW_ONLY=TRUE' 'ORIGINAL=UNMODIFIED' 'HARDWARE_FLASH=NOT_TESTED' > phase68-evidence/scope.txt
+      - name: ESP-IDF 5.5.2 partition generator and real candidate build
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          idf.py --version | tee phase68-evidence/idf-version.txt
+          idf.py --version | grep -q '5.5.2'
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" --offset 0x8000 firmware-raw-ab/partition.csv phase68-evidence/generator.bin 2>&1 | tee phase68-evidence/generator.log
+          idf.py -C firmware-raw-ab set-target esp32p4 2>&1 | tee phase68-evidence/set-target.log
+          idf.py -C firmware-raw-ab build 2>&1 | tee phase68-evidence/build.log
+          test -s firmware-raw-ab/build/forest_guardian_review.bin
+          test -s firmware-raw-ab/build/partition_table/partition-table.bin
+          cmp phase68-evidence/generator.bin firmware-raw-ab/build/partition_table/partition-table.bin
+          sha256sum firmware-raw-ab/build/forest_guardian_review.bin > phase68-evidence/app-sha256.txt
+          sha256sum firmware-raw-ab/build/partition_table/partition-table.bin > phase68-evidence/table-sha256.txt
+          python3 - <<'PY'
+          import csv, hashlib, json, struct
+          from pathlib import Path
+          fw=Path("firmware-raw-ab")
+          expect=[
+              ("nvs",1,2,0x9000,0x4000),
+              ("otadata",1,0,0xD000,0x2000),
+              ("phy_init",1,1,0xF000,0x1000),
+              ("app_a",0,0x10,0x10000,0x380000),
+              ("app_b",0,0x11,0x390000,0x380000),
+              ("dial_default",1,0x82,0x710000,0x300000),
+              ("dial_slot_a",1,0x41,0xA10000,0xA00000),
+              ("dial_slot_b",1,0x42,0x1410000,0xA00000),
+              ("reserved",1,0x40,0x1E10000,0x1F0000),
+          ]
+          src=[]
+          typ={"data":1,"app":0}
+          sub={"nvs":2,"ota":0,"phy":1,"ota_0":16,"ota_1":17,"spiffs":0x82}
+          with (fw/"partition.csv").open() as file:
+              for fields in csv.reader(line for line in file if line.strip() and not line.startswith("#")):
+                  name,t,s,off,size,*flags=[v.strip() for v in fields]
+                  assert not any(flags),f"Unexpected flags on {name}"
+                  src.append((name,typ[t],sub.get(s,int(s,0)) if s not in sub else sub[s],int(off,0),int(size,0)))
+          assert src==expect,"CSV does not meet exact approved-for-review layout"
+          raw=(fw/"build/partition_table/partition-table.bin").read_bytes()
+          assert len(raw) in (0xC00,0x1000),f"Bad table BIN length {len(raw)}"
+          built=[]
+          md5=False
+          for pos in range(0,len(raw),32):
+              b=raw[pos:pos+32]
+              magic,t,s,off,size,name,flags=struct.unpack("<HBBII16sI",b)
+              if magic==0xEBEB:
+                  md5=True
+                  continue
+              if b==bytes([255])*32:
+                  break
+              assert magic==0x50AA and flags==0,f"Bad table entry at {pos}"
+              built.append((name.split(b'\0')[0].decode(),t,s,off,size))
+          assert md5,"IDF table lacks checksum marker"
+          assert built==expect,"Actual IDF partition BIN differs from expected layout"
+          assert all(o% (0x10000 if t==0 else 0x1000)==0 for _,t,s,o,l in built)
+          assert all(l%0x1000==0 for _,t,s,o,l in built)
+          assert all(x[3]+x[4]<=y[3] for x,y in zip(built,built[1:]))
+          assert built[-1][3]+built[-1][4]==0x2000000
+          config=(fw/"sdkconfig").read_text()
+          for needle in ('CONFIG_IDF_TARGET="esp32p4"','CONFIG_ESPTOOLPY_FLASHSIZE_32MB=y',
+                         'CONFIG_PARTITION_TABLE_CUSTOM=y',
+                         'CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partition.csv"',
+                         'CONFIG_PARTITION_TABLE_OFFSET=0x8000'):
+              assert needle in config,f"sdkconfig mismatch: {needle}"
+          app=(fw/"build/forest_guardian_review.bin")
+          app_size=app.stat().st_size
+          assert 0<app_size<0x380000, f"Actual app {app_size} does not fit OTA slots"
+          report={"status":"PASS_GENERATOR_AND_ESP32P4_TARGET_BUILD",
+                  "scope":"REVIEW ONLY; NO FLASH OR CRYPTOGRAPHIC OTA TEST",
+                  "app_bytes":app_size,"app_slot_bytes":0x380000,
+                  "app_margin_bytes":0x380000-app_size,
+                  "table_sha256":hashlib.sha256(raw).hexdigest(),
+                  "partitions":[{"name":n,"type":t,"subtype":s,"offset":o,"size":z,"end":o+z}
+                                for n,t,s,o,z in built],
+                  "manufacturing_gates_closed":0}
+          Path("phase68-evidence/partition-audit.json").write_text(json.dumps(report,indent=2)+"\n")
+          print(json.dumps(report,indent=2))
+          PY
+          test "$(sha256sum firmware/partition.csv | cut -d' ' -f1)" = 'a1a788917068b9d47176f06d030eda0404a8920eb95bb2d7855828b29cfa26d0'
+          printf '%s\n' 'TARGET_PARTITION_AND_BUILD=PASS' 'PHYSICAL_FLASH=NOT_TESTED' > phase68-evidence/status.txt
+      - name: Preserve evidence on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase68-raw-ab-evidence
+          path: phase68-evidence/
+          if-no-files-found: warn

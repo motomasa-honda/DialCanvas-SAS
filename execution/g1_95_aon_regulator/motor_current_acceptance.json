@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "scope": "G1-05/G1-06 design HOLD, never manufacturing approval",
+  "hardware_release": false,
+  "manufacturer_release_gates_closed": 0,
+  "source": "Existing G1-95 TPS259474LRPW review: nominal R_ILM 2.21k and typical ILIM = 3334/R_ohms. This is a REVIEW assumption, not verified min/max; separate 3.3V TPS62933 draws from shared 5V_RAW.",
+  "assumptions": {
+    "motor_axes": 7,
+    "simultaneous_phases_per_axis": 2,
+    "r_ilm_ohm": 2210,
+    "headroom_target_fraction": 0.2,
+    "notes": "Two concurrent phases is a conservative provisional profile; actual driver current and dynamic waveform unknown"
+  },
+  "unverified_field_values": {
+    "motor_sku": null,
+    "motor_peak_phase_current_a": null,
+    "actual_driver_max_simultaneous_phases": null,
+    "efuse_min_current_limit_a": null,
+    "controller_3v3_peak_a": null,
+    "buck_min_efficiency": null,
+    "five_volt_supply_sku": null,
+    "five_volt_supply_min_current_a": null,
+    "board_measured_peak_input_a": null,
+    "board_measured_peak_motor_a": null,
+    "five_volt_raw_min_during_transient_v": null
+  },
+  "physical_tests_required": [
+    "Read and verify actual motor SKU, phase winding resistance and rated maximum phase current",
+    "Measure driver per-axis simultaneous phase excitation and stalled/energization current",
+    "Verify TPS259474 eFuse guaranteed current-limit min/max and all temperature/ILIM resistor tolerance",
+    "Measure 3V3 buck peak consumption and conversion efficiency at representative screen/control load",
+    "Verify 5V_RAW supply/cable/connector rating covers simultaneous motor and 3V3 demand with margins",
+    "Execute instrumented eFuse startup/stall/STOP/PG-loss/brownout HIL with current and temperature logs"
+  ],
+  "output": "HOLD_MISSING_MEASUREMENTS",
+  "evidence_provenance": {},
+  "physical_test_results": {},
+  "acceptance_status": "NOT_READY_FOR_ENGINEERING_REVIEW",
+  "acceptance_model": "v2: all 11 measured fields require traceable SHA256; manufacturer min, motor envelope, 20% headroom, VIN>=3.8V and six physical test reports for review-readiness only, NEVER automatic motor power release"
+}

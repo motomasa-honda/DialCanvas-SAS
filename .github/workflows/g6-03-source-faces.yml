@@ -1,0 +1,38 @@
+name: Forest Guardian G6-03 80 physical parts front/back design review
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g6-03-source-faces.yml'
+      - 'execution/g6_03_80_source_faces/**'
+      - 'execution/tasks.csv'
+      - 'execution/progress.json'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g6-03-source-faces.yml'
+      - 'execution/g6_03_80_source_faces/**'
+      - 'execution/tasks.csv'
+      - 'execution/progress.json'
+permissions:
+  contents: read
+jobs:
+  auditable-80-parts-160-faces:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable firmware reference SHA
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Audit G6-03 native source evidence scope and 48-task milestone
+        run: |
+          set -euo pipefail
+          python3 execution/g6_03_80_source_faces/check_contract.py
+          python3 execution/preflight.py

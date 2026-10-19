@@ -1,0 +1,43 @@
+name: Seven-axis M1 cassette review integrity
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/cassette-review.yml'
+      - 'execution/cassettes/**'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/cassette-review.yml'
+      - 'execution/cassettes/**'
+permissions:
+  contents: read
+jobs:
+  conditional-seven-axis-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm immutable Phase67 firmware source archive unchanged
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Seven independently replaceable candidate locations with prohibited machining/power
+        run: |
+          set -euo pipefail
+          python3 -m py_compile execution/cassettes/check_manifest.py
+          python3 execution/cassettes/check_manifest.py | tee execution/cassettes/review-ci.log
+      - name: Preserve review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seven-axis-cassette-conditional-review
+          path: |
+            execution/cassettes/seven_axis_conditional_layout.json
+            execution/cassettes/review-ci.log
+          if-no-files-found: warn

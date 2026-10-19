@@ -1,0 +1,3 @@
+full-regression trigger v1
+2026-10-18: initialized during scoped CI migration; DO NOT edit during ordinary development.
+At a major acceptance milestone, change this file and push to review/forest-guardian-phase66-idf to run all 48 workflows.

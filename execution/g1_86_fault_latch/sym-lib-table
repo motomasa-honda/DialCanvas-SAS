@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "FG_REVIEW")(type "KiCad")(uri "${KIPRJMOD}/FG_REVIEW.kicad_sym")(options "")(descr "Review only"))
+  (lib (name "FG_TI")(type "KiCad")(uri "${KIPRJMOD}/FG_TI.kicad_sym")(options "")(descr "TPS259474 pin map"))
+  (lib (name "FG_FAULT")(type "KiCad")(uri "${KIPRJMOD}/FG_FAULT.kicad_sym")(options "")(descr "Actual TI fault latch pinmap"))
+)

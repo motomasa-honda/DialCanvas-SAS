@@ -1,0 +1,40 @@
+{
+  "review_only": true,
+  "workflow_run_id": 39192223351,
+  "workflow_head_sha": "4c0c0de5dafcdc1aa9955da27162792c845ac8f7",
+  "kicad_version": "9.0.9",
+  "artifact_sha256": "14fea249a5f017b7c9e2005e978b948adb8d311765c9958e3bac2ae6d498b787",
+  "source_schematic_sha256": "c9744d4fced3df79b1929b87120d170b045ac10cd66683c00195d08a475abb5b",
+  "erc_summary": {
+    "errors": 3,
+    "warnings": 0,
+    "exclusions": 0
+  },
+  "findings": [
+    {
+      "severity": "error",
+      "type": "power_pin_not_driven",
+      "ref": "U14",
+      "pin": 5,
+      "signal": "IN",
+      "net": "/B77__5V_RAW"
+    },
+    {
+      "severity": "error",
+      "type": "power_pin_not_driven",
+      "ref": "U14",
+      "pin": 8,
+      "signal": "GND",
+      "net": "/GND"
+    },
+    {
+      "severity": "error",
+      "type": "power_pin_not_driven",
+      "ref": "U20",
+      "pin": 8,
+      "signal": "VCC",
+      "net": "/3V3_AON"
+    }
+  ],
+  "interpretation": "Three ERC power_pin_not_driven errors show that upstream 5V_RAW, GND return, and 3V3_AON supply sources are not represented as driven in this review schematic. Do not add PWR_FLAG merely to silence ERC; model and verify actual source/connectors, then rerun native ERC. No electrical or manufacturing release."
+}

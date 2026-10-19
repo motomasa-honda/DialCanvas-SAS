@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "scope": "TI TPS259474 current-limit accuracy source audit; review only",
+  "audited_date": "2026-10-18",
+  "sku": "TPS259474LRPW",
+  "sources": {
+    "ti_datasheet_rev_c": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+    "ti_exact_variant_product_page": "https://www.ti.com/product/TPS25947/part-details/TPS259474LRPWR"
+  },
+  "published_claim": {
+    "source": "TI exact-variant product page",
+    "claim": "Adjustable threshold 0.5A to 6A; ±10% accuracy for ILIM > 1A",
+    "applies_to_design_candidate": "TPS259474LRPW and tape-and-reel ordering variant TPS259474LRPWR share the same RPW package and silicon family variant; ordering suffix only differs"
+  },
+  "datasheet_electrical_characteristics": {
+    "test_condition": "-40C <= TJ <= 125C; VIN=12V; stated table default conditions",
+    "r_ilm_ohm": 3320,
+    "equation_constant_ohm_amp": 3334,
+    "equation_nominal_limit_a": 1.004217,
+    "table_min_limit_a": 0.85,
+    "table_typ_limit_a": 1.007,
+    "table_max_limit_a": 1.15,
+    "min_deviation_from_equation_percent": -15.36
+  },
+  "datasheet_guaranteed_setpoints": {
+    "source_locator": "TI TPS25947 Rev.C, Table 6-5, datasheet p.9; URL above",
+    "limits_are_table_values_not_interpolated": true,
+    "rows": [
+      {"r_ilm_ohm": 6650, "min_a": 0.425, "typ_a": 0.500, "max_a": 0.575},
+      {"r_ilm_ohm": 3320, "min_a": 0.850, "typ_a": 1.007, "max_a": 1.150},
+      {"r_ilm_ohm": 1650, "min_a": 1.800, "typ_a": 2.028, "max_a": 2.200},
+      {"r_ilm_ohm": 750, "min_a": 3.960, "typ_a": 4.452, "max_a": 4.840},
+      {"r_ilm_ohm": 549, "min_a": 5.400, "typ_a": 6.068, "max_a": 6.600}
+    ],
+    "current_design_r_ilm_is_an_exact_table_setpoint": false,
+    "current_design_guaranteed_min_a": null
+  },
+  "finding": "The 3.32kΩ electrical-characteristics row does not agree with applying the product-page ±10% claim to the 3334/R equation. Rev.C Table 6-5 provides min/typ/max values only at the five exact resistor setpoints recorded here; the design's 2.21kΩ value is not one of them. Do not infer a guaranteed minimum for 2.21kΩ by interpolation, extrapolation, or taking the product-page headline at face value.",
+  "design_value_r_ilm_ohm": 2210,
+  "design_equation_typical_a_not_guaranteed": 1.508597,
+  "design_guaranteed_min_a": null,
+  "disposition": "HOLD_TPS259474_MINIMUM_CURRENT_UNRESOLVED",
+  "required_resolution": [
+    "Obtain written TI clarification for TPS259474LRPW current-limit accuracy and the 2.21kΩ setpoint over the specified operating range, or select a resistor/setpoint with an applicable guaranteed electrical-characteristics limit.",
+    "Re-evaluate the motor, branch, connector, wiring and thermal protection envelope before changing R_ILM.",
+    "Keep the unverified measured-evidence field efuse_min_current_limit_a null until supported by an attributable manufacturer specification and the applicable configuration is fixed.",
+    "Perform instrumented no-load and fault-injection HIL after the circuit, motor SKU and current profile are resolved."
+  ],
+  "safety": {
+    "motor_power_enabled": false,
+    "hardware_release": false,
+    "manufacturer_release_gates_closed": 0,
+    "task_status_changes": false
+  }
+}

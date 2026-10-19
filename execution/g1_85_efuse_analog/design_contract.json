@@ -1,0 +1,107 @@
+{
+  "dated": "2026-10-16",
+  "scope": "G1-05 provisional actual analog external subcircuit for TPS259474LRPW; 374 native KiCad endpoints",
+  "revision": "G1-85",
+  "sku": "TPS259474LRPW",
+  "variant": "circuit-breaker + latch-off (not auto-retry)",
+  "datasheet": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+  "datasheet_rev": "SLVSFC9C May 2026",
+  "pins": {
+    "1": "EN/UVLO",
+    "2": "OVLO",
+    "3": "PG",
+    "4": "PGTH",
+    "5": "IN",
+    "6": "OUT",
+    "7": "dVdt",
+    "8": "GND",
+    "9": "ILM",
+    "10": "ITIMER"
+  },
+  "review_components": [
+    {
+      "name": "R_OVLO_HIGH",
+      "ref": "R50",
+      "kind": "R",
+      "value": "47k 1% CANDIDATE",
+      "nets": [
+        "B77__5V_RAW",
+        "B77__REQUIRES_OVLO_PARTS"
+      ]
+    },
+    {
+      "name": "R_OVLO_LOW",
+      "ref": "R51",
+      "kind": "R",
+      "value": "12k 1% CANDIDATE",
+      "nets": [
+        "B77__REQUIRES_OVLO_PARTS",
+        "GND"
+      ]
+    },
+    {
+      "name": "R_ILM_LIMIT",
+      "ref": "R52",
+      "kind": "R",
+      "value": "2.21k 1% CANDIDATE",
+      "nets": [
+        "B77__REQUIRES_ILIM_R",
+        "GND"
+      ]
+    },
+    {
+      "name": "C_DVDT",
+      "ref": "C14",
+      "kind": "C",
+      "value": "3.3nF CANDIDATE",
+      "nets": [
+        "B77__REQUIRES_DVDT_DESIGN",
+        "GND"
+      ]
+    },
+    {
+      "name": "C_ITIMER",
+      "ref": "C15",
+      "kind": "C",
+      "value": "2.2nF CANDIDATE",
+      "nets": [
+        "B77__REQUIRES_ITIMER_C",
+        "GND"
+      ]
+    }
+  ],
+  "recorded_pads": 374,
+  "source_pads": 364,
+  "added_pads": 10,
+  "components": 103,
+  "nets": 104,
+  "expected_analog_labels": [
+    "B77__REQUIRES_OVLO_PARTS",
+    "B77__REQUIRES_DVDT_DESIGN",
+    "B77__REQUIRES_ILIM_R",
+    "B77__REQUIRES_ITIMER_C"
+  ],
+  "settings": {
+    "vin_nominal_volts": 5,
+    "r_ovlo_upper_ohm": 47000,
+    "r_ovlo_lower_ohm": 12000,
+    "ovlo_threshold_rising_v_min": 1.183,
+    "ovlo_threshold_rising_v_typ": 1.2,
+    "ovlo_threshold_rising_v_max": 1.223,
+    "r_ilm_ohm": 2210,
+    "dvdt_cap_pf": 3300,
+    "itimer_cap_nf": 2.2,
+    "itimer_delta_v_typ": 1.51,
+    "itimer_sink_current_ua_typ": 1.8,
+    "resistor_tolerance_nominal": 0.01
+  },
+  "disclaimer": "candidate-only resistance/capacitance, requires load currents/total capacitance/startup thermal/voltage/max rating; no procurement",
+  "enable_status": "GROUNDED_10K_NO_CHANGE",
+  "phase_gate": "ALL_28_OE_PULLUP_DISABLED",
+  "manufacturer_erc_pass": false,
+  "pcb_drc": false,
+  "motor_hil": false,
+  "manufacturing_gates": 0,
+  "done_scope": 19,
+  "sw_evidence": 11
+}

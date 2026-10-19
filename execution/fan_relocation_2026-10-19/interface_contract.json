@@ -1,0 +1,69 @@
+{
+  "evidence_id": "FG-G3-06-SUNON-INTERFACE-2026-10-19",
+  "status": "PROVISIONAL_SCREENING_INTERFACE_NOT_FABRICATION_RELEASE",
+  "source": {
+    "manufacturer": "SUNON",
+    "document": "DC Fan catalog 2026-02-10 (255-E)",
+    "page": 22,
+    "url": "https://www.sunon.com/jp/MANAGE/Docs/PRODUCT/325/504/DC%20Fan_20260210%28255-E%29.pdf",
+    "accessed": "2026-10-19"
+  },
+  "model_candidate": "MF30100V3-1000U-A99",
+  "manufacturer_rated_data": {
+    "supply_vdc": 5,
+    "rated_current_ma": 45,
+    "rated_power_w": 0.23,
+    "free_airflow_cfm": 2.5,
+    "static_pressure_in_h2o": 0.07,
+    "noise_dba": 10.2,
+    "mass_g": 7.8
+  },
+  "manufacturer_mechanical_interface_mm": {
+    "body_w": 30.0,
+    "body_w_tolerance": 0.5,
+    "body_h": 30.0,
+    "body_h_tolerance": 0.5,
+    "depth": 10.0,
+    "depth_tolerance": 0.5,
+    "inlet_diameter_nominal": 29.7,
+    "outlet_diameter_nominal": 29.3,
+    "mount_hole_count": 3,
+    "mount_hole_diameter_nominal": 3.2,
+    "mount_hole_diameter_tolerance": 0.3,
+    "mount_pitch_nominal": 24.0,
+    "mount_pitch_tolerance": 0.3,
+    "lead_length_nominal": 145,
+    "lead_length_tolerance": 10,
+    "lead_wire_gauge_awg": 28
+  },
+  "candidate_integration": {
+    "site_xy_mm": [220.0, 40.0],
+    "wood_port_diameter_nominal_mm": 29.7,
+    "wood_port_tolerance_mm": null,
+    "wood_adapter_nominal_mm": [45.0, 45.0, 1.5],
+    "wood_adapter_support_count": 4,
+    "wood_adapter_support_pattern_relative_mm": [[-19, -19], [19, -19], [19, 19], [-19, 19]],
+    "fan_mount_hole_centers": null,
+    "fan_mount_hole_layout_status": "THREE_HOLES_SHOWN; EXACT_XY_PATTERN_NOT_RELEASED_FROM_CATALOG_TEXT_EXTRACTION",
+    "nominal_adapter_edge_distance_at_support_center_mm": 3.5,
+    "nominal_port_to_fan_inlet_diameter_difference_mm": 0.0,
+    "nominal_port_to_fan_outlet_diameter_difference_mm": 0.4
+  },
+  "explicit_unknowns": [
+    "fan mounting-hole center coordinates must be transcribed from a dimensionally verified manufacturer drawing or measured from a sourced sample",
+    "fan part/lead polarity and connector termination are not established by this dimensional page",
+    "145±10mm integral fan lead does not establish system harness route or cut length",
+    "rated 45mA is not a startup or locked-rotor maximum-current guarantee",
+    "the zero nominal port-to-inlet diameter difference has no tolerance or running clearance; do not use as a finished machining fit",
+    "adapter plate material, detailed hole sizes, seal, guard, grille, fasteners and wood substrate remain unqualified",
+    "installed airflow, case pressure, thermal performance and noise remain untested"
+  ],
+  "release_state": {
+    "purchase": false,
+    "cut": false,
+    "power": false,
+    "motor_efuse_en": "LOW",
+    "g3_06": "OPEN",
+    "manufacturing_gates_closed": 0
+  }
+}

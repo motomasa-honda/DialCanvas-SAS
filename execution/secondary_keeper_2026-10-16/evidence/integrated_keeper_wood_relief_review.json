@@ -1,0 +1,60 @@
+{
+  "review": "FG-M1-KPR-20261019 integrated wood-relief candidate",
+  "keeper_scad": "M1_7AXIS_ANTISLIDE_STOP_REVIEW.scad",
+  "source_screen": "keeper_wood_relief_candidate.json",
+  "cad_parameters": {
+    "boss_x_offsets_mm": [
+      21.3,
+      24.6
+    ],
+    "boss_y_offsets_mm": [
+      -3.75,
+      0.2
+    ],
+    "boss_z_mm": [
+      134,
+      138
+    ],
+    "screw_center_offset_mm": [
+      22.95,
+      -1.1
+    ],
+    "seat_mm": [
+      4.1,
+      4.75,
+      1.6
+    ],
+    "seat_center_offset_mm": [
+      22.95,
+      -1.775
+    ],
+    "seat_z_mm": [
+      137,
+      138.6
+    ],
+    "rear_bore_diameter_mm": 3.2,
+    "rear_wood_z_mm": [
+      137,
+      145
+    ]
+  },
+  "parameter_reconciliation": "matches source screen proposed_geometry and keeper SCAD constants; independently asserted by check_motion.py",
+  "source_screen_result": {
+    "source_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+    "solids": 1774,
+    "wood_seats_fully_in_wood": "7/7",
+    "bore_envelopes_full_wood_or_full_void": "7/7",
+    "driver_corridor_fixed_nonwood_hits_after_grille_removal": 0,
+    "seat_min_boundary_clearance_mm": 1.5542,
+    "boss_intersections": "BACK_WOOD 7/7; axis 5 FAN_MAX_BODY and FAN_GASKET",
+    "axis5_fan_disposition": "original FAN_* remains an unmodified-D7 collision in the historical audit; new (220,40) external relocation candidate has zero fixed-source intersections, subject to building and thermal qualification"
+  },
+  "limitations": [
+    "source screen came from same candidate dimensions but was not rerun from the unavailable canonical archive in this work cycle",
+    "SCAD represents cutters as an optional overlay; it does not subtract them from the immutable D7 wood solid",
+    "historical axis 5 fan/gasket hit only clears geometrically if the external fan relocation candidate is integrated",
+    "wood strength, grain, machine tolerance, fastener retention, measured module and physical 55mm exchange unverified"
+  ],
+  "status": "INTEGRATED_CAD_CANDIDATE; SOURCE_SCREEN_MATCHED; NOT_FOR_MANUFACTURE",
+  "conditional_relocated_fan_source_audit": "../../fan_relocation_2026-10-19/evidence/candidate_source_audit.json"
+}

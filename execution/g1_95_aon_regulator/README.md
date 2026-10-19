@@ -1,0 +1,145 @@
+# G1-95 — 5V_RAW → 3V3_AON 実電源経路のKiCad回路候補
+
+## 回路実装
+
+メーカーTI TPS62933DRLR（SOT583 DRL, 8-pin, 3.8–30V入力・最大3A buck）を独自のメーカーpin/electrical type付き KiCadシンボル FG_POWER:TPS62933DRLR として生成。参照 U45、1=RT、2=EN、3=VIN、4=GND、5=SW、6=BST、7=SS、8=FB。3V3の源は従来のモーターeFuse 5V_MOTORから取らず、上流の **5V_RAW** から生成。7軸のeFuseが切れても制御ロジック側の3.3V監視を維持する設計。
+
+新設J20は5V_RAW/GND外部給電コネクタの**配置候補**であり、ACアダプターと端子のSKU/許容電流は未選定。採用回路候補 L1=4.7µH、R76=31.2kΩ±1%、R77=10kΩ±1%、10µF入力2個、22µF出力2個、BST-SW 100nF、SS 33nF、VINデカップリング100nF。RTはメーカー許可の未接続500kHzモード。FB公称 0.8V ×(1+31.2/10)=3.296V。各L/C/出力容量のDCバイアス・飽和電流・過渡応答・実装熱は未確定。VIN保護/逆極性/過電圧も未設計。
+
+既存G1-94の618端子・182記号を厳密に保持し、追加30端子/12記号、合計 **648端子/194記号**。メーカーPIN1～PIN8、input/buck SW/returnと出力の各ノードを実ネットリストで照合。シンボルは review-only、footprint空、製造対象外。**メーカーのPower-Out pinを記号に表現しても、誘導部品を経由した電源供給元のERC認定や、製品の電気試験を代替しない。** PWR_FLAG追加や違反抑制なし。
+
+## 完成上の重要な追加発見：モーター電流制限
+
+既存G1-85のeFuse TPS259474LRPW回路は R_ILM=2.21kΩで典型 3334/2210=**1.509A** の仮設定。この値を7軸×2相同時ONに単純配分すると **約107.8mA/相** しか使えず、配線・モーターボード・電源と立上り過渡の余裕はゼロ。例えば仮に1相160mAのモーターなら7×2×160mA=2.24Aなので、現行の電流制限設計は不適合となる。**実際のM1モーターはSKU/巻線抵抗・最大駆動相数/停止電流が未確定なので、これは条件付き判定であり実際の電流値の断定ではない。** この設計判断が終わるまで電源保護抵抗を安易に減らさない。
+
+## 完了条件と禁止
+
+メーカー仕様は https://www.ti.com/lit/ds/symlink/tps62933.pdf / https://www.ti.com/lit/ds/symlink/tps25947.pdf 。本機の5V source、外部DCジャック形式、最大モーター負荷、3.3V系ピーク消費、基板温度、eFuse熱・配線/コネクタ定格を測定し、入力レールの5V定格が妥当だと確認する。ERC未駆動電源指摘は本当の電源元・帰路が検証されるまでOPEN。G1-05/G1-06はWORKING、G1-07 OPEN、20/48、製造0/6。発注・加工・PCB製造・モーター通電・書込み・mainマージ禁止。
+
+## 差分CIと安全電源分離の照合
+
+G1-95の正規レビューでは、このフォルダーだけを変更した短期feature PRを長期reviewブランチへ向ける。軽量CIに加えG1-95固有KiCad9ワークフローが実行されることを必ずSHAで確認する。check_contract.pyはU45の上流5V_RAW接続だけでなく、故障ラッチU20と監視タイマーU33/U36/U42およびRUNゲートU43の電源端子が実際のL1出力3V3_AONと同じネットであることを横断的に確認する。これは電源分離のネット構造チェックであり、5V入力保護・起動瞬断・負荷電流・ERC/DRC・実機認可ではない。
+
+## G1-95 供給電圧の公差検証とCI実行証拠
+
+製品採用前の最低限の量産条件として、メーカーTPS62933の **25℃における基準電圧公差±1%** とフィードバック抵抗31.2kΩ/10kΩの**各±1%**を逆方向に積み重ね、計算上の3V3_AON公差を **3.214～3.380V** とした。公称3.296V、算術上は3.3V±5%内だが、**全温度・負荷・入力変動・基板レイアウト・コンデンサのDCバイアス・起動時突入/瞬断を保証しない**。特に制御ICが稼働する全温度範囲の規格は別途確定が必要。G1-95の専用CIではこの公差と実KiCad648端子/194部品を同じコミットで照合する。**軽量PRゲートだけでは専用KiCad検証を満たしたとは判定しない。**
+
+起動前モーターEN禁止/28相OE禁止の回路状態は不変。G1-05/G1-06 WORKING、G1-07 OPEN、製造0/6。源となる5Vアダプタ、最大必要電流/熱と逆給電、正規footprint/PCB/実機HILはOPEN。
+
+## 2026-10-19 — 統合KiCadレビュー原本の再現性を確認
+
+G1-88〜G1-95の生成KiCad回路図、ライブラリ、各段階の端子マップ21ファイル（3,236,649 bytes）をローカル生成し、build_review.py の再実行で全ファイルSHA256一致を確認した。出力ごとのSHA256/byte数をnative_source_manifest.jsonに保存し、check_contract.pyが専用CIで生成後の一致を検査する。G1-95 648端子/194記号、Phase77/78との348端子接続連鎖、eFuse EN/OEのOFF条件もソース上で再確認した。これら大容量生成物はGitに追加せず、ビルダースクリプト、マニフェスト、契約検査を追跡する。
+
+この候補回路は未給電で、部品フットプリント/BOM対象外。KiCad9のネイティブネットリスト/ERCはこのローカル環境では未実行。G1-95専用CIで確認する。未認定の5V入力源とモーター電流/eFuse保証最小値、温度、PCB/DRC、HILを残す。G1-05/G1-06 WORKING、G1-07 OPEN、EN LOW、製造ゲート0/6を維持する。
+
+## 2026-10-18 — 実測値を登録できない永久HOLDテストの修正
+
+既存の電流計算テストはすべての実測欄が `null` のままでなければPASSせず、将来の実物測定を台帳へ登録すると開発が進まなくなる欠陥があった。今回、実測値の追加を許可する**証拠ソース付き受入ゲート**に変更する。証拠資料はリポジトリ内 `execution/evidence/` にSHA256付きで置き、測定器・メーカーおよびUTC時刻を必要とする。6項目の実機試験結果も未試験のうちはレビュー合格にできない。
+
+eFuseは `3334/R` の公称値ではなくメーカー保証最低制限電流、同時相数×7軸、実測ピーク、20%設計マージを照合する。共通5V入力は負荷試験中の最低電圧がTPS62933動作下限3.8V以上、測定器で捕捉した最大入力電流と保守的な理論入力電流を両方満たす必要がある。3.3V buck 3A能力は20%マージを要求し、効率は実証した最低値を使用する。
+
+このチェックが `READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASE` と返しても**通電許可・製造許可にはならない**。別系統の全回路ERC/PCB DRC、故障注入、STOP、冷却/温度、絶縁/逆給電、実レビュー/承認が必要。現時点は実測欄が空のままなので `HOLD_MISSING_MEASUREMENTS` が正しい判定である。
+
+
+## 受入状態の固定文字列を排除
+
+今後実測値と物理試験が全て入力された場合、outputとacceptance_statusは測定値から求めた判定に**一致しなければならない**。従来の永久HOLD文字列は未測定時だけ使用し、結果の書換え漏れ・根拠のないREADY宣言を自動的に拒否する。READY_FOR_ENGINEERING_REVIEW_NOT_POWER_RELEASEは技術レビュー開始を意味し、モーター電源・製造解禁を一切意味しない。
+
+## 2026-10-18 — 実機部品選定を前進させる電流条件と型番の衝突監査
+
+既存G4-02のSKU不一致はモーターではなく**ULN2003ドライバ基板のSKU/リンク不一致**だった。ElectroPeakの商品ページはMTR-09-024を公称35×31mm、MTR-09-004を公称40×20mmの別基板として示す。実モーターの型番は未特定で、MTR-09-024を使う28BYJ-48互換性記述はモーター採用の根拠にしない。販売ページで寸法・電気欄に混在/矛盾も見つかったため、製造データには採用せず、`motor_feasibility.py` はドライバ基板とモーター同定を分離して両方をHOLDする。
+
+7軸・同時通電1～4相、仮定60/80/100/160mAの計16条件について、現在のR_ILM=2.21kΩに基づく**公称**eFuse値と20%電流余裕から、必要な**メーカー保証最低電流制限**を計算する。2相/軸×80mAなら電流合計1.12A、保証最低制限は1.40A超が必要。2相/軸×100mAなら1.40A、既存eFuse公称約1.509Aに対して20%の余裕を満たさない。これらの入力は**全て仮想シナリオ**であって、実測や仕様選定ではない。
+
+生成コマンド：`python3 execution/g1_95_aon_regulator/motor_feasibility.py --output execution/g1_95_aon_regulator/native_evidence/motor_candidate_matrix.json`。テスト：`python3 execution/g1_95_aon_regulator/test_motor_feasibility.py`。G1-95の短期feature PRで通常の電源回路テストと一緒に専用CIを走らせる。元の11件の未測定値・証拠台帳は変更せず、許可していないモーター通電・部品購買・製造の状態は不変。G1-05/G1-06はWORKING、全体20/48、製造0/6。
+
+## 2026-10-18 — TI電流制限精度の一次資料不一致（選定HOLD）
+
+TIのTPS259474LRPWR正確品番ページは `ILIM > 1A` で電流制限精度±10%と記載する。一方、同じメーカーのTPS25947 Rev.C（2026年5月改訂）電気特性表は `R_ILM=3.32kΩ` に対し最小0.850A/標準1.007A/最大1.150Aを記載する。式 `3334/R` の同抵抗公称値は1.004Aで、表の最小値はそこから約−15.36%。表条件は `-40°C ≤ TJ ≤ 125°C, VIN=12V`。
+
+この差を解釈で消さない。現行 `R_ILM=2.21kΩ` の式による約1.509Aは引き続き**計算上の公称値のみ**であり、該当抵抗値の保証最小電流は一次資料から確定できないため `efuse_min_current_limit_a` をnullのままにする。±10%を適用した値、隣接表の線形補間、代表値を保証下限として用いることは禁止。
+
+根拠と丸めを `efuse_accuracy_audit.json` に記録し、`check_efuse_accuracy_audit.py` が0.850Aと1.004Aの差、および2.21kΩの保証最小値が未確定であることを検査する。解決にはTIからTPS259474LRPWの2.21kΩ設定に適用される保証範囲を得るか、保証範囲の明記された設定値へ再設計し、電流・配線・コネクタ・熱を再評価する必要がある。モーターENはLOWのまま。G1-05/G1-06はWORKING、製造ゲート0/6。
+
+Rev.C Table 6-5の**保証値が表記された5つの抵抗点だけ**を `efuse_accuracy_audit.json` に追記した。検査は各min/typ/max値と昇順の抵抗点を照合し、現行2.21kΩが表の値でないこと、保証最小値がnullであることを確認する。別抵抗点からの補間や公称式による保証値生成はしない。この表は再設計候補の根拠であり、負荷電流・始動電流・故障遮断適合性を確定しないため、抵抗値の変更は保留。
+
+一次資料： [TI TPS25947 Rev.C datasheet](https://www.ti.com/lit/ds/symlink/tps25947.pdf) の電気特性表（p.9）、ILM式(7)（p.32）、および [TI TPS259474LRPWR product page](https://www.ti.com/product/TPS25947/part-details/TPS259474LRPWR)。
+
+## 2026-10-19 — G1-77/G1-78安全信号のG1-95統合ネット照合
+
+G1-95の648端子マップを生成し、Phase77の140端子/39ネットとPhase78の208端子/63ネットを、`source_ref + source_pin + source_net`単位で相互照合する `check_phase_chain_integration.py` を追加した。両群348端子すべてが完全一致し、15個の意図的NC、共通電源ネット、7軸28相、4つのバッファ/OE電源ネットを区別して検査する。さらにARM latch Q→U39→U41→R66/R68→TPS259474 ENの端点ネット列を追跡し、ENの二重pulldownを確認する。Phase78の12個のOE端子も同一のフェイルクローズ候補ネットに維持。
+
+この検査は実ソースのネット登録と論理ゲート間の接続名を確認するもので、ゲート論理の電気特性、受動値、故障時しきい値・伝搬時間、KiCadネイティブERC、フットプリント/PCB、実測/HIL、安全なモーター運転を証明しない。G1-05/G1-06はWORKING、製造ゲート0/6、モーターEN無効を維持する。
+
+## 2026-10-18 — 製造元モーター型番の適合性スクリーニング
+
+Oriental Motorの製品カタログで具体的な発注型番 `PKP223U09A2` を確認した。公開値は28mm枠、モーター長32mm、6リード、0.95A/相、2.95V、3.11Ω/相で、掲載品自体はギヤヘッドなし。7軸×2相の単純同時通電上限は13.3Aとなる。これは現候補のULN2003A各出力500mA定格およびeFuse公称1.509Aを超えるため、この製品を現行回路に採用しない。高電流能力の別ドライバ・電源・遮断設計とモーター/歯車の機械再設計を一体で行わない限り不適合である。
+
+この照合はメーカー掲載値の机上比較であり、試料測定、現行部品との物理互換、ギヤード型番の可用性/寿命、実機温度を検証していない。`motor_feasibility.py` のレビュー出力に不適合根拠を追加し、テストで値・不採用状態を固定した。代替モーターの選定は未完了で、G1-05/G1-06 WORKING、モーター電源無効を維持する。
+
+一次資料: [Oriental Motor PKP223U09A2 product listing](https://catalog.orientalmotor.com/item/2-phase-unipolar-stepper-motors/shop-pkp-series-2-phase-unipolar-stepper-motors/pkp223u09a2)（仕様/結線/外形/販売情報）、[TI ULN2003A datasheet](https://www.ti.com/lit/ds/symlink/uln2003a.pdf)（出力電流定格）。
+
+## 2026-10-19 — 小型ギヤ付きステッパーの調達品番候補
+
+Adafruit販売品 Product ID 858 は、5V・5ピンユニポーラ・1/16.128減速・516ステップ/出力回転・28mm径×高さ20mm・5mm径出力軸として掲載され、5Vで6rpm未満の運転案内がある。掲載約42Ω/巻線から計算した単相励磁の理想抵抗電流は約119mA/軸、7軸合計約0.833A。二相同時励磁では約1.667Aとなり、現行eFuseの計算上の公称1.509Aを余裕なしでも超える。よって本候補を試す場合もファームウェア/駆動シーケンスは一相ずつの励磁に限定した条件で評価し、実トルク・始動余裕が足りなければ採用しない。
+
+これはOEM製造元・巻線抵抗許容差・最大電流が未確認の**販売者カタログ候補**であって、発注BOMの確定ではない。単相電流の値も販売ページの概略抵抗からの机上計算で、保証電流・実消費・eFuse保証最小値を示さない。まず受入試料で抵抗、全コイルシーケンスの電流、歯車列負荷での始動/連続運転、温度、騒音、軸結合を評価する。現状のカセット設計は同品番の実物穴位置/全長/コネクタを取り込んでいないため、機械適合も未確認。量産選定・電源有効化・購買承認は行わない。
+
+一次資料: [Adafruit Product 858](https://www.adafruit.com/product/858)（販売型番、寸法、減速比、運転条件、概略抵抗）、[TI ULN2003A datasheet](https://www.ti.com/lit/ds/symlink/uln2003a.pdf)（単出力電流定格）。機械・調達・電気の試料確認が済むまではG1-05/G1-06 WORKING、G3-04 WORKING、G4-04 OPEN、G1 EN LOWとする。
+
+## 2026-10-19 — 実ファームウェアの単相駆動互換確認
+
+SHA固定された `phase67-source/firmware.tar.gz` を確認したところ、既存製品ファームウェアはすでに各軸1出力だけをONにするワンホットwave-drive方式だった。軸別相周期は31,250/38,462/33,333/45,455/35,714/41,667/50,000µs、Adafruit 858の掲載516ステップ/出力回転で計算した候補軸速度は2.326～3.721rpm。これは販売ページの「5Vでは6rpm未満」という案内内にあるため、**制御方式と回転速度はソフトウェア上互換**である。これは励磁トルク、試料の抵抗ばらつき、起動負荷、ギヤ比の実個体公差を示さない。
+
+`test_wave_drive_product.py` は元アーカイブSHAを検査し、一時ディレクトリへ `control.c/.h` を取り出してホストCコンパイルする。20秒相当のスケジュールを模擬し、7軸出力のone-hot維持、正逆相順、周期と計算RPM、STARTING中/STOP/FAULTで相出力ゼロを検査する。元ソースを変更せず、ビルドは物理GPIO/ドライバ/モーター試験の代替にならない。
+
+検証コマンド：`python3 execution/g1_95_aon_regulator/test_wave_drive_product.py`。結果例：`PASS ... 2.326..3.721 RPM (calculated), no physical motor test`。次の物理設計依存はドライバ基板の実コネクタ/共通端子確認、試料の各相電流・ワンホット始動トルク測定、eFuse保証最小値である。
+
+## KiCad 9.0.9 native ERC result — workflow 39192223351 (2026-10-19)
+
+CI generated the native netlist and ERC artifact for the 648-pin review schematic. Inspecting the ERC JSON and mapping its pin UUIDs through the accompanying netlist found **3 errors, 0 warnings, 0 exclusions**:
+
+| Component pin | Net | Finding |
+|---|---|---|
+| U14.5 IN | `/B77__5V_RAW` | `power_pin_not_driven` |
+| U14.8 GND | `/GND` | `power_pin_not_driven` |
+| U20.8 VCC | `/3V3_AON` | `power_pin_not_driven` |
+
+These findings mean the source/return for the incoming 5V_RAW and GND, and the 3V3_AON supply source, are not represented as driven in this schematic. They are not proof of a powered-circuit defect in an assembled system, but they prevent an ERC-clean claim. Do not add PWR_FLAG solely to suppress them: first define the real input source/connectors and rail source in the integrated design, then rerun KiCad ERC. The extracted details and provenance are recorded in `native_erc_findings_39192223351.json` (workflow head SHA, KiCad version, artifact digest, schematic digest, and net-mapped findings).
+
+This CI result does not establish PCB DRC, electrical safety, motor-current limits, thermal performance, or hardware operation. The schematic remains review-only and motor power remains disabled (eFuse EN grounded).
+
+## USB-C入力コントローラー候補（2026-10-19、未確定）
+
+次の入力回路候補として、ST **STUSB4500LQTR**（QFN-24 EP 4×4 mm）を選定候補にした。STの製品情報では同品番はActive / volume production、データシートでは5V専用sink、最大3A（15W）、sourceのdefault/1.5A/3A電流広告検出、VBUS監視、外付けP-MOS向けVBUS_EN_SNKを規定する。USB-Cだけを使う時計に対して、PDで高電圧を要求しない候補になる。
+
+**3A検出は負荷電流を3Aに制限する機能ではない。** 外付けP-MOSの定格、入力保護、実5Vアダプター、USB-C電流広告への安全な動作、7軸と表示/制御/LED/ファンを含む全体電流予算は未設計・未測定である。したがってdefaultまたは1.5A広告時はモーター許可なし、3A広告時も実測予算・20%余裕・電流保護・安全HILの合格まではモーター電源を無効のままにする。STUSB4500LのVBUS_EN_SNKは適切なVBUS範囲/接続状態で電源経路を制御する機能であり、負荷過電流保護とは扱わない。
+
+| 項目 | 現時点 |
+|---|---|
+| コントローラー候補 | STUSB4500LQTR、メーカー製品ページ上Active |
+| 5V source current advertisement | default / 1.5A / 3Aを検出。装置負荷を制限しない |
+| USB-Cレセプタクル、外付けP-MOS、VBUS TVS/ESD | 部品未選定 |
+| 5VアダプターSKU・保証定格 | 未選定 |
+| 全システム最大電流・余裕・HIL | 未検証、モーター電源HOLD |
+| 製造/購買/通電 | 未承認 |
+
+一次資料: [STUSB4500L データシート DS13102 Rev.6](https://www.st.com/resource/en/datasheet/stusb4500l.pdf)、[ST 製品ページ（品番状態・パッケージ）](https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html)。検査は `python3 execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py`。
+
+## USB-C入力候補のメーカー端子マップ（2026-10-19、回路未設計）
+
+ST DS13102 Rev.6 Figure 2/Table 1 からSTUSB4500L QFN-24 EPの24信号ピンと露出パッドを `usb_c_sink_candidate.json` に転記し、`check_usb_c_sink_candidate.py` で全25端子のピン番号・名称を完全一致照合する。外付けP-MOS候補STL9P3LLH6についてもメーカー資料の8端子（S=1/2/3、G=4、D=5/6/7/8）を記録し、端子割当と型番を検査する。これは端子ライブラリ作成時の照合基準であり、配線済みネットリストやKiCad記号、フットプリントはまだ存在しない。
+
+STのFigure 9は一般的な実装例としてSTL9P3LLH6と保護部品を描いているが、USB 3およびバッテリーチャージャーを含む。Forest Guardianは5V電源入力専用なので、その図を本機の完成回路として転用せず、コネクタ、VBUS/CC保護、FETのゲート/放電回路、入力保護と電流予算を別途確定する。ST自身も同ページで例は出発点であり、顧客側で全システム実装と検証が必要と明記する。
+
+STL9P3LLH6の資料上の -30V、最大15mΩ、-9Aは素子表の仕様で、基板の連続電流能力や熱条件を意味しない。P-MOSとSTUSB候補は未選定扱い、メーカー端子マップのみのレビュー証拠である。全システム負荷、USB-C source広告の扱い、定格アダプター、保護回路、受入試験を確定するまでは、USB-C入力回路、PCB製造、購買、モーター電源を承認しない。
+
+一次資料: [STUSB4500L DS13102 Rev.6](https://www.st.com/resource/en/datasheet/stusb4500l.pdf) Figure 2/Table 1/Figure 9、[STUSB4500L製品ページ](https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html)、[STL9P3LLH6 DS10145 Rev.3](https://www.st.com/resource/en/datasheet/stl9p3llh6.pdf)。検査は `python3 execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py`。端子マップ検査はPASS、ネイティブERC・回路全体レビュー・製品受入は未実行。
+
+## USB-Cレセプタクルのメーカー型式候補（2026-10-19、未選定）
+
+GCT USB4105シリーズを、STUSB4500L 5V-only sink候補と組み合わせる**暫定レセプタクル候補**として追加した。GCT公式製品ページはシリーズをActive、USB 2.0 Type-C・16接点、水平/側面挿入/PCB上面実装、3.31mm profile、20,000回 mating cycle と記載する。候補注文型式 `USB4105-GF-A-120` は公式ページに明示された型式文字列であり、同ページの接点定格はVBUS合計5.00A、GND合計6.25A、B5/VCONN 1.25A、他接点0.25A/本。
+
+これはレセプタクル自体の定格で、STUSB4500Lの電流広告検出や装置全体の電流容量を保証しない。候補型式は**製品採用・フットプリント作成・購入承認ではない**。公式図面からの実パッド番号/ピン配置の独立読取り、120サイズshell stakeと採用PCB厚の適合、基板メーカー工程、VBUS/CC保護、5V source SKU/負荷予算を確認するまで、KiCadの物理ピン割当と回路接続は行わない。公式drawing PDFは参照先を記録したが、この検証環境では本文を取得できなかったため、ピン・フットプリント照合はBLOCKEDのままとした。
+
+一次資料: [GCT USB4105公式製品ページ](https://gct.co/connector/usb4105)、[GCT USB4105 Product Specification Rev.A3](https://gct.co/files/specs/usb4105-spec.pdf)。検査は `python3 execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py`。

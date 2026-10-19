@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-16",
+  "workstream": "G1-05/G1-06 secondary 28-phase independent inhibition candidate review-only",
+  "source_TI": "https://www.ti.com/lit/ds/symlink/sn74lvc244a.pdf",
+  "source_TI_package": "https://www.ti.com/product/SN74LVC244A/part-details/SN74LVC244APWR",
+  "chip": "SN74LVC244APWR",
+  "package": "PW TSSOP 20-pin, actual footprint UNASSIGNED",
+  "power_nominal": "3V3_AON",
+  "chips": 4,
+  "ports_per_chip": 8,
+  "channels": 32,
+  "motor_axes": 7,
+  "phase_per_axis": 4,
+  "active_lanes": 28,
+  "unassigned_lanes": 4,
+  "lane_pin_pairs_Input_Output": [
+    [
+      2,
+      18
+    ],
+    [
+      4,
+      16
+    ],
+    [
+      6,
+      14
+    ],
+    [
+      8,
+      12
+    ],
+    [
+      11,
+      9
+    ],
+    [
+      13,
+      7
+    ],
+    [
+      15,
+      5
+    ],
+    [
+      17,
+      3
+    ]
+  ],
+  "OE_PINS_active_low": [
+    1,
+    19
+  ],
+  "VCC_pin": 20,
+  "GND_pin": 10,
+  "source_derived_pad_count": 208,
+  "source_derived_net_count": 63,
+  "native_KiCad_filename": "G1_78_28PHASE_DISABLED_BUFFER_REVIEW.kicad_sch",
+  "native_KiCad_sha256": "cb903ff4816802c6fd93152366b8ed985fbae1c789b13ee90d5188d803e97226",
+  "OE_disabled_net": "PHASE_OE_N_FIXED_HIGH",
+  "output_resistors_10k": 28,
+  "OE_pullups_10k": 4,
+  "IC_decoupling_capacitors_100nF": 4,
+  "physical_enable_condition": "NOT_CONNECTED_to_U_ARM.Q_or_MCU; OE defaults HIGH (disabled) from local 3V3 resistor pull-ups",
+  "voltage_caveat": "If VCC collapses, OE pullups no longer ensure high logic, outputs are expected unpowered; real driver line pulldown, Ioff and sequencing MUST be measured",
+  "actual_secondary_gating_status": "TRISTATE_AND_PULLDOWN_UNQUALIFIED_NO_DRIVER_LOAD_CONNECTED",
+  "not_tested": [
+    "real motor module input impedance and internal pullups",
+    "power sequencing OE_N vs VCC and MCU high",
+    "input/output pin actual voltage absmax",
+    "high-Z leakage under heat and PCB contamination",
+    "tri-state noise pickup and timing jitter",
+    "supply current and power path 7 axes",
+    "KiCad ERC and native pad landpattern DRC",
+    "independent fault and stop safety system"
+  ],
+  "test_scope": {
+    "actual_native_partial_KiCad_rebuilt_locally": true,
+    "actual_208_pad_csv_and_63_net_src_locally_verified": true,
+    "ideal_disabled_patterns": 50000,
+    "deliberate_miswires": 6,
+    "source_zip_rebuilt_independently": true,
+    "github_208_real_label_logic_only": true,
+    "manufacturer_qualified": false
+  },
+  "deliverable": {
+    "name": "Forest_Guardian_G1_140Pins_And_28Phase_Disabled_2026-10-16.zip",
+    "bytes": 166179,
+    "sha256": "b32927a5f45f963b3ca3de44323568c41c420a448196e0728932fb4ba160122b",
+    "files": 9
+  },
+  "safety": {
+    "scope_done": 19,
+    "total": 48,
+    "g1_05": "WORKING",
+    "g1_06": "WORKING",
+    "g1_07": "OPEN",
+    "manufacturing_closed": 0,
+    "software_evidence": 11,
+    "efuse_en": "GND_ONLY",
+    "purchase": false,
+    "power": false,
+    "cut": false,
+    "pcb_fabrication": false,
+    "flash": false,
+    "merge_main": false
+  }
+}

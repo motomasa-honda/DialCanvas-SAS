@@ -1,0 +1,44 @@
+{
+  "title": "G1-81 independent motor VOUT supervisor partial pad-level wiring proposal",
+  "device": "TPS3808G01DBVR",
+  "device_approval": "CANDIDATE_ONLY",
+  "package": "TI DBV SOT-23-6 (board footprint unassigned)",
+  "manufacturer": "Texas Instruments",
+  "manufacturer_sources": [
+    "https://www.ti.com/product/TPS3808",
+    "https://www.ti.com/product/TPS3808/part-details/TPS3808G01DBVR",
+    "https://www.ti.com/lit/ds/symlink/tps3808.pdf"
+  ],
+  "pin_map": {
+    "1": "RESET_OD_N",
+    "2": "GND",
+    "3": "MR_N",
+    "4": "CT",
+    "5": "SENSE",
+    "6": "VDD"
+  },
+  "resistor_candidate_ohms": {
+    "R_RAIL_TOP": 100000,
+    "R_RAIL_BOT": 10000,
+    "R_RAIL_OK_PU": 10000,
+    "R_RAIL_MR_PU": 10000
+  },
+  "decoupler_candidate_farads": 1e-7,
+  "sense_nominal_vit_volts": 0.405,
+  "resistor_example_tolerance_percent": 1,
+  "timing": "CT disconnected => TI fixed ~20ms nominal reset release delay, NOT final motor startup timeout",
+  "output": "open-drain active-low RESET signal, pulled up to 3V3_AON; HIGH from this node alone NEVER authorizes motor",
+  "independent_from_efuse_pg": "physically senses 5V_MOTOR via 100k/10k divider rather than reading U7.3 PG pull-up",
+  "status": "PHYSICAL_PAD_PROPOSAL_NOT_CONNECTED",
+  "erc": false,
+  "pcb_drc": false,
+  "kicad_native": false,
+  "hardware_probed": false,
+  "footprint_approved": false,
+  "efuse_enable": "UNCHANGED_10K_GND_ONLY",
+  "outputs_28": "UNCHANGED_OE_FIXED_HIGH",
+  "scope_done": 19,
+  "scope_total": 48,
+  "manufacturing_gates_closed": 0,
+  "software_evidence": 11
+}

@@ -1,0 +1,71 @@
+name: Forest Guardian G1-86 fault-priority NOR native KiCad review
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g1-86-fault-latch.yml'
+      - 'execution/g1_86_fault_latch/**'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g1-86-fault-latch.yml'
+      - 'execution/g1_86_fault_latch/**'
+      - 'execution/preflight.py'
+permissions:
+  contents: read
+jobs:
+  g1-86-nor-latch-native-review-hold:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Review all 404 mapped pads, test priority and run preflight
+        run: |
+          set -euo pipefail
+          python3 execution/g1_86_fault_latch/check_contract.py
+          python3 execution/preflight.py
+      - name: Install KiCad9
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends software-properties-common
+          sudo add-apt-repository -y ppa:kicad/kicad-9.0-releases
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends kicad
+          kicad-cli version
+      - name: Register real review schematic libraries
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/execution/g1_86_fault_latch"
+          mkdir -p "$HOME/.config/kicad/9.0"
+          cat > "$HOME/.config/kicad/9.0/sym-lib-table" <<EOF
+          (sym_lib_table
+           (version 7)
+           (lib (name "FG_REVIEW")(type "KiCad")(uri "$ROOT/FG_REVIEW.kicad_sym")(options "")(descr "Review"))
+           (lib (name "FG_TI")(type "KiCad")(uri "$ROOT/FG_TI.kicad_sym")(options "")(descr "eFuse"))
+           (lib (name "FG_FAULT")(type "KiCad")(uri "$ROOT/FG_FAULT.kicad_sym")(options "")(descr "Fault NOR logic"))
+          )
+          EOF
+      - name: Actual KiCad9 export netlist/SVG/ERC and verify 404 pads
+        run: |
+          set -euo pipefail
+          SRC=execution/g1_86_fault_latch/forest_guardian_g1_86_fault_latch_review.kicad_sch
+          OUT=execution/g1_86_fault_latch/native_evidence
+          mkdir -p "$OUT/svg"
+          kicad-cli sch export netlist --format kicadxml -o "$OUT/native.net.xml" "$SRC"
+          kicad-cli sch export svg --output "$OUT/svg" "$SRC"
+          kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
+          python3 execution/g1_86_fault_latch/validate_native_netlist.py "$OUT"
+      - name: Archive native output for review only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-86-nor-latch-native-review-unapproved
+          path: execution/g1_86_fault_latch/native_evidence/
+          if-no-files-found: warn

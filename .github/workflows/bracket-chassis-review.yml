@@ -1,0 +1,42 @@
+name: Seven-axis bracket support review contract (static, not ERC or structural)
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/bracket-chassis-review.yml'
+      - 'execution/bracket_chassis_2026-10-16/**'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/bracket-chassis-review.yml'
+      - 'execution/bracket_chassis_2026-10-16/**'
+permissions:
+  contents: read
+jobs:
+  schematic-mechanical-scope-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protect immutable Phase67 input
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Verify 7-axis source-derived output register WITHOUT claiming original CAD recomputation
+        run: |
+          set -euo pipefail
+          python3 execution/bracket_chassis_2026-10-16/check_contract.py
+      - name: Keep scope/evidence snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bracket-chassis-static-review-only
+          path: |
+            execution/bracket_chassis_2026-10-16/evidence_contract.json
+            execution/bracket_chassis_2026-10-16/README.md
+          if-no-files-found: warn

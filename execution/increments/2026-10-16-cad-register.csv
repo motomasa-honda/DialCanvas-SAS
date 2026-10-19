@@ -1,0 +1,4 @@
+source_id,z_plane_mm,slab_min_mm,slab_max_mm,geometry_bounds_mm,actual_planar_area_mm2,interior_rings,review_cut_status
+P3,96,95,97,"15;12.5;257;192",30849.054,40,NO_CUT_OR_DRILL
+TRAY,81,80,82,"86;60;184;136",7357.399,16,NO_CUT_OR_DRILL
+BACK_WOOD,139,137,139.6,"13;13;257;192",40241.161,30,NO_CUT_OR_DRILL

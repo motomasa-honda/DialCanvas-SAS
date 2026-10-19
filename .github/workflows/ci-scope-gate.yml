@@ -1,0 +1,34 @@
+name: Forest Guardian lightweight PR gate and scoped CI routing
+on:
+  pull_request:
+    branches:
+      - main
+      - 'review/forest-guardian-phase66-idf'
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - '.github/workflows/**'
+      - 'execution/ci/**'
+      - 'execution/preflight.py'
+      - 'execution/tasks.csv'
+      - 'execution/progress.json'
+      - 'tests/check_design.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quick-revision-integrity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check scoped triggers and full-suite coverage
+        run: |
+          set -euo pipefail
+          python3 execution/ci/check_routes.py
+      - name: Validate ledger, design, no safety gate changes
+        run: |
+          set -euo pipefail
+          python3 execution/preflight.py
+          python3 tests/check_design.py

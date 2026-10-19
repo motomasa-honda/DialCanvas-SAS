@@ -1,0 +1,106 @@
+name: Phase73 isolated ESP32-P4 heartbeat 80ms candidate build
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase73-heartbeat-build.yml'
+      - 'phase73/patches/**'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase73-heartbeat-build.yml'
+      - 'phase73/patches/**'
+permissions:
+  contents: read
+jobs:
+  heartbeat-target:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: SHA pin source, apply Phase69 verified safety and Phase73 timing patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p phase73-heartbeat-evidence
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          echo 'afe101ac2bb9ccbd050194e8898ea6a11eac09b498fbacfe8e9e77ae660bd735  firmware/main/app_main.c' | sha256sum -c -
+          echo '871a0b64a1e3d43ecea70a2329ce35c5a6afabff6f1dec98df64ac8d138c605d  firmware/main/control.c' | sha256sum -c -
+          test -f firmware/partition-review-raw-ab.csv
+          git apply --check phase69/patches/phase69-storage-readonly.patch
+          git apply phase69/patches/phase69-storage-readonly.patch
+          git apply --check phase73/patches/phase73-heartbeat-80ms.patch
+          git apply phase73/patches/phase73-heartbeat-80ms.patch
+          cp firmware/partition-review-raw-ab.csv firmware/partition.csv
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json
+          h=Path("firmware/main/fg_heartbeat_config.h").read_text()
+          app=Path("firmware/main/app_main.c").read_text()
+          ctl=Path("firmware/main/control.c").read_text()
+          assert re.search(r'#define FG_HEARTBEAT_TOGGLE_US 40000ULL',h)
+          assert app.count('now-last>=FG_HEARTBEAT_TOGGLE_US')==1
+          assert ctl.count('now-c->last_hb<FG_HEARTBEAT_TOGGLE_US')==1
+          assert 'gpio_set_level(ARM,0);ctl.arm=false;' in app
+          assert 'fg_ports(&ctl,p);if(!apply(p))return false;' in app
+          assert 'if(!verified||(c->state!=FG_OFF' in ctl
+          assert 'FG_HEARTBEAT_FALL_PERIOD_US (2ULL * FG_HEARTBEAT_TOGGLE_US)' in h
+          report={"status":"STATIC_CANDIDATE_80MS",
+                  "toggle_period_us":40000,
+                  "falling_period_us_nominal":80000,
+                  "watchdog_min_timeout_us":170000,
+                  "nominal_to_min_margin_us":90000,
+                  "recovery_probe_ARM_LOW":True,
+                  "programmed_actual_gpio_jitter":"NOT_MEASURED",
+                  "physical_watchdog_cutoff":"NOT_TESTED",
+                  "safety_enable_approval":False}
+          Path("phase73-heartbeat-evidence/timing-audit.json").write_text(json.dumps(report,indent=2)+"\n")
+          print(json.dumps(report,indent=2))
+          PY
+      - name: Host C regression of same 40ms control function
+        shell: bash
+        run: |
+          set -euo pipefail
+          gcc -std=c11 -Wall -Wextra -Werror -I firmware/main phase73/tests/heartbeat_host.c firmware/main/control.c -o /tmp/fg_phase73_heartbeat_test
+          /tmp/fg_phase73_heartbeat_test | tee phase73-heartbeat-evidence/host-c-test.txt
+      - name: ESP-IDF 5.5.2 combined Phase69 + 73 product build
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          idf.py --version | tee phase73-heartbeat-evidence/idf-version.txt
+          idf.py --version | grep -q '5.5.2'
+          idf.py -C firmware set-target esp32p4 2>&1 | tee phase73-heartbeat-evidence/set-target.log
+          idf.py -C firmware build 2>&1 | tee phase73-heartbeat-evidence/build.log
+          test -s firmware/build/forest_guardian_review.bin
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          f=Path('firmware/build/forest_guardian_review.bin')
+          t=Path('firmware/build/partition_table/partition-table.bin')
+          size=f.stat().st_size
+          assert 0<size<0x380000,f'OTA candidate overflow: {size}'
+          data={'result':'PASS_CANDIDATE_TARGET_BUILD_NOT_HW','esp32p4_bin_bytes':size,
+                'ota3_5m_margin_bytes':0x380000-size,
+                'app_sha256':hashlib.sha256(f.read_bytes()).hexdigest(),
+                'partition_sha256':hashlib.sha256(t.read_bytes()).hexdigest(),
+                'physical_gpio_pulse_timing':'NOT_TESTED','manufacturing_gates_closed':0,
+                'software_evidence_closed':11}
+          Path('phase73-heartbeat-evidence/target-result.json').write_text(json.dumps(data,indent=2)+'\n')
+          print(json.dumps(data,indent=2))
+          PY
+      - name: Always retain evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase73-heartbeat-esp32p4-build-evidence
+          path: phase73-heartbeat-evidence/
+          if-no-files-found: warn

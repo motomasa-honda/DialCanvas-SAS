@@ -1,0 +1,69 @@
+{
+  "schema": "forest-guardian-g1-94-electrical-supply-gap-v1",
+  "status": "REVIEW_ONLY_NOT_MANUFACTURABLE",
+  "physical_netlist_baseline": {
+    "pins": 618,
+    "components": 182,
+    "unresolved_erc_total": 3,
+    "unresolved_erc_type": "power_pin_not_driven"
+  },
+  "outstanding_supply_source_issues": [
+    {
+      "id": "G1-SRC-01",
+      "reference": "U14",
+      "pin": 5,
+      "net": "B77__5V_RAW",
+      "status": "OPEN",
+      "requirement": "Identify actual 5V source, input protection, allowed 5V_RAW voltage and inrush/current limit under seven-axis load; provide manufacturer footprint and source/return pin mapping",
+      "acceptance": "Native KiCad connection to verified actual supply with electrical characterization; fault-injection, ERC/PCB DRC evidence"
+    },
+    {
+      "id": "G1-SRC-02",
+      "reference": "U14",
+      "pin": 8,
+      "net": "GND",
+      "status": "OPEN",
+      "requirement": "Verify power return and common ground topology to actual selected source, reverse-current and ground-loss pathways and motor current return, without symbolic PWR_FLAG bypass",
+      "acceptance": "Physical source/return wiring plus ground-loss and 5V motor residual-energy measurements; KiCad ERC and PCB DRC"
+    },
+    {
+      "id": "G1-SRC-03",
+      "reference": "U20",
+      "pin": 8,
+      "net": "3V3_AON",
+      "status": "OPEN",
+      "requirement": "Identify AON regulator/reference, source capacity, ramp brownout and hold-up margin for supervisor and logic network, including when 5V motor rail remains charged",
+      "acceptance": "Manufacturer regulator schematic/BOM, min/max start and collapse timing waveforms, 3V3 undervoltage interlock and KiCad ERC/PCB DRC"
+    }
+  ],
+  "hard_off_invariants": {
+    "efuse_en_pull_down_refs": [
+      "R4",
+      "R67"
+    ],
+    "phase_holdoff_pullup": "R61",
+    "phase_buffers": [
+      "U15",
+      "U16",
+      "U17",
+      "U18"
+    ],
+    "review_design_unpowered": true
+  },
+  "release_blockers": [
+    "No powered HIL",
+    "No selected and tested physical supply or current return",
+    "Full KiCad ERC/PCB DRC not passed",
+    "EN/OE off-state behavior across all power rails unqualified",
+    "No manufacturer production approval"
+  ],
+  "task_status": {
+    "G1_05": "WORKING",
+    "G1_06": "WORKING",
+    "G1_07": "OPEN",
+    "done_scope": 20,
+    "total": 48,
+    "manufacturer_gate_passed": 0,
+    "total_manufacturer_gates": 6
+  }
+}

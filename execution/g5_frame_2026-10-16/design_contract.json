@@ -1,0 +1,242 @@
+{
+  "date": "2026-10-16",
+  "source_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solids": 1774,
+  "scoped_status": "G3-04_WORKING_G3-05_WORKING_G6-04_OPEN",
+  "geometry_type": "CONDITIONAL_NOMINAL_REVIEW_ONLY",
+  "fixes": [
+    "G5 no back wood cut",
+    "crossbar from 3x3 to 6x9",
+    "stagger battery-right support before BAT_LEFT z125..137",
+    "all six other axes 50x41 XY reservation at least 1.0mm"
+  ],
+  "parts": [
+    {
+      "name": "FRONT_CROSSBAR",
+      "xlo": 18,
+      "ylo": 12,
+      "zlo": 127,
+      "xhi": 253,
+      "yhi": 18,
+      "zhi": 136
+    },
+    {
+      "name": "SIDE_FRAME_LEFT",
+      "xlo": 18,
+      "ylo": 18,
+      "zlo": 130,
+      "xhi": 21,
+      "yhi": 186,
+      "zhi": 133
+    },
+    {
+      "name": "SIDE_FRAME_RIGHT",
+      "xlo": 251,
+      "ylo": 18,
+      "zlo": 130,
+      "xhi": 254,
+      "yhi": 186,
+      "zhi": 133
+    },
+    {
+      "name": "FRONT_LEFT_FRAME_COUPLER",
+      "xlo": 18,
+      "ylo": 16,
+      "zlo": 130,
+      "xhi": 21,
+      "yhi": 22,
+      "zhi": 133
+    },
+    {
+      "name": "FRONT_RIGHT_FRAME_COUPLER",
+      "xlo": 250,
+      "ylo": 16,
+      "zlo": 130,
+      "xhi": 253,
+      "yhi": 22,
+      "zhi": 133
+    },
+    {
+      "name": "LEFT_FRONT_WEB",
+      "xlo": 111,
+      "ylo": 17,
+      "zlo": 130,
+      "xhi": 114,
+      "yhi": 63,
+      "zhi": 136
+    },
+    {
+      "name": "LEFT_JOG",
+      "xlo": 111,
+      "ylo": 61.5,
+      "zlo": 130,
+      "xhi": 117,
+      "yhi": 68,
+      "zhi": 136
+    },
+    {
+      "name": "LEFT_TO_G5_GUIDE",
+      "xlo": 114,
+      "ylo": 66,
+      "zlo": 130,
+      "xhi": 117,
+      "yhi": 85,
+      "zhi": 136
+    },
+    {
+      "name": "RIGHT_ROOT_Z_RISER",
+      "xlo": 166,
+      "ylo": 12,
+      "zlo": 116,
+      "xhi": 169,
+      "yhi": 18,
+      "zhi": 136
+    },
+    {
+      "name": "RIGHT_LOWER_WEB",
+      "xlo": 166,
+      "ylo": 17,
+      "zlo": 116,
+      "xhi": 169,
+      "yhi": 90,
+      "zhi": 123
+    },
+    {
+      "name": "RIGHT_LOWER_TO_TIP",
+      "xlo": 166,
+      "ylo": 89,
+      "zlo": 116,
+      "xhi": 169,
+      "yhi": 95,
+      "zhi": 123
+    },
+    {
+      "name": "RIGHT_REAR_Z_RISER",
+      "xlo": 163,
+      "ylo": 93,
+      "zlo": 116,
+      "xhi": 169,
+      "yhi": 99,
+      "zhi": 136
+    },
+    {
+      "name": "RIGHT_TO_G5_GUIDE",
+      "xlo": 163,
+      "ylo": 95,
+      "zlo": 130,
+      "xhi": 166,
+      "yhi": 100,
+      "zhi": 136
+    }
+  ],
+  "links": [
+    [
+      "FRONT_CROSSBAR",
+      "FRONT_LEFT_FRAME_COUPLER"
+    ],
+    [
+      "FRONT_CROSSBAR",
+      "FRONT_RIGHT_FRAME_COUPLER"
+    ],
+    [
+      "FRONT_CROSSBAR",
+      "LEFT_FRONT_WEB"
+    ],
+    [
+      "FRONT_CROSSBAR",
+      "RIGHT_ROOT_Z_RISER"
+    ],
+    [
+      "FRONT_LEFT_FRAME_COUPLER",
+      "SIDE_FRAME_LEFT"
+    ],
+    [
+      "FRONT_RIGHT_FRAME_COUPLER",
+      "SIDE_FRAME_RIGHT"
+    ],
+    [
+      "LEFT_FRONT_WEB",
+      "LEFT_JOG"
+    ],
+    [
+      "LEFT_JOG",
+      "LEFT_TO_G5_GUIDE"
+    ],
+    [
+      "RIGHT_ROOT_Z_RISER",
+      "RIGHT_LOWER_WEB"
+    ],
+    [
+      "RIGHT_LOWER_WEB",
+      "RIGHT_LOWER_TO_TIP"
+    ],
+    [
+      "RIGHT_LOWER_TO_TIP",
+      "RIGHT_REAR_Z_RISER"
+    ],
+    [
+      "RIGHT_REAR_Z_RISER",
+      "RIGHT_TO_G5_GUIDE"
+    ]
+  ],
+  "source_collision_count_EXCLUDING_REMOVABLE_COVER_AND_FAN": 0,
+  "fan_current_position_hits": [
+    "FAN_GUARD_TARGET",
+    "FAN_MAX_BODY"
+  ],
+  "battery_left_source_footprint": {
+    "xlo": 168,
+    "xhi": 169,
+    "ylo": 55,
+    "yhi": 89,
+    "zlo": 125,
+    "zhi": 137
+  },
+  "other_axis_reserve_min_xy_mm": 1,
+  "reserve_worst_two_pm0_2_mm": 0.6,
+  "joints_proven_only_by_positive_3d_volume": true,
+  "beam_ASSUMPTION_ONLY": {
+    "mass_kg": 0.1,
+    "g": 5,
+    "half_reaction_N": 2.4516625,
+    "material_E_MPa": 200000,
+    "span_mm": 235,
+    "old_3x3_crossbar_lateral_deflection_mm": 0.85979585,
+    "new_6x9_crossbar_lateral_deflection_mm": 0.03582483,
+    "new_vertical_deflection_mm": 0.01592215,
+    "left_web_lateral_deflection_mm": 0.09517051,
+    "right_web_and_joint_deflection": "NOT_EVALUATED"
+  },
+  "g6_04_panel_feasibility": {
+    "panel_source_count": 23,
+    "constant_sections": 14,
+    "variable_with_low_high_difference": 9,
+    "manufacturing_glue_approved": false
+  },
+  "remaining_unqualified": [
+    "12 welded/bent/bolt junction strength",
+    "four actual wood-anchor screw seats and pullout",
+    "fan migration and real thermal",
+    "physical battery lid service and real M1 55mm extraction",
+    "M2 boss wall 0.525-0.575 and vibration anti-loosening",
+    "native KiCad trip latch ERC/DRC"
+  ],
+  "manufacturing_gates_closed": 0,
+  "software_review_evidence_passed": 11,
+  "done_scope": 19,
+  "total_scope": 48,
+  "motor_efuse_en": "LOW",
+  "fabricate": false,
+  "purchase": false,
+  "power": false,
+  "flash": false,
+  "merge_main": false,
+  "files": {
+    "delta_zip": "Forest_Guardian_G5_Stepped_Frame_Engineering_19of48_2026-10-16.zip",
+    "delta_zip_bytes": 167078,
+    "delta_sha256": "6944cf8fa573650008f200178c63ac584df1b8692a606e8b406e02c8ef80884b",
+    "history_zip": "Forest_Guardian_Integrated_Handoff_G5_Engineering_2026-10-16.zip",
+    "history_sha256": "31e36ecbae187b24e9f0bae5ccf37e62a933e2111d1d891a434137956f8e4f4b"
+  },
+  "source_validation": "Original full 1774-source 3D intersection was computed in local artifact producer; GitHub audit recomputes only native 13-box overlap and flags."
+}

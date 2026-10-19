@@ -1,0 +1,75 @@
+name: G1-88 native PG rail fault mixer (REVIEW ONLY)
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g1-88-post-start-fault-review.yml'
+      - 'execution/g1_88_pg_rail_fault/**'
+      - 'execution/g1_87_rearm_release/**'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g1-88-post-start-fault-review.yml'
+      - 'execution/g1_88_pg_rail_fault/**'
+      - 'execution/g1_87_rearm_release/**'
+      - 'execution/preflight.py'
+permissions:
+  contents: read
+jobs:
+  native-review-no-manufacture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate real netted KiCad candidate and enforce exact 4-pad delta
+        run: |
+          set -euo pipefail
+          python3 execution/g1_88_pg_rail_fault/build_review.py
+          python3 execution/g1_88_pg_rail_fault/check_contract.py
+          python3 execution/preflight.py
+      - name: KiCad9 and review library
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends software-properties-common
+          sudo add-apt-repository -y ppa:kicad/kicad-9.0-releases
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends kicad
+          ROOT="$GITHUB_WORKSPACE/execution/g1_87_rearm_release"
+          NEW="$GITHUB_WORKSPACE/execution/g1_88_pg_rail_fault"
+          mkdir -p "$HOME/.config/kicad/9.0"
+          cat > "$HOME/.config/kicad/9.0/sym-lib-table" <<EOF
+          (sym_lib_table
+           (version 7)
+           (lib (name "FG_REVIEW")(type "KiCad")(uri "$ROOT/FG_REVIEW.kicad_sym")(options "")(descr "Review"))
+           (lib (name "FG_TI")(type "KiCad")(uri "$ROOT/FG_TI.kicad_sym")(options "")(descr "eFuse"))
+           (lib (name "FG_FAULT")(type "KiCad")(uri "$NEW/FG_FAULT.kicad_sym")(options "")(descr "Review logic"))
+           (lib (name "FG_SWITCH")(type "KiCad")(uri "$ROOT/FG_SWITCH.kicad_sym")(options "")(descr "Review switch"))
+          )
+          EOF
+          kicad-cli version
+      - name: Export and validate genuine KiCad9 netlist ERC SVG
+        run: |
+          set -euo pipefail
+          SRC=execution/g1_88_pg_rail_fault/forest_guardian_g1_88_pg_rail_fault_review.kicad_sch
+          OUT=execution/g1_88_pg_rail_fault/native_evidence
+          mkdir -p "$OUT/svg"
+          kicad-cli sch export netlist --format kicadxml -o "$OUT/native.net.xml" "$SRC"
+          kicad-cli sch export svg --output "$OUT/svg" "$SRC"
+          kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
+          python3 execution/g1_88_pg_rail_fault/check_contract.py "$OUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g1-88-editable-native-kicad-review
+          path: |
+            execution/g1_88_pg_rail_fault/native_evidence/
+            execution/g1_88_pg_rail_fault/forest_guardian_g1_88_pg_rail_fault_review.kicad_sch
+            execution/g1_88_pg_rail_fault/pin_map_485.json
+          if-no-files-found: warn

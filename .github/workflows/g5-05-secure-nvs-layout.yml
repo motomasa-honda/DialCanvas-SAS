@@ -1,0 +1,92 @@
+name: G5-05 actual IDF encrypted-NVS partition parser (unapproved, NO FLASH)
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g5-05-secure-nvs-layout.yml'
+      - 'execution/g5_05_secure_partition/**'
+      - 'phase67-source/firmware.tar.gz'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g5-05-secure-nvs-layout.yml'
+      - 'execution/g5_05_secure_partition/**'
+      - 'phase67-source/firmware.tar.gz'
+      - 'execution/preflight.py'
+permissions:
+  contents: read
+jobs:
+  g5-05-nvs-keys-native-partition-parser-no-flash:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare exact source RAW A/B and validate review partition using native IDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 execution/g5_05_secure_partition/check_partition.py
+          python3 execution/preflight.py
+          source /opt/esp/idf/export.sh
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" --flash-size 32MB execution/g5_05_secure_partition/partition-nvs-encrypted-raw-ab-review.csv /tmp/fg-secure-review.bin
+          test -s /tmp/fg-secure-review.bin
+          python3 "$IDF_PATH/components/partition_table/gen_esp32part.py" /tmp/fg-secure-review.bin | grep -q 'nvs_keys'
+          echo "PASS actual IDF partition parser: candidate only, no flash, no eFuse"
+      - name: Generate one OFFLINE SYNTHETIC encrypted credential image with actual IDF reference tool
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          umask 077
+          FG_TEMP="$(mktemp -d)"
+          export FG_TEMP
+          trap 'rm -rf "$FG_TEMP"' EXIT
+          python3 - <<'PY'
+          import os
+          from datetime import datetime,timedelta,timezone
+          from pathlib import Path
+          from cryptography import x509
+          from cryptography.hazmat.primitives import hashes,serialization
+          from cryptography.hazmat.primitives.asymmetric import ec
+          from cryptography.x509.oid import NameOID
+          root=Path(os.environ["FG_TEMP"])
+          (root/"ssid.txt").write_text("FG-CI-FIXTURE-ONLY")
+          (root/"password.txt").write_text("DEMO-PASSWORD-DO-NOT-USE")
+          key=ec.generate_private_key(ec.SECP256R1())
+          (root/"private.pem").write_bytes(key.private_bytes(
+             serialization.Encoding.PEM,serialization.PrivateFormat.PKCS8,
+             serialization.NoEncryption()))
+          now=datetime.now(timezone.utc)
+          cert=(x509.CertificateBuilder()
+                .subject_name(x509.Name([x509.NameAttribute(NameOID.COMMON_NAME,"fg.invalid")]))
+                .issuer_name(x509.Name([x509.NameAttribute(NameOID.COMMON_NAME,"fg.invalid")]))
+                .public_key(key.public_key()).serial_number(x509.random_serial_number())
+                .not_valid_before(now-timedelta(days=1)).not_valid_after(now+timedelta(days=30))
+                .add_extension(x509.SubjectAlternativeName([x509.DNSName("fg.invalid")]),critical=False)
+                .sign(key,hashes.SHA256()))
+          (root/"cert.pem").write_bytes(cert.public_bytes(serialization.Encoding.PEM))
+          print("PASS generated temporary dummy X.509 fixture; not production credentials")
+          PY
+          IDF_GEN="$IDF_PATH/components/nvs_flash/nvs_partition_generator/nvs_partition_gen.py"
+          python3 "$IDF_GEN" generate-key --keyfile fg_dummy_nvs_keys.bin --outdir "$FG_TEMP" >/dev/null
+          test -s "$FG_TEMP/keys/fg_dummy_nvs_keys.bin"
+          python3 execution/g5_05_secure_partition/make_provisioning_image.py \
+            --ssid-file "$FG_TEMP/ssid.txt" \
+            --password-file "$FG_TEMP/password.txt" \
+            --tls-cert "$FG_TEMP/cert.pem" \
+            --tls-key "$FG_TEMP/private.pem" \
+            --nvs-key-image "$FG_TEMP/keys/fg_dummy_nvs_keys.bin" \
+            --idf-generator "$IDF_GEN" \
+            --output "$FG_TEMP/fg_cfg.bin" \
+            --emit-review-image
+          test "$(stat -c %s "$FG_TEMP/fg_cfg.bin")" -eq 32768
+          test "$(stat -c %a "$FG_TEMP/fg_cfg.bin")" -eq 600
+          echo "PASS encrypted mock NVS image; secrets and artifact deleted by EXIT trap"

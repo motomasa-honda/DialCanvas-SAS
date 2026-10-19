@@ -1,0 +1,223 @@
+{
+  "source": "source-regenerated Phase75 -> Phase77 actual 140 KiCad pad labels",
+  "nets": {
+    "3V3_AON": [
+      "C_AND_DEC.1",
+      "C_ARM_DEC.1",
+      "C_FINAL_AND_DEC.1",
+      "C_INV_DEC.1",
+      "C_REL_FF_DEC.1",
+      "C_REL_INV_DEC.1",
+      "C_SCH_DEC.1",
+      "J_REARM.1",
+      "J_STOP.1",
+      "R_5V_RST_PU.2",
+      "R_PG_PU.2",
+      "R_POR_PU.2",
+      "R_WDO_PU.2",
+      "R_WD_CWD.2",
+      "U_5V.6",
+      "U_ARM.7",
+      "U_ARM.8",
+      "U_ARM_AND.5",
+      "U_ARM_INV.5",
+      "U_D_FINAL_AND.5",
+      "U_EDGE.2",
+      "U_EDGE.7",
+      "U_EDGE.8",
+      "U_HB_INV.5",
+      "U_POR.3",
+      "U_POR.5",
+      "U_POR.6",
+      "U_REARM_SCH.5",
+      "U_RELEASE_FF.2",
+      "U_RELEASE_FF.7",
+      "U_RELEASE_FF.8",
+      "U_RELEASE_INV.5",
+      "U_RUN.7",
+      "U_RUN.8",
+      "U_WD.1",
+      "U_WD.3",
+      "U_WD.5"
+    ],
+    "5V_MOTOR": [
+      "R_PGTH_TOP.1",
+      "U7.6"
+    ],
+    "5V_RAW": [
+      "U7.5",
+      "U_5V.5"
+    ],
+    "ARM_D_QUALIFIED_AFTER_RELEASE": [
+      "U_ARM.2",
+      "U_D_FINAL_AND.4"
+    ],
+    "ARM_LATCH_Q_ISOLATED": [
+      "R_ARM_Q_PD_10K.1",
+      "U_ARM.5"
+    ],
+    "ARM_Q_N_UNUSED": [
+      "U_ARM.3"
+    ],
+    "ARM_REQUEST_INVERTED": [
+      "U_ARM_AND.2",
+      "U_ARM_INV.4"
+    ],
+    "ARM_REQ_UNQUALIFIED": [
+      "J_ARM_REQ.1",
+      "R_ARM_REQ_PD.1",
+      "U_ARM_INV.2"
+    ],
+    "EFUSE_PG_OD": [
+      "R_PG_PU.1",
+      "U7.3"
+    ],
+    "GND": [
+      "C_AND_DEC.2",
+      "C_ARM_DEC.2",
+      "C_FINAL_AND_DEC.2",
+      "C_INV_DEC.2",
+      "C_REARM_RC.2",
+      "C_REL_FF_DEC.2",
+      "C_REL_INV_DEC.2",
+      "C_SCH_DEC.2",
+      "J_ARM_REQ.2",
+      "R_ARM_Q_PD_10K.2",
+      "R_ARM_REQ_PD.2",
+      "R_EN_PD.2",
+      "R_PGTH_BOT.2",
+      "R_REARM_PD_10K.2",
+      "R_STOP_PD.2",
+      "U7.8",
+      "U_5V.2",
+      "U_ARM.4",
+      "U_ARM_AND.3",
+      "U_ARM_INV.3",
+      "U_D_FINAL_AND.3",
+      "U_EDGE.4",
+      "U_HB_INV.3",
+      "U_POR.2",
+      "U_REARM_SCH.3",
+      "U_RELEASE_FF.4",
+      "U_RELEASE_INV.3",
+      "U_RUN.4",
+      "U_WD.4"
+    ],
+    "GPIO28_HEARTBEAT": [
+      "U_HB_INV.2",
+      "U_WD.6"
+    ],
+    "HB2_ARM_LOW_PREQUAL": [
+      "U_ARM_AND.4",
+      "U_D_FINAL_AND.1"
+    ],
+    "HB_EDGE1_Q": [
+      "U_EDGE.5",
+      "U_RUN.2"
+    ],
+    "HB_EDGE1_Q_N_UNUSED": [
+      "U_EDGE.3"
+    ],
+    "HB_FALL_EDGE_RISING": [
+      "U_EDGE.1",
+      "U_HB_INV.4",
+      "U_RUN.1"
+    ],
+    "HB_TWO_EDGE_Q_ISOLATED": [
+      "U_ARM_AND.1",
+      "U_RUN.5"
+    ],
+    "NC_ARM_INV": [
+      "U_ARM_INV.1"
+    ],
+    "NC_RELEASE_INV": [
+      "U_RELEASE_INV.1"
+    ],
+    "NC_SCH": [
+      "U_REARM_SCH.1"
+    ],
+    "PGTH_SENSE": [
+      "R_PGTH_BOT.1",
+      "R_PGTH_TOP.2",
+      "U7.4"
+    ],
+    "POR_CT_NC_FIXED_DELAY": [
+      "U_POR.4"
+    ],
+    "QUAL_CLR_N": [
+      "R_5V_RST_PU.1",
+      "R_POR_PU.1",
+      "R_WDO_PU.1",
+      "U_5V.1",
+      "U_ARM.6",
+      "U_EDGE.6",
+      "U_POR.1",
+      "U_RELEASE_FF.6",
+      "U_RUN.6",
+      "U_WD.7"
+    ],
+    "REARM_DEBOUNCED_CLK": [
+      "U_ARM.1",
+      "U_REARM_SCH.4",
+      "U_RELEASE_INV.2"
+    ],
+    "REARM_RAW": [
+      "J_REARM.2",
+      "R_REARM_PD_10K.1",
+      "R_REARM_RC.1"
+    ],
+    "REARM_RC_NODE": [
+      "C_REARM_RC.1",
+      "R_REARM_RC.2",
+      "U_REARM_SCH.2"
+    ],
+    "RELEASE_EDGE_CLK": [
+      "U_RELEASE_FF.1",
+      "U_RELEASE_INV.4"
+    ],
+    "RELEASE_Q_N_UNUSED": [
+      "U_RELEASE_FF.3"
+    ],
+    "RELEASE_SEEN_Q": [
+      "U_D_FINAL_AND.2",
+      "U_RELEASE_FF.5"
+    ],
+    "REQUIRES_DVDT_DESIGN": [
+      "U7.7"
+    ],
+    "REQUIRES_ILIM_R": [
+      "U7.9"
+    ],
+    "REQUIRES_ITIMER_C": [
+      "U7.10"
+    ],
+    "REQUIRES_OVLO_PARTS": [
+      "U7.2"
+    ],
+    "RUN_Q_N_UNUSED": [
+      "U_RUN.3"
+    ],
+    "STOP_NC_SENSE": [
+      "J_STOP.2",
+      "R_STOP_PD.1",
+      "U_5V.3"
+    ],
+    "U7_EN_CLAMPED_DISABLED": [
+      "R_EN_PD.1",
+      "U7.1"
+    ],
+    "U_5V_CT_NC": [
+      "U_5V.4"
+    ],
+    "U_HB_INV_MANUFACTURER_NC": [
+      "U_HB_INV.1"
+    ],
+    "WD_200MS_CWD": [
+      "R_WD_CWD.1",
+      "U_WD.2"
+    ],
+    "WD_ENOUT_NO_CONNECT_PER_TI": [
+      "U_WD.8"
+    ]
+  }
+}

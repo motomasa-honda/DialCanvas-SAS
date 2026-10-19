@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "scope": "G1-05 USB-C 5V input controller candidate; review only",
+  "status": "PROVISIONAL_DESIGN_CANDIDATE",
+  "manufacturing_release": false,
+  "purchase_authorized": false,
+  "motor_power_enabled": false,
+  "manufacturer_release_gates_closed": 0,
+  "candidate": {
+    "manufacturer": "STMicroelectronics",
+    "order_code": "STUSB4500LQTR",
+    "package": "QFN-24 EP (4x4 mm)",
+    "manufacturer_marketing_status": "Active",
+    "function": "5V-only USB Type-C sink controller",
+    "maximum_supported_input": {
+      "voltage_v": 5,
+      "current_a": 3,
+      "power_w": 15
+    },
+    "source_current_advertisements_detected": [
+      "default",
+      "1.5A",
+      "3A"
+    ],
+    "source_current_is_detected_not_limited": true,
+    "external_vbus_path_switch_required": true,
+    "vbus_voltage_monitoring_and_detach_fault_path_control": true,
+    "usb_pd_higher_voltage_request": false,
+    "reported_distributor_availability": "No distributor stock reported on ST product page as checked 2026-10-19; verify current sourcing before procurement"
+  },
+  "receptacle_candidate": {
+    "manufacturer": "Global Connector Technology (GCT)",
+    "series": "USB4105",
+    "candidate_order_code": "USB4105-GF-A-120",
+    "status": "PROVISIONAL_MECHANICAL_CANDIDATE_NOT_RELEASED",
+    "manufacturer_page_status": "Active",
+    "interface": "USB Type-C receptacle, USB 2.0, 16 contacts",
+    "mounting": "Horizontal, side-entry, top-mount SMT; shell stakes through-hole",
+    "profile_mm": 3.31,
+    "mating_cycles": 20000,
+    "contact_current_ratings": {
+      "vbus_collective_a": 5.0,
+      "gnd_collective_a": 6.25,
+      "b5_vconn_a": 1.25,
+      "other_contact_per_pin_a": 0.25
+    },
+    "order_code_options_as_listed_by_manufacturer": [
+      "USB4105-GF-A-120",
+      "USB4105-15-A-120",
+      "USB4105-GF-A-060",
+      "USB4105-15-A-060"
+    ],
+    "source": "https://gct.co/connector/usb4105",
+    "selection_boundary": "Product-page family data and listed option strings only; exact drawing, pad/pin table, shell-stake fit to PCB thickness, board footprint, assembly capability, source current and input protection remain unverified. Not a production selection."
+  },
+  "source_documents": {
+    "datasheet": "https://www.st.com/resource/en/datasheet/stusb4500l.pdf",
+    "product_page": "https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html",
+    "datasheet_revision": "DS13102 Rev 6, February 2022",
+    "checked_date": "2026-10-19",
+    "mosfet_datasheet": "https://www.st.com/resource/en/datasheet/stl9p3llh6.pdf",
+    "receptacle_manufacturer_page": "https://gct.co/connector/usb4105",
+    "receptacle_product_spec": "https://gct.co/files/specs/usb4105-spec.pdf",
+    "stusb_typical_application": "Figure 9, implementation example, ST DS13102 Rev 6, page 15/31"
+  },
+  "unresolved_design_inputs": {
+    "type_c_receptacle_mpn": null,
+    "type_c_receptacle_pin_and_footprint_drawing_review": "BLOCKED: primary drawing could not be re-read into this repository; do not create a physical pin/footprint map from secondary CAD data",
+    "external_pmos_mpn_and_safe_operating_area": null,
+    "vbus_tvs_and_connector_esd_selection": null,
+    "adapter_sku_and_guaranteed_rating": null,
+    "actual_board_max_input_current": null,
+    "rp_current_to_motor_permission_hardware_logic": null,
+    "motor_sku_and_measured_current": null,
+    "complete_usb_c_input_schematic_and_native_erc": null,
+    "pcb_footprint_and_layout": null,
+    "thermal_and_hil_evidence": null,
+    "qfn24_ep_footprint_and_land_pattern": "NOT_SELECTED; follow ST recommended footprint then independently review paste/assembly and verify against selected fabricator process",
+    "usb_c_sink_pin_net_assignment": "NOT_DESIGNED; manufacturer pin names mapped only",
+    "power_path_fet_safe_operating_area_and_thermal": "UNVERIFIED; datasheet headline drain current is not a board capability"
+  },
+  "decision": "Use STUSB4500LQTR as the preferred 5V-only Type-C sink-controller candidate for the next input-interface schematic iteration. Do not treat the advertised-current indication as an input current limiter or as proof the whole clock load fits. Keep motor power disabled until adapter capability, complete system input budget, independent motor inhibit behavior, eFuse guaranteed limits, and HIL are verified. The STUSB4500L QFN-24 EP pin-name map and STL9P3LLH6 manufacturer pin map are recorded as source-linked candidate data only; no circuit net assignment or manufacturing footprint is approved.",
+  "reject_or_hold_conditions": [
+    "If the source only advertises default or 1.5A, the design has no permission to enable motor power.",
+    "Even at a 3A advertisement, motor power stays disabled until the measured worst-case whole-device input budget and required headroom pass.",
+    "The STUSB4500L VBUS_EN_SNK path is not by itself a load-current limiter; retain separate overcurrent protection and verify external PMOS path ratings.",
+    "Do not add PWR_FLAG to the existing review schematic as a substitute for modeling this input path."
+  ],
+  "manufacturer_pin_map": {
+    "source": "ST DS13102 Rev 6, Figure 2/Table 1; QFN-24 EP top view",
+    "pins": {
+      "1": "CC1DB",
+      "2": "CC1",
+      "3": "NU",
+      "4": "CC2",
+      "5": "CC2DB",
+      "6": "RESET",
+      "7": "SCL",
+      "8": "SDA",
+      "9": "DISCH",
+      "10": "GND",
+      "11": "ATTACH",
+      "12": "ADDR0",
+      "13": "ADDR1",
+      "14": "RP_1A5",
+      "15": "GPIO",
+      "16": "VBUS_EN_SNK",
+      "17": "A_B_SIDE",
+      "18": "VBUS_VS_DISCH",
+      "19": "ALERT",
+      "20": "RP_3A",
+      "21": "VREG_1V2",
+      "22": "VSYS",
+      "23": "VREG_2V7",
+      "24": "VDD",
+      "EP": "GND"
+    },
+    "footprint_selection": "NOT_SELECTED",
+    "net_assignment": "NOT_DESIGNED; do not infer circuit connectivity from this pin-name map"
+  },
+  "external_pmos_candidate": {
+    "manufacturer": "STMicroelectronics",
+    "order_code": "STL9P3LLH6",
+    "package": "PowerFLAT 3.3x3.3",
+    "manufacturer_pin_map": {
+      "1": "S",
+      "2": "S",
+      "3": "S",
+      "4": "G",
+      "5": "D",
+      "6": "D",
+      "7": "D",
+      "8": "D"
+    },
+    "datasheet_claims": {
+      "vds_v": -30,
+      "rds_on_max_ohm": 0.015,
+      "id_a": -9
+    },
+    "claims_scope": "Manufacturer device ratings only; not a usable board current, thermal, SOA, connector, or protection approval",
+    "role": "STUSB4500L Figure 9 implementation-example P-channel VBUS switch device candidate",
+    "status": "PROVISIONAL_CANDIDATE_NOT_SELECTED_FOR_PRODUCTION"
+  }
+}

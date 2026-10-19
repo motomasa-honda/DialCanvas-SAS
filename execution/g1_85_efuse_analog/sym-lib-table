@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "FG_REVIEW")(type "KiCad")(uri "${KIPRJMOD}/FG_REVIEW.kicad_sym")(options "")(descr "Non production pin boxes"))
+  (lib (name "FG_TI")(type "KiCad")(uri "${KIPRJMOD}/FG_TI.kicad_sym")(options "")(descr "TI TPS259474L manufacturer-pinned review"))
+)

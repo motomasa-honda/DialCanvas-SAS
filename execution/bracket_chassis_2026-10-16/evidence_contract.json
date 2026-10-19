@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-16",
+  "design": "7-axis independent service sled support frame and rear wood reinforcement, D7 CAD review",
+  "source_cad_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solids": 1774,
+  "failures_in_old_architecture": {
+    "full_plate_z116_119_clashes_axes": [
+      1,
+      2,
+      3,
+      4,
+      6
+    ],
+    "straight_p3_post_search_no_candidate_axes": [
+      5,
+      7
+    ]
+  },
+  "new_nominal_design": {
+    "fixed_perimeter_frame": {
+      "count": 1,
+      "rail_width_mm": 3,
+      "z_mm": [
+        130,
+        133
+      ],
+      "static_D7_overlap_count": 0
+    },
+    "per_axis_removable_sled": {
+      "count": 7,
+      "nominal_xyz_mm": [
+        44,
+        35,
+        15
+      ],
+      "inside_xy_mm": [
+        40.8,
+        31.8
+      ],
+      "actual_module_xy_mm": [
+        40,
+        31
+      ],
+      "individual_plus_z_retract_mm": 55
+    },
+    "fixed_guides": {
+      "count": 14,
+      "z_mm": [
+        123,
+        136.5
+      ],
+      "width_mm": 1.2
+    },
+    "source_routed_webs": {
+      "count": 14,
+      "nominal_width_mm": 1.92,
+      "source_d7_intersection_count": 0,
+      "moving_sled_intersection_count": 0
+    },
+    "individually_source_placed_underlips": {
+      "count": 21,
+      "d7_collision_count": 0
+    },
+    "removable_lock_bars": {
+      "count": 7,
+      "nominal_xyz_mm": [
+        48,
+        4,
+        1.3
+      ],
+      "rear_face_z_mm": 139.35,
+      "screws_physical": "NOT_DESIGNED"
+    },
+    "nominal_tool_corridors": {
+      "count": 14,
+      "assumed_diameter_mm": 2.6,
+      "d7_nominal_hits": 0
+    },
+    "backwood_48x35x3_pockets": {
+      "count": 7,
+      "minimum_panel_outer_edge_margin_mm": 8,
+      "physical_wood_remaining_strength": "NOT_TESTED"
+    },
+    "backwood_stepped_stiffener": {
+      "count": 1,
+      "nominal_width_mm": 2.96,
+      "nominal_length_mm": 275,
+      "z_mm": [
+        135,
+        137
+      ],
+      "nominal_fixed_interference_count": 0,
+      "wood_substrate_percent_z137_5": 100,
+      "actual_bond_strength": "NOT_TESTED"
+    }
+  },
+  "artifact_file": "Forest_Guardian_Seven_Axis_Bracket_And_Rearwood_Design_2026-10-16.zip",
+  "artifact_bytes": 409240,
+  "artifact_sha256": "edc01bb6f1ea5239329e0c210a8511c5ba3cc7c03511bf0c36457d50f6cd4b73",
+  "actual_verified": {
+    "openscad_csg": "PASS_SYNTAX_ONLY",
+    "pdf_a3_420x297mm": 2,
+    "dxf_layers_readback": 3,
+    "xlsx_worksheets_retained": 13,
+    "source_1774_shape_recomputed_in_companion_zip": true
+  },
+  "critical_open": [
+    "Perimeter frame-to-wood physical load-bearing anchors; prior P3 posts fail on G5/G7",
+    "Two real captive screws per lock bar and retention / tolerance measurement",
+    "Vendor MTR-09-024 board dimensions, original PCB and connector pinout, real service tools and 55mm wiring slack",
+    "3mm rearwood pocket and 275mm reinforcement structural qualification",
+    "Original 60mm fan relocation, thermal/noise/current and vent design",
+    "Independent motor safety latch, 5V watchdog real HIL / FG-P74 electrical gates"
+  ],
+  "release": {
+    "design_scope_task_done": 16,
+    "outcome_scope_task_total": 48,
+    "design_in_progress": 8,
+    "manufacturing_gates_closed": 0,
+    "manufacturing_gate_total": 6,
+    "software_review_evidence_passed": 11,
+    "software_review_evidence_total": 14,
+    "efuse_en": "LOW_PERMANENTLY_REVIEW",
+    "purchase": false,
+    "fabricate": false,
+    "energize": false,
+    "flash": false,
+    "main_merge": false
+  },
+  "documentation_disposition": "ONLY geometric conditions are supported. Native SCAD/DXF/PDF generator and immutable source audit logs reside in supplied ZIP. Github static CI only validates the evidence manifest, NOT full CAD geometry."
+}

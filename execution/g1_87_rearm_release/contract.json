@@ -1,0 +1,285 @@
+{
+  "revision": "G1-87",
+  "schematic": "forest_guardian_g1_87_release_qualified_review",
+  "design_status": "PROVISIONAL_REVIEW_UNPOWERED_NOT_SAFE",
+  "source": {
+    "revision": "G1-86",
+    "pads": 404,
+    "components": 112,
+    "nets": 110,
+    "modified_prior_pads": [
+      "J18.1",
+      "J18.2",
+      "R53.1",
+      "U22.1"
+    ]
+  },
+  "result": {
+    "pads": 446,
+    "components": 124,
+    "nets": 119,
+    "native_nc": 3,
+    "analog_input_rc_nominal_ms": 10
+  },
+  "manufacturer": {
+    "sn74lvc2g02": "https://www.ti.com/lit/ds/symlink/sn74lvc2g02.pdf",
+    "sn74lvc1g04": "https://www.ti.com/lit/ds/symlink/sn74lvc1g04.pdf",
+    "sn74lvc1g08": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+    "sn74lvc1g17": "https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf"
+  },
+  "components": [
+    {
+      "ref": "U23",
+      "sku": "SN74LVC2G02DCUR",
+      "pins": [
+        "B86__TRIP_ASSERT",
+        "B87__RELEASE_QBAR",
+        "B87__RELEASE_QBAR",
+        "GND",
+        "B87__RELEASE_SET",
+        "B87__RELEASE_SEEN",
+        "B87__RELEASE_SEEN",
+        "3V3_AON"
+      ],
+      "pin_names": [
+        "1A",
+        "1B",
+        "2Y",
+        "GND",
+        "2A",
+        "2B",
+        "1Y",
+        "VCC"
+      ],
+      "pin_types": [
+        "input",
+        "input",
+        "output",
+        "power_in",
+        "input",
+        "input",
+        "output",
+        "power_in"
+      ],
+      "library": "FG_FAULT"
+    },
+    {
+      "ref": "U24",
+      "sku": "SN74LVC1G08DBVR",
+      "pins": [
+        "B87__CLEAR_DEBOUNCED",
+        "B87__RELEASE_SEEN",
+        "GND",
+        "B87__CLEAR_QUALIFIED",
+        "3V3_AON"
+      ],
+      "pin_names": [
+        "A",
+        "B",
+        "GND",
+        "Y",
+        "VCC"
+      ],
+      "pin_types": [
+        "input",
+        "input",
+        "power_in",
+        "output",
+        "power_in"
+      ],
+      "library": "FG_FAULT"
+    },
+    {
+      "ref": "U25",
+      "sku": "SN74LVC1G04DBVR",
+      "pins": [
+        "unconnected-(U25-NC-Pad1)",
+        "B87__CLEAR_DEBOUNCED",
+        "GND",
+        "B87__CLEAR_NOT",
+        "3V3_AON"
+      ],
+      "pin_names": [
+        "NC",
+        "A",
+        "GND",
+        "Y",
+        "VCC"
+      ],
+      "pin_types": [
+        "no_connect",
+        "input",
+        "power_in",
+        "output",
+        "power_in"
+      ],
+      "library": "FG_FAULT"
+    },
+    {
+      "ref": "U26",
+      "sku": "SN74LVC1G08DBVR",
+      "pins": [
+        "B77__QUAL_CLR_N",
+        "B87__CLEAR_NOT",
+        "GND",
+        "B87__RELEASE_SET",
+        "3V3_AON"
+      ],
+      "pin_names": [
+        "A",
+        "B",
+        "GND",
+        "Y",
+        "VCC"
+      ],
+      "pin_types": [
+        "input",
+        "input",
+        "power_in",
+        "output",
+        "power_in"
+      ],
+      "library": "FG_FAULT"
+    },
+    {
+      "ref": "U27",
+      "sku": "SN74LVC1G17DBVR",
+      "pins": [
+        "unconnected-(U27-NC-Pad1)",
+        "B87__CLEAR_FILTERED",
+        "GND",
+        "B87__CLEAR_DEBOUNCED",
+        "3V3_AON"
+      ],
+      "pin_names": [
+        "NC",
+        "A",
+        "GND",
+        "Y",
+        "VCC"
+      ],
+      "pin_types": [
+        "no_connect",
+        "input",
+        "power_in",
+        "output",
+        "power_in"
+      ],
+      "library": "FG_SWITCH"
+    },
+    {
+      "ref": "R55",
+      "sku": "10k 1% SERIES DEBOUNCE REVIEW",
+      "pins": [
+        "B87__CLEAR_SWITCH_RAW",
+        "B87__CLEAR_FILTERED"
+      ],
+      "library": "FG_REVIEW"
+    },
+    {
+      "ref": "C19",
+      "sku": "1uF DEBOUNCE REVIEW",
+      "pins": [
+        "B87__CLEAR_FILTERED",
+        "GND"
+      ],
+      "library": "FG_REVIEW"
+    },
+    {
+      "ref": "C20",
+      "sku": "100nF U23 decoupling",
+      "pins": [
+        "3V3_AON",
+        "GND"
+      ],
+      "library": "FG_REVIEW"
+    },
+    {
+      "ref": "C21",
+      "sku": "100nF U24 decoupling",
+      "pins": [
+        "3V3_AON",
+        "GND"
+      ],
+      "library": "FG_REVIEW"
+    },
+    {
+      "ref": "C22",
+      "sku": "100nF U25 decoupling",
+      "pins": [
+        "3V3_AON",
+        "GND"
+      ],
+      "library": "FG_REVIEW"
+    },
+    {
+      "ref": "C23",
+      "sku": "100nF U26 decoupling",
+      "pins": [
+        "3V3_AON",
+        "GND"
+      ],
+      "library": "FG_REVIEW"
+    },
+    {
+      "ref": "C24",
+      "sku": "100nF U27 decoupling",
+      "pins": [
+        "3V3_AON",
+        "GND"
+      ],
+      "library": "FG_REVIEW"
+    }
+  ],
+  "rewired": [
+    {
+      "ref": "J18",
+      "pin": 1,
+      "new_net": "B87__CLEAR_SWITCH_RAW"
+    },
+    {
+      "ref": "J18",
+      "pin": 2,
+      "new_net": "3V3_AON"
+    },
+    {
+      "ref": "R53",
+      "pin": 1,
+      "new_net": "B87__CLEAR_SWITCH_RAW"
+    },
+    {
+      "ref": "U22",
+      "pin": 1,
+      "new_net": "B87__CLEAR_QUALIFIED"
+    }
+  ],
+  "logic": {
+    "clear_debounced": "Schmitt VCC_AON buffer of 10k series / 1uF RC filtered switch",
+    "trip_assert": "NOT QUAL_CLR_N",
+    "clear_not": "NOT CLEAR_DEBOUNCED",
+    "release_set": "QUAL_CLR_N AND CLEAR_NOT",
+    "release_latch_q": "NOR(TRIP_ASSERT, RELEASE_QBAR)",
+    "release_latch_qbar": "NOR(RELEASE_SET, RELEASE_SEEN)",
+    "clear_qualified": "CLEAR_DEBOUNCED AND RELEASE_SEEN",
+    "fault_reset_effective": "CLEAR_QUALIFIED AND QUAL_CLR_N",
+    "fault_q": "NOR(RESET_EFFECTIVE,FAULT_QBAR)",
+    "motor_power_enable": "NONE_GROUNDED_ONLY",
+    "unresolved": [
+      "Independent mechanical normally-open switch and PCB interface not approved",
+      "Schmitt hysteresis+RC time thresholds and release bounce not bench tested",
+      "Potential inter-gate race / glitch pulse, cold power-up latch state unsettled",
+      "Simultaneous fault-clear analog timing requires propagation-delay analysis",
+      "QUAL_CLR_N stuck-high and STOP-short not detected",
+      "PG post-start fault / independent 5V monitor not merged",
+      "Physical manufacturing footprint/PCB/thermal/HIL not qualified"
+    ]
+  },
+  "safety": {
+    "eFuse_U7_EN": "GND through 10k",
+    "phase_28_OE": "HIGH DISABLED",
+    "fault_q": "STATUS ONLY",
+    "done_scope": 19,
+    "total_scope": 48,
+    "manufacturing": 0
+  }
+}

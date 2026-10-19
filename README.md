@@ -4,7 +4,9 @@
 
 ## 現在の状態
 
-- 要求ベースライン: [Phase 0 v0.7](docs/01-requirements/phase0-v0.7.md)
+- 現行要求: [要求台帳v0.8](docs/01-requirements/requirements.yaml)。[Phase 0 v0.7](docs/01-requirements/phase0-v0.7.md)は初期履歴
+- [2026-10-19 既製品優先の全体見直し](docs/02-architecture/module-first-audit-2026-10-19.md)：外観/7軸A案を維持した既製品候補と専用製作範囲
+- 48件の実行状態: [tasks.csv](execution/tasks.csv) / [progress.json](execution/progress.json)。限定証拠完了数と製造リリースを区別
 - 要求の機械可読な原本: [要求台帳](docs/01-requirements/requirements.yaml)
 - [未決定事項](docs/01-requirements/open-questions.md) / [技術リスク](docs/01-requirements/risks.md)
 - [既存資産調査](docs/00-project/existing-assets.md) / [安全な移行計画](docs/00-project/migration-plan.md)

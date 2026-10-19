@@ -1,0 +1,72 @@
+name: G5-05 actual P4-C6 Hosted WiFi plus TLS product build HOLD
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g5-05-hosted-network-build.yml'
+      - 'execution/g5_05_hosted_network/**'
+      - 'execution/g5_05_https_api/**'
+      - 'execution/g5_05_access_core/**'
+      - 'execution/preflight.py'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g5-05-hosted-network-build.yml'
+      - 'execution/g5_05_hosted_network/**'
+      - 'execution/g5_05_https_api/**'
+      - 'execution/g5_05_access_core/**'
+      - 'execution/preflight.py'
+permissions:
+  contents: read
+jobs:
+  g5-05-p4-c6-hosted-ssl-build-unprovisioned:
+    runs-on: ubuntu-24.04
+    container:
+      image: espressif/idf:v5.5.2
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Security/source acceptance boundary + previous tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 execution/g5_05_hosted_network/check_contract.py
+          python3 execution/preflight.py
+          python3 tests/check_design.py
+          apt-get update -qq && apt-get install -y --no-install-recommends libssl-dev build-essential
+          gcc -std=c11 -Wall -Wextra -Werror -DFG_WEB_HOST_TEST -Iexecution/g5_05_access_core execution/g5_05_access_core/fg_web_access.c execution/g5_05_access_core/fg_web_access_host_test.c -lcrypto -o /tmp/fg-access
+          /tmp/fg-access
+      - name: Apply exact source-linked patches and BUILD real P4 C6 Hosted target
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+          tar -xzf phase67-source/firmware.tar.gz
+          python3 execution/g5_05_access_core/apply_product.py firmware
+          python3 execution/g5_05_https_api/apply_https_product.py firmware
+          python3 execution/g5_05_hosted_network/apply_network_product.py firmware
+          test -f firmware/main/fg_net_service.c
+          ! grep -q '^CONFIG_NVS_ENCRYPTION=y' firmware/sdkconfig.defaults
+          source /opt/esp/idf/export.sh
+          idf.py -C firmware set-target esp32p4 >/tmp/g5-net-target.log 2>&1
+          idf.py -C firmware build >/tmp/g5-net-build.log 2>&1 || { tail -200 /tmp/g5-net-build.log; exit 1; }
+          test -s firmware/build/forest_guardian_review.bin
+          sha256sum firmware/build/forest_guardian_review.bin
+          # The existing 3.5MiB RAW A/B review partition candidate is an actual limit,
+          # not an aspirational note. This check fails on a firmware size regression.
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('firmware/build/forest_guardian_review.bin')
+          actual=p.stat().st_size
+          capacity=0x380000
+          print(f'ESP32P4_APP_BYTES={actual} RAW_AB_SLOT_BYTES={capacity} REMAINING={capacity-actual}')
+          assert actual>0 and actual<capacity, 'Compiled HTTPS/Hosted product exceeds the unapproved RAW A/B slot capacity'
+          PY
+          grep -q 'fg_net_service.c' firmware/build/compile_commands.json
+          grep -q 'fg_hosted_wifi.c' firmware/build/compile_commands.json
+          echo "PASS real P4 Hosted-WiFi target product compiled / TLS only when protected credentials exist / NO BOARD TEST"

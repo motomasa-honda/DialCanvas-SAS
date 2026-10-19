@@ -1,0 +1,136 @@
+{
+  "status": "CONDITIONAL_GEOMETRY_REVIEW_ONLY",
+  "date": "2026-10-16",
+  "source_d7_assembly_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solids": 1774,
+  "coordinate_system": "D7 XY, Z points toward rear",
+  "grid_mm": 5,
+  "pcb_xy_mm": [
+    40,
+    31
+  ],
+  "per_side_reserved_xy_mm": 5,
+  "combined_reserved_xy_mm": [
+    50,
+    41
+  ],
+  "pcb_assumed_z_mm": [
+    123,
+    138
+  ],
+  "original_rear_wood_front_z_mm": 137,
+  "nominal_interference_with_rear_wood_mm": 1,
+  "panel_pocket_depth_mm_candidate_only": 3,
+  "nominal_min_outer_border_mm": 5,
+  "allowable_service_precondition": [
+    "Rear BACK_WOOD layers removed as common cover",
+    "rear grille / cover fasteners removed",
+    "original 60mm fan and mounting hardware relocated (alternative not yet thermally qualified)"
+  ],
+  "other_six_modules_may_not_be_removed": true,
+  "p3_and_gears_may_not_be_removed": true,
+  "axial_retraction_mm": 55,
+  "slots": [
+    {
+      "axis": 1,
+      "x": 85,
+      "y": 40,
+      "motor_xy_center_distance_mm": 40,
+      "minimum_outer_wood_margin_mm": 6.5,
+      "wood_pocket_candidate_depth_mm": 3,
+      "swept_55mm_fixed_collision_count_after_explicit_removals": 0
+    },
+    {
+      "axis": 2,
+      "x": 55,
+      "y": 140,
+      "motor_xy_center_distance_mm": 27.61,
+      "minimum_outer_wood_margin_mm": 17,
+      "wood_pocket_candidate_depth_mm": 3,
+      "swept_55mm_fixed_collision_count_after_explicit_removals": 0
+    },
+    {
+      "axis": 3,
+      "x": 135,
+      "y": 140,
+      "motor_xy_center_distance_mm": 24,
+      "minimum_outer_wood_margin_mm": 31.5,
+      "wood_pocket_candidate_depth_mm": 3,
+      "swept_55mm_fixed_collision_count_after_explicit_removals": 0
+    },
+    {
+      "axis": 4,
+      "x": 225,
+      "y": 130,
+      "motor_xy_center_distance_mm": 25.68,
+      "minimum_outer_wood_margin_mm": 7,
+      "wood_pocket_candidate_depth_mm": 3,
+      "swept_55mm_fixed_collision_count_after_explicit_removals": 0
+    },
+    {
+      "axis": 5,
+      "x": 140,
+      "y": 85,
+      "motor_xy_center_distance_mm": 95,
+      "minimum_outer_wood_margin_mm": 51.5,
+      "wood_pocket_candidate_depth_mm": 3,
+      "swept_55mm_fixed_collision_count_after_explicit_removals": 0
+    },
+    {
+      "axis": 6,
+      "x": 50,
+      "y": 85,
+      "motor_xy_center_distance_mm": 25.5,
+      "minimum_outer_wood_margin_mm": 12,
+      "wood_pocket_candidate_depth_mm": 3,
+      "swept_55mm_fixed_collision_count_after_explicit_removals": 0
+    },
+    {
+      "axis": 7,
+      "x": 140,
+      "y": 40,
+      "motor_xy_center_distance_mm": 57.76,
+      "minimum_outer_wood_margin_mm": 6.5,
+      "wood_pocket_candidate_depth_mm": 3,
+      "swept_55mm_fixed_collision_count_after_explicit_removals": 0
+    }
+  ],
+  "original_fan_60mm_case": {
+    "candidate_grid_positions": 74,
+    "seven_modules_feasible_on_grid": false
+  },
+  "fan_relocation_case": {
+    "candidate_grid_positions": 321,
+    "seven_modules_feasible_on_grid": true,
+    "fixed_d7_swept_collision_count": 0
+  },
+  "cooling_same_layer_nominal_free_candidate_centers": {
+    "60.5x60.5": 0,
+    "40x40": 0,
+    "30x30": 5,
+    "25x25": 29
+  },
+  "example_30x30_fan_center_xy": [
+    95,
+    90
+  ],
+  "wood_fill_at_z137_5_pct": 98.9,
+  "physical_integration_hold": [
+    "Actual motor-driver height and connectors unmeasured",
+    "Independent standoffs/brackets and fasteners unmodeled",
+    "Back-board 3mm pocket strength and remaining thickness unverified",
+    "Fan electrical power, intake cutout, noise and cooling unqualified",
+    "Axial PCB tool and cable bending radius unqualified",
+    "GPIO/independent safety latch not bench tested"
+  ],
+  "authorization": {
+    "manufacturing_gates_closed": 0,
+    "sw_evidence_passed": 11,
+    "motor_eFuse_en": "HELD_LOW",
+    "native_kicad_erc": "NOT_RUN",
+    "hardware_removal_test": "NOT_RUN",
+    "machining_allowed": false,
+    "buying_allowed": false,
+    "main_merge_allowed": false
+  }
+}

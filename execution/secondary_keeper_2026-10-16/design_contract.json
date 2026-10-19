@@ -1,0 +1,265 @@
+{
+  "design_id": "FG-M1-KPR-20261019",
+  "date": "2026-10-19",
+  "status": "CAD_CANDIDATE_NOT_FOR_MANUFACTURE",
+  "original_d7_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solid_count": 1774,
+  "axes": [
+    {
+      "axis": 1,
+      "x": 85,
+      "y": 40
+    },
+    {
+      "axis": 2,
+      "x": 55,
+      "y": 140
+    },
+    {
+      "axis": 3,
+      "x": 135,
+      "y": 140
+    },
+    {
+      "axis": 4,
+      "x": 225,
+      "y": 130
+    },
+    {
+      "axis": 5,
+      "x": 140,
+      "y": 85
+    },
+    {
+      "axis": 6,
+      "x": 50,
+      "y": 85
+    },
+    {
+      "axis": 7,
+      "x": 140,
+      "y": 40
+    }
+  ],
+  "per_axis": {
+    "bayonet_keys": 2,
+    "independent_headless_stop_candidate": "M2x5",
+    "counter_body_x_offsets": [
+      21.3,
+      24.6
+    ],
+    "counter_body_y_offsets": [
+      -3.75,
+      0.2
+    ],
+    "counter_body_z_mm": [
+      134,
+      138
+    ],
+    "screw_axis_xy_offsets": [
+      22.95,
+      -1.1
+    ],
+    "screw_radius_mm": 1,
+    "stud_installed_z": [
+      134.35,
+      139.35
+    ],
+    "stud_nominal_rearwood_relief_gap_mm": 0.65,
+    "locked_bar_y_offsets": [
+      0.5,
+      4.5
+    ],
+    "bar_z_mm": [
+      138.6,
+      139.9
+    ],
+    "bar_reverse_unlock_travel_mm": 2.5,
+    "nominal_return_y_until_contact_mm": 0.6,
+    "right_sled_entire_z_sweep_notch_x_offsets": [
+      20.6,
+      22.5
+    ],
+    "right_sled_notch_y_offsets": [
+      -4.2,
+      0.65
+    ],
+    "review_driver_tool_diameter_mm": 2.4,
+    "review_tool_length_mm": 24
+  },
+  "verified_with_full_d7_locally": {
+    "previous_revision_boss_x_offsets": [
+      20.5,
+      24
+    ],
+    "previous_revision_fixed_core_boss_collisions": 0,
+    "previous_revision_fixed_core_tool_collisions": 0,
+    "current_outboard_boss_revision_recomputed_against_full_d7": false,
+    "current_outboard_boss_revision_audit": "evidence/full_d7_shifted_boss_intersections.json",
+    "current_outboard_boss_revision_intersections": {
+      "back_wood": "7/7 axes; each boss overlaps 13.035mm3 in the existing Z137..138mm stratum",
+      "fan": "axis 5 overlaps FAN_MAX_BODY by 26.07mm3 and FAN_GASKET by 13.035mm3",
+      "other_fixed_solids": 0,
+      "tool_corridor": "NOT_CHECKED"
+    },
+    "current_stud_centerline_intersections": {
+      "relative_xy_offset_mm": [
+        23.15,
+        -1.1
+      ],
+      "z_mm": [
+        134.35,
+        139.35
+      ],
+      "back_wood": "7/7 axes; centerline crosses BACK_WOOD for 2.35mm of modeled 5mm stud length",
+      "fan": "axis 5 centerline crosses FAN_MAX_BODY for 1.65mm and FAN_GASKET for 1.0mm",
+      "scope": "exact centerline/material intersection only; no radial-clearance or driver-tool clearance claim",
+      "source": "evidence/full_d7_shifted_boss_intersections.json"
+    },
+    "proposed_local_backwood_relief_screen": {
+      "candidate_source": "evidence/keeper_wood_relief_candidate.json",
+      "review_cutter_overlay": "KEEPER_BACK_WOOD_RELIEF_CANDIDATE.scad",
+      "boss_x_offsets_mm": [
+        21.3,
+        24.6
+      ],
+      "stud_center_offsets_mm": [
+        22.95,
+        -1.1
+      ],
+      "seat_size_mm": [
+        4.1,
+        4.75
+      ],
+      "seat_center_offset_mm": [
+        22.95,
+        -1.775
+      ],
+      "seat_z_mm": [
+        137.0,
+        138.6
+      ],
+      "rear_clearance_bore_diameter_mm": 3.2,
+      "source_bound_screen": "7/7 seats contained in existing wood; 7/7 bore square envelopes pass full-wood/full-void slice check; conservative fixed-part driver corridor clear after removable grille; minimum seat-to-existing-boundary 1.5542mm",
+      "remaining": "historical unmodified-D7 boss report still includes the original axis-5 fan/gasket; conditional relocated fan candidate at XY220,40 is clear of all original fixed-source solids in evidence ../fan_relocation_2026-10-19/evidence/candidate_source_audit.json; integrated fan/keeper manufacture, wood strength and physical fit remain unverified",
+      "disposition": "WOOD_RELIEF_AND_RELOCATED_FAN_SOURCE_GEOMETRY_CANDIDATES_PASS; PHYSICAL_AND_THERMAL_GATES_OPEN"
+    },
+    "disposition": "FAILS_UNMODIFIED_D7_CLEARANCE; wood relief and fan relocation or boss redraw required; no fabrication",
+    "source_geometry_checked_in_Github": false,
+    "current_revision_release_effect": "WOOD CUTTER OVERLAY IS NOT A D7 CUT; FULL SOURCE CLEARANCE REQUIRES FAN RELOCATION AND PHYSICAL ACCEPTANCE",
+    "conditional_relocated_fan_candidate": "../fan_relocation_2026-10-19/evidence/candidate_source_audit.json"
+  },
+  "kinematic_test": {
+    "steps_total": 714,
+    "no_complete_unlock_with_screw": 7,
+    "full_unlock_without_screw": 7,
+    "old_unnotched_sled_hits": 7,
+    "new_nominal_notched_sled_clear": 7
+  },
+  "tolerance_analysis": {
+    "conservative_board_width_mm": 40,
+    "conservative_board_notch_nominal_margin_mm": 0.6,
+    "worst_margin_with_two_parts_each_pm_0_2_mm": 0.2,
+    "assumed_per_part_tolerance_mm": 0.2,
+    "notch_only_feasibility_with_two_parts_each_pm_0_2_mm": {
+      "board_edge_min_notch_x_offset_mm": 20.4,
+      "fixed_boss_edge_max_notch_x_offset_mm": 20.9,
+      "feasible_interval": true,
+      "available_interval_width_mm": 0.5,
+      "selected_notch_start_mm": 20.6,
+      "selected_notch_worst_board_clearance_mm": 0.2,
+      "selected_boss_shift_outboard_mm": 1.0,
+      "selected_notch_end_mm": 22.5,
+      "cassette_outer_wall_x_offset_mm": 22,
+      "notch_end_worst_clearance_to_wall_mm": 0.1,
+      "selected_boss_worst_case_wall_thickness_mm": 0.425,
+      "remaining_y_z_tolerance_review": "NOT_ANALYZED_BY_THIS_XY_SCREEN",
+      "disposition": "CONDITIONAL_NOMINAL_TOLERANCE_CANDIDATE; FULL_D7_CLEARANCE_AND_PHYSICAL_SAMPLE_NOT_VERIFIED"
+    },
+    "alternate_catalog_board_width_mm": 35,
+    "alternate_nominal_margin_mm": 2.8,
+    "alternate_worst_margin_pm_0_2_mm": 2.4,
+    "alternate_board_tolerance_window_mm": [
+      17.9,
+      20.9
+    ],
+    "actual_module_measurement": "NOT_AVAILABLE",
+    "remaining_y_z_tolerance_review": "ANALYZED_PARAMETRICALLY_WITH_ASSUMED_PM_0_2_MM_PER_PART; PHYSICAL_PROCESS_CAPABILITY_NOT_VERIFIED",
+    "yz_clearance_screen": {
+      "assumed_per_part_tolerance_mm": 0.2,
+      "boss_y_offsets_mm": [
+        -3.75,
+        0.2
+      ],
+      "notch_y_offsets_mm": [
+        -4.2,
+        0.65
+      ],
+      "boss_to_notch_nominal_clearance_each_side_mm": 0.45,
+      "boss_to_notch_worst_clearance_each_side_mm": 0.05,
+      "sled_notch_top_z_mm": 138.1,
+      "lock_bar_bottom_z_mm": 138.6,
+      "sled_to_bar_nominal_clearance_z_mm": 0.5,
+      "sled_to_bar_worst_clearance_z_mm": 0.1,
+      "status": "PARAMETRIC_SCREEN_ONLY; CLEARANCE_IS_SMALL_AND_DEPENDS_ON_UNVERIFIED_PART_PROCESS_TOLERANCES",
+      "boss_x_offsets_mm": [
+        21.3,
+        24.6
+      ]
+    }
+  },
+  "hardware_issues": [
+    "M2 headless fastener material/tap/strip strength not qualified",
+    "M2 screw reverse-turn vibration and drop-out not qualified",
+    "candidate retains 0.2mm worst-case X, 0.05mm worst-case Y and 0.1mm worst-case Z clearance under assumed ±0.2mm/part; actual process capability and physical sample unverified",
+    "native fixed boss interrupts existing sled right side wall, structural life not qualified",
+    "Fan relocation, wood back-pocket depth and physical 55mm interchange pending",
+    "Motor independent trip latch and eFuse PG/STOP not built"
+  ],
+  "status_counts": {
+    "done_scope": 21,
+    "working": 8,
+    "open": 15,
+    "hardware_wait": 4,
+    "all_scope": 48,
+    "manufacturing_done": 0,
+    "manufacturing_total": 6,
+    "software_passed": 11,
+    "software_total": 14
+  },
+  "controls": {
+    "purchase_allowed": false,
+    "manufacture_allowed": false,
+    "power_allowed": false,
+    "flash_allowed": false,
+    "merge_allowed": false,
+    "efuse_en": "LOW"
+  },
+  "integrated_wood_relief_candidate": {
+    "keeper_scad": "M1_7AXIS_ANTISLIDE_STOP_REVIEW.scad",
+    "overlay_parameter": "SHOW_WOOD_CUTTER_OVERLAY",
+    "default_overlay_enabled": false,
+    "seat_size_mm": [
+      4.1,
+      4.75
+    ],
+    "seat_center_offset_mm": [
+      22.95,
+      -1.775
+    ],
+    "seat_z_mm": [
+      137.0,
+      138.6
+    ],
+    "rear_clearance_bore_diameter_mm": 3.2,
+    "bore_center_offset_mm": [
+      22.95,
+      -1.1
+    ],
+    "wood_z_mm": [
+      137,
+      145
+    ],
+    "status": "CAD_GEOMETRY_INTEGRATED_SOURCE_AUDIT_AND_PHYSICAL_VALIDATION_PENDING"
+  }
+}

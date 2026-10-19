@@ -1,0 +1,59 @@
+name: Phase66 ESP-IDF 5.5.2 ESP32-P4 toolchain probe
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase66-idf-probe.yml'
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/phase66-idf-probe.yml'
+permissions:
+  contents: read
+jobs:
+  esp32p4-toolchain-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    container:
+      image: espressif/idf:v5.5.2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build minimal ESP32-P4 test project (not Forest Guardian product)
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          idf.py --version
+          mkdir -p phase66-probe/main phase66-evidence
+          printf '%s\n'             'cmake_minimum_required(VERSION 3.16)'             'include($ENV{IDF_PATH}/tools/cmake/project.cmake)'             'project(fg_phase66_toolchain_probe)' > phase66-probe/CMakeLists.txt
+          printf '%s\n'             'idf_component_register(SRCS "main.c" INCLUDE_DIRS ".")' > phase66-probe/main/CMakeLists.txt
+          printf '%s\n'             '#include <stdio.h>'             'void app_main(void) { puts("FG Phase66 ESP32-P4 toolchain probe ONLY"); }' > phase66-probe/main/main.c
+          idf.py -C phase66-probe set-target esp32p4
+          idf.py -C phase66-probe build 2>&1 | tee phase66-evidence/build.log
+          test -s phase66-probe/build/fg_phase66_toolchain_probe.bin
+          sha256sum phase66-probe/build/fg_phase66_toolchain_probe.bin > phase66-evidence/bin.sha256
+          wc -c phase66-probe/build/fg_phase66_toolchain_probe.bin > phase66-evidence/bin-size.txt
+          printf '%s\n' 'PROBE_ONLY=true' 'PRODUCT_BUILD=false' > phase66-evidence/scope.txt
+      - name: Compile and link original Forest Guardian motor safety modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          source /opt/esp/idf/export.sh
+          mkdir -p phase66-evidence
+          idf.py -C phase67-core set-target esp32p4
+          idf.py -C phase67-core build 2>&1 | tee phase66-evidence/phase67-safety-core-build.log
+          test -s phase67-core/build/fg_phase67_safety_core.bin
+          sha256sum phase67-core/build/fg_phase67_safety_core.bin > phase66-evidence/phase67-core-bin.sha256
+          wc -c phase67-core/build/fg_phase67_safety_core.bin > phase66-evidence/phase67-core-bin-size.txt
+          printf '%s\n' 'PRODUCT_SOURCE_MODULES=control.c,fg_intent.c,fg_output_guard.c' 'TARGET=esp32p4' 'FULL_PRODUCT_BUILD=false' 'VIRTUAL_IO_TEST=COMPILED_NOT_EXECUTED_ON_HARDWARE' > phase66-evidence/phase67-scope.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase66-esp32p4-toolchain-probe
+          path: phase66-evidence/
+          if-no-files-found: warn

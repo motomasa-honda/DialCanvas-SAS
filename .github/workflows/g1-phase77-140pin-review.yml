@@ -1,0 +1,34 @@
+name: Forest Guardian G1 actual 140 physical pad wiring and release-before-rearm review
+on:
+  push:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g1-phase77-140pin-review.yml'
+      - 'execution/g1_phase77_140pins/**'
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'review/forest-guardian-phase66-idf'
+    paths:
+      - 'execution/ci/full-regression.marker'
+      - '.github/workflows/g1-phase77-140pin-review.yml'
+      - 'execution/g1_phase77_140pins/**'
+permissions:
+  contents: read
+jobs:
+  physically-disabled-140-net-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify old firmware binary remains immutable
+        run: |
+          set -euo pipefail
+          echo 'a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3  phase67-source/firmware.tar.gz' | sha256sum -c -
+      - name: Verify actual 140 physical net endpoints and project-wide safety gate
+        run: |
+          set -euo pipefail
+          python3 execution/g1_phase77_140pins/check_contract.py
+          python3 execution/preflight.py
