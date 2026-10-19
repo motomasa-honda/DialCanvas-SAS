@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "status": "UNPOWERED_MODULE_INTEGRATION_CANDIDATE",
+  "task_ids": ["G1-05", "G1-06", "G4-04", "G3-06", "G5-07"],
+  "selection": {
+    "input": "DC_5V_FIRST_COMPARISON_USB_C_RETAINED",
+    "adapter": "MEAN WELL GST40A05-P1J",
+    "aon_converter": "Pololu D24V5F3 #2842",
+    "motor": "Adafruit #858, current 1/16.128 variant, seven units",
+    "motor_driver": "Seven separate ULN2003 boards; exact revision unresolved",
+    "lighting": "DFRobot FIT0836, twenty segments in total",
+    "production_selected": false
+  },
+  "sources": {
+    "adapter": {"url": "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF", "document_revision": "2026-04-03", "checked": "2026-10-19", "page": 2},
+    "converter": {"url": "https://www.pololu.com/product/2842", "checked": "2026-10-19", "section": "Features; Connections; Typical efficiency and output current"},
+    "motor": {"url": "https://www.adafruit.com/product/858", "checked": "2026-10-19", "section": "Technical Details; seller catalog, OEM not identified"},
+    "lighting": {"url": "https://www.dfrobot.com/product-2398.html", "checked": "2026-10-19", "section": "FIT0836 specification and individual cut capability"},
+    "fan": {"path": "execution/fan_relocation_2026-10-19/interface_contract.json", "section": "manufacturer_rated_data; not startup or stall maximum"}
+  },
+  "adapter": {"rated_v": 5.0, "rated_a": 5.0, "rated_w": 25.0, "voltage_tolerance_fraction": 0.05, "plug_od_mm": 5.5, "plug_id_mm": 2.1, "center_positive": true, "ac_inlet": "Class I C14; domestic cord/ground and procurement applicability not qualified", "jack_part": null, "qualified_harness_current_a": null},
+  "converter": {
+    "rated_v": 3.3, "output_accuracy_fraction": 0.04,
+    "catalog_max_continuous_a_thermal_dependent": 0.5,
+    "guaranteed_min_efficiency": null,
+    "qualified_output_current_a": null,
+    "reverse_polarity_protection": false,
+    "qualified_input_min_v": null,
+    "qualified_output_window_v": null,
+    "body_mm": [13, 10, 3],
+    "terminal_identity": "Manufacturer silkscreen names; these are NOT numerical pad IDs or a footprint pin order",
+    "terminals": [
+      {"name": "VIN", "net": "B77__5V_RAW", "electrical_type": "power_in"},
+      {"name": "GND", "net": "GND", "electrical_type": "power_in"},
+      {"name": "VOUT", "net": "3V3_AON", "electrical_type": "power_out"},
+      {"name": "SHDN", "net": null, "electrical_type": "input", "reason": "Leave open for always-on operation; internal 100k pullup to VIN per manufacturer. Never connect to MCU or motor rail."}
+    ]
+  },
+  "screening": {
+    "reserve_fraction": 0.2,
+    "motor_axes": 7,
+    "phases_per_axis": 1,
+    "motor_nominal_v": 5.0,
+    "motor_approx_winding_ohm": 42.0,
+    "led_count": 20,
+    "leds_per_metre": 60,
+    "led_catalog_max_w_per_metre_at_5v": 4.0,
+    "fan_rated_a_not_peak": 0.045,
+    "source_alternatives_a": [3.0, 5.0]
+  },
+  "unmeasured": {
+    "waveshare_total_5v_peak_a": null,
+    "seven_driver_board_overhead_5v_peak_a": null,
+    "external_aon_total_3v3_peak_a": null,
+    "aon_min_efficiency": null,
+    "motor_total_peak_a": null,
+    "lighting_total_peak_a": null,
+    "fan_start_stall_peak_a": null,
+    "other_raw_5v_peak_a": null,
+    "efuse_guaranteed_min_limit_a": null,
+    "measured_total_input_peak_a": null,
+    "minimum_raw_voltage_during_transient_v": null,
+    "maximum_source_voltage_including_transient_v": null
+  },
+  "accounting": {
+    "waveshare": "One complete 5V load including P4, C6, display and on-board conversion; do not add them again to external AON",
+    "external_aon": "All external 3V3_AON loads including expanders/safety/sensors/RTC as actually wired; exclude Waveshare internal rails",
+    "motor": "Coil sum and driver-board overhead separate; one-hot firmware does not establish fault-case phase count or actual current",
+    "fan": "45mA catalog rated current does not bound startup or locked rotor",
+    "input_path": "Current rating is limited by adapter, jack, protection and harness together; a 5A adapter alone cannot approve the input path"
+  },
+  "qualified_raw_voltage_window_v": null,
+  "release": {"motor_enable": false, "phase_enable": false, "purchase": false, "fabricate": false, "flash": false, "manufacturing": false}
+}

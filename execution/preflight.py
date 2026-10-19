@@ -35,6 +35,8 @@ checks = [
     "execution/g1_95_aon_regulator/test_input_power_consistency.py",
     "execution/g1_95_aon_regulator/test_motor_feasibility.py",
     "execution/g1_95_aon_regulator/test_wave_drive_product.py",
+    "execution/cots_power/check_contract.py",
+    "execution/cots_power/test_power_budget.py",
     "execution/g1_86_fault_latch/check_contract.py",
     "execution/g1_87_rearm_release/check_contract.py",
     "execution/cassettes/check_manifest.py",

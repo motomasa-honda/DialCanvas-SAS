@@ -1,4 +1,4 @@
-name: G1-95 manufacturer pin real AON regulator source KiCad review
+name: G1-95 and COTS AON regulator source KiCad review
 on:
   pull_request:
     branches:
@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/g1-95-aon-regulator-review.yml'
       - 'execution/g1_95_aon_regulator/**'
+      - 'execution/cots_power/**'
       - 'execution/g1_94_native_erc_cleanup/**'
       - 'execution/g1_93_inhibited_phase_grant/**'
       - 'execution/g1_phase77_140pins/**'
@@ -17,6 +18,7 @@ on:
     paths:
       - '.github/workflows/g1-95-aon-regulator-review.yml'
       - 'execution/g1_95_aon_regulator/**'
+      - 'execution/cots_power/**'
       - 'execution/g1_94_native_erc_cleanup/**'
       - 'execution/g1_93_inhibited_phase_grant/**'
       - 'execution/g1_phase77_140pins/**'
@@ -41,6 +43,10 @@ jobs:
           python3 execution/g1_95_aon_regulator/test_input_power_consistency.py
           python3 execution/g1_95_aon_regulator/test_motor_feasibility.py
           python3 execution/g1_95_aon_regulator/motor_feasibility.py --output execution/g1_95_aon_regulator/native_evidence/motor_candidate_matrix.json
+          python3 execution/cots_power/build_review.py
+          python3 execution/cots_power/check_contract.py --generated execution/cots_power/generated
+          python3 execution/cots_power/power_budget.py --output execution/cots_power/generated/power_budget.json
+          python3 execution/cots_power/test_power_budget.py
           python3 execution/preflight.py
       - name: Install KiCad9 and all source libraries
         run: |
@@ -55,6 +61,7 @@ jobs:
           G89="$GITHUB_WORKSPACE/execution/g1_89_hardware_start_deadline"
           G90="$GITHUB_WORKSPACE/execution/g1_90_fault_cutoff"
           G95="$GITHUB_WORKSPACE/execution/g1_95_aon_regulator"
+          COTS="$GITHUB_WORKSPACE/execution/cots_power/generated"
           mkdir -p "$HOME/.config/kicad/9.0"
           cat > "$HOME/.config/kicad/9.0/sym-lib-table" <<EOF
           (sym_lib_table
@@ -65,6 +72,7 @@ jobs:
            (lib (name "FG_TIMER")(type "KiCad")(uri "$G89/FG_TIMER.kicad_sym")(options "")(descr "Supervisor"))
            (lib (name "FG_CUTOFF")(type "KiCad")(uri "$G90/FG_CUTOFF.kicad_sym")(options "")(descr "FET"))
            (lib (name "FG_POWER")(type "KiCad")(uri "$G95/FG_POWER.kicad_sym")(options "")(descr "AON buck"))
+           (lib (name "FG_COTS")(type "KiCad")(uri "$COTS/FG_COTS.kicad_sym")(options "")(descr "Named COTS module terminals; not a footprint"))
            (lib (name "FG_SWITCH")(type "KiCad")(uri "$ROOT/FG_SWITCH.kicad_sym")(options "")(descr "Schmitt"))
           )
           EOF
@@ -79,6 +87,16 @@ jobs:
           kicad-cli sch export svg --output "$OUT/svg" "$SRC"
           kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
           python3 execution/g1_95_aon_regulator/check_contract.py "$OUT"
+      - name: Real KiCad9 COTS alternative netlist and unwaived ERC
+        run: |
+          set -euo pipefail
+          SRC=execution/cots_power/generated/forest_guardian_cots_aon_review.kicad_sch
+          OUT=execution/cots_power/generated/native_evidence
+          mkdir -p "$OUT/svg"
+          kicad-cli sch export netlist --format kicadxml -o "$OUT/native.net.xml" "$SRC"
+          kicad-cli sch export svg --output "$OUT/svg" "$SRC"
+          kicad-cli sch erc --format json --severity-all -o "$OUT/erc.json" "$SRC"
+          python3 execution/cots_power/check_contract.py --generated execution/cots_power/generated --native "$OUT"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -87,4 +105,5 @@ jobs:
             execution/g1_95_aon_regulator/native_evidence/
             execution/g1_95_aon_regulator/forest_guardian_g1_95_aon_regulator_review.kicad_sch
             execution/g1_95_aon_regulator/pin_map_648.json
+            execution/cots_power/generated/
           if-no-files-found: warn
