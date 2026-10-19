@@ -74,8 +74,8 @@ def boss_intersections(source: dict, x_offset: tuple[float, float] = (21.5, 24.8
         bx0, bx1 = x + x_offset[0], x + x_offset[1]
         by0, by1 = y + y_offset[0], y + y_offset[1]
         bz0, bz1 = z_range
-        hits: dict[str, float] = defaultdict(float)
-        for solid in source["solids"]:
+        hits: dict[int, tuple[str, float]] = {}
+        for source_index, solid in enumerate(source["solids"]):
             frame = solid["axis"]
             if frame == "XY":
                 z_overlap = max(0.0, min(bz1, solid["high"]) - max(bz0, solid["low"]))
@@ -94,10 +94,14 @@ def boss_intersections(source: dict, x_offset: tuple[float, float] = (21.5, 24.8
                                 for poly in geometry_polygons(solid["geometry"]))
             volume = cross_section * z_overlap
             if volume > 1e-6:
-                hits[solid["id"]] += volume
+                prior_id, prior_volume = hits.get(source_index, (solid["id"], 0.0))
+                if prior_id != solid["id"]:
+                    raise ValueError("source index reused with a different solid id")
+                hits[source_index] = (solid["id"], prior_volume + volume)
         by_axis[str(axis_number)] = [
-            {"solid_id": solid_id, "overlap_volume_mm3": round(volume, 6)}
-            for solid_id, volume in sorted(hits.items())
+            {"source_index": source_index, "solid_id": solid_id,
+             "overlap_volume_mm3": round(volume, 6)}
+            for source_index, (solid_id, volume) in sorted(hits.items())
         ]
     return by_axis
 

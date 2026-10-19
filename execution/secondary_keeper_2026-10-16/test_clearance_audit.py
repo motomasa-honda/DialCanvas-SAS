@@ -27,9 +27,18 @@ class ClearanceAuditTests(unittest.TestCase):
         source = {"solids": [rectangular_xy(107, 108, 37, 38)]}
         result = audit.boss_intersections(source)
         self.assertEqual(len(result["1"]), 1)
+        self.assertEqual(result["1"][0]["source_index"], 0)
         self.assertEqual(result["1"][0]["solid_id"], "FIXTURE")
         self.assertTrue(all(not result[str(i)] for i in range(2, 8)))
         self.assertAlmostEqual(result["1"][0]["overlap_volume_mm3"], 4.0)
+
+    def test_duplicate_source_ids_remain_separately_identifiable(self):
+        solid = rectangular_xy(107, 108, 37, 38)
+        source = {"solids": [solid, {**solid}]}
+        result = audit.boss_intersections(source)
+        self.assertEqual([hit["source_index"] for hit in result["1"]], [0, 1])
+        self.assertEqual([hit["solid_id"] for hit in result["1"]], ["FIXTURE", "FIXTURE"])
+        self.assertEqual([hit["overlap_volume_mm3"] for hit in result["1"]], [4.0, 4.0])
 
     def test_candidate_offsets_change_audited_envelope(self):
         source = {"solids": [rectangular_xy(107, 108, 37, 38)]}
