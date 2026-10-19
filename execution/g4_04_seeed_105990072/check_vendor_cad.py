@@ -98,6 +98,26 @@ def schematic_net_map(schematic: ET.Element, part: str) -> dict[str, dict[str, s
     return result
 
 
+def schematic_pin_pad_map(schematic: ET.Element, part_name: str) -> dict[str, str]:
+    """Resolve schematic symbol pins to physical footprint pad numbers."""
+    parts = schematic.findall("./drawing/schematic/parts/part")
+    part = next((p for p in parts if p.get("name") == part_name), None)
+    assert part is not None, f"Missing schematic part {part_name}"
+    libraries = schematic.findall("./drawing/schematic/libraries/library")
+    library = next((lib for lib in libraries if lib.get("name") == part.get("library")), None)
+    assert library is not None, f"Missing library for {part_name}"
+    devicesets = library.findall("./devicesets/deviceset")
+    deviceset = next((ds for ds in devicesets if ds.get("name") == part.get("deviceset")), None)
+    assert deviceset is not None, f"Missing deviceset for {part_name}"
+    device = next((d for d in deviceset.findall("./devices/device")
+                   if d.get("name") == part.get("device")), None)
+    assert device is not None, f"Missing device mapping for {part_name}"
+    pairs = {c.get("pin", ""): c.get("pad", "") for c in device.findall("./connects/connect")}
+    assert pairs and all(pairs.values()), f"Incomplete symbol-to-pad map for {part_name}"
+    assert len(set(pairs.values())) == len(pairs), f"Non-bijective symbol-to-pad map for {part_name}"
+    return pairs
+
+
 def pinrefs_for_net(schematic: ET.Element, name: str) -> list[dict[str, str]]:
     for net in schematic.findall("./drawing/schematic/sheets/sheet/nets/net"):
         if net.get("name") == name:
@@ -137,6 +157,11 @@ def main() -> None:
     assert (j5_count, round(j5_pitch, 3)) == (7, 2.54)
     assert (j4_count, round(j4_pitch, 3)) == (5, 2.54)
 
+    j5_pin_pads = schematic_pin_pad_map(stree, "J5")
+    j4_pin_pads = schematic_pin_pad_map(stree, "J4")
+    assert j5_pin_pads == {str(n): str(n) for n in range(1, 8)}, j5_pin_pads
+    assert j4_pin_pads == {f"P${n}": str(n) for n in range(1, 6)}, j4_pin_pads
+
     signal_for_j5: dict[str, str] = {}
     for sig in board.findall("./signals/signal"):
         for ref in sig.findall("./contactref"):
@@ -159,7 +184,8 @@ def main() -> None:
             roles[str(pin)] = "IN" + u1pins[0][0]
         else:
             assert net == roles[str(pin)]
-        header[str(pin)] = {"function": roles[str(pin)], "eagle_net": net,
+        header[str(pin)] = {"symbol_pin": str(pin), "package_pad": j5_pin_pads[str(pin)],
+                            "function": roles[str(pin)], "eagle_net": net,
                             "uln2003_pin": u1pins[0] if u1pins else None}
 
     motor = {}
@@ -167,7 +193,14 @@ def main() -> None:
         net = signal_for_j4[str(pin)]
         refs = pinrefs_for_net(stree, net)
         u1pins = [r["pin"] for r in refs if r["part"] == "U1"]
-        motor[str(pin)] = {"eagle_net": net, "uln2003_pin": u1pins[0] if u1pins else None}
+        symbol_pin = f"P${pin}"
+        package_pad = j4_pin_pads[symbol_pin]
+        assert package_pad == str(pin)
+        pad = next(p for p in packages[j4.get("package")].findall("./pad")
+                   if p.get("name") == package_pad)
+        motor[str(pin)] = {"symbol_pin": symbol_pin, "package_pad": package_pad,
+                           "package_local_xy_mm": [f(pad, "x"), f(pad, "y")],
+                           "eagle_net": net, "uln2003_pin": u1pins[0] if u1pins else None}
 
     evidence = {
         "source": {
@@ -209,10 +242,12 @@ def main() -> None:
         "mounting_holes_inside_pcb_outline": holes_inside,
         "control_header": {"package": j5.get("package"), "pin_count": j5_count,
                            "pitch_mm": j5_pitch, "maximum_drill_mm": j5_drill,
-                           "board_element_rotation": j5.get("rot"), "pin_map": header},
+                           "board_element_rotation": j5.get("rot"),
+                           "symbol_pin_to_package_pad": j5_pin_pads, "pin_map": header},
         "motor_connector": {"package": j4.get("package"), "pin_count": j4_count,
                             "pitch_mm": j4_pitch, "maximum_drill_mm": j4_drill,
-                            "board_element_rotation": j4.get("rot"), "pin_map": motor},
+                            "board_element_rotation": j4.get("rot"),
+                            "symbol_pin_to_package_pad": j4_pin_pads, "pin_map": motor},
         "evidence_scope": "Vendor-source static CAD/netlist parse only. No manufactured-board revision, as-received dimensions, connector mating clearance, load torque, temperature, or powered behavior accepted.",
     }
     OUTPUT.write_text(json.dumps(evidence, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

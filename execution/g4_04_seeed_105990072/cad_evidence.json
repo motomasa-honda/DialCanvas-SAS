@@ -81,38 +81,61 @@
     "pitch_mm": 2.54,
     "maximum_drill_mm": 0.889,
     "board_element_rotation": "R180",
+    "symbol_pin_to_package_pad": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7"
+    },
     "pin_map": {
       "1": {
+        "symbol_pin": "1",
+        "package_pad": "1",
         "function": "VM",
         "eagle_net": "VM",
         "uln2003_pin": null
       },
       "2": {
+        "symbol_pin": "2",
+        "package_pad": "2",
         "function": "VCC",
         "eagle_net": "VCC",
         "uln2003_pin": "COM"
       },
       "3": {
+        "symbol_pin": "3",
+        "package_pad": "3",
         "function": "GND",
         "eagle_net": "GND",
         "uln2003_pin": "E"
       },
       "4": {
+        "symbol_pin": "4",
+        "package_pad": "4",
         "function": "IN4",
         "eagle_net": "N$3",
         "uln2003_pin": "4B"
       },
       "5": {
+        "symbol_pin": "5",
+        "package_pad": "5",
         "function": "IN3",
         "eagle_net": "N$7",
         "uln2003_pin": "3B"
       },
       "6": {
+        "symbol_pin": "6",
+        "package_pad": "6",
         "function": "IN2",
         "eagle_net": "N$6",
         "uln2003_pin": "2B"
       },
       "7": {
+        "symbol_pin": "7",
+        "package_pad": "7",
         "function": "IN1",
         "eagle_net": "N$5",
         "uln2003_pin": "1B"
@@ -125,24 +148,61 @@
     "pitch_mm": 2.54,
     "maximum_drill_mm": 0.8128,
     "board_element_rotation": "R270",
+    "symbol_pin_to_package_pad": {
+      "P$1": "1",
+      "P$2": "2",
+      "P$3": "3",
+      "P$4": "4",
+      "P$5": "5"
+    },
     "pin_map": {
       "1": {
+        "symbol_pin": "P$1",
+        "package_pad": "1",
+        "package_local_xy_mm": [
+          5.08,
+          0.0
+        ],
         "eagle_net": "VMOTOR",
         "uln2003_pin": null
       },
       "2": {
+        "symbol_pin": "P$2",
+        "package_pad": "2",
+        "package_local_xy_mm": [
+          2.54,
+          0.0
+        ],
         "eagle_net": "N$14",
         "uln2003_pin": "4C"
       },
       "3": {
+        "symbol_pin": "P$3",
+        "package_pad": "3",
+        "package_local_xy_mm": [
+          0.0,
+          0.0
+        ],
         "eagle_net": "N$2",
         "uln2003_pin": "3C"
       },
       "4": {
+        "symbol_pin": "P$4",
+        "package_pad": "4",
+        "package_local_xy_mm": [
+          -2.54,
+          0.0
+        ],
         "eagle_net": "N$1",
         "uln2003_pin": "2C"
       },
       "5": {
+        "symbol_pin": "P$5",
+        "package_pad": "5",
+        "package_local_xy_mm": [
+          -5.08,
+          0.0
+        ],
         "eagle_net": "N$11",
         "uln2003_pin": "1C"
       }
