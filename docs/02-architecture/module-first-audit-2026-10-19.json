@@ -1,0 +1,1282 @@
+{
+  "schema": "forest-guardian-module-first-audit-v1",
+  "date": "2026-10-19",
+  "status": "SYSTEM_REVIEW_CANDIDATES_ONLY",
+  "scope": "28 subsystems and all existing 48 task IDs; not a re-audit of all 448 BOM lines or 1774 CAD solids",
+  "baseline_commit": "a16c67b52d4ff6338fb7d829bec0ebfdea18bcff",
+  "report": "docs/02-architecture/module-first-audit-2026-10-19.md",
+  "adr": "adr/0004-module-first-system-review.md",
+  "preserved": {
+    "axes": 7,
+    "driver_modules": 7,
+    "independent_driver_replacement_without_gears_p3_other_axes": true,
+    "reserve_periphery_mm": 5,
+    "service_sweep_mm": 55,
+    "envelope_reference_mm": [
+      270,
+      205,
+      145
+    ],
+    "display_candidate_inches": 3.4,
+    "display_candidate_pixels": [
+      800,
+      800
+    ],
+    "manufacturing_release": false,
+    "purchase_authorized": false,
+    "motor_power_enabled": false,
+    "main_merge_authorized": false
+  },
+  "visual_reference": {
+    "name": "森と真鍮のスチームパンク時計設計図.png",
+    "sha256": "97528e6676aeb3cf4ab1abe9533609b60eeb8badfb97e715e30ab3b6319849a0",
+    "approved_version_1_identity_verified": false,
+    "illustration_dimensions_not_current_baseline": true
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Waveshare XC",
+      "url": "https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC",
+      "checked_date": "2026-10-19",
+      "finding": "3.4C SKU31523: 800x800 IPS / P4+C6。RTC電池端子は充電式のみ。"
+    },
+    {
+      "id": "S2",
+      "title": "Adafruit MCP23017 5346",
+      "url": "https://www.adafruit.com/product/5346",
+      "checked_date": "2026-10-19",
+      "finding": "16 GPIOの完成I/O拡張基板。"
+    },
+    {
+      "id": "S3",
+      "title": "Adafruit stepper 858",
+      "url": "https://www.adafruit.com/product/858",
+      "checked_date": "2026-10-19",
+      "finding": "5V推奨、1/16.128、約516step/rev。掲載0.1inch端子の厳密なJST型式は未確定。"
+    },
+    {
+      "id": "S4",
+      "title": "Adafruit HUSB238 5807",
+      "url": "https://www.adafruit.com/product/5807",
+      "checked_date": "2026-10-19",
+      "finding": "完成PD受電基板。初期5V/1A設定、電圧/電流選択と実契約は別途確認。"
+    },
+    {
+      "id": "S5",
+      "title": "Raspberry Pi 27W supply",
+      "url": "https://pip-assets.raspberrypi.com/categories/898-raspberry-pi-27w-usb-c-power-supply/documents/RP-008245-DS-1-27w-usb-c-power-supply-product-brief.pdf",
+      "checked_date": "2026-10-19",
+      "finding": "5.1V/5A等のPD出力、1.2mキャプティブUSB-C。国内構成と受電器との適合は未確認。"
+    },
+    {
+      "id": "S6",
+      "title": "MEAN WELL GST40A",
+      "url": "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF",
+      "checked_date": "2026-10-19",
+      "finding": "GST40A05-P1J: 5V/5A/25W、±5%、センター+の5.5/2.1mmプラグ、C14入力。2026-04-03版。"
+    },
+    {
+      "id": "S7",
+      "title": "Adafruit PD cable 5968",
+      "url": "https://www.adafruit.com/product/5968",
+      "checked_date": "2026-10-19",
+      "finding": "5V/5Aを要求するPD内蔵ケーブル。供給側対応と端子形状は別条件。"
+    },
+    {
+      "id": "S8",
+      "title": "Pololu D24V5F3 2842",
+      "url": "https://www.pololu.com/product/2842",
+      "checked_date": "2026-10-19",
+      "finding": "3.3V、掲載500mAは入力/熱に依存。4%精度、13x10x3mm、逆接保護なし。"
+    },
+    {
+      "id": "S9",
+      "title": "Pololu D24V22F3 2857",
+      "url": "https://www.pololu.com/product/2857",
+      "checked_date": "2026-10-19",
+      "finding": "3.3V、2.6A典型は24V入力条件。入力4..36Vにもdropout制約あり。"
+    },
+    {
+      "id": "S10",
+      "title": "DFRobot FIT0836",
+      "url": "https://www.dfrobot.com/product-2398.html",
+      "checked_date": "2026-10-19",
+      "finding": "5V暖色、60LED/m、最大4W/1m、幅2.5/厚さ1mm、LED単位切断。"
+    },
+    {
+      "id": "S11",
+      "title": "Adafruit DS3231 5188",
+      "url": "https://www.adafruit.com/product/5188",
+      "checked_date": "2026-10-19",
+      "finding": "精密RTCの完成基板。既存RX8900ドライバーとは別機種。"
+    },
+    {
+      "id": "S12",
+      "title": "DFRobot FIT0876",
+      "url": "https://www.dfrobot.com/product-2492.html",
+      "checked_date": "2026-10-19",
+      "finding": "5V/600mA/3W、3000K。放熱板を必要とする候補。"
+    },
+    {
+      "id": "S13",
+      "title": "Adafruit LED 4613",
+      "url": "https://www.adafruit.com/product/4613",
+      "checked_date": "2026-10-19",
+      "finding": "暖色非アドレスストリップだが供給9..12V、5V系へ直結不可。"
+    },
+    {
+      "id": "S14",
+      "title": "Adafruit RGBW 4913",
+      "url": "https://www.adafruit.com/product/4913",
+      "checked_date": "2026-10-19",
+      "finding": "5V/3000K白チャネル、RGBWデータ制御が必要。"
+    },
+    {
+      "id": "S15",
+      "title": "KHK BSS",
+      "url": "https://khkgears.net/pdf/2023/spur-gears.pdf",
+      "checked_date": "2026-10-19",
+      "finding": "真鍮製標準平歯車。独自透かし意匠の同一品ではない。"
+    },
+    {
+      "id": "S16",
+      "title": "NBK SSCZS",
+      "url": "https://www.nbk1560.com/images/ja-JP/product/miniaturescrew/SSCZS/SSCZS_1.pdf",
+      "checked_date": "2026-10-19",
+      "finding": "M2脱落防止ねじ系列。全長4/5/6/8mm、頭径3mm/頭高0.6mm。相手材許容トルクは別。"
+    },
+    {
+      "id": "S17",
+      "title": "Pololu pre-crimped wire",
+      "url": "https://www.pololu.com/category/71/wires-with-pre-crimped-terminals",
+      "checked_date": "2026-10-19",
+      "finding": "既製圧着線。2.54mm端子、短尺26AWG等。JST XH/大電流幹線互換ではない。"
+    },
+    {
+      "id": "S18",
+      "title": "JST XH",
+      "url": "https://www.jst-mfg.com/product/pdf/eng/eXH.pdf",
+      "checked_date": "2026-10-19",
+      "finding": "2.5mmピッチ、3A掲載はAWG22条件付き。5A幹線へ無検証で使わない。"
+    },
+    {
+      "id": "S19",
+      "title": "Pololu pushbutton switch 2812",
+      "url": "https://www.pololu.com/product/2812",
+      "checked_date": "2026-10-19",
+      "finding": "メーカーが非常遮断用途への使用を否定。独立安全遮断代替として不採用。"
+    },
+    {
+      "id": "S20",
+      "title": "DFRobot DFR1199",
+      "url": "https://www.dfrobot.com/product-2979.html",
+      "checked_date": "2026-10-19",
+      "finding": "5Vモーター/ドライバー一体、42x42mm、STEP/DIR、4pin。現行枠/A案への差替え不可。"
+    }
+  ],
+  "subsystems": [
+    {
+      "id": "R01",
+      "name": "外部ACアダプター",
+      "classification": "COTS_REPLACE",
+      "recommendation": "独自AC電源を作らず完成品",
+      "source_ids": [
+        "S5",
+        "S6"
+      ],
+      "task_ids": [
+        "G1-05",
+        "G4-04",
+        "G4-07",
+        "G4-08"
+      ],
+      "appearance": "後面端子以外の正面外観は維持",
+      "residual": "全負荷、国内構成/ACコード、電圧公差・突入とコード定格を確認",
+      "production_selected": false
+    },
+    {
+      "id": "R02",
+      "name": "USB-C受電/コネクタ",
+      "classification": "COTS_REPLACE",
+      "recommendation": "STUSB4500L/GCT個別回路より完成受電器を先に評価",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S7"
+      ],
+      "task_ids": [
+        "G1-05",
+        "G1-07",
+        "G2-03",
+        "G4-04"
+      ],
+      "appearance": "USB-C背面固定は要設計、DCジャック代替は外観差あり",
+      "residual": "source/sink/cableの契約・電流・プラグ/レセプタクル形状、保護と固定",
+      "production_selected": false
+    },
+    {
+      "id": "R03",
+      "name": "3V3_AON変換",
+      "classification": "COTS_REPLACE",
+      "recommendation": "U45個別buckから完成DC/DCを評価",
+      "source_ids": [
+        "S8",
+        "S9"
+      ],
+      "task_ids": [
+        "G1-05",
+        "G1-06",
+        "G1-07",
+        "G4-03",
+        "G4-04"
+      ],
+      "appearance": "内部のみ",
+      "residual": "実負荷の割当、公差、dropout、立上り/低電圧、逆給電と熱",
+      "production_selected": false
+    },
+    {
+      "id": "R04",
+      "name": "表示/P4/C6",
+      "classification": "COTS_KEEP",
+      "recommendation": "Waveshare 3.4C完成基板を継続",
+      "source_ids": [
+        "S1"
+      ],
+      "task_ids": [
+        "G1-02",
+        "G3-02",
+        "G5-02",
+        "G5-05",
+        "G5-07"
+      ],
+      "appearance": "3.4型円形800x800を維持",
+      "residual": "改版、消費電流、基板取付、P4/C6実通信/画質",
+      "production_selected": false
+    },
+    {
+      "id": "R05",
+      "name": "I/O拡張2枚",
+      "classification": "COTS_KEEP",
+      "recommendation": "Adafruit5346 MCP23017を継続",
+      "source_ids": [
+        "S2"
+      ],
+      "task_ids": [
+        "G1-04",
+        "G1-05",
+        "G2-01",
+        "G4-02"
+      ],
+      "appearance": "内部のみ",
+      "residual": "0x20/21、3.3V/RESET、信号レベルとpullup",
+      "production_selected": false
+    },
+    {
+      "id": "R06",
+      "name": "ドライバー7枚",
+      "classification": "COTS_KEEP",
+      "recommendation": "市販ULN2003を同一SKU/改版に固定",
+      "source_ids": [
+        "S3"
+      ],
+      "task_ids": [
+        "G1-04",
+        "G1-05",
+        "G2-02",
+        "G3-04",
+        "G4-04"
+      ],
+      "appearance": "ドライバー単独交換を維持",
+      "residual": "MTR-09-024と004を混同せず、物理ピン/外形/電流/放熱を確認",
+      "production_selected": false
+    },
+    {
+      "id": "R07",
+      "name": "モーター7個",
+      "classification": "COTS_KEEP",
+      "recommendation": "市販5Vギヤードステッパー、858は候補",
+      "source_ids": [
+        "S3"
+      ],
+      "task_ids": [
+        "G1-05",
+        "G2-03",
+        "G3-04",
+        "G4-04"
+      ],
+      "appearance": "意匠歯車の回転方向/周期を維持",
+      "residual": "実トルク/電流/寿命、軸と穴、端子型式。OEM仕様未確定",
+      "production_selected": false
+    },
+    {
+      "id": "R08",
+      "name": "RTC/バックアップ",
+      "classification": "COTS_REPLACE",
+      "recommendation": "RTC完成基板を比較、RX8900互換を優先",
+      "source_ids": [
+        "S1",
+        "S11"
+      ],
+      "task_ids": [
+        "G4-02",
+        "G4-04",
+        "G5-07"
+      ],
+      "appearance": "内部のみ",
+      "residual": "DS3231は0x32/RX8900互換ではなくドライバー/電池回路変更。充電式端子に一次電池を挿さない",
+      "production_selected": false
+    },
+    {
+      "id": "R09",
+      "name": "暖色LED",
+      "classification": "COTS_REPLACE",
+      "recommendation": "FIT0836固定5Vストリップを切断して評価",
+      "source_ids": [
+        "S10",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "task_ids": [
+        "G3-03",
+        "G3-06",
+        "G4-04",
+        "G5-07",
+        "G6-04"
+      ],
+      "appearance": "暖色一定/間接/二群ONOFFを維持",
+      "residual": "各灯位置、拡散/発熱、配線とMOSFET、カタログ比例値は実測でない",
+      "production_selected": false
+    },
+    {
+      "id": "R10",
+      "name": "ファン",
+      "classification": "COTS_KEEP",
+      "recommendation": "SUNON30mm候補の既製ファンを継続",
+      "source_ids": [],
+      "task_ids": [
+        "G3-06",
+        "G3-07",
+        "G4-04"
+      ],
+      "appearance": "現候補は背面外付け、外観差は要レビュー",
+      "residual": "回転/始動/拘束電流、取付穴、ガード、風路と実熱。無試験削除しない",
+      "production_selected": false
+    },
+    {
+      "id": "R11",
+      "name": "温度検出",
+      "classification": "COTS_KEEP",
+      "recommendation": "市販NTC等を使い専用センサーは製造しない",
+      "source_ids": [],
+      "task_ids": [
+        "G1-06",
+        "G3-08",
+        "G5-08"
+      ],
+      "appearance": "内部のみ",
+      "residual": "検出位置/配線/判定/保守、NTC8代表性は未確定",
+      "production_selected": false
+    },
+    {
+      "id": "R12",
+      "name": "回転検出/ターゲット",
+      "classification": "HYBRID",
+      "recommendation": "市販センサー＋専用リング/舌/保持部",
+      "source_ids": [],
+      "task_ids": [
+        "G1-06",
+        "G3-07",
+        "G5-07",
+        "G5-08"
+      ],
+      "appearance": "見付けと検出位置の整合",
+      "residual": "既存センサー帯/ターゲットの形状と判定を保持し、不要として削除しない",
+      "production_selected": false
+    },
+    {
+      "id": "R13",
+      "name": "本体ボタン",
+      "classification": "COTS_KEEP",
+      "recommendation": "市販パネルボタン/必要ならノブ化",
+      "source_ids": [],
+      "task_ids": [
+        "G2-03",
+        "G4-04",
+        "G5-07"
+      ],
+      "appearance": "配置/意匠キャップは専用",
+      "residual": "DC定格、接点NC/NO、取付穴、固有操作/復帰条件",
+      "production_selected": false
+    },
+    {
+      "id": "R14",
+      "name": "コネクタ/ヒューズ",
+      "classification": "COTS_KEEP",
+      "recommendation": "定格に合う標準シリーズとヒューズを利用",
+      "source_ids": [
+        "S18"
+      ],
+      "task_ids": [
+        "G1-06",
+        "G2-03",
+        "G2-05",
+        "G4-04"
+      ],
+      "appearance": "内部のみ",
+      "residual": "幹線5Aと小電流枝を区別、同じピッチを同一品と扱わない",
+      "production_selected": false
+    },
+    {
+      "id": "R15",
+      "name": "ハーネス",
+      "classification": "HYBRID",
+      "recommendation": "圧着済み線/ピッグテール＋専用結線表",
+      "source_ids": [
+        "S17",
+        "S18"
+      ],
+      "task_ids": [
+        "G2-01",
+        "G2-02",
+        "G2-03",
+        "G2-04",
+        "G2-05",
+        "G2-06",
+        "G2-08",
+        "G6-05"
+      ],
+      "appearance": "配線を隠す/前後整備を維持",
+      "residual": "実端子、178接続/42枝の改版追跡、屈曲/保持/余長/導通",
+      "production_selected": false
+    },
+    {
+      "id": "R16",
+      "name": "軸/ハブ/軸受",
+      "classification": "HYBRID",
+      "recommendation": "標準ハブ/軸受/スペーサー＋固有接続部",
+      "source_ids": [
+        "S3",
+        "S15"
+      ],
+      "task_ids": [
+        "G3-04",
+        "G3-05",
+        "G4-04"
+      ],
+      "appearance": "見える歯車面を維持",
+      "residual": "実軸径/平面/同軸度/支持負荷、必要なブッシュだけ専用",
+      "production_selected": false
+    },
+    {
+      "id": "R17",
+      "name": "ねじ/脱落防止",
+      "classification": "COTS_KEEP",
+      "recommendation": "NBK SSCZS等の標準ねじを先に評価",
+      "source_ids": [
+        "S16"
+      ],
+      "task_ids": [
+        "G2-07",
+        "G3-04",
+        "G3-05",
+        "G4-06"
+      ],
+      "appearance": "内部のみ",
+      "residual": "捕捉/逃げ/工具を再設計。旧M2イモねじの直接代替ではない",
+      "production_selected": false
+    },
+    {
+      "id": "R18",
+      "name": "独立交換カセット",
+      "classification": "HYBRID",
+      "recommendation": "共通キャリア＋規格ねじ/ガイド",
+      "source_ids": [
+        "S16"
+      ],
+      "task_ids": [
+        "G2-07",
+        "G3-04",
+        "G3-05",
+        "G6-06"
+      ],
+      "appearance": "A案/5mm予約/55mmサービスを維持",
+      "residual": "実基板固定、ねじ捕捉、木部、干渉/公差/強度/実交換",
+      "production_selected": false
+    },
+    {
+      "id": "R19",
+      "name": "内部支持フレーム",
+      "classification": "HYBRID",
+      "recommendation": "汎用金具/規格材＋単純アダプター",
+      "source_ids": [],
+      "task_ids": [
+        "G3-05",
+        "G3-07",
+        "G4-06"
+      ],
+      "appearance": "見えない構造を優先簡素化",
+      "residual": "現5分割溶接候補の代替は強度・全7軸クリアランスを再検証",
+      "production_selected": false
+    },
+    {
+      "id": "R20",
+      "name": "木製外箱",
+      "classification": "CUSTOM",
+      "recommendation": "規格の無垢/突板材から本機固有外形を加工",
+      "source_ids": [],
+      "task_ids": [
+        "G3-01",
+        "G3-05",
+        "G4-06",
+        "G6-01",
+        "G6-02",
+        "G6-03",
+        "G6-04",
+        "G6-07",
+        "G6-08"
+      ],
+      "appearance": "外観同等性の中心",
+      "residual": "材厚/接着/木目/穴/公差/温湿度/仕上げを決める",
+      "production_selected": false
+    },
+    {
+      "id": "R21",
+      "name": "ベゼル/ブラス装飾",
+      "classification": "CUSTOM",
+      "recommendation": "専用形状を切断/プリント、標準留具で固定",
+      "source_ids": [],
+      "task_ids": [
+        "G3-02",
+        "G4-06",
+        "G6-03",
+        "G6-08"
+      ],
+      "appearance": "外観同等性の中心",
+      "residual": "画面開口、光漏れ、分解可能、仕上げ色と材質",
+      "production_selected": false
+    },
+    {
+      "id": "R22",
+      "name": "装飾歯車円板7枚",
+      "classification": "CUSTOM",
+      "recommendation": "意匠円板を切出し＋市販ハブ",
+      "source_ids": [
+        "S15"
+      ],
+      "task_ids": [
+        "G3-01",
+        "G3-04",
+        "G4-06",
+        "G6-03",
+        "G6-08"
+      ],
+      "appearance": "歯車径/透かし/重なり/ブラス仕上げを維持",
+      "residual": "非伝達なら精密噛合歯形不要。実噛合が残る部分は別評価",
+      "production_selected": false
+    },
+    {
+      "id": "R23",
+      "name": "前面透明板",
+      "classification": "HYBRID",
+      "recommendation": "標準板材のサイズ加工＋専用固定",
+      "source_ids": [],
+      "task_ids": [
+        "G3-07",
+        "G4-06",
+        "G6-01",
+        "G6-08"
+      ],
+      "appearance": "前面全体保護/視認性を維持",
+      "residual": "材質/厚み/反射/傷/膨張/取り外し",
+      "production_selected": false
+    },
+    {
+      "id": "R24",
+      "name": "拡散/遮光/光源保持",
+      "classification": "HYBRID",
+      "recommendation": "標準拡散材/金具＋専用取付",
+      "source_ids": [
+        "S10"
+      ],
+      "task_ids": [
+        "G3-03",
+        "G3-05",
+        "G6-04",
+        "G6-08"
+      ],
+      "appearance": "光源を直接見せない",
+      "residual": "新ストリップの曲げ/切断位置、絶縁、木部温度",
+      "production_selected": false
+    },
+    {
+      "id": "R25",
+      "name": "独立停止/故障ラッチ",
+      "classification": "HYBRID",
+      "recommendation": "適合完成モジュール＋不足機能だけ個別回路",
+      "source_ids": [
+        "S19"
+      ],
+      "task_ids": [
+        "G1-03",
+        "G1-05",
+        "G1-06",
+        "G5-08"
+      ],
+      "appearance": "ユーザー機能を維持",
+      "residual": "MCU停止/STOP/UV/復帰/逆給電等の同等性。2812はメーカー用途制限で代替不採用",
+      "production_selected": false
+    },
+    {
+      "id": "R26",
+      "name": "文字盤/UI/Web/OTAソフト",
+      "classification": "CUSTOM",
+      "recommendation": "既存ソース＋BSP/IDF/LVGLを再利用",
+      "source_ids": [
+        "S1"
+      ],
+      "task_ids": [
+        "G5-01",
+        "G5-02",
+        "G5-03",
+        "G5-04",
+        "G5-05",
+        "G5-06",
+        "G5-07",
+        "G5-08"
+      ],
+      "appearance": "固有意匠/針/設定を維持",
+      "residual": "実ネットワーク/RTC/画面/電源断、安全制御とモジュール変更を再検証",
+      "production_selected": false
+    },
+    {
+      "id": "R27",
+      "name": "背面整備パネル/刻印",
+      "classification": "CUSTOM",
+      "recommendation": "固有パネルに標準ポート/ボタン/留具を固定",
+      "source_ids": [],
+      "task_ids": [
+        "G3-05",
+        "G3-06",
+        "G4-06",
+        "G6-01",
+        "G6-04",
+        "G6-08"
+      ],
+      "appearance": "背面ポートと風路を除き意匠維持",
+      "residual": "Type-C/DCジャックの差、ファン、前後アクセスと木部強度",
+      "production_selected": false
+    },
+    {
+      "id": "R28",
+      "name": "配電/モジュール接続PCB",
+      "classification": "HYBRID",
+      "recommendation": "既製基板を再設計せず必要な接続/保護のみ作る",
+      "source_ids": [],
+      "task_ids": [
+        "G1-01",
+        "G1-05",
+        "G1-06",
+        "G1-07",
+        "G1-08",
+        "G4-02",
+        "G4-03",
+        "G4-05",
+        "G4-08",
+        "G4-01"
+      ],
+      "appearance": "内部のみ、最終基板枚数は未確定",
+      "residual": "全ネット/ピン/実装、保護、ERC/DRC、Gerber等を製造前に検証",
+      "production_selected": false
+    }
+  ],
+  "task_impacts": [
+    {
+      "id": "G1-01",
+      "change_or_reuse": "旧8種PCBのDRC証拠はその旧版に限り保持。新版M1へ流用しない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R28"
+      ]
+    },
+    {
+      "id": "G1-02",
+      "change_or_reuse": "XC基板を継続して既存GPIO静的照合を再利用、追加モジュールのピンだけ差分再確認。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R04"
+      ]
+    },
+    {
+      "id": "G1-03",
+      "change_or_reuse": "既存TI安全ICの端子証拠を保持。完成モジュールで置換する箇所は実端子と電気特性を再照合。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R25"
+      ]
+    },
+    {
+      "id": "G1-04",
+      "change_or_reuse": "ワンホット28相の論理を継続。STEP/DIR一体型を無検証に差し替えない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R05",
+        "R06"
+      ]
+    },
+    {
+      "id": "G1-05",
+      "change_or_reuse": "USB-C/3V3の完成モジュールを実端子で統合し、実電源のERC3件を解消する。部品候補のみでは完了にしない。",
+      "baseline_status": "WORKING",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R01",
+        "R02",
+        "R03",
+        "R05",
+        "R06",
+        "R07",
+        "R25",
+        "R28"
+      ]
+    },
+    {
+      "id": "G1-06",
+      "change_or_reuse": "同等性表から独立停止/ラッチ/復帰を実現し、足りない回路だけ残す。EN LOWを維持。",
+      "baseline_status": "WORKING",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R03",
+        "R11",
+        "R12",
+        "R14",
+        "R25",
+        "R28"
+      ]
+    },
+    {
+      "id": "G1-07",
+      "change_or_reuse": "完成モジュールの銅箔を作り直さず接続/安全/配電基板を設計。実フットプリント/ERC/DRC必須。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R02",
+        "R03",
+        "R28"
+      ]
+    },
+    {
+      "id": "G1-08",
+      "change_or_reuse": "確定後の接続/安全基板のGerber・ドリル・実装資料を出す。旧基板出力で代替しない。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R28"
+      ]
+    },
+    {
+      "id": "G2-01",
+      "change_or_reuse": "178論理接続の原本を保存。モジュールの実端子変更を別改版で追跡する。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R05",
+        "R15"
+      ]
+    },
+    {
+      "id": "G2-02",
+      "change_or_reuse": "7軸42枝を維持。既製線/新モジュールを物理ピンへ照合する。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R06",
+        "R15"
+      ]
+    },
+    {
+      "id": "G2-03",
+      "change_or_reuse": "既製ハーネスでも端子型式/極性/向きは必要。2.5mmと2.54mmを混同しない。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R02",
+        "R07",
+        "R13",
+        "R14",
+        "R15"
+      ]
+    },
+    {
+      "id": "G2-04",
+      "change_or_reuse": "実モジュール外形で3D配線/屈曲/保持/サービスループを再計算する。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R15"
+      ]
+    },
+    {
+      "id": "G2-05",
+      "change_or_reuse": "圧着済み線で本人の圧着を減らす。幹線と各軸枝の定格/長さは別途確定。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R14",
+        "R15"
+      ]
+    },
+    {
+      "id": "G2-06",
+      "change_or_reuse": "42枝検査票を再利用し、物理端子/長さの変更を反映する。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R15"
+      ]
+    },
+    {
+      "id": "G2-07",
+      "change_or_reuse": "標準脱落防止ねじを使う共通カセットと55mm動作を再検証する。現在のA案を維持。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R17",
+        "R18"
+      ]
+    },
+    {
+      "id": "G2-08",
+      "change_or_reuse": "完成ハーネスの導通/短絡試験はHARDWARE_WAITを継続。",
+      "baseline_status": "HARDWARE_WAIT",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R15"
+      ]
+    },
+    {
+      "id": "G3-01",
+      "change_or_reuse": "D7原本を維持し、置換候補は差分として設計する。今回ソリッド全走査は未実行。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R20",
+        "R22"
+      ]
+    },
+    {
+      "id": "G3-02",
+      "change_or_reuse": "3.4C表示完成基板を継続候補。取付は実改版と寸法で確認。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R04",
+        "R21"
+      ]
+    },
+    {
+      "id": "G3-03",
+      "change_or_reuse": "既製5V暖色ストリップを評価。従来4枚PCB/20灯の位置・光学の証拠を変更後へ流用しない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R09",
+        "R24"
+      ]
+    },
+    {
+      "id": "G3-04",
+      "change_or_reuse": "既製ドライバー＋専用共通カセット。 motor-driver一体でA案を崩さない。",
+      "baseline_status": "WORKING",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R06",
+        "R07",
+        "R16",
+        "R17",
+        "R18",
+        "R22"
+      ]
+    },
+    {
+      "id": "G3-05",
+      "change_or_reuse": "汎用金具/ねじと単純アダプターで支持構造を再評価する。",
+      "baseline_status": "WORKING",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R24",
+        "R27"
+      ]
+    },
+    {
+      "id": "G3-06",
+      "change_or_reuse": "SUNON候補を継続。LED/電源置換も含む全電流と閉筐体温度を確認。ファン無試験削除禁止。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R09",
+        "R10",
+        "R27"
+      ]
+    },
+    {
+      "id": "G3-07",
+      "change_or_reuse": "実モジュール、配線、木部の閉状態干渉と公差を再検証。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R10",
+        "R12",
+        "R19",
+        "R23"
+      ]
+    },
+    {
+      "id": "G3-08",
+      "change_or_reuse": "7軸稼働/温度/強度はHARDWARE_WAIT継続。",
+      "baseline_status": "HARDWARE_WAIT",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R11"
+      ]
+    },
+    {
+      "id": "G4-01",
+      "change_or_reuse": "旧429行は出所の分類証拠として保持。今回全行の調達監査はしていない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R28"
+      ]
+    },
+    {
+      "id": "G4-02",
+      "change_or_reuse": "旧448行統合を保持。モジュール置換時には旧品を削除せず採用/非採用の改版差分を作る。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R05",
+        "R08",
+        "R28"
+      ]
+    },
+    {
+      "id": "G4-03",
+      "change_or_reuse": "選定済み受動候補の証拠を保持。モジュール内へ移った受動部品を重複発注しない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R03",
+        "R28"
+      ]
+    },
+    {
+      "id": "G4-04",
+      "change_or_reuse": "20一次資料を候補台帳化。実型番/改版/代替/電圧/端子/受入寸法を確定するまでOPEN。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R01",
+        "R02",
+        "R03",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R13",
+        "R14",
+        "R16"
+      ]
+    },
+    {
+      "id": "G4-05",
+      "change_or_reuse": "完成モジュール本体の積層は自作しない。専用接続基板の積層/工程は必要。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R28"
+      ]
+    },
+    {
+      "id": "G4-06",
+      "change_or_reuse": "規格材/標準ねじを使う専用木部・アダプター加工図へ絞る。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R17",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R27"
+      ]
+    },
+    {
+      "id": "G4-07",
+      "change_or_reuse": "モジュール価格だけでなく送料/税/工具/改修/保持部を含む見積を作る。今回は総額未算出。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R01"
+      ]
+    },
+    {
+      "id": "G4-08",
+      "change_or_reuse": "確定したモジュール/線/標準部材/専用加工品を含む全量BOMが必要。発注未承認。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R01",
+        "R28"
+      ]
+    },
+    {
+      "id": "G5-01",
+      "change_or_reuse": "SW11/14の旧版レビュー証拠を保持。新部品の実機合格を示すものではない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R26"
+      ]
+    },
+    {
+      "id": "G5-02",
+      "change_or_reuse": "既存P4ターゲットとBSPを継続。別SBC移行を行わない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R04",
+        "R26"
+      ]
+    },
+    {
+      "id": "G5-03",
+      "change_or_reuse": "RAW A/B区画/保存を継続。部品モジュール化で容量要件は緩和しない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R26"
+      ]
+    },
+    {
+      "id": "G5-04",
+      "change_or_reuse": "GPIO28 HBを継続。安全モジュールを変更する場合は周期/電気インターフェースを再検証。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R26"
+      ]
+    },
+    {
+      "id": "G5-05",
+      "change_or_reuse": "P4/C6 HostedとHTTPS/権限を継続。remote START/CLEARロックは解除しない。",
+      "baseline_status": "WORKING",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R04",
+        "R26"
+      ]
+    },
+    {
+      "id": "G5-06",
+      "change_or_reuse": "IDF署名OTA/rollbackを継続。既製基板だから更新安全性が完成するわけではない。",
+      "baseline_status": "WORKING",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R26"
+      ]
+    },
+    {
+      "id": "G5-07",
+      "change_or_reuse": "RTC候補のレジスター、LED ONOFFの電気段、画面/実ネットワークを統合する。",
+      "baseline_status": "WORKING",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R04",
+        "R08",
+        "R09",
+        "R12",
+        "R13",
+        "R26"
+      ]
+    },
+    {
+      "id": "G5-08",
+      "change_or_reuse": "SW14独立故障注入はHARDWARE_WAIT継続。完成モジュールも全体HILが必要。",
+      "baseline_status": "HARDWARE_WAIT",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R11",
+        "R12",
+        "R25",
+        "R26"
+      ]
+    },
+    {
+      "id": "G6-01",
+      "change_or_reuse": "外装型紙を保持。背面ポート/ファン/固定変更だけ差分改版。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R20",
+        "R23",
+        "R27"
+      ]
+    },
+    {
+      "id": "G6-02",
+      "change_or_reuse": "旧内装型紙を基礎とし、実モジュールと専用アダプターに置換する範囲を再出図。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R20"
+      ]
+    },
+    {
+      "id": "G6-03",
+      "change_or_reuse": "80部品160面の旧版投影を保持。部品数の減少や新版合格を主張しない。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R20",
+        "R21",
+        "R22"
+      ]
+    },
+    {
+      "id": "G6-04",
+      "change_or_reuse": "規格材厚、簡単な接合、照明ストリップ保持を反映。接着/強度/余白を未確定のまま完了にしない。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R09",
+        "R20",
+        "R24",
+        "R27"
+      ]
+    },
+    {
+      "id": "G6-05",
+      "change_or_reuse": "現論理配線/サービスSVGはレビュー基礎。物理配線やモジュール寸法を反映する。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R15"
+      ]
+    },
+    {
+      "id": "G6-06",
+      "change_or_reuse": "独立交換の手順を再利用し、標準ねじ/新ハーネスの操作だけ改版する。",
+      "baseline_status": "DONE_SCOPE",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R18"
+      ]
+    },
+    {
+      "id": "G6-07",
+      "change_or_reuse": "実寸印刷はHARDWARE_WAIT継続。",
+      "baseline_status": "HARDWARE_WAIT",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R20"
+      ]
+    },
+    {
+      "id": "G6-08",
+      "change_or_reuse": "専用部品の最終図面＋既製品の取付/配線図を全量出図。既製品化でも組立図は必要。",
+      "baseline_status": "OPEN",
+      "status_changed_by_audit": false,
+      "related_subsystems": [
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R27"
+      ]
+    }
+  ],
+  "screening_calculations": {
+    "reserve_fraction": 0.2,
+    "load_target_a_for_3a": 2.4,
+    "load_target_a_for_5a": 4,
+    "fit0836": {
+      "led_count_assumed": 20,
+      "density_per_m": 60,
+      "source_max_power_w_per_m": 4,
+      "length_mm": 333.3333333333333,
+      "power_w": 1.3333333333333333,
+      "current_at_5v_a": 0.26666666666666666,
+      "kind": "CATALOG_LENGTH_PROPORTION_ONLY_NOT_MEASURED_MAXIMUM"
+    },
+    "dfr1199": {
+      "board_side_mm": 42,
+      "reserve_mm": [
+        50,
+        41
+      ],
+      "minimum_square_projected_side_mm": 42,
+      "short_side_shortfall_mm": 1,
+      "drop_in_planar_fit": false,
+      "driver_only_exchange_without_motor_or_gears_verified": false
+    },
+    "d24v5f3": {
+      "nominal_output_v": 3.3,
+      "source_accuracy_fraction": 0.04,
+      "static_range_v": [
+        3.1679999999999997,
+        3.432
+      ],
+      "current_500ma_is_not_guaranteed_under_all_conditions": true
+    }
+  },
+  "verification": {
+    "baseline_preflight": "PASS 36/36",
+    "post_change_preflight": "PASS 36/36",
+    "design_links_and_requirements": "PASS",
+    "matrix_task_source_and_arithmetic": "PASS: 28 unique subsystems, 48 unchanged task IDs/statuses, 20 source IDs, preserved source hashes and safety source; catalog-only arithmetic cross-checks",
+    "native_erc": "NOT_RUN",
+    "pcb_drc": "NOT_RUN",
+    "full_cad_source_recalculation": "NOT_RUN",
+    "hardware": "NOT_RUN",
+    "new_actions_run_requested": false,
+    "ci_routes": "PASS: 49 scoped routes remain registered; no workflow edited",
+    "git_diff_check": "PASS",
+    "ledger_bytes_unchanged": true
+  },
+  "remaining_critical_path": [
+    "Exact motor/driver revision and physical interfaces",
+    "Whole-device power budget and matched supply/sink/cable",
+    "Native schematic changes with equivalent independent protection, then ERC/DRC",
+    "COTS dimensions in seven-axis cassette and harness",
+    "Thermal/wood/physical service, programming and manufacturing outputs"
+  ],
+  "baseline_files_sha256": {
+    "execution/tasks.csv": "b082f04d3c1e9de4b3a3356e87ef610134073cabb220c32c95545c58369b052f",
+    "phase67-source/firmware.tar.gz": "a245ac0da5ad690509a651b2872cc9eb163f0718875a8f238527246f5fdccba3"
+  },
+  "baseline_progress": {
+    "task_total": 48,
+    "scoped_evidence_done": 22,
+    "working": 7,
+    "open": 15,
+    "hardware_wait": 4,
+    "manufacturer_release_closed": 0,
+    "manufacturer_release_total": 6,
+    "software_evidence_passed": 11,
+    "software_evidence_total": 14
+  }
+}
