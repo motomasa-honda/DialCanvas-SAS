@@ -1,4 +1,6 @@
 // External rear exhaust concept. Source D7 and wood are not embedded: geometry review only.
+// The four support markers are adapter-to-wood candidates, NOT the fan's three mounting holes.
+// SUNON fan hole XY pattern is not transcribed; no fabrication hole locations are modeled.
 // Not a fabrication drawing. Fasteners, plate material, seal, intake and guard remain TBD.
 $fn=64;
 CX=220; CY=40;
@@ -13,8 +15,10 @@ SHOW_SUPPORT_MARKERS=true;
 color([0.12,0.32,0.58,0.85])
  translate([CX-FAN_W/2,CY-FAN_W/2,FAN_Z]) cube([FAN_W,FAN_W,FAN_T]);
 
-// Positional adapter plate envelope. The modeled center port is open; anchor centers are markers,
-// not specified drill diameters. No wood solid is included, so no boolean wood cut is implied.
+// Positional adapter plate envelope. The Ø29.7 nominal concept port has zero nominal diametral
+// difference to the fan inlet; it is not a fit allowance. Wood-hole tolerance is unresolved.
+// Anchor centers are four adapter-to-wood markers, not specified drill diameters. No wood solid
+// is included, so no boolean wood cut is implied.
 color([0.66,0.43,0.19,0.8]) difference(){
  translate([CX-PLATE_W/2,CY-PLATE_W/2,PLATE_Z]) cube([PLATE_W,PLATE_W,PLATE_T]);
  translate([CX,CY,PLATE_Z-0.1]) cylinder(d=WOOD_PORT_D,h=PLATE_T+0.2);
