@@ -1,0 +1,251 @@
+{
+  "audit": "FG-M1 external fan and through-backwood vent candidate",
+  "source_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solid_count": 1774,
+  "candidate": {
+    "center_xy_mm": [
+      220.0,
+      40.0
+    ],
+    "sunon_screening_model": "MF30100V3-1000U-A99",
+    "fan_body_mm": [
+      30.0,
+      30.0,
+      10.0
+    ],
+    "fan_body_z_mm": [
+      146.5,
+      156.5
+    ],
+    "rear_adapter_plate_mm": [
+      45.0,
+      45.0,
+      1.5
+    ],
+    "plate_z_mm": [
+      145.0,
+      146.5
+    ],
+    "backwood_vent_diameter_mm": 29.7,
+    "backwood_z_mm": [
+      137.0,
+      145.0
+    ],
+    "vent_area_mm2": 692.7919,
+    "manufacturer_outlet_diameter_mm": 29.3,
+    "vent_area_over_outlet_area_ratio": 1.0275,
+    "adapter_support_centers_relative_mm": [
+      [
+        -19,
+        -19
+      ],
+      [
+        19,
+        -19
+      ],
+      [
+        19,
+        19
+      ],
+      [
+        -19,
+        19
+      ]
+    ],
+    "support_hole_diameter": "NOT_ASSIGNED; fastener and wood substrate unqualified"
+  },
+  "site_revision_history": [
+    {
+      "xy_mm": [
+        95,
+        90
+      ],
+      "result": "REJECTED",
+      "reason": "outermost source layer boundary is only 1.0mm from this center; insufficient for Ø29.7mm bore and associated support layout"
+    },
+    {
+      "xy_mm": [
+        220,
+        40
+      ],
+      "result": "SELECTED_FOR_REVIEW",
+      "reason": "full nine-layer aperture fit, all support centers in wood, full-D7 fixed-source clearance and service-reserve clearance"
+    }
+  ],
+  "backwood_layer_screens": [
+    {
+      "z_mm": [
+        137,
+        139.6
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 20.781731,
+      "full_circle_inside_wood": true
+    },
+    {
+      "z_mm": [
+        139.6,
+        140
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 20.781731,
+      "full_circle_inside_wood": true
+    },
+    {
+      "z_mm": [
+        140,
+        141.5
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 20.781731,
+      "full_circle_inside_wood": true
+    },
+    {
+      "z_mm": [
+        141.5,
+        142
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 20.781731,
+      "full_circle_inside_wood": true
+    },
+    {
+      "z_mm": [
+        142,
+        143
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 19.331758,
+      "full_circle_inside_wood": true
+    },
+    {
+      "z_mm": [
+        143,
+        144.1
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 19.331758,
+      "full_circle_inside_wood": true
+    },
+    {
+      "z_mm": [
+        144.1,
+        144.15
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 19.331758,
+      "full_circle_inside_wood": true
+    },
+    {
+      "z_mm": [
+        144.15,
+        144.2
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 19.331758,
+      "full_circle_inside_wood": true
+    },
+    {
+      "z_mm": [
+        144.2,
+        145
+      ],
+      "center_inside_wood": true,
+      "center_to_nearest_material_boundary_mm": 19.331758,
+      "full_circle_inside_wood": true
+    }
+  ],
+  "all_nine_full_vent_circles_in_material": true,
+  "adapter_support_centers": [
+    {
+      "xy_mm": [
+        201.0,
+        21.0
+      ],
+      "inside_every_wood_layer": true,
+      "outer_layer_boundary_distance_mm": 8.0
+    },
+    {
+      "xy_mm": [
+        239.0,
+        21.0
+      ],
+      "inside_every_wood_layer": true,
+      "outer_layer_boundary_distance_mm": 8.0
+    },
+    {
+      "xy_mm": [
+        239.0,
+        59.0
+      ],
+      "inside_every_wood_layer": true,
+      "outer_layer_boundary_distance_mm": 6.0
+    },
+    {
+      "xy_mm": [
+        201.0,
+        59.0
+      ],
+      "inside_every_wood_layer": true,
+      "outer_layer_boundary_distance_mm": 7.44988
+    }
+  ],
+  "all_support_centers_inside_all_wood_layers": true,
+  "source_3d_prism_intersections": {
+    "external_fan_body": [],
+    "adapter_plate_excluding_wood_contact": [],
+    "vent_square_path_excluding_backwood": [],
+    "vent_square_hits_removable_rear_grille": [],
+    "vent_square_hits_fixed_nonwood": []
+  },
+  "service_reserve_clearance": [
+    {
+      "axis": 1,
+      "plate_to_50x41_service_reserve_gap_mm": 87.5
+    },
+    {
+      "axis": 2,
+      "plate_to_50x41_service_reserve_gap_mm": 130.59575
+    },
+    {
+      "axis": 3,
+      "plate_to_50x41_service_reserve_gap_mm": 68.229392
+    },
+    {
+      "axis": 4,
+      "plate_to_50x41_service_reserve_gap_mm": 47.0
+    },
+    {
+      "axis": 5,
+      "plate_to_50x41_service_reserve_gap_mm": 32.56148
+    },
+    {
+      "axis": 6,
+      "plate_to_50x41_service_reserve_gap_mm": 122.516325
+    },
+    {
+      "axis": 7,
+      "plate_to_50x41_service_reserve_gap_mm": 32.5
+    }
+  ],
+  "disposition": "CANDIDATE_SOURCE_GEOMETRY_PASS_NOT_THERMALLY_OR_MECHANICALLY_QUALIFIED",
+  "limitations": [
+    "all FAN_* solids represent the original fan and hardware to be relocated; new guard and mounting hardware are not source modeled",
+    "29.7mm backwood port is a new unapproved cut; panel strength, grain and edge breakout are not qualified",
+    "adapter is a 45mm square positional envelope only; metal, thickness, holes, screws, gasket and retention are unresolved",
+    "module keepouts use conditional 50x41mm reserved footprints, not measured assembled modules",
+    "no inlet-flow area, pressure drop, closed-case temperature, noise, startup/stall current or service-use test",
+    "catalog free-air values are not installed flow; no purchase, cutting or power authorization"
+  ],
+  "release": {
+    "G3_06": "OPEN",
+    "G2_07": "OPEN",
+    "G3_04": "WORKING",
+    "manufacturing_gates_closed": 0,
+    "motor_efuse_en": "LOW",
+    "purchase": false,
+    "cut": false,
+    "power": false,
+    "flash": false
+  }
+}

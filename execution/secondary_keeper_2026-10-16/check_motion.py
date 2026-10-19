@@ -117,7 +117,7 @@ assert math.isclose(yz["sled_to_bar_worst_clearance_z_mm"],.1,abs_tol=1e-7)
 assert s["bar_z_mm"][1]==s["stud_installed_z"][1]+.55
 full_d7=json.loads((p/"evidence/full_d7_shifted_boss_intersections.json").read_text())
 assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_recomputed_against_full_d7"] is False
-assert a["verified_with_full_d7_locally"]["proposed_local_backwood_relief_screen"]["disposition"]=="INTEGRATED_CAD_CANDIDATE_SCREEN_PENDING_NOT_FOR_MANUFACTURE"
+assert a["verified_with_full_d7_locally"]["proposed_local_backwood_relief_screen"]["disposition"]=="WOOD_RELIEF_AND_RELOCATED_FAN_SOURCE_GEOMETRY_CANDIDATES_PASS; PHYSICAL_AND_THERMAL_GATES_OPEN"
 assert a["integrated_wood_relief_candidate"]["status"]=="CAD_GEOMETRY_INTEGRATED_SOURCE_AUDIT_AND_PHYSICAL_VALIDATION_PENDING"
 assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_audit"]=="evidence/full_d7_shifted_boss_intersections.json"
 assert full_d7["source_sha256"]==a["original_d7_sha256"] and full_d7["source_solid_count"]==1774
@@ -129,8 +129,17 @@ assert all(any(hit["solid_id"]=="BACK_WOOD" and hit["z_overlap_mm"]==2.35
                for hit in full_d7["stud_centerline"]["axis_intersections"][str(axis)])
            for axis in range(1,8))
 assert {hit["solid_id"] for hit in full_d7["stud_centerline"]["axis_intersections"]["5"]} >= {
-    "BACK_WOOD", "FAN_MAX_BODY", "FAN_GASKET"}
+    "BACK_WOOD", "FAN_MAX_BODY", "FAN_GASKET"} # immutable unmodified-D7 baseline
 assert full_d7["tool_corridor"]=="NOT_CHECKED_BY_THIS_BOSS_VOLUME_AUDIT"
+fan_candidate=json.loads((p.parent/"fan_relocation_2026-10-19/evidence/candidate_source_audit.json").read_text())
+assert fan_candidate["source_sha256"]==a["original_d7_sha256"] and fan_candidate["source_solid_count"]==1774
+assert fan_candidate["disposition"]=="CANDIDATE_SOURCE_GEOMETRY_PASS_NOT_THERMALLY_OR_MECHANICALLY_QUALIFIED"
+assert fan_candidate["candidate"]["center_xy_mm"]==[220.0,40.0]
+assert fan_candidate["all_nine_full_vent_circles_in_material"] and fan_candidate["all_support_centers_inside_all_wood_layers"]
+assert not fan_candidate["source_3d_prism_intersections"]["external_fan_body"]
+assert not fan_candidate["source_3d_prism_intersections"]["adapter_plate_excluding_wood_contact"]
+assert not fan_candidate["source_3d_prism_intersections"]["vent_square_hits_fixed_nonwood"]
+assert min(item["plate_to_50x41_service_reserve_gap_mm"] for item in fan_candidate["service_reserve_clearance"])>0
 progress=json.loads((p.parent/"progress.json").read_text())
 with (p.parent/"tasks.csv").open(newline="") as f:
  task_counts=collections.Counter(row["Status"] for row in csv.DictReader(f))
@@ -147,5 +156,5 @@ assert all(r[x] is False for x in ("purchase_allowed","manufacture_allowed","pow
 assert r["efuse_en"]=="LOW"
 print("PASS nominal: 7 independent headless stop positions, 714 keyed locking states, 7 no-notch clashes")
 print("PASS conditional XYZ parametric screen: X 0.2mm, Y 0.05mm, Z 0.1mm worst-case clearance at assumed ±0.2mm/part; boss wall 0.425mm assumed worst case")
-print("PASS candidate full-D7 source screen: 7/7 wood relief loci; axis-5 fan/gasket clash remains a blocker")
+print("PASS conditional fan relocation source screen: external candidate clear; historical original axis-5 fan clash removed only by relocation candidate")
 print("BLOCKED: tool corridor, physical process capability, PCB/fastener, vibration and eFuse power remain unverified")

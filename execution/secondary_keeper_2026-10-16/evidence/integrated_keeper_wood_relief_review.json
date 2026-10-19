@@ -46,13 +46,15 @@
     "bore_envelopes_full_wood_or_full_void": "7/7",
     "driver_corridor_fixed_nonwood_hits_after_grille_removal": 0,
     "seat_min_boundary_clearance_mm": 1.5542,
-    "boss_intersections": "BACK_WOOD 7/7; axis 5 FAN_MAX_BODY and FAN_GASKET"
+    "boss_intersections": "BACK_WOOD 7/7; axis 5 FAN_MAX_BODY and FAN_GASKET",
+    "axis5_fan_disposition": "original FAN_* remains an unmodified-D7 collision in the historical audit; new (220,40) external relocation candidate has zero fixed-source intersections, subject to building and thermal qualification"
   },
   "limitations": [
     "source screen came from same candidate dimensions but was not rerun from the unavailable canonical archive in this work cycle",
     "SCAD represents cutters as an optional overlay; it does not subtract them from the immutable D7 wood solid",
-    "axis 5 fan/gasket interference unresolved",
+    "historical axis 5 fan/gasket hit only clears geometrically if the external fan relocation candidate is integrated",
     "wood strength, grain, machine tolerance, fastener retention, measured module and physical 55mm exchange unverified"
   ],
-  "status": "INTEGRATED_CAD_CANDIDATE; SOURCE_SCREEN_MATCHED; NOT_FOR_MANUFACTURE"
+  "status": "INTEGRATED_CAD_CANDIDATE; SOURCE_SCREEN_MATCHED; NOT_FOR_MANUFACTURE",
+  "conditional_relocated_fan_source_audit": "../../fan_relocation_2026-10-19/evidence/candidate_source_audit.json"
 }

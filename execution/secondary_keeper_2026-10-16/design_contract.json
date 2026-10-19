@@ -141,12 +141,13 @@
       ],
       "rear_clearance_bore_diameter_mm": 3.2,
       "source_bound_screen": "7/7 seats contained in existing wood; 7/7 bore square envelopes pass full-wood/full-void slice check; conservative fixed-part driver corridor clear after removable grille; minimum seat-to-existing-boundary 1.5542mm",
-      "remaining": "integrated keeper geometry updated; source screen candidate requires rerun for exact parameter reconciliation; axis-5 original fan/gasket clash; strength/grain/tolerance/physical fit and service not verified",
-      "disposition": "INTEGRATED_CAD_CANDIDATE_SCREEN_PENDING_NOT_FOR_MANUFACTURE"
+      "remaining": "historical unmodified-D7 boss report still includes the original axis-5 fan/gasket; conditional relocated fan candidate at XY220,40 is clear of all original fixed-source solids in evidence ../fan_relocation_2026-10-19/evidence/candidate_source_audit.json; integrated fan/keeper manufacture, wood strength and physical fit remain unverified",
+      "disposition": "WOOD_RELIEF_AND_RELOCATED_FAN_SOURCE_GEOMETRY_CANDIDATES_PASS; PHYSICAL_AND_THERMAL_GATES_OPEN"
     },
     "disposition": "FAILS_UNMODIFIED_D7_CLEARANCE; wood relief and fan relocation or boss redraw required; no fabrication",
     "source_geometry_checked_in_Github": false,
-    "current_revision_release_effect": "WOOD CUTTER OVERLAY IS NOT A D7 CUT; FULL SOURCE CLEARANCE REQUIRES FAN RELOCATION AND PHYSICAL ACCEPTANCE"
+    "current_revision_release_effect": "WOOD CUTTER OVERLAY IS NOT A D7 CUT; FULL SOURCE CLEARANCE REQUIRES FAN RELOCATION AND PHYSICAL ACCEPTANCE",
+    "conditional_relocated_fan_candidate": "../fan_relocation_2026-10-19/evidence/candidate_source_audit.json"
   },
   "kinematic_test": {
     "steps_total": 714,
