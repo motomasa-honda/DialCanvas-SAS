@@ -8,6 +8,8 @@ on:
       - 'execution/g1_95_aon_regulator/**'
       - 'execution/g1_94_native_erc_cleanup/**'
       - 'execution/g1_93_inhibited_phase_grant/**'
+      - 'execution/g1_phase77_140pins/**'
+      - 'execution/g1_28phase_disabled/**'
       - 'execution/ci/full-regression.marker'
   push:
     branches:
@@ -17,6 +19,8 @@ on:
       - 'execution/g1_95_aon_regulator/**'
       - 'execution/g1_94_native_erc_cleanup/**'
       - 'execution/g1_93_inhibited_phase_grant/**'
+      - 'execution/g1_phase77_140pins/**'
+      - 'execution/g1_28phase_disabled/**'
       - 'execution/ci/full-regression.marker'
   workflow_dispatch:
 permissions:
@@ -31,6 +35,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 execution/g1_95_aon_regulator/build_review.py
+          python3 execution/g1_95_aon_regulator/check_phase_chain_integration.py
           python3 execution/g1_95_aon_regulator/check_contract.py
           python3 execution/g1_95_aon_regulator/check_motor_current_budget.py
           python3 execution/g1_95_aon_regulator/test_input_power_consistency.py
