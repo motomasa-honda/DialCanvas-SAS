@@ -24,7 +24,7 @@
     "G4-02"
   ],
   "new_working_evidence": "execution/g5_06_signed_ota/README.md",
-  "secondary_keeper_2026_10_19": "525b6a1 outboard boss plus conditional XYZ screen; full-source 1,774-solid audit found 7/7 BACK_WOOD clashes and axis-5 FAN_MAX_BODY/GASKET clashes; tool corridor and physical fit/strength unverified; G2-07 OPEN, G3-04 WORKING",
+  "secondary_keeper_2026_10_19": "525b6a1 outboard boss plus conditional XYZ screen; full-source 1,774-solid audit found 7/7 boss BACK_WOOD clashes, axis-5 FAN_MAX_BODY/GASKET clashes, and 7/7 stud centerlines through BACK_WOOD (axis 5 also through fan/gasket); tool corridor and physical fit/strength unverified; G2-07 OPEN, G3-04 WORKING",
   "g5_05_last_review": "2026-10-17: independent encrypted fg_cfg 32KiB review, offline encrypted NVS mock, remote START/FAULT CLEAR locked; hardware pending",
   "g5_06_last_review": "2026-10-17: signed ESP32-P4 build passed; rollback failure/image-state query failure now blocks app_main startup; physical rollback/HIL still HOLD",
   "g1_88_last_review": "2026-10-18: KiCad G1-88 post-start PG+rail fault review candidate, physical monitor arming/timer NOT BUILT; G1-05/06 WORKING",

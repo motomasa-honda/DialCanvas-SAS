@@ -1,5 +1,5 @@
 {
-  "audit": "current_outboard_boss_vs_immutable_D7_source",
+  "audit": "candidate_boss_vs_immutable_D7_source",
   "source_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
   "source_solid_count": 1774,
   "boss_envelope_relative_to_each_axis_mm": {
@@ -11,64 +11,146 @@
       -3.75,
       0.2
     ],
-    "z": [
-      134,
-      138
+    "z_absolute": [
+      134.0,
+      138.0
     ]
   },
   "axis_intersections": {
     "1": [
       {
+        "source_index": 6,
         "solid_id": "BACK_WOOD",
         "overlap_volume_mm3": 13.035
       }
     ],
     "2": [
       {
+        "source_index": 6,
         "solid_id": "BACK_WOOD",
         "overlap_volume_mm3": 13.035
       }
     ],
     "3": [
       {
+        "source_index": 6,
         "solid_id": "BACK_WOOD",
         "overlap_volume_mm3": 13.035
       }
     ],
     "4": [
       {
+        "source_index": 6,
         "solid_id": "BACK_WOOD",
         "overlap_volume_mm3": 13.035
       }
     ],
     "5": [
       {
+        "source_index": 6,
         "solid_id": "BACK_WOOD",
         "overlap_volume_mm3": 13.035
       },
       {
-        "solid_id": "FAN_GASKET",
-        "overlap_volume_mm3": 13.035
-      },
-      {
+        "source_index": 503,
         "solid_id": "FAN_MAX_BODY",
         "overlap_volume_mm3": 26.07
+      },
+      {
+        "source_index": 505,
+        "solid_id": "FAN_GASKET",
+        "overlap_volume_mm3": 13.035
       }
     ],
     "6": [
       {
+        "source_index": 6,
         "solid_id": "BACK_WOOD",
         "overlap_volume_mm3": 13.035
       }
     ],
     "7": [
       {
+        "source_index": 6,
         "solid_id": "BACK_WOOD",
         "overlap_volume_mm3": 13.035
       }
     ]
   },
-  "fixed_core_collisions_excluding_known_removal_or_redesign_items": 0,
+  "source_solid_intersection_count": 9,
+  "stud_centerline": {
+    "relative_xy_offset_mm": [
+      23.15,
+      -1.1
+    ],
+    "z_mm": [
+      134.35,
+      139.35
+    ],
+    "axis_intersections": {
+      "1": [
+        {
+          "source_index": 6,
+          "solid_id": "BACK_WOOD",
+          "z_overlap_mm": 2.35
+        }
+      ],
+      "2": [
+        {
+          "source_index": 6,
+          "solid_id": "BACK_WOOD",
+          "z_overlap_mm": 2.35
+        }
+      ],
+      "3": [
+        {
+          "source_index": 6,
+          "solid_id": "BACK_WOOD",
+          "z_overlap_mm": 2.35
+        }
+      ],
+      "4": [
+        {
+          "source_index": 6,
+          "solid_id": "BACK_WOOD",
+          "z_overlap_mm": 2.35
+        }
+      ],
+      "5": [
+        {
+          "source_index": 6,
+          "solid_id": "BACK_WOOD",
+          "z_overlap_mm": 2.35
+        },
+        {
+          "source_index": 503,
+          "solid_id": "FAN_MAX_BODY",
+          "z_overlap_mm": 1.65
+        },
+        {
+          "source_index": 505,
+          "solid_id": "FAN_GASKET",
+          "z_overlap_mm": 1
+        }
+      ],
+      "6": [
+        {
+          "source_index": 6,
+          "solid_id": "BACK_WOOD",
+          "z_overlap_mm": 2.35
+        }
+      ],
+      "7": [
+        {
+          "source_index": 6,
+          "solid_id": "BACK_WOOD",
+          "z_overlap_mm": 2.35
+        }
+      ]
+    },
+    "intersecting_axis_count": 7,
+    "scope": "CENTERLINE_ONLY; A HIT PROVES MATERIAL INTERFERENCE; CLEAR IS NOT RADIAL OR TOOL CLEARANCE"
+  },
   "known_unresolved_interferences": {
     "back_wood_boss_overlap_axes": [
       1,
@@ -79,11 +161,13 @@
       6,
       7
     ],
-    "existing_fan_body_and_gasket_overlap_axis": 5
+    "fan_body_or_gasket_boss_overlap_axes": [
+      5
+    ]
   },
   "tool_corridor": "NOT_CHECKED_BY_THIS_BOSS_VOLUME_AUDIT",
   "physical_fit_or_strength": "NOT_TESTED",
-  "disposition": "FAILS_UNMODIFIED_D7_CLEARANCE; REQUIRES_BACK_WOOD_RELIEF_AND_FAN_RELOCATION_OR_BOSS_REDRAW; NOT_FOR_MANUFACTURE",
+  "disposition": "FAILS_SOURCE_CLEARANCE; REDESIGN_REQUIRED; NOT_FOR_MANUFACTURE",
   "progress": {
     "tasks": 48,
     "done_scope": 21,

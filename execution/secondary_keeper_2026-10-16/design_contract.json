@@ -102,6 +102,14 @@
       "other_fixed_solids": 0,
       "tool_corridor": "NOT_CHECKED"
     },
+      "current_stud_centerline_intersections": {
+        "relative_xy_offset_mm": [23.15, -1.1],
+        "z_mm": [134.35, 139.35],
+        "back_wood": "7/7 axes; centerline crosses BACK_WOOD for 2.35mm of modeled 5mm stud length",
+        "fan": "axis 5 centerline crosses FAN_MAX_BODY for 1.65mm and FAN_GASKET for 1.0mm",
+        "scope": "exact centerline/material intersection only; no radial-clearance or driver-tool clearance claim",
+        "source": "evidence/full_d7_shifted_boss_intersections.json"
+      },
     "disposition": "FAILS_UNMODIFIED_D7_CLEARANCE; wood relief and fan relocation or boss redraw required; no fabrication",
     "source_geometry_checked_in_Github": false,
     "current_revision_release_effect": "FULL_D7_CLEARANCE_MUST_BE_RECOMPUTED; OLD_ZERO_COLLISION_RESULT_DOES_NOT_COVER_SHIFTED_BOSS"

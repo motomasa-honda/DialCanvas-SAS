@@ -63,6 +63,52 @@ def geometry_polygons(geometry: dict) -> list[list[list[list[float]]]]:
     return [coords] if geometry["type"] == "Polygon" else coords
 
 
+def point_in_ring(point: tuple[float, float], ring: list[list[float]]) -> bool:
+    """Return true for points strictly inside a polygon ring (boundary is not inside)."""
+    x, y = point
+    inside = False
+    vertices = ring[:-1] if len(ring) > 1 and ring[0] == ring[-1] else ring
+    for (x1, y1), (x2, y2) in zip(vertices, vertices[1:] + vertices[:1]):
+        if ((y1 > y) != (y2 > y)) and x < (x2 - x1) * (y - y1) / (y2 - y1) + x1:
+            inside = not inside
+    return inside
+
+
+def point_in_polygon(point: tuple[float, float], rings: list[list[list[float]]]) -> bool:
+    """D7 polygon convention: first ring is material; following rings are voids."""
+    return bool(rings) and point_in_ring(point, rings[0]) and not any(
+        point_in_ring(point, hole) for hole in rings[1:])
+
+
+def stud_centerline_intersections(source: dict,
+                                  z_range: tuple[float, float] = (134.35, 139.35),
+                                  x_offset: float = 23.15, y_offset: float = -1.1) -> dict:
+    """Find XY source prisms crossed by each vertical stud centerline.
+
+    This is a necessary-path check, not a clearance check for the full stud/tool
+    diameter. A centerline hit proves material interference; a clear centerline
+    does not prove radial clearance or tool access.
+    """
+    if not z_range[0] < z_range[1]:
+        raise ValueError("stud z bounds must be strictly increasing")
+    result: dict[str, list[dict]] = {}
+    for axis_number, x, y in AXES:
+        point = (x + x_offset, y + y_offset)
+        hits = []
+        for source_index, solid in enumerate(source["solids"]):
+            if solid["axis"] != "XY":
+                continue
+            z_overlap = max(0.0, min(z_range[1], solid["high"]) - max(z_range[0], solid["low"]))
+            if z_overlap <= 0:
+                continue
+            if any(point_in_polygon(point, polygon)
+                   for polygon in geometry_polygons(solid["geometry"])):
+                hits.append({"source_index": source_index, "solid_id": solid["id"],
+                             "z_overlap_mm": round(z_overlap, 6)})
+        result[str(axis_number)] = hits
+    return result
+
+
 def boss_intersections(source: dict, x_offset: tuple[float, float] = (21.5, 24.8),
                        y_offset: tuple[float, float] = (-3.75, 0.2),
                        z_range: tuple[float, float] = (134.0, 138.0)) -> dict:
@@ -129,6 +175,7 @@ def main() -> None:
 
     try:
         hits = boss_intersections(source, tuple(args.x_offset), tuple(args.y_offset), tuple(args.z_range))
+        stud_hits = stud_centerline_intersections(source)
     except ValueError as exc:
         raise SystemExit(f"FAIL: {exc}") from exc
     collision_count = sum(len(items) for items in hits.values())
@@ -141,6 +188,11 @@ def main() -> None:
                                                     "z_absolute": args.z_range},
         "axis_intersections": hits,
         "source_solid_intersection_count": collision_count,
+        "stud_centerline": {"relative_xy_offset_mm": [23.15, -1.1],
+                            "z_mm": [134.35, 139.35],
+                            "axis_intersections": stud_hits,
+                            "intersecting_axis_count": sum(bool(items) for items in stud_hits.values()),
+                            "scope": "CENTERLINE_ONLY; A HIT PROVES MATERIAL INTERFERENCE; CLEAR IS NOT RADIAL OR TOOL CLEARANCE"},
         "known_unresolved_interferences": {
             "back_wood_boss_overlap_axes": [int(axis) for axis, solids in hits.items()
                                             if any(hit["solid_id"] == "BACK_WOOD" for hit in solids)],

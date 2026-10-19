@@ -40,6 +40,21 @@ class ClearanceAuditTests(unittest.TestCase):
         self.assertEqual([hit["solid_id"] for hit in result["1"]], ["FIXTURE", "FIXTURE"])
         self.assertEqual([hit["overlap_volume_mm3"] for hit in result["1"]], [4.0, 4.0])
 
+    def test_stud_centerline_detects_solid_xy_material_and_respects_voids(self):
+        # Axis 1 stud center is (108.15, 38.9). One XY layer contains it;
+        # an otherwise identical layer has an inner-ring void there.
+        outer = [[100, 30], [120, 30], [120, 50], [100, 50], [100, 30]]
+        hole = [[107, 37], [110, 37], [110, 41], [107, 41], [107, 37]]
+        source = {"solids": [
+            {"id": "WOOD", "axis": "XY", "low": 137, "high": 139,
+             "geometry": {"type": "Polygon", "coordinates": [outer]}},
+            {"id": "OPENING", "axis": "XY", "low": 139, "high": 145,
+             "geometry": {"type": "Polygon", "coordinates": [outer, hole]}},
+        ]}
+        hits = audit.stud_centerline_intersections(source)
+        self.assertEqual(hits["1"], [{"source_index": 0, "solid_id": "WOOD", "z_overlap_mm": 2.0}])
+        self.assertTrue(all(not items for axis, items in hits.items() if axis != "1"))
+
     def test_candidate_offsets_change_audited_envelope(self):
         source = {"solids": [rectangular_xy(107, 108, 37, 38)]}
         shifted = audit.boss_intersections(source, x_offset=(25, 28), y_offset=(0, 4),
