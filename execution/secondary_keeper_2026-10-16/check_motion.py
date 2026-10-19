@@ -111,7 +111,14 @@ assert math.isclose(z_gap-2*tol,.1,abs_tol=1e-7)
 assert math.isclose(yz["boss_to_notch_worst_clearance_each_side_mm"],.05,abs_tol=1e-7)
 assert math.isclose(yz["sled_to_bar_worst_clearance_z_mm"],.1,abs_tol=1e-7)
 assert s["bar_z_mm"][1]==s["stud_installed_z"][1]+.55
-assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_recomputed_against_full_d7"] is False
+full_d7=json.loads((p/"evidence/full_d7_shifted_boss_intersections.json").read_text())
+assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_recomputed_against_full_d7"] is True
+assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_audit"]=="evidence/full_d7_shifted_boss_intersections.json"
+assert full_d7["source_sha256"]==a["original_d7_sha256"] and full_d7["source_solid_count"]==1774
+assert full_d7["disposition"].startswith("FAILS_UNMODIFIED_D7_CLEARANCE")
+assert full_d7["known_unresolved_interferences"]["back_wood_boss_overlap_axes"]==list(range(1,8))
+assert full_d7["known_unresolved_interferences"]["existing_fan_body_and_gasket_overlap_axis"]==5
+assert full_d7["tool_corridor"]=="NOT_CHECKED_BY_THIS_BOSS_VOLUME_AUDIT"
 progress=json.loads((p.parent/"progress.json").read_text())
 with (p.parent/"tasks.csv").open(newline="") as f:
  task_counts=collections.Counter(row["Status"] for row in csv.DictReader(f))
@@ -128,4 +135,5 @@ assert all(r[x] is False for x in ("purchase_allowed","manufacture_allowed","pow
 assert r["efuse_en"]=="LOW"
 print("PASS nominal: 7 independent headless stop positions, 714 keyed locking states, 7 no-notch clashes")
 print("PASS conditional XYZ parametric screen: X 0.2mm, Y 0.05mm, Z 0.1mm worst-case clearance at assumed ±0.2mm/part")
-print("BLOCKED: physical process capability, shifted boss vs full D7, PCB/fastener, wood/fan, vibration and eFuse power remain unverified")
+print("PASS full-D7 boss audit evidence: 7/7 BACK_WOOD clashes and axis-5 fan/gasket clashes retained as blockers")
+print("BLOCKED: tool corridor, physical process capability, PCB/fastener, vibration and eFuse power remain unverified")

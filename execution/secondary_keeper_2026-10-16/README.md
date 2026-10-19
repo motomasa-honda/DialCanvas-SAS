@@ -20,6 +20,16 @@ Other blockers: M2 tap/engagement material and prevailing torque, screw self-loo
 
 The hardware design remains **NOT ACCEPTED**. Next tasks are full-D7 collision recomputation for the shifted boss, measurement of the selected module and manufacturing process capability, plus anti-loosening and structural fixture tests.
 
+## 2026-10-19 — current outboard boss checked against the complete source D7
+
+The source audit now rehashes the canonical 65,483,374-byte `assembly.json` (SHA256 above; 1,774 solids) and intersects the current X/Y/Z boss envelope against every XY, XZ, and YZ source prism. Reproduce with:
+
+```sh
+python3 execution/secondary_keeper_2026-10-16/audit_full_d7_clearance.py /path/to/CANONICAL_D7/cad/assembly.json --output execution/secondary_keeper_2026-10-16/evidence/full_d7_shifted_boss_intersections.json
+```
+
+**FAIL for the unmodified D7 layout:** all seven current bosses overlap existing `BACK_WOOD` by 13.035mm³ each; axis 5 additionally overlaps `FAN_MAX_BODY` by 26.07mm³ and `FAN_GASKET` by 13.035mm³. No other source solids intersect these boss envelopes in this audit. The rear wood must be relieved or the boss redesigned, and the axis-5 fan must be relocated or that boss redesigned. These interferences invalidate clearance for this candidate until a revised source-bound audit passes. The 2.4mm tool corridor, module dimensions, process tolerances, fastening strength, vibration retention, and physical 55mm exchange remain unverified. This report is not a woodworking approval and does not change G2-07 OPEN / G3-04 WORKING or any manufacturing gate.
+
 ## 2026-10-19 — conditional X-layout candidate (overall HOLD)
 
 The initial X-layout above is superseded. Moving each fixed boss outward from X `20.5..24.0` to `21.5..24.8` and shifting the screw center from `22.25` to `23.15` retains a nominal **0.625mm** minimum bore-to-boss wall and stays within the ±25mm reserved width. A through-height cassette notch at X `20.6..22.5` gives 0.6mm nominal clearance to the conservative 40mm board envelope, or **0.2mm worst-case X clearance** under the stated ±0.2mm two-part tolerance assumption. The notch extends past the cassette wall edge at X22 by 0.5mm nominal (0.1mm worst-case under the same two-part screen). The screw still overlaps the 48mm lock bar by 1.85mm nominal and retains the nominal 0.6mm Y travel-to-contact stop before the 2.5mm unlock travel.

@@ -1,0 +1,96 @@
+{
+  "audit": "current_outboard_boss_vs_immutable_D7_source",
+  "source_sha256": "20ee6d8c001ee16d64e47edb5456eff3bc39f3390a85dd94b69b7eb1504d878f",
+  "source_solid_count": 1774,
+  "boss_envelope_relative_to_each_axis_mm": {
+    "x": [
+      21.5,
+      24.8
+    ],
+    "y": [
+      -3.75,
+      0.2
+    ],
+    "z": [
+      134,
+      138
+    ]
+  },
+  "axis_intersections": {
+    "1": [
+      {
+        "solid_id": "BACK_WOOD",
+        "overlap_volume_mm3": 13.035
+      }
+    ],
+    "2": [
+      {
+        "solid_id": "BACK_WOOD",
+        "overlap_volume_mm3": 13.035
+      }
+    ],
+    "3": [
+      {
+        "solid_id": "BACK_WOOD",
+        "overlap_volume_mm3": 13.035
+      }
+    ],
+    "4": [
+      {
+        "solid_id": "BACK_WOOD",
+        "overlap_volume_mm3": 13.035
+      }
+    ],
+    "5": [
+      {
+        "solid_id": "BACK_WOOD",
+        "overlap_volume_mm3": 13.035
+      },
+      {
+        "solid_id": "FAN_GASKET",
+        "overlap_volume_mm3": 13.035
+      },
+      {
+        "solid_id": "FAN_MAX_BODY",
+        "overlap_volume_mm3": 26.07
+      }
+    ],
+    "6": [
+      {
+        "solid_id": "BACK_WOOD",
+        "overlap_volume_mm3": 13.035
+      }
+    ],
+    "7": [
+      {
+        "solid_id": "BACK_WOOD",
+        "overlap_volume_mm3": 13.035
+      }
+    ]
+  },
+  "fixed_core_collisions_excluding_known_removal_or_redesign_items": 0,
+  "known_unresolved_interferences": {
+    "back_wood_boss_overlap_axes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "existing_fan_body_and_gasket_overlap_axis": 5
+  },
+  "tool_corridor": "NOT_CHECKED_BY_THIS_BOSS_VOLUME_AUDIT",
+  "physical_fit_or_strength": "NOT_TESTED",
+  "disposition": "FAILS_UNMODIFIED_D7_CLEARANCE; REQUIRES_BACK_WOOD_RELIEF_AND_FAN_RELOCATION_OR_BOSS_REDRAW; NOT_FOR_MANUFACTURE",
+  "progress": {
+    "tasks": 48,
+    "done_scope": 21,
+    "working": 8,
+    "open": 15,
+    "hardware_wait": 4,
+    "manufacturing_gates_closed": 0,
+    "manufacturing_gates_total": 6
+  }
+}

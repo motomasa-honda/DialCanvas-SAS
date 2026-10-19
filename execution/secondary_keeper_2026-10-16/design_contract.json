@@ -94,7 +94,15 @@
     ],
     "previous_revision_fixed_core_boss_collisions": 0,
     "previous_revision_fixed_core_tool_collisions": 0,
-    "current_outboard_boss_revision_recomputed_against_full_d7": false,
+    "current_outboard_boss_revision_recomputed_against_full_d7": true,
+    "current_outboard_boss_revision_audit": "evidence/full_d7_shifted_boss_intersections.json",
+    "current_outboard_boss_revision_intersections": {
+      "back_wood": "7/7 axes; each boss overlaps 13.035mm3 in the existing Z137..138mm stratum",
+      "fan": "axis 5 overlaps FAN_MAX_BODY by 26.07mm3 and FAN_GASKET by 13.035mm3",
+      "other_fixed_solids": 0,
+      "tool_corridor": "NOT_CHECKED"
+    },
+    "disposition": "FAILS_UNMODIFIED_D7_CLEARANCE; wood relief and fan relocation or boss redraw required; no fabrication",
     "source_geometry_checked_in_Github": false,
     "current_revision_release_effect": "FULL_D7_CLEARANCE_MUST_BE_RECOMPUTED; OLD_ZERO_COLLISION_RESULT_DOES_NOT_COVER_SHIFTED_BOSS"
   },
