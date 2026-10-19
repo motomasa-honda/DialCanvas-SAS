@@ -31,6 +31,10 @@ Seeedのモーター巻線について、メーカーWikiの抵抗値表記は�
 | 秋月 28BYJ-48 5V（販売コード113256）+ ElectroPeak MTR-09-004 | モーター税込¥250/個、MTR-09-004 US$0.36/枚。秋月ページは在庫僅少・11月中旬入荷予定で、閲覧時の購入可能数は7軸分未満。モーター端子はXH、MTR-09-004販売ページはXH-5P・TTL入力・40×20mmを掲載 | **価格だけならさらに安いが、現行電源の候補から除外。** 秋月リンク先の28BYJ48-W01仕様書は22Ω±7%/相。5V/22Ωの抵抗ベース計算は227mA/相、7軸1相で約1.59Aとなり、eFuse典型1.509Aを超える。ドライバーの電圧降下を無視したスクリーニング値であり実測値ではない。モーターSKU・基板SKUの組合せも受入れ試験前。 |
 | イーストラクト Yahoo!店 MEA0050 完成セット | 税込¥987/セット、全国送料無料。商品ページの購入上限3点 | 5Vの28BYJ-48-5Vとドライバーモジュールの一体セットで、個別基板・コネクタを探す必要がない。ただし7軸分を同一販売枠からそろえられず、相抵抗・最大電流の掲載もないため、7軸電源計算へ採用できない。 |
 
+## 追加スクリーニング：DFRobot DFR1199一体型モーター／ドライバー
+
+国内販売ページにDFRobot DFR1199が税込¥2,113/個、メーカー取り寄せとして掲載されている。メーカー販売ページは5V動作・内蔵A4988・STEP/DIR/5V/GNDの4ピン・42×42mmを掲示する。一方、A4988メーカーの電気特性表はモーター負荷電源VBBの動作範囲を8～35Vと規定しており、5V動作というセット販売仕様と矛盾する。掲載内容だけではモーター電源経路や回路変更が解決できず、5V_RAWモーター電源へつなぐ候補から除外する。現行の4相ロジック入力とも異なり、STEP/DIR方式へのFW・インターフェース変更が必要。7個調達時の単価だけでも税込¥14,791、現時点で納期・7個在庫も確認できないため、既製品優先のコスト・調達・電源条件を満たさない。メーカーの正式な回路／5V駆動説明が得られた場合にのみ再評価する。
+
 ## ファームウェアの励磁数と電源判定
 
 既存の製品ファームウェア検査は、7軸の出力を **one-hot wave-drive（1軸につき論理1相）** と判定し、テストもそのパターンを検証する。一方、motor_current_acceptance.json と電源予算は物理ドライバー過渡を含む測定前の保守仮定として2相/軸を保持しているため、部品比較は両方を区別する。
@@ -93,5 +97,6 @@ Adafruit #858は約42Ω/相なので、現行1相パターンのモーター分�
 - Seeed, [105990072 product](https://www.seeedstudio.com/Gear-Stepper-Motor-Driver-Pack-p-3200.html) and [manufacturer Wiki](https://wiki.seeedstudio.com/Gear_Stepper_Motor_Driver_Pack/) — set identity, motor data, power pins, control pins, drawing.
 - Marutsu, [Seeed 105990072 domestic listing](https://www.marutsu.co.jp/pc/i/1558561/) — Japan price and stock observed 2026-10-19.
 - Mouser Japan, [Seeed 105990072 listing](https://www.mouser.jp/ja/ProductDetail/Seeed-Studio/105990072?qs=0lSvoLzn4L99CUdct3Gvjw%3D%3D) — exact product number and stock cross-check.
+- DFRobot, [DFR1199 product page](https://www.dfrobot.com/product-2979.html) — 5V/A4988/STEP-DIR and 42×42mm seller specifications. Allegro, [A4988 datasheet](https://www.allegromicro.com/-/media/files/datasheets/a4988-datasheet.pdf) — VBB operating minimum of 8V. Marutsu, [DFRobot DFR1199 Japan listing](https://www.marutsu.co.jp/pc/i/3758464/) — tax-included listing price and order/stock state observed 2026-10-19.
 - Velleman / Whadda, [WPI401 official product page](https://www.velleman.eu/products/view/5-vdc-stepper-motor-with-uln2003-driver-board-wpi401/?id=459144) and [official manual](https://cdn.velleman.eu/downloads/25/prototyping/manual_wpi401.pdf) — bundled set and inconsistent specs.
 - DigiKey Marketplace, [WPI401 listing](https://www.digikey.com/en/products/detail/velleman/WPI401/25966344) — price and shipping context.
