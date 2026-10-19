@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "generated_by": "execution/g1_95_aon_regulator/build_review.py",
+  "status": "GENERATED_REVIEW_ONLY_NO_MANUFACTURING_RELEASE",
+  "native_kicad_erc_run": false,
+  "hardware_release": false,
+  "motor_efuse_enable": "LOW",
+  "files": [
+    {
+      "path": "execution/g1_88_pg_rail_fault/FG_FAULT.kicad_sym",
+      "bytes": 5483,
+      "sha256": "fe68f238ed86d7e97da862228442fc563f9812de6da7630493853e70b47a87e1"
+    },
+    {
+      "path": "execution/g1_88_pg_rail_fault/forest_guardian_g1_88_pg_rail_fault_review.kicad_sch",
+      "bytes": 233975,
+      "sha256": "e7f733882cfe2a081b83205bbd1bee195b08c9eca1a1e5464a15eab9bd7b4e04"
+    },
+    {
+      "path": "execution/g1_88_pg_rail_fault/pin_map_485.json",
+      "bytes": 110286,
+      "sha256": "d309f0cbd7c87cf39a729bfed9b321087765d631d9dc98d5dc79701a3e9340f3"
+    },
+    {
+      "path": "execution/g1_89_hardware_start_deadline/FG_TIMER.kicad_sym",
+      "bytes": 1480,
+      "sha256": "28a8131ed188b28ac58350a644edbd6b3c4c9d89f9f8ca810d50ed73496b4f70"
+    },
+    {
+      "path": "execution/g1_89_hardware_start_deadline/forest_guardian_g1_89_hardware_start_deadline_review.kicad_sch",
+      "bytes": 243671,
+      "sha256": "553d31c0be1865ad925d25d4cb1b779df1a894244564f242b417258f4138bff2"
+    },
+    {
+      "path": "execution/g1_89_hardware_start_deadline/pin_map_499.json",
+      "bytes": 113378,
+      "sha256": "8ea35d93a4a1eb2f54f4d7f185a86f9f132d33f840617d9323f2d6cd9ee126fc"
+    },
+    {
+      "path": "execution/g1_90_fault_cutoff/FG_CUTOFF.kicad_sym",
+      "bytes": 1108,
+      "sha256": "b4e87ec255fafb18120c0cafc92e5d5c750fa6b2d987f643a3b8ce10549c8b6c"
+    },
+    {
+      "path": "execution/g1_90_fault_cutoff/forest_guardian_g1_90_fault_cutoff_review.kicad_sch",
+      "bytes": 254383,
+      "sha256": "e5aca1b6f26df1361c05017bf5c4f3f32e374eb262cbda71778c15e6b9ce8c23"
+    },
+    {
+      "path": "execution/g1_90_fault_cutoff/pin_map_522.json",
+      "bytes": 118553,
+      "sha256": "be464ee82ffb682fb40dfceecf7714ddafcc165a2fa464d66fc395da7faf3db7"
+    },
+    {
+      "path": "execution/g1_91_aon_supervisor/forest_guardian_g1_91_aon_supervisor_review.kicad_sch",
+      "bytes": 268581,
+      "sha256": "f1236c7a83cf4610177c0dd69af424ae9a22b2675156db662c7d581c6bb9b5bd"
+    },
+    {
+      "path": "execution/g1_91_aon_supervisor/pin_map_552.json",
+      "bytes": 125147,
+      "sha256": "61a429920ea085e9e8b93c804bc510374524cf596e8500a5624f5fa195319062"
+    },
+    {
+      "path": "execution/g1_92_inhibited_start_grant/forest_guardian_g1_92_start_grant_inhibited_review.kicad_sch",
+      "bytes": 282473,
+      "sha256": "ea00e83fc85b9c3f6c1a43bc09d9679310644bc0bb619e91ecc381ce239815af"
+    },
+    {
+      "path": "execution/g1_92_inhibited_start_grant/pin_map_579.json",
+      "bytes": 131215,
+      "sha256": "86882e229bbdc3c4d869f569a2baf0df8d6d8642adc246f65b9feaee3d2c6830"
+    },
+    {
+      "path": "execution/g1_93_inhibited_phase_grant/forest_guardian_g1_93_phase_grant_inhibited_review.kicad_sch",
+      "bytes": 301859,
+      "sha256": "bf14e77b9df289bf7fce59bc53e1e42ade3976abcf661ed45ab95c43398a7c0b"
+    },
+    {
+      "path": "execution/g1_93_inhibited_phase_grant/pin_map_618.json",
+      "bytes": 140028,
+      "sha256": "c0c79b2c3279ae89637e89611f4e16d7c532f057bbae85fd31ae7eae8d9117af"
+    },
+    {
+      "path": "execution/g1_94_native_erc_cleanup/forest_guardian_g1_94_real_nc_cleanup_review.kicad_sch",
+      "bytes": 297953,
+      "sha256": "b14a9e065072c701c40e9df05cdff0daf0f47536a37eed4aeaa54212872d6665"
+    },
+    {
+      "path": "execution/g1_94_native_erc_cleanup/nc_conversion_audit.json",
+      "bytes": 3748,
+      "sha256": "2c6cc4474697d6784481e46801860c2ad3b8a9e1a3a9a2fa28d2391738fbb549"
+    },
+    {
+      "path": "execution/g1_94_native_erc_cleanup/pin_map_618_clean.json",
+      "bytes": 140210,
+      "sha256": "d3b767137eeca84d3d13487cff1c1396262adcaa1c3e0f22fb4d7f15c427b6ad"
+    },
+    {
+      "path": "execution/g1_95_aon_regulator/FG_POWER.kicad_sym",
+      "bytes": 1739,
+      "sha256": "a4f0ebf8516d20c1cb2bdb0702aeadfaf9e87fe7594d485b50bab6be63635389"
+    },
+    {
+      "path": "execution/g1_95_aon_regulator/forest_guardian_g1_95_aon_regulator_review.kicad_sch",
+      "bytes": 314673,
+      "sha256": "c9744d4fced3df79b1929b87120d170b045ac10cd66683c00195d08a475abb5b"
+    },
+    {
+      "path": "execution/g1_95_aon_regulator/pin_map_648.json",
+      "bytes": 146706,
+      "sha256": "7eb4e25bca7b809d1469a455f4dac9489d009c7f4451d9fbfbcc76d8d3347b74"
+    }
+  ],
+  "total_bytes": 3236649
+}
