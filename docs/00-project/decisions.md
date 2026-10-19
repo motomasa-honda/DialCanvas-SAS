@@ -5,7 +5,7 @@
 | 旧資料の配置 | 保持。新 Phase 0 資料を併置 | [ADR-0001](../../adr/0001-preserve-legacy-structure.md) |
 | 歯車の噛み合い | 必須要求は置換済み | [変更履歴](../01-requirements/change-history.md) |
 | 歯車駆動・保守 | 現行A案：7軸のドライバーモジュールを個別交換。歯車/P3/他6軸を外さない。旧1モーター案は履歴 | [ADR-0004](../../adr/0004-module-first-system-review.md) |
-| 表示器・基板 | Waveshare 3.4C・3.4型800×800 IPSの完成基板を継続候補。改版/実機表示は未受入 | [既製品全体監査](../02-architecture/module-first-audit-2026-10-19.md) |
+| 表示器・基板 | Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C（SKU 31523）を一品製作用の表示・制御モジュールに選定。タッチは未使用。実表示・寸法適合は未受入 | [メーカー仕様](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[未決定事項 OQ-04](../01-requirements/open-questions.md) |
 | 電源・照明・保持部品 | 完成モジュール/標準部材を優先。候補のまま旧回路を削除しない | [ADR-0004](../../adr/0004-module-first-system-review.md) |
 | 専用製作の範囲 | 外装・装飾歯車円板・ベゼル・共通カセット/アダプター・固有ソフトが中心。安全接続は同等性レビュー後 | [全体監査](../02-architecture/module-first-audit-2026-10-19.md) |
 

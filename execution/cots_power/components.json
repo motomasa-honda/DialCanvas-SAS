@@ -10,14 +10,16 @@
     "motor": "Adafruit #858, current 1/16.128 variant, seven units",
     "motor_driver": "Seven separate ULN2003 boards; exact revision unresolved",
     "lighting": "DFRobot FIT0836, twenty segments in total",
-    "production_selected": false
+    "production_selected": false,
+    "display": "Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C, SKU 31523; selected for one-off design baseline; touch unused"
   },
   "sources": {
     "adapter": {"url": "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF", "document_revision": "2026-04-03", "checked": "2026-10-19", "page": 2},
     "converter": {"url": "https://www.pololu.com/product/2842", "checked": "2026-10-19", "section": "Features; Connections; Typical efficiency and output current"},
     "motor": {"url": "https://www.adafruit.com/product/858", "checked": "2026-10-19", "section": "Technical Details; seller catalog, OEM not identified"},
     "lighting": {"url": "https://www.dfrobot.com/product-2398.html", "checked": "2026-10-19", "section": "FIT0836 specification and individual cut capability"},
-    "fan": {"path": "execution/fan_relocation_2026-10-19/interface_contract.json", "section": "manufacturer_rated_data; not startup or stall maximum"}
+    "fan": {"path": "execution/fan_relocation_2026-10-19/interface_contract.json", "section": "manufacturer_rated_data; not startup or stall maximum"},
+    "display": {"url": "https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC", "product_url": "https://www.waveshare.com/product/esp32-p4-wifi6-touch-lcd-3.4c.htm", "sku": "31523", "verified_specs": {"diagonal_in": 3.4, "resolution_px": [800, 800], "panel": "IPS round touch; touch unused", "controller": "ESP32-P4", "wireless_coprocessor": "ESP32-C6 Wi-Fi 6 / Bluetooth 5 LE"}, "checked": "2026-10-19"}
   },
   "adapter": {"rated_v": 5.0, "rated_a": 5.0, "rated_w": 25.0, "voltage_tolerance_fraction": 0.05, "plug_od_mm": 5.5, "plug_id_mm": 2.1, "center_positive": true, "ac_inlet": "Class I C14; domestic cord/ground and procurement applicability not qualified", "jack_part": null, "qualified_harness_current_a": null},
   "converter": {

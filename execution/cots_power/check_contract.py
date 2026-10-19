@@ -19,6 +19,10 @@ def verify_data():
     assert not any(data["release"].values())
     assert data["selection"]["production_selected"] is False
     assert data["selection"]["aon_converter"] == "Pololu D24V5F3 #2842"
+    assert data["selection"]["display"].startswith("Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C, SKU 31523")
+    display = data["sources"]["display"]
+    assert display["sku"] == "31523" and display["verified_specs"]["resolution_px"] == [800, 800]
+    assert display["verified_specs"]["controller"] == "ESP32-P4"
     assert data["adapter"]["rated_v"] == 5 and data["adapter"]["rated_a"] == 5
     for source in data["sources"].values():
         assert "url" in source or (ROOT / source["path"]).is_file()

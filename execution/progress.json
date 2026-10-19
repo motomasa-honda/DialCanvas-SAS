@@ -55,5 +55,6 @@
   "g1_95_usb_c_pin_maps_2026_10_19": "STUSB4500L QFN-24 EP 24 signal pins + EP mapped from ST DS13102 Rev.6 Table 1; STL9P3LLH6 8 pad map recorded from DS10145 Rev.3; source-linked contract check passes exact map. These are pin identity records only: no net assignment, full schematic, footprint, input budget, ERC, DRC, HIL, purchase or power release.",
   "g1_95_usb_c_pin_maps_2026_10_19_verification": "check_usb_c_sink_candidate.py PASS; preflight 36/36 PASS after ledger update; tests/check_design.py PASS; git diff --check PASS. No local KiCad CLI, so no native ERC claim. Manufacturer release gates remain 0/6; motor eFuse EN remains grounded.",
   "g1_95_usb_c_pin_maps_2026_10_19_commit": "b2ccbc9d8fc5bd2a5b99f807c0e84898f6a6375b",
-  "g1_95_usb_c_pin_maps_2026_10_19_ci": "PR #2 run 39195417751 quick-revision-integrity SUCCESS; scoped integrity and ledger only, not KiCad ERC/DRC or hardware validation."
+  "g1_95_usb_c_pin_maps_2026_10_19_ci": "PR #2 run 39195417751 quick-revision-integrity SUCCESS; scoped integrity and ledger only, not KiCad ERC/DRC or hardware validation.",
+  "current_display_selection_2026_10_19": "Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C official SKU 31523 selected for one-off design baseline: 3.4in 800x800 round IPS with ESP32-P4 and ESP32-C6 Wi-Fi 6; touch unused. FG-019 FIXED. FG-020 remains OPEN for actual display/visual/power/fit acceptance; G4-04 and G3-08 unchanged; no purchase, powering, fabrication release or progress count claimed."
 }
