@@ -11,16 +11,19 @@ assert len(axes)==7 and sorted(z["axis"] for z in axes)==list(range(1,8))
 assert len({(z["x"],z["y"]) for z in axes})==7
 assert s["bayonet_keys"]==2 and s["independent_headless_stop_candidate"]=="M2x5"
 assert (s["screw_radius_mm"],s["bar_reverse_unlock_travel_mm"])==(1,2.5)
-assert s["screw_axis_xy_offsets"]==[23.15,-1.1]
-assert s["counter_body_x_offsets"]==[21.5,24.8] and s["counter_body_y_offsets"]==[-3.75,0.2]
+assert s["screw_axis_xy_offsets"]==[22.95,-1.1]
+assert s["counter_body_x_offsets"]==[21.3,24.6] and s["counter_body_y_offsets"]==[-3.75,0.2]
 assert s["counter_body_z_mm"]==[134,138]
 assert s["stud_installed_z"]==[134.35,139.35]
 assert s["bar_z_mm"]==[138.6,139.9]
 assert s["right_sled_entire_z_sweep_notch_x_offsets"]==[20.6,22.5]
 assert s["right_sled_notch_y_offsets"]==[-4.2,0.65]
 assert "translate([x+20.6,y-4.2,122.9])cube([1.9,4.85,15.2]);" in scad
-assert "translate([x+21.5,y-3.75,134])cube([3.3,3.95,4]);" in scad
-assert scad.count("x+23.15,y-1.1") == 3 # guide bore, boss bore, installed stop
+assert "translate([x+BOSS_X_MIN,y+BOSS_Y_MIN,BOSS_Z])cube([BOSS_X_MAX-BOSS_X_MIN,BOSS_Y_MAX-BOSS_Y_MIN,BOSS_HEIGHT]);" in scad
+assert scad.count("x+SCREW_X,y+SCREW_Y") == 4 # guide bore, boss bore, installed stop and relief cutter
+assert "SEAT_X=4.1; SEAT_Y=4.75; SEAT_CX=22.95; SEAT_CY=-1.775; SEAT_Z=137; SEAT_DEPTH=1.6;" in scad
+assert "WOOD_BORE_D=3.2; WOOD_Z=137; WOOD_THICKNESS=8; SHOW_WOOD_CUTTER_OVERLAY=false;" in scad
+assert "if(SHOW_WOOD_CUTTER_OVERLAY)wood_relief_cutters(x,y);" in scad
 assert "translate([x-24,y-2+sy(),138.6])cube([48,4,1.3]);" in scad
 assert a["verified_with_full_d7_locally"]["previous_revision_fixed_core_boss_collisions"]==0
 assert a["verified_with_full_d7_locally"]["previous_revision_fixed_core_tool_collisions"]==0
@@ -75,7 +78,7 @@ trade=h["notch_only_feasibility_with_two_parts_each_pm_0_2_mm"]
 board_min=h["conservative_board_width_mm"]/2+2*tolerance
 boss_max=s["counter_body_x_offsets"][0]-2*tolerance
 assert math.isclose(board_min,20.4,abs_tol=1e-7)
-assert math.isclose(boss_max,21.1,abs_tol=1e-7)
+assert math.isclose(boss_max,20.9,abs_tol=1e-7)
 assert math.isclose(trade["board_edge_min_notch_x_offset_mm"],board_min,abs_tol=1e-7)
 assert math.isclose(trade["fixed_boss_edge_max_notch_x_offset_mm"],boss_max,abs_tol=1e-7)
 assert trade["feasible_interval"] and board_min<boss_max
@@ -87,6 +90,7 @@ assert math.isclose(notch_end_worst_gap,trade["notch_end_worst_clearance_to_wall
 nominal_wall=min(s["screw_axis_xy_offsets"][0]-1.025-s["counter_body_x_offsets"][0],
                 s["counter_body_x_offsets"][1]-(s["screw_axis_xy_offsets"][0]+1.025))
 assert math.isclose(nominal_wall-tolerance,trade["selected_boss_worst_case_wall_thickness_mm"],abs_tol=1e-7)
+assert math.isclose(trade["selected_boss_worst_case_wall_thickness_mm"],0.425,abs_tol=1e-7)
 assert s["counter_body_x_offsets"][1]<=25
 small_board_min=h["alternate_catalog_board_width_mm"]/2+2*tolerance
 assert math.isclose(small_board_min,h["alternate_board_tolerance_window_mm"][0],abs_tol=1e-7)
@@ -112,7 +116,9 @@ assert math.isclose(yz["boss_to_notch_worst_clearance_each_side_mm"],.05,abs_tol
 assert math.isclose(yz["sled_to_bar_worst_clearance_z_mm"],.1,abs_tol=1e-7)
 assert s["bar_z_mm"][1]==s["stud_installed_z"][1]+.55
 full_d7=json.loads((p/"evidence/full_d7_shifted_boss_intersections.json").read_text())
-assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_recomputed_against_full_d7"] is True
+assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_recomputed_against_full_d7"] is False
+assert a["verified_with_full_d7_locally"]["proposed_local_backwood_relief_screen"]["disposition"]=="INTEGRATED_CAD_CANDIDATE_SCREEN_PENDING_NOT_FOR_MANUFACTURE"
+assert a["integrated_wood_relief_candidate"]["status"]=="CAD_GEOMETRY_INTEGRATED_SOURCE_AUDIT_AND_PHYSICAL_VALIDATION_PENDING"
 assert a["verified_with_full_d7_locally"]["current_outboard_boss_revision_audit"]=="evidence/full_d7_shifted_boss_intersections.json"
 assert full_d7["source_sha256"]==a["original_d7_sha256"] and full_d7["source_solid_count"]==1774
 assert full_d7["disposition"].startswith("FAILS_SOURCE_CLEARANCE")
@@ -140,6 +146,6 @@ assert task_counts==collections.Counter({
 assert all(r[x] is False for x in ("purchase_allowed","manufacture_allowed","power_allowed","flash_allowed","merge_allowed"))
 assert r["efuse_en"]=="LOW"
 print("PASS nominal: 7 independent headless stop positions, 714 keyed locking states, 7 no-notch clashes")
-print("PASS conditional XYZ parametric screen: X 0.2mm, Y 0.05mm, Z 0.1mm worst-case clearance at assumed ±0.2mm/part")
-print("PASS full-D7 audit evidence: 7/7 boss/stud BACK_WOOD clashes and axis-5 fan/gasket clashes retained as blockers")
+print("PASS conditional XYZ parametric screen: X 0.2mm, Y 0.05mm, Z 0.1mm worst-case clearance at assumed ±0.2mm/part; boss wall 0.425mm assumed worst case")
+print("PASS candidate full-D7 source screen: 7/7 wood relief loci; axis-5 fan/gasket clash remains a blocker")
 print("BLOCKED: tool corridor, physical process capability, PCB/fastener, vibration and eFuse power remain unverified")

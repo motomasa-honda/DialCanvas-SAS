@@ -150,7 +150,16 @@ def screen_reliefs(source: dict) -> dict:
         y_offset=KEEPER_BOSS_Y, z_range=(134.0, 138.0))
     counts = {axis: [hit["solid_id"] for hit in hits] for axis, hits in body_hits.items()}
     return {
-        "audit": "candidate_seven_keeper_backwood_seats_and_rear_tool_bores",
+        "audit": "integrated_keeper_backwood_seats_and_rear_tool_bores",
+        "keeper_cad": "M1_7AXIS_ANTISLIDE_STOP_REVIEW.scad",
+        "keeper_geometry_matches_candidate": {
+            "boss_xy_offsets_mm": list(KEEPER_BOSS_X) == [21.3, 24.6],
+            "stud_center_mm": list(STUD_CENTER) == [22.95, -1.1],
+            "seat_xy_center_mm": list(SEAT_CENTER) == [22.95, -1.775],
+            "seat_dimensions_mm": list(SEAT_SIZE) == [4.1, 4.75],
+            "seat_z_mm": list(SEAT_Z) == [137.0, 138.6],
+            "rear_bore_diameter_mm": BORE_SIZE == 3.2,
+        },
         "source_sha256": SOURCE_SHA256,
         "source_solid_count": len(source["solids"]),
         "status": "GEOMETRY_SCREEN_ONLY_NOT_FOR_MANUFACTURE",
