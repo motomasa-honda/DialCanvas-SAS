@@ -135,3 +135,11 @@ STのFigure 9は一般的な実装例としてSTL9P3LLH6と保護部品を描い
 STL9P3LLH6の資料上の -30V、最大15mΩ、-9Aは素子表の仕様で、基板の連続電流能力や熱条件を意味しない。P-MOSとSTUSB候補は未選定扱い、メーカー端子マップのみのレビュー証拠である。全システム負荷、USB-C source広告の扱い、定格アダプター、保護回路、受入試験を確定するまでは、USB-C入力回路、PCB製造、購買、モーター電源を承認しない。
 
 一次資料: [STUSB4500L DS13102 Rev.6](https://www.st.com/resource/en/datasheet/stusb4500l.pdf) Figure 2/Table 1/Figure 9、[STUSB4500L製品ページ](https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html)、[STL9P3LLH6 DS10145 Rev.3](https://www.st.com/resource/en/datasheet/stl9p3llh6.pdf)。検査は `python3 execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py`。端子マップ検査はPASS、ネイティブERC・回路全体レビュー・製品受入は未実行。
+
+## USB-Cレセプタクルのメーカー型式候補（2026-10-19、未選定）
+
+GCT USB4105シリーズを、STUSB4500L 5V-only sink候補と組み合わせる**暫定レセプタクル候補**として追加した。GCT公式製品ページはシリーズをActive、USB 2.0 Type-C・16接点、水平/側面挿入/PCB上面実装、3.31mm profile、20,000回 mating cycle と記載する。候補注文型式 `USB4105-GF-A-120` は公式ページに明示された型式文字列であり、同ページの接点定格はVBUS合計5.00A、GND合計6.25A、B5/VCONN 1.25A、他接点0.25A/本。
+
+これはレセプタクル自体の定格で、STUSB4500Lの電流広告検出や装置全体の電流容量を保証しない。候補型式は**製品採用・フットプリント作成・購入承認ではない**。公式図面からの実パッド番号/ピン配置の独立読取り、120サイズshell stakeと採用PCB厚の適合、基板メーカー工程、VBUS/CC保護、5V source SKU/負荷予算を確認するまで、KiCadの物理ピン割当と回路接続は行わない。公式drawing PDFは参照先を記録したが、この検証環境では本文を取得できなかったため、ピン・フットプリント照合はBLOCKEDのままとした。
+
+一次資料: [GCT USB4105公式製品ページ](https://gct.co/connector/usb4105)、[GCT USB4105 Product Specification Rev.A3](https://gct.co/files/specs/usb4105-spec.pdf)。検査は `python3 execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py`。

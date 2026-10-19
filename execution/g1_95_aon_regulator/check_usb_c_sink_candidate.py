@@ -23,6 +23,24 @@ assert c["usb_pd_higher_voltage_request"] is False
 assert candidate["source_documents"]["datasheet"].endswith("stusb4500l.pdf")
 assert candidate["source_documents"]["product_page"].startswith("https://www.st.com/")
 assert candidate["source_documents"]["mosfet_datasheet"].endswith("stl9p3llh6.pdf")
+receptacle = candidate["receptacle_candidate"]
+assert receptacle["manufacturer"] == "Global Connector Technology (GCT)"
+assert receptacle["series"] == "USB4105"
+assert receptacle["candidate_order_code"] == "USB4105-GF-A-120"
+assert receptacle["status"] == "PROVISIONAL_MECHANICAL_CANDIDATE_NOT_RELEASED"
+assert receptacle["manufacturer_page_status"] == "Active"
+assert receptacle["interface"] == "USB Type-C receptacle, USB 2.0, 16 contacts"
+assert receptacle["mounting"] == "Horizontal, side-entry, top-mount SMT; shell stakes through-hole"
+assert receptacle["profile_mm"] == 3.31
+assert receptacle["mating_cycles"] == 20000
+assert receptacle["contact_current_ratings"] == {
+    "vbus_collective_a": 5.0, "gnd_collective_a": 6.25,
+    "b5_vconn_a": 1.25, "other_contact_per_pin_a": 0.25,
+}
+assert "USB4105-GF-A-120" in receptacle["order_code_options_as_listed_by_manufacturer"]
+assert receptacle["source"] == candidate["source_documents"]["receptacle_manufacturer_page"]
+assert "not a production selection" in receptacle["selection_boundary"].lower()
+assert "BLOCKED" in candidate["unresolved_design_inputs"]["type_c_receptacle_pin_and_footprint_drawing_review"]
 pin_map = candidate["manufacturer_pin_map"]
 assert pin_map["source"].startswith("ST DS13102 Rev 6, Figure 2/Table 1")
 assert pin_map["footprint_selection"] == "NOT_SELECTED"

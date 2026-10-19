@@ -28,16 +28,44 @@
     "usb_pd_higher_voltage_request": false,
     "reported_distributor_availability": "No distributor stock reported on ST product page as checked 2026-10-19; verify current sourcing before procurement"
   },
+  "receptacle_candidate": {
+    "manufacturer": "Global Connector Technology (GCT)",
+    "series": "USB4105",
+    "candidate_order_code": "USB4105-GF-A-120",
+    "status": "PROVISIONAL_MECHANICAL_CANDIDATE_NOT_RELEASED",
+    "manufacturer_page_status": "Active",
+    "interface": "USB Type-C receptacle, USB 2.0, 16 contacts",
+    "mounting": "Horizontal, side-entry, top-mount SMT; shell stakes through-hole",
+    "profile_mm": 3.31,
+    "mating_cycles": 20000,
+    "contact_current_ratings": {
+      "vbus_collective_a": 5.0,
+      "gnd_collective_a": 6.25,
+      "b5_vconn_a": 1.25,
+      "other_contact_per_pin_a": 0.25
+    },
+    "order_code_options_as_listed_by_manufacturer": [
+      "USB4105-GF-A-120",
+      "USB4105-15-A-120",
+      "USB4105-GF-A-060",
+      "USB4105-15-A-060"
+    ],
+    "source": "https://gct.co/connector/usb4105",
+    "selection_boundary": "Product-page family data and listed option strings only; exact drawing, pad/pin table, shell-stake fit to PCB thickness, board footprint, assembly capability, source current and input protection remain unverified. Not a production selection."
+  },
   "source_documents": {
     "datasheet": "https://www.st.com/resource/en/datasheet/stusb4500l.pdf",
     "product_page": "https://www.st.com/en/interfaces-and-transceivers/stusb4500l.html",
     "datasheet_revision": "DS13102 Rev 6, February 2022",
     "checked_date": "2026-10-19",
     "mosfet_datasheet": "https://www.st.com/resource/en/datasheet/stl9p3llh6.pdf",
+    "receptacle_manufacturer_page": "https://gct.co/connector/usb4105",
+    "receptacle_product_spec": "https://gct.co/files/specs/usb4105-spec.pdf",
     "stusb_typical_application": "Figure 9, implementation example, ST DS13102 Rev 6, page 15/31"
   },
   "unresolved_design_inputs": {
     "type_c_receptacle_mpn": null,
+    "type_c_receptacle_pin_and_footprint_drawing_review": "BLOCKED: primary drawing could not be re-read into this repository; do not create a physical pin/footprint map from secondary CAD data",
     "external_pmos_mpn_and_safe_operating_area": null,
     "vbus_tvs_and_connector_esd_selection": null,
     "adapter_sku_and_guaranteed_rating": null,
