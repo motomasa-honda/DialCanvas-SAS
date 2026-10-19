@@ -30,6 +30,7 @@ checks = [
     "execution/g1_85_efuse_analog/check_contract.py",
     "execution/g4_03_passive_selection_2026-10-19/check_contract.py",
     "execution/g4_04_seeed_105990072/check_axis_envelope.py",
+    "execution/g4_04_seeed_105990072/check_mount_candidate.py",
     "execution/g1_95_aon_regulator/check_efuse_accuracy_audit.py",
     "execution/g1_95_aon_regulator/check_motor_current_budget.py",
     "execution/g1_95_aon_regulator/check_usb_c_sink_candidate.py",

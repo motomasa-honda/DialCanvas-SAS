@@ -1,0 +1,41 @@
+{
+  "status": "MOTOR_DATUM_PLATE_CANDIDATE_ONLY",
+  "source": "cad_evidence.json; Seeed motor drawing and EAGLE board outline",
+  "plate_xy_mm": [
+    48.0,
+    39.0
+  ],
+  "reservation_xy_mm": [
+    50.0,
+    41.0
+  ],
+  "reservation_margin_each_side_mm": [
+    1.0,
+    1.0
+  ],
+  "motor_hole_spacing_drawing_mm": [
+    34.8,
+    35.2
+  ],
+  "slot_center_spacing_adjustment_mm": [
+    -0.4,
+    0.4
+  ],
+  "candidate_slot_width_mm": 4.8,
+  "motor_hole_diameter_max_from_drawing_mm": 4.3500000000000005,
+  "boss_opening_candidate_mm": 10.0,
+  "motor_boss_diameter_max_from_drawing_mm": 9.2,
+  "body_diameter_max_from_drawing_mm": 28.1,
+  "edge_margin_after_slot_envelope_mm": 3.6999999999999997,
+  "board_outline_xy_mm": [
+    35.0,
+    19.3
+  ],
+  "board_plan_fits_plate": true,
+  "board_motor_xy_overlap": true,
+  "board_retention": "NOT_DESIGNED; source board has no mounting holes",
+  "stacking_and_clearance": "HOLD: motor depth, shaft projection, board component height, cable and fastening Z stack are not integrated",
+  "fastener_and_material": "HOLD: slot width is a geometric candidate; fastener, washer, plate material, thickness, process and strength are not selected or qualified",
+  "d7_clearance_55mm": "NOT_RECOMPUTED; this local plate screen is not full-assembly geometry",
+  "manufacturing_release": false
+}

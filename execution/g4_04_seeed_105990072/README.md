@@ -12,6 +12,12 @@ The separately published motor drawing identifies model `CX28BYJ48-08`: body Ø2
 
 The driver PCB (35.0 × 19.3 mm) separately fits within 40 × 31 mm, with 2.5 mm and 5.85 mm margins per side. These are overlapping XY projections of two different parts: the motor and driver board need a real Z-stack/bracket layout. The 0.225 mm margin is consumed by ordinary mounting hardware and cannot serve as a fastener or tool allowance. This result sets an orientation constraint and identifies a cassette packaging conflict; it does not establish motor retention, a manufacturable bracket, tolerance capability, or the required 55 mm exchange path. The next mechanical model must fit the motor fixing hardware and independently retained driver board inside the unchanged 50 × 41 mm reserve, then rerun the D7 sweep.
 
+## Motor fixing-plate candidate
+
+`MOTOR_MOUNT_PLATE_CANDIDATE.scad` is a first parametric datum-plate study sized 48 × 39 mm within the existing 50 × 41 mm per-axis reservation. It places the 35 mm motor mounting span along the 50 mm axis, uses 4.8 mm candidate slots with ±0.4 mm local center travel, and a 10 mm center opening against the drawing's maximum 9.2 mm shaft boss. `check_mount_candidate.py` validates those arithmetic bounds against the archived source dimensions and emits `mount_candidate_screen.json`.
+
+This makes a motor face-plate geometrically plausible within the reservation, but does not fit the separate 35 × 19.3 mm driver PCB: the two remain overlapping XY projections. PCB edge retention, Z-stack, screw-head/washer/tool envelopes, plate material/thickness/strength, motor-to-gear coupler, D7 55 mm sweep, and process tolerances remain unqualified. The SCAD file is a review candidate only; no fastener or machining dimensions are released.
+
 Run `python3 execution/g4_04_seeed_105990072/check_axis_envelope.py` to regenerate [`axis_envelope_screen.json`](axis_envelope_screen.json). It is a static drawing-based fit screen only.
 
 The exact EAGLE footprints and board/schematic connectivity resolve the headers as follows. “IN1” through “IN4” refer to the ULN2003 input pins 1B through 4B respectively.
