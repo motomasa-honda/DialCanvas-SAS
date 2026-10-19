@@ -39,9 +39,16 @@ class PowerBudget(unittest.TestCase):
         before = copy.deepcopy(d)
         r = estimate(d)
         self.assertEqual(d, before)
-        self.assertAlmostEqual(r["partial_catalog_subtotal_a"], 1.145)
-        self.assertAlmostEqual(r["source_comparison"][0]["remaining_for_all_unknowns_a"], 1.255)
-        self.assertAlmostEqual(r["source_comparison"][1]["remaining_for_all_unknowns_a"], 2.855)
+        self.assertAlmostEqual(r["motor_coil_ohmic_estimate_a"], 7 * 5 / 21)
+        self.assertAlmostEqual(r["partial_catalog_subtotal_a"], 7 * 5 / 21 + 20 / 60 * 4 / 5 + .045)
+        self.assertAlmostEqual(r["motor_all_axes_upper_bound_by_phases_a"]["1"],
+                               7 * 5.25 / (21 * (1 - .07)))
+        self.assertAlmostEqual(r["motor_all_axes_upper_bound_by_phases_a"]["2"],
+                               14 * 5.25 / (21 * (1 - .07)))
+        self.assertAlmostEqual(r["source_comparison"][0]["remaining_for_all_unknowns_a"],
+                               3 * .8 - r["partial_catalog_subtotal_a"])
+        self.assertAlmostEqual(r["source_comparison"][1]["remaining_for_all_unknowns_a"],
+                               5 * .8 - r["partial_catalog_subtotal_a"])
         self.assertIn("waveshare_total_5v_peak_a", r["missing"])
         self.assertFalse(r["hardware_release"])
 

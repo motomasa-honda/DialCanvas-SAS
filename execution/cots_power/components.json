@@ -7,8 +7,8 @@
     "input": "DC_5V_FIRST_COMPARISON_USB_C_RETAINED",
     "adapter": "MEAN WELL GST40A05-P1J",
     "aon_converter": "Pololu D24V5F3 #2842",
-    "motor": "Adafruit #858, current 1/16.128 variant, seven units",
-    "motor_driver": "Seven separate ULN2003 boards; exact revision unresolved",
+    "motor": "Seeed Studio Gear Stepper Motor Driver Pack, MPN 105990072; seven kits, one independently serviceable motor/driver set per axis",
+    "motor_driver": "Included Seeed 105990072 driver board, one per axis; board outline/connector pin coordinates still need source-CAD or physical verification",
     "lighting": "DFRobot FIT0836, twenty segments in total",
     "production_selected": false,
     "display": "Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C, SKU 31523; selected for one-off design baseline; touch unused"
@@ -16,7 +16,7 @@
   "sources": {
     "adapter": {"url": "https://www.meanwell.com/Upload/PDF/GST40A/GST40A-SPEC.PDF", "document_revision": "2026-04-03", "checked": "2026-10-19", "page": 2},
     "converter": {"url": "https://www.pololu.com/product/2842", "checked": "2026-10-19", "section": "Features; Connections; Typical efficiency and output current"},
-    "motor": {"url": "https://www.adafruit.com/product/858", "checked": "2026-10-19", "section": "Technical Details; seller catalog, OEM not identified"},
+    "motor": {"url": "https://wiki.seeedstudio.com/Gear_Stepper_Motor_Driver_Pack/", "product_url": "https://www.marutsu.co.jp/pc/i/1558561/", "distributor_sku": "Seeed MPN 105990072 / Marutsu M0155-8561", "checked": "2026-10-19", "verified_specs": {"kit_contents": "one motor + one driver board", "motor_voltage_v": 5, "phases": 4, "gear_ratio": "1:64", "motor_body_diameter_mm": 28, "winding_resistance_ohm": 21, "winding_resistance_tolerance_fraction": 0.07, "board_outline_mm": null, "output_torque": null}},
     "lighting": {"url": "https://www.dfrobot.com/product-2398.html", "checked": "2026-10-19", "section": "FIT0836 specification and individual cut capability"},
     "fan": {"path": "execution/fan_relocation_2026-10-19/interface_contract.json", "section": "manufacturer_rated_data; not startup or stall maximum"},
     "display": {"url": "https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC", "product_url": "https://www.waveshare.com/product/esp32-p4-wifi6-touch-lcd-3.4c.htm", "sku": "31523", "verified_specs": {"diagonal_in": 3.4, "resolution_px": [800, 800], "panel": "IPS round touch; touch unused", "controller": "ESP32-P4", "wireless_coprocessor": "ESP32-C6 Wi-Fi 6 / Bluetooth 5 LE"}, "checked": "2026-10-19"}
@@ -44,7 +44,8 @@
     "motor_axes": 7,
     "phases_per_axis": 1,
     "motor_nominal_v": 5.0,
-    "motor_approx_winding_ohm": 42.0,
+    "motor_winding_resistance_ohm": 21.0,
+    "motor_winding_resistance_tolerance_fraction": 0.07,
     "led_count": 20,
     "leds_per_metre": 60,
     "led_catalog_max_w_per_metre_at_5v": 4.0,

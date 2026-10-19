@@ -27,7 +27,20 @@ def estimate(data):
             raise ValueError(f"{k}: positive integer required")
     if s["motor_axes"] != 7 or s["phases_per_axis"] != 1:
         raise ValueError("Candidate is seven-axis one-hot; other modes need a separate review")
-    motor = s["motor_axes"] * s["motor_nominal_v"] / positive(s["motor_approx_winding_ohm"], "winding")
+    winding = positive(s["motor_winding_resistance_ohm"], "winding")
+    winding_tol = positive(s["motor_winding_resistance_tolerance_fraction"], "winding tolerance", allow_zero=True)
+    if winding_tol >= 1:
+        raise ValueError("winding tolerance must be below one")
+    motor_phase_nominal_a = s["motor_nominal_v"] / winding
+    motor = s["motor_axes"] * s["phases_per_axis"] * motor_phase_nominal_a
+    motor_voltage_upper_v = (positive(s["motor_nominal_v"], "motor nominal voltage")
+                             * (1 + positive(data["adapter"]["voltage_tolerance_fraction"], "source voltage tolerance", allow_zero=True)))
+    motor_phase_upper_a = (motor_voltage_upper_v
+                           / (winding * (1 - winding_tol)))
+    motor_upper_by_phase_count = {
+        str(phases): s["motor_axes"] * phases * motor_phase_upper_a
+        for phases in (1, 2)
+    }
     led_metres = s["led_count"] / s["leds_per_metre"]
     led_w = led_metres * positive(s["led_catalog_max_w_per_metre_at_5v"], "led power")
     led_a = led_w / 5.0
@@ -39,6 +52,10 @@ def estimate(data):
     return {
         "basis": "5V_CATALOG_SCREEN_NOT_MEASURED_NOT_WORST_CASE",
         "motor_coil_ohmic_estimate_a": motor,
+        "motor_phase_current_nominal_a": motor_phase_nominal_a,
+        "motor_voltage_upper_v_from_adapter_tolerance": motor_voltage_upper_v,
+        "motor_phase_current_upper_bound_a": motor_phase_upper_a,
+        "motor_all_axes_upper_bound_by_phases_a": motor_upper_by_phase_count,
         "led_length_total_m": led_metres,
         "led_power_length_estimate_w": led_w,
         "led_current_length_estimate_a": led_a,

@@ -20,9 +20,15 @@ def verify_data():
     assert data["selection"]["production_selected"] is False
     assert data["selection"]["aon_converter"] == "Pololu D24V5F3 #2842"
     assert data["selection"]["display"].startswith("Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C, SKU 31523")
+    assert data["selection"]["motor"].startswith("Seeed Studio Gear Stepper Motor Driver Pack, MPN 105990072")
+    assert data["selection"]["motor_driver"].startswith("Included Seeed 105990072 driver board")
     display = data["sources"]["display"]
     assert display["sku"] == "31523" and display["verified_specs"]["resolution_px"] == [800, 800]
     assert display["verified_specs"]["controller"] == "ESP32-P4"
+    motor = data["sources"]["motor"]
+    assert motor["distributor_sku"].endswith("M0155-8561")
+    assert motor["verified_specs"]["kit_contents"] == "one motor + one driver board"
+    assert motor["verified_specs"]["board_outline_mm"] is None
     assert data["adapter"]["rated_v"] == 5 and data["adapter"]["rated_a"] == 5
     for source in data["sources"].values():
         assert "url" in source or (ROOT / source["path"]).is_file()
