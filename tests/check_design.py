@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REQ_FILE = ROOT / "docs/01-requirements/requirements.yaml"
 OQ_FILE = ROOT / "docs/01-requirements/open-questions.md"
 RTM_FILE = ROOT / "docs/09-verification/traceability.md"
+WORKLIST_FILE = ROOT / "docs/10-desk-redesign/worklist.csv"
 VALID_STATES = {"FIXED", "PROVISIONAL", "OPEN", "REJECTED", "SUPERSEDED"}
 ACTIVE_STATES = {"FIXED", "PROVISIONAL", "OPEN"}
 errors: list[str] = []
@@ -117,7 +118,7 @@ def check_adr() -> None:
 
 
 def check_requirement_migration() -> None:
-    migration_file = ROOT / "docs/10-desk-redesign/requirements-migration-v0.8-to-v0.20.csv"
+    migration_file = ROOT / "docs/10-desk-redesign/requirements-migration-v0.8-to-v0.21.csv"
     data = json.loads(REQ_FILE.read_text(encoding="utf-8"))
     current = {row["id"]: row for row in data["requirements"]}
     try:
@@ -154,6 +155,52 @@ def check_requirement_migration() -> None:
 
     if sorted(mapped_current_ids) != sorted(current):
         fail("要求移行表と現行台帳のID対応が一対一でない")
+
+def check_design_worklist() -> None:
+    required_columns = [
+        "ID", "Order", "Work", "DesignStatus", "ValidationStatus",
+        "DesignAcceptance", "PhysicalAcceptance", "Evidence", "Next",
+    ]
+    design_states = {"CLOSED", "BASELINED", "OPEN", "HOLD"}
+    validation_states = {"PASS", "OPEN", "BLOCKED", "N/A"}
+    try:
+        with WORKLIST_FILE.open(encoding="utf-8-sig", newline="") as stream:
+            reader = csv.DictReader(stream)
+            if reader.fieldnames != required_columns:
+                fail("新設計作業一覧の列が不正")
+                return
+            rows = list(reader)
+    except (OSError, csv.Error) as exc:
+        fail(f"新設計作業一覧を読めない: {exc}")
+        return
+
+    ids = [row.get("ID", "") for row in rows]
+    if duplicates(ids):
+        fail(f"新設計作業ID重複: {duplicates(ids)}")
+    expected_ids = [f"DR-{number:02d}" for number in range(9)]
+    if sorted(ids) != expected_ids:
+        fail("新設計作業ID DR-00〜DR-08 が不足または重複")
+
+    by_id = {row["ID"]: row for row in rows}
+    for row in rows:
+        if row.get("DesignStatus") not in design_states:
+            fail(f"{row.get('ID')}: 不正なDesignStatus")
+        if row.get("ValidationStatus") not in validation_states:
+            fail(f"{row.get('ID')}: 不正なValidationStatus")
+        for field in ("DesignAcceptance", "PhysicalAcceptance"):
+            if not row.get(field, "").strip():
+                fail(f"{row.get('ID')}: {field} が空欄")
+
+    for number in range(2, 7):
+        row = by_id.get(f"DR-{number:02d}", {})
+        if (row.get("DesignStatus"), row.get("ValidationStatus")) != ("BASELINED", "OPEN"):
+            fail(f"DR-{number:02d}: 設計ベースラインと未受入状態を分離する")
+        if "prototype-acceptance-plan-v0.21.md" not in row.get("Evidence", ""):
+            fail(f"DR-{number:02d}: 試作受入計画へのリンクがない")
+    release = by_id.get("DR-07", {})
+    if (release.get("DesignStatus"), release.get("ValidationStatus")) != ("HOLD", "BLOCKED"):
+        fail("DR-07: 物理受入完了前のリリースはHOLD/BLOCKEDが必要")
+
 def check_markdown_links() -> None:
     for path in ROOT.rglob("*.md"):
         if ".git" in path.parts:
@@ -172,12 +219,13 @@ def main() -> int:
     check_requirements()
     check_adr()
     check_requirement_migration()
+    check_design_worklist()
     check_markdown_links()
     if errors:
         for item in errors:
             print(f"ERROR: {item}", file=sys.stderr)
         return 1
-    print("OK: Markdown リンク、要求 ID/状態、ADR、未決定事項、要求移行表、検証対応")
+    print("OK: Markdownリンク、要求/ADR/未決定事項/検証対応、v0.21要求移行、設計/実機状態")
     return 0
 
 

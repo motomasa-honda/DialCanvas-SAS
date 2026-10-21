@@ -1,7 +1,8 @@
 # ADR-0009: 3.4Cの給電・文字盤・ファームウェア基準を固定する
 
 - 日付: 2026-10-21
-- 状態: **設計仕様確定・現物受入前**
+- 状態: **文字盤/ファームウェアは設計基準。USB-C給電source部はADR-0014で置換済み**
+- 置換: Pololu #3411のCC抵抗変更案はADR-0014のTPS25810EVM-745候補で置換。本文は2026-10-21時点の判断履歴。
 - 関連: [ADR-0008](0008-one-off-cots-part-selection.md)、[調達候補BOM](../docs/02-architecture/unselected-parts-procurement-plan-2026-10-21.md)、[電源仕様](../docs/04-electronics/power-and-control.md)、[文字盤仕様](../docs/05-display/dial-file-and-rendering-design.md)
 
 ## 背景
