@@ -1,8 +1,7 @@
 # Forest Guardian / DialCanvas Desk Edition — 新設計基準
 
-状態: **設計ベースライン（レビュー用）**  
-基準日: 2026-10-21  
-作業ブランチ: `feature/desk-single-motor-redesign-20261021`
+状態: **現行設計ベースライン**  
+基準日: 2026-10-21
 
 このフォルダーを、新しい置き時計設計の現在の記録と進捗管理に使う。旧7軸設計の記録は履歴として保持するが、この設計の作業項目や進捗率には流用しない。旧資料との対応は [現状記録](status-2026-10-21.md) を参照する。
 
@@ -40,4 +39,4 @@
 
 [状態記録](status-2026-10-21.md) は、会話上の報告とGitHubで検証できた内容を分ける。[作業一覧](worklist.csv) の受入条件を満たすまで、項目を完了扱いにしない。
 
-旧 `docs/01-requirements/requirements.yaml`、`execution/tasks.csv`、`execution/progress.json` は旧設計ベースの履歴である。新設計の進捗や7軸要件の根拠として使用しない。既存記録はこのレビュー用ブランチで上書きせず、次の要求台帳移行で明示的に整理する。
+旧 `docs/01-requirements/requirements.yaml`、`execution/tasks.csv`、`execution/progress.json` は旧設計ベースの履歴である。新設計の進捗や7軸要件の根拠として使用しない。既存記録は履歴として保持し、新設計の要求台帳と旧資料の対応は作業一覧 DR-08 で整理する。
