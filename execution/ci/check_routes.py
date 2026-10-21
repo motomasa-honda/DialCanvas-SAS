@@ -11,6 +11,7 @@ DIR=BASE/".github"/"workflows"
 BRANCH="review/forest-guardian-phase66-idf"
 MARKER="execution/ci/full-regression.marker"
 SELF="ci-scope-gate.yml"
+DESK="desk-redesign.yml"
 
 def header(path):
     data=path.read_text(encoding="utf-8")
@@ -22,7 +23,10 @@ def main():
     workflows=sorted(DIR.glob("*.yml"))
     assert (BASE/MARKER).is_file()
     assert len(workflows)>=49, f"original 48 workflows plus CI gate expected, got {len(workflows)}"
-    scoped=[p for p in workflows if p.name!=SELF]
+    # The approved desk redesign has its own main-targeted CI. Keep it out of
+    # the legacy review-branch router below, which serves the historical
+    # phase66 workflows only.
+    scoped=[p for p in workflows if p.name not in {SELF,DESK}]
     assert len(scoped)>=48
     for p in scoped:
         h=header(p)
@@ -43,6 +47,15 @@ def main():
     gate=header(DIR/SELF)
     assert re.search(r"(?m)^  pull_request:\s*$",gate)
     assert re.search(r"(?m)^  push:\s*$",gate)
+    desk=header(DIR/DESK)
+    assert re.search(r"(?m)^  pull_request:\s*$",desk)
+    assert re.search(r"(?m)^    branches: \[main\]\s*$",desk)
+    assert re.search(r"(?m)^  push:\s*$",desk)
+    assert re.search(r"(?m)^    branches: \[main\]\s*$",desk)
+    assert re.search(r"(?m)^  workflow_dispatch:\s*$",desk)
+    assert '      - "firmware/cots_clock_core/**"\n' in desk
+    assert '      - "firmware/cots_clock_app/**"\n' in desk
+    assert '      - "docs/**"\n' in desk
     assert (BASE/"execution"/"preflight.py").is_file()
     assert (BASE/"tests"/"check_design.py").is_file()
     print(f"PASS CI routing: {len(scoped)} scoped feature-PR+native-push checks; marker triggers ALL in a feature PR; lightweight main/feature PR gate")
