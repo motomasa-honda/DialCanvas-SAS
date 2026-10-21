@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "name": "Forest",
+  "center": { "x": 0.5, "y": 0.5 },
+  "hands": {
+    "hour": { "color": "#e9c27f", "length": 0.27, "width": 8 },
+    "minute": { "color": "#f4e7c9", "length": 0.37, "width": 5 },
+    "second": { "color": "#ef7547", "length": 0.42, "width": 2 }
+  }
+}

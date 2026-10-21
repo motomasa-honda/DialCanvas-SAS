@@ -1,27 +1,34 @@
 # DialCanvas-SAS / Forest Guardian
 
-このリポジトリは、旧 DialCanvas 腕時計構想の資料を保持しながら、置き時計 **Forest Guardian / DialCanvas Desk Edition** の設計を管理します。リポジトリ名と既存資料の配置は維持します。
+このリポジトリは、Forest Guardian / DialCanvas Desk Edition の設計とソフトウェアを管理します。旧DialCanvas腕時計資料と旧7軸置き時計設計は、由来を残すため履歴として保持しています。
 
-## 現在の設計状態
+## 現行設計
 
-- **現行設計の正本**: [単一モーター置き時計案](docs/10-desk-redesign/README.md)
-- **現状と証拠区分**: [2026-10-21 状態記録](docs/10-desk-redesign/status-2026-10-21.md)
-- **残作業と完了条件**: [新設計の作業一覧](docs/10-desk-redesign/worklist.csv)
-- 新設計の方向は、静音モーター1基で装飾歯車群を連動させる構成。7軸固定・独立駆動は現行要求ではない。
-- 新設計の文字盤・表示・制御ソースは、会話上の実装報告に含まれるが、このリポジトリには未収録。現時点で新設計の実機受入や製造リリースはない。
+- [新設計の基準](docs/10-desk-redesign/README.md)：ウォールナット筐体、円形画面、microSD文字盤、単一モーターで連動する装飾歯車。
+- [要求台帳](docs/01-requirements/requirements.yaml)：状態付き要求、未決定事項、検証項目。
+- [現状と証拠](docs/10-desk-redesign/status-2026-10-21.md)：確認済みソース、ホスト試験、未実施の実機検証。
+- [残作業一覧](docs/10-desk-redesign/worklist.csv)：各項目の状態と完了条件。
+- [要求移行表](docs/10-desk-redesign/requirements-migration-v0.8-to-v0.20.csv)：旧7軸要求から現行要求への対応。
 
-## 旧設計資料との関係
+現行方針は7軸固定ではなく、歯車数も固定しません。現時点の28歯車図は配置候補です。TMC2209、Waveshare 3.4C、モーター、電源、材料も、実物と安全条件を受け入れるまでは候補です。
 
-`docs/01-requirements/requirements.yaml` v0.8、`execution/tasks.csv`、`execution/progress.json` は旧7軸設計の要求・作業台帳である。履歴保全のため残し、新設計の完了数や7軸要件の根拠には使わない。新設計の要求台帳への移行は [作業一覧 DR-08](docs/10-desk-redesign/worklist.csv) で管理する。
+## ソフトウェア
 
-旧構成の `docs/requirements/DC-000/` と `docs/{architecture,hardware,firmware,mobile,assets,testing}/` も、履歴と参照先を保つため残す。既存のPhase 0資料は内容に応じて履歴または旧設計資料として扱い、実装済み機能や新設計の証拠とはみなさない。
+- `firmware/cots_clock_core/`：針角度、エンコーダー、文字盤選択、ステッパー周期、DS3231 UTC変換のホスト検証可能なCコア。
+- `firmware/cots_clock_app/`：ESP-IDF/LVGLアプリ。文字盤表示、microSD走査、操作、時刻同期、RTC処理を含みます。モーターGPIO出力は明示的なビルド設定がない限り無効です。
+- ホストテストとESP-IDFビルドは `.github/workflows/desk-redesign.yml` で実行します。
 
-## 整合性確認
+ホスト試験成功は実基板のGPIO割当、表示性能、RTC保持、電源安全、歯車負荷、騒音、温度を証明しません。製作・購入・通電・書込みの受入状態は作業一覧を参照してください。
 
-旧Phase 0要求台帳の文書整合性はPython 3標準ライブラリのみで確認できる。
+## 旧設計資料
+
+`execution/` と旧設計向け文書・回路・ブランチはその時点の証拠を保つため残しています。現行の進捗率や新設計の合格根拠には使用しません。旧ブランチは更新しません。
+
+## 設計文書の整合性確認
 
 ```sh
 python3 tests/check_design.py
+cmake -S firmware/cots_clock_core -B /tmp/dialcanvas-clock-core-build
+cmake --build /tmp/dialcanvas-clock-core-build
+ctest --test-dir /tmp/dialcanvas-clock-core-build --output-on-failure
 ```
-
-この検査は旧要求台帳のリンク・ID・状態・対応表を確認する。新設計の部品性能、ファームウェア、実機動作、安全性を証明するものではない。

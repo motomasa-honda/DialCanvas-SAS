@@ -1,0 +1,71 @@
+name: DialCanvas desk design
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "AGENTS.md"
+      - "README.md"
+      - "adr/**"
+      - "docs/**"
+      - "firmware/cots_clock_core/**"
+      - "firmware/cots_clock_app/**"
+      - "tests/**"
+      - ".github/workflows/desk-redesign.yml"
+  push:
+    branches: [main]
+    paths:
+      - "AGENTS.md"
+      - "README.md"
+      - "adr/**"
+      - "docs/**"
+      - "firmware/cots_clock_core/**"
+      - "firmware/cots_clock_app/**"
+      - "tests/**"
+      - ".github/workflows/desk-redesign.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  documents-and-host-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check requirements, ADRs, migration table and links
+        run: python3 tests/check_design.py
+      - name: Build and run host C core tests
+        run: |
+          cmake -S firmware/cots_clock_core -B /tmp/dialcanvas-clock-core-build
+          cmake --build /tmp/dialcanvas-clock-core-build --parallel
+          ctest --test-dir /tmp/dialcanvas-clock-core-build --output-on-failure
+
+  esp-idf-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build safe default and explicitly enabled motor GPIO code
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.5.5
+          target: esp32p4
+          path: firmware/cots_clock_app
+          command: |
+            set -euo pipefail
+            idf.py build
+            cp sdkconfig.defaults sdkconfig.ci.defaults
+            echo "CONFIG_DIALCANVAS_MOTOR_OUTPUT=y" >> sdkconfig.ci.defaults
+            rm -f sdkconfig
+            rm -rf build
+            idf.py -D SDKCONFIG_DEFAULTS=sdkconfig.ci.defaults build
+            test -s dependencies.lock
+      - name: Preserve resolved ESP-IDF component lock for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dialcanvas-esp-idf-dependencies-lock
+          path: firmware/cots_clock_app/dependencies.lock
+          if-no-files-found: warn
