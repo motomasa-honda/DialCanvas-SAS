@@ -8,7 +8,7 @@
 - [要求台帳](docs/01-requirements/requirements.yaml)：状態付き要求、未決定事項、検証項目。
 - [現状と証拠](docs/10-desk-redesign/status-2026-10-21.md)：確認済みソース、ホスト試験、未実施の実機検証。
 - [残作業一覧](docs/10-desk-redesign/worklist.csv)：各項目の状態と完了条件。
-- [要求移行表](docs/10-desk-redesign/requirements-migration-v0.8-to-v0.20.csv)：旧7軸要求から現行要求への対応。
+- [要求移行表](docs/10-desk-redesign/requirements-migration-v0.8-to-v0.21.csv)：旧7軸要求から現行v0.21要求への対応。
 
 現行方針は7軸固定ではなく、歯車数も固定しません。現時点の28歯車図は配置候補です。TMC2209、Waveshare 3.4C、モーター、電源、材料も、実物と安全条件を受け入れるまでは候補です。
 

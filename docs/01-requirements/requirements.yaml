@@ -1,7 +1,7 @@
 {
   "schema": "forest-guardian-requirements-v1",
   "format_note": "JSON 構文は YAML 1.2 のサブセット。Python 標準ライブラリのみで検証するため採用。",
-  "version": "v0.20 — 2026-10-21 single-motor baseline and migration reconciliation",
+  "version": "v0.21 — 2026-10-21 integrated design baseline and power/motor interface",
   "requirements": [
     {"id":"FG-001","status":"FIXED","text":"製品名は Forest Guardian / DialCanvas Desk Edition とする。","verification":["V-01"]},
     {"id":"FG-002","status":"FIXED","text":"個人製作の高級置き時計とし、品質を優先して予算は柔軟に調整する。","verification":["V-01"]},
@@ -50,7 +50,7 @@
     {"id":"FG-045","status":"FIXED","text":"画面上の時計針は段階的に跳ねず、連続して滑らかに掃引する。装飾歯車の回転や停止から時計表示を独立させる。","verification":["V-02"]},
     {"id":"FG-046","status":"FIXED","text":"文字盤画像はmicroSDのDialCanvas/faces/<名前>/face.jpgから追加・削除・切替し、本体ロータリーエンコーダーで選ぶ。800×800 sRGB Baseline JPEG (最大8MB) と任意のversion 1 dial.jsonを使い、ファームウェアはSDを読取専用で扱う。実機受入は未完。","verification":["V-02","V-06"]},
     {"id":"FG-047","status":"REJECTED","text":"初号機に音声通知用スピーカーを追加する案。要求がなく、静音目標の評価にも寄与しないため対象外。","verification":[]},
-    {"id":"FG-048","status":"OPEN","text":"USB Type-C PDから9Vを受ける候補とし、9Vモーター枝と既製DC/DCによる5V表示・照明枝へ安全に分配する。全負荷電流・契約・保護・配線を実測して確定する。","open_question":"OQ-12","verification":["V-06"]},
+    {"id":"FG-048","status":"OPEN","text":"USB-C PD 9V/3A、HUSB238、Pololu #2851の5V枝、TPS25810EVM-745の3A Type-C sourceを候補基準とする。入力/モーター/5V/LEDのヒューズ候補、独立モーター電源スイッチ、ENN安全初期値、VM過電圧保護を含む全負荷設計を実機受入する。","open_question":"OQ-12","verification":["V-06"]},
     {"id":"FG-049","status":"FIXED","text":"要求を満たす既製品がある部位は、安価で入手しやすい既製品を優先する。専用製作は木製外装、既製品の取付・接続に必要な簡単な部材、外観固有部品に絞る。","verification":["V-08"]},
     {"id":"FG-050","status":"FIXED","text":"歯車は等間隔のリング状に整列させず、歯数と配置を不規則にする。見た目の重なりは別のZ面で作り、歯面同士は物理干渉させない。","verification":["V-04"]}
   ],
