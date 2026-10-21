@@ -1,28 +1,28 @@
 # DialCanvas-SAS / Forest Guardian
 
-このリポジトリは、旧 DialCanvas 腕時計構想の資料を保持しながら、置き時計 **Forest Guardian / DialCanvas Desk Edition** の設計を管理します。リポジトリ名と既存資料の配置は維持します。Phase 0 は設計基盤の整備段階であり、製品コード・CAD・回路図の完成を意味しません。
+このリポジトリは、旧 DialCanvas 腕時計構想の資料を保持しながら、置き時計 **Forest Guardian / DialCanvas Desk Edition** の設計を管理します。リポジトリ名と既存資料の配置は維持します。
 
-## 現在の状態
+## 現在の設計状態
 
-- 現行要求: [要求台帳v0.8](docs/01-requirements/requirements.yaml)。[Phase 0 v0.7](docs/01-requirements/phase0-v0.7.md)は初期履歴
-- [2026-10-19 既製品優先の全体見直し](docs/02-architecture/module-first-audit-2026-10-19.md)：外観/7軸A案を維持した既製品候補と専用製作範囲
-- 48件の実行状態: [tasks.csv](execution/tasks.csv) / [progress.json](execution/progress.json)。限定証拠完了数と製造リリースを区別
-- 要求の機械可読な原本: [要求台帳](docs/01-requirements/requirements.yaml)
-- [未決定事項](docs/01-requirements/open-questions.md) / [技術リスク](docs/01-requirements/risks.md)
-- [既存資産調査](docs/00-project/existing-assets.md) / [安全な移行計画](docs/00-project/migration-plan.md)
-- [設計判断の順序](docs/02-architecture/priority-plan.md) / [システム境界](docs/02-architecture/system-boundaries.md) / [Phase 1 移行条件](docs/09-verification/phase1-gate.md)
-- [ADR](adr/README.md) / [変更履歴](CHANGELOG.md)
+- **新しい設計基準**: [単一モーター置き時計案](docs/10-desk-redesign/README.md)
+- **現状と証拠区分**: [2026-10-21 状態記録](docs/10-desk-redesign/status-2026-10-21.md)
+- **残作業と完了条件**: [新設計の作業一覧](docs/10-desk-redesign/worklist.csv)
+- 作業ブランチ: `feature/desk-single-motor-redesign-20261021`。旧 `main` を保持し、新設計をレビュー用に分離している。
+- 新設計の方向は、静音モーター1基で装飾歯車群を連動させる構成。7軸固定・独立駆動は現行要求ではない。
+- 文字盤・表示・制御の新しいソースは、会話上の実装報告に含まれるが、このブランチを作る前のGitHub `main` では確認できていない。現時点で新設計の実機受入や製造リリースはない。
 
-## 既存資料との関係
+## 旧設計資料との関係
 
-旧構成の `docs/requirements/DC-000/` と `docs/{architecture,hardware,firmware,mobile,assets,testing}/` は履歴と参照先を保つため、そのまま残します。現在は大半が Draft または配置案内であり、実装済み機能の証拠ではありません。新しい `docs/00-project/` から `docs/09-verification/` には Phase 0 で内容のある資料だけを追加しました。`hardware/`、`firmware/`、`web/`、`dialcanvas/`、`assets/` の空ディレクトリは作りません。実体ができた段階で追加します。
+`docs/01-requirements/requirements.yaml` v0.8、`execution/tasks.csv`、`execution/progress.json` は旧7軸設計の要求・作業台帳である。履歴保全のため残し、新設計の完了数や7軸要件の根拠には使わない。新設計に必要な要求台帳への移行はレビュー後に行う。
+
+旧構成の `docs/requirements/DC-000/` と `docs/{architecture,hardware,firmware,mobile,assets,testing}/` も、履歴と参照先を保つため残す。既存のPhase 0資料は内容に応じて履歴または旧設計資料として扱い、実装済み機能や新設計の証拠とはみなさない。
 
 ## 整合性確認
 
-Python 3 の標準ライブラリのみで実行できます。
+旧Phase 0要求台帳の文書整合性はPython 3標準ライブラリのみで確認できる。
 
 ```sh
 python3 tests/check_design.py
 ```
 
-対象はローカル Markdown リンク、要求 ID・状態、ADR 番号、未決定事項、要求と検証項目の対応です。部品の性能や機構の成立性を実証する検査ではありません。
+この検査は旧要求台帳のリンク・ID・状態・対応表を確認する。新設計の部品性能、ファームウェア、実機動作、安全性を証明するものではない。
