@@ -1,7 +1,7 @@
 ID,Order,Work,Status,Acceptance,Evidence,Next
 "DR-00",0,"新設計の方針と証拠状態を分離して記録","DONE","単一モーター方針、歯車数非固定、旧7軸との区分が基準文書に明記されている","docs/10-desk-redesign/README.md; status-2026-10-21.md","なし"
-"DR-01",1,"新設計ソースとホスト検証を統合","DONE","Cコア、文字盤スキーマ/サンプル、表示アプリが追跡され、4つのホストテストがPASS。GPIO出力や実機動作は別項目で受入","firmware/cots_clock_core; firmware/cots_clock_app; C host tests","ESP-IDF対象ビルドはDR-02で確認"
-"DR-02",2,"ESP-IDF対象ビルドと基板信号の照合","OPEN","IDF 5.5系/BSP 3.0.1でクリーンビルドし、正確な基板改版のGPIO、EN、microSD、表示接続を一次資料と実物で照合",".github/workflows/desk-redesign.yml; 現在は実行待ち","CI結果を確認し、基板改版の回路図/現物を照合"
+"DR-01",1,"新設計ソースとホスト検証を統合","DONE","Cコア、文字盤スキーマ/サンプル、表示アプリが追跡され、4つのホストテストがPASS。GPIO出力や実機動作は別項目で受入","firmware/cots_clock_core; firmware/cots_clock_app; C host tests","ESP-IDF 5.5.5 / ESP32-P4ビルドはDR-02のCIでPASS"
+"DR-02",2,"ESP-IDF対象ビルドと基板信号の照合","OPEN","ESP-IDF 5.5.5 / ESP32-P4のクリーンビルドは既定の安全設定とモーター出力有効設定の両方でPASS済み。さらに正確な基板改版のGPIO、EN、microSD、表示接続を一次資料と実物で照合",".github/workflows/desk-redesign.yml; [CI run #3](https://github.com/motomasa-honda/DialCanvas-SAS/actions/runs/39600948074) PASS","基板改版の回路図/現物を照合し、GPIO/EN/SD/表示接続を記録"
 "DR-03",3,"表示・文字盤・時刻を対象基板で統合確認","OPEN","JPEG表示、microSD追加/選択、再起動後保持、針更新、SNTP断、DS3231保持を実機で記録","firmware/cots_clock_app; 要求FG-020/035/046","対象基板と表示性能の実測"
 "DR-04",4,"単一モーターと歯車列を選定・検証","OPEN","実型番、駆動方式、軸/歯車比、始動余力、方向、停止、連続運転、騒音、温度を測定","docs/03-mechanical CAD; docs/03-mechanical/four-gear-manual-test.md; core STEP timing tests","実部品の適合と安全ゲートを経て段階試験"
 "DR-05",5,"電源と保護を全負荷で確認","OPEN","USB-C入力、PD契約、各枝容量/ヒューズ、配線、最大電流、電圧降下、温度、故障停止を根拠付きで受入","docs/02-architecture/unselected-parts-procurement-plan-2026-10-21.md; docs/04-electronics/power-and-control.md","BOM候補と回路・負荷を実測"
