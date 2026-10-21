@@ -1,0 +1,80 @@
+menu "DialCanvas Clock"
+
+    config DIALCANVAS_ENCODER_A_GPIO
+        int "Rotary encoder A GPIO"
+        range 0 54
+        default 2
+        help
+            Default is GPIO2 on the 3.4C expansion header. Connect the encoder
+            contact to ground; the firmware enables the internal pull-up.
+
+    config DIALCANVAS_ENCODER_B_GPIO
+        int "Rotary encoder B GPIO"
+        range 0 54
+        default 3
+        help
+            Default is GPIO3 on the 3.4C expansion header. Connect the encoder
+            contact to ground; the firmware enables the internal pull-up.
+
+    config DIALCANVAS_ENCODER_SW_GPIO
+        int "Rotary encoder switch GPIO"
+        range 0 54
+        default 21
+        help
+            Default is GPIO21 on the 3.4C expansion header. Connect the encoder
+            switch to ground; the firmware enables the internal pull-up.
+
+    config DIALCANVAS_WIFI_SSID
+        string "Wi-Fi SSID"
+        default ""
+        help
+            2.4 GHz Wi-Fi network name used for SNTP time synchronization.
+
+    config DIALCANVAS_WIFI_PASSWORD
+        string "Wi-Fi password"
+        default ""
+        help
+            Password for the configured Wi-Fi network. Leave empty only for an open
+            network. WPA2 password must contain 8 to 63 characters. It is never
+            printed to logs.
+
+    config DIALCANVAS_WIFI_RETRY_LIMIT
+        int "Wi-Fi connection retries"
+        range 1 20
+        default 5
+        help
+            Attempts before the background task waits 30 seconds and retries.
+
+    config DIALCANVAS_MOTOR_OUTPUT
+        bool "Enable experimental single-motor GPIO output"
+        default n
+        help
+            The motor output remains disabled unless this is explicitly enabled.
+            Verify the exact display-board revision, GPIO wiring, driver ENN
+            default state, motor power cutoff and current limit before enabling.
+
+    config DIALCANVAS_MOTOR_STEP_GPIO
+        int "Experimental motor STEP GPIO"
+        range 0 54
+        default 4
+        depends on DIALCANVAS_MOTOR_OUTPUT
+        help
+            Candidate assignment only. Confirm against the exact board revision.
+
+    config DIALCANVAS_MOTOR_DIR_GPIO
+        int "Experimental motor DIR GPIO"
+        range 0 54
+        default 5
+        depends on DIALCANVAS_MOTOR_OUTPUT
+        help
+            Candidate assignment only. Confirm against the exact board revision.
+
+    config DIALCANVAS_MOTOR_ENN_GPIO
+        int "Experimental TMC2209 ENN GPIO"
+        range 0 54
+        default 32
+        depends on DIALCANVAS_MOTOR_OUTPUT
+        help
+            ENN is driven high for the disabled state. Confirm board and driver.
+
+endmenu

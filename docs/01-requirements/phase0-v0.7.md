@@ -1,5 +1,7 @@
 # Forest Guardian Phase 0 要求定義 v0.7
 
+> 履歴資料: 初期案です。歯車の数、Web管理、駆動方式、寸法、文字盤仕様は後続版で更新されています。現在の要求は[requirements.yaml](requirements.yaml)と[新設計の基準](../10-desk-redesign/README.md)を参照してください。
+
 作成日: 2026-10-08。根拠: ユーザー提示の「Forest Guardian / DialCanvas Desk Edition」Phase 0 v0.7 と追加ディレクトリ指示。要求 ID・状態・検証 ID の原本は [要求台帳](requirements.yaml)。本書は人が読むためのベースラインであり、候補部品や実現性の承認ではない。
 
 状態: `FIXED` は現時点の確定、`PROVISIONAL` は暫定目標、`OPEN` は未決定、`REJECTED` は明示的に採用しない案、`SUPERSEDED` は後続要求で置換された履歴。状態変更には [変更履歴](change-history.md) を追加する。

@@ -1,5 +1,7 @@
 # Forest Guardian — Design Closure Contract (2026-10-18)
 
+> Historical record: This contract covers the former seven-axis design. Its checks are not acceptance evidence for the current single-motor desk design; see [the current worklist](../10-desk-redesign/worklist.csv).
+
 Status: WORKING. This document defines a finite closure target, not an assertion of readiness.
 
 ## Scope freeze

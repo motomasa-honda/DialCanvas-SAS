@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760" role="img" aria-labelledby="title desc">
+  <title id="title">4歯車の無通電手回し試験・名目配置</title>
+  <desc id="desc">100×56 mm透明PC試験板に18、20、28、18歯のKHK DS1歯車を不規則な列として配置する模式図。円は外径包絡。</desc>
+  <defs>
+    <style>
+      .bg{fill:#faf8f2}.plate{fill:#f2f8fa;stroke:#315260;stroke-width:3}.gear{fill:#c58d3e;fill-opacity:.32;stroke:#8b5d24;stroke-width:3}.hub{fill:#fff;stroke:#315260;stroke-width:2}.mesh{stroke:#7e4d19;stroke-width:2;stroke-dasharray:7 6}.dim{stroke:#355d6a;stroke-width:2;fill:none}.txt{font-family:sans-serif;fill:#20333a}.muted{fill:#52666b;font-family:sans-serif}.tag{fill:#fff;stroke:#315260;stroke-width:2}
+    </style>
+  </defs>
+  <rect class="bg" width="1100" height="760"/>
+  <text class="txt" x="55" y="58" font-size="30" font-weight="700">4歯車・無通電手回し試験</text>
+  <text class="muted" x="55" y="92" font-size="18">名目配置のみ。外径円は歯形ではありません。単位 mm / 1:1相当</text>
+  <g transform="translate(75,145) scale(7.6)">
+    <rect class="plate" x="0" y="0" width="100" height="56" rx="1"/>
+    <line class="mesh" x1="80" y1="17.825" x2="61.332" y2="21.360"/>
+    <line class="mesh" x1="61.332" y1="21.360" x2="39.134" y2="27.381"/>
+    <line class="mesh" x1="39.134" y1="27.381" x2="19.388" y2="39.175"/>
+    <circle class="gear" cx="80" cy="17.825" r="11"/>
+    <circle class="gear" cx="61.332" cy="21.360" r="10"/>
+    <circle class="gear" cx="39.134" cy="27.381" r="15"/>
+    <circle class="gear" cx="19.388" cy="39.175" r="10"/>
+    <circle class="hub" cx="80" cy="17.825" r="1.25"/>
+    <circle class="hub" cx="61.332" cy="21.360" r="1.25"/>
+    <circle class="hub" cx="39.134" cy="27.381" r="1.25"/>
+    <circle class="hub" cx="19.388" cy="39.175" r="1.25"/>
+  </g>
+  <g class="txt" font-size="19" font-weight="700">
+    <text x="660" y="290">A00 · DS1-20 · 20T</text>
+    <text x="526" y="316">A01 · DS1-18 · 18T</text>
+    <text x="356" y="362">A02 · DS1-28 · 28T</text>
+    <text x="207" y="451">A03 · DS1-18 · 18T</text>
+  </g>
+  <g class="muted" font-size="17">
+    <text x="610" y="220">19.000</text>
+    <text x="452" y="330">23.000</text>
+    <text x="292" y="412">23.000</text>
+    <text x="73" y="660">板：100×56×8mm PC候補　　中心：(80,17.825) → (61.332,21.360) → (39.134,27.381) → (19.388,39.175)</text>
+    <text x="73" y="690">穴径/公差は材料端材でブッシュ嵌合を確認後に決定。描画はCAM・製造用データではありません。</text>
+  </g>
+  <g class="dim">
+    <line x1="75" y1="605" x2="835" y2="605"/>
+    <line x1="75" y1="598" x2="75" y2="612"/>
+    <line x1="835" y1="598" x2="835" y2="612"/>
+    <line x1="58" y1="145" x2="58" y2="571"/>
+    <line x1="51" y1="145" x2="65" y2="145"/>
+    <line x1="51" y1="571" x2="65" y2="571"/>
+  </g>
+  <g class="tag" font-family="sans-serif" font-size="14" fill="#20333a">
+    <circle cx="74" cy="724" r="7" fill="#c58d3e"/><text x="88" y="729">歯車外径包絡</text>
+    <circle cx="250" cy="724" r="7" fill="#fff" stroke="#315260"/><text x="264" y="729">軸中心（支持穴位置の目安）</text>
+  </g>
+</svg>

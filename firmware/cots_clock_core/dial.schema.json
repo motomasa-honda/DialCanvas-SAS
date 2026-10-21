@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DialCanvas dial.json v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version"],
+  "properties": {
+    "version": { "const": 1 },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32
+    },
+    "center": { "$ref": "#/$defs/center" },
+    "hands": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hour": { "$ref": "#/$defs/hand" },
+        "minute": { "$ref": "#/$defs/hand" },
+        "second": { "$ref": "#/$defs/hand" }
+      }
+    }
+  },
+  "$defs": {
+    "center": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y"],
+      "properties": {
+        "x": { "type": "number", "minimum": 0, "maximum": 1 },
+        "y": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "hand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["color", "length", "width"],
+      "properties": {
+        "color": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "length": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.5,
+          "description": "Fraction of the full image width; 0.5 reaches the dial radius."
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32,
+          "description": "Hand width in display pixels."
+        }
+      }
+    }
+  }
+}

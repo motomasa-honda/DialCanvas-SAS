@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="820" viewBox="-18 -32 300 222" role="img" aria-labelledby="title desc">
+<title id="title">Plane A brass hybrid support seat map</title>
+<desc id="desc">Nominal support plate seat layout for the 21-brass, 7-POM gear candidate. D8 seats use 80B-0608; D7 seats use 80B-0508. Not a manufacturing file.</desc>
+<style>
+text{font-family:"DejaVu Sans",sans-serif;fill:#29251f}.title{font-size:5px;font-weight:bold}
+.small{font-size:3px}.tiny{font-size:2.4px;fill:#625c54}
+.plate{fill:#d7eeee;stroke:#387a7c;stroke-width:.7}
+.opening{fill:#fff;stroke:#39787c;stroke-width:.5;stroke-dasharray:2 1}
+.bss{fill:#f5d891;stroke:#9d641c;stroke-width:.65}
+.pom{fill:#fff;stroke:#557f93;stroke-width:.65}
+.cross{stroke:#5b5144;stroke-width:.25}
+</style>
+<rect x="-18" y="-32" width="300" height="222" fill="#faf9f4"/>
+<text class="title" x="0" y="-21">PLANE A · 252×187×8mm · z=0-8 · NOMINAL ONLY</text>
+<rect class="plate" x="0" y="0" width="252" height="187"/>
+<circle class="opening" cx="126" cy="93.5" r="56"/>
+<circle class="bss" cx="126.000" cy="25.500" r="4.0"/>
+<path class="cross" d="M124.600,25.500 H127.400 M126.000,24.100 V26.900"/>
+<text class="tiny" x="130.000" y="22.500">A00</text>
+<circle class="bss" cx="107.332" cy="29.035" r="4.0"/>
+<path class="cross" d="M105.932,29.035 H108.732 M107.332,27.635 V30.435"/>
+<text class="tiny" x="111.332" y="26.035">A01</text>
+<circle class="pom" cx="85.134" cy="35.056" r="3.5"/>
+<path class="cross" d="M83.734,35.056 H86.534 M85.134,33.656 V36.456"/>
+<text class="tiny" x="89.134" y="32.056">A02</text>
+<circle class="bss" cx="65.388" cy="46.850" r="4.0"/>
+<path class="cross" d="M63.988,46.850 H66.788 M65.388,45.450 V48.250"/>
+<text class="tiny" x="69.388" y="43.850">A03</text>
+<circle class="bss" cx="60.878" cy="65.307" r="4.0"/>
+<path class="cross" d="M59.478,65.307 H62.278 M60.878,63.907 V66.707"/>
+<text class="tiny" x="64.878" y="62.307">A04</text>
+<circle class="bss" cx="46.639" cy="77.886" r="4.0"/>
+<path class="cross" d="M45.239,77.886 H48.039 M46.639,76.486 V79.286"/>
+<text class="tiny" x="50.639" y="74.886">A05</text>
+<circle class="pom" cx="53.895" cy="97.593" r="3.5"/>
+<path class="cross" d="M52.495,97.593 H55.295 M53.895,96.193 V98.993"/>
+<text class="tiny" x="57.895" y="94.593">A06</text>
+<circle class="bss" cx="58.565" cy="118.067" r="4.0"/>
+<path class="cross" d="M57.165,118.067 H59.965 M58.565,116.667 V119.467"/>
+<text class="tiny" x="62.565" y="115.067">A07</text>
+<circle class="bss" cx="63.280" cy="136.473" r="4.0"/>
+<path class="cross" d="M61.880,136.473 H64.680 M63.280,135.073 V137.873"/>
+<text class="tiny" x="67.280" y="133.473">A08</text>
+<circle class="bss" cx="76.947" cy="149.671" r="4.0"/>
+<path class="cross" d="M75.547,149.671 H78.347 M76.947,148.271 V151.071"/>
+<text class="tiny" x="80.947" y="146.671">A09</text>
+<circle class="pom" cx="97.912" cy="159.132" r="3.5"/>
+<path class="cross" d="M96.512,159.132 H99.312 M97.912,157.732 V160.532"/>
+<text class="tiny" x="101.912" y="156.132">A10</text>
+<circle class="bss" cx="120.911" cy="159.340" r="4.0"/>
+<path class="cross" d="M119.511,159.340 H122.311 M120.911,157.940 V160.740"/>
+<text class="tiny" x="124.911" y="156.340">A11</text>
+<circle class="bss" cx="139.658" cy="162.425" r="4.0"/>
+<path class="cross" d="M138.258,162.425 H141.058 M139.658,161.025 V163.825"/>
+<text class="tiny" x="143.658" y="159.425">A12</text>
+<circle class="bss" cx="157.861" cy="156.978" r="4.0"/>
+<path class="cross" d="M156.461,156.978 H159.261 M157.861,155.578 V158.378"/>
+<text class="tiny" x="161.861" y="153.978">A13</text>
+<circle class="bss" cx="5" cy="171" r="4"/>
+<text class="small" x="12" y="172">D8 nominal · 18/20T brass · OILES 80B-0608</text>
+<circle class="pom" cx="5" cy="178" r="3.5"/>
+<text class="small" x="12" y="179">D7 nominal · 24/28T POM · OILES 80B-0508</text>
+<text class="tiny" x="0" y="195">11 brass seats / 3 POM seats. Plate datum coordinates are case coordinates +3mm.</text>
+<text class="tiny" x="0" y="200">Nominal only: confirm OILES housing tolerance, press fit and clear web on a same-material test coupon.</text>
+<text class="tiny" x="0" y="205">Candidate plate thickness 8mm; A stays at z=0-8, B moves to z=40-48. Not CAM-ready.</text>
+</svg>

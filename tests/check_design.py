@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import csv
 import re
 import sys
 from collections import Counter
@@ -115,6 +116,44 @@ def check_adr() -> None:
         fail(f"ADR 番号重複: {duplicate}")
 
 
+def check_requirement_migration() -> None:
+    migration_file = ROOT / "docs/10-desk-redesign/requirements-migration-v0.8-to-v0.20.csv"
+    data = json.loads(REQ_FILE.read_text(encoding="utf-8"))
+    current = {row["id"]: row for row in data["requirements"]}
+    try:
+        with migration_file.open(encoding="utf-8-sig", newline="") as stream:
+            rows = list(csv.DictReader(stream))
+    except (OSError, csv.Error) as exc:
+        fail(f"要求移行表を読めない: {exc}")
+        return
+
+    legacy_ids = [row.get("LegacyID", "") for row in rows if row.get("LegacyID")]
+    expected_legacy_ids = [f"FG-{number:03d}" for number in range(1, 44)]
+    if sorted(legacy_ids) != expected_legacy_ids:
+        fail("旧v0.8要求FG-001〜FG-043の移行表が不足または重複")
+
+    mapped_current_ids: list[str] = []
+    allowed_dispositions = {"継承", "具体化", "置換", "履歴維持", "追加"}
+    for row in rows:
+        current_id = row.get("CurrentID", "")
+        mapped_current_ids.append(current_id)
+        if current_id not in current:
+            fail(f"要求移行表の存在しない現行ID: {current_id}")
+            continue
+        if row.get("CurrentStatus") != current[current_id]["status"]:
+            fail(f"要求移行表の状態不一致: {current_id}")
+        if row.get("Disposition") not in allowed_dispositions:
+            fail(f"要求移行表の処置が不正: {current_id}")
+        if row.get("LegacyID"):
+            if row.get("LegacyBaseline") != "v0.8@40db883":
+                fail(f"旧要求の基準点が不正: {row.get('LegacyID')}")
+            if row.get("Disposition") == "追加":
+                fail(f"旧要求の行が追加扱い: {row.get('LegacyID')}")
+        elif row.get("Disposition") != "追加":
+            fail(f"旧要求のない現行行が追加扱いでない: {current_id}")
+
+    if sorted(mapped_current_ids) != sorted(current):
+        fail("要求移行表と現行台帳のID対応が一対一でない")
 def check_markdown_links() -> None:
     for path in ROOT.rglob("*.md"):
         if ".git" in path.parts:
@@ -132,12 +171,13 @@ def check_markdown_links() -> None:
 def main() -> int:
     check_requirements()
     check_adr()
+    check_requirement_migration()
     check_markdown_links()
     if errors:
         for item in errors:
             print(f"ERROR: {item}", file=sys.stderr)
         return 1
-    print("OK: Markdown リンク、要求 ID/状態、ADR、未決定事項、検証対応")
+    print("OK: Markdown リンク、要求 ID/状態、ADR、未決定事項、要求移行表、検証対応")
     return 0
 
 

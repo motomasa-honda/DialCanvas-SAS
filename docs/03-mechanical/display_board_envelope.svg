@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="720" viewBox="0 0 1050 720" role="img" aria-labelledby="title desc">
+  <title id="title">Waveshare 3.4C nominal board envelope in the rear support opening</title>
+  <desc id="desc">A 115 by 115 millimeter nominal display board centered in the existing 120 by 120 millimeter rear support opening, leaving 2.5 millimeters per side. The 87.6 millimeter round display area is shown at the center. This is a nominal interface drawing, not a manufacturing drawing.</desc>
+  <style>
+    text{font-family:DejaVu Sans,sans-serif;fill:#29251f}.title{font-size:28px;font-weight:700}.head{font-size:20px;font-weight:700}.label{font-size:16px}.small{font-size:14px;fill:#554e45}.tiny{font-size:12px;fill:#625c54}.inverse{fill:#f4e7c9}.opening{fill:#e7f2f0;stroke:#39787c;stroke-width:3;stroke-dasharray:9 6}.board{fill:#315b60;fill-opacity:.26;stroke:#315b60;stroke-width:3}.display{fill:#18212a;stroke:#c28f50;stroke-width:3}.dim{stroke:#342e28;stroke-width:1.6;fill:none;marker-start:url(#arrow);marker-end:url(#arrow)}.guide{stroke:#948b7d;stroke-width:1;stroke-dasharray:5 5}.note{fill:#f6f0e5;stroke:#b5a68f;stroke-width:1.5}
+  </style>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10" fill="none" stroke="#342e28" stroke-width="1.2"/></marker></defs>
+  <rect width="1050" height="720" fill="#fbfaf6"/>
+  <text class="title" x="40" y="55">3.4C display module · nominal fit envelope</text>
+  <text class="small" x="40" y="84">Design basis: Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C · SKU 31523</text>
+
+  <rect class="opening" x="165" y="145" width="480" height="480"/>
+  <rect class="board" x="175" y="155" width="460" height="460"/>
+  <circle class="display" cx="405" cy="385" r="175.2"/>
+  <line class="guide" x1="405" y1="130" x2="405" y2="640"/>
+  <line class="guide" x1="150" y1="385" x2="660" y2="385"/>
+  <text class="label inverse" x="405" y="375" text-anchor="middle">Ø87.6mm</text>
+  <text class="tiny inverse" x="405" y="399" text-anchor="middle">display area</text>
+  <text class="label" x="405" y="600" text-anchor="middle">115×115mm board outline</text>
+
+  <line class="dim" x1="165" y1="665" x2="645" y2="665"/>
+  <text class="small" x="405" y="692" text-anchor="middle">120mm opening · 115mm board · 2.5mm nominal clearance per side</text>
+  <line class="dim" x1="175" y1="125" x2="635" y2="125"/>
+  <text class="tiny" x="405" y="115" text-anchor="middle">115mm</text>
+  <line class="dim" x1="145" y1="145" x2="145" y2="625"/>
+  <text class="tiny" x="130" y="390" text-anchor="middle" transform="rotate(-90 130 390)">120mm</text>
+
+  <rect class="note" x="700" y="145" width="310" height="480" rx="10"/>
+  <text class="head" x="730" y="190">What this closes</text>
+  <text class="label" x="730" y="235">✓ Board fits the 120mm opening</text>
+  <text class="small" x="750" y="264">Nominal 2.5mm gap on each side.</text>
+  <text class="label" x="730" y="315">✓ Ø112 opening clears display</text>
+  <text class="small" x="750" y="344">12.2mm nominal radial border.</text>
+  <text class="label" x="730" y="395">✓ Envelope fits the case</text>
+  <text class="small" x="750" y="424">Centered in 246×181mm inner case.</text>
+  <text class="head" x="730" y="485">Still to verify at fit-up</text>
+  <text class="small" x="750" y="519">Board revision, mount holes, rear height,</text>
+  <text class="small" x="750" y="543">ports, card/USB access, screw clearance.</text>
+  <text class="tiny" x="730" y="593">Nominal CAD model, not a cut file.</text>
+</svg>
