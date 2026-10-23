@@ -62,7 +62,8 @@
 | 表示5V変換 | DFRobot DFR0758、10.5–32V入力、USB-A/Type-C出力、標準5V/最大3A | 1 | **US$6.50**（確認時表示） | [DFRobot](https://www.dfrobot.com/product-2166.html) | USB-A出力のみ使用し、ELECOM MPA-ACECSS03BKで3.4Cへ接続。Type-C出力は並列なので未使用。基板外形は非公表のため予約域内へ調整式キャリアで固定。|
 | モーター9V変換 | DFRobot DFR1015、15V入力、選択式9V出力 | 1 | **US$5.30**（確認時表示） | [DFRobot](https://www.dfrobot.com/product-2599.html) | 9V/2.5A（25°C、追加放熱なし）、基板27×20mm。受領後に9V設定を確認し、完成品のモーター負荷で温度を見る。|
 | 補助5V変換 | Pololu D24V50F5 #2851、入力6–38V、5V出力 | 1 | 税別¥5,136、税込換算 **¥5,650** | [DigiKey](https://www.digikey.jp/ja/products/detail/pololu/2851/10451177)・[Pololu仕様](https://www.pololu.com/product/2851) | 15V入力でLED等の補助負荷へ供給。5Aは部品仕様であり、閉箱連続出力能力やシステム容量の保証ではない。表示器はDFR0758から給電する。|
-| 5V出力端子 | Pololu #2494、0.1インチ/2.54mmピッチ5極ねじ端子台（2個入り） | #2851に1個使用、1個予備 | **US$4.37** | [Pololu](https://www.pololu.com/product/2494) | 26–18AWG、定格6Aの既製端子台。#2851の端子ピッチと周辺部品へのクリアランスを照合し、基板へはんだ付けする候補。|
+| 5V出力端子 | Pololu #2494、0.1インチ/2.54mmピッチ5極ねじ端子台（2個入り） | #2851に1個使用、1個予備 | **US$4.37** | [Pololu](https://www.pololu.com/product/2494) | 26–18AWG、定格6A。#2851の5端子も0.1インチピッチなので選定可能。横出し本体の逃げは完成品で確認し、干渉時は#2851付属のピンヘッダーへAWG22線を接続する。|
+| #2851固定金物 | M2×12mmなべ小ねじ×2、M2ナット×2、長さ3mmのナイロンスペーサー×2 | 1組 | 調達時確認 | 一般金物店 | Pololu #2851のメーカー取付穴は#2/M2ねじ用。3mm PC絶縁パッド上で固定する。|
 | 表示基板給電用専用PCB/特注変換器 | #4092特注5.2V変換器、TPS25810専用source PCB | 0 | **現行案では不使用** | — | [ADR-0019](../../adr/0019-cots-usb-c-power-module.md)で市販DFRobot DFR0758へ置換。特注見積・専用PCB設計・EVM購入は不要。|
 | 表示基板内部USB給電ケーブル | ELECOM MPA-ACECSS03BK、USB-A - USB Type-C、0.3m、最大5V/3A | 1 | **¥1,144税込**（公式表示） | [ELECOM](https://www.elecom.co.jp/products/MPA-ACECSS03BK.html) | DFR0758 USB-A出力から3.4C USB TO UART入力へ給電。書込み/デバッグ時は内部給電ケーブルを外し、PCを接続。|
 | 暖色LED | DFRobot FIT0836、5V、暖色、60LED/m、1m品 | 1本から約330mm使用 | 税別¥982、税込換算 **¥1,080** | [DigiKey](https://www.digikey.jp/en/products/detail/dfrobot/FIT0836/15283059)・[DFRobot仕様](https://www.dfrobot.com/product-2398.html) | 1m上限4Wから330mmは最大約1.32W/0.264Aの試算。調査時DigiKey在庫3、標準納期表示9週。切断長・拡散材・木部温度を確認。|
