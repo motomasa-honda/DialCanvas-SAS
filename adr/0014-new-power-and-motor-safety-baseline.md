@@ -4,6 +4,7 @@
 - 状態: **一台試作の暫定設計基準。現物受入・購入・加工・通電承認ではない**
 - 関連: [設計ベースラインv0.21](../docs/10-desk-redesign/design-baseline-v0.21.md)、[要求台帳](../docs/01-requirements/requirements.yaml)、[電源・制御](../docs/04-electronics/power-and-control.md)
 - 置換: ADR-0009内のPololu #3411手動CC抵抗変更案、および過去資料にある旧M1 eFuse依存。旧ADR本文は判断履歴として保持。
+- 注記: 本ADRのTPS25810EVM-745採用判断は[ADR-0018](0018-usb-c-source-board-replacement.md)で置換済み。他の電源/モーター保護判断は履歴・候補として継続。
 
 ## 背景
 

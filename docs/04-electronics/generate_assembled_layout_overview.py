@@ -240,11 +240,12 @@ def draw_rear(root):
     rect(root, x(-123), y(90.5), 246 * s, 181 * s, "a-rear-inner", rx="2")
     text(root, cx, cy + case_h / 2 + 22, "背面カバー外形：270×205mm（暫定）", "a-mini", text_anchor="middle")
 
-    # TI area is only an allocation; dimensions of the evaluation board have not been confirmed.
+    # The zone reserves work area for the unquoted #4092 custom converter and TPS25810 source PCB.
     rect(root, x(-118), y(35), 125 * s, 120 * s, "a-reserve", rx="6")
-    text(root, x(-112), y(35) + 26, "TI基板枠", "a-mini-strong")
-    text(root, x(-112), y(35) + 47, "125×120mm枠", "a-mini")
-    text(root, x(-112), y(35) + 68, "基板外形ではない", "a-mini")
+    text(root, x(-112), y(35) + 26, "#4092 5.2V変換", "a-mini-strong")
+    text(root, x(-112), y(35) + 45, "TPS25810 source", "a-mini-strong")
+    text(root, x(-112), y(35) + 65, "125×120mm機能/作業予約", "a-mini")
+    text(root, x(-112), y(35) + 84, "基板外形ではない", "a-mini")
 
     # Shared service zone for four carriers and an unsized fuse/switch reserve.
     wx, wy = x(15), y(35)
@@ -274,7 +275,7 @@ def draw_rear(root):
     # A compact legend occupies the free right edge of this view.
     text(root, 1890, 320, "背面電装", "a-mini-strong")
     text(root, 1890, 350, "HUSB：PD入力", "a-mini")
-    text(root, 1890, 372, "5V：DC/DC", "a-mini")
+    text(root, 1890, 372, "5V補助：#2851", "a-mini")
     text(root, 1890, 394, "RTC：DS3231", "a-mini")
     text(root, 1890, 416, "DRV：TMC2209", "a-mini")
     text(root, 1890, 438, "WAGO取付台×4", "a-mini")
@@ -285,9 +286,9 @@ def draw_rear(root):
     text(root, 1890, 576, "モーター軸投影", "a-mini")
 
     text(root, 1443, 630, "補助電装は着脱式背面カバー内面に配置する案。", "a-note-strong")
-    text(root, 1443, 655, "TI枠は割当領域。WAGO×4の配線・レバー操作空間は含みません。", "a-note")
+    text(root, 1443, 655, "source用枠は機能/作業の予約域。専用基板の外形ではありません。", "a-note")
     text(root, 1443, 681, "3.4C一体基板はこの面から約61mm前方。", "a-note")
-    text(root, 1443, 715, "未確定：配線、保持具、ブラケット、ケース開口。", "a-note")
+    text(root, 1443, 715, "未確定：source回路/基板寸法、配線、保持具、ケース開口。", "a-note")
 
 
 def build():
@@ -381,7 +382,7 @@ def build():
     text(root, 52, 1040, "表示・主制御は前面のWaveshare ESP32-P4 3.4C一体基板。単一モーターで装飾歯車列を動かす案です。", "a-footer")
     text(root, 52, 1070, "電源変換、RTC、モータードライバー、分岐端子は着脱式背面カバー内面に配置。配線経路は未確定です。", "a-footer")
     text(root, 52, 1125, "未確定・未確認", "a-footer-strong")
-    text(root, 52, 1158, "外箱270×205×145mmは暫定。TI基板の適合、コネクター／ケーブル、ヒューズ・スイッチ保持具、工具空間、熱、配線は未確認です。", "a-footer")
+    text(root, 52, 1158, "外箱270×205×145mmは暫定。#4092特注変換器とTPS25810専用source基板は未確定。コネクター／ケーブル、ヒューズ・スイッチ保持具、工具空間、熱、配線は未確認です。", "a-footer")
     text(root, 52, 1188, "ケース開口・配線・取付部品の加工には使わないでください。実機組立、物理試験、製造リリースは未実施です。", "a-footer")
     line(root, 52, 1214, 2045, 1214, "a-rule")
     text(root, 52, 1251, "色：黄土／茶＝歯車層｜青緑＝表示器・透明支持板｜紫／黄＝背面基板・割当枠｜破線＝候補位置", "a-footer")

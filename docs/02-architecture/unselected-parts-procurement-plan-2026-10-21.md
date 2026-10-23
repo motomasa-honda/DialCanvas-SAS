@@ -18,9 +18,9 @@
 
 | 区分 | 現在の判断 |
 |---|---|
-| 型番選定済み（試作ベースライン） | 表示器SKU31523、RTC #3013、ギアBSS1-20C、軸/ブッシュ/カラー/ワッシャー、モーター #4411、ドライバー #6121、継手、PD受電/5V変換/Type-C source、microSD、LED、スイッチ、エンコーダー/ノブ、分岐端子、ヒューズホルダー。価格や在庫は注文時に確認するが、公開定格を販売元へ再質問する必要はない。 |
+| 既製品の型番選定済み（試作ベースライン） | 表示器SKU31523、RTC #3013、ギアBSS1-20C、軸/ブッシュ/カラー/ワッシャー、モーター #4411、ドライバー #6121、継手、PD受電/#2851補助5V変換、microSD、LED、スイッチ、エンコーダー/ノブ、分岐端子、ヒューズホルダー。表示source上流は#4092の5.2Vメーカー設定変更を見積候補とするが、完成変換器/専用source基板は未選定。 |
 | 評価用1枚を選定済み | 支持板材はAS ONE 68-7869-18（透明PC 300×450×8mm）、前面ガードは光 KPAC303-1（透明PC 300×450×3mm）。型番を販売元へ再質問しない。受領板を採寸し、支持板材は同一板から圧入/4歯車試験片を切り出す。完成用の追加板・輪郭加工は受入後まで保留。 |
-| 今回追加で選定した電気小物 | ヒューズホルダーはエーモン3367、素子はLittelfuse MINI 297の市販5個箱 MIN2/MIN3/MIN4（2A/3A/4A）。値は入力3A、モーター2A、5V主幹4A、LED2Aの初期候補。同系列に1Aがないため旧1A枝を2Aへ置換。電流/温度受入で値を確認する。 |
+| 今回追加で選定した電気小物 | ヒューズホルダーはエーモン3367、素子はLittelfuse MINI 297の市販5個箱 MIN2/MIN3/MIN4（2A/3A/4A）。値は入力3A、モーター2A、5V補助枝4A、LED2Aの初期候補。表示source枝保護値は未選定。同系列に1Aがないため旧1A枝を2Aへ置換。電流/温度受入で値を確認する。 |
 | カタログ型番ではなく製作するもの | 表示基板キャリア、支持板/歯車試験板、前面ガード切出し、ウォールナットケース、配線ハーネス。これらは既製品を探すのではなく、寸法図・加工仕様・組立順で決める。 |
 | 数量をまだ固定しないもの | 装飾歯車の最終個数と配置。28位置は計算例で、購入数量ではない。1軸照合から4歯車パイロットへ進む。 |
 
@@ -49,10 +49,10 @@
 | USB-C PDアダプター | Anker 511 Charger (Nano 3, 30W) A2147 | 1 | **¥2,790 税込** | [Anker Japan](https://www.ankerjapan.com/products/a2147) | 9V/3A出力に対応する候補。9V時の電力上限は27W。全負荷時のPD契約、電圧降下、温度を測る。|
 | USB-Cケーブル | ELECOM MPA-CC10PNBK、C-C、1m、PD 60W | 1 | **¥1,720 税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-CC10PNBK.html) | 60W表示は本システムが60Wを得る意味ではない。ケーブル経由で9V契約・電圧降下を確認。|
 | PD受電 | Adafruit HUSB238 #5807 搭載基板（Switch Science ADA-5807） | 1 | **¥1,265 税込** | [Switch Science](https://www.switch-science.com/products/9296) | 9V/3Aをジャンパー設定する。PD電源が対応する契約だけ成立する。出荷初期値は5V/1Aなので設定と保護を確認。|
-| 5V変換 | Pololu D24V50F5 #2851、入力6–38V、5V出力 | 1 | 税別¥5,136、税込換算 **¥5,650** | [DigiKey](https://www.digikey.jp/ja/products/detail/pololu/2851/10451177)・[Pololu仕様](https://www.pololu.com/product/2851) | 旧#4082（3A級）から5A定格候補へ更新。Pololu直販ページは2026-10-21確認時に「Rationed (Active)」・バックオーダー可、US$32.95表示のため、購入前にDigiKey在庫/納期も再確認する。5Aは部品仕様であり、閉箱連続出力能力やシステム容量の保証ではない。画面最大輝度・SD・照明・モーターの同時負荷と熱を測る。|
+| 5V変換 | Pololu D24V50F5 #2851、入力6–38V、5V出力 | 1 | 税別¥5,136、税込換算 **¥5,650** | [DigiKey](https://www.digikey.jp/ja/products/detail/pololu/2851/10451177)・[Pololu仕様](https://www.pololu.com/product/2851) | 旧#4082（3A級）から5A定格候補へ更新。Pololu直販ページは2026-10-21確認時に「Rationed (Active)」・バックオーダー可、US$32.95表示のため、購入前にDigiKey在庫/納期も再確認する。5Aは部品仕様であり、閉箱連続出力能力やシステム容量の保証ではない。LED等の補助負荷とモーターを含む全系統の電流/温度は測る。表示器は別の専用source枝から給電するため、この#2851行の負荷に含めない。|
 | 5V出力端子 | Pololu #2494、0.1インチ/2.54mmピッチ5極ねじ端子台（2個入り） | #2851に1個使用、1個予備 | **US$4.37** | [Pololu](https://www.pololu.com/product/2494) | 26–18AWG、定格6Aの既製端子台。#2851の端子ピッチと周辺部品へのクリアランスを照合し、基板へはんだ付けする候補。|
-| 表示基板給電用USB-C source | TI TPS25810EVM-745、5V入力、Type-C DFP、3A広告設定 | 1 | **約¥5,734（DigiKey掲載スナップショット、税/送料別途確認）** | [TI](https://www.ti.com/tool/TPS25810EVM-745)・[TIガイド](https://www.ti.com/lit/pdf/slvuai0)・[DigiKey](https://www.digikey.jp/ja/products/detail/texas-instruments/TPS25810EVM-745/5761581) | Pololu #3411のCC抵抗変更案を置換。TPS25810の実電流リミットtyp.3.40Aは3A広告を超える設計負荷を許可しない。EVMは評価基板であり据付、ジャンパ、端子、データ経路、温度、在庫を受入れる。|
-| 表示基板内部USB-Cケーブル | ELECOM MPA-XCCECSS03BK、C-C、0.3m | 1 | **¥1,430税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-XCCECSS03BK.html) | TPS25810EVM sourceから3.4CのUSB TO UART入力までの給電用候補。EVM経由でフラッシュデータを通す想定はしない。|
+| 表示基板給電用USB-C source | TPS25810 IC搭載の専用Type-C source PCB、上流5.2V変換器はPololu D36V50F6 #4092のメーカー設定変更品を見積候補 | 特注変換器1、専用PCB1（回路/PCB設計後に数量確定） | **未算出**。#4092標準6V品はUS$34.95表示、特注費/運賃/税別。EVM価格を転用しない | [TI TPS25810](https://www.ti.com/product/TPS25810)・[TI datasheet](https://www.ti.com/lit/ds/symlink/tps25810.pdf)・[Pololu #4092](https://www.pololu.com/product/4092) | TPS25810EVM-745は評価基板のため完成品へ組み込まない（[ADR-0018](../../adr/0018-usb-c-source-board-replacement.md)）。#2851直結はsource receptacleの電圧下限を満たさない予算となる。#4092は5.2Vメーカー設定変更を見積候補としたが、9V入力時の5.2V±4%・3A連続、設定可否/温度/価格/納期は未確認。標準6V品を購入しない。専用PCB、受動部品、USB-C receptacle、source枝保護、基板外形/固定、実装費も未確定。IC候補の選定は発注指示ではない。|
+| 表示基板内部USB-Cケーブル | ELECOM MPA-XCCECSS03BK、C-C、0.3m | 1 | **¥1,430税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-XCCECSS03BK.html) | 専用TPS25810 source基板から3.4CのUSB TO UART入力までの給電用候補。書込み/デバッグ時は内部給電ケーブルを外し、PCを接続。|
 | 暖色LED | DFRobot FIT0836、5V、暖色、60LED/m、1m品 | 1本から約330mm使用 | 税別¥982、税込換算 **¥1,080** | [DigiKey](https://www.digikey.jp/en/products/detail/dfrobot/FIT0836/15283059)・[DFRobot仕様](https://www.dfrobot.com/product-2398.html) | 1m上限4Wから330mmは最大約1.32W/0.264Aの試算。調査時DigiKey在庫3、標準納期表示9週。切断長・拡散材・木部温度を確認。|
 | LED拡散板 | 光 A032-2US、乳白半透明アクリル、2mm、160×180mm | 1枚 | **¥472 税込** | [MonotaRO](https://www.monotaro.com/g/00025130/) | 既製板を小片に切り出す候補。安価で扱いやすいが可燃性のため、LEDから距離をとり、閉箱連続点灯で板・木部温度を測ってから配置する。光量低下と点光源の消え方も確認。|
 | ヒューズホルダー | エーモン 3367、MINI平型、電線約9cm | 4個（入力・モーター・5V主幹・LED枝） | ¥549/個、**¥2,196** | [MonotaRO](https://www.monotaro.com/g/05234920/) | Littelfuse MINI 297系列を使う。ホルダーは15A以下対応。導線・端子・突入・故障試験後に値を最終確認。 |
@@ -107,18 +107,18 @@
 |---|---|---|
 | 3.4Cの改版/表示 | Waveshare SKU31523、USB TO UART Type-Cから5V給電 | 基板改版、取付穴、厚み、端子、最大電流、画質、熱を受入。40-pinへ5Vを注入しない。|
 | 外付けRTC | Adafruit DS3231 #3013 + CR1220をモジュール自身のホルダーへ。3.3V給電 | GPIO28/29、I²Cプルアップ、SNTP更新、電池保持、ネット断/停電後復旧を確認。CR1220を3.4C RTC端子へ接続しない。|
-| Type-C表示source | TI TPS25810EVM-745、5V入力、3A広告 | EVMジャンパ、CC設定、接続方向、出力電圧、電流、温度、3.4Cの受入電流を確認。EVMは評価基板として現物据付を確認。|
-| USBデバッグ | 通常運転時はsource EVMからUSB TO UARTへ給電 | フラッシュ/デバッグ時はsource cableを外しPCへ接続。二つの5V源を同時接続しない。|
-| ヒューズ | Littelfuse MINI 297、入力3A/モーター2A/5V主幹4A/LED2Aの初期候補 | 実負荷、突入、故障電流、導線/端子/ホルダーの許容値と時間特性で最終確認。|
+| Type-C表示source | #4092のメーカー設定変更による5.2V上流変換と、TPS25810 IC搭載専用source基板を候補化。#2851は補助5V用、EVMは完成品候補から除外（ADR-0018） | 5.2V設定の可否/精度/9V入力時3A連続/温度/価格/納期を確認し、専用回路/PCB/BOMを設計後、CC広告、電流制限、source出力、温度、3.4Cの実電流を受入。現時点でいずれも購入可能な組合せではない。|
+| USBデバッグ | 通常運転時はTPS25810搭載専用source基板からUSB TO UARTへ給電する設計候補 | フラッシュ/デバッグ時は内蔵給電ケーブルを外しPCへ接続。二つの5V源を同時接続しない。|
+| ヒューズ | Littelfuse MINI 297、入力3A/モーター2A/5V補助枝4A/LED2Aの初期候補。表示source枝の保護値は未選定 | 実負荷、突入、故障電流、導線/端子/ホルダーの許容値と時間特性で最終確認。|
 | モーター停止 | 9V→2A MINIヒューズ候補→独立SPST→TMC2209 VM | リセット/brownout/無配線時のENN HIGH、長押し停止、SPSTでの直接VM遮断を確認。旧M1 eFuseは含めない。|
 | モーター過電圧 | SMBJ12A VM clamp候補、10kΩ ENN pull-up、10kΩ STEP pulldown | back-drive/急停止時のVM波形、TVS温度、ドライバー定格、起動中のSTEP/ENNを測定。|
-| 5V容量 | #2851、表示15W上限+LED1.32W上限の静的見積もり | 最大輝度、Wi-Fi/SD、LED、モーターの全負荷で電流・電圧降下・閉箱温度を記録。|
+| 電源容量 | #2851補助5V枝はLED最大1.32Wの既知負荷。表示sourceは別の9V枝で#4092特注5.2V候補→TPS25810。15WはType-C広告目標で表示器の実消費電力ではない | 表示/無線/SD、LED、モーターを同時に動かし、各枝の実電流、電圧降下、閉箱温度を記録。実測前の総電力/PD余裕は未算出。|
 | 機械取付 | 270×205×145mm参照、ウォールナット、8mm透明支持板、3mmガード候補 | 基板/配線/端子/保護板の実寸、穴/溝、指到達、前後整備、原本外観を照合し加工図を出す。|
 | 外観素材 | 承認済みForest Guardian参照ボード | 高解像度文字盤原画・使用条件・出典を確認する（FG-038/OQ-10）。|
 
 ## 4. 基板設計とソフトウェアの境界
 
-- 表示/主制御は完成開発基板、PD受電はHUSB238、5V変換はPololu基板、Type-C sourceはTI評価基板、モーター駆動はTMC2209ブレークアウトを候補とする。
+- 表示/主制御は完成開発基板、PD受電はHUSB238、5V変換はPololu基板、Type-C sourceはTPS25810搭載専用基板を設計候補、モーター駆動はTMC2209ブレークアウトを候補とする。TPS25810EVMは完成品へ組み込まない。
 - 新設計で使うモーター保護のベースラインは分岐ヒューズ、独立スイッチ、ENN安全初期値、VM TVS候補。旧M1 eFuse、故障ラッチ、旧7軸ワンホット配線を新設計へ持ち込まない。
 - ESP-IDF v5.5.5、Waveshare BSP 3.0.1、LVGL 9、Espressif `esp_jpeg` 1.3.1をソフトウェア基準に記録。mainのCIで安全既定設定とモーター出力有効設定の対象ビルドは成功済み。
 - CI/ホストテストは基板GPIO、実表示、RTC保持、モーター音/温度、電源容量、筐体加工の受入ではない。DR-02〜06はValidationStatus OPEN、DR-07はHOLD。

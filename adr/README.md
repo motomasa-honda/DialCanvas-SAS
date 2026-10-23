@@ -24,5 +24,6 @@ ADR番号は連番です。候補・寸法図・公開資料は現物受入や�
 - [ADR-0015: BSS1-20C・6mm軸支持の現行機械候補](0015-bss20-axis-support-candidate.md)（ADR-0012の機械部品選択とADR-0013の4↔5mm継手候補を置換。表示面位置はADR-0016で更新）
 - [ADR-0016: Waveshare 3.4C取付図と表示すき間の更新](0016-waveshare-34c-mounting-and-clearance.md)（公開Drawing/STEPによる机上修正。現物受入前のPROVISIONAL）
 - [ADR-0017: 回転部を覆う前面ガードの材料候補](0017-transparent-guard-material-candidate.md)（PC 3mmを初号機評価材に選定。SKU/外観/保護性能の受入前）
+- [ADR-0018: 3.4C用Type-C給電基板の方針更新](0018-usb-c-source-board-replacement.md)（TPS25810EVMを筐体内候補から除外し、TPS25810搭載専用基板を設計候補化。回路/PCB/購入仕様は未完）
 
 現行要求と受入状態は[要求台帳](../docs/01-requirements/requirements.yaml)および[作業一覧](../docs/10-desk-redesign/worklist.csv)を参照してください。

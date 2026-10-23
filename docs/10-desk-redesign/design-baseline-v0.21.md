@@ -3,7 +3,7 @@
 - 基準日: 2026-10-22
 - 状態: **一台試作の机上設計ベースライン。製作・通電・量産リリースではない**
 - 要求台帳: [v0.21 requirements.yaml](../01-requirements/requirements.yaml)
-- 決定記録: [ADR一覧](../../adr/README.md)
+- 決定記録: [ADR一覧](../../adr/README.md)。Type-C表示給電は[ADR-0018](../../adr/0018-usb-c-source-board-replacement.md)で更新。
 - 現在の作業/受入状態: [worklist.csv](worklist.csv)、[状態記録](status-2026-10-21.md)
 
 この文書を現行Desk Editionの構成・インターフェース・候補値の統合基準とする。旧7軸設計の資料とブランチは履歴・参照専用で、新設計の要求、証拠、進捗へ混ぜない。部品、寸法、電気値に `PROVISIONAL` を付した項目は試作候補として一つに揃えた値であり、実物で受入れるまで製造値にはならない。
@@ -37,7 +37,7 @@
 | インターフェース | ベースライン |
 | --- | --- |
 | 表示器 | 3.4CのUSB TO UART Type-Cを通常時の5V入力に使う。40-pin GPIOヘッダーへ5Vを注入しない。画面は800×800、LCD有効領域Ø87.60mm、外周ガラスØ112.50mm+0.10mm、円形前面外径Ø115.00mm。115×115mmは最大矩形包絡。 |
-| サービス接続 | TPS25810EVM側のType-C sourceは給電用候補。書込み/デバッグ時はsource cableを外し、USB TO UART端子をPCへ接続する。二つの5V源を同時に接続しない。モーター電源スイッチはOFFにする。 |
+| サービス接続 | Pololu #4092の5.2Vメーカー設定変更品を上流見積候補、TPS25810搭載の専用Type-C source基板を設計候補とする。いずれも未発注。書込み/デバッグ時は内蔵sourceケーブルを外し、USB TO UART端子をPCへ接続する。二つの5V源を同時に接続しない。モーター電源スイッチはOFFにする。 |
 | 文字盤媒体 | microSD直下の `DialCanvas/faces/` のみを走査。英数字・`_`・`-`の1〜32文字フォルダー名、JPEG 8MiB以下。フォーマットや自動修復はしない。 |
 | 描画 | 時・分・秒の3針をミリ秒補間し、16ms間隔で更新要求する。16msは実測フレームレート保証ではない。最低30fps、目標60fpsの表示確認を実機受入条件とする。 |
 | 時刻復旧 | 有効なDS3231 UTCを起動時に復元し、Wi-Fi接続後のSNTP値をRTCへ書く。ネットワークも有効RTC値もない場合は `TIME NOT SET` を表示する。 |
@@ -103,10 +103,12 @@ flowchart TD
   A[USB-C PD 9V/3A] --> B[HUSB238 9V要求]
   B --> C[入力 3Aヒューズと分岐点]
   C --> D[モーター 2A MINIヒューズ→物理スイッチ→TMC2209]
-  C --> E[Pololu #2851 5V]
-  E --> F[5V主幹 4Aヒューズ]
-  F --> G[TPS25810EVM 3A広告→3.4C]
+  C --> E[Pololu #2851 固定5V]
+  E --> F[5V補助枝ヒューズ候補]
   F --> H[LED 2A MINIヒューズ→物理スイッチ→暖色LED]
+  C --> I[表示source枝保護 未選定]
+  I --> J[Pololu #4092 メーカー設定変更 5.2V候補]
+  J --> K[TPS25810搭載source基板（設計候補）→3.4C]
 ```
 
 9Vのモーター戻りと5V/表示の戻りは、電源分岐点まで別配線とする。モーター相電流を表示器のGND配線やUSBケーブルへ流さない。ヒューズ値は一台試作の候補値で、導線・コネクター・突入・故障試験後に確定する。
@@ -116,16 +118,17 @@ flowchart TD
 | ACアダプター | Anker 511 Charger (Nano 3, 30W) とUSB-C PDケーブル | 9V/3A PDOを持つ候補。HUSB238のPD契約を実測 |
 | PDシンク | Adafruit HUSB238 #5807。9V固定要求、3A設定 | 契約失敗時は5V側へ安全に停止すること、極性・出力電圧を実測 |
 | 9V入力 | Littelfuse MINI 297 MIN3 (3A)候補後に星形分岐 | ヒューズ定格/時間特性、入力電圧、全負荷電流を確認 |
-| 5V変換 | Pololu D24V50F5 #2851、9V→5V | 公称typical continuous up to 5A、温度依存。5Aを筐体内連続許容量とはみなさない |
-| 5V主幹 | Littelfuse MINI 297 MIN4 (4A)候補 | #2851、基板、端子、配線の定格に合わせて検証 |
-| 表示USB-C source | TI TPS25810EVM-745、TPS25810 DFP、3A広告設定 | 5V入力。ICの電流制限は3A広告時typ.3.40Aだが、USB-C sinkへ3.4A引出しを許可する意味ではない。CC設定・動作・温度を確認 |
-| 表示ケーブル | ELECOM MPA-XCCECSS03BK、C-C、0.3m | EVM sourceから3.4C USB TO UART入力。基板改版指定入力と電圧降下を測定 |
+| 5V補助電源 | Pololu D24V50F5 #2851、9V→固定5V | LED等の補助5V負荷用候補。表示器sourceへ直結しない。typical最大連続5Aは温度依存で、閉箱許容量ではない |
+| 5V補助枝保護 | Littelfuse MINI 297 MIN4 (4A)候補 | 表示器を枝から外した後の負荷、#2851/端子/配線に合わせ再評価。最終値未確定 |
+| 表示source上流 | Pololu D36V50F6 #4092のメーカー設定変更で5.2V出力とする見積候補 | 標準品は6Vであり購入不可。9V入力で5.2V±4%、3A連続出力の可否、温度条件、価格、納期は未確認 |
+| 表示USB-C source | TPS25810搭載の専用source基板候補。3A広告は目標だが未凍結 | 9V入力で5.2V±4%・経路降下25mV以下という未確認仮定ならsource receptacleの机上下限4.802V。特注条件、回路/PCB/BOM/熱/実機受入は未完。評価基板TPS25810EVM-745は完成品へ組み込まない。 |
+| 表示ケーブル | ELECOM MPA-XCCECSS03BK、C-C、0.3m | 専用source基板から3.4C USB TO UART入力へ接続する候補。基板改版指定入力、挿抜、電圧降下は受入で確認 |
 | モーター | 9V分岐→Littelfuse MINI 297 MIN2 (2A)候補→NKK MN11SS1W01 SPST→TMC2209 VM | 旧M1 eFuseを使わない独立枝。スイッチOFFでVMを直接遮断 |
 | モーター抑止 | ENNはactive-low。10kΩでENNをVIO/3.3Vへ外部プルアップ。GPIOは初期化時にENN HIGH。STEPは外部10kΩ pulldown候補 | reset/brownout/未接続/長押し停止を試験。実ドライバー基板の論理極性を確認 |
 | VM過電圧 | SMBJ12A TVSをTMC2209 VM/GND近傍へ、ドライバー基板の既設コンデンサーと併用 | VRWM=12V、仕様上最大クランプ19.9V候補。回生エネルギーと実波形は未受入 |
 | LED | 5V分岐→Littelfuse MINI 297 MIN2 (2A)候補→独立SPST→FIT0836 330mm | 4W/m仕様値による最大1.32W/0.264Aの計算。電流、拡散、木部温度を測定 |
 
-TPS25810EVM-745は評価用基板で、量産モジュールではない。TIガイド記載の3A広告ジャンパ設定を用い、実Type-Cケーブル使用時はCCテストジャンパを外す。評価基板そのものの取付、5V入力端子、ジャック、ジャンパ保持、入手性を確認する。設計上の意図はPololu #3411の手作業CC抵抗変更を避けること。
+TPS25810EVM-745は評価用基板であり、TIの利用条件は完成品/生産システムへの組込みを認めていないため候補から除外した。表示用Type-C sourceの機能はTPS25810 ICを載せた専用基板へ移す。#2851固定5Vを直結する案は電圧余裕不足で除外し、#4092のメーカー設定変更による5.2V出力を上流見積候補にした。これは適合確定ではなく、特注仕様・許容差・連続電流・価格・納期の回答が必要。確定回路図、部品表、基板寸法/固定、実装見積もないため、部品配置、ケース開口、ハーネス長を予約域から確定しない。[ADR-0018](../../adr/0018-usb-c-source-board-replacement.md)
 
 ### 6.2 静的電力予算
 
@@ -133,15 +136,15 @@ TPS25810EVM-745は評価用基板で、量産モジュールではない。TIガ
 
 | 負荷/条件 | 計算 |
 | --- | ---: |
-| 表示sourceの広告上限 | 5V×3A = 15W |
+| 表示sourceの広告目標上限 | 5V×3A = 15W（表示器の実消費電力ではない） |
 | LED 330mm | 4W/m×0.330m = 1.32W、0.264A@5V |
-| #2851の5V側合計上限 | 15W+1.32W = 16.32W、約3.264A |
-| #2851入力側（効率85%仮定） | 約19.2W、約2.13A@9V |
+| #2851の既知5V負荷 | LEDのみなら1.32W、0.264A@5V。ほかの補助負荷は未確定 |
+| LED分の#2851入力側（効率85%仮定） | 約1.55W、約0.17A@9V。ほかの補助負荷は別 |
+| 表示器sourceの9V側入力 | 変換効率と実消費電力が未確定のため算出しない。最大15Wはsource広告目標で、表示器の実負荷とは異なる |
 | モーター巻線銅損（0.30A RMS/相、6.5Ω/相仮定） | 2×0.30²×6.5 = 約1.17W。ドライバー損失は別途 |
-| 参考総負荷 | モーター枝の変換効率を仮に85%と置くと約20.6W、約2.29A@9V |
-| 9V PD候補との参考差 | 27W−20.6W = 約6.4W (約24%) |
+| 9V入力の総負荷 | 表示器、モーター、LED、起動/無線ピークを同時実測するまで未算出 |
 
-この余裕値は設計採否の証明ではない。表示器の実ピーク、無線送信、microSD、モーター電流波形、変換効率、起動電流、閉箱温度、PD再交渉を同時測定するまではFG-048をOPENとする。
+この表は設計採否の証明ではない。表示器の実ピーク、無線送信、microSD、モーター電流波形、変換効率、起動電流、閉箱温度、PD再交渉を同時測定するまではFG-048をOPENとする。
 
 ## 7. 実機受入の定義
 
@@ -171,7 +174,7 @@ TPS25810EVM-745は評価用基板で、量産モジュールではない。TIガ
 ## 9. 参照資料
 
 - Waveshare [3.4C公式製品/基板資料](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[3.4C公式Drawing ZIP](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC/ESP32-P4-WIFI6-TOUCH-LCD-3_4C.zip)、[公式回路図](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC/ESP32-P4-WIFI6-Touch-LCD-XC-Schematic.pdf)
-- TI [TPS25810EVM-745製品](https://www.ti.com/tool/TPS25810EVM-745)、[TPS25810EVM-745 User's Guide](https://www.ti.com/lit/pdf/slvuai0)
+- TI [TPS25810製品ページ](https://www.ti.com/product/TPS25810)、[TPS25810データシート](https://www.ti.com/lit/ds/symlink/tps25810.pdf)、[TPS25810EVM-745 User's Guide](https://www.ti.com/lit/pdf/slvuai0)（EVM利用条件確認用）
 - Pololu [D24V50F5 #2851](https://www.pololu.com/product/2851)
 - Adafruit [NEMA-8 #4411](https://www.adafruit.com/product/4411)、[TMC2209 #6121](https://www.adafruit.com/product/6121)、[HUSB238 #5807](https://www.adafruit.com/product/5807)、[DS3231 #3013](https://www.adafruit.com/product/3013)
 - Analog Devices [TMC2209 data sheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2209_datasheet_rev1.09.pdf)

@@ -28,12 +28,12 @@
   <text x="79" y="151" class="dim">Inner face: 246 x 181 mm (case envelope is provisional)</text>
   <text x="79" y="550" class="small">Left = X- / Right = X+   Bottom = Y- / Top = Y+   Origin = case / 3.4C center</text>
 
-  <!-- TI EVM allocation zone: allocation only, not vendor board dimensions. x=-118..7, y=-85..35 -->
+  <!-- Type-C source and upstream-converter function/work allocation only; no custom PCB outline exists. x=-118..7, y=-85..35 -->
   <rect x="89" y="280" width="250" height="240" rx="7" class="reserve"/>
-  <text x="132" y="311" class="label">TI TPS25810EVM-745</text>
-  <text x="106" y="332" class="small">Reserve: 125 x 120 mm</text>
-  <text x="106" y="351" class="small">Not the board outline; check real fit</text>
-  <text x="106" y="370" class="small">Includes connector and wiring access</text>
+  <text x="132" y="311" class="label">5.2V upstream + TPS25810</text>
+  <text x="106" y="332" class="small">Function reserve: 125 x 120 mm</text>
+  <text x="106" y="351" class="small">#4092 config / PCB outlines TBD</text>
+  <text x="106" y="370" class="small">EVM not for product assembly</text>
 
   <!-- Known module outlines. Locations are envelope centers, not mounting-hole coordinates. -->
   <rect x="128.5" y="213.8" width="49" height="40.4" rx="3" class="known"/>
@@ -85,7 +85,7 @@
   <rect x="631" y="158" width="16" height="16" rx="2" class="driver"/>
   <text x="657" y="171" class="small">Motor driver at existing CAD position</text>
   <rect x="631" y="185" width="16" height="16" rx="2" class="reserve"/>
-  <text x="657" y="198" class="small">TI EVM allocated area (actual size unknown)</text>
+  <text x="657" y="198" class="small">5.2V converter + source PCB reserve (outline TBD)</text>
   <rect x="631" y="212" width="16" height="16" rx="2" class="access"/>
   <text x="657" y="225" class="small">Service zone with four WAGO carrier footprints</text>
   <rect x="631" y="239" width="16" height="16" rx="2" class="risk"/>
@@ -98,10 +98,10 @@
   <text x="631" y="380" class="small">TMC2209 #6121: X+35, Y+68 (existing CAD)</text>
   <text x="631" y="400" class="small">WAGO 221-503 x4: lower-right allocation</text>
   <text x="631" y="420" class="small">Inline fuse reserve; holders not sized</text>
-  <text x="631" y="440" class="small">TI TPS25810EVM-745: lower-left reserve</text>
+  <text x="631" y="440" class="small">#4092 custom spec + TPS25810 PCB needed</text>
 
   <text x="631" y="474" class="label">Open before dimensions are released</text>
-  <text x="631" y="498" class="small">1. TI board fit, holes and connector access</text>
+  <text x="631" y="498" class="small">1. Source PCB outline, connector and mounting</text>
   <text x="631" y="518" class="small">2. USB-C ports and rear-panel openings</text>
   <text x="631" y="538" class="small">3. WAGO wire / lever access; fuse holders</text>
   <text x="631" y="558" class="small">4. Cable routes, strain relief and pinch clearance</text>
