@@ -85,6 +85,13 @@ BOARD_CARRIER_T = 3; // 3mm PC candidate; not a fabrication release
 BOARD_CARRIER_ARM_D = 18; // hull width around the four diagonal arms
 BOARD_CARRIER_HOLE_D = 4.5; // board-side M4 clearance; confirm against received unit
 BOARD_CARRIER_FOOT_HOLE_D = 3.4; // support-plate M3 clearance
+// Adafruit TMC2209 #6121 envelope, mounted to the inside face of the removable rear cover.
+// Product dimensions: 26.6 x 24.1 x 10.3mm; fab print mounting-hole centers: 21.59 x 14.48mm.
+TMC_BOARD_CENTER = [35.000, 68.000];
+TMC_BOARD_X = 26.600;
+TMC_BOARD_Y = 24.100;
+TMC_BOARD_DEPTH = 10.300;
+REAR_INNER_Z = CASE_D - 2*WALL;
 ACTIVE_D = 87.6;
 GEAR_FACE_T = 6;
 GEAR_HUB_D = 16;
@@ -103,6 +110,7 @@ show_gears = true;
 show_board = true;
 show_board_carrier = true;
 show_motor = true;
+show_motor_driver = true;
 
 function gear_points(teeth, root_r, tip_r, phase=0) = [
   for (i = [0:teeth-1]) each [
@@ -275,10 +283,22 @@ module display_board_carrier() {
 
 module motor_and_coupler() {
   if (show_motor) {
-    // Nominal NBK coupling and NEMA-8 body envelopes; motor/board clearances remain unmeasured.
+    // Nominal NBK coupling and NEMA-8 body envelopes; motor mount and cable/terminal access remain unverified.
     color([0.69,0.71,0.67]) translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],57]) cylinder(d=14,h=22);
     color([0.28,0.34,0.38]) translate([COMPOUND_SHAFT[0]-10,COMPOUND_SHAFT[1]-10,81]) cube([20,20,33]);
     color([0.74,0.74,0.70]) translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],72]) cylinder(d=4,h=9,$fn=24);
+  }
+}
+
+module motor_driver_envelope() {
+  if (show_motor_driver) {
+    // Candidate location on the inside face of the removable rear cover.
+    // This is an envelope only: wiring, terminal access, and the carrier are not modeled.
+    color([0.42,0.24,0.63,0.72])
+      translate([TMC_BOARD_CENTER[0]-TMC_BOARD_X/2,
+                 TMC_BOARD_CENTER[1]-TMC_BOARD_Y/2,
+                 REAR_INNER_Z-TMC_BOARD_DEPTH])
+        cube([TMC_BOARD_X,TMC_BOARD_Y,TMC_BOARD_DEPTH]);
   }
 }
 
@@ -319,4 +339,5 @@ axial_hardware();
 display_board();
 display_board_carrier();
 motor_and_coupler();
+motor_driver_envelope();
 front_guard();
