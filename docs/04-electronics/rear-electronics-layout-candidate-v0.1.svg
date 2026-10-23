@@ -26,7 +26,7 @@
   <!-- Coordinates: case origin at center; 2 px/mm. Reference inner face 246 x 181 mm. -->
   <rect x="79" y="169" width="492" height="362" rx="3" class="case"/>
   <rect x="79" y="169" width="492" height="362" rx="3" class="usable"/>
-  <text x="79" y="151" class="dim">内面: 246×181mm（ケース見積基準v0.2）</text>
+  <text x="79" y="151" class="dim">内面: 246×181mm（ケース見積基準v0.3）</text>
   <text x="79" y="550" class="small">左=X- / 右=X+   下=Y- / 上=Y+   原点=ケース・3.4C中心</text>
 
   <!-- One 230x120mm PC tray spans the lower service zones; module outlines remain adjustable. -->
@@ -71,10 +71,14 @@
 
   <!-- Shared service zone x=+15..+115, y=-85..+35. Two five-way distribution blocks and three inline fuses. -->
   <rect x="355" y="280" width="200" height="240" rx="4" class="access"/>
-  <rect x="365" y="290" width="105.6" height="47.4" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
-  <rect x="365" y="350" width="105.6" height="47.4" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
-  <text x="418" y="319" class="small" text-anchor="middle">W1 221-415 / 221-505</text>
-  <text x="418" y="379" class="small" text-anchor="middle">W2 221-415 / 221-505</text>
+  <rect x="365" y="290" width="70" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
+  <rect x="440" y="290" width="70" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
+  <text x="400" y="337" class="small" text-anchor="middle">W1</text>
+  <text x="400" y="352" class="small" text-anchor="middle">221-415/505</text>
+  <text x="400" y="380" class="tiny" text-anchor="middle">35 x 52.8</text>
+  <text x="475" y="337" class="small" text-anchor="middle">W2</text>
+  <text x="475" y="352" class="small" text-anchor="middle">221-415/505</text>
+  <text x="475" y="380" class="tiny" text-anchor="middle">35 x 52.8</text>
   <rect x="365" y="410" width="175" height="96" rx="4" class="risk"/>
   <text x="372" y="430" class="small">F1 3A PD / F2 2A motor</text>
   <text x="372" y="451" class="small">F3 2A LED</text>

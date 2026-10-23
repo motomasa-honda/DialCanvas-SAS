@@ -18,13 +18,13 @@
 | Pololu #2851 | X=-48,Y=+58mm。メーカーの2か所の#2/M2取付穴を使い、M2×12mmねじ2本・M2ナット2個・長さ3mmのナイロンスペーサー2個で小型PC絶縁パッドへ固定。配線用はPololu #2494（0.1in/2.54mmピッチ5極、横出し）を使用 |
 | DS3231 #3013 | X=+85,Y=+50mm。小型PC絶縁パッド上で取付穴を使って二点固定し、CR1220へ背面カバーを外してアクセス |
 | TMC2209 #6121 | X=+35,Y=+68mm。4穴21.59×14.48mmを使いM2ねじで小型PC絶縁パッドへ固定。モーター端子を内側へ向ける |
-| WAGO 221-415×2 / 221-505×2 | 5極コネクターを+15V分配と共通GNDに1個ずつ使用。メーカーがねじ取付用としている221-505を3mm PCサービス板へ固定し、木製内桟は使わない。ねじ穴位置はキャリア現物に合わせる |
+| WAGO 221-415×2 / 221-505×2 | 5極コネクターを+15V分配と共通GNDに1個ずつ使用。221-415/221-505各組の配置域を35×52.8mmとし、100×120mmサービス域の上部に横並びで配置。221-505を3mm PCサービス板へ固定し、木製内桟は使わない。ねじ穴位置はキャリア現物に合わせる |
 | Amon 3367ヒューズホルダー×3 | 15V入力、9Vモーター、5V LEDの各枝に1個。リード線をサービス板の結束スロットへ固定 |
 | Neutrik NAUSBC-5G-FL10 | 背面カバー中心X=-86,Y=+78mm。メーカーD型開口24×19mm、固定穴2×Ø3.2mm/31mmピッチ。2×M3×25mm貫通ねじと座金/ナイロックナット。内側一体USB-Cリード100mmをHUSB238へ接続 |
 | NKK MN11SS1W01×2 | 右側板、y=+75mm、前面ガード内面からz=84/108mm。Ø6.5mm穴+キー溝。12mm壁の裏面を18×18×9.4mm座ぐりし、残り2.6mmをメーカーの最大パネル厚に合わせる |
 | ALPS EC11E15244G1 + Adafruit #5527 knob | 右側板、y=+75mm,z=132mm。φ7mm軸穴。内側を18×18×9.4mm座ぐりして本体/端子の逃げを作る。#5527は黒色・外径20mm・6mm D軸用で、つまみ押下も使う |
 
-背面電装の下部サービス板は光 KPAC303-1相当の透明PC 3mm板から230×120mmで切り出し、背面カバーP4の内側へ取り付けます。板の中心はケース中心からX=0,Y=-25mm、範囲はX=-115…+115、Y=-85…+35mmです。板には中心基準X=±105mm,Y=±50mmの4か所へØ3.5mm貫通穴を開け、P4の盲下穴へ合わせます。P4へはケース見積図A02 v0.3の下穴を使い、3.1×12mm木ねじとM3大径座金で留めます。ねじはPC板を通してP4へ約9mm入り、12mm厚を貫通しません。WAGO 221-505はメーカーのねじ取付部を使い、ねじ穴の正確な位置はキャリア現物を板へ置いて合わせます。DFR0758の寸法/穴は公開されていないため、同板上の125×120mm域に置き、結束バンド用スロットを組立時に位置合わせして開けます。DFR1015とヒューズリードも同じ板へ結束します。追加の木製内桟は不要です。
+背面電装の下部サービス板は光 KPAC303-1相当の透明PC 3mm板から230×120mmで切り出し、背面カバーP4の内側へ取り付けます。板の中心はケース中心からX=0,Y=-25mm、範囲はX=-115…+115、Y=-85…+35mmです。板には中心基準X=±105mm,Y=±50mmの4か所へØ3.5mm貫通穴を開け、P4の盲下穴へ合わせます。P4へはケース見積図A02 v0.3の下穴を使い、3.1×12mm木ねじとM3大径座金で留めます。ねじはPC板を通してP4へ約9mm入り、12mm厚を貫通しません。WAGO 221-505はメーカーのねじ取付部を使い、ねじ穴の正確な位置はキャリア現物を板へ置いて合わせます。221-415/221-505各組は35×52.8mmの予約域とし、2組を横並びに置いても100×120mmサービス域内に収まります。DFR0758の寸法/穴は公開されていないため、同板上の125×120mm域に置き、結束バンド用スロットを組立時に位置合わせして開けます。DFR1015とヒューズリードも同じ板へ結束します。追加の木製内桟は不要です。
 
 HUSB238、Pololu #2851、DS3231、TMC2209用の小型絶縁パッドも、同じ3mm PC材料の余りから切り出します。これらの位置候補と公開穴を使い、必要な穴だけを組立時に開けます。DFR0758の外形穴を推定した固定穴や、ケース本体の追加木桟は設けません。結束バンドは幅2.5mm・長さ150mmのナイロン品を共通使用します。WAGO 221-505の製品ページはねじ取付用であることを示していますが、ねじ径と取付穴位置は記載していないため、ここでは指定せず、キャリア現物に合わせて選びます。
 
@@ -61,4 +61,4 @@ Pololu #2851の5端子は0.1inピッチで、#2494も同じ0.1inピッチです�
 
 ## 参照仕様
 
-[Waveshare 3.4C](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[Adafruit HUSB238](https://learn.adafruit.com/case-for-husb238/assembly)、[Pololu #2851](https://www.pololu.com/product/2851)、[Pololu #2494](https://www.pololu.com/product/2494)、[WAGO 221-415](https://www.wago.com/global/installation-terminal-blocks-and-connectors/splicing-connector-with-levers/p/221-415)、[WAGO 221-505](https://www.wago.com/global/installation-terminal-blocks-and-connectors/mounting-carrier/p/221-505_000-004)、[NKK MN11SS1W01](https://www.nkkswitches.com/part/MN11SS1W01)、[Neutrik NAUSBC-5G](https://www.neutrik.com/en/product/nausbc-5g)、[ALPS EC11E15244G1](https://tech.alpsalpine.com/e/products/detail/EC11E15244G1/)、[Adafruit #5527 knob](https://www.adafruit.com/product/5527)。
+[Waveshare 3.4C](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[Adafruit HUSB238](https://learn.adafruit.com/case-for-husb238/assembly)、[Pololu #2851](https://www.pololu.com/product/2851)、[Pololu #2494](https://www.pololu.com/product/2494)、[WAGO 221-415](https://www.wago.com/global/installation-terminal-blocks-and-connectors/splicing-connector-with-levers/p/221-415)、[WAGO 221-505](https://www.wago.com/global/installation-terminal-blocks-and-connectors/mounting-carrier/p/221-505_000-004)、[221-505 data sheet](https://media.distrelec.com/Web/Downloads/_t/ds/221-505_eng_tds.pdf)、[NKK MN11SS1W01](https://www.nkkswitches.com/part/MN11SS1W01)、[Neutrik NAUSBC-5G](https://www.neutrik.com/en/product/nausbc-5g)、[ALPS EC11E15244G1](https://tech.alpsalpine.com/e/products/detail/EC11E15244G1/)、[Adafruit #5527 knob](https://www.adafruit.com/product/5527)。
