@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="330" viewBox="0 0 700 330" role="img" aria-labelledby="title desc">
+  <title id="title">BSS1-20C one-axis holding test fixture concept</title>
+  <desc id="desc">A gear hub is held by a stationary split clamp. A 6 millimeter shaft pin projects through the hub and carries a balanced lever. A 95 to 105 gram weight hangs 73 to 77 millimeters from the shaft center to apply torque in either direction.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#334155"/>
+    </marker>
+    <marker id="force" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#b45309"/>
+    </marker>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #172033; }
+      .head { font-size: 20px; font-weight: 700; }
+      .label { font-size: 14px; }
+      .small { font-size: 12px; fill: #475569; }
+      .gear { fill: #d6a94f; stroke: #8b5e17; stroke-width: 2; }
+      .clamp { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
+      .shaft { stroke: #475569; stroke-width: 8; stroke-linecap: round; }
+      .lever { stroke: #0f766e; stroke-width: 8; stroke-linecap: round; }
+      .ghost { stroke: #94a3b8; stroke-width: 5; stroke-dasharray: 7 5; }
+      .dim { stroke: #334155; stroke-width: 1.5; marker-start: url(#arrow); marker-end: url(#arrow); }
+      .forceLine { stroke: #b45309; stroke-width: 2; marker-end: url(#force); }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="700" height="330" fill="#ffffff"/>
+  <text class="head" x="24" y="32">1軸保持試験 — 原理図</text>
+  <text class="small" x="24" y="52">固定する歯車と、負荷を受ける軸を別々に支持する（図は概念図、寸法は注記を優先）</text>
+
+  <!-- Face-on arrangement: shaft axis is normal to the page. -->
+  <circle class="gear" cx="175" cy="153" r="34"/>
+  <circle cx="175" cy="153" r="25" fill="#f8fafc" stroke="#8b5e17" stroke-width="2"/>
+  <circle class="clamp" cx="175" cy="153" r="44" fill-opacity="0.55"/>
+  <path d="M143 128 A44 44 0 0 1 207 128" fill="none" stroke="#2563eb" stroke-width="5"/>
+  <path d="M143 178 A44 44 0 0 0 207 178" fill="none" stroke="#2563eb" stroke-width="5"/>
+  <circle cx="175" cy="153" r="7" fill="#64748b" stroke="#334155" stroke-width="2"/>
+  <text class="label" x="26" y="93">歯車ボスを割り型クランプで固定</text>
+  <path d="M168 98 L160 116" stroke="#334155" stroke-width="1.5"/>
+  <text class="label" x="25" y="236">固定クランプを台へねじ止め</text>
+  <path d="M176 218 L176 198" stroke="#334155" stroke-width="1.5"/>
+  <rect x="105" y="207" width="140" height="20" rx="3" fill="#cbd5e1" stroke="#64748b"/>
+
+  <!-- The lever is shown in either load direction. -->
+  <line class="lever" x1="175" y1="153" x2="300" y2="153"/>
+  <line class="ghost" x1="175" y1="153" x2="50" y2="153"/>
+  <text class="label" x="211" y="125">水平レバー</text>
+  <line class="dim" x1="184" y1="181" x2="287" y2="181"/>
+  <text class="label" x="207" y="203">吊り点まで r = 73–77 mm（目標75 mm）</text>
+
+  <line x1="300" y1="153" x2="300" y2="215" stroke="#b45309" stroke-width="3"/>
+  <rect x="280" y="215" width="40" height="48" rx="4" fill="#fde68a" stroke="#b45309" stroke-width="2"/>
+  <text class="label" x="329" y="234">95–105 g</text>
+  <line class="forceLine" x1="300" y1="263" x2="300" y2="285"/>
+  <text class="small" x="329" y="261">反対側へ掛け替えると</text>
+  <text class="small" x="329" y="278">逆方向のトルク</text>
+
+  <!-- Axial engagement detail. -->
+  <text class="label" x="503" y="92">軸方向の組み方</text>
+  <rect x="509" y="119" width="52" height="54" fill="#d6a94f" stroke="#8b5e17" stroke-width="2"/>
+  <rect x="561" y="138" width="97" height="16" rx="8" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+  <rect x="599" y="124" width="35" height="44" rx="7" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <line x1="634" y1="146" x2="670" y2="146" stroke="#0f766e" stroke-width="7"/>
+  <text class="small" x="506" y="195">ギア全長14 mm</text>
+  <text class="small" x="505" y="214">ピン把持 ≥10 mm</text>
+  <text class="small" x="505" y="233">6×30 mmピンをギア端へ寄せる。</text>
+  <text class="small" x="505" y="250">反対側へアダプターとレバーを付ける。</text>
+  <text class="small" x="505" y="267">合いマークが動けば治具滑り。</text>
+
+  <text class="small" x="24" y="309">T = m·g·r。最小条件 95 g × 73 mm ≈ 0.068 N·m。校正済みトルク計は不要。</text>
+</svg>
