@@ -2,11 +2,11 @@
 
 更新日：2026-10-22
 
-状態：**主要な既製部品は型番選定済み。カスタム加工部品・最終数量・実機適合は未完了。購入準備完了や発注承認ではない。**
+状態：**一台用の市販部品型番と数量、ケース見積寸法/曲線図を選定済み。28位置CADを今回の一台の数量根拠にする。ケース価格と実機受入は別途残る。発注実行の記録ではない。**
 
-購入前監査で、現行CADの単軸が指定ブッシュに入らない軸支持不整合と、DS1歯車の穴/軸固定条件未定義を確認した。現行の機械候補は[KHK BSS1-20C・6mm軸支持案](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)へ更新した。**全量購入はまだ保留**とする。1軸の止めねじ保持とブッシュ圧入、同材穴の試験片をPASSしてから4歯車試験へ進む。
+購入前監査で見つかった旧DS1/5mm案の不整合は[KHK BSS1-20C・6mm軸支持案](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)へ置き換えた。初号機は完成品一台を組む方針で、独立した圧入片・保持治具・4歯車試験片を全量購入前の必須条件にしない。市販部品はカタログ仕様で選定し、実際の取付と動作は完成品の組立時に確認する。
 
-旧DSF1は価格比較用に残し、現行候補の購入数量/寸法には使わない。機械候補の数量、軸方向スタック、4歯車の試験キットはBSS20の候補ノートを参照する。
+旧DSF1は価格比較用に残し、現行候補の購入数量/寸法には使わない。BSS20候補ノートには公称寸法と28位置の数量計算例を残すが、4歯車先行購入や独立試験キットは現行方針に含めない。
 
 本表は[設計ベースラインv0.21](../10-desk-redesign/design-baseline-v0.21.md)の部品候補です。静かな単一モーター、不規則な二層歯車、3.4型画面、microSD文字盤、USB-C給電を前提にします。旧7軸/M1部品は現行候補に含めません。
 
@@ -14,15 +14,15 @@
 
 ## 2026-10-22 部品選定の到達点
 
-**既製品の候補型番を探す作業は、主要品目についてほぼ終わっています。** これまでの「保留」は、型番未選定だけでなく、物理適合や製作図が未完という意味でも使われていたため、以下のように分けます。
+**一台分の市販部品の型番と数量は選定済みです。** 現行28位置CADを今回の一台の数量根拠として採用します。歯車数/軸数を製品要求に固定する意味はありません。
 
 | 区分 | 現在の判断 |
 |---|---|
-| 既製品の型番選定済み（試作ベースライン） | 表示器SKU31523、RTC #3013、ギアBSS1-20C、軸/ブッシュ/カラー/ワッシャー、モーター #4411、ドライバー #6121、継手、PD受電/#2851補助5V変換、microSD、LED、スイッチ、エンコーダー/ノブ、分岐端子、ヒューズホルダー。表示source上流は#4092の5.2Vメーカー設定変更を見積候補とするが、完成変換器/専用source基板は未選定。 |
-| 評価用1枚を選定済み | 支持板材はAS ONE 68-7869-18（透明PC 300×450×8mm）、前面ガードは光 KPAC303-1（透明PC 300×450×3mm）。型番を販売元へ再質問しない。受領板を採寸し、支持板材は同一板から圧入/4歯車試験片を切り出す。完成用の追加板・輪郭加工は受入後まで保留。 |
-| 今回追加で選定した電気小物 | ヒューズホルダーはエーモン3367、素子はLittelfuse MINI 297の市販5個箱 MIN2/MIN3/MIN4（2A/3A/4A）。値は入力3A、モーター2A、5V補助枝4A、LED2Aの初期候補。表示source枝保護値は未選定。同系列に1Aがないため旧1A枝を2Aへ置換。電流/温度受入で値を確認する。 |
-| カタログ型番ではなく製作するもの | 表示基板キャリア、支持板/歯車試験板、前面ガード切出し、ウォールナットケース、配線ハーネス。これらは既製品を探すのではなく、寸法図・加工仕様・組立順で決める。 |
-| 数量をまだ固定しないもの | 装飾歯車の最終個数と配置。28位置は計算例で、購入数量ではない。1軸照合から4歯車パイロットへ進む。 |
+| 既製品の型番/数量選定済み | 表示器SKU31523×1、RTC #3013×1、ギアBSS1-20C×28、軸/ブッシュ/カラー/ワッシャー、モーター #4411×1、ドライバー #6121×1、継手×1、PD受電/電源変換、ケーブル、microSD、LED/拡散板、側面操作部、WAGO/ヒューズ/保持具。数量は現行一台構成用。 |
+| 板材/ガード材を選定済み | 支持板はAS ONE 68-7869-18（透明PC 300×450×8mm）、前面ガードは光 KPAC303-1（透明PC 300×450×3mm）。公開商品仕様から型番選定済み。材料取りは一台用図面に記載。独立試験片は作らない。 |
+| 電気小物を選定済み | エーモン3367×3、Littelfuse MINI 297 0297002.LXN 2A×2枝、0297003.LXN 3A×1枝。枝はPD入力3A、モーター2A、LED2A。5V補助主幹ヒューズは追加しない。 |
+| カタログ型番ではなく製作するもの | 表示基板キャリア、完成支持板、前面ガード切出し、ウォールナットケース、配線ハーネス。加工輪郭は一台用CAD/見積図v0.2とハーネス表に定義。独立試験片は作らない。 |
+| 物理受入が残るもの | 噛み合い、音/温度、ケース溝の保持、電装全負荷。部品選定やカタログ購入を止めず、完成品の一台で確認する。 |
 
 1Aから2Aへの変更根拠は、Littelfuse 297 MINIの標準系列が32V・2〜30Aで、同社の小売5個箱も2Aから用意されていることです。試作時の電流が候補を超える場合は値を見直します。ここで列挙した部品モデル選定と、購入/製作/物理合格は別のゲートです。
 
@@ -31,43 +31,45 @@
 | 分類 | 部品・型番 | 数量/買い方 | 価格（参考） | 購入先 | 選定状態・残作業 |
 |---|---|---:|---:|---|---|
 | 表示・制御 | Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C / SKU31523、3.4型円形IPS 800×800 | 1（技術サンプル候補） | 旧価格スナップショット。見積/在庫未確認 | [Waveshare](https://www.waveshare.com/esp32-p4-wifi6-touch-lcd-3.4c.htm?sku=31523)・[The Pi Hut / WAV-31523](https://thepihut.com/products/esp32-p4-3-4-round-touch-display-dev-board-800x800)・[SpotPear](https://spotpear.com/shop/ESP32-P4-3.4-inch-Round-LCD-Display-TouchScreen-WIFI6/ESP32-P4-WIFI6-Touch-LCD-3.4C.html)・[RLX Components / WS-31523](https://rlx.sk/en/esp32-p4/10469-esp32-p4-34-round-touch-display-devboard-800800-dual-microphones-support-wi-fi-6bt5-le-ws-31523.html) | 型番選定済み。技術サンプルはWaveshare ESP32-P4-WIFI6-Touch-LCD-3.4C / SKU31523を1台とする。公式Drawingの前面Ø115mm、LCD有効Ø87.60mm、STEP包絡15.50mm、外周4×M4穴/75×78.5mmを設計基準にする。改版シルクやポート操作は受領後、キャリア/ケースの恒久加工前に確認し、小さな差は調整可能なキャリア側で吸収する。公開値の販売元照会は不要。販売元、在庫、日本配送、返品条件は注文時の通常確認。|
-| 表示基板保持 | KPAC303-1透明PC 3mmの4本腕キャリア候補。基板側M4×4、支持板B側M3×4。穴、キャリア、ねじスタック候補を[表示基板インターフェース](../03-mechanical/display-board-interface.md)に記録 | 1枚の評価材から切出す候補 | 既存の前面ガード用PC材と共用する机上案 | なし | 旧案は「M3ねじで表示基板を直接支持板へ固定」。現案は公式M4穴からキャリアを介して支持板Bへ固定。M4×8ねじ/2mm POM絶縁スペーサ、M3×25ねじ/6mm POM脚/座金/ナットまで寸法候補を定義。SKU31523のサンプル購入は公開寸法で選定済み。受領後の簡易仮組みで大きな干渉だけを確認してからキャリア/ケースを恒久加工する。|
+| 表示基板保持 | KPAC303-1透明PC 3mmの4本腕キャリア。基板側M4×4、支持板A側M3×4 | 前面ガード材の余りから1個切出し | 前面ガード用PC材と共用 | なし | M4×8ねじ/2mm POM絶縁スペーサ、M3×25ねじ/7mm支持スペーサ・座金・ナット各4組。個体改版照合は不要。組立時に問題が出た場合はキャリア側を調整。|
 | 文字盤媒体 | KIOXIA microSDHC 32GB Class 10/UHS-I U1 | 1 | ¥2,390 税込 | [ヨドバシ](https://www.yodobashi.com/product/100000001006382817/) | 800×800 JPEGをPCからコピーする用途。FAT32で初期化し、本体で読取・破損復帰を確認。|
 | 外付けRTC | Adafruit DS3231 Precision RTC Breakout #3013 | 1 | **約¥3,150 税込** | [DigiKey Japan](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/3013/5875808) | I²C 0x68。3.3V給電候補。CR1220はこのモジュールのホルダーへ装着し、3.4CのRTC端子には接続しない。回路・I2Cピン・保持動作は実機確認前。|
 | RTCバックアップ電池 | Maxell CR1220.1BS | 1 | **約¥220 税込** | [ヨドバシ（CR1220一覧）](https://www.yodobashi.com/category/21484/53821/53827/) | DS3231モジュール自身の電池ホルダー用。3.4C基板のRTC電池端子には一次電池を絶対に接続しない。電池は消耗品。|
-| 平歯車 | KHK BSS1-20C、M1、20T、6mm AH7穴、M4×4止めねじ1本付属 | 28個（4個パイロット後の候補） | ¥1,868/個、**¥52,304** | [MonotaRO](https://www.monotaro.com/p/8339/7215/)・[KHK寸法表](https://khkgears.net/pdf/bss.pdf) | **1軸試験前。全量購入保留。**単一型番で寸法取り違えを減らす候補。95〜105g重りと73〜77mmレバーで両方向約0.070N·mを保持できるか確認。別売止めねじは不要。28個は要求数ではない。|
-| 回転ブッシュ | OILES #80 80B-0608、内径6×外径8×長さ8mm | 28個（4個パイロット後の候補） | ¥51/個、**¥1,428** | [MonotaRO](https://www.monotaro.com/p/0045/9313/)・[OILES仕様](https://www.oilesglobal.com/en/files/bearing34.pdf) | **圧入試験片待ち。**軸6mm h7、穴8mm H7。ブッシュODは8.045〜8.157mmで公称しめしろ0.030〜0.157mm。PC支持板の成立は同材/同厚クーポンで確認。|
-| 単軸ピン | 大阪魂 SUS303 B種h7平行ピン 6×30mm、3本入 | 26本使用、9袋（27本） | ¥493/袋、**¥4,437** | [MonotaRO](https://www.monotaro.com/p/4215/6807/) | **パイロット前。**26単軸へ1本ずつ。残り1本を予備とする。|
-| 共通軸 | 大阪魂 SUS303 B種h7平行ピン 6×60mm、2本入 | 1本使用、1袋 | **¥934** | [MonotaRO](https://www.monotaro.com/p/4294/2453/) | **パイロット前。**切断なし候補。継手への7mm挿入と軸方向スタックを現物確認。|
-| 軸カラー | KANA KSC0605、ID6×OD12×幅5mm、M3止めねじ | 26個 | ¥208/個、**¥5,408** | [MonotaRO](https://www.monotaro.com/p/1029/5117/) | **パイロット前。**単軸26本の外側止めに1個ずつ使用。|
-| スラストワッシャー | 廣杉計器 0612-10、POM、ID6.3×OD12×t1mm、12枚入 | 54枚使用、5袋（60枚） | ¥615/袋、**¥3,075** | [MonotaRO](https://www.monotaro.com/p/4213/5143/) | **パイロット前。**28枚はギア側、26枚は単軸カラー側。6枚を予備。|
+| 平歯車 | KHK BSS1-20C、M1、20T、6mm AH7穴、M4×4止めねじ1本付属 | 28個（今回の一台のCAD数量） | ¥1,868/個、表示合計 **¥52,304** | [MonotaRO](https://www.monotaro.com/p/8339/7215/)・[KHK寸法表](https://khkgears.net/pdf/bss.pdf) | 今回の一台の構成数量として決定。製品要求/量産数ではない。カタログ穴と付属ねじを使い、独立保持治具は作らない。|
+| 回転ブッシュ | OILES #80 80B-0608、内径6×外径8×長さ8mm | 28個 | ¥51/個、表示合計 **¥1,428** | [MonotaRO](https://www.monotaro.com/p/0045/9313/)・[OILES仕様](https://www.oilesglobal.com/en/files/bearing34.pdf) | 6mm h7軸/Ø8 H7ハウジング穴。完成支持板へ組み、個別圧入試験片は作らない。|
+| 単軸ピン | 大阪魂 SUS303 B種h7平行ピン 6×30mm、3本入 | 26本使用、9袋（27本） | ¥493/袋、合計 **¥4,437** | [MonotaRO](https://www.monotaro.com/p/4215/6807/) | 今回の一台で26本を使用し、1本予備。|
+| 共通軸 | 大阪魂 SUS303 B種h7平行ピン 6×65mm、2本入 | 1本使用、1袋 | **¥648** | [MonotaRO](https://www.monotaro.com/p/4215/6886/) | A00/B00共通軸z=26–91mmに選定済み。1本予備。|
+| 軸カラー | KANA KSC0605、ID6×OD12×幅5mm、M3止めねじ | 26個 | ¥208/個、合計 **¥5,408** | [MonotaRO](https://www.monotaro.com/p/1029/5117/) | 共通軸には継手を使う。各単軸へ1個。|
+| スラストワッシャー | 廣杉計器 0612-10、POM、ID6.3×OD12×t1mm、12枚入 | 54枚使用、5袋（60枚） | ¥615/袋、合計 **¥3,075** | [MonotaRO](https://www.monotaro.com/p/4213/5143/) | 今回の軸方向スタックに合わせた数量。6枚予備。|
 | ステッパー | Adafruit NEMA-8 #4411、4mm軸 | 1 | 税別¥3,265、税込換算 **¥3,592** | [DigiKey](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/4411/11497509) | 200 step/rev、0.6A/相の候補。保持トルク・始動余裕・温度・負荷音は実機受入。|
 | モータードライバー | Adafruit TMC2209 breakout #6121 | 1 | 税別¥1,465、税込換算 **¥1,612** | [DigiKey](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/6121/25981358) | MS1/MS2開放で1/8、SPRD開放でStealthChop、EN HIGHで出力禁止。約0.3A RMSを初期評価点とするが、実電流調整と静音合格は未完。|
 | モーターVM TVS | Littelfuse SMBJ12A、unidirectional | 1 | 参考価格は調達時確認 | [Littelfuse](https://www.littelfuse.com/ja-jp/products/overvoltage-protection/tvs-diodes/surface-mount/smbj/smbj12a) | VM/GND近傍へ置く候補。VRWM=12V、最大クランプ19.9V。回生過渡の波形/エネルギーは未検証。|
 | ENN/STEP安全抵抗 | 10kΩ、ENN pull-upとSTEP pulldown | 2 | 価格僅少、購入候補表の小物へ別途追加 | 受動部品一般品 | ENN→VIO/3.3V、STEP→GNDの候補。実ドライバー基板のVIO/論理/外部プル状態と起動挙動を照合。|
 | 軸継手 | NBK MJT-14-RD-4-6、4mm↔6mm、外径14×全長22mm、ハブ長7mm | 1 | **¥2,167税込参考** | [NBK仕様](https://www.nbk1560.com/products/coupling/couplicon/jaw_type/MJT-RD/MJT-14-RD/MJT-14-RD-4-6/) | 6mm共通軸へ7mm挿入。モーター軸突出、後壁、実挿入深さ、止めねじ保持は現物確認。価格/在庫は注文前に再確認。|
-| USB-C PDアダプター | Anker 511 Charger (Nano 3, 30W) A2147 | 1 | **¥2,790 税込** | [Anker Japan](https://www.ankerjapan.com/products/a2147) | 9V/3A出力に対応する候補。9V時の電力上限は27W。全負荷時のPD契約、電圧降下、温度を測る。|
-| USB-Cケーブル | ELECOM MPA-CC10PNBK、C-C、1m、PD 60W | 1 | **¥1,720 税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-CC10PNBK.html) | 60W表示は本システムが60Wを得る意味ではない。ケーブル経由で9V契約・電圧降下を確認。|
-| PD受電 | Adafruit HUSB238 #5807 搭載基板（Switch Science ADA-5807） | 1 | **¥1,265 税込** | [Switch Science](https://www.switch-science.com/products/9296) | 9V/3Aをジャンパー設定する。PD電源が対応する契約だけ成立する。出荷初期値は5V/1Aなので設定と保護を確認。|
-| 5V変換 | Pololu D24V50F5 #2851、入力6–38V、5V出力 | 1 | 税別¥5,136、税込換算 **¥5,650** | [DigiKey](https://www.digikey.jp/ja/products/detail/pololu/2851/10451177)・[Pololu仕様](https://www.pololu.com/product/2851) | 旧#4082（3A級）から5A定格候補へ更新。Pololu直販ページは2026-10-21確認時に「Rationed (Active)」・バックオーダー可、US$32.95表示のため、購入前にDigiKey在庫/納期も再確認する。5Aは部品仕様であり、閉箱連続出力能力やシステム容量の保証ではない。LED等の補助負荷とモーターを含む全系統の電流/温度は測る。表示器は別の専用source枝から給電するため、この#2851行の負荷に含めない。|
+| USB-C PDアダプター | Anker 511 Charger (Nano 3, 30W) A2147 | 1 | **¥2,790 税込** | [Anker Japan](https://www.ankerjapan.com/products/a2147) | 15V/2A出力（30W）を使用。全負荷時のPD契約、電圧降下、温度は完成品で確認する。|
+| USB-Cケーブル | ELECOM MPA-CC10PNBK、C-C、1m、PD 60W | 1 | **¥1,720 税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-CC10PNBK.html) | 60W表示は本システムが60Wを得る意味ではない。ケーブル経由で15V/2A契約を使う。|
+| PD受電 | Adafruit HUSB238 #5807 搭載基板（Switch Science ADA-5807） | 1 | **¥1,265 税込** | [Switch Science](https://www.switch-science.com/products/9296) | 15V/2Aへ設定する。出荷初期値は5V/1Aなのでジャンパーを設定。|
+| 表示5V変換 | DFRobot DFR0758、10.5–32V入力、USB-A/Type-C出力、標準5V/最大3A | 1 | **US$6.50**（確認時表示） | [DFRobot](https://www.dfrobot.com/product-2166.html) | USB-A出力のみ使用し、ELECOM MPA-ACECSS03BKで3.4Cへ接続。Type-C出力は並列なので未使用。基板外形は非公表のため予約域内へ調整式キャリアで固定。|
+| モーター9V変換 | DFRobot DFR1015、15V入力、選択式9V出力 | 1 | **US$5.30**（確認時表示） | [DFRobot](https://www.dfrobot.com/product-2599.html) | 9V/2.5A（25°C、追加放熱なし）、基板27×20mm。受領後に9V設定を確認し、完成品のモーター負荷で温度を見る。|
+| 補助5V変換 | Pololu D24V50F5 #2851、入力6–38V、5V出力 | 1 | 税別¥5,136、税込換算 **¥5,650** | [DigiKey](https://www.digikey.jp/ja/products/detail/pololu/2851/10451177)・[Pololu仕様](https://www.pololu.com/product/2851) | 15V入力でLED等の補助負荷へ供給。5Aは部品仕様であり、閉箱連続出力能力やシステム容量の保証ではない。表示器はDFR0758から給電する。|
 | 5V出力端子 | Pololu #2494、0.1インチ/2.54mmピッチ5極ねじ端子台（2個入り） | #2851に1個使用、1個予備 | **US$4.37** | [Pololu](https://www.pololu.com/product/2494) | 26–18AWG、定格6Aの既製端子台。#2851の端子ピッチと周辺部品へのクリアランスを照合し、基板へはんだ付けする候補。|
-| 表示基板給電用USB-C source | TPS25810 IC搭載の専用Type-C source PCB、上流5.2V変換器はPololu D36V50F6 #4092のメーカー設定変更品を見積候補 | 特注変換器1、専用PCB1（回路/PCB設計後に数量確定） | **未算出**。#4092標準6V品はUS$34.95表示、特注費/運賃/税別。EVM価格を転用しない | [TI TPS25810](https://www.ti.com/product/TPS25810)・[TI datasheet](https://www.ti.com/lit/ds/symlink/tps25810.pdf)・[Pololu #4092](https://www.pololu.com/product/4092) | TPS25810EVM-745は評価基板のため完成品へ組み込まない（[ADR-0018](../../adr/0018-usb-c-source-board-replacement.md)）。#2851直結はsource receptacleの電圧下限を満たさない予算となる。#4092は5.2Vメーカー設定変更を見積候補としたが、9V入力時の5.2V±4%・3A連続、設定可否/温度/価格/納期は未確認。標準6V品を購入しない。専用PCB、受動部品、USB-C receptacle、source枝保護、基板外形/固定、実装費も未確定。IC候補の選定は発注指示ではない。|
-| 表示基板内部USB-Cケーブル | ELECOM MPA-XCCECSS03BK、C-C、0.3m | 1 | **¥1,430税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-XCCECSS03BK.html) | 専用TPS25810 source基板から3.4CのUSB TO UART入力までの給電用候補。書込み/デバッグ時は内部給電ケーブルを外し、PCを接続。|
+| 表示基板給電用専用PCB/特注変換器 | #4092特注5.2V変換器、TPS25810専用source PCB | 0 | **現行案では不使用** | — | [ADR-0019](../../adr/0019-cots-usb-c-power-module.md)で市販DFRobot DFR0758へ置換。特注見積・専用PCB設計・EVM購入は不要。|
+| 表示基板内部USB給電ケーブル | ELECOM MPA-ACECSS03BK、USB-A - USB Type-C、0.3m、最大5V/3A | 1 | **¥1,144税込**（公式表示） | [ELECOM](https://www.elecom.co.jp/products/MPA-ACECSS03BK.html) | DFR0758 USB-A出力から3.4C USB TO UART入力へ給電。書込み/デバッグ時は内部給電ケーブルを外し、PCを接続。|
 | 暖色LED | DFRobot FIT0836、5V、暖色、60LED/m、1m品 | 1本から約330mm使用 | 税別¥982、税込換算 **¥1,080** | [DigiKey](https://www.digikey.jp/en/products/detail/dfrobot/FIT0836/15283059)・[DFRobot仕様](https://www.dfrobot.com/product-2398.html) | 1m上限4Wから330mmは最大約1.32W/0.264Aの試算。調査時DigiKey在庫3、標準納期表示9週。切断長・拡散材・木部温度を確認。|
 | LED拡散板 | 光 A032-2US、乳白半透明アクリル、2mm、160×180mm | 1枚 | **¥472 税込** | [MonotaRO](https://www.monotaro.com/g/00025130/) | 既製板を小片に切り出す候補。安価で扱いやすいが可燃性のため、LEDから距離をとり、閉箱連続点灯で板・木部温度を測ってから配置する。光量低下と点光源の消え方も確認。|
-| ヒューズホルダー | エーモン 3367、MINI平型、電線約9cm | 4個（入力・モーター・5V主幹・LED枝） | ¥549/個、**¥2,196** | [MonotaRO](https://www.monotaro.com/g/05234920/) | Littelfuse MINI 297系列を使う。ホルダーは15A以下対応。導線・端子・突入・故障試験後に値を最終確認。 |
-| ヒューズ素子 | Littelfuse MINI 297 aftermarket、MIN2 / MIN3 / MIN4（32V、2A/3A/4A、各5個箱） | MIN2×1箱、MIN3×1箱、MIN4×1箱。実使用は2A×2、3A×1、4A×1 | 調達時確認 | [Littelfuse MINI aftermarket](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/automotive-aftermarket-products-fuses/blade-fuses-shunts-automotive-aftermarket/mini)・[297公式データシート](https://www.littelfuse.com/assetdocs/littelfuse-datasheet-297-mini32v?assetguid=42c9dd21-a88e-4328-8e67-2f832444faf1) | 小売包装の型番まで選定済み。2A=モーター/LED、3A=PD入力、4A=5V主幹の初期候補。同系列に1Aはない。値は電流/温度/導線の試験後に確定。 |
+| ヒューズホルダー | エーモン 3367、MINI平型、電線約9cm | 3個（入力・モーター・LED枝） | ¥549/個、**¥1,647** | [MonotaRO](https://www.monotaro.com/g/05234920/) | Littelfuse MINI 297系列用。15V入力、9Vモーター、5V LEDの3枝へ各1個。|
+| ヒューズ素子 | Littelfuse MINI 297、0297002.LXN (2A) / 0297003.LXN (3A) | MIN2×1箱、MIN3×1箱。使用は2A×2、3A×1 | 調達時確認 | [Littelfuse MINI aftermarket](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/automotive-aftermarket-products-fuses/blade-fuses-shunts-automotive-aftermarket/mini)・[297公式データシート](https://www.littelfuse.com/assetdocs/littelfuse-datasheet-297-mini32v?assetguid=42c9dd21-a88e-4328-8e67-2f832444faf1) | 3枝構成として数量選定済み。5V補助主幹の4Aヒューズは使わない。余りは予備。|
 | 配線 | UL1007 AWG22、赤/黒、各10m | 各1ロール | ¥956/巻、**¥1,912** | [赤](https://www.monotaro.com/p/6242/6946/)・[黒](https://www.monotaro.com/p/6242/6928/) | 電源枝に加え、#4411モーター4芯を#6121へ接続する短い延長/変換線にも使う候補。赤/黒を各2本使う場合はA1/A2/B1/B2の識別ラベルを両端へ付ける。線長は背面カバー配置で切る。22AWGは#6121の公開26–20AWG端子範囲内。はんだ接続の絶縁/固定と温度は受入で確認。|
-| 電源分岐端子 | WAGO 221-413 3極レバー端子 + 221-503 ねじ固定キャリア | 各4個（9V+/9V GND/5V+/5V GNDの4節点） | 税込換算 **約¥1,914** | [221-413](https://www.digikey.jp/ja/products/detail/wago-corporation/221-413/13549610)・[221-503](https://www.digikey.jp/ja/products/detail/wago-corporation/221-503/15547037)・[WAGO寸法/取付](https://www.wago.com/global/installation-terminal-blocks-and-connectors/mounting-carrier/p/221-503) | 221-413は24–12AWG対応、221-503で木製内桟へねじ固定する候補。DigiKey表示の税別単価¥124/¥311から計算。各＋枝は分岐後に負荷別ヒューズを置く。モーター電流の戻りを画面基板GNDへ通さず、結線後に極性/導通/短絡を検査する。|
-| ロータリーエンコーダー | ALPS Alpine EC11E15244G1、押し込み付き、15 pulse/30 detent | 1 | 税別¥273、税込換算 **¥300** | [フルタカパーツ](https://www.furutaka-netsel.co.jp/maker/alps/ec11) | 操作候補。6mm Dカット軸。回転方向、押下、長押し誤認とパネル配置を確認。|
-| エンコーダーノブ | Sato Parts K-8075-6.1、穴6.1mm、M3止めねじ、φ26×17.3mm | 1 | **¥295 税込** | [マルツ](https://www.marutsu.co.jp/GoodsDetail.jsp?salesGoodsCode=2978) | 上記エンコーダーに組み合わせる候補。指が当たる周囲、木壁との隙間を模型で確認。|
+| 電源分岐端子 | WAGO 221-415 5極レバー端子 + 221-505 取付台 | 2組（+15V分配/GND共通） | 調達時確認 | [221-415](https://www.wago.com/global/installation-terminal-blocks-and-connectors/splicing-connector-with-levers/p/221-415)・[221-505](https://www.wago.com/global/installation-terminal-blocks-and-connectors/mounting-carrier/p/221-505_000-004) | 5極端子2個を対応する取付台221-505 2個へ固定。配線長は実際の経路から切り出す。|
+| ロータリーエンコーダー | ALPS Alpine EC11E15244G1、押し込み付き、15 pulse/30 detent | 1 | 税別¥273、税込換算 **¥300** | [フルタカパーツ](https://www.furutaka-netsel.co.jp/maker/alps/ec11) | 回転で文字盤を移動、短押しで選択、長押しで歯車停止/再開。右側面z=132mm。|
+| エンコーダーノブ | Adafruit #5527、黒、外径20mm、6mm D軸用 | 1 | 参考価格は調達時確認 | [Adafruit](https://www.adafruit.com/product/5527) | EC11E15244G1の6mm D軸に組合せ。|
 | 独立スイッチ | NKK MN11SS1W01、SPST ON/OFF | 2 | ¥1,307/個、**¥2,614** | [DigiKey](https://www.digikey.jp/ja/products/detail/nkk-switches/MN11SS1W01/20840209) | モーター枝と照明枝に各1個。6.5mmパネル穴候補。モーター側は分岐2Aヒューズ候補の後段でTMC2209 VMを直接遮断。旧M1 eFuseを使わない。定格と実回路を照合。|
-| 前後支持板評価材 | AS ONE 68-7869-18 透明PC 300×450×8mm。1枚から252×187mm支持板2枚、100×56mm試験板、20×20mm圧入片を切出す候補 | 評価用1枚 | ¥11,180税別（掲載価格スナップショット。注文時に再確認） | [AXEL / AS ONE](https://axel.as-1.co.jp/asone/d/68-7869-18/) | **型番選定済み・評価用。購入指示ではない。**受領時に材質表示/厚さ/反りを測り、同じ板から試験片を先に切る。圧入/4歯車PASS前に全面支持板へ穴加工しない。未掲載公差/端材の問い合わせは不要。|
-| 前面ガード | 光 KPAC303-1、透明PC 300×450×3mm | 1枚（評価材。輪郭加工は原本確定後） | **¥1,750 税込**（調査時表示） | [ヨドバシ](https://www.yodobashi.com/product/100000001001981779/)・[AS ONE仕様](https://axel.as-1.co.jp/asone/d/61-2121-64/) | 型番/材質/公称寸法は選定済み。購入指示ではない。曲線輪郭は寸法入り原本後に決める。反射/傷/たわみ/枠保持/指到達は現物評価し、注文時に在庫/価格を再確認する。|
-| 曲線ケース枠 | ウォールナット無垢材、曲線フレーム用 | 数量/荒材寸法は最終展開図から算出 | 見積待ち | サプライヤ未選定 | 材種方針はFIXED。木目方向、乾燥/等級、必要厚、最小曲げ/継ぎ手、仕上げを外観原本と加工図で確定してから荒材を選定。ラワンを外観材の代替にしない。|
-| 広面ケース/背面化粧 | ウォールナット天然木突板合板 | 数量/板厚/基材は最終展開図から算出 | 見積待ち | サプライヤ未選定 | 材種方針はFIXED。突板樹種/木目/板厚、基材、裏面バランス、エッジ処理、塗装を確認。Visible surfaceにラワンを使わない。|
-| 背面板/端子キャリアねじ | 八幡ねじ 3.1×13mm超低頭木ねじ NI(中) | 94本袋、背面板6本 + キャリア最大8本を想定 | **¥329 税込** | [MonotaRO](https://www.monotaro.com/p/0928/0635/) | 背面板を既存12mm箱材から作る連続桟へ留める候補。WAGOキャリアの取付穴に径/頭が合う場合は同じ袋から各2本使用する。穴適合、下穴、端距離、キャリア底厚を含むねじ先端の非貫通を実物で確認。ヒンジなし。|
-| 木部仕上げ | WATCOオイル W-13 ダークウォルナット、200mL | 1缶 | **¥2,230 税込** | [ヨドバシ](https://www.yodobashi.com/product/100000001006190266/) | 端材で色と塗布量を試す。使用済み布の発熱/発火注意に従い水に浸して処分。|
+| 前後支持板材 | AS ONE 68-7869-18 透明PC 300×450×8mm。252×187mmを2枚切出し | 1枚 | ¥11,180税別/枚（価格スナップショット） | [AXEL / AS ONE](https://axel.as-1.co.jp/asone/d/68-7869-18/) | 一枚の規格板から二枚を材料取り。独立試験板/圧入片は作らない。|
+| 前面ガード | 光 KPAC303-1、透明PC 300×450×3mm | 1枚 | **¥1,750 税込**（調査時表示） | [ヨドバシ](https://www.yodobashi.com/product/100000001001981779/)・[AS ONE仕様](https://axel.as-1.co.jp/asone/d/61-2121-64/) | ガード270×205×3と表示キャリアを同一板から切出す一台用材料。曲線開口輪郭はケース見積図A01/A02 v0.2に座標指定済み。|
+| ウォールナットケース一台分キット | P1無垢枠1 (270×205×9); P2突板合板2 (205×148×12); P3突板合板2 (246×148×12); P4着脱背板1 (270×205×12); G1 PC2 (252×187×8); G2 PC1 (270×205×3) | 1式 | かない製作所へ見積予定 | [A01/A02 v0.2](../03-mechanical/walnut_case_candidate-2026-10-22.md) | 外寸270×205×172/内寸246×181×148。P1波形下辺、9×4溝、操作/USB口を指定。自然色・艶消しクリア。価格/納期/送料と木目/等級を見積で決める。
+| ケース留め具 | 背面板用 3.1×25mm木ねじ8本（ケース製作先の適合品） | ケースキットに含めて見積 | 見積対象 | かない製作所 | P4の8穴に合わせたねじをキットへ含めてもらう。キャリア固定ねじ等は指定済み電子/機械BOMの標準金物を使う。
+
+
 
 ## 2. 価格のまとめ
 
@@ -107,22 +109,22 @@
 |---|---|---|
 | 3.4Cの改版/表示 | Waveshare SKU31523、USB TO UART Type-Cから5V給電 | 基板改版、取付穴、厚み、端子、最大電流、画質、熱を受入。40-pinへ5Vを注入しない。|
 | 外付けRTC | Adafruit DS3231 #3013 + CR1220をモジュール自身のホルダーへ。3.3V給電 | GPIO28/29、I²Cプルアップ、SNTP更新、電池保持、ネット断/停電後復旧を確認。CR1220を3.4C RTC端子へ接続しない。|
-| Type-C表示source | #4092のメーカー設定変更による5.2V上流変換と、TPS25810 IC搭載専用source基板を候補化。#2851は補助5V用、EVMは完成品候補から除外（ADR-0018） | 5.2V設定の可否/精度/9V入力時3A連続/温度/価格/納期を確認し、専用回路/PCB/BOMを設計後、CC広告、電流制限、source出力、温度、3.4Cの実電流を受入。現時点でいずれも購入可能な組合せではない。|
-| USBデバッグ | 通常運転時はTPS25810搭載専用source基板からUSB TO UARTへ給電する設計候補 | フラッシュ/デバッグ時は内蔵給電ケーブルを外しPCへ接続。二つの5V源を同時接続しない。|
-| ヒューズ | Littelfuse MINI 297、入力3A/モーター2A/5V補助枝4A/LED2Aの初期候補。表示source枝の保護値は未選定 | 実負荷、突入、故障電流、導線/端子/ホルダーの許容値と時間特性で最終確認。|
+| 表示5V source | DFRobot DFR0758のUSB-A標準5V出力をMPA-ACECSS03BKでUSB TO UART Type-Cへつなぐ（ADR-0019） | 標準型番を選定済み。完成品で表示器を起動し、最大輝度/Wi-Fi/microSD負荷のときに電圧と安定動作を一度確認する。特注確認・専用PCB設計は不要。|
+| USBデバッグ | 通常運転時はDFR0758 USB-AからA-CケーブルでUSB TO UARTへ給電 | フラッシュ/デバッグ時は内部給電ケーブルを外しPCへ接続。二つの5V源を同時接続しない。|
+| ヒューズ | Littelfuse MINI 297、入力3A/モーター2A/LED2Aの3枝選定済み。5V補助主幹ヒューズは追加しない | 完成品の実負荷・異常時保護を受入。枝の追加は現行構成に含めない。|
 | モーター停止 | 9V→2A MINIヒューズ候補→独立SPST→TMC2209 VM | リセット/brownout/無配線時のENN HIGH、長押し停止、SPSTでの直接VM遮断を確認。旧M1 eFuseは含めない。|
 | モーター過電圧 | SMBJ12A VM clamp候補、10kΩ ENN pull-up、10kΩ STEP pulldown | back-drive/急停止時のVM波形、TVS温度、ドライバー定格、起動中のSTEP/ENNを測定。|
-| 電源容量 | #2851補助5V枝はLED最大1.32Wの既知負荷。表示sourceは別の9V枝で#4092特注5.2V候補→TPS25810。15WはType-C広告目標で表示器の実消費電力ではない | 表示/無線/SD、LED、モーターを同時に動かし、各枝の実電流、電圧降下、閉箱温度を記録。実測前の総電力/PD余裕は未算出。|
-| 機械取付 | 270×205×145mm参照、ウォールナット、8mm透明支持板、3mmガード候補 | 基板/配線/端子/保護板の実寸、穴/溝、指到達、前後整備、原本外観を照合し加工図を出す。|
+| 電源容量 | PD入力は15V/2A（30W）。DFR0758表示枝、DFR1015 9Vモーター枝、#2851補助5V/LED枝 | 画面/無線/SD、LED、モーターを同時に動かし、PD入力と各枝が安定することを完成品で確認。電力余裕は実機受入で確定。|
+| 機械取付 | 外寸270×205×172mm、内寸246×181×148mm。ウォールナットケース見積図A01/A02 v0.2。8mm透明支持板と3mmガードを型番選定済み | 見積回答と接合方法を発注前に図へ反映。表示/配線/保護板/整備性は完成品の組立で受入。|
 | 外観素材 | 承認済みForest Guardian参照ボード | 高解像度文字盤原画・使用条件・出典を確認する（FG-038/OQ-10）。|
 
 ## 4. 基板設計とソフトウェアの境界
 
-- 表示/主制御は完成開発基板、PD受電はHUSB238、5V変換はPololu基板、Type-C sourceはTPS25810搭載専用基板を設計候補、モーター駆動はTMC2209ブレークアウトを候補とする。TPS25810EVMは完成品へ組み込まない。
+- 表示/主制御は完成開発基板、PD受電はHUSB238、表示5VはDFRobot DFR0758、モーター9VはDFRobot DFR1015、補助5VはPololu基板、モーター駆動はTMC2209ブレークアウトを候補とする。TPS25810専用基板とEVMは現行案に含めない。
 - 新設計で使うモーター保護のベースラインは分岐ヒューズ、独立スイッチ、ENN安全初期値、VM TVS候補。旧M1 eFuse、故障ラッチ、旧7軸ワンホット配線を新設計へ持ち込まない。
 - ESP-IDF v5.5.5、Waveshare BSP 3.0.1、LVGL 9、Espressif `esp_jpeg` 1.3.1をソフトウェア基準に記録。mainのCIで安全既定設定とモーター出力有効設定の対象ビルドは成功済み。
 - CI/ホストテストは基板GPIO、実表示、RTC保持、モーター音/温度、電源容量、筐体加工の受入ではない。DR-02〜06はValidationStatus OPEN、DR-07はHOLD。
 
 ## 5. 調査元
 
-価格・型番は各行の購入先へ記載。技術仕様は[Waveshare公式資料](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[NEMA-8 #4411](https://www.adafruit.com/product/4411)、[TMC2209 #6121](https://www.adafruit.com/product/6121)、[NBK MJT資料](https://www.nbk1560.com/products/coupling/couplicon/jaw_type/MJT-RD/)、[HUSB238 #5807](https://www.adafruit.com/product/5807)、[Pololu #2851](https://www.pololu.com/product/2851)、[DFRobot FIT0836](https://www.dfrobot.com/product-2398.html)を参照。オンライン価格・在庫は変動するため、調達時に再確認する。
+価格・型番は各行の購入先へ記載。技術仕様は[Waveshare公式資料](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[NEMA-8 #4411](https://www.adafruit.com/product/4411)、[TMC2209 #6121](https://www.adafruit.com/product/6121)、[NBK MJT資料](https://www.nbk1560.com/products/coupling/couplicon/jaw_type/MJT-RD/)、[HUSB238 #5807](https://www.adafruit.com/product/5807)、[DFRobot DFR0758](https://www.dfrobot.com/product-2166.html)、[DFRobot DFR1015](https://www.dfrobot.com/product-2599.html)、[ELECOM MPA-ACECSS03BK](https://www.elecom.co.jp/products/MPA-ACECSS03BK.html)、[Pololu #2851](https://www.pololu.com/product/2851)、[DFRobot FIT0836](https://www.dfrobot.com/product-2398.html)を参照。オンライン価格・在庫は変動するため、調達時に再確認する。

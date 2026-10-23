@@ -22,39 +22,48 @@ PILOT_SVG_OUT = ROOT / "four_gear_bss20_pilot.svg"
 
 CASE_W, CASE_H = 270.0, 205.0
 WALL = 12.0
+FRONT_FRAME = 9.0
+FRONT_GUARD = 3.0
+INNER_REAR_Z = 148.0
+CASE_D = FRONT_FRAME + FRONT_GUARD + INNER_REAR_Z + WALL
 INSIDE_W, INSIDE_H = CASE_W - 2 * WALL, CASE_H - 2 * WALL
 BOARD = 115.0
-OPENING = 120.0
+OPENING_A = 119.0
+OPENING_B = 120.0
 ACTIVE_D = 87.6
 SUPPORT_OD = 8.0
 THRUST_WASHER_OD = 12.0
 TEETH_MAP = {18: 20, 20: 20, 24: 20, 28: 20}
 SUPPORTED_TEETH = {20}
 
-# Axial proposal: front guard -3..0; one thrust washer on each side of each
-# supported plate; 30mm single pins; 60mm compound pin; motor body ends at z=114.
+# Axial proposal: display in front, followed by gear layers A/B and motor.
+# The gear/motor train is shifted 22mm rearward to leave the display and its
+# carrier ahead of the first gear. Case depth is increased to keep the 7mm rear gap.
 A_STACK = {
-    "shaft_start": 1.0, "shaft_end": 31.0,
-    "collar_start": 1.0, "collar_end": 6.0,
-    "collar_washer_start": 6.0, "collar_washer_end": 7.0,
-    "plate_start": 7.0, "plate_end": 15.0,
-    "gear_washer_start": 15.0, "gear_washer_end": 16.0,
-    "hub_start": 16.0, "hub_end": 24.0,
-    "face_start": 24.0, "face_end": 30.0,
+    "shaft_start": 23.0, "shaft_end": 53.0,
+    "collar_start": 23.0, "collar_end": 28.0,
+    "collar_washer_start": 28.0, "collar_washer_end": 29.0,
+    "plate_start": 29.0, "plate_end": 37.0,
+    "gear_washer_start": 37.0, "gear_washer_end": 38.0,
+    "hub_start": 38.0, "hub_end": 46.0,
+    "face_start": 46.0, "face_end": 52.0,
 }
 B_STACK = {
-    "shaft_start": 33.0, "shaft_end": 63.0,
-    "face_start": 33.0, "face_end": 39.0,
-    "hub_start": 39.0, "hub_end": 47.0,
-    "gear_washer_start": 47.0, "gear_washer_end": 48.0,
-    "plate_start": 48.0, "plate_end": 56.0,
-    "collar_washer_start": 56.0, "collar_washer_end": 57.0,
-    "collar_start": 57.0, "collar_end": 62.0,
+    "shaft_start": 55.0, "shaft_end": 85.0,
+    "face_start": 55.0, "face_end": 61.0,
+    "hub_start": 61.0, "hub_end": 69.0,
+    "gear_washer_start": 69.0, "gear_washer_end": 70.0,
+    "plate_start": 70.0, "plate_end": 78.0,
+    "collar_washer_start": 78.0, "collar_washer_end": 79.0,
+    "collar_start": 79.0, "collar_end": 84.0,
 }
 COMPOUND = {
-    "shaft_start": 4.0, "shaft_end": 64.0,
-    "coupler_start": 57.0, "coupler_end": 79.0,
-    "motor_face": 81.0, "motor_end": 114.0,
+    # The B-side collar occupies z=79..84; start the 22mm coupling after it.
+    # Preserve 7mm insertion on the 6mm shaft, a 2mm gap to the motor face,
+    # and 7mm motor-rear clearance to the removable rear panel.
+    "shaft_start": 26.0, "shaft_end": 91.0,
+    "coupler_start": 84.0, "coupler_end": 106.0,
+    "motor_face": 108.0, "motor_end": 141.0,
 }
 
 
@@ -87,6 +96,11 @@ def reflow(rows: list[dict[str, str]]) -> list[dict[str, float | int | str]]:
             if row["layer"] == "B" and row["gear_id"] == "B06":
                 angle = math.radians(4.0)
                 dx, dy = dx * math.cos(angle) - dy * math.sin(angle), dx * math.sin(angle) + dy * math.cos(angle)
+            # Move A11 outward around the screen edge so its OILES seat and thrust washer
+            # retain a useful web around the Ø119mm module clearance opening.
+            if row["layer"] == "A" and row["gear_id"] == "A11":
+                angle = math.radians(8.0)
+                dx, dy = dx * math.cos(angle) - dy * math.sin(angle), dx * math.sin(angle) + dy * math.cos(angle)
             center_distance = (teeth + int(prev_new["teeth"])) / 2
             x = float(prev_new["x"]) + dx / length * center_distance
             y = float(prev_new["y"]) + dy / length * center_distance
@@ -112,7 +126,7 @@ def rect_distance(x: float, y: float, bounds: tuple[float, float, float, float])
 def validate(layers: dict[str, list[dict[str, float | int | str]]]) -> dict[str, float | int]:
     cx, cy = INSIDE_W / 2, INSIDE_H / 2
     board_bounds = (cx - BOARD / 2, cy - BOARD / 2, cx + BOARD / 2, cy + BOARD / 2)
-    open_bounds = (cx - OPENING / 2, cy - OPENING / 2, cx + OPENING / 2, cy + OPENING / 2)
+    open_bounds = (cx - OPENING_B / 2, cy - OPENING_B / 2, cx + OPENING_B / 2, cy + OPENING_B / 2)
     min_edge = min_display_gap = min_web = min_washer_web = min_nonmesh = min_washer_gap = float("inf")
     max_mesh_error = 0.0
     projected_overlaps = 0
@@ -127,7 +141,7 @@ def validate(layers: dict[str, list[dict[str, float | int | str]]]) -> dict[str,
             edge = min(x - radius, INSIDE_W - x - radius, y - radius, INSIDE_H - y - radius)
             display_gap = math.hypot(x - cx, y - cy) - radius - ACTIVE_D / 2
             web = (
-                math.hypot(x - cx, y - cy) - 112 / 2 - SUPPORT_OD / 2
+                math.hypot(x - cx, y - cy) - OPENING_A / 2 - SUPPORT_OD / 2
                 if layer_key == "A"
                 else rect_distance(x, y, open_bounds) - SUPPORT_OD / 2
             )
@@ -135,7 +149,7 @@ def validate(layers: dict[str, list[dict[str, float | int | str]]]) -> dict[str,
             min_display_gap = min(min_display_gap, display_gap)
             min_web = min(min_web, web)
             washer_web = (
-                math.hypot(x - cx, y - cy) - 112 / 2 - THRUST_WASHER_OD / 2
+                math.hypot(x - cx, y - cy) - OPENING_A / 2 - THRUST_WASHER_OD / 2
                 if layer_key == "A"
                 else rect_distance(x, y, open_bounds) - THRUST_WASHER_OD / 2
             )
@@ -181,10 +195,16 @@ def validate(layers: dict[str, list[dict[str, float | int | str]]]) -> dict[str,
         raise ValueError("A/B axial separation or support stack is inconsistent")
     if A_STACK["collar_washer_end"] != A_STACK["plate_start"] or B_STACK["collar_washer_end"] != B_STACK["plate_end"] + 1:
         raise ValueError("shaft collar position does not match the support plate")
+    if B_STACK["collar_end"] != COMPOUND["coupler_start"]:
+        raise ValueError("compound shaft collar and coupling must not overlap")
     if COMPOUND["coupler_start"] - COMPOUND["shaft_end"] + 7 != 0:
         raise ValueError("compound shaft insertion must be 7mm")
-    if 121 - COMPOUND["motor_end"] != 7:
+    if COMPOUND["motor_face"] - COMPOUND["coupler_end"] != 2:
+        raise ValueError("leave 2mm between coupling and motor face")
+    if INNER_REAR_Z - COMPOUND["motor_end"] != 7:
         raise ValueError("motor rear clearance should be 7mm in this draft")
+    if CASE_D != FRONT_FRAME + FRONT_GUARD + INNER_REAR_Z + WALL:
+        raise ValueError("case depth does not match the axial envelope")
     return {
         "gear_count": 28,
         "shaft_count": 27,
@@ -219,7 +239,7 @@ def write_schedule(layers: dict[str, list[dict[str, float | int | str]]]) -> Non
                 stack = A_STACK if layer_key == "A" else B_STACK
                 if shared:
                     record = {
-                        "shaft_group": "compound-01", "shaft_type": "6mm h7 parallel pin, 60mm stock; supplier/finish check OPEN",
+                        "shaft_group": "compound-01", "shaft_type": "6mm h7 parallel pin, 65mm stock; catalog length selected",
                         "shaft_z_start_mm": COMPOUND["shaft_start"], "shaft_z_end_mm": COMPOUND["shaft_end"],
                         "collar_z_start_mm": "", "collar_z_end_mm": "",
                         "collar_washer_z_start_mm": "", "collar_washer_z_end_mm": "",
@@ -278,11 +298,11 @@ def draw_svg(layers: dict[str, list[dict[str, float | int | str]]], metrics: dic
         board_y = WALL + (INSIDE_H - BOARD) / 2
         elements.append(f'<rect class="board" x="{sx(panel,board_x):.1f}" y="{sy(board_y):.1f}" width="{BOARD*scale:.1f}" height="{BOARD*scale:.1f}" rx="5"/>')
         if layer_key == "A":
-            elements.append(f'<circle class="opening" cx="{sx(panel,WALL+INSIDE_W/2):.1f}" cy="{sy(WALL+INSIDE_H/2):.1f}" r="{56*scale:.1f}"/>')
+            elements.append(f'<circle class="opening" cx="{sx(panel,WALL+INSIDE_W/2):.1f}" cy="{sy(WALL+INSIDE_H/2):.1f}" r="{OPENING_A/2*scale:.1f}"/>')
         else:
-            opx = WALL + (INSIDE_W - OPENING) / 2
-            opy = WALL + (INSIDE_H - OPENING) / 2
-            elements.append(f'<rect class="opening" x="{sx(panel,opx):.1f}" y="{sy(opy):.1f}" width="{OPENING*scale:.1f}" height="{OPENING*scale:.1f}"/>')
+            opx = WALL + (INSIDE_W - OPENING_B) / 2
+            opy = WALL + (INSIDE_H - OPENING_B) / 2
+            elements.append(f'<rect class="opening" x="{sx(panel,opx):.1f}" y="{sy(opy):.1f}" width="{OPENING_B*scale:.1f}" height="{OPENING_B*scale:.1f}"/>')
         for a, b in zip(gears, gears[1:]):
             elements.append(f'<line class="mesh" x1="{sx(panel,float(a["x"])+WALL):.1f}" y1="{sy(float(a["y"])+WALL):.1f}" x2="{sx(panel,float(b["x"])+WALL):.1f}" y2="{sy(float(b["y"])+WALL):.1f}"/>')
         klass = "gearA" if layer_key == "A" else "gearB"
@@ -319,12 +339,12 @@ def draw_pilot_svg(gears: list[dict[str, float | int | str]]) -> None:
     sy = lambda y: y0 + y * scale
     items = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="700" height="430" viewBox="0 0 700 430" role="img" aria-labelledby="title desc">',
-        '<title id="title">Four-gear BSS1-20C pilot plate layout</title>',
-        '<desc id="desc">100 by 56 by 8 millimeter one-plane test plate. Four 20-tooth gears at 20 millimeter center spacing. Hole size and material remain subject to a bushing coupon test.</desc>',
+        '<title id="title">Four-gear BSS1-20C layout excerpt</title>',
+        '<desc id="desc">A four-gear excerpt from the current one-off layout. It is not a separate pilot plate, purchase step, or test coupon.</desc>',
         '<rect width="700" height="430" fill="#faf9f4"/>',
         '<style>text{font-family:DejaVu Sans,sans-serif;fill:#29251f}.title{font-size:22px;font-weight:bold}.sub{font-size:13px;fill:#625c54}.plate{fill:#edf4f2;stroke:#477a78;stroke-width:2}.gear{fill:#d7a84e;fill-opacity:.74;stroke:#8d5d1c;stroke-width:2}.hub{fill:#f7e2ad;stroke:#68491d;stroke-width:1.5}.bore{fill:#fff;stroke:#333;stroke-width:1.2}.bush{fill:none;stroke:#277f82;stroke-width:2;stroke-dasharray:4 3}.mesh{stroke:#796344;stroke-width:1;stroke-dasharray:4 3}.id{font-size:12px;font-weight:bold}.small{font-size:12px}.tiny{font-size:10px;fill:#625c54}</style>',
-        '<text class="title" x="35" y="32">4歯車・BSS20C手回し試験配置</text>',
-        '<text class="sub" x="35" y="54">100 × 56 × 8 mm plate · 4 axes · nominal layout only</text>',
+        '<text class="title" x="35" y="32">4歯車の配置抜粋</text>',
+        '<text class="sub" x="35" y="54">現行の一台用配置から抜粋 · 別体試験板ではありません</text>',
         f'<rect class="plate" x="{sx(0):.1f}" y="{sy(0):.1f}" width="{100*scale:.1f}" height="{56*scale:.1f}"/>',
     ]
     for (gear_a, ax, ay), (gear_b, bx, by) in zip(points, points[1:]):
@@ -339,8 +359,8 @@ def draw_pilot_svg(gears: list[dict[str, float | int | str]]) -> None:
         items.append(f'<text class="id" x="{sx(x)-15:.1f}" y="{sy(y)+4:.1f}">{gear_id}</text>')
         items.append(f'<text class="tiny" x="{sx(x)-30:.1f}" y="{sy(y)+69:.1f}">{x:.3f}, {y:.3f}</text>')
     items.extend([
-        '<text class="small" x="35" y="390">BSS1-20C ×4 · 6×30 h7 pin ×4 · OILES 80B-0608 ×4 · Ø8 H7 bush seats · same-material coupon first</text>',
-        '<text class="tiny" x="35" y="410">Dashed teal circles show nominal bushing OD8. Gear outline is a catalog OD22 envelope, not a tooth drawing.</text>',
+        '<text class="small" x="35" y="390">BSS1-20C ×4 · 6×30 h7 pin · OILES 80B-0608 · Ø8 H7穴</text>',
+        '<text class="tiny" x="35" y="410">破線はブッシュ外径の公称包絡。歯形はカタログ外径の円で、加工図ではありません。</text>',
         '</svg>',
     ])
     PILOT_SVG_OUT.write_text("\n".join(items), encoding="utf-8")

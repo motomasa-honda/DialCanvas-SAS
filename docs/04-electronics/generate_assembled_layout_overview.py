@@ -101,7 +101,14 @@ def draw_front(root, gears):
     rect(root, left, top, outer_w, outer_h, "a-walnut", rx="8")
     rect(root, inner_left, inner_top, 246 * scale, 181 * scale, "a-window", rx="2")
 
-    # The support plates are each 252 x 187 mm and sit partly in the case grooves.
+    # Rear gear plane first, then the front plane. The display is in front of both.
+    for gear in sorted(gears, key=lambda item: (item["layer"] == "A", item["id"])):
+        gx, gy = cx + gear["x"] * scale, cy - gear["y"] * scale
+        cls = "a-gear-a" if gear["layer"] == "A" else "a-gear-b"
+        circle(root, gx, gy, 11 * scale, cls)
+        circle(root, gx, gy, 2.5 * scale, "a-gear-bore")
+
+    # The support plates sit behind the display; A has a Ø119mm opening.
     rect(root, cx - 252 * scale / 2, cy - 187 * scale / 2, 252 * scale, 187 * scale,
          "a-support-outline", rx="2")
 
@@ -118,13 +125,6 @@ def draw_front(root, gears):
     line(root, cx, cy, cx + 5 * scale, cy - 23 * scale, "a-hand-hour")
     line(root, cx, cy, cx + 22 * scale, cy + 8 * scale, "a-hand-minute")
     circle(root, cx, cy, 2.0 * scale, "a-hand-hub")
-
-    # Rear gear plane first, then the front plane, matching their physical order.
-    for gear in sorted(gears, key=lambda item: (item["layer"] == "A", item["id"])):
-        gx, gy = cx + gear["x"] * scale, cy - gear["y"] * scale
-        cls = "a-gear-a" if gear["layer"] == "A" else "a-gear-b"
-        circle(root, gx, gy, 11 * scale, cls)
-        circle(root, gx, gy, 2.5 * scale, "a-gear-bore")
 
     # Outer frame and internal support outline are called out without hiding the arrangement.
     rect(root, left, top, outer_w, outer_h, "a-case-outline", rx="8")
@@ -146,9 +146,9 @@ def draw_front(root, gears):
     text(root, 58, 688, "現在の歯車配置は計算例です（A層14個＋B層14個）。", "a-note-strong")
     text(root, 58, 710, "歯車数・軸数は製品仕様で固定されていません。", "a-note")
     circle(root, 77, 731, 10, "a-gear-a")
-    text(root, 95, 737, "A層：z=24–30mm（前側）", "a-note")
+    text(root, 95, 737, "A層：z=46–52mm（画面の後ろ）", "a-note")
     circle(root, 355, 731, 10, "a-gear-b")
-    text(root, 373, 737, "B層：z=33–39mm（後側）", "a-note")
+    text(root, 373, 737, "B層：z=55–61mm（後側）", "a-note")
     rect(root, 622, 721, 22, 18, "a-support-outline")
     text(root, 652, 737, "透明支持板", "a-note")
     text(root, 58, 779, "歯車は外径Ø22mmの円で表示。歯形・振れ・配線・固定部品は省略。", "a-note")
@@ -156,7 +156,7 @@ def draw_front(root, gears):
 
 def draw_side(root):
     # s is distance from the exterior front face; s = z + 12 mm in the current CAD.
-    scale = 1.9
+    scale = 1.6
     x0, top = 858.0, 273.0
     h = 205 * scale
     bottom = top + h
@@ -164,69 +164,80 @@ def draw_side(root):
     yy = lambda y: top + (102.5 - y) * scale
 
     # Case envelope, inner cavity rails, clear front guard, and removable rear cover.
-    rect(root, x(0), top, 145 * scale, h, "a-side-outline")
-    rect(root, x(12), top, 121 * scale, 12 * scale, "a-case-wall")
-    rect(root, x(12), bottom - 12 * scale, 121 * scale, 12 * scale, "a-case-wall")
-    rect(root, x(133), top, 12 * scale, h, "a-rear-cover")
+    rect(root, x(0), top, 172 * scale, h, "a-side-outline")
+    rect(root, x(12), top, 148 * scale, 12 * scale, "a-case-wall")
+    rect(root, x(12), bottom - 12 * scale, 148 * scale, 12 * scale, "a-case-wall")
+    rect(root, x(160), top, 12 * scale, h, "a-rear-cover")
     rect(root, x(9), top, 3 * scale, h, "a-guard")
 
-    # Plate sections: openings leave the center clear for the display module.
-    center_top = yy(56)
-    center_bottom = yy(-56)
-    rect(root, x(19), top + 12 * scale, 8 * scale, center_top - (top + 12 * scale), "a-plate-a")
-    rect(root, x(19), center_bottom, 8 * scale, bottom - 12 * scale - center_bottom, "a-plate-a")
+    # Plate sections: openings leave the display module clear.
+    center_top = yy(60)
+    center_bottom = yy(-60)
+    rect(root, x(41), top + 12 * scale, 8 * scale, center_top - (top + 12 * scale), "a-plate-a")
+    rect(root, x(41), center_bottom, 8 * scale, bottom - 12 * scale - center_bottom, "a-plate-a")
     b_top, b_bottom = yy(60), yy(-60)
-    rect(root, x(60), top + 12 * scale, 8 * scale, b_top - (top + 12 * scale), "a-plate-b")
-    rect(root, x(60), b_bottom, 8 * scale, bottom - 12 * scale - b_bottom, "a-plate-b")
+    rect(root, x(82), top + 12 * scale, 8 * scale, b_top - (top + 12 * scale), "a-plate-b")
+    rect(root, x(82), b_bottom, 8 * scale, bottom - 12 * scale - b_bottom, "a-plate-b")
 
     # Display cylinder envelope through the rear support aperture.
-    display_left, display_right = x(56.5), x(72)
     display_top, display_bottom = yy(57.5), yy(-57.5)
+    display_left, display_right = x(13.5), x(29)
     rect(root, display_left, display_top, display_right - display_left,
          display_bottom - display_top, "a-display-side", rx="8")
 
+    # Front-side display carrier; its four feet land on support A before the first gear face.
+    rect(root, x(31), yy(44), 3 * scale, yy(-44) - yy(44), "a-carrier-side")
+
     # Gear cross-sections at the shared A00/B00 compound axis.
     gear_cy = yy(68)
-    rect(root, x(36), gear_cy - 11 * scale, 6 * scale, 22 * scale, "a-gear-a-side", rx="3")
-    rect(root, x(45), gear_cy - 11 * scale, 6 * scale, 22 * scale, "a-gear-b-side", rx="3")
-    line(root, x(42), gear_cy, x(45), gear_cy, "a-shaft")
+    rect(root, x(58), gear_cy - 11 * scale, 6 * scale, 22 * scale, "a-gear-a-side", rx="3")
+    rect(root, x(67), gear_cy - 11 * scale, 6 * scale, 22 * scale, "a-gear-b-side", rx="3")
+    line(root, x(64), gear_cy, x(67), gear_cy, "a-shaft")
 
     # Candidate 3 mm carrier and motor drive set from the envelope model.
-    rect(root, x(74), yy(44), 3 * scale, yy(-44) - yy(44), "a-carrier-side")
-    rect(root, x(69), gear_cy - 7 * scale, 22 * scale, 14 * scale, "a-coupler-side", rx="5")
-    rect(root, x(93), gear_cy - 10 * scale, 33 * scale, 20 * scale, "a-motor-side", rx="4")
-    line(root, x(91), gear_cy, x(93), gear_cy, "a-shaft")
+    rect(root, x(96), gear_cy - 7 * scale, 22 * scale, 14 * scale, "a-coupler-side", rx="5")
+    rect(root, x(120), gear_cy - 10 * scale, 33 * scale, 20 * scale, "a-motor-side", rx="4")
+    line(root, x(118), gear_cy, x(120), gear_cy, "a-shaft")
 
     # Centerline, depth dimensions, and labels.
-    line(root, x(0), yy(0), x(145), yy(0), "a-centerline")
-    line(root, x(72), top - 25, x(133), top - 25, "a-dim", marker_start="url(#arrow)", marker_end="url(#arrow)")
-    text(root, (x(72) + x(133)) / 2, top - 34, "表示器背面〜背面電装面：61mm", "a-dim-text", text_anchor="middle")
-    line(root, x(126), gear_cy - 42, x(133), gear_cy - 42, "a-dim", marker_start="url(#arrow)", marker_end="url(#arrow)")
-    text(root, (x(126) + x(133)) / 2, gear_cy - 50, "7 mm", "a-dim-text", text_anchor="middle")
-    arrow_dim(root, x(0), bottom + 32, x(145), bottom + 32, "145mm（参考）", (x(0) + x(145)) / 2, bottom + 52)
+    line(root, x(0), yy(0), x(172), yy(0), "a-centerline")
+    line(root, x(29), top - 25, x(160), top - 25, "a-dim", marker_start="url(#arrow)", marker_end="url(#arrow)")
+    text(root, (x(29) + x(160)) / 2, top - 34, "表示器背面〜背面電装面：約131mm", "a-dim-text", text_anchor="middle")
+    line(root, x(153), gear_cy - 42, x(160), gear_cy - 42, "a-dim", marker_start="url(#arrow)", marker_end="url(#arrow)")
+    text(root, (x(153) + x(160)) / 2, gear_cy - 50, "7 mm", "a-dim-text", text_anchor="middle")
+    arrow_dim(root, x(0), bottom + 32, x(172), bottom + 32, "172mm（一台用）", (x(0) + x(172)) / 2, bottom + 52)
     text(root, x(0), bottom + 76, "前面", "a-note-strong")
-    text(root, x(145), bottom + 76, "背面", "a-note-strong", text_anchor="end")
+    text(root, x(172), bottom + 76, "背面", "a-note-strong", text_anchor="end")
 
     # Layer labels remain outside the physical stack so the section stays readable.
     text(root, 1150, 352, "単一モーター", "a-note-strong")
     text(root, 1150, 373, "NEMA-8候補", "a-note")
-    line(root, x(109), gear_cy - 8, 1142, 366, "a-callout")
+    line(root, x(136), gear_cy - 8, 1142, 366, "a-callout")
     text(root, 1150, 414, "カップリング／複合軸", "a-note-strong")
-    line(root, x(80), gear_cy + 12, 1142, 420, "a-callout")
-    text(root, 1150, 478, "歯車層A：z=24–30", "a-note-strong")
-    text(root, 1150, 500, "歯車層B：z=33–39", "a-note-strong")
-    line(root, x(48), gear_cy - 3, 1142, 484, "a-callout")
+    line(root, x(107), gear_cy + 12, 1142, 420, "a-callout")
+    text(root, 1150, 478, "歯車層A：z=46–52", "a-note-strong")
+    text(root, 1150, 500, "歯車層B：z=55–61", "a-note-strong")
+    line(root, x(70), gear_cy - 3, 1142, 484, "a-callout")
     text(root, 1150, 550, "3.4C一体基板", "a-note-strong")
-    text(root, 1150, 572, "前面ガラス：z=44.5", "a-note")
+    text(root, 1150, 572, "前面ガラス：z=1.5", "a-note")
     line(root, display_right, yy(8), 1142, 557, "a-callout")
-    text(root, 1150, 628, "支持板A：z=7–15", "a-note")
-    text(root, 1150, 650, "支持板B：z=48–56", "a-note")
-    line(root, x(64), yy(-60), 1142, 635, "a-callout")
+    text(root, 1150, 628, "支持板A：z=29–37", "a-note")
+    text(root, 1150, 650, "支持板B：z=70–78", "a-note")
+    line(root, x(86), yy(-60), 1142, 635, "a-callout")
     text(root, 1150, 700, "着脱式背面カバー", "a-note-strong")
     text(root, 1150, 722, "補助電装は内面に配置", "a-note")
-    line(root, x(133), yy(-36), 1142, 706, "a-callout")
+    line(root, x(160), yy(-36), 1142, 706, "a-callout")
 
-    text(root, 858, 820, "模式断面。ケーブル経路・整備空間は未確認。", "a-note")
+    # Right-side controls: two switches and one rotary encoder. The side view
+    # uses the exterior front as x=0, so internal z coordinates include 12 mm.
+    for depth in (96, 120):
+        circle(root, x(depth), yy(75), 4.5, "a-switch-side")
+        line(root, x(depth), yy(75) - 8, x(depth) + 4, yy(75) - 15, "a-switch-lever")
+    circle(root, x(144), yy(75), 5.5, "a-switch-side")
+    line(root, x(144), yy(75), x(144) + 6, yy(75) - 2, "a-switch-lever")
+
+    text(root, 1150, 755, "右側面：NKK×2 z=84/108、EC11 z=132, y=+75", "a-note")
+    text(root, 858, 820, "模式断面。奥行172mmは一台用の名目寸法。組立後に配線・カバー開閉を確認。", "a-note")
 
 
 def draw_rear(root):
@@ -238,26 +249,34 @@ def draw_rear(root):
     y = lambda mm: cy - mm * s
     rect(root, cx - case_w / 2, cy - case_h / 2, case_w, case_h, "a-rear-outline", rx="5")
     rect(root, x(-123), y(90.5), 246 * s, 181 * s, "a-rear-inner", rx="2")
-    text(root, cx, cy + case_h / 2 + 22, "背面カバー外形：270×205mm（暫定）", "a-mini", text_anchor="middle")
+    text(root, cx, cy + case_h / 2 + 22, "背面カバー外形：270×205mm（一台用）", "a-mini", text_anchor="middle")
 
-    # The zone reserves work area for the unquoted #4092 custom converter and TPS25810 source PCB.
+    # The zone reserves work area for COTS DFR0758/DFR1015 modules and their wiring.
     rect(root, x(-118), y(35), 125 * s, 120 * s, "a-reserve", rx="6")
-    text(root, x(-112), y(35) + 26, "#4092 5.2V変換", "a-mini-strong")
-    text(root, x(-112), y(35) + 45, "TPS25810 source", "a-mini-strong")
+    text(root, x(-112), y(35) + 26, "DFR0758 / DFR1015", "a-mini-strong")
+    text(root, x(-112), y(35) + 45, "USB-A 5V + 9V変換", "a-mini-strong")
     text(root, x(-112), y(35) + 65, "125×120mm機能/作業予約", "a-mini")
-    text(root, x(-112), y(35) + 84, "基板外形ではない", "a-mini")
+    text(root, x(-112), y(35) + 84, "DFR0758外形未公表・調整固定", "a-mini")
 
-    # Shared service zone for four carriers and an unsized fuse/switch reserve.
+    # Shared service zone for two 5-way distribution blocks and three inline fuses.
     wx, wy = x(15), y(35)
     rect(root, wx, wy, 100 * s, 120 * s, "a-service-zone", rx="5")
-    # WAGO mounting carrier footprints are shown rotated; operating clearance is excluded.
-    carrier_w, carrier_h = 23.7 * s, 52.8 * s
-    positions = [(wx + 8, wy + 8), (wx + 48, wy + 8), (wx + 8, wy + 84), (wx + 48, wy + 84)]
-    for index, (px, py) in enumerate(positions, 1):
-        rect(root, px, py, carrier_w, carrier_h, "a-wago", rx="3")
-        text(root, px + carrier_w / 2, py + carrier_h / 2 + 4, f"W{index}", "a-mini", text_anchor="middle")
-    rect(root, wx + 101, wy + 8, 31, 146, "a-unselected", rx="3")
-    text(root, wx + 116.5, wy + 86, "F", "a-mini-strong", text_anchor="middle")
+    # 221-505 carriers are represented by their 5-way connector envelopes.
+    carrier_w, carrier_h = 52.8 * s, 23.7 * s
+    for index, py in enumerate((wy + 10, wy + 42), 1):
+        rect(root, wx + 8, py, carrier_w, carrier_h, "a-wago", rx="3")
+        text(root, wx + 8 + carrier_w / 2, py + carrier_h / 2 + 4, f"W{index} 221-415", "a-mini", text_anchor="middle")
+    # Inline fuse holders are wire-mounted; reserve strip allows replacement access.
+    rect(root, wx + 8, wy + 78, 88 * s, 30 * s, "a-fuse-strip", rx="4")
+    for index, py in enumerate((wy + 80, wy + 89, wy + 98), 1):
+        rect(root, wx + 14, py, 72 * s, 5 * s, "a-fuse", rx="2")
+        fuse = ("3A IN", "2A MOT", "2A LED")[index - 1]
+        text(root, wx + 14, py + 4, f"F{index} {fuse}", "a-mini")
+    text(root, wx + 8, wy + 119, "Amon 3367 ×3", "a-mini-strong")
+
+    # Rear-cover USB-C power inlet, positioned above the HUSB238 breakout.
+    rect(root, x(-98), y(87.5), 24 * s, 19 * s, "a-usbc-port", rx="4")
+    text(root, x(-86), y(65), "PD IN", "a-mini-strong", text_anchor="middle")
 
     def board(px, py, bw, bh, title, subtitle, klass="a-board"):
         rect(root, px, py, bw, bh, klass, rx="3")
@@ -278,17 +297,17 @@ def draw_rear(root):
     text(root, 1890, 372, "5V補助：#2851", "a-mini")
     text(root, 1890, 394, "RTC：DS3231", "a-mini")
     text(root, 1890, 416, "DRV：TMC2209", "a-mini")
-    text(root, 1890, 438, "WAGO取付台×4", "a-mini")
-    text(root, 1890, 460, "ヒューズ保持具", "a-mini")
-    text(root, 1890, 481, "未選定", "a-mini")
+    text(root, 1890, 438, "WAGO 221-415×2", "a-mini")
+    text(root, 1890, 460, "WAGO取付台221-505×2", "a-mini")
+    text(root, 1890, 481, "MINI 3367保持具×3", "a-mini")
     text(root, 1890, 519, "破線枠は割当範囲", "a-mini-strong")
     text(root, 1890, 540, "部品外形ではありません", "a-mini")
     text(root, 1890, 576, "モーター軸投影", "a-mini")
 
     text(root, 1443, 630, "補助電装は着脱式背面カバー内面に配置する案。", "a-note-strong")
     text(root, 1443, 655, "source用枠は機能/作業の予約域。専用基板の外形ではありません。", "a-note")
-    text(root, 1443, 681, "3.4C一体基板はこの面から約61mm前方。", "a-note")
-    text(root, 1443, 715, "未確定：source回路/基板寸法、配線、保持具、ケース開口。", "a-note")
+    text(root, 1443, 681, "3.4C基板の後端からこの面まで約131mm。", "a-note")
+    text(root, 1443, 715, "Neutrik USB-C入力とNKKスイッチの開口はケース案へ反映。", "a-note")
 
 
 def build():
@@ -351,6 +370,11 @@ def build():
       .a-service-zone { fill: #e8efdb; stroke: #718957; stroke-width: 1.5; stroke-dasharray: 5 4; }
       .a-wago { fill: #dce7cd; stroke: #718957; stroke-width: 1.3; }
       .a-unselected { fill: #f6dddd; stroke: #aa5959; stroke-width: 1.3; stroke-dasharray: 4 3; }
+      .a-fuse-strip { fill: #f8e1da; stroke: #aa5959; stroke-width: 1.2; stroke-dasharray: 3 2; }
+      .a-fuse { fill: #f0c2b7; stroke: #8b5148; stroke-width: 1; }
+      .a-usbc-port { fill: #d9e7ef; stroke: #54788d; stroke-width: 1.5; }
+      .a-switch-side { fill: #f3d7a2; stroke: #886b35; stroke-width: 1.5; }
+      .a-switch-lever { stroke: #886b35; stroke-width: 2.5; stroke-linecap: round; }
       .a-board { fill: #d9e7ef; stroke: #54788d; stroke-width: 1.4; }
       .a-driver { fill: #e5d9f0; stroke: #745493; stroke-width: 1.4; }
       .a-projection { fill: #f6dddd; fill-opacity: .55; stroke: #aa5959; stroke-width: 1.4; stroke-dasharray: 4 3; }
@@ -380,10 +404,10 @@ def build():
     rect(root, 25, 963, 2050, 395, "a-warning", rx="12")
     text(root, 52, 1007, "この図が示す構成", "a-footer-strong")
     text(root, 52, 1040, "表示・主制御は前面のWaveshare ESP32-P4 3.4C一体基板。単一モーターで装飾歯車列を動かす案です。", "a-footer")
-    text(root, 52, 1070, "電源変換、RTC、モータードライバー、分岐端子は着脱式背面カバー内面に配置。配線経路は未確定です。", "a-footer")
+    text(root, 52, 1070, "画面→歯車→単一モーターの順。補助電装は着脱式背面カバー内面に配置します。", "a-footer")
     text(root, 52, 1125, "未確定・未確認", "a-footer-strong")
-    text(root, 52, 1158, "外箱270×205×145mmは暫定。#4092特注変換器とTPS25810専用source基板は未確定。コネクター／ケーブル、ヒューズ・スイッチ保持具、工具空間、熱、配線は未確認です。", "a-footer")
-    text(root, 52, 1188, "ケース開口・配線・取付部品の加工には使わないでください。実機組立、物理試験、製造リリースは未実施です。", "a-footer")
+    text(root, 52, 1158, "一台用ケース包絡は270×205×172mm。入力口・操作部・ヒューズの型番と開口寸法を図面に反映しています。", "a-footer")
+    text(root, 52, 1188, "この図は配置説明用。実機組立・通電受入・かない製作所への最終加工図ではありません。", "a-footer")
     line(root, 52, 1214, 2045, 1214, "a-rule")
     text(root, 52, 1251, "色：黄土／茶＝歯車層｜青緑＝表示器・透明支持板｜紫／黄＝背面基板・割当枠｜破線＝候補位置", "a-footer")
     text(root, 52, 1290, "参照：design-baseline-v0.21.md / bss20_clock_envelope_review.scad / gear_axis_schedule_bss20_candidate.csv / rear-harness-and-mount-candidate-v0.1.md", "a-footer")

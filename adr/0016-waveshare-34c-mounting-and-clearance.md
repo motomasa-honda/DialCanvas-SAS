@@ -5,6 +5,8 @@
 - 関連: [設計ベースラインv0.21](../docs/10-desk-redesign/design-baseline-v0.21.md)、[表示基板インターフェース](../docs/03-mechanical/display-board-interface.md)、[BSS20候補](../docs/03-mechanical/bss20_axis_support_candidate-2026-10-22.md)、[購入前監査](../docs/02-architecture/purchase-readiness-audit-2026-10-21.md)
 - 置換: ADR-0010の表示外形・固定穴・奥行・ガラス位置に関する机上仮定、およびADR-0015判断5の表示ガラスz=40mm/1mm名目すき間を置換する。歯車・支持板・ケースの機械候補は変更しない。
 
+> 配置に関する追記（2026-10-22）: ここに記録したガラス面z=44.50mm、支持板Bへのキャリア固定は、画面を歯車より前に置くユーザー意図と逆だったため[ADR-0020](0020-display-first-axial-stack.md)で置換した。SKU31523のカタログ寸法・穴パターン・15.50mm包絡は引き続き設計基準。
+
 ## 背景
 
 公式Drawing ZIPのPDF/DXF/STEPを比較した結果、従来の115×115mm角基板、75×75mm穴パターン、z=40mm表示面という記録に誤り/不足があった。表示外周の4穴は内部PCB固定ねじ列と異なるパターンである。外周とB00歯車の投影干渉が判明したため、穴・深さ・表示面位置を同じ机上基準へ統合する。

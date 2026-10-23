@@ -4,70 +4,70 @@
 $fn = 48;
 
 A_GEARS = [
-  [20.000, 0.000, 68.000, 16.000, 24.000, 7.000, 15.000, -1.000, -1.000],
-  [20.000, -19.651, 64.279, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -38.953, 59.043, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -56.124, 48.788, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -60.871, 29.359, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -75.860, 16.118, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -68.950, -2.650, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -64.502, -22.150, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -59.539, -41.524, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -45.152, -55.417, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -26.922, -63.644, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, -6.923, -63.825, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, 12.811, -67.072, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000],
-  [20.000, 31.972, -61.339, 16.000, 24.000, 7.000, 15.000, 1.000, 6.000]
+  [20.000, 0.000, 68.000, 38.000, 46.000, 29.000, 37.000, -1.000, -1.000],
+  [20.000, -19.651, 64.279, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -38.953, 59.043, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -56.124, 48.788, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -60.871, 29.359, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -75.860, 16.118, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -68.950, -2.650, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -64.502, -22.150, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -59.539, -41.524, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -45.152, -55.417, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -26.922, -63.644, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, -7.143, -66.606, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, 12.592, -69.854, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000],
+  [20.000, 31.752, -64.120, 38.000, 46.000, 29.000, 37.000, 23.000, 28.000]
 ];
 B_GEARS = [
-  [20.000, 0.000, 68.000, 39.000, 33.000, 48.000, 47.000, -1.000, -1.000],
-  [20.000, -19.297, 73.255, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -38.595, 68.000, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -57.542, 74.403, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -74.863, 64.403, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -92.378, 54.749, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -77.847, 41.007, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -92.014, 26.890, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -77.847, 12.773, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -93.303, 0.080, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -77.112, -11.661, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -90.156, -26.822, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -78.488, -43.066, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000],
-  [20.000, -94.277, -55.342, 39.000, 33.000, 48.000, 47.000, 57.000, 56.000]
+  [20.000, 0.000, 68.000, 61.000, 55.000, 70.000, 69.000, -1.000, -1.000],
+  [20.000, -19.297, 73.255, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -38.595, 68.000, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -57.542, 74.403, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -74.863, 64.403, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -92.378, 54.749, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -77.847, 41.007, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -92.014, 26.890, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -77.847, 12.773, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -93.303, 0.080, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -77.112, -11.661, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -90.156, -26.822, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -78.488, -43.066, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000],
+  [20.000, -94.277, -55.342, 61.000, 55.000, 70.000, 69.000, 79.000, 78.000]
 ];
 SINGLE_SHAFTS = [
-  [-19.651, 64.279, 1.000, 31.000],
-  [-38.953, 59.043, 1.000, 31.000],
-  [-56.124, 48.788, 1.000, 31.000],
-  [-60.871, 29.359, 1.000, 31.000],
-  [-75.860, 16.118, 1.000, 31.000],
-  [-68.950, -2.650, 1.000, 31.000],
-  [-64.502, -22.150, 1.000, 31.000],
-  [-59.539, -41.524, 1.000, 31.000],
-  [-45.152, -55.417, 1.000, 31.000],
-  [-26.922, -63.644, 1.000, 31.000],
-  [-6.923, -63.825, 1.000, 31.000],
-  [12.811, -67.072, 1.000, 31.000],
-  [31.972, -61.339, 1.000, 31.000],
-  [-19.297, 73.255, 33.000, 63.000],
-  [-38.595, 68.000, 33.000, 63.000],
-  [-57.542, 74.403, 33.000, 63.000],
-  [-74.863, 64.403, 33.000, 63.000],
-  [-92.378, 54.749, 33.000, 63.000],
-  [-77.847, 41.007, 33.000, 63.000],
-  [-92.014, 26.890, 33.000, 63.000],
-  [-77.847, 12.773, 33.000, 63.000],
-  [-93.303, 0.080, 33.000, 63.000],
-  [-77.112, -11.661, 33.000, 63.000],
-  [-90.156, -26.822, 33.000, 63.000],
-  [-78.488, -43.066, 33.000, 63.000],
-  [-94.277, -55.342, 33.000, 63.000]
+  [-19.651, 64.279, 23.000, 53.000],
+  [-38.953, 59.043, 23.000, 53.000],
+  [-56.124, 48.788, 23.000, 53.000],
+  [-60.871, 29.359, 23.000, 53.000],
+  [-75.860, 16.118, 23.000, 53.000],
+  [-68.950, -2.650, 23.000, 53.000],
+  [-64.502, -22.150, 23.000, 53.000],
+  [-59.539, -41.524, 23.000, 53.000],
+  [-45.152, -55.417, 23.000, 53.000],
+  [-26.922, -63.644, 23.000, 53.000],
+  [-7.143, -66.606, 23.000, 53.000],
+  [12.592, -69.854, 23.000, 53.000],
+  [31.752, -64.120, 23.000, 53.000],
+  [-19.297, 73.255, 55.000, 85.000],
+  [-38.595, 68.000, 55.000, 85.000],
+  [-57.542, 74.403, 55.000, 85.000],
+  [-74.863, 64.403, 55.000, 85.000],
+  [-92.378, 54.749, 55.000, 85.000],
+  [-77.847, 41.007, 55.000, 85.000],
+  [-92.014, 26.890, 55.000, 85.000],
+  [-77.847, 12.773, 55.000, 85.000],
+  [-93.303, 0.080, 55.000, 85.000],
+  [-77.112, -11.661, 55.000, 85.000],
+  [-90.156, -26.822, 55.000, 85.000],
+  [-78.488, -43.066, 55.000, 85.000],
+  [-94.277, -55.342, 55.000, 85.000]
 ];
-COMPOUND_SHAFT = [0.000, 68.000, 4.000, 64.000];
+COMPOUND_SHAFT = [0.000, 68.000, 26.000, 91.000];
 
 CASE_W = 270;
 CASE_H = 205;
-CASE_D = 145;
+CASE_D = 172; // provisional: 9mm frame + 3mm guard + 148mm inner depth + 12mm rear panel
 WALL = 12;
 PLATE_W = 252;
 PLATE_H = 187;
@@ -75,12 +75,12 @@ PLATE_T = 8;
 BORE_D = 6;
 BUSHING_OD = 8.157; // maximum nominal OD from OILES catalog tolerance
 BOARD_OUTER_D = 115; // official 3.4C circular module diameter; bounding square is 115mm
-DISPLAY_GLASS_Z = 44.5; // revised candidate; B gear face ends at z=39mm
+DISPLAY_GLASS_Z = 1.5; // screen is in front; guard inner face is z=0
 BOARD_VIS_DEPTH = 15.5; // conservative official STEP envelope; drawing PDF says 15.1mm
 BOARD_HOLE_X = 37.5; // official drawing pattern, interpreted from module center
 BOARD_HOLE_Y = 39.25;
-BOARD_CARRIER_ANCHOR = 80; // four M3 through-bolt anchors outside the 120mm opening
-BOARD_CARRIER_Z = 62; // 2mm nominal rear clearance beyond the conservative board envelope
+BOARD_CARRIER_ANCHOR = 80; // four M3 through-bolt anchors outside the Ø119mm opening
+BOARD_CARRIER_Z = 19; // carrier follows the 15.5mm board envelope with a 2mm gap
 BOARD_CARRIER_T = 3; // 3mm PC candidate; not a fabrication release
 BOARD_CARRIER_ARM_D = 18; // hull width around the four diagonal arms
 BOARD_CARRIER_HOLE_D = 4.5; // board-side M4 clearance; confirm against received unit
@@ -165,21 +165,22 @@ module collar(x, y, z) {
 module support_a() {
   color([0.66, 0.83, 0.80, 0.46])
     difference() {
-      translate([-PLATE_W/2, -PLATE_H/2, 7]) cube([PLATE_W, PLATE_H, PLATE_T]);
-      translate([0,0,6.9]) cylinder(d=112, h=PLATE_T+0.2);
+      translate([-PLATE_W/2, -PLATE_H/2, A_GEARS[0][5]]) cube([PLATE_W, PLATE_H, PLATE_T]);
+      // Ø119 opening gives 2mm nominal radial clearance around the Ø115 3.4C module.
+      translate([0,0,A_GEARS[0][5]-0.1]) cylinder(d=119, h=PLATE_T+0.2);
       for (g=A_GEARS) translate([g[1],g[2],g[5]-0.1]) cylinder(d=8, h=PLATE_T+0.2);
+      for (sx=[-1,1], sy=[-1,1])
+        translate([sx*BOARD_CARRIER_ANCHOR, sy*BOARD_CARRIER_ANCHOR, A_GEARS[0][5]-0.1])
+          cylinder(d=BOARD_CARRIER_FOOT_HOLE_D, h=PLATE_T+0.2);
     }
 }
 
 module support_b() {
   color([0.66, 0.83, 0.80, 0.46])
     difference() {
-      translate([-PLATE_W/2, -PLATE_H/2, 48]) cube([PLATE_W, PLATE_H, PLATE_T]);
-      translate([-60,-60,47.9]) cube([120,120,PLATE_T+0.2]);
+      translate([-PLATE_W/2, -PLATE_H/2, B_GEARS[0][5]]) cube([PLATE_W, PLATE_H, PLATE_T]);
+      translate([-60,-60,B_GEARS[0][5]-0.1]) cube([120,120,PLATE_T+0.2]);
       for (g=B_GEARS) translate([g[1],g[2],g[5]-0.1]) cylinder(d=8, h=PLATE_T+0.2);
-      for (sx=[-1,1], sy=[-1,1])
-        translate([sx*BOARD_CARRIER_ANCHOR, sy*BOARD_CARRIER_ANCHOR, 47.9])
-          cylinder(d=BOARD_CARRIER_FOOT_HOLE_D, h=PLATE_T+0.2);
     }
 }
 
@@ -262,15 +263,15 @@ module display_board_carrier() {
             cylinder(d=BOARD_CARRIER_FOOT_HOLE_D, h=BOARD_CARRIER_T+0.2);
         }
       }
-    // Outer nylon standoffs: support B top z=56 to carrier underside z=62 (6mm).
-    // Board-side 2mm sleeves sit between the mounting lands and the carrier.
+    // Support-A posts rise 7mm from the front face of the gear plate to the carrier.
     color([0.78,0.79,0.73,0.78])
       for (sx=[-1,1], sy=[-1,1])
-        translate([sx*BOARD_CARRIER_ANCHOR, sy*BOARD_CARRIER_ANCHOR, 56])
+        translate([sx*BOARD_CARRIER_ANCHOR, sy*BOARD_CARRIER_ANCHOR, BOARD_CARRIER_Z+BOARD_CARRIER_T])
           difference() {
-            cylinder(d=6, h=BOARD_CARRIER_Z-56);
-            translate([0,0,-0.1]) cylinder(d=BOARD_CARRIER_FOOT_HOLE_D, h=BOARD_CARRIER_Z-56+0.2);
+            cylinder(d=6, h=A_GEARS[0][5]-(BOARD_CARRIER_Z+BOARD_CARRIER_T));
+            translate([0,0,-0.1]) cylinder(d=BOARD_CARRIER_FOOT_HOLE_D, h=A_GEARS[0][5]-(BOARD_CARRIER_Z+BOARD_CARRIER_T)+0.2);
           }
+    // 2mm board-side sleeves support the catalog M4 mounting pattern.
     color([0.78,0.79,0.73,0.78])
       for (sx=[-1,1], sy=[-1,1])
         translate([sx*BOARD_HOLE_X, sy*BOARD_HOLE_Y, DISPLAY_GLASS_Z+BOARD_VIS_DEPTH])
@@ -284,9 +285,9 @@ module display_board_carrier() {
 module motor_and_coupler() {
   if (show_motor) {
     // Nominal NBK coupling and NEMA-8 body envelopes; motor mount and cable/terminal access remain unverified.
-    color([0.69,0.71,0.67]) translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],57]) cylinder(d=14,h=22);
-    color([0.28,0.34,0.38]) translate([COMPOUND_SHAFT[0]-10,COMPOUND_SHAFT[1]-10,81]) cube([20,20,33]);
-    color([0.74,0.74,0.70]) translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],72]) cylinder(d=4,h=9,$fn=24);
+    color([0.69,0.71,0.67]) translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],84]) cylinder(d=14,h=22);
+    color([0.28,0.34,0.38]) translate([COMPOUND_SHAFT[0]-10,COMPOUND_SHAFT[1]-10,108]) cube([20,20,33]);
+    color([0.74,0.74,0.70]) translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],99]) cylinder(d=4,h=9,$fn=24);
   }
 }
 
@@ -315,10 +316,10 @@ module case_shell() {
       translate([-CASE_W/2,-CASE_H/2,-12]) cube([WALL,CASE_H,9]);
       translate([CASE_W/2-WALL,-CASE_H/2,-12]) cube([WALL,CASE_H,9]);
     }
-    // Side-wall grooves capture the 252x187mm plates at z=7..15 and z=48..56.
+    // Side-wall grooves capture the 252x187mm plates at z=29..37 and z=70..78.
     // Cut span is 4.2mm; measured from the inner wall face, wood depth is 4.0mm.
     // Z width is centered around each nominal plate; shim the measured gap with PET strips.
-    for (z0=[7,48]) {
+    for (z0=[29,70]) {
       translate([-PLATE_W/2-GROOVE_ENTRY_RELIEF,-PLATE_H/2,z0-(GROOVE_WIDTH-PLATE_T)/2]) cube([GROOVE_CUT_LENGTH,PLATE_H,GROOVE_WIDTH]);
       translate([CASE_W/2-WALL-GROOVE_ENTRY_RELIEF,-PLATE_H/2,z0-(GROOVE_WIDTH-PLATE_T)/2]) cube([GROOVE_CUT_LENGTH,PLATE_H,GROOVE_WIDTH]);
       translate([-PLATE_W/2,-PLATE_H/2-GROOVE_ENTRY_RELIEF,z0-(GROOVE_WIDTH-PLATE_T)/2]) cube([PLATE_W,GROOVE_CUT_LENGTH,GROOVE_WIDTH]);

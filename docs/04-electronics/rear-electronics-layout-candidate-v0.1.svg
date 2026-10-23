@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="620" viewBox="0 0 1040 620" role="img" aria-labelledby="title desc">
-  <title id="title">Forest Guardian rear auxiliary electronics layout candidate v0.1</title>
-  <desc id="desc">Rear view of the removable back cover. Candidate zones for auxiliary electronics are shown around the existing TMC2209 position. The integrated 3.4C display/control board is 61 millimeters forward of this plane.</desc>
+  <title id="title">Forest Guardian 背面補助電装配置候補 v0.1</title>
+  <desc id="desc">着脱式背面カバーの内側配置候補。TMC2209位置の周囲に補助電装の候補域を示す。3.4C基板の背面からこの面まで131mm。</desc>
   <defs>
     <style>
       text { font-family: sans-serif; fill: #27313a; }
@@ -19,31 +19,35 @@
     </style>
   </defs>
   <rect width="1040" height="620" fill="#ffffff"/>
-  <text x="28" y="38" class="title">Rear auxiliary electronics layout candidate v0.1</text>
-  <text x="28" y="61" class="sub">Inside view of removable back cover. Integrated 3.4C display/main board is 61 mm forward of this plane.</text>
+  <text x="28" y="38" class="title">背面補助電装の配置候補 v0.1</text>
+  <text x="28" y="61" class="sub">着脱式背面カバーの内側。3.4C基板の背面からこの面まで名目131mm。</text>
 
   <!-- Coordinates: case origin at center; 2 px/mm. Reference inner face 246 x 181 mm. -->
   <rect x="79" y="169" width="492" height="362" rx="3" class="case"/>
   <rect x="79" y="169" width="492" height="362" rx="3" class="usable"/>
-  <text x="79" y="151" class="dim">Inner face: 246 x 181 mm (case envelope is provisional)</text>
-  <text x="79" y="550" class="small">Left = X- / Right = X+   Bottom = Y- / Top = Y+   Origin = case / 3.4C center</text>
+  <text x="79" y="151" class="dim">内面: 246×181mm（ケース外形は仮）</text>
+  <text x="79" y="550" class="small">左=X- / 右=X+   下=Y- / 上=Y+   原点=ケース・3.4C中心</text>
 
-  <!-- Type-C source and upstream-converter function/work allocation only; no custom PCB outline exists. x=-118..7, y=-85..35 -->
+  <!-- DFR0758/DFR1015 module and wiring reservation only; DFR0758 board outline/mount holes unpublished. -->
   <rect x="89" y="280" width="250" height="240" rx="7" class="reserve"/>
-  <text x="132" y="311" class="label">5.2V upstream + TPS25810</text>
-  <text x="106" y="332" class="small">Function reserve: 125 x 120 mm</text>
-  <text x="106" y="351" class="small">#4092 config / PCB outlines TBD</text>
-  <text x="106" y="370" class="small">EVM not for product assembly</text>
+  <text x="118" y="311" class="label">DFR0758 / DFR1015</text>
+  <text x="106" y="332" class="small">電源・配線予約: 125×120mm</text>
+  <text x="106" y="351" class="small">DFR0758外形/穴は未公表</text>
+  <text x="106" y="370" class="small">調整式キャリアで固定</text>
 
   <!-- Known module outlines. Locations are envelope centers, not mounting-hole coordinates. -->
   <rect x="128.5" y="213.8" width="49" height="40.4" rx="3" class="known"/>
   <text x="133" y="231" class="label">HUSB238</text>
-  <text x="133" y="246" class="small">24.5 x 20.2</text>
+  <text x="133" y="246" class="small">24.5×20.2mm</text>
   <text x="130" y="270" class="small">(-86, +58)</text>
 
+  <rect x="129" y="175" width="48" height="38" rx="4" class="known"/>
+  <text x="133" y="191" class="small">Neutrik</text>
+  <text x="133" y="205" class="small">USB-C PD</text>
+
   <rect x="211.2" y="213.7" width="35.6" height="40.6" rx="3" class="known"/>
-  <text x="213" y="231" class="label">5V DC/DC</text>
-  <text x="213" y="246" class="small">17.8 x 20.3</text>
+  <text x="213" y="231" class="label">#2851 5V</text>
+  <text x="213" y="246" class="small">17.8×20.3mm</text>
   <text x="211" y="270" class="small">(-48, +58)</text>
 
   <rect x="472" y="232.4" width="46" height="35.2" rx="3" class="known"/>
@@ -61,52 +65,46 @@
   <text x="309" y="212" class="small">NEMA-8</text>
   <text x="309" y="226" class="small">projection</text>
 
-  <!-- Shared service zone x=+15..+115, y=-85..+35. The four carrier drawings are rotated footprints, not a clearance-approved assembly. -->
+  <!-- Shared service zone x=+15..+115, y=-85..+35. Two five-way distribution blocks and three inline fuses. -->
   <rect x="355" y="280" width="200" height="240" rx="4" class="access"/>
-  <!-- WAGO 221-503 top footprints, rotated 90 degrees for a 2x2 allocation sketch. -->
-  <rect x="365" y="290" width="47.4" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
-  <rect x="420.4" y="290" width="47.4" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
-  <rect x="365" y="403.6" width="47.4" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
-  <rect x="420.4" y="403.6" width="47.4" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
-  <text x="376" y="347" class="small">W1</text>
-  <text x="431" y="347" class="small">W2</text>
-  <text x="376" y="461" class="small">W3</text>
-  <text x="431" y="461" class="small">W4</text>
-  <!-- Inline-fuse reserve only; no holder footprint or switch cutout is selected. -->
-  <rect x="480" y="290" width="75" height="219" rx="4" class="risk"/>
-  <text x="485" y="315" class="label">Fuse area</text>
-  <text x="485" y="333" class="small">reserve</text>
-  <text x="485" y="352" class="small">holder size</text>
-  <text x="485" y="370" class="small">not selected</text>
+  <rect x="365" y="290" width="105.6" height="47.4" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
+  <rect x="365" y="350" width="105.6" height="47.4" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
+  <text x="418" y="319" class="small" text-anchor="middle">W1 221-415 / 221-505</text>
+  <text x="418" y="379" class="small" text-anchor="middle">W2 221-415 / 221-505</text>
+  <rect x="365" y="410" width="175" height="96" rx="4" class="risk"/>
+  <text x="372" y="430" class="small">F1 3A PD / F2 2A motor</text>
+  <text x="372" y="451" class="small">F3 2A LED</text>
+  <text x="372" y="474" class="small">Amon 3367 inline holders ×3</text>
+  <text x="372" y="494" class="small">flexible tie-down space</text>
 
-  <text x="631" y="116" class="label">Legend</text>
+  <text x="631" y="116" class="label">凡例</text>
   <rect x="631" y="131" width="16" height="16" rx="2" class="known"/>
-  <text x="657" y="144" class="small">Known board outline at candidate position</text>
+  <text x="657" y="144" class="small">公開外形がある基板の位置候補</text>
   <rect x="631" y="158" width="16" height="16" rx="2" class="driver"/>
-  <text x="657" y="171" class="small">Motor driver at existing CAD position</text>
+  <text x="657" y="171" class="small">既存CAD位置のモータードライバー</text>
   <rect x="631" y="185" width="16" height="16" rx="2" class="reserve"/>
-  <text x="657" y="198" class="small">5.2V converter + source PCB reserve (outline TBD)</text>
+  <text x="657" y="198" class="small">電源モジュールと作業予約域</text>
   <rect x="631" y="212" width="16" height="16" rx="2" class="access"/>
-  <text x="657" y="225" class="small">Service zone with four WAGO carrier footprints</text>
+  <text x="657" y="225" class="small">WAGO 5極端子2個のサービス域</text>
   <rect x="631" y="239" width="16" height="16" rx="2" class="risk"/>
-  <text x="657" y="252" class="small">Unselected part zone or depth projection</text>
+  <text x="657" y="252" class="small">未選定部品域または奥行き投影</text>
 
-  <text x="631" y="296" class="label">Candidate positions</text>
+  <text x="631" y="296" class="label">配置候補</text>
   <text x="631" y="320" class="small">HUSB238 #5807: X-86, Y+58</text>
   <text x="631" y="340" class="small">Pololu #2851: X-48, Y+58</text>
   <text x="631" y="360" class="small">DS3231 #3013: X+85, Y+50</text>
-  <text x="631" y="380" class="small">TMC2209 #6121: X+35, Y+68 (existing CAD)</text>
-  <text x="631" y="400" class="small">WAGO 221-503 x4: lower-right allocation</text>
-  <text x="631" y="420" class="small">Inline fuse reserve; holders not sized</text>
-  <text x="631" y="440" class="small">#4092 custom spec + TPS25810 PCB needed</text>
+  <text x="631" y="380" class="small">TMC2209 #6121: X+35, Y+68</text>
+  <text x="631" y="400" class="small">WAGO 221-415 / 221-505 ×2</text>
+  <text x="631" y="420" class="small">Amon 3367 ×3 / MINI 2・3A</text>
+  <text x="631" y="440" class="small">Neutrik NAUSBC-5G-FL10</text>
 
-  <text x="631" y="474" class="label">Open before dimensions are released</text>
-  <text x="631" y="498" class="small">1. Source PCB outline, connector and mounting</text>
-  <text x="631" y="518" class="small">2. USB-C ports and rear-panel openings</text>
-  <text x="631" y="538" class="small">3. WAGO wire / lever access; fuse holders</text>
-  <text x="631" y="558" class="small">4. Cable routes, strain relief and pinch clearance</text>
-  <text x="631" y="578" class="small">5. Part height, heat and back-cover access</text>
+  <text x="631" y="474" class="label">組立図へ反映する項目</text>
+  <text x="631" y="498" class="small">1. DFR0758調整キャリア</text>
+  <text x="631" y="518" class="small">2. 配線切断長と固定点</text>
+  <text x="631" y="538" class="small">3. 端子/ヒューズ交換空間</text>
+  <text x="631" y="558" class="small">4. ケーブル挟み込み確認</text>
+  <text x="631" y="578" class="small">5. 全負荷・閉箱温度受入</text>
 
-  <text x="28" y="580" class="sub">All dimensions mm; positions are component centers, not holes.</text>
-  <text x="28" y="602" class="sub">No case drilling coordinates are released; case dimensions remain provisional.</text>
+  <text x="28" y="580" class="sub">単位mm。位置は部品中心候補で、固定穴位置ではありません。</text>
+  <text x="28" y="602" class="sub">USB-C口・スイッチ穴はカタログ値をケース案へ転記。ケース外形270×205×172mmは見積図v0.2の基準値です。</text>
 </svg>

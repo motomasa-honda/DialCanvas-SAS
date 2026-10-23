@@ -8,7 +8,7 @@
 <text class="panelTitle" x="42.0" y="78">Front plane A</text>
 <rect class="case" x="42.0" y="90.0" width="553.5" height="420.2" rx="8"/>
 <rect class="board" x="200.9" y="182.2" width="235.7" height="235.7" rx="5"/>
-<circle class="opening" cx="318.8" cy="300.1" r="114.8"/>
+<circle class="opening" cx="318.8" cy="300.1" r="122.0"/>
 <line class="mesh" x1="318.8" y1="160.7" x2="278.5" y2="168.4"/>
 <line class="mesh" x1="278.5" y1="168.4" x2="238.9" y2="179.1"/>
 <line class="mesh" x1="238.9" y1="179.1" x2="203.7" y2="200.1"/>
@@ -19,9 +19,9 @@
 <line class="mesh" x1="186.5" y1="345.5" x2="196.7" y2="385.2"/>
 <line class="mesh" x1="196.7" y1="385.2" x2="226.2" y2="413.7"/>
 <line class="mesh" x1="226.2" y1="413.7" x2="263.6" y2="430.6"/>
-<line class="mesh" x1="263.6" y1="430.6" x2="304.6" y2="431.0"/>
-<line class="mesh" x1="304.6" y1="431.0" x2="345.0" y2="437.6"/>
-<line class="mesh" x1="345.0" y1="437.6" x2="384.3" y2="425.9"/>
+<line class="mesh" x1="263.6" y1="430.6" x2="304.1" y2="436.7"/>
+<line class="mesh" x1="304.1" y1="436.7" x2="344.6" y2="443.3"/>
+<line class="mesh" x1="344.6" y1="443.3" x2="383.8" y2="431.6"/>
 <circle class="gearA" cx="318.8" cy="160.7" r="22.5"/>
 <circle class="hub" cx="318.8" cy="160.7" r="16.4"/>
 <circle class="bore" cx="318.8" cy="160.7" r="6.1"/>
@@ -66,18 +66,18 @@
 <circle class="hub" cx="263.6" cy="430.6" r="16.4"/>
 <circle class="bore" cx="263.6" cy="430.6" r="6.1"/>
 <text class="id" x="263.6" y="430.6">A10</text>
-<circle class="gearA" cx="304.6" cy="431.0" r="22.5"/>
-<circle class="hub" cx="304.6" cy="431.0" r="16.4"/>
-<circle class="bore" cx="304.6" cy="431.0" r="6.1"/>
-<text class="id" x="304.6" y="431.0">A11</text>
-<circle class="gearA" cx="345.0" cy="437.6" r="22.5"/>
-<circle class="hub" cx="345.0" cy="437.6" r="16.4"/>
-<circle class="bore" cx="345.0" cy="437.6" r="6.1"/>
-<text class="id" x="345.0" y="437.6">A12</text>
-<circle class="gearA" cx="384.3" cy="425.9" r="22.5"/>
-<circle class="hub" cx="384.3" cy="425.9" r="16.4"/>
-<circle class="bore" cx="384.3" cy="425.9" r="6.1"/>
-<text class="id" x="384.3" y="425.9">A13</text>
+<circle class="gearA" cx="304.1" cy="436.7" r="22.5"/>
+<circle class="hub" cx="304.1" cy="436.7" r="16.4"/>
+<circle class="bore" cx="304.1" cy="436.7" r="6.1"/>
+<text class="id" x="304.1" y="436.7">A11</text>
+<circle class="gearA" cx="344.6" cy="443.3" r="22.5"/>
+<circle class="hub" cx="344.6" cy="443.3" r="16.4"/>
+<circle class="bore" cx="344.6" cy="443.3" r="6.1"/>
+<text class="id" x="344.6" y="443.3">A12</text>
+<circle class="gearA" cx="383.8" cy="431.6" r="22.5"/>
+<circle class="hub" cx="383.8" cy="431.6" r="16.4"/>
+<circle class="bore" cx="383.8" cy="431.6" r="6.1"/>
+<text class="id" x="383.8" y="431.6">A13</text>
 <text class="panelTitle" x="666.0" y="78">Rear plane B</text>
 <rect class="case" x="666.0" y="90.0" width="553.5" height="420.2" rx="8"/>
 <rect class="board" x="824.9" y="182.2" width="235.7" height="235.7" rx="5"/>
@@ -152,7 +152,7 @@
 <circle class="bore" cx="749.5" cy="413.6" r="6.1"/>
 <text class="id" x="749.5" y="413.6">B13</text>
 <text class="small" x="40" y="625">Gears: KHK BSS1-20C × 28 · 20T · module 1 · 6mm bore</text>
-<text class="small" x="40" y="649">Minimum case margin 5.1mm · minimum active-display gap 9.4mm · center-distance error 0.000mm</text>
-<text class="small" x="40" y="673">OD12 washer/opening web 2.0mm · washer gap 8.0mm · min non-mesh gap 1.6mm</text>
+<text class="small" x="40" y="649">Minimum case margin 5.1mm · minimum active-display gap 12.2mm · center-distance error 0.000mm</text>
+<text class="small" x="40" y="673">OD12 washer/opening web 1.5mm · washer gap 8.0mm · min non-mesh gap 1.6mm</text>
 <text class="tiny" x="40" y="698">M4 set-screw retention and real tooth contact remain unvalidated · tooth outlines are pitch-circle envelopes only</text>
 </svg>

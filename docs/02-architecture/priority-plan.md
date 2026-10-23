@@ -5,7 +5,7 @@
 | 順 | 項目 | 設計ベースライン | 実機検証/完了条件 |
 | --- | --- | --- | --- |
 | 1 | ソース・要求 | Cコア、表示アプリ、v0.21要求、移行表、静的検査を統合（DR-01/08 CLOSED） | ホストCテストと文書検査PASS。実GPIOは別項目 |
-| 2 | 基板信号 | ESP-IDF v5.5.5、GPIO候補、各周辺の割当を記録（DR-02 BASELINED） | 正確な改版の回路図/実物でGPIO、ENN、表示、SDを照合（OPEN） |
+| 2 | 基板信号 | ESP-IDF v5.5.5、GPIO候補、各周辺の割当を記録（DR-02 BASELINED） | SKU31523の公開回路図を採用済み。実端子の簡易確認は完成品組立時（購入条件ではない） |
 | 3 | 表示・時刻 | JPEG/dial.json、microSD、NVS、SNTP/RTC、JSTの設計を統合（DR-03 BASELINED） | 画面、切替、再起動、SNTP断、RTC保持、30/60fpsを測定（OPEN） |
 | 4 | モーター・歯車 | NEMA-8/TMC2209候補、0.30A RMS、1.6rpm、28歯車候補を記録（DR-04 BASELINED） | 噛合い、始動/停止、周期、音、振動、温度を実測（OPEN） |
 | 5 | 電源・保護 | PD 9V/3A、5V枝、Type-C source、保護要素、ヒューズ候補を記録（DR-05 BASELINED） | 負荷/故障時の電流、電圧、温度、遮断を受入（OPEN） |

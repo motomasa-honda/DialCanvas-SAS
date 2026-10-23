@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
   <title>ウォールナットケース 見積検討図 v0.1 — 外形・断面</title>
-  <desc>270×205×145mmは実部品・端子/ケーブル・整備空間の統合前の暫定参照包絡。概算見積用で、外箱寸法は未凍結、製作リリースではない。</desc>
+  <desc>270×205×172mmは画面前置き機械スタック用の暫定参照包絡。背面電装・ケーブル統合前で、外箱寸法は未凍結、製作リリースではない。</desc>
   <defs>
     <pattern id="wood" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#eadcc5"/><path d="M0 1.3 Q2 0.3 5 1.5 M0 4.1 Q2 3.2 5 4.2" fill="none" stroke="#98734d" stroke-width=".25" opacity=".55"/></pattern>
     <pattern id="ply" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#d9c8ac"/><path d="M0 1H4 M0 3H4" stroke="#9a815f" stroke-width=".25"/></pattern>
@@ -42,43 +42,48 @@
   <!-- Side section -->
   <text x="222" y="39" class="head">B  SIDE VIEW (internal parts schematic)</text>
   <g transform="translate(229 50) scale(.60)">
-    <rect x="0" y="0" width="145" height="205" fill="#f8f7f3" stroke="#18252d" stroke-width=".8"/>
+    <rect x="0" y="0" width="172" height="205" fill="#f8f7f3" stroke="#18252d" stroke-width=".8"/>
     <rect x="0" y="0" width="9" height="205" class="wood"/>
     <rect x="9" y="0" width="3" height="205" class="glass"/>
-    <rect x="12" y="0" width="121" height="205" class="ply"/>
-    <rect x="133" y="0" width="12" height="205" class="ply"/>
-    <rect x="19" y="9" width="8" height="187" class="dash"/>
-    <rect x="60" y="9" width="8" height="187" class="dash"/>
+    <rect x="12" y="0" width="148" height="205" class="ply"/>
+    <rect x="160" y="0" width="12" height="205" class="ply"/>
+    <rect x="41" y="9" width="8" height="187" class="dash"/>
+    <rect x="82" y="9" width="8" height="187" class="dash"/>
     <line x1="9" y1="0" x2="9" y2="205" class="fine"/>
     <line x1="12" y1="0" x2="12" y2="205" class="fine"/>
-    <line x1="133" y1="0" x2="133" y2="205" class="fine"/>
+    <line x1="160" y1="0" x2="160" y2="205" class="fine"/>
     <text x="4.5" y="102" class="tiny" text-anchor="middle" transform="rotate(-90 4.5 102)">Frame 9</text>
     <text x="10.5" y="102" class="tiny" text-anchor="middle" transform="rotate(-90 10.5 102)">PC 3</text>
-    <text x="25" y="104" class="small" text-anchor="middle" transform="rotate(-90 25 104)">A slot/plate</text>
-    <text x="64" y="104" class="small" text-anchor="middle" transform="rotate(-90 64 104)">B slot/plate</text>
-    <text x="139" y="102" class="tiny" text-anchor="middle" transform="rotate(-90 139 102)">Rear 12</text>
-    <text x="72.5" y="202" text-anchor="middle" class="small">P2/P4 joint by maker proposal</text>
+    <text x="45" y="104" class="small" text-anchor="middle" transform="rotate(-90 45 104)">A slot/plate</text>
+    <text x="86" y="104" class="small" text-anchor="middle" transform="rotate(-90 86 104)">B slot/plate</text>
+    <text x="161" y="102" class="tiny" text-anchor="middle" transform="rotate(-90 161 102)">Rear 12</text>
+    <text x="83.5" y="202" text-anchor="middle" class="small">P2/P4 joint by maker proposal</text>
+    <circle cx="96" cy="27.5" r="4.5" fill="#f2d69d" stroke="#886b35" stroke-width=".8"/>
+    <circle cx="120" cy="27.5" r="4.5" fill="#f2d69d" stroke="#886b35" stroke-width=".8"/>
+    <circle cx="144" cy="27.5" r="6" fill="#d9e7ef" stroke="#54788d" stroke-width=".8"/>
+    <text x="129" y="39" text-anchor="middle" class="tiny">NKK z=84/108; EC11 z=132; y=+75</text>
   </g>
-  <line x1="229" y1="45" x2="316" y2="45" class="dim"/><text x="272.5" y="43" text-anchor="middle" class="label">Ref. overall 145</text>
-  <line x1="236.2" y1="176" x2="308.8" y2="176" class="dim"/><text x="272.5" y="181" text-anchor="middle" class="label">Body depth 121</text>
-  <text x="222" y="189" class="small">Front to back: walnut frame 9 + PC 3 + body 121 + rear cover 12 = 145</text>
-  <text x="222" y="194" class="small">Grooves from front face: A 18.5–27.5, B 59.5–68.5 (9 wide)</text>
+  <line x1="229" y1="45" x2="332.2" y2="45" class="dim"/><text x="280.6" y="43" text-anchor="middle" class="label">Ref. overall 172</text>
+  <line x1="236.2" y1="176" x2="327" y2="176" class="dim"/><text x="281.6" y="181" text-anchor="middle" class="label">Body depth 148</text>
+  <text x="222" y="189" class="small">Front to back: walnut frame 9 + PC 3 + body 148 + rear cover 12 = 172</text>
+  <text x="222" y="194" class="small">Grooves from front face: A 40.5–49.5, B 81.5–90.5 (9 wide)</text>
+  <text x="222" y="199" class="small">P4: Neutrik USB-C D-cutout 24×19; 2×Ø3.2 mounting holes, 31 pitch</text>
 
   <!-- Top plan -->
   <text x="19" y="201" class="head">C  TOP VIEW (envelope and walls)</text>
   <g transform="translate(25 208) scale(.45)">
-    <rect x="0" y="0" width="270" height="145" class="outline"/>
+    <rect x="0" y="0" width="270" height="172" class="outline"/>
     <rect x="0" y="0" width="270" height="9" class="wood"/>
     <rect x="0" y="9" width="270" height="3" class="glass"/>
-    <rect x="0" y="12" width="270" height="121" class="ply"/>
-    <rect x="0" y="133" width="270" height="12" class="ply"/>
+    <rect x="0" y="12" width="270" height="148" class="ply"/>
+    <rect x="0" y="155" width="270" height="12" class="ply"/>
     <line x1="12" y1="12" x2="258" y2="12" class="fine" stroke-dasharray="2 1"/>
-    <line x1="12" y1="133" x2="258" y2="133" class="fine" stroke-dasharray="2 1"/>
+    <line x1="12" y1="155" x2="258" y2="155" class="fine" stroke-dasharray="2 1"/>
     <text x="135" y="76" text-anchor="middle" class="label">Internal width 246</text>
     <text x="135" y="84" text-anchor="middle" class="small">Capture plates in grooves; assemble four walls around plates.</text>
   </g>
   <line x1="25" y1="205" x2="146.5" y2="205" class="dim"/><text x="85.75" y="203" text-anchor="middle" class="label">Ref. overall 270</text>
-  <line x1="19" y1="208" x2="19" y2="273.25" class="dim"/><text x="15" y="240.6" transform="rotate(-90 15 240.6)" text-anchor="middle" class="label">Ref. overall 145</text>
+  <line x1="19" y1="208" x2="19" y2="285.4" class="dim"/><text x="15" y="246.7" transform="rotate(-90 15 246.7)" text-anchor="middle" class="label">Ref. overall 172</text>
 
   <!-- Groove detail -->
   <text x="222" y="207" class="head">D  SUPPORT SLOT SECTION (schematic)</text>
@@ -93,12 +98,13 @@
   </g>
   <text x="305" y="228" class="small">Clear PC plate: 8 thick</text>
   <text x="305" y="234" class="small">Slot: 9 wide × 4 deep</text>
-  <text x="305" y="240" class="small">PET shim after fit test</text>
+  <text x="305" y="240" class="small">PET shim during final assembly</text>
   <text x="222" y="258" class="small">Clear opening 246×181</text>
   <text x="222" y="263" class="small">Support plates: 2 × 252×187×8</text>
   <text x="222" y="268" class="small">Plate engagement in each wall: 3mm</text>
+  <text x="222" y="273" class="small">P2: NKK ×2 at z=84/108, EC11 at z=132; all y=+75</text>
 
   <rect x="18" y="274" width="385" height="9" class="note"/>
-  <text x="22" y="280" class="tiny">OPEN: corner joints, removable retainers, walnut grade/finish, cable opening, ornament. Ask maker to quote and propose.</text>
+  <text x="22" y="280" class="tiny">OPEN: curved decorative contour and finish sample. Case quote remains on hold until this review drawing is final.</text>
   <text x="402" y="286" text-anchor="end" class="tiny">Drawing A01 | 2026-10-22 | NTS; stated dimensions govern</text>
 </svg>

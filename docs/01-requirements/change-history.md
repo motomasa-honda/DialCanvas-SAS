@@ -2,6 +2,7 @@
 
 | 記録日 | 旧判断 | 現判断 | 根拠・注意 |
 | --- | --- | --- | --- |
+| 2026-10-22 | #4092を特注5.2V出力へ設定しTPS25810専用source PCBを設計する案 | PDを15V/2Aへ変更し、DFRobot DFR0758のUSB-A 5V出力と市販A-Cケーブルで表示器Type-Cへ給電。DFR1015でモーター用9Vを作る。#4092特注/専用source PCBは不要 | 一台製作であり、標準品の入力・出力定格で選定。初号機で表示器起動、総負荷、温度を確認。詳細は[ADR-0019](../../adr/0019-cots-usb-c-power-module.md)。 |
 | 2026-10-22 | #2851固定5VをTPS25810表示sourceへ直結する想定で、表示/LEDを一つの5V枝へ集約 | 直結を除外。#2851は補助5V枝とし、#4092の5.2Vメーカー設定変更を表示source上流の見積候補として記録。専用TPS25810基板は未設計、全電源予算とFG-048はOPEN | #4092標準品は6Vで購入候補ではない。特注仕様の可否/精度/連続電流/費用/納期を確認していない。詳細は[ADR-0018](../../adr/0018-usb-c-source-board-replacement.md)と[回路設計候補](../04-electronics/tps25810-usb-c-source-circuit-candidate-v0.1.md)。 |
 | 2026-10-22 | FG-048/OQ-12と電装配置がTPS25810EVM-745を完成品内の表示source候補として記載 | TIのEVM利用条件に基づきEVMを完成品候補から除外し、TPS25810搭載専用source基板を設計候補へ変更。source回路/PCB/BOM/実装費は未完、FG-048はOPEN | [ADR-0018](../../adr/0018-usb-c-source-board-replacement.md)。要求移行元v0.8と前履歴の判断は変更しない。 |
 | 2026-10-22 | 要求台帳の機械候補に旧DS1/POM・5mm軸とMJT-14-RD-4-5が残り、現行BSS1-20C・6mm軸候補と矛盾 | ADR-0015に合わせFG-026/027とOQ-05/06を4-6継手およびBSS1-20C真鍮歯車へ修正し、#4411リード線の端子適合/配線経路と3.4Cの全厚/端子包絡を購入ゲートへ追加。候補選定のみで物理受入はOPEN | [ADR-0015](../../adr/0015-bss20-axis-support-candidate.md)、[現行候補](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)。要求移行元v0.8は変更しない。 |

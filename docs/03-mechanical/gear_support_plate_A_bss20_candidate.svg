@@ -1,11 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="850" viewBox="-20 -34 292 228" role="img" aria-labelledby="title desc">
 <title id="title">BSS20 support plate A</title>
-<desc id="desc">Nominal 252 by 187 by 8 millimeter support plate with fourteen OILES 80B-0608 seats. Not a manufacturing drawing.</desc>
-<style>text{font-family:DejaVu Sans,sans-serif;fill:#29251f}.title{font-size:5px;font-weight:bold}.small{font-size:3px}.tiny{font-size:2.4px;fill:#625c54}.plate{fill:#eaf2ef;stroke:#477a78;stroke-width:.7}.opening{fill:#fff;stroke:#39787c;stroke-width:.5;stroke-dasharray:2 1}.seat{fill:#b8dbd8;stroke:#1c7475;stroke-width:.65}.cross{stroke:#574e42;stroke-width:.25}</style>
+<desc id="desc">Nominal 252 by 187 by 8 millimeter support plate with fourteen OILES 80B-0608 seats. Plate A also has four display-carrier M3 clearance holes. Not a manufacturing drawing.</desc>
+<style>text{font-family:DejaVu Sans,sans-serif;fill:#29251f}.title{font-size:5px;font-weight:bold}.small{font-size:3px}.tiny{font-size:2.4px;fill:#625c54}.plate{fill:#eaf2ef;stroke:#477a78;stroke-width:.7}.opening{fill:#fff;stroke:#39787c;stroke-width:.5;stroke-dasharray:2 1}.seat{fill:#b8dbd8;stroke:#1c7475;stroke-width:.65}.cross{stroke:#574e42;stroke-width:.25}.carrier{fill:#d19a40;stroke:#7b4c16;stroke-width:.55}</style>
 <rect x="-20" y="-34" width="292" height="228" fill="#faf9f4"/>
-<text class="title" x="0" y="-23">PLANE A · 252×187×8 mm · z=7…15 · PROVISIONAL</text>
+<text class="title" x="0" y="-23">PLANE A · 252×187×8 mm · z=29…37 · PROVISIONAL</text>
 <rect class="plate" x="0" y="0" width="252" height="187"/>
-<circle class="opening" cx="126" cy="93.5" r="56"/>
+<circle class="opening" cx="126" cy="93.5" r="59.5"/>
+<g class="carrier"><circle cx="46" cy="13.5" r="1.7"/><circle cx="206" cy="13.5" r="1.7"/><circle cx="46" cy="173.5" r="1.7"/><circle cx="206" cy="173.5" r="1.7"/></g>
 <circle class="seat" cx="126.000" cy="25.500" r="4"/>
 <path class="cross" d="M124.600,25.500 H127.400 M126.000,24.100 V26.900"/>
 <text class="tiny" x="130.200" y="22.400">A00</text>
@@ -39,18 +40,19 @@
 <circle class="seat" cx="99.078" cy="157.144" r="4"/>
 <path class="cross" d="M97.678,157.144 H100.478 M99.078,155.744 V158.544"/>
 <text class="tiny" x="103.278" y="154.044">A10</text>
-<circle class="seat" cx="119.077" cy="157.325" r="4"/>
-<path class="cross" d="M117.677,157.325 H120.477 M119.077,155.925 V158.725"/>
-<text class="tiny" x="123.277" y="154.225">A11</text>
-<circle class="seat" cx="138.811" cy="160.572" r="4"/>
-<path class="cross" d="M137.411,160.572 H140.211 M138.811,159.172 V161.972"/>
-<text class="tiny" x="143.011" y="157.472">A12</text>
-<circle class="seat" cx="157.972" cy="154.839" r="4"/>
-<path class="cross" d="M156.572,154.839 H159.372 M157.972,153.439 V156.239"/>
-<text class="tiny" x="162.172" y="151.739">A13</text>
+<circle class="seat" cx="118.857" cy="160.106" r="4"/>
+<path class="cross" d="M117.457,160.106 H120.257 M118.857,158.706 V161.506"/>
+<text class="tiny" x="123.057" y="157.006">A11</text>
+<circle class="seat" cx="138.592" cy="163.354" r="4"/>
+<path class="cross" d="M137.192,163.354 H139.992 M138.592,161.954 V164.754"/>
+<text class="tiny" x="142.792" y="160.254">A12</text>
+<circle class="seat" cx="157.752" cy="157.620" r="4"/>
+<path class="cross" d="M156.352,157.620 H159.152 M157.752,156.220 V159.020"/>
+<text class="tiny" x="161.952" y="154.520">A13</text>
 <circle class="seat" cx="5" cy="170" r="4"/>
 <text class="small" x="12" y="171">14 × OILES 80B-0608 · nominal housing seat Ø8 H7</text>
 <text class="tiny" x="0" y="194">Plate datum: outer-case origin + (9, 9) mm; axis coordinates are from CSV.</text>
-<text class="tiny" x="0" y="199">OILES housing fit and post-press bore must be validated in a same-material coupon before making either plate.</text>
-<text class="tiny" x="0" y="204">Transparent PC is still provisional; do not use this SVG as CNC/CAM output.</text>
+<text class="tiny" x="0" y="199">Use the catalog Ø8 H7 seat on the finished plate; inspect fit and free rotation during assembly.</text>
+<text class="tiny" x="0" y="204">Orange dots: display-carrier M3 clearance holes, case X/Y=±80mm, Ø3.4.</text>
+<text class="tiny" x="0" y="209">Transparent PC is a one-off material candidate; drawing is not CNC/CAM output.</text>
 </svg>

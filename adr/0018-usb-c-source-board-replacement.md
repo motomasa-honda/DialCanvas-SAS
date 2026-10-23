@@ -1,9 +1,9 @@
 # ADR-0018: 3.4C用Type-C給電基板の方針更新
 
 - 日付: 2026-10-22
-- 状態: **一台試作の設計候補。専用回路/PCB、部品表、実機受入は未完了**
+- 状態: **SUPERSEDED**。特注変換器と専用source基板を使わない既製品案へ更新（[ADR-0019](0019-cots-usb-c-power-module.md)）。本書は判断履歴。
 - 関連: [設計ベースラインv0.21](../docs/10-desk-redesign/design-baseline-v0.21.md)、[電源・制御](../docs/04-electronics/power-and-control.md)、[購入準備監査](../docs/02-architecture/purchase-readiness-audit-2026-10-21.md)
-- 置換: ADR-0014の「TPS25810EVM-745を表示器用sourceとして据え付ける」判断と、それに依存する機械/受入条件。9V PD、HUSB238、#2851、分岐保護など他の判断は置換しない。
+- 置換: ADR-0014の「TPS25810EVM-745を表示器用sourceとして据え付ける」判断と、それに依存する機械/受入条件。旧本文の9V PD等の構成もADR-0019で再評価済みであり、現行判断はADR-0019を参照。
 
 ## 背景
 
