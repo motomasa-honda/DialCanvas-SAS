@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
+  <title>ウォールナットケース 見積検討図 v0.1 — 部材図・部材表</title>
+  <desc>一台用ケースの見積用部品割り。材料と寸法は候補値で、加工を許可する図面ではない。</desc>
+  <defs>
+    <pattern id="wood" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#eadcc5"/><path d="M0 1.3 Q2 0.3 5 1.5 M0 4.1 Q2 3.2 5 4.2" fill="none" stroke="#98734d" stroke-width=".25" opacity=".55"/></pattern>
+    <pattern id="ply" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#d9c8ac"/><path d="M0 1H4 M0 3H4" stroke="#9a815f" stroke-width=".25"/></pattern>
+    <marker id="arr" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto-start-reverse"><path d="M0 0L5 2.5L0 5Z" fill="#273640"/></marker>
+    <style>
+      text{font-family:"Noto Sans CJK JP","Yu Gothic",sans-serif;fill:#18252d}
+      .title{font-size:6px;font-weight:700}.subtitle{font-size:3.5px}.head{font-size:4px;font-weight:700}.label{font-size:3.2px}.small{font-size:2.8px}.tiny{font-size:2.35px}
+      .outline{fill:none;stroke:#18252d;stroke-width:.55}.fine{fill:none;stroke:#455861;stroke-width:.3}.dash{fill:none;stroke:#388196;stroke-width:.45;stroke-dasharray:2 1.3}.dim{fill:none;stroke:#273640;stroke-width:.3;marker-start:url(#arr);marker-end:url(#arr)}
+      .wood{fill:url(#wood);stroke:#18252d;stroke-width:.45}.ply{fill:url(#ply);stroke:#18252d;stroke-width:.45}.panel{fill:#fbfaf7;stroke:#92a0a5;stroke-width:.35}.note{fill:#f5f2eb;stroke:#a8a197;stroke-width:.35}
+      .th{font-size:2.8px;font-weight:700}.td{font-size:2.65px}
+    </style>
+  </defs>
+  <rect width="420" height="297" fill="#fff"/>
+  <rect x="8" y="8" width="404" height="281" fill="none" stroke="#33434b" stroke-width=".4"/>
+  <text x="16" y="19" class="title">Walnut Case — Quote Parts v0.1</text>
+  <text x="16" y="26" class="subtitle">REFERENCE ENVELOPE ONLY — SUBJECT TO COMPONENT/CABLE INTEGRATION; NOT FROZEN FOR FABRICATION.</text>
+
+  <!-- Front frame -->
+  <text x="18" y="39" class="head">P1  FRONT FRAME (1 pc, solid walnut)</text>
+  <g transform="translate(20 47) scale(.50)">
+    <path d="M0 0H270V205H0Z M12 12H258V193H12Z" class="wood" fill-rule="evenodd"/>
+    <text x="135" y="100" text-anchor="middle" class="label">Opening 246×181</text>
+    <text x="135" y="108" text-anchor="middle" class="small">Decorative profile remains open</text>
+  </g>
+  <line x1="20" y1="43" x2="155" y2="43" class="dim"/><text x="87.5" y="41" text-anchor="middle" class="label">270</text>
+  <line x1="16" y1="47" x2="16" y2="149.5" class="dim"/><text x="12" y="100" transform="rotate(-90 12 100)" text-anchor="middle" class="label">205</text>
+  <text x="20" y="156" class="small">9 thick; outer 270×205; edge treatment open.</text>
+  <text x="20" y="161" class="small">Opening 246×181; 12mm border.</text>
+  <text x="20" y="166" class="small">Approve final CAD contour and ornament after estimate.</text>
+
+  <!-- Side panel -->
+  <text x="190" y="39" class="head">P2  SIDE PANELS (2)</text>
+  <g transform="translate(202 48) scale(.48)">
+    <rect x="0" y="0" width="121" height="205" class="ply"/>
+    <rect x="6.5" y="0" width="9" height="205" fill="#77b8c0" fill-opacity=".32" stroke="#388196" stroke-width=".65"/>
+    <rect x="47.5" y="0" width="9" height="205" fill="#77b8c0" fill-opacity=".32" stroke="#388196" stroke-width=".65"/>
+    <line x1="0" y1="0" x2="0" y2="205" class="fine"/>
+  </g>
+  <line x1="202" y1="44" x2="260.1" y2="44" class="dim"/><text x="231" y="42" text-anchor="middle" class="label">Body depth 121</text>
+  <line x1="197" y1="48" x2="197" y2="146.4" class="dim"/><text x="193" y="97" transform="rotate(-90 193 97)" text-anchor="middle" class="label">Height 205</text>
+  <text x="202" y="153" class="small">12 thick; full side panels.</text>
+  <text x="202" y="158" class="small">Two inside grooves: 4 deep × 9 wide.</text>
+  <text x="202" y="163" class="small">From body front / guard inner face:</text>
+  <text x="202" y="168" class="small">A 6.5–15.5; B 47.5–56.5.</text>
+  <text x="202" y="173" class="small">Grooves: 4 deep × 9 wide.</text>
+
+  <!-- Top bottom panel -->
+  <text x="18" y="184" class="head">P3  TOP/BOTTOM PANELS (1 each)</text>
+  <g transform="translate(20 191) scale(.42)">
+    <rect x="0" y="0" width="246" height="121" class="ply"/>
+    <rect x="0" y="6.5" width="246" height="9" fill="#77b8c0" fill-opacity=".32" stroke="#388196" stroke-width=".65"/>
+    <rect x="0" y="47.5" width="246" height="9" fill="#77b8c0" fill-opacity=".32" stroke="#388196" stroke-width=".65"/>
+  </g>
+  <line x1="20" y1="187" x2="123.3" y2="187" class="dim"/><text x="71.6" y="185" text-anchor="middle" class="label">Width 246 (between sides)</text>
+  <text x="20" y="251" class="small">12 thick × 121 deep; grooves match P2 axial positions.</text>
+  <text x="20" y="256" class="small">Assemble four walls around support plates; maker to propose corner joints.</text>
+
+  <!-- Rear panel -->
+  <text x="150" y="184" class="head">P4  REAR COVER (1 pc)</text>
+  <g transform="translate(151 192) scale(.40)">
+    <rect x="0" y="0" width="270" height="205" class="ply"/>
+    <text x="135" y="100" text-anchor="middle" class="label">Rear outline 270×205</text>
+    <text x="135" y="108" text-anchor="middle" class="small">Removable fixing by maker proposal</text>
+  </g>
+  <text x="151" y="279" class="small">12 thick; covers rear face and is included in overall depth 145.</text>
+
+  <!-- Schedule and notes -->
+  <rect x="278" y="35" width="126" height="229" class="panel"/>
+  <text x="283" y="43" class="head">PARTS SCHEDULE (one unit)</text>
+  <line x1="283" y1="47" x2="399" y2="47" class="fine"/>
+  <text x="284" y="53" class="th">No.</text><text x="296" y="53" class="th">Qty</text><text x="306" y="53" class="th">Material / dimensions (mm)</text>
+  <text x="284" y="60" class="td">P1</text><text x="296" y="60" class="td">1</text><text x="306" y="60" class="td">Solid walnut</text>
+  <text x="306" y="65" class="td">270×205×9; opening 246×181</text>
+  <text x="284" y="73" class="td">P2</text><text x="296" y="73" class="td">2</text><text x="306" y="73" class="td">Walnut-veneer ply 205×121×12</text>
+  <text x="284" y="81" class="td">P3</text><text x="296" y="81" class="td">2</text><text x="306" y="81" class="td">Walnut-veneer ply 246×121×12</text>
+  <text x="284" y="89" class="td">P4</text><text x="296" y="89" class="td">1</text><text x="306" y="89" class="td">Walnut-veneer ply 270×205×12</text>
+  <text x="284" y="97" class="td">G1</text><text x="296" y="97" class="td">2</text><text x="306" y="97" class="td">PC support 252×187×8</text>
+  <text x="284" y="105" class="td">G2</text><text x="296" y="105" class="td">1</text><text x="306" y="105" class="td">Clear PC guard 270×205×3; outline to match P1</text>
+  <text x="284" y="113" class="td">—</text><text x="296" y="113" class="td">—</text><text x="306" y="113" class="td">PET shim: select after fit test</text>
+  <line x1="283" y1="119" x2="399" y2="119" class="fine"/>
+  <text x="284" y="126" class="small" font-weight="700">QUOTE ITEMS TO PRICE</text>
+  <text x="284" y="133" class="tiny">• P1 opening; optional curved front profile</text>
+  <text x="284" y="139" class="tiny">• Two 9×4 slots in P2/P3</text>
+  <text x="284" y="145" class="tiny">• Corner joints and plate assembly order</text>
+  <text x="284" y="151" class="tiny">• Removable P4, front frame and guard retention</text>
+  <text x="284" y="157" class="tiny">• Walnut grade, grain, finish options/cost</text>
+  <text x="284" y="163" class="tiny">• One walnut groove coupon 30×20×12</text>
+  <text x="284" y="169" class="tiny">• Itemized machining, material, shipping, lead time</text>
+  <line x1="283" y1="175" x2="399" y2="175" class="fine"/>
+  <text x="284" y="182" class="small" font-weight="700">DIMENSION BASIS</text>
+  <text x="284" y="189" class="tiny">Envelope: 270×205×145 (reference)</text>
+  <text x="284" y="195" class="tiny">Depth stack: P1 9 + G2 3 + body 121</text>
+  <text x="284" y="201" class="tiny">+ P4 12 = overall depth 145</text>
+  <text x="284" y="207" class="tiny">Internal volume: 246×181×121</text>
+  <text x="284" y="213" class="tiny">G1 engagement: 3mm per side</text>
+  <rect x="283" y="222" width="116" height="32" class="note"/>
+  <text x="287" y="230" class="tiny" font-weight="700">OPEN / QUOTE NOTES</text>
+  <text x="287" y="236" class="tiny">Slot fit, retainers, finish and walnut grade</text>
+  <text x="287" y="242" class="tiny">Confirm final curves after estimate and sample tests.</text>
+  <text x="287" y="248" class="tiny">Do not start fabrication from this drawing.</text>
+
+  <text x="402" y="281" text-anchor="end" class="tiny">Drawing A02 | 2026-10-22 | Quote only</text>
+</svg>

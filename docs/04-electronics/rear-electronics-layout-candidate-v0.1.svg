@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="620" viewBox="0 0 1040 620" role="img" aria-labelledby="title desc">
+  <title id="title">Forest Guardian rear auxiliary electronics layout candidate v0.1</title>
+  <desc id="desc">Rear view of the removable back cover. Candidate zones for auxiliary electronics are shown around the existing TMC2209 position. The integrated 3.4C display/control board is 61 millimeters forward of this plane.</desc>
+  <defs>
+    <style>
+      text { font-family: sans-serif; fill: #27313a; }
+      .title { font-size: 22px; font-weight: 700; }
+      .sub { font-size: 13px; fill: #58636d; }
+      .label { font-size: 13px; font-weight: 600; }
+      .small { font-size: 11px; fill: #46515b; }
+      .dim { font-size: 12px; fill: #59636b; }
+      .case { fill: #f7f4ef; stroke: #6f5b49; stroke-width: 2; }
+      .usable { fill: none; stroke: #ad9b88; stroke-width: 1.5; stroke-dasharray: 6 4; }
+      .known { fill: #d9e7ef; stroke: #54788d; stroke-width: 1.5; }
+      .driver { fill: #e5d9f0; stroke: #745493; stroke-width: 1.5; }
+      .reserve { fill: #fff1ce; stroke: #b78625; stroke-width: 2; stroke-dasharray: 8 5; }
+      .access { fill: #e8efdb; stroke: #718957; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .risk { fill: #f6dddd; stroke: #aa5959; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+  <rect width="1040" height="620" fill="#ffffff"/>
+  <text x="28" y="38" class="title">Rear auxiliary electronics layout candidate v0.1</text>
+  <text x="28" y="61" class="sub">Inside view of removable back cover. Integrated 3.4C display/main board is 61 mm forward of this plane.</text>
+
+  <!-- Coordinates: case origin at center; 2 px/mm. Reference inner face 246 x 181 mm. -->
+  <rect x="79" y="169" width="492" height="362" rx="3" class="case"/>
+  <rect x="79" y="169" width="492" height="362" rx="3" class="usable"/>
+  <text x="79" y="151" class="dim">Inner face: 246 x 181 mm (case envelope is provisional)</text>
+  <text x="79" y="550" class="small">Left = X- / Right = X+   Bottom = Y- / Top = Y+   Origin = case / 3.4C center</text>
+
+  <!-- TI EVM allocation zone: allocation only, not vendor board dimensions. x=-118..7, y=-85..35 -->
+  <rect x="89" y="280" width="250" height="240" rx="7" class="reserve"/>
+  <text x="132" y="311" class="label">TI TPS25810EVM-745</text>
+  <text x="106" y="332" class="small">Reserve: 125 x 120 mm</text>
+  <text x="106" y="351" class="small">Not the board outline; check real fit</text>
+  <text x="106" y="370" class="small">Includes connector and wiring access</text>
+
+  <!-- Known module outlines. Locations are envelope centers, not mounting-hole coordinates. -->
+  <rect x="128.5" y="213.8" width="49" height="40.4" rx="3" class="known"/>
+  <text x="133" y="231" class="label">HUSB238</text>
+  <text x="133" y="246" class="small">24.5 x 20.2</text>
+  <text x="130" y="270" class="small">(-86, +58)</text>
+
+  <rect x="211.2" y="213.7" width="35.6" height="40.6" rx="3" class="known"/>
+  <text x="213" y="231" class="label">5V DC/DC</text>
+  <text x="213" y="246" class="small">17.8 x 20.3</text>
+  <text x="211" y="270" class="small">(-48, +58)</text>
+
+  <rect x="472" y="232.4" width="46" height="35.2" rx="3" class="known"/>
+  <text x="476" y="249" class="label">DS3231</text>
+  <text x="476" y="263" class="small">23 x 17.6</text>
+  <text x="472" y="287" class="small">(+85, +50)</text>
+
+  <rect x="368.4" y="189.9" width="53.2" height="48.2" rx="3" class="driver"/>
+  <text x="373" y="208" class="label">TMC2209</text>
+  <text x="373" y="224" class="small">26.6 x 24.1</text>
+  <text x="373" y="256" class="small">(+35, +68)</text>
+
+  <!-- Projected motor body; depth-separated from back panel. -->
+  <rect x="305" y="194" width="40" height="40" rx="2" class="risk"/>
+  <text x="309" y="212" class="small">NEMA-8</text>
+  <text x="309" y="226" class="small">projection</text>
+
+  <!-- Shared service zone x=+15..+115, y=-85..+35. The four carrier drawings are rotated footprints, not a clearance-approved assembly. -->
+  <rect x="355" y="280" width="200" height="240" rx="4" class="access"/>
+  <!-- WAGO 221-503 top footprints, rotated 90 degrees for a 2x2 allocation sketch. -->
+  <rect x="365" y="290" width="47.4" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
+  <rect x="420.4" y="290" width="47.4" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
+  <rect x="365" y="403.6" width="47.4" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
+  <rect x="420.4" y="403.6" width="47.4" height="105.6" rx="3" fill="#dce7cd" stroke="#718957" stroke-width="1.5"/>
+  <text x="376" y="347" class="small">W1</text>
+  <text x="431" y="347" class="small">W2</text>
+  <text x="376" y="461" class="small">W3</text>
+  <text x="431" y="461" class="small">W4</text>
+  <!-- Inline-fuse reserve only; no holder footprint or switch cutout is selected. -->
+  <rect x="480" y="290" width="75" height="219" rx="4" class="risk"/>
+  <text x="485" y="315" class="label">Fuse area</text>
+  <text x="485" y="333" class="small">reserve</text>
+  <text x="485" y="352" class="small">holder size</text>
+  <text x="485" y="370" class="small">not selected</text>
+
+  <text x="631" y="116" class="label">Legend</text>
+  <rect x="631" y="131" width="16" height="16" rx="2" class="known"/>
+  <text x="657" y="144" class="small">Known board outline at candidate position</text>
+  <rect x="631" y="158" width="16" height="16" rx="2" class="driver"/>
+  <text x="657" y="171" class="small">Motor driver at existing CAD position</text>
+  <rect x="631" y="185" width="16" height="16" rx="2" class="reserve"/>
+  <text x="657" y="198" class="small">TI EVM allocated area (actual size unknown)</text>
+  <rect x="631" y="212" width="16" height="16" rx="2" class="access"/>
+  <text x="657" y="225" class="small">Service zone with four WAGO carrier footprints</text>
+  <rect x="631" y="239" width="16" height="16" rx="2" class="risk"/>
+  <text x="657" y="252" class="small">Unselected part zone or depth projection</text>
+
+  <text x="631" y="296" class="label">Candidate positions</text>
+  <text x="631" y="320" class="small">HUSB238 #5807: X-86, Y+58</text>
+  <text x="631" y="340" class="small">Pololu #2851: X-48, Y+58</text>
+  <text x="631" y="360" class="small">DS3231 #3013: X+85, Y+50</text>
+  <text x="631" y="380" class="small">TMC2209 #6121: X+35, Y+68 (existing CAD)</text>
+  <text x="631" y="400" class="small">WAGO 221-503 x4: lower-right allocation</text>
+  <text x="631" y="420" class="small">Inline fuse reserve; holders not sized</text>
+  <text x="631" y="440" class="small">TI TPS25810EVM-745: lower-left reserve</text>
+
+  <text x="631" y="474" class="label">Open before dimensions are released</text>
+  <text x="631" y="498" class="small">1. TI board fit, holes and connector access</text>
+  <text x="631" y="518" class="small">2. USB-C ports and rear-panel openings</text>
+  <text x="631" y="538" class="small">3. WAGO wire / lever access; fuse holders</text>
+  <text x="631" y="558" class="small">4. Cable routes, strain relief and pinch clearance</text>
+  <text x="631" y="578" class="small">5. Part height, heat and back-cover access</text>
+
+  <text x="28" y="580" class="sub">All dimensions mm; positions are component centers, not holes.</text>
+  <text x="28" y="602" class="sub">No case drilling coordinates are released; case dimensions remain provisional.</text>
+</svg>

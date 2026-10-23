@@ -1,0 +1,8 @@
+item,qty,material,nominal_dimensions_mm,processing_or_notes,status
+P1,1,solid walnut,270x205x9,Front perimeter frame; through opening 246x181; square envelope; decorative curve and edge treatment open,PROVISIONAL
+P2,2,walnut-veneer plywood,205x121x12,Left/right side panels; two internal grooves width 9 depth 4 at axial intervals 6.5-15.5 and 47.5-56.5 from inner guard datum,PROVISIONAL
+P3,2,walnut-veneer plywood,246x121x12,Top/bottom panels; same groove intervals as P2; between P2 side panels,PROVISIONAL
+P4,1,walnut-veneer plywood,270x205x12,Removable rear cover panel; external overall depth includes this cover,retention method OPEN
+G1,2,clear polycarbonate,252x187x8,Existing support plate material candidate; edge capture 3 mm per side,PROVISIONAL
+G2,1,clear polycarbonate,270x205x3,Front safety guard candidate; replaceable and retained by removable front frame,PROVISIONAL
+T1,1,walnut coupon,30x20x12,One groove test coupon; groove 9x4 is a test candidate only,OPEN
