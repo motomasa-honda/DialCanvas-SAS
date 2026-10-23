@@ -15,6 +15,7 @@
       .driver { fill: #e5d9f0; stroke: #745493; stroke-width: 1.5; }
       .reserve { fill: #fff1ce; stroke: #b78625; stroke-width: 2; stroke-dasharray: 8 5; }
       .access { fill: #e8efdb; stroke: #718957; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .tray { fill: none; stroke: #356e4f; stroke-width: 2; stroke-dasharray: 5 3; }
       .risk { fill: #f6dddd; stroke: #aa5959; stroke-width: 1.5; stroke-dasharray: 5 4; }
     </style>
   </defs>
@@ -28,6 +29,9 @@
   <text x="79" y="151" class="dim">内面: 246×181mm（ケース見積基準v0.2）</text>
   <text x="79" y="550" class="small">左=X- / 右=X+   下=Y- / 上=Y+   原点=ケース・3.4C中心</text>
 
+  <!-- One 230x120mm PC tray spans the lower service zones; module outlines remain adjustable. -->
+  <rect x="95" y="280" width="460" height="240" rx="5" class="tray"/>
+  <text x="325" y="274" class="small" text-anchor="middle">PCサービス板 230×120mm（取付穴は現物配置で加工）</text>
   <!-- DFR0758/DFR1015 module and wiring reservation only; DFR0758 board outline/mount holes unpublished. -->
   <rect x="89" y="280" width="250" height="240" rx="7" class="reserve"/>
   <text x="118" y="311" class="label">DFR0758 / DFR1015</text>
@@ -75,7 +79,7 @@
   <text x="372" y="430" class="small">F1 3A PD / F2 2A motor</text>
   <text x="372" y="451" class="small">F3 2A LED</text>
   <text x="372" y="474" class="small">Amon 3367 inline holders ×3</text>
-  <text x="372" y="494" class="small">flexible tie-down space</text>
+  <text x="372" y="494" class="small">cable tie slots on tray</text>
 
   <text x="631" y="116" class="label">凡例</text>
   <rect x="631" y="131" width="16" height="16" rx="2" class="known"/>
@@ -106,5 +110,5 @@
   <text x="631" y="578" class="small">5. 全負荷・閉箱温度受入</text>
 
   <text x="28" y="580" class="sub">単位mm。位置は部品中心候補で、固定穴位置ではありません。</text>
-  <text x="28" y="602" class="sub">USB-C口・スイッチ穴はカタログ値をケース案へ転記。ケース外形270×205×172mmは見積図v0.2の基準値です。</text>
+  <text x="28" y="602" class="sub">USB-C口・スイッチ穴はカタログ値をケース案へ転記。ケース外形270×205×172mmは見積図v0.3の基準値です。</text>
 </svg>

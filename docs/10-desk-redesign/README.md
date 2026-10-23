@@ -18,6 +18,6 @@
 
 DR-02〜06の段階手順、記録項目、暫定pass条件は[一台試作受入計画v0.21](../09-verification/prototype-acceptance-plan-v0.21.md)を参照してください。そこに記載した数値目標も、実機で確認・承認するまでは暫定値です。
 
-購入準備状況は[購入前設計監査](../02-architecture/purchase-readiness-audit-2026-10-21.md)、[ADR-0015](../../adr/0015-bss20-axis-support-candidate.md)、[ADR-0016](../../adr/0016-waveshare-34c-mounting-and-clearance.md)、[現行BSS1-20C候補](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)に記録しています。**現時点で一台分の発注可能BOMはありません。** 1軸用の市販部品候補は品番/販売単位まで調べていますが、¥3,235は価格参考にすぎず、注文指示ではありません。圧入・溝クーポン、重り、歯車固定具と軸側レバー、加工を含む試験パッケージは未成立です。壁材を支持板の周囲で組み立てるケース構造は候補条件です。
+購入準備状況は[一台分の調達候補BOM](../02-architecture/unselected-parts-procurement-plan-2026-10-21.md)、[購入前設計監査](../02-architecture/purchase-readiness-audit-2026-10-21.md)、[ADR-0015](../../adr/0015-bss20-axis-support-candidate.md)、[ADR-0016](../../adr/0016-waveshare-34c-mounting-and-clearance.md)、[現行BSS1-20C候補](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)に記録しています。**一台用の設計BOMは候補型番・数量・取付案まで選定済みです。** これは購入の実行や製作リリースを意味しません。ケース見積回答の確認、完成品一台の組立後に行う物理受入、文字盤素材の利用条件確認は残ります。圧入・溝クーポンや保持治具は初号機に使いません。
 
 要求の元記録として、旧v0.8の43要求を現行v0.21へ対応させた[要求移行表](requirements-migration-v0.8-to-v0.21.csv)を保存しています。旧7軸の要求と証拠は現行進捗へ流用しません。

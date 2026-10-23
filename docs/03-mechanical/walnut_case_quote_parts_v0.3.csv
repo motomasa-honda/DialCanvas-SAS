@@ -1,0 +1,7 @@
+item,qty,material,nominal_dimensions_mm,processing_or_notes,status
+P1,1,solid walnut,270x205x9,Front frame; opening envelope 246x181; curved lower opening guide points from top-left in mm: (12 189) (38 180) (88 191) (135 193) (182 191) (232 180) (258 189); smooth profile ±2mm; minimum 12mm lower rail; soft 1mm edge break,QUOTE_READY
+P2,2,walnut-veneer plywood,205x148x12,Left/right side panels; two internal grooves 9 wide x 4 deep at z28.5-37.5 and 69.5-78.5 from guard inner face; right panel holes Ø6.5 plus keyway at z84/108 and Ø7 at z132; all y=+75,QUOTE_READY
+P3,2,walnut-veneer plywood,246x148x12,Top/bottom panels between P2; same internal grooves 9 wide x 4 deep at z28.5-37.5 and 69.5-78.5,QUOTE_READY
+P4,1,walnut-veneer plywood,270x205x12,"Removable rear cover; 8 x Ø3.5 clearance holes on P2/P3 wall centerlines from top-left: (30,6) (135,6) (240,6) (30,199) (135,199) (240,199) (6,102.5) (264,102.5); 4 x Ø2x8 blind pilot holes on inside for 230x120 PC electronics tray from top-left: (30,77.5) (240,77.5) (30,177.5) (240,177.5); Neutrik D-cutout 24x19 and 2 x Ø3.2 at 31 pitch; center X=-86/Y=+78",QUOTE_READY
+G1,2,clear polycarbonate,252x187x8,Support plates; 3mm edge capture in case grooves,QUOTE_READY
+G2,1,clear polycarbonate,270x205x3,"Front guard; full cover behind P1 frame, held by removable P1 frame",QUOTE_READY
