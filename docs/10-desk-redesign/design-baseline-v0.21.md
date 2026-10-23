@@ -66,7 +66,7 @@ GPIO候補の一次資料はWaveshare [3.4C公式ドキュメント](https://doc
 - 28位置CADは再配置の計算例で、BSS1-20C×28とした候補です。全位置を1型番に揃えたので歯車外径は同一です。見た目、個数、座標は試作後に変更できます。
 - 各単軸は一枚の支持板に通し、OILES #80 80B-0608で支持します。軸6mm h7、ハウジング穴8mm H7を仕様候補とし、ブッシュOD8.045〜8.157mmに対する公称しめしろは0.030〜0.157mmです。圧入後のIDはカタログ上+0.045〜+0.095mm。透明PC板の適合は同材試験片で確認するまで未受入です。
 - 現行結合部品候補はNBK MJT-14-RD-4-6、4mm↔6mm、外径14mm、全長22mmです。候補Z位置z=57–79mm、モーター取付面z=81mmです。結合部の軸方向保持と実挿入長は未受入です。
-- BSS1-20Cの止めねじはKHKが簡易固定と説明する方式です。校正有効なATG12CN-Sによる両方向0.070N·m指示の1軸保持試験がPASSするまで全量購入を保留します。計器へのアクセスと歯車保持具は未確保です。
+- BSS1-20Cの止めねじはKHKが簡易固定と説明する方式です。歯車側を台に固定し、軸側のレバーへ95〜105gを73〜77mmで掛ける両方向約0.070N·mの1軸保持試験がPASSするまで全量購入を保留します。簡単な固定具とレバーアダプターは製作が必要で、校正済みトルク計は不要です。
 - NEMA-8 #4411の約406mm 4芯リード線は、線径/端子適合、ドライバー位置、引出し/固定経路、ギアや軸との離隔が未確認です。配線と歯車を一つの包絡へモデル化するまでモーター/ケース/配線材の全量購入は保留します。
 - CADは公称2D配置・外形包絡で、実歯形、公差、振れ、荷重、配線、板たわみを含みません。3.4Cは公式PDF/STEP差の安全側として15.50mm深さを置きましたが、個体受入とコネクター/ケーブル包絡は未完です。加工データへ直接使いません。
 
@@ -79,8 +79,8 @@ GPIO候補の一次資料はWaveshare [3.4C公式ドキュメント](https://doc
 | ケース外寸 | 270×205×145mm |
 | 内寸 | 246×181×121mm、側板12mmを前提にした候補 |
 | 材料 | 曲線部はウォールナット無垢材、広い化粧面はウォールナット突板候補 |
-| 支持板 | 透明PC 8mm、252×187mmを2枚。側壁/上下壁へ各3mm入る捕捉溝の候補。溝は幅8.2mm、壁内側から深さ3.2mm。試験片PASSまで材料/溝加工は保留 |
-| 前面保護 | 初号機評価材は透明PC呼び厚3mm（[ADR-0017](../../adr/0017-transparent-guard-material-candidate.md)）、周縁捕捉、着脱式押さえ縁。材料SKU、反射/傷、たわみ、保持、指到達は実物確認 |
+| 支持板 | 透明PC 8mm、252×187mmを2枚。側壁/上下壁へ各3mm入る捕捉溝の候補。溝は幅9mm、壁内側から深さ4mm。板厚差はPETシムで調整し、試験片PASS後に加工 |
+| 前面保護 | 初号機評価材は光 KPAC303-1（透明PC 300×450×3mm、[ADR-0017](../../adr/0017-transparent-guard-material-candidate.md)）、周縁捕捉、着脱式押さえ縁。切出し輪郭、反射/傷、たわみ、保持、指到達は実物確認 |
 | 前面保護板 | 前面内面をz=0、板内面候補z=-3。外形、押さえ縁、指到達は未受入 |
 | 前面支持板A | z=7–15mm、中央Ø112mm開口。14個のØ8 H7候補ブッシュ座 |
 | 歯車層A | BSS1-20Cのボスz=16–24mm、歯面z=24–30mm |
@@ -100,11 +100,11 @@ GPIO候補の一次資料はWaveshare [3.4C公式ドキュメント](https://doc
 flowchart TD
   A[USB-C PD 9V/3A] --> B[HUSB238 9V要求]
   B --> C[入力 3Aヒューズと分岐点]
-  C --> D[モーター 1Aヒューズ→物理スイッチ→TMC2209]
+  C --> D[モーター 2A MINIヒューズ→物理スイッチ→TMC2209]
   C --> E[Pololu #2851 5V]
   E --> F[5V主幹 4Aヒューズ]
   F --> G[TPS25810EVM 3A広告→3.4C]
-  F --> H[LED 1Aヒューズ→物理スイッチ→暖色LED]
+  F --> H[LED 2A MINIヒューズ→物理スイッチ→暖色LED]
 ```
 
 9Vのモーター戻りと5V/表示の戻りは、電源分岐点まで別配線とする。モーター相電流を表示器のGND配線やUSBケーブルへ流さない。ヒューズ値は一台試作の候補値で、導線・コネクター・突入・故障試験後に確定する。
@@ -113,15 +113,15 @@ flowchart TD
 | --- | --- | --- |
 | ACアダプター | Anker 511 Charger (Nano 3, 30W) とUSB-C PDケーブル | 9V/3A PDOを持つ候補。HUSB238のPD契約を実測 |
 | PDシンク | Adafruit HUSB238 #5807。9V固定要求、3A設定 | 契約失敗時は5V側へ安全に停止すること、極性・出力電圧を実測 |
-| 9V入力 | 3Aヒューズ候補後に星形分岐 | ヒューズ定格/時間特性、入力電圧、全負荷電流を確認 |
+| 9V入力 | Littelfuse MINI 297 MIN3 (3A)候補後に星形分岐 | ヒューズ定格/時間特性、入力電圧、全負荷電流を確認 |
 | 5V変換 | Pololu D24V50F5 #2851、9V→5V | 公称typical continuous up to 5A、温度依存。5Aを筐体内連続許容量とはみなさない |
-| 5V主幹 | 4Aヒューズ候補 | #2851、基板、端子、配線の定格に合わせて検証 |
+| 5V主幹 | Littelfuse MINI 297 MIN4 (4A)候補 | #2851、基板、端子、配線の定格に合わせて検証 |
 | 表示USB-C source | TI TPS25810EVM-745、TPS25810 DFP、3A広告設定 | 5V入力。ICの電流制限は3A広告時typ.3.40Aだが、USB-C sinkへ3.4A引出しを許可する意味ではない。CC設定・動作・温度を確認 |
 | 表示ケーブル | ELECOM MPA-XCCECSS03BK、C-C、0.3m | EVM sourceから3.4C USB TO UART入力。基板改版指定入力と電圧降下を測定 |
-| モーター | 9V分岐→1Aヒューズ候補→NKK MN11SS1W01 SPST→TMC2209 VM | 旧M1 eFuseを使わない独立枝。スイッチOFFでVMを直接遮断 |
+| モーター | 9V分岐→Littelfuse MINI 297 MIN2 (2A)候補→NKK MN11SS1W01 SPST→TMC2209 VM | 旧M1 eFuseを使わない独立枝。スイッチOFFでVMを直接遮断 |
 | モーター抑止 | ENNはactive-low。10kΩでENNをVIO/3.3Vへ外部プルアップ。GPIOは初期化時にENN HIGH。STEPは外部10kΩ pulldown候補 | reset/brownout/未接続/長押し停止を試験。実ドライバー基板の論理極性を確認 |
 | VM過電圧 | SMBJ12A TVSをTMC2209 VM/GND近傍へ、ドライバー基板の既設コンデンサーと併用 | VRWM=12V、仕様上最大クランプ19.9V候補。回生エネルギーと実波形は未受入 |
-| LED | 5V分岐→1Aヒューズ候補→独立SPST→FIT0836 330mm | 4W/m仕様値による最大1.32W/0.264Aの計算。電流、拡散、木部温度を測定 |
+| LED | 5V分岐→Littelfuse MINI 297 MIN2 (2A)候補→独立SPST→FIT0836 330mm | 4W/m仕様値による最大1.32W/0.264Aの計算。電流、拡散、木部温度を測定 |
 
 TPS25810EVM-745は評価用基板で、量産モジュールではない。TIガイド記載の3A広告ジャンパ設定を用い、実Type-Cケーブル使用時はCCテストジャンパを外す。評価基板そのものの取付、5V入力端子、ジャック、ジャンパ保持、入手性を確認する。設計上の意図はPololu #3411の手作業CC抵抗変更を避けること。
 
@@ -174,4 +174,6 @@ TPS25810EVM-745は評価用基板で、量産モジュールではない。TIガ
 - Adafruit [NEMA-8 #4411](https://www.adafruit.com/product/4411)、[TMC2209 #6121](https://www.adafruit.com/product/6121)、[HUSB238 #5807](https://www.adafruit.com/product/5807)、[DS3231 #3013](https://www.adafruit.com/product/3013)
 - Analog Devices [TMC2209 data sheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2209_datasheet_rev1.09.pdf)
 - Littelfuse [SMBJ12A](https://www.littelfuse.com/ja-jp/products/overvoltage-protection/tvs-diodes/surface-mount/smbj/smbj12a)
+- Littelfuse [MINI 297 fuse datasheet](https://www.littelfuse.com/assetdocs/littelfuse-datasheet-297-mini32v?assetguid=42c9dd21-a88e-4328-8e67-2f832444faf1)
+- Littelfuse [MINI aftermarket 5-piece packs](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/automotive-aftermarket-products-fuses/blade-fuses-shunts-automotive-aftermarket/mini)
 - 機構/取付候補: [KHK DS歯車](https://khkgears.net/pdf/ds.pdf)、[OILES #80](https://www.oiles.co.jp/en/products/bearing/assets/oiles-80_en.pdf)、[NBK MJT継手](https://www.nbk1560.com/products/coupling/couplicon/jaw_type/MJT-RD/)

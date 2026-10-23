@@ -15,10 +15,10 @@
 2. 5V枝はPololu D24V50F5 #2851で生成し、4A主幹ヒューズ候補の下流を表示・照明へ分ける。
 3. 3.4CのUSB TO UART Type-C入力への給電sourceはTI TPS25810EVM-745を暫定採用する。5V入力、CCの3A広告設定、過電流/過温度保護を使う。TIガイド上の3A広告時の電流リミットはtyp. 3.40Aだが、接続機器の設計上限は広告値の3Aとする。EVMは評価基板なので、据付形状・ジャンパ・端子・入手性を確認し、量産品として扱わない。
 4. 表示用のELECOM MPA-XCCECSS03BK 0.3m C-CケーブルをEVMと3.4CのUSB TO UART端子間に用いる候補とする。EVM source経由ではデバッグデータ経路を前提にせず、書込み時は給電ケーブルを取り外してPCを接続する。同時給電は禁止する。
-5. モーター枝は9V分岐から1Aヒューズ候補、パネルSPST、TMC2209 VMの順に接続する。物理スイッチがVMを直接遮断する。旧M1 eFuse、旧故障ラッチ、旧7軸配線を経路へ含めない。
+5. モーター枝は9V分岐から2A MINIヒューズ候補、パネルSPST、TMC2209 VMの順に接続する。物理スイッチがVMを直接遮断する。旧M1 eFuse、旧故障ラッチ、旧7軸配線を経路へ含めない。
 6. TMC2209のactive-low ENNは10kΩでVIO/3.3Vへ外部pull-upし、MCU起動時もENN HIGHを保つ。STEPに外部10kΩ pulldownを置く候補とする。ソフトウェア長押しは要求信号で、物理遮断を置き換えない。
 7. モーター電源の回生過電圧候補としてSMBJ12AをTMC2209 VM/GND近傍に置き、ドライバー基板上コンデンサーを残す。TVSの応答波形・エネルギー余裕は実測で受入れる。
-8. 分岐ヒューズ候補はPD入力3A、モーター1A、5V主幹4A、LED1A。これは暫定値であり、実導線・端子・突入・閉箱熱・異常条件を測るまで確定ヒューズ値とみなさない。
+8. 分岐ヒューズ候補はLittelfuse MINI 297系列でPD入力3A、モーター2A、5V主幹4A、LED2Aとする。小売5個箱はMIN3、MIN2、MIN4で選ぶ。メーカー系列は32V定格・2〜30A。旧1A案は同系列に該当品がないため2Aへ置換した。値は暫定であり、実導線・端子・突入・閉箱熱・異常条件を測るまで確定ヒューズ値とみなさない。
 9. モーター戻りと5V/表示の戻りは分岐点まで分離する。40-pin拡張端子への5V注入は行わない。
 10. 候補条件の静的負荷見積もりは約20.6W、9Vで約2.29A。9V/3A=27Wに対して参考上約6.4Wの余裕となるが、実負荷合格の根拠にはしない。
 
@@ -47,3 +47,5 @@
 - [Adafruit HUSB238 #5807](https://www.adafruit.com/product/5807)
 - [Adafruit TMC2209 #6121](https://www.adafruit.com/product/6121)、[Analog Devices TMC2209 data sheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2209_datasheet_rev1.09.pdf)
 - Littelfuse [SMBJ12A](https://www.littelfuse.com/ja-jp/products/overvoltage-protection/tvs-diodes/surface-mount/smbj/smbj12a)
+- Littelfuse [MINI 297 fuse datasheet](https://www.littelfuse.com/assetdocs/littelfuse-datasheet-297-mini32v?assetguid=42c9dd21-a88e-4328-8e67-2f832444faf1)
+- Littelfuse [MINI aftermarket 5-piece packs](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/automotive-aftermarket-products-fuses/blade-fuses-shunts-automotive-aftermarket/mini)

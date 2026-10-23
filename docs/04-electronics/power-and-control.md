@@ -8,11 +8,11 @@
 flowchart TD
   A[USB-C PD 9V/3A] --> B[HUSB238 9V要求]
   B --> C[入力 3A fuse / 分岐]
-  C --> D[1A fuse / SPST / TMC2209 VM]
+  C --> D[2A MINI fuse / SPST / TMC2209 VM]
   C --> E[Pololu #2851 5V]
   E --> F[5V主幹 4A fuse]
   F --> G[TPS25810EVM 3A広告 / 3.4C]
-  F --> H[1A fuse / LED SPST]
+  F --> H[2A MINI fuse / LED SPST]
 ```
 
 - 電源候補はAnker 511 30W PD電源 + HUSB238 #5807の固定9V/3A要求。
@@ -27,7 +27,7 @@ flowchart TD
 - モーター候補はAdafruit NEMA-8 #4411 + TMC2209 #6121、200 step/rev、1/8分割、0.30A RMS/相から評価、軸速度1.6rpm。
 - STEP/DIR/ENN候補GPIOは4/5/32。対象基板の改版確認まで実配線しない。
 - ENNはactive-low。外部10kΩ pull-upでVIO/3.3Vへ保持し、ファームウェアは初期化時にENN HIGH、通常ビルドは `CONFIG_DIALCANVAS_MOTOR_OUTPUT` 無効。
-- 9V→1Aヒューズ候補→NKK MN11SS1W01 SPST→TMC2209 VMの順。独立スイッチがVMを直列遮断し、旧M1 eFuseに依存しない。
+- 9V→2A MINIヒューズ候補→NKK MN11SS1W01 SPST→TMC2209 VMの順。独立スイッチがVMを直列遮断し、旧M1 eFuseに依存しない。
 - STEPに10kΩ pulldown候補を置き、reset/brownout時の不要パルスを抑える。ドライバーのVIO、ENN論理、基板既定プルは現物で照合する。
 - SMBJ12AをVM/GND近傍に置く候補。TVSはVRWM=12V、仕様上の最大クランプ19.9V。回生/急停止時の波形とエネルギーは未受入。
 
@@ -35,10 +35,12 @@ flowchart TD
 
 | 場所 | 試作候補 | 受入時に確認 |
 | --- | ---: | --- |
-| PD 9V入力 | 3A | 9V/3A契約、起動ピーク、ホルダー/導線の温度、ヒューズ時間特性 |
-| モーター枝 | 1A | 相電流、ドライバー故障、配線保護と誤溶断 |
-| 5V主幹 | 4A | 表示とLED合計、#2851/端子/配線の定格 |
-| LED枝 | 1A | LED長、実電流、拡散材/木部温度 |
+| PD 9V入力 | Littelfuse MINI 297 MIN3 (3A) | 9V/3A契約、起動ピーク、ホルダー/導線の温度、ヒューズ時間特性 |
+| モーター枝 | Littelfuse MINI 297 MIN2 (2A) | 相電流、ドライバー故障、配線保護と誤溶断 |
+| 5V主幹 | Littelfuse MINI 297 MIN4 (4A) | 表示とLED合計、#2851/端子/配線の定格 |
+| LED枝 | Littelfuse MINI 297 MIN2 (2A) | LED長、実電流、拡散材/木部温度 |
+
+ヒューズは定格電圧32VのMINI 297系列へ揃え、同系列にない旧1A候補を2Aへ置き換えた。市販5個箱の選択はMIN2/MIN3/MIN4。値は初号機の候補で、実負荷・配線・閉箱温度の受入後に確定する。一次資料：[Littelfuse MINI aftermarket](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/automotive-aftermarket-products-fuses/blade-fuses-shunts-automotive-aftermarket/mini)、[297 MINIデータシート](https://www.littelfuse.com/assetdocs/littelfuse-datasheet-297-mini32v?assetguid=42c9dd21-a88e-4328-8e67-2f832444faf1)。
 
 ## 受入順序
 

@@ -83,10 +83,10 @@ GEAR_HUB_D = 16;
 GEAR_HUB_L = 8;
 WASHER_D = 12;
 WASHER_ID = 6.3;
-GROOVE_DEPTH = 3.2; // 3.0mm plate embed plus 0.2mm bottom clearance into the wall
+GROOVE_DEPTH = 4.0; // 3.0mm plate embed plus 1.0mm bottom clearance into the wall
 GROOVE_ENTRY_RELIEF = 0.2; // relief at the open edge of the groove
-GROOVE_CUT_LENGTH = GROOVE_DEPTH + GROOVE_ENTRY_RELIEF; // 3.4mm geometric cut span
-GROOVE_WIDTH = 8.2; // nominal 8mm plate with 0.2mm clearance
+GROOVE_CUT_LENGTH = GROOVE_DEPTH + GROOVE_ENTRY_RELIEF; // 4.2mm geometric cut span
+GROOVE_WIDTH = 9.0; // 8mm nominal plate plus 1mm allowance for simple PET shims
 
 show_shell = true;
 show_guard = true;
@@ -241,12 +241,13 @@ module case_shell() {
       translate([CASE_W/2-WALL,-CASE_H/2,-12]) cube([WALL,CASE_H,9]);
     }
     // Side-wall grooves capture the 252x187mm plates at z=7..15 and z=48..56.
-    // Cut span is 3.4mm; measured from the inner wall face, wood depth is 3.2mm.
+    // Cut span is 4.2mm; measured from the inner wall face, wood depth is 4.0mm.
+    // Z width is centered around each nominal plate; shim the measured gap with PET strips.
     for (z0=[7,48]) {
-      translate([-PLATE_W/2-GROOVE_ENTRY_RELIEF,-PLATE_H/2,z0-0.1]) cube([GROOVE_CUT_LENGTH,PLATE_H,GROOVE_WIDTH]);
-      translate([CASE_W/2-WALL-GROOVE_ENTRY_RELIEF,-PLATE_H/2,z0-0.1]) cube([GROOVE_CUT_LENGTH,PLATE_H,GROOVE_WIDTH]);
-      translate([-PLATE_W/2,-PLATE_H/2-GROOVE_ENTRY_RELIEF,z0-0.1]) cube([PLATE_W,GROOVE_CUT_LENGTH,GROOVE_WIDTH]);
-      translate([-PLATE_W/2,CASE_H/2-WALL-GROOVE_ENTRY_RELIEF,z0-0.1]) cube([PLATE_W,GROOVE_CUT_LENGTH,GROOVE_WIDTH]);
+      translate([-PLATE_W/2-GROOVE_ENTRY_RELIEF,-PLATE_H/2,z0-(GROOVE_WIDTH-PLATE_T)/2]) cube([GROOVE_CUT_LENGTH,PLATE_H,GROOVE_WIDTH]);
+      translate([CASE_W/2-WALL-GROOVE_ENTRY_RELIEF,-PLATE_H/2,z0-(GROOVE_WIDTH-PLATE_T)/2]) cube([GROOVE_CUT_LENGTH,PLATE_H,GROOVE_WIDTH]);
+      translate([-PLATE_W/2,-PLATE_H/2-GROOVE_ENTRY_RELIEF,z0-(GROOVE_WIDTH-PLATE_T)/2]) cube([PLATE_W,GROOVE_CUT_LENGTH,GROOVE_WIDTH]);
+      translate([-PLATE_W/2,CASE_H/2-WALL-GROOVE_ENTRY_RELIEF,z0-(GROOVE_WIDTH-PLATE_T)/2]) cube([PLATE_W,GROOVE_CUT_LENGTH,GROOVE_WIDTH]);
     }
   }
 }
