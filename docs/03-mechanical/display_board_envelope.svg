@@ -38,7 +38,7 @@
   <text class="label" x="730" y="395">PDF 15.10mm / STEP 15.50mm</text>
   <text class="small" x="750" y="424">CAD uses 15.50mm conservative depth.</text>
   <text class="head" x="730" y="485">Still to verify at fit-up</text>
-  <text class="small" x="750" y="519">PCB revision, thread depth, carrier,</text>
+  <text class="small" x="750" y="519">PCB revision, thread depth, carrier fit,</text>
   <text class="small" x="750" y="543">ports, card/USB access and cable route.</text>
   <text class="tiny" x="730" y="593">Nominal interface view, not a cut file.</text>
 </svg>

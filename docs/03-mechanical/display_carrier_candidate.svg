@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760" role="img" aria-labelledby="title desc">
+  <title id="title">Waveshare 3.4C four-arm display carrier candidate</title>
+  <desc id="desc">Top view and side stack of a provisional 3 millimeter polycarbonate carrier, with four arms from the official M4 board pattern to M3 anchors at plus or minus 80 millimeters on support plate B.</desc>
+  <style>
+    text{font-family:DejaVu Sans,sans-serif;fill:#29251f}.title{font-size:28px;font-weight:700}.head{font-size:19px;font-weight:700}.label{font-size:15px}.small{font-size:13px;fill:#554e45}.tiny{font-size:11px;fill:#625c54}.opening{fill:#e7f2f0;stroke:#39787c;stroke-width:3;stroke-dasharray:10 7}.board{fill:#315b60;fill-opacity:.22;stroke:#315b60;stroke-width:3}.arm{fill:none;stroke:#c58d3b;stroke-opacity:.68;stroke-width:50.4;stroke-linecap:round}.boardhole{fill:#fff7e7;stroke:#172329;stroke-width:2}.anchor{fill:#bd6337;stroke:#502414;stroke-width:2}.dim{stroke:#342e28;stroke-width:1.5;fill:none;marker-start:url(#arrow);marker-end:url(#arrow)}.panel{fill:#f6f0e5;stroke:#b5a68f;stroke-width:1.5}.rule{stroke:#c8bead;stroke-width:1}
+  </style>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto-start-reverse"><path d="M9,0 L0,4.5 L9,9" fill="none" stroke="#342e28" stroke-width="1.1"/></marker></defs>
+  <rect width="1180" height="760" fill="#fbfaf6"/>
+  <text class="title" x="36" y="44">3.4C display carrier · fit candidate v0</text>
+  <text class="small" x="36" y="70">Waveshare SKU 31523 drawing pattern + BSS20 support plate B · schematic only, not a cut file</text>
+
+  <text class="head" x="280" y="111" text-anchor="middle">Top view (mm)</text>
+  <g transform="translate(42,60) scale(0.85)">
+  <rect class="opening" x="112" y="101" width="336" height="336"/>
+  <circle class="board" cx="280" cy="269" r="161"/>
+  <g class="arm">
+    <line x1="385" y1="159.1" x2="504" y2="45"/>
+    <line x1="175" y1="159.1" x2="56" y2="45"/>
+    <line x1="385" y1="378.9" x2="504" y2="493"/>
+    <line x1="175" y1="378.9" x2="56" y2="493"/>
+  </g>
+  <g class="boardhole">
+    <circle cx="385" cy="159.1" r="6.3"/><circle cx="175" cy="159.1" r="6.3"/>
+    <circle cx="385" cy="378.9" r="6.3"/><circle cx="175" cy="378.9" r="6.3"/>
+  </g>
+  <g class="anchor">
+    <circle cx="504" cy="45" r="4.8"/><circle cx="56" cy="45" r="4.8"/>
+    <circle cx="504" cy="493" r="4.8"/><circle cx="56" cy="493" r="4.8"/>
+  </g>
+  <line class="dim" x1="112" y1="465" x2="448" y2="465"/>
+  <text class="tiny" x="280" y="484" text-anchor="middle">120mm support-plate opening</text>
+  <line class="dim" x1="14" y1="540" x2="546" y2="540"/>
+  <text class="tiny" x="280" y="557" text-anchor="middle">190mm stock blank (outline max ±89mm, 6mm margin)</text>
+  </g>
+
+  <rect class="panel" x="585" y="99" width="555" height="430" rx="10"/>
+  <text class="head" x="615" y="139">Candidate parts and locations</text>
+  <text class="label" x="615" y="179">1 × 3mm clear PC spider · KPAC303-1 stock candidate</text>
+  <text class="small" x="615" y="204">Four diagonal arms, 18mm wide; 190 × 190mm maximum blank.</text>
+  <line class="rule" x1="615" y1="223" x2="1110" y2="223"/>
+  <text class="label" x="615" y="258">Board side · 4 × M4 clearance Ø4.5mm</text>
+  <text class="small" x="615" y="282">Centers X=±37.50, Y=±39.25mm; 2mm nylon sleeves.</text>
+  <text class="small" x="615" y="305">M4 × 8mm screws: 3mm PC + 2mm sleeve leaves 3mm</text>
+  <text class="small" x="615" y="326">nominal thread engagement in the drawing's 4mm depth.</text>
+  <line class="rule" x1="615" y1="345" x2="1110" y2="345"/>
+  <text class="label" x="615" y="380">Plate side · 4 × M3 clearance Ø3.4mm</text>
+  <text class="small" x="615" y="404">Centers X/Y=±80mm; 6mm nylon standoffs.</text>
+  <text class="small" x="615" y="427">M3 × 25mm bolts pass through 8mm support plate B,</text>
+  <text class="small" x="615" y="448">standoff and carrier into washer + locknut.</text>
+  <text class="tiny" x="615" y="490">Orange: carrier arms · cream: board holes · red: M3 anchors</text>
+
+  <text class="head" x="42" y="565">Side stack · z (mm)</text>
+  <rect x="95" y="621" width="120" height="26" fill="#dbe9e5" stroke="#477a78" stroke-width="2"/>
+  <rect x="385" y="621" width="120" height="26" fill="#dbe9e5" stroke="#477a78" stroke-width="2"/>
+  <text class="tiny" x="155" y="638" text-anchor="middle">Support B</text>
+  <text class="tiny" x="445" y="638" text-anchor="middle">Support B</text>
+  <rect x="240" y="608" width="120" height="51" fill="#315b60" fill-opacity=".22" stroke="#315b60" stroke-width="2"/>
+  <text class="tiny" x="300" y="637" text-anchor="middle">Display</text>
+  <rect x="265" y="602" width="70" height="6" fill="#e4d8b9" stroke="#887957" stroke-width="1"/>
+  <rect x="180" y="592" width="240" height="10" fill="#c58d3b" fill-opacity=".72" stroke="#815414" stroke-width="1.5"/>
+  <rect x="140" y="602" width="14" height="19" fill="#b9c4b5" stroke="#606858" stroke-width="1"/>
+  <rect x="446" y="602" width="14" height="19" fill="#b9c4b5" stroke="#606858" stroke-width="1"/>
+  <text class="tiny" x="500" y="584">PC carrier z=62…65</text>
+  <text class="tiny" x="500" y="618">M4 spacer 2mm</text>
+  <text class="tiny" x="300" y="675" text-anchor="middle">Board z=44.5…60 · 2mm board sleeve · 6mm feet to support B top z=56</text>
+  <rect class="panel" x="650" y="564" width="490" height="138" rx="10"/>
+  <text class="small" x="680" y="599">Desk geometry is defined; fit is still open.</text>
+  <text class="small" x="680" y="624">On one 31523 unit, check thread/lands, port access,</text>
+  <text class="small" x="680" y="648">spacer seating, carrier flex and gear/glass clearance.</text>
+  <text class="tiny" x="680" y="678">No manufacturing release. CAD is an envelope candidate.</text>
+</svg>

@@ -77,22 +77,31 @@ BUSHING_OD = 8.157; // maximum nominal OD from OILES catalog tolerance
 BOARD_OUTER_D = 115; // official 3.4C circular module diameter; bounding square is 115mm
 DISPLAY_GLASS_Z = 44.5; // revised candidate; B gear face ends at z=39mm
 BOARD_VIS_DEPTH = 15.5; // conservative official STEP envelope; drawing PDF says 15.1mm
+BOARD_HOLE_X = 37.5; // official drawing pattern, interpreted from module center
+BOARD_HOLE_Y = 39.25;
+BOARD_CARRIER_ANCHOR = 80; // four M3 through-bolt anchors outside the 120mm opening
+BOARD_CARRIER_Z = 62; // 2mm nominal rear clearance beyond the conservative board envelope
+BOARD_CARRIER_T = 3; // 3mm PC candidate; not a fabrication release
+BOARD_CARRIER_ARM_D = 18; // hull width around the four diagonal arms
+BOARD_CARRIER_HOLE_D = 4.5; // board-side M4 clearance; confirm against received unit
+BOARD_CARRIER_FOOT_HOLE_D = 3.4; // support-plate M3 clearance
 ACTIVE_D = 87.6;
 GEAR_FACE_T = 6;
 GEAR_HUB_D = 16;
 GEAR_HUB_L = 8;
 WASHER_D = 12;
 WASHER_ID = 6.3;
-GROOVE_DEPTH = 4.0; // 3.0mm plate embed plus 1.0mm bottom clearance into the wall
+GROOVE_DEPTH = 4.0; // 3.0mm plate embed plus 1.0mm bottom allowance into the wall
 GROOVE_ENTRY_RELIEF = 0.2; // relief at the open edge of the groove
 GROOVE_CUT_LENGTH = GROOVE_DEPTH + GROOVE_ENTRY_RELIEF; // 4.2mm geometric cut span
-GROOVE_WIDTH = 9.0; // 8mm nominal plate plus 1mm allowance for simple PET shims
+GROOVE_WIDTH = 9.0; // nominal 8mm plate with shim allowance
 
 show_shell = true;
 show_guard = true;
 show_supports = true;
 show_gears = true;
 show_board = true;
+show_board_carrier = true;
 show_motor = true;
 
 function gear_points(teeth, root_r, tip_r, phase=0) = [
@@ -160,6 +169,9 @@ module support_b() {
       translate([-PLATE_W/2, -PLATE_H/2, 48]) cube([PLATE_W, PLATE_H, PLATE_T]);
       translate([-60,-60,47.9]) cube([120,120,PLATE_T+0.2]);
       for (g=B_GEARS) translate([g[1],g[2],g[5]-0.1]) cylinder(d=8, h=PLATE_T+0.2);
+      for (sx=[-1,1], sy=[-1,1])
+        translate([sx*BOARD_CARRIER_ANCHOR, sy*BOARD_CARRIER_ANCHOR, 47.9])
+          cylinder(d=BOARD_CARRIER_FOOT_HOLE_D, h=PLATE_T+0.2);
     }
 }
 
@@ -218,6 +230,49 @@ module display_board() {
   }
 }
 
+module board_carrier_arm(sx, sy) {
+  hull() {
+    translate([sx*BOARD_HOLE_X, sy*BOARD_HOLE_Y, BOARD_CARRIER_Z])
+      cylinder(d=BOARD_CARRIER_ARM_D, h=BOARD_CARRIER_T);
+    translate([sx*BOARD_CARRIER_ANCHOR, sy*BOARD_CARRIER_ANCHOR, BOARD_CARRIER_Z])
+      cylinder(d=BOARD_CARRIER_ARM_D, h=BOARD_CARRIER_T);
+  }
+}
+
+module display_board_carrier() {
+  if (show_board_carrier) {
+    // Four diagonal arms bridge the board's M4 pattern to the clear corners of support B.
+    // This is a fit candidate: rear ports, local board lands and flex have not been accepted.
+    color([0.70,0.48,0.20,0.62])
+      difference() {
+        union()
+          for (sx=[-1,1], sy=[-1,1]) board_carrier_arm(sx,sy);
+        for (sx=[-1,1], sy=[-1,1]) {
+          translate([sx*BOARD_HOLE_X, sy*BOARD_HOLE_Y, BOARD_CARRIER_Z-0.1])
+            cylinder(d=BOARD_CARRIER_HOLE_D, h=BOARD_CARRIER_T+0.2);
+          translate([sx*BOARD_CARRIER_ANCHOR, sy*BOARD_CARRIER_ANCHOR, BOARD_CARRIER_Z-0.1])
+            cylinder(d=BOARD_CARRIER_FOOT_HOLE_D, h=BOARD_CARRIER_T+0.2);
+        }
+      }
+    // Outer nylon standoffs: support B top z=56 to carrier underside z=62 (6mm).
+    // Board-side 2mm sleeves sit between the mounting lands and the carrier.
+    color([0.78,0.79,0.73,0.78])
+      for (sx=[-1,1], sy=[-1,1])
+        translate([sx*BOARD_CARRIER_ANCHOR, sy*BOARD_CARRIER_ANCHOR, 56])
+          difference() {
+            cylinder(d=6, h=BOARD_CARRIER_Z-56);
+            translate([0,0,-0.1]) cylinder(d=BOARD_CARRIER_FOOT_HOLE_D, h=BOARD_CARRIER_Z-56+0.2);
+          }
+    color([0.78,0.79,0.73,0.78])
+      for (sx=[-1,1], sy=[-1,1])
+        translate([sx*BOARD_HOLE_X, sy*BOARD_HOLE_Y, DISPLAY_GLASS_Z+BOARD_VIS_DEPTH])
+          difference() {
+            cylinder(d=8, h=BOARD_CARRIER_Z-(DISPLAY_GLASS_Z+BOARD_VIS_DEPTH));
+            translate([0,0,-0.1]) cylinder(d=BOARD_CARRIER_HOLE_D, h=BOARD_CARRIER_Z-(DISPLAY_GLASS_Z+BOARD_VIS_DEPTH)+0.2);
+          }
+  }
+}
+
 module motor_and_coupler() {
   if (show_motor) {
     // Nominal NBK coupling and NEMA-8 body envelopes; motor/board clearances remain unmeasured.
@@ -262,5 +317,6 @@ bushings_and_shafts();
 gear_layers();
 axial_hardware();
 display_board();
+display_board_carrier();
 motor_and_coupler();
 front_guard();
