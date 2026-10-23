@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">DSF1 two-layer gear layout candidate</title>
+<desc id="desc">Separate top views of front and rear gear planes. Existing 28 positions re-spaced to catalog KHK DSF1 gears with 5mm clamp hubs. Not a fabrication drawing.</desc>
+<rect width="1280" height="720" fill="#101112"/>
+<style>text{font-family:DejaVu Sans,sans-serif;fill:#eee0c7}.title{font-size:24px;font-weight:bold}.sub{font-size:13px;fill:#cdbfa7}.panelTitle{font-size:17px;font-weight:bold}.small{font-size:13px;fill:#d7cbb7}.tiny{font-size:10px;fill:#bdb09b}.id{font-size:8px;font-weight:bold;text-anchor:middle;dominant-baseline:middle}.mesh{stroke:#e8c68b;stroke-width:1;stroke-dasharray:4 4;opacity:.55}.case{fill:#211b15;stroke:#a77d49;stroke-width:2}.board{fill:#315b60;fill-opacity:.13;stroke:#a5cfcc;stroke-width:2;stroke-dasharray:7 5}.opening{fill:none;stroke:#ffe2a1;stroke-width:1.5;stroke-dasharray:6 4}.gearA{fill:#d19b50;fill-opacity:.86;stroke:#ffe2a1;stroke-width:1.4}.gearB{fill:#9a572b;fill-opacity:.82;stroke:#eab36d;stroke-width:1.4}.hub{fill:#43351f;stroke:#fff0bd;stroke-width:1.2}.bore{fill:#101112;stroke:#fff0bd;stroke-width:1}</style>
+<text class="title" x="40" y="34">DSF1 gear layout candidate</text>
+<text class="sub" x="40" y="54">Separate plane views · 28 positions kept for comparison · not a fabrication drawing</text>
+<text class="panelTitle" x="42.0" y="78">Front plane A</text>
+<rect class="case" x="42.0" y="90.0" width="553.5" height="420.2" rx="8"/>
+<rect class="board" x="200.9" y="182.2" width="235.7" height="235.7" rx="5"/>
+<circle class="opening" cx="318.8" cy="300.1" r="114.8"/>
+<line class="mesh" x1="318.8" y1="160.7" x2="278.5" y2="168.4"/>
+<line class="mesh" x1="278.5" y1="168.4" x2="233.9" y2="180.4"/>
+<line class="mesh" x1="233.9" y1="180.4" x2="194.4" y2="204.1"/>
+<line class="mesh" x1="194.4" y1="204.1" x2="184.6" y2="243.9"/>
+<line class="mesh" x1="184.6" y1="243.9" x2="153.9" y2="271.1"/>
+<line class="mesh" x1="153.9" y1="271.1" x2="169.5" y2="313.4"/>
+<line class="mesh" x1="169.5" y1="313.4" x2="179.5" y2="357.3"/>
+<line class="mesh" x1="179.5" y1="357.3" x2="189.7" y2="397.1"/>
+<line class="mesh" x1="189.7" y1="397.1" x2="219.2" y2="425.5"/>
+<line class="mesh" x1="219.2" y1="425.5" x2="261.2" y2="444.5"/>
+<line class="mesh" x1="261.2" y1="444.5" x2="307.3" y2="444.9"/>
+<line class="mesh" x1="307.3" y1="444.9" x2="347.8" y2="451.6"/>
+<line class="mesh" x1="347.8" y1="451.6" x2="387.1" y2="439.8"/>
+<circle class="gearA" cx="318.8" cy="160.7" r="22.5"/>
+<circle class="hub" cx="318.8" cy="160.7" r="14.3"/>
+<circle class="bore" cx="318.8" cy="160.7" r="5.1"/>
+<text class="id" x="318.8" y="160.7">A00</text>
+<circle class="gearA" cx="278.5" cy="168.4" r="22.5"/>
+<circle class="hub" cx="278.5" cy="168.4" r="14.3"/>
+<circle class="bore" cx="278.5" cy="168.4" r="5.1"/>
+<text class="id" x="278.5" y="168.4">A01</text>
+<circle class="gearA" cx="233.9" cy="180.4" r="27.7"/>
+<circle class="hub" cx="233.9" cy="180.4" r="14.3"/>
+<circle class="bore" cx="233.9" cy="180.4" r="5.1"/>
+<text class="id" x="233.9" y="180.4">A02</text>
+<circle class="gearA" cx="194.4" cy="204.1" r="22.5"/>
+<circle class="hub" cx="194.4" cy="204.1" r="14.3"/>
+<circle class="bore" cx="194.4" cy="204.1" r="5.1"/>
+<text class="id" x="194.4" y="204.1">A03</text>
+<circle class="gearA" cx="184.6" cy="243.9" r="22.5"/>
+<circle class="hub" cx="184.6" cy="243.9" r="14.3"/>
+<circle class="bore" cx="184.6" cy="243.9" r="5.1"/>
+<text class="id" x="184.6" y="243.9">A04</text>
+<circle class="gearA" cx="153.9" cy="271.1" r="22.5"/>
+<circle class="hub" cx="153.9" cy="271.1" r="14.3"/>
+<circle class="bore" cx="153.9" cy="271.1" r="5.1"/>
+<text class="id" x="153.9" y="271.1">A05</text>
+<circle class="gearA" cx="169.5" cy="313.4" r="26.6"/>
+<circle class="hub" cx="169.5" cy="313.4" r="14.3"/>
+<circle class="bore" cx="169.5" cy="313.4" r="5.1"/>
+<text class="id" x="169.5" y="313.4">A06</text>
+<circle class="gearA" cx="179.5" cy="357.3" r="22.5"/>
+<circle class="hub" cx="179.5" cy="357.3" r="14.3"/>
+<circle class="bore" cx="179.5" cy="357.3" r="5.1"/>
+<text class="id" x="179.5" y="357.3">A07</text>
+<circle class="gearA" cx="189.7" cy="397.1" r="22.5"/>
+<circle class="hub" cx="189.7" cy="397.1" r="14.3"/>
+<circle class="bore" cx="189.7" cy="397.1" r="5.1"/>
+<text class="id" x="189.7" y="397.1">A08</text>
+<circle class="gearA" cx="219.2" cy="425.5" r="22.5"/>
+<circle class="hub" cx="219.2" cy="425.5" r="14.3"/>
+<circle class="bore" cx="219.2" cy="425.5" r="5.1"/>
+<text class="id" x="219.2" y="425.5">A09</text>
+<circle class="gearA" cx="261.2" cy="444.5" r="27.7"/>
+<circle class="hub" cx="261.2" cy="444.5" r="14.3"/>
+<circle class="bore" cx="261.2" cy="444.5" r="5.1"/>
+<text class="id" x="261.2" y="444.5">A10</text>
+<circle class="gearA" cx="307.3" cy="444.9" r="22.5"/>
+<circle class="hub" cx="307.3" cy="444.9" r="14.3"/>
+<circle class="bore" cx="307.3" cy="444.9" r="5.1"/>
+<text class="id" x="307.3" y="444.9">A11</text>
+<circle class="gearA" cx="347.8" cy="451.6" r="22.5"/>
+<circle class="hub" cx="347.8" cy="451.6" r="14.3"/>
+<circle class="bore" cx="347.8" cy="451.6" r="5.1"/>
+<text class="id" x="347.8" y="451.6">A12</text>
+<circle class="gearA" cx="387.1" cy="439.8" r="22.5"/>
+<circle class="hub" cx="387.1" cy="439.8" r="14.3"/>
+<circle class="bore" cx="387.1" cy="439.8" r="5.1"/>
+<text class="id" x="387.1" y="439.8">A13</text>
+<text class="panelTitle" x="666.0" y="78">Rear plane B</text>
+<rect class="case" x="666.0" y="90.0" width="553.5" height="420.2" rx="8"/>
+<rect class="board" x="824.9" y="182.2" width="235.7" height="235.7" rx="5"/>
+<rect class="opening" x="819.8" y="177.1" width="246.0" height="246.0"/>
+<line class="mesh" x1="942.8" y1="160.7" x2="903.2" y2="150.0"/>
+<line class="mesh" x1="903.2" y1="150.0" x2="863.6" y2="160.7"/>
+<line class="mesh" x1="863.6" y1="160.7" x2="824.8" y2="147.6"/>
+<line class="mesh" x1="824.8" y1="147.6" x2="789.3" y2="168.1"/>
+<line class="mesh" x1="789.3" y1="168.1" x2="749.8" y2="189.9"/>
+<line class="mesh" x1="749.8" y1="189.9" x2="784.6" y2="218.5"/>
+<line class="mesh" x1="784.6" y1="218.5" x2="752.0" y2="251.1"/>
+<line class="mesh" x1="752.0" y1="251.1" x2="784.6" y2="283.6"/>
+<line class="mesh" x1="784.6" y1="283.6" x2="749.8" y2="312.2"/>
+<line class="mesh" x1="749.8" y1="312.2" x2="786.3" y2="338.7"/>
+<line class="mesh" x1="786.3" y1="338.7" x2="756.2" y2="373.7"/>
+<line class="mesh" x1="756.2" y1="373.7" x2="783.1" y2="411.1"/>
+<line class="mesh" x1="783.1" y1="411.1" x2="750.7" y2="436.3"/>
+<circle class="gearB" cx="942.8" cy="160.7" r="22.5"/>
+<circle class="hub" cx="942.8" cy="160.7" r="14.3"/>
+<circle class="bore" cx="942.8" cy="160.7" r="5.1"/>
+<text class="id" x="942.8" y="160.7">B00</text>
+<circle class="gearB" cx="903.2" cy="150.0" r="22.5"/>
+<circle class="hub" cx="903.2" cy="150.0" r="14.3"/>
+<circle class="bore" cx="903.2" cy="150.0" r="5.1"/>
+<text class="id" x="903.2" y="150.0">B01</text>
+<circle class="gearB" cx="863.6" cy="160.7" r="22.5"/>
+<circle class="hub" cx="863.6" cy="160.7" r="14.3"/>
+<circle class="bore" cx="863.6" cy="160.7" r="5.1"/>
+<text class="id" x="863.6" y="160.7">B02</text>
+<circle class="gearB" cx="824.8" cy="147.6" r="22.5"/>
+<circle class="hub" cx="824.8" cy="147.6" r="14.3"/>
+<circle class="bore" cx="824.8" cy="147.6" r="5.1"/>
+<text class="id" x="824.8" y="147.6">B03</text>
+<circle class="gearB" cx="789.3" cy="168.1" r="22.5"/>
+<circle class="hub" cx="789.3" cy="168.1" r="14.3"/>
+<circle class="bore" cx="789.3" cy="168.1" r="5.1"/>
+<text class="id" x="789.3" y="168.1">B04</text>
+<circle class="gearB" cx="749.8" cy="189.9" r="26.6"/>
+<circle class="hub" cx="749.8" cy="189.9" r="14.3"/>
+<circle class="bore" cx="749.8" cy="189.9" r="5.1"/>
+<text class="id" x="749.8" y="189.9">B05</text>
+<circle class="gearB" cx="784.6" cy="218.5" r="22.5"/>
+<circle class="hub" cx="784.6" cy="218.5" r="14.3"/>
+<circle class="bore" cx="784.6" cy="218.5" r="5.1"/>
+<text class="id" x="784.6" y="218.5">B06</text>
+<circle class="gearB" cx="752.0" cy="251.1" r="27.7"/>
+<circle class="hub" cx="752.0" cy="251.1" r="14.3"/>
+<circle class="bore" cx="752.0" cy="251.1" r="5.1"/>
+<text class="id" x="752.0" y="251.1">B07</text>
+<circle class="gearB" cx="784.6" cy="283.6" r="22.5"/>
+<circle class="hub" cx="784.6" cy="283.6" r="14.3"/>
+<circle class="bore" cx="784.6" cy="283.6" r="5.1"/>
+<text class="id" x="784.6" y="283.6">B08</text>
+<circle class="gearB" cx="749.8" cy="312.2" r="26.6"/>
+<circle class="hub" cx="749.8" cy="312.2" r="14.3"/>
+<circle class="bore" cx="749.8" cy="312.2" r="5.1"/>
+<text class="id" x="749.8" y="312.2">B09</text>
+<circle class="gearB" cx="786.3" cy="338.7" r="22.5"/>
+<circle class="hub" cx="786.3" cy="338.7" r="14.3"/>
+<circle class="bore" cx="786.3" cy="338.7" r="5.1"/>
+<text class="id" x="786.3" y="338.7">B10</text>
+<circle class="gearB" cx="756.2" cy="373.7" r="27.7"/>
+<circle class="hub" cx="756.2" cy="373.7" r="14.3"/>
+<circle class="bore" cx="756.2" cy="373.7" r="5.1"/>
+<text class="id" x="756.2" y="373.7">B11</text>
+<circle class="gearB" cx="783.1" cy="411.1" r="22.5"/>
+<circle class="hub" cx="783.1" cy="411.1" r="14.3"/>
+<circle class="bore" cx="783.1" cy="411.1" r="5.1"/>
+<text class="id" x="783.1" y="411.1">B12</text>
+<circle class="gearB" cx="750.7" cy="436.3" r="22.5"/>
+<circle class="hub" cx="750.7" cy="436.3" r="14.3"/>
+<circle class="bore" cx="750.7" cy="436.3" r="5.1"/>
+<text class="id" x="750.7" y="436.3">B13</text>
+<text class="small" x="40" y="625">Gears: DSF1-20 × 21 · DSF1-24 × 3 · DSF1-25 × 4</text>
+<text class="small" x="40" y="649">Minimum case margin 5.1mm · minimum active-display gap 12.4mm · center-distance error 0.000mm</text>
+<text class="small" x="40" y="673">OD14 washer/opening web 1.0mm · washer gap 6.0mm · min non-mesh gap 2.7mm</text>
+<text class="tiny" x="40" y="698">Blue dashed: board/opening · dashed gold lines: mesh pairs · ID inside each hub · tooth outlines are pitch-circle envelopes only</text>
+</svg>

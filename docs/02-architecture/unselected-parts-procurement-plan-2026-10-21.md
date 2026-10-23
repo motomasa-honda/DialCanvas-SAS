@@ -1,8 +1,12 @@
 # Forest Guardian / DialCanvas 一台試作・未選定部品調達候補
 
-更新日：2026-10-21
+更新日：2026-10-22
 
-状態：**設計ベースラインv0.21の購入候補/参考価格。発注・寸法受入・電気受入・製作の承認ではない。**
+状態：**候補/参考価格の棚卸し。購入準備完了ではない。発注・寸法受入・電気受入・製作の承認ではない。**
+
+購入前監査で、現行CADの単軸が指定ブッシュに入らない軸支持不整合と、DS1歯車の穴/軸固定条件未定義を確認した。現行の機械候補は[KHK BSS1-20C・6mm軸支持案](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)へ更新した。**全量購入はまだ保留**とする。1軸の止めねじ保持とブッシュ圧入、同材穴の試験片をPASSしてから4歯車試験へ進む。
+
+旧DSF1は価格比較用に残し、現行候補の購入数量/寸法には使わない。機械候補の数量、軸方向スタック、4歯車の試験キットはBSS20の候補ノートを参照する。
 
 本表は[設計ベースラインv0.21](../10-desk-redesign/design-baseline-v0.21.md)の部品候補です。静かな単一モーター、不規則な二層歯車、3.4型画面、microSD文字盤、USB-C給電を前提にします。旧7軸/M1部品は現行候補に含めません。
 
@@ -12,22 +16,22 @@
 
 | 分類 | 部品・型番 | 数量/買い方 | 価格（参考） | 購入先 | 選定状態・残作業 |
 |---|---|---:|---:|---|---|
-| 表示・制御 | Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C / SKU31523、3.4型円形IPS 800×800 | 1 | **US$64.99（公式）/ £62.40税込（The Pi Hut）/ US$63.90（SpotPear）/ €72.20（RLX、税別価格€58.70併記）** | [Waveshare](https://www.waveshare.com/esp32-p4-wifi6-touch-lcd-3.4c.htm?sku=31523)・[The Pi Hut / WAV-31523](https://thepihut.com/products/esp32-p4-3-4-round-touch-display-dev-board-800x800)・[SpotPear](https://spotpear.com/shop/ESP32-P4-3.4-inch-Round-LCD-Display-TouchScreen-WIFI6/ESP32-P4-WIFI6-Touch-LCD-3.4C.html)・[RLX Components / WS-31523](https://rlx.sk/en/esp32-p4/10469-esp32-p4-34-round-touch-display-devboard-800800-dual-microphones-support-wi-fi-6bt5-le-ws-31523.html) | 2026-10-21確認：公式店SKU31523はOut of Stock、The Pi HutはSold out。SpotPearは同じ3.4C型番を$63.90・In Stock表示（販売元欄はSpotPear）。RLX ComponentsはWaveshare WS-31523として€72.20・残り1個表示。RLXは掲載在庫が実在庫と異なる場合があるため要確認。両代替店とも日本配送費/納期は未確認。発注候補は見つかったが、販売元確認・実在庫・配送先を注文前に照合する。3.4C/31523をサイズ・型番基準に固定し、メーカー公称115×115mm/表示87.6mmでCADは継続。購入後は基板改版、厚み・取付穴・端子奥行き・電流・表示品質を受入確認。|
-| 表示基板取付 | タカチ HES3-10 M3樹脂スペーサー + 大里 M3×12/M3×6ステンレスなべ小ねじ | スペーサー20個袋、ねじ各50本袋 | **¥340 + ¥274 + ¥208 = ¥822** | [HES3-10](https://www.monotaro.com/p/5723/7717/)、[M3×12](https://www.monotaro.com/p/1714/2006/)、[M3×6](https://www.monotaro.com/p/1714/1979/) | 4点取付を想定。8mm支持板側はM3×12、基板側はM3×6を使う候補。3.4C実基板の穴径・穴位置がM3に適合し、ねじ頭/コネクターと干渉しないことを現物確認してから使う。モノタロウのHES3-10は別途特別運賃¥660表示。|
+| 表示・制御 | Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C / SKU31523、3.4型円形IPS 800×800 | 1（技術サンプル候補） | 旧価格スナップショット。見積/在庫未確認 | [Waveshare](https://www.waveshare.com/esp32-p4-wifi6-touch-lcd-3.4c.htm?sku=31523)・[The Pi Hut / WAV-31523](https://thepihut.com/products/esp32-p4-3-4-round-touch-display-dev-board-800x800)・[SpotPear](https://spotpear.com/shop/ESP32-P4-3.4-inch-Round-LCD-Display-TouchScreen-WIFI6/ESP32-P4-WIFI6-Touch-LCD-3.4C.html)・[RLX Components / WS-31523](https://rlx.sk/en/esp32-p4/10469-esp32-p4-34-round-touch-display-devboard-800800-dual-microphones-support-wi-fi-6bt5-le-ws-31523.html) | 購入準備品ではなく現物照合用候補。公式Drawingは前面Ø115mm、LCD有効Ø87.60mm、PDF厚15.10mm/STEP包絡15.50mm、外周4×M4×4.00表記、X/Y穴位置±37.50/±39.25mm（75×78.5mm）。旧M3固定具候補を撤回。公開参照回路図rev1.1と個体改版は別物で、現物改版・ねじ掛かり・端子/挿抜包絡を照合するまで保持具/ねじを発注しない。販売元、実在庫、日本配送、返品条件も注文直前に確認。|
+| 表示基板保持 | 旧案撤回：M3スペーサー/ねじは候補から削除。保持キャリアの型番は未選定 | なし | なし | なし | M4×4.00表記の4穴、75×78.5mmパターンを基準座標とする。4mmねじ深さの現物照合、支持板Bの開口をまたぐキャリア、穴/端子/背面部品との離隔を設計してから固定具をBOM化する。M3部品は買わない。|
 | 文字盤媒体 | KIOXIA microSDHC 32GB Class 10/UHS-I U1 | 1 | ¥2,390 税込 | [ヨドバシ](https://www.yodobashi.com/product/100000001006382817/) | 800×800 JPEGをPCからコピーする用途。FAT32で初期化し、本体で読取・破損復帰を確認。|
 | 外付けRTC | Adafruit DS3231 Precision RTC Breakout #3013 | 1 | **約¥3,150 税込** | [DigiKey Japan](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/3013/5875808) | I²C 0x68。3.3V給電候補。CR1220はこのモジュールのホルダーへ装着し、3.4CのRTC端子には接続しない。回路・I2Cピン・保持動作は実機確認前。|
 | RTCバックアップ電池 | Maxell CR1220.1BS | 1 | **約¥220 税込** | [ヨドバシ（CR1220一覧）](https://www.yodobashi.com/category/21484/53821/53827/) | DS3231モジュール自身の電池ホルダー用。3.4C基板のRTC電池端子には一次電池を絶対に接続しない。電池は消耗品。|
-| 平歯車 | KHK DS1-18 / DS1-20 / DS1-24 / DS1-28、M1、POM、5mm穴 | 11 / 10 / 3 / 4 | 税別¥7,360、税込換算 **¥8,096** | [KHK寸法資料](https://khkgears.net/pdf/ds.pdf)・[価格表](https://www.khkgears.co.jp/files/libs/5368/202511041428192234.pdf) | 選定済み候補。歯車数28個。価格は2025-12-01適用表の値。成形穴とh7軸の圧入は端材で試験。|
-| 回転ブッシュ | OILES #80 80B-0508、ID5×OD7×L8mm | 28 | 税別¥1,428、税込換算 **¥1,571** | [MonotaRO](https://www.monotaro.com/p/0045/9277/) | 選定済み候補。支持板の穴公差・圧入力・内径収縮・始動トルクを同じ材/厚みの端材で確認。|
-| 軸ピン | 大阪魂 SUS303 B種 h7平行ピン 5×28mm、4本入 | 26本必要、7パック購入（28本） | ¥593/パック、**¥4,151** | [MonotaRO](https://www.monotaro.com/p/4215/6572/) | MISUMIの個別切断軸より安価な規格ピン候補。2本予備。歯車とブッシュの圧入/回転を現物確認。|
-| 共通軸 | 大阪魂 SUS303 B種 h7平行ピン 5×60mm、2本入を58.5mmへ切断 | 1パック | **¥593** | [MonotaRO](https://www.monotaro.com/p/4215/6667/) | 1本使用、1本予備。モーター側先端を1.5mm切り、仕上がり58.5mmとする一度限りの追加工。歯車位置を保ち、継手z=48–70mmに5mm軸を7mm挿入。切断面を軽く面取りし、h7嵌合部は加工しない。|
-| 軸カラー | KANA KSC0505、ID5×OD11×幅5mm、M3止めねじ | 26 | ¥208/個、**¥5,408** | [MonotaRO](https://www.monotaro.com/p/1029/5074/) | 選定済み候補。片側カラーと板の間にワッシャーを置く。止めねじの平面当たりと緩みを確認。|
-| スラストワッシャー | POM M5×10×1.0mm、26枚入 | 1パック | **¥549** | [MonotaRO](https://www.monotaro.com/p/4293/0386/) | カラーの擦れを避ける候補。板との接触、摩擦、摩耗を手回し試験で確認。|
+| 平歯車 | KHK BSS1-20C、M1、20T、6mm AH7穴、M4×4止めねじ1本付属 | 28個（4個パイロット後の候補） | ¥1,868/個、**¥52,304** | [MonotaRO](https://www.monotaro.com/p/8339/7215/)・[KHK寸法表](https://khkgears.net/pdf/bss.pdf) | **1軸試験前。全量購入保留。**単一型番で寸法取り違えを減らす候補。校正有効なATG12CN-Sで両方向0.070N·m指示を保持できるか確認。別売止めねじは不要。28個は要求数ではない。|
+| 回転ブッシュ | OILES #80 80B-0608、内径6×外径8×長さ8mm | 28個（4個パイロット後の候補） | ¥51/個、**¥1,428** | [MonotaRO](https://www.monotaro.com/p/0045/9313/)・[OILES仕様](https://www.oilesglobal.com/en/files/bearing34.pdf) | **圧入試験片待ち。**軸6mm h7、穴8mm H7。ブッシュODは8.045〜8.157mmで公称しめしろ0.030〜0.157mm。PC支持板の成立は同材/同厚クーポンで確認。|
+| 単軸ピン | 大阪魂 SUS303 B種h7平行ピン 6×30mm、3本入 | 26本使用、9袋（27本） | ¥493/袋、**¥4,437** | [MonotaRO](https://www.monotaro.com/p/4215/6807/) | **パイロット前。**26単軸へ1本ずつ。残り1本を予備とする。|
+| 共通軸 | 大阪魂 SUS303 B種h7平行ピン 6×60mm、2本入 | 1本使用、1袋 | **¥934** | [MonotaRO](https://www.monotaro.com/p/4294/2453/) | **パイロット前。**切断なし候補。継手への7mm挿入と軸方向スタックを現物確認。|
+| 軸カラー | KANA KSC0605、ID6×OD12×幅5mm、M3止めねじ | 26個 | ¥208/個、**¥5,408** | [MonotaRO](https://www.monotaro.com/p/1029/5117/) | **パイロット前。**単軸26本の外側止めに1個ずつ使用。|
+| スラストワッシャー | 廣杉計器 0612-10、POM、ID6.3×OD12×t1mm、12枚入 | 54枚使用、5袋（60枚） | ¥615/袋、**¥3,075** | [MonotaRO](https://www.monotaro.com/p/4213/5143/) | **パイロット前。**28枚はギア側、26枚は単軸カラー側。6枚を予備。|
 | ステッパー | Adafruit NEMA-8 #4411、4mm軸 | 1 | 税別¥3,265、税込換算 **¥3,592** | [DigiKey](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/4411/11497509) | 200 step/rev、0.6A/相の候補。保持トルク・始動余裕・温度・負荷音は実機受入。|
 | モータードライバー | Adafruit TMC2209 breakout #6121 | 1 | 税別¥1,465、税込換算 **¥1,612** | [DigiKey](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/6121/25981358) | MS1/MS2開放で1/8、SPRD開放でStealthChop、EN HIGHで出力禁止。約0.3A RMSを初期評価点とするが、実電流調整と静音合格は未完。|
 | モーターVM TVS | Littelfuse SMBJ12A、unidirectional | 1 | 参考価格は調達時確認 | [Littelfuse](https://www.littelfuse.com/ja-jp/products/overvoltage-protection/tvs-diodes/surface-mount/smbj/smbj12a) | VM/GND近傍へ置く候補。VRWM=12V、最大クランプ19.9V。回生過渡の波形/エネルギーは未検証。|
 | ENN/STEP安全抵抗 | 10kΩ、ENN pull-upとSTEP pulldown | 2 | 価格僅少、購入候補表の小物へ別途追加 | 受動部品一般品 | ENN→VIO/3.3V、STEP→GNDの候補。実ドライバー基板のVIO/論理/外部プル状態と起動挙動を照合。|
-| 軸継手 | NBK MJT-14-RD-4-5、4mm↔5mm、外径14×全長22mm、ハブ長L=7mm | 1 | **¥2,088 税込** | [MonotaRO](https://www.monotaro.com/p/3751/1844/)・[NBK製品情報](https://www.nbk1560.com/products/coupling/couplicon/jaw_type/MJT-RD/MJT-14-RD/MJT-14-RD-4-5/) | 継手z=48–70mm。共通軸/モーター軸ともL=7mm挿入。モーター面z=72mmとし、資料値9mm突出のうち2mmは継手外へ残す。MonotaROは5日以内出荷/返品不可を表示。公称表示基板外形との名目平面すき間3.5mm。軸同心、実挿入、止めねじ保持を確認。|
+| 軸継手 | NBK MJT-14-RD-4-6、4mm↔6mm、外径14×全長22mm、ハブ長7mm | 1 | **¥2,167税込参考** | [NBK仕様](https://www.nbk1560.com/products/coupling/couplicon/jaw_type/MJT-RD/MJT-14-RD/MJT-14-RD-4-6/) | 6mm共通軸へ7mm挿入。モーター軸突出、後壁、実挿入深さ、止めねじ保持は現物確認。価格/在庫は注文前に再確認。|
 | USB-C PDアダプター | Anker 511 Charger (Nano 3, 30W) A2147 | 1 | **¥2,790 税込** | [Anker Japan](https://www.ankerjapan.com/products/a2147) | 9V/3A出力に対応する候補。9V時の電力上限は27W。全負荷時のPD契約、電圧降下、温度を測る。|
 | USB-Cケーブル | ELECOM MPA-CC10PNBK、C-C、1m、PD 60W | 1 | **¥1,720 税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-CC10PNBK.html) | 60W表示は本システムが60Wを得る意味ではない。ケーブル経由で9V契約・電圧降下を確認。|
 | PD受電 | Adafruit HUSB238 #5807 搭載基板（Switch Science ADA-5807） | 1 | **¥1,265 税込** | [Switch Science](https://www.switch-science.com/products/9296) | 9V/3Aをジャンパー設定する。PD電源が対応する契約だけ成立する。出荷初期値は5V/1Aなので設定と保護を確認。|
@@ -43,10 +47,10 @@
 | ロータリーエンコーダー | ALPS Alpine EC11E15244G1、押し込み付き、15 pulse/30 detent | 1 | 税別¥273、税込換算 **¥300** | [フルタカパーツ](https://www.furutaka-netsel.co.jp/maker/alps/ec11) | 操作候補。6mm Dカット軸。回転方向、押下、長押し誤認とパネル配置を確認。|
 | エンコーダーノブ | Sato Parts K-8075-6.1、穴6.1mm、M3止めねじ、φ26×17.3mm | 1 | **¥295 税込** | [マルツ](https://www.marutsu.co.jp/GoodsDetail.jsp?salesGoodsCode=2978) | 上記エンコーダーに組み合わせる候補。指が当たる周囲、木壁との隙間を模型で確認。|
 | 独立スイッチ | NKK MN11SS1W01、SPST ON/OFF | 2 | ¥1,307/個、**¥2,614** | [DigiKey](https://www.digikey.jp/ja/products/detail/nkk-switches/MN11SS1W01/20840209) | モーター枝と照明枝に各1個。6.5mmパネル穴候補。モーター側は分岐1Aヒューズ候補の後段でTMC2209 VMを直接遮断。旧M1 eFuseを使わない。定格と実回路を照合。|
-| 前後支持板 | 透明PC、300×450×8mm、1枚 | 1枚から252×187mmを2枚取り | 標準価格 税別¥7,960、税込換算 **¥8,756** | [AXEL / AS ONE](https://axel.as-1.co.jp/asone/d/68-7869-18/) | Web購入価格・在庫の確定表示なし。寸法上は2枚取れる見込み。ブッシュ試験片で割れ/圧入/歪みを確認してから材料と穴を固定。|
-| 前面ガード | 透明PC板、300×450×3mm | 1枚 | **¥1,750 税込** | [ヨドバシ](https://www.yodobashi.com/product/100000001001981779/) | 調査時在庫僅少表示。光学反射、端面、固定方法、歯車への指の到達防止を確認。|
-| 木箱材 | ラワン合板、12×300×600mm | 2枚 | ¥948/枚、**¥1,896** | [ナフコ](https://nafco-online.com/products/detail.php?product_id=23816701) | 店舗受取品。濃色仕上げの下地候補で、本ウォルナット無垢材ではない。曲面前板は別加工部材。|
-| 着脱背面板 | ラワンT2カットベニヤ T2411、4×300×300mm | 1枚から270×205mmへ切出し | **¥362 税込** | [MonotaRO](https://www.monotaro.com/g/02947856/) | 既製カット板を使う候補。周辺の平坦度と箱内配線の逃げを現物合わせする。|
+| 前後支持板 | AS ONE 68-7869-18 樹脂カット板・ポリカ透明 300×450×8mmから252×187×8mmを2枚切出す候補 | 2枚 | AXEL標準価格の取得記録が¥7,960/¥11,180（いずれも税別）で不一致。現時点のAXEL表示は¥11,180税別、WEB価格/在庫欄なし | [AXEL / AS ONE](https://axel.as-1.co.jp/asone/d/68-7869-18/) | **購入/加工保留。**同一材から20×20×8mm圧入クーポンと100×56×8mm試験板を取る板取りは候補。材質グレード/板厚公差/反りと端材提供可否が掲載情報では閉じない。販売元の仕様書/見積を取得し、同一材料クーポンで割れ/白化/圧入力/内径/軸回転を試験する。木部溝クーポンも同時に確定するまで全面板を購入しない。|
+| 前面ガード | 透明PC呼び厚3mm。300×450mmは寸法候補、シート型番/グレード未確定 | 1枚（原本の切出し後） | 旧価格スナップショット **¥1,750 税込** | [ヨドバシ掲載品](https://www.yodobashi.com/product/100000001001981779/) | [ADR-0017](../../adr/0017-transparent-guard-material-candidate.md)の初号機評価材。これは購入指示ではない。曲線輪郭は寸法入り原本後に決める。反射/傷/たわみ/枠保持/指到達をサンプルで確認し、現行在庫/製品仕様/価格を再照合する。|
+| 曲線ケース枠 | ウォールナット無垢材、曲線フレーム用 | 数量/荒材寸法は最終展開図から算出 | 見積待ち | サプライヤ未選定 | 材種方針はFIXED。木目方向、乾燥/等級、必要厚、最小曲げ/継ぎ手、仕上げを外観原本と加工図で確定してから荒材を選定。ラワンを外観材の代替にしない。|
+| 広面ケース/背面化粧 | ウォールナット天然木突板合板 | 数量/板厚/基材は最終展開図から算出 | 見積待ち | サプライヤ未選定 | 材種方針はFIXED。突板樹種/木目/板厚、基材、裏面バランス、エッジ処理、塗装を確認。Visible surfaceにラワンを使わない。|
 | 背面板/端子キャリアねじ | 八幡ねじ 3.1×13mm超低頭木ねじ NI(中) | 94本袋、背面板6本 + キャリア最大8本を想定 | **¥329 税込** | [MonotaRO](https://www.monotaro.com/p/0928/0635/) | 背面板を既存12mm箱材から作る連続桟へ留める候補。WAGOキャリアの取付穴に径/頭が合う場合は同じ袋から各2本使用する。穴適合、下穴、端距離、キャリア底厚を含むねじ先端の非貫通を実物で確認。ヒンジなし。|
 | 木部仕上げ | WATCOオイル W-13 ダークウォルナット、200mL | 1缶 | **¥2,230 税込** | [ヨドバシ](https://www.yodobashi.com/product/100000001006190266/) | 端材で色と塗布量を試す。使用済み布の発熱/発火注意に従い水に浸して処分。|
 
@@ -54,7 +58,9 @@
 
 前版の概算 **¥73,203 + US$73.31** はPololu #3411を含み、新しいType-C source、TVS、ENN/STEP抵抗、枝ヒューズ候補を反映していないため、v0.21総額としては無効です。上表の価格は調査時の参考値で、税、為替、送料、加工費、工具、在庫を含めた購入総額ではありません。全品の価格が同じ調査日に取得できていないため、新しい総額は算出していません。
 
-### 真鍮歯車の比較候補
+### 過去の比較案：一部真鍮歯車の混載（現行候補ではない）
+
+以下は2026-10-21以前に作った比較履歴です。2026-10-22時点の現行候補はBSS1-20C 1型番の軸支持案で、下表の混載案は数量・軸径・穴位置の購入根拠に使いません。
 
 全POM案を最安の基準として維持し、見た目を真鍮色に寄せる場合の差額を比較した。KHK BSS1-18B/BSS1-20CはM1・20°、歯幅6mm、6mm穴、M4止めねじ付きの黄銅歯車で、DS1と同じモジュール/圧力角で噛み合う。ハブ長8mm・全長14mmのため、現行の5mm軸・全長12mmの位置へそのまま置き換えられない。[BSS寸法表](https://khkgears.net/pdf/bss.pdf)
 
@@ -76,9 +82,9 @@
 - OILES #80 80B-0608（ID6×OD8×L8mm、¥51税込/個）[MonotaRO](https://www.monotaro.com/p/0045/9313/)。既存80B-0508はID5×OD7×L8mm、¥56税込/個。
 - KANA KSC0605（ID6×OD12×幅5mm、¥208税込/個）[MonotaRO](https://www.monotaro.com/p/1029/5117/)。
 - 6×12×1mm POMワッシャー（20枚入、¥549税込）[MonotaRO](https://www.monotaro.com/g/00428118/)。
-- NBK MJT-20-RD-4-6（4mm↔6mm、¥2,528税込）[MonotaRO](https://www.monotaro.com/p/2193/5138/)。外径20mmの旧サイズ案。現行4↔5mmはより小さいMJT-14-RD-4-5。
+- NBK MJT-20-RD-4-6（4mm↔6mm、¥2,528税込）[MonotaRO](https://www.monotaro.com/p/2193/5138/)。外径20mmの旧サイズ案。上記比較は履歴のみで、現行候補はBSS1-20C設計ノート記載のMJT-14-RD-4-6（4mm↔6mm）。
 
-価格比較はカタログ表と販売店表示を使った机上見積で、注文・部品手配はしていない。機械側の暫定Z位置、後支持板、モーター余裕は[歯車成立性ノート](../03-mechanical/gear-feasibility.md#外観用の既製真鍮歯車案未採用)に記載。
+価格比較はカタログ表と販売店表示を使った机上見積で、注文・部品手配はしていない。現行の軸/Zスタックは[BSS1-20C候補](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)を参照。
 
 ## 3. 設計候補と受入待ち
 

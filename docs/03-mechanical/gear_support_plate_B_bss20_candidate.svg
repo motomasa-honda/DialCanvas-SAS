@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="850" viewBox="-20 -34 292 228" role="img" aria-labelledby="title desc">
+<title id="title">BSS20 support plate B</title>
+<desc id="desc">Nominal 252 by 187 by 8 millimeter support plate with fourteen OILES 80B-0608 seats. Not a manufacturing drawing.</desc>
+<style>text{font-family:DejaVu Sans,sans-serif;fill:#29251f}.title{font-size:5px;font-weight:bold}.small{font-size:3px}.tiny{font-size:2.4px;fill:#625c54}.plate{fill:#eaf2ef;stroke:#477a78;stroke-width:.7}.opening{fill:#fff;stroke:#39787c;stroke-width:.5;stroke-dasharray:2 1}.seat{fill:#b8dbd8;stroke:#1c7475;stroke-width:.65}.cross{stroke:#574e42;stroke-width:.25}</style>
+<rect x="-20" y="-34" width="292" height="228" fill="#faf9f4"/>
+<text class="title" x="0" y="-23">PLANE B · 252×187×8 mm · z=48…56 · PROVISIONAL</text>
+<rect class="plate" x="0" y="0" width="252" height="187"/>
+<rect class="opening" x="66" y="33.5" width="120" height="120"/>
+<circle class="seat" cx="126.000" cy="25.500" r="4"/>
+<path class="cross" d="M124.600,25.500 H127.400 M126.000,24.100 V26.900"/>
+<text class="tiny" x="130.200" y="22.400">B00</text>
+<circle class="seat" cx="106.703" cy="20.245" r="4"/>
+<path class="cross" d="M105.303,20.245 H108.103 M106.703,18.845 V21.645"/>
+<text class="tiny" x="110.903" y="17.145">B01</text>
+<circle class="seat" cx="87.405" cy="25.500" r="4"/>
+<path class="cross" d="M86.005,25.500 H88.805 M87.405,24.100 V26.900"/>
+<text class="tiny" x="91.605" y="22.400">B02</text>
+<circle class="seat" cx="68.458" cy="19.097" r="4"/>
+<path class="cross" d="M67.058,19.097 H69.858 M68.458,17.697 V20.497"/>
+<text class="tiny" x="72.658" y="15.997">B03</text>
+<circle class="seat" cx="51.137" cy="29.097" r="4"/>
+<path class="cross" d="M49.737,29.097 H52.537 M51.137,27.697 V30.497"/>
+<text class="tiny" x="55.337" y="25.997">B04</text>
+<circle class="seat" cx="33.622" cy="38.751" r="4"/>
+<path class="cross" d="M32.222,38.751 H35.022 M33.622,37.351 V40.151"/>
+<text class="tiny" x="37.822" y="35.651">B05</text>
+<circle class="seat" cx="48.153" cy="52.493" r="4"/>
+<path class="cross" d="M46.753,52.493 H49.553 M48.153,51.093 V53.893"/>
+<text class="tiny" x="52.353" y="49.393">B06</text>
+<circle class="seat" cx="33.986" cy="66.610" r="4"/>
+<path class="cross" d="M32.586,66.610 H35.386 M33.986,65.210 V68.010"/>
+<text class="tiny" x="38.186" y="63.510">B07</text>
+<circle class="seat" cx="48.153" cy="80.727" r="4"/>
+<path class="cross" d="M46.753,80.727 H49.553 M48.153,79.327 V82.127"/>
+<text class="tiny" x="52.353" y="77.627">B08</text>
+<circle class="seat" cx="32.697" cy="93.420" r="4"/>
+<path class="cross" d="M31.297,93.420 H34.097 M32.697,92.020 V94.820"/>
+<text class="tiny" x="36.897" y="90.320">B09</text>
+<circle class="seat" cx="48.888" cy="105.161" r="4"/>
+<path class="cross" d="M47.488,105.161 H50.288 M48.888,103.761 V106.561"/>
+<text class="tiny" x="53.088" y="102.061">B10</text>
+<circle class="seat" cx="35.844" cy="120.322" r="4"/>
+<path class="cross" d="M34.444,120.322 H37.244 M35.844,118.922 V121.722"/>
+<text class="tiny" x="40.044" y="117.222">B11</text>
+<circle class="seat" cx="47.512" cy="136.566" r="4"/>
+<path class="cross" d="M46.112,136.566 H48.912 M47.512,135.166 V137.966"/>
+<text class="tiny" x="51.712" y="133.466">B12</text>
+<circle class="seat" cx="31.723" cy="148.842" r="4"/>
+<path class="cross" d="M30.323,148.842 H33.123 M31.723,147.442 V150.242"/>
+<text class="tiny" x="35.923" y="145.742">B13</text>
+<circle class="seat" cx="5" cy="170" r="4"/>
+<text class="small" x="12" y="171">14 × OILES 80B-0608 · nominal housing seat Ø8 H7</text>
+<text class="tiny" x="0" y="194">Plate datum: outer-case origin + (9, 9) mm; axis coordinates are from CSV.</text>
+<text class="tiny" x="0" y="199">OILES housing fit and post-press bore must be validated in a same-material coupon before making either plate.</text>
+<text class="tiny" x="0" y="204">Transparent PC is still provisional; do not use this SVG as CNC/CAM output.</text>
+</svg>

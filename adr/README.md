@@ -16,10 +16,13 @@ ADR番号は連番です。候補・寸法図・公開資料は現物受入や�
 - [ADR-0007: 左下へ寄せた28歯車配置](0007-asymmetric-28-gear-layout.md)（暫定CAD候補。個数は仕様ではない）
 - [ADR-0008: 一台試作のCOTS候補](0008-one-off-cots-part-selection.md)
 - [ADR-0009: 3.4C・電源・文字盤ソフト基準](0009-display-power-interface-and-dial-format.md)（#3411給電案を含む旧候補。source部はADR-0014で置換）
-- [ADR-0010: 3.4C公称寸法によるCAD包絡](0010-catalog-values-as-display-cad-baseline.md)
+- [ADR-0010: 3.4C公称寸法によるCAD包絡](0010-catalog-values-as-display-cad-baseline.md)（外形・穴・厚さ・表示面位置の旧値はADR-0016で更新）
 - [ADR-0011: 外付けDS3231候補](0011-external-ds3231-rtc.md)
 - [ADR-0012: 保護板と28歯車の暫定CAD基準](0012-cost-first-guard-and-gear-baseline.md)
 - [ADR-0013: 表示基板クリアランス用の小径継手候補](0013-smaller-coupling-board-clearance.md)
 - [ADR-0014: Desk Editionの独立電源枝とモーター抑止](0014-new-power-and-motor-safety-baseline.md)
+- [ADR-0015: BSS1-20C・6mm軸支持の現行機械候補](0015-bss20-axis-support-candidate.md)（ADR-0012の機械部品選択とADR-0013の4↔5mm継手候補を置換。表示面位置はADR-0016で更新）
+- [ADR-0016: Waveshare 3.4C取付図と表示すき間の更新](0016-waveshare-34c-mounting-and-clearance.md)（公開Drawing/STEPによる机上修正。現物受入前のPROVISIONAL）
+- [ADR-0017: 回転部を覆う前面ガードの材料候補](0017-transparent-guard-material-candidate.md)（PC 3mmを初号機評価材に選定。SKU/外観/保護性能の受入前）
 
 現行要求と受入状態は[要求台帳](../docs/01-requirements/requirements.yaml)および[作業一覧](../docs/10-desk-redesign/worklist.csv)を参照してください。

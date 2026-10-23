@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="430" viewBox="0 0 700 430" role="img" aria-labelledby="title desc">
+<title id="title">Four-gear BSS1-20C pilot plate layout</title>
+<desc id="desc">100 by 56 by 8 millimeter one-plane test plate. Four 20-tooth gears at 20 millimeter center spacing. Hole size and material remain subject to a bushing coupon test.</desc>
+<rect width="700" height="430" fill="#faf9f4"/>
+<style>text{font-family:DejaVu Sans,sans-serif;fill:#29251f}.title{font-size:22px;font-weight:bold}.sub{font-size:13px;fill:#625c54}.plate{fill:#edf4f2;stroke:#477a78;stroke-width:2}.gear{fill:#d7a84e;fill-opacity:.74;stroke:#8d5d1c;stroke-width:2}.hub{fill:#f7e2ad;stroke:#68491d;stroke-width:1.5}.bore{fill:#fff;stroke:#333;stroke-width:1.2}.bush{fill:none;stroke:#277f82;stroke-width:2;stroke-dasharray:4 3}.mesh{stroke:#796344;stroke-width:1;stroke-dasharray:4 3}.id{font-size:12px;font-weight:bold}.small{font-size:12px}.tiny{font-size:10px;fill:#625c54}</style>
+<text class="title" x="35" y="32">4歯車・BSS20C手回し試験配置</text>
+<text class="sub" x="35" y="54">100 × 56 × 8 mm plate · 4 axes · nominal layout only</text>
+<rect class="plate" x="55.0" y="78.0" width="500.0" height="280.0"/>
+<line class="mesh" x1="455.0" y1="167.1" x2="356.7" y2="185.7"/>
+<text class="small" x="389.9" y="168.4">20 mm</text>
+<line class="mesh" x1="356.7" y1="185.7" x2="260.2" y2="211.9"/>
+<text class="small" x="292.5" y="190.8">20 mm</text>
+<line class="mesh" x1="260.2" y1="211.9" x2="174.4" y2="263.2"/>
+<text class="small" x="201.3" y="229.5">20 mm</text>
+<circle class="gear" cx="455.0" cy="167.1" r="55"/>
+<circle class="hub" cx="455.0" cy="167.1" r="40"/>
+<circle class="bush" cx="455.0" cy="167.1" r="20"/>
+<circle class="bore" cx="455.0" cy="167.1" r="15"/>
+<text class="id" x="440.0" y="171.1">A00</text>
+<text class="tiny" x="425.0" y="236.1">80.000, 17.825</text>
+<circle class="gear" cx="356.7" cy="185.7" r="55"/>
+<circle class="hub" cx="356.7" cy="185.7" r="40"/>
+<circle class="bush" cx="356.7" cy="185.7" r="20"/>
+<circle class="bore" cx="356.7" cy="185.7" r="15"/>
+<text class="id" x="341.7" y="189.7">A01</text>
+<text class="tiny" x="326.7" y="254.7">60.349, 21.546</text>
+<circle class="gear" cx="260.2" cy="211.9" r="55"/>
+<circle class="hub" cx="260.2" cy="211.9" r="40"/>
+<circle class="bush" cx="260.2" cy="211.9" r="20"/>
+<circle class="bore" cx="260.2" cy="211.9" r="15"/>
+<text class="id" x="245.2" y="215.9">A02</text>
+<text class="tiny" x="230.2" y="280.9">41.047, 26.782</text>
+<circle class="gear" cx="174.4" cy="263.2" r="55"/>
+<circle class="hub" cx="174.4" cy="263.2" r="40"/>
+<circle class="bush" cx="174.4" cy="263.2" r="20"/>
+<circle class="bore" cx="174.4" cy="263.2" r="15"/>
+<text class="id" x="159.4" y="267.2">A03</text>
+<text class="tiny" x="144.4" y="332.2">23.876, 37.037</text>
+<text class="small" x="35" y="390">BSS1-20C ×4 · 6×30 h7 pin ×4 · OILES 80B-0608 ×4 · Ø8 H7 bush seats · same-material coupon first</text>
+<text class="tiny" x="35" y="410">Dashed teal circles show nominal bushing OD8. Gear outline is a catalog OD22 envelope, not a tooth drawing.</text>
+</svg>

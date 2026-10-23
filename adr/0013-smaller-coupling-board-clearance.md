@@ -1,7 +1,7 @@
 # ADR-0013: 3.4C表示基板との余裕を確保する小径軸継手
 
 - 日付: 2026-10-21
-- 状態: **一台試作の暫定設計基準。現物受入・購入・加工承認ではない**
+- 状態: **SUPERSEDED by ADR-0015。4mm↔5mm継手と5mm軸は履歴のみ。現行はMJT-14-RD-4-6/6mm軸候補で、現物受入・購入・加工承認ではない**
 - 関連: [ADR-0008](0008-one-off-cots-part-selection.md)、[未決定事項](../docs/01-requirements/open-questions.md)、[28歯車配置](../docs/03-mechanical/gear-feasibility.md)
 
 ## 背景

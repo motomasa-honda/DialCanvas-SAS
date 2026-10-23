@@ -1,0 +1,282 @@
+#!/usr/bin/env python3
+"""Generate a nominal OpenSCAD envelope model from the BSS20 candidate schedule."""
+
+from __future__ import annotations
+
+import csv
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent
+SCHEDULE = ROOT / "gear_axis_schedule_bss20_candidate.csv"
+OUTPUT = ROOT / "bss20_clock_envelope_review.scad"
+CASE_W, CASE_H = 270.0, 205.0
+
+
+def read_schedule() -> tuple[list[tuple[float, ...]], list[tuple[float, ...]], list[tuple[float, ...]], tuple[float, ...]]:
+    gears: dict[str, list[tuple[float, ...]]] = {"A": [], "B": []}
+    shafts: list[tuple[float, ...]] = []
+    compound: tuple[float, ...] | None = None
+    with SCHEDULE.open(newline="", encoding="utf-8-sig") as handle:
+        for row in csv.DictReader(handle):
+            if row["KHK_part"] != "BSS1-20C" or int(row["teeth"]) != 20:
+                raise ValueError(f"unexpected gear {row['gear_id']}: current candidate requires BSS1-20C 20T")
+            x = float(row["case_x_mm"]) - CASE_W / 2
+            y = CASE_H / 2 - float(row["case_y_mm"])
+
+            def mm(key: str) -> float:
+                return float(row[key]) if row[key] else -1.0
+
+            gears[row["layer"]].append((
+                20.0, x, y, mm("hub_z_start_mm"), mm("tooth_face_z_start_mm"),
+                mm("support_plate_z_start_mm"), mm("gear_washer_z_start_mm"),
+                mm("collar_z_start_mm"), mm("collar_washer_z_start_mm"),
+            ))
+            shaft = (x, y, float(row["shaft_z_start_mm"]), float(row["shaft_z_end_mm"]))
+            if row["shaft_group"] == "compound-01":
+                if compound is not None and compound != shaft:
+                    raise ValueError("compound shaft rows do not match")
+                compound = shaft
+            else:
+                shafts.append(shaft)
+
+    if [len(gears["A"]), len(gears["B"])] != [14, 14]:
+        raise ValueError("candidate schedule must have 14 gears per layer")
+    if gears["A"][0][1:3] != gears["B"][0][1:3]:
+        raise ValueError("A00/B00 must share the compound shaft center")
+    if len(shafts) != 26 or compound is None:
+        raise ValueError("candidate schedule must have 26 single shafts and one compound shaft")
+    return gears["A"], gears["B"], shafts, compound
+
+
+def scad_array(rows: list[tuple[float, ...]]) -> str:
+    return "[\n" + ",\n".join(
+        "  [" + ", ".join(f"{value:.3f}" for value in row) + "]" for row in rows
+    ) + "\n]"
+
+
+def scad_vector(row: tuple[float, ...]) -> str:
+    return "[" + ", ".join(f"{value:.3f}" for value in row) + "]"
+
+
+def main() -> None:
+    gears_a, gears_b, shafts, compound = read_schedule()
+    template = r'''// Generated from gear_axis_schedule_bss20_candidate.csv.
+// Nominal envelope model only; teeth, tolerances, fixings, and service clearance are schematic.
+// Not a fabrication or CAM file.
+$fn = 48;
+
+A_GEARS = __A_GEARS__;
+B_GEARS = __B_GEARS__;
+SINGLE_SHAFTS = __SHAFTS__;
+COMPOUND_SHAFT = __COMPOUND__;
+
+CASE_W = 270;
+CASE_H = 205;
+CASE_D = 145;
+WALL = 12;
+PLATE_W = 252;
+PLATE_H = 187;
+PLATE_T = 8;
+BORE_D = 6;
+BUSHING_OD = 8.157; // maximum nominal OD from OILES catalog tolerance
+BOARD_OUTER_D = 115; // official 3.4C circular module diameter; bounding square is 115mm
+DISPLAY_GLASS_Z = 44.5; // revised candidate; B gear face ends at z=39mm
+BOARD_VIS_DEPTH = 15.5; // conservative official STEP envelope; drawing PDF says 15.1mm
+ACTIVE_D = 87.6;
+GEAR_FACE_T = 6;
+GEAR_HUB_D = 16;
+GEAR_HUB_L = 8;
+WASHER_D = 12;
+WASHER_ID = 6.3;
+GROOVE_DEPTH = 3.2; // 3.0mm plate embed plus 0.2mm bottom clearance into the wall
+GROOVE_ENTRY_RELIEF = 0.2; // relief at the open edge of the groove
+GROOVE_CUT_LENGTH = GROOVE_DEPTH + GROOVE_ENTRY_RELIEF; // 3.4mm geometric cut span
+GROOVE_WIDTH = 8.2; // nominal 8mm plate with 0.2mm clearance
+
+show_shell = true;
+show_guard = true;
+show_supports = true;
+show_gears = true;
+show_board = true;
+show_motor = true;
+
+function gear_points(teeth, root_r, tip_r, phase=0) = [
+  for (i = [0:teeth-1]) each [
+    [root_r*cos(i*360/teeth - 0.50*360/teeth + phase), root_r*sin(i*360/teeth - 0.50*360/teeth + phase)],
+    [root_r*cos(i*360/teeth - 0.28*360/teeth + phase), root_r*sin(i*360/teeth - 0.28*360/teeth + phase)],
+    [tip_r*cos(i*360/teeth - 0.18*360/teeth + phase), tip_r*sin(i*360/teeth - 0.18*360/teeth + phase)],
+    [tip_r*cos(i*360/teeth + 0.18*360/teeth + phase), tip_r*sin(i*360/teeth + 0.18*360/teeth + phase)],
+    [root_r*cos(i*360/teeth + 0.28*360/teeth + phase), root_r*sin(i*360/teeth + 0.28*360/teeth + phase)],
+    [root_r*cos(i*360/teeth + 0.50*360/teeth + phase), root_r*sin(i*360/teeth + 0.50*360/teeth + phase)]
+  ]
+];
+
+module gear_disc(teeth, x, y, z, face_color, phase=0) {
+  tip_r = (teeth + 2) / 2;
+  root_r = (teeth - 2.5) / 2;
+  translate([x, y, z])
+    color(face_color)
+      linear_extrude(height=GEAR_FACE_T, convexity=10)
+        difference() {
+          polygon(points=gear_points(teeth, root_r, tip_r, phase));
+          circle(d=BORE_D, $fn=24);
+        }
+}
+
+module gear_hub(x, y, z, face_color) {
+  color(face_color)
+    translate([x, y, z])
+      difference() {
+        cylinder(d=GEAR_HUB_D, h=GEAR_HUB_L);
+        translate([0,0,-0.1]) cylinder(d=BORE_D, h=GEAR_HUB_L+0.2, $fn=24);
+      }
+}
+
+module washer(x, y, z) {
+  color([0.82,0.83,0.78])
+    translate([x,y,z])
+      difference() {
+        cylinder(d=WASHER_D,h=1);
+        translate([0,0,-0.1]) cylinder(d=WASHER_ID,h=1.2,$fn=24);
+      }
+}
+
+module collar(x, y, z) {
+  color([0.42,0.45,0.47])
+    translate([x,y,z])
+      difference() {
+        cylinder(d=12,h=5);
+        translate([0,0,-0.1]) cylinder(d=BORE_D,h=5.2,$fn=24);
+      }
+}
+
+module support_a() {
+  color([0.66, 0.83, 0.80, 0.46])
+    difference() {
+      translate([-PLATE_W/2, -PLATE_H/2, 7]) cube([PLATE_W, PLATE_H, PLATE_T]);
+      translate([0,0,6.9]) cylinder(d=112, h=PLATE_T+0.2);
+      for (g=A_GEARS) translate([g[1],g[2],g[5]-0.1]) cylinder(d=8, h=PLATE_T+0.2);
+    }
+}
+
+module support_b() {
+  color([0.66, 0.83, 0.80, 0.46])
+    difference() {
+      translate([-PLATE_W/2, -PLATE_H/2, 48]) cube([PLATE_W, PLATE_H, PLATE_T]);
+      translate([-60,-60,47.9]) cube([120,120,PLATE_T+0.2]);
+      for (g=B_GEARS) translate([g[1],g[2],g[5]-0.1]) cylinder(d=8, h=PLATE_T+0.2);
+    }
+}
+
+module bushings_and_shafts() {
+  for (g=concat(A_GEARS,B_GEARS))
+    color([0.78,0.78,0.74])
+      translate([g[1],g[2],g[5]])
+        difference() {
+          cylinder(d=BUSHING_OD, h=PLATE_T);
+          translate([0,0,-0.1]) cylinder(d=BORE_D, h=PLATE_T+0.2, $fn=24);
+        }
+  for (s=SINGLE_SHAFTS)
+    color([0.60,0.63,0.65]) translate([s[0],s[1],s[2]]) cylinder(d=BORE_D,h=s[3]-s[2],$fn=24);
+  color([0.60,0.63,0.65])
+    translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],COMPOUND_SHAFT[2]])
+      cylinder(d=BORE_D,h=COMPOUND_SHAFT[3]-COMPOUND_SHAFT[2],$fn=24);
+}
+
+module gear_layers() {
+  if (show_gears) {
+    for (g=A_GEARS) {
+      gear_hub(g[1],g[2],g[3],[0.78,0.50,0.19]);
+      gear_disc(g[0],g[1],g[2],g[4],[0.83,0.61,0.31],0);
+    }
+    for (g=B_GEARS) {
+      gear_disc(g[0],g[1],g[2],g[4],[0.58,0.34,0.18],180/g[0]);
+      gear_hub(g[1],g[2],g[3],[0.47,0.26,0.14]);
+    }
+  }
+}
+
+module axial_hardware() {
+  for (g=concat(A_GEARS,B_GEARS)) {
+    if (g[6] >= 0) washer(g[1],g[2],g[6]);
+    if (g[7] >= 0) collar(g[1],g[2],g[7]);
+    if (g[8] >= 0) washer(g[1],g[2],g[8]);
+  }
+}
+
+module dial_face() {
+  color([0.018,0.025,0.032]) translate([0,0,DISPLAY_GLASS_Z-0.1]) cylinder(d=ACTIVE_D,h=0.6);
+  color([0.89,0.65,0.34]) {
+    for (i=[0:11]) rotate([0,0,i*30]) translate([0,34.5,DISPLAY_GLASS_Z+0.05]) cube([1.3,7,0.25],center=true);
+    rotate([0,0,90]) translate([0,8,DISPLAY_GLASS_Z+0.10]) cube([1.6,22,0.4],center=true);
+    rotate([0,0,42]) translate([0,12,DISPLAY_GLASS_Z+0.15]) cube([1.1,30,0.35],center=true);
+    translate([0,0,DISPLAY_GLASS_Z+0.30]) cylinder(d=4,h=0.5,$fn=24);
+  }
+}
+
+module display_board() {
+  if (show_board) {
+    // Conservative cylindrical envelope: outer module Ø115mm, depth 15.5mm.
+    // Official PDF says 15.1mm; rear ports, carrier and cable keepouts remain open.
+    color([0.10,0.27,0.25,0.86]) translate([0,0,DISPLAY_GLASS_Z]) cylinder(d=BOARD_OUTER_D,h=BOARD_VIS_DEPTH);
+    dial_face();
+  }
+}
+
+module motor_and_coupler() {
+  if (show_motor) {
+    // Nominal NBK coupling and NEMA-8 body envelopes; motor/board clearances remain unmeasured.
+    color([0.69,0.71,0.67]) translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],57]) cylinder(d=14,h=22);
+    color([0.28,0.34,0.38]) translate([COMPOUND_SHAFT[0]-10,COMPOUND_SHAFT[1]-10,81]) cube([20,20,33]);
+    color([0.74,0.74,0.70]) translate([COMPOUND_SHAFT[0],COMPOUND_SHAFT[1],72]) cylinder(d=4,h=9,$fn=24);
+  }
+}
+
+module case_shell() {
+  difference() {
+    color([0.25,0.12,0.055]) {
+      // Open front/back walls and front perimeter rails, shown schematically.
+      translate([-CASE_W/2,-CASE_H/2,-12]) cube([WALL,CASE_H,CASE_D]);
+      translate([CASE_W/2-WALL,-CASE_H/2,-12]) cube([WALL,CASE_H,CASE_D]);
+      translate([-CASE_W/2,-CASE_H/2,-12]) cube([CASE_W,WALL,CASE_D]);
+      translate([-CASE_W/2,CASE_H/2-WALL,-12]) cube([CASE_W,WALL,CASE_D]);
+      translate([-CASE_W/2,-CASE_H/2,-12]) cube([CASE_W,WALL,9]);
+      translate([-CASE_W/2,CASE_H/2-WALL,-12]) cube([CASE_W,WALL,9]);
+      translate([-CASE_W/2,-CASE_H/2,-12]) cube([WALL,CASE_H,9]);
+      translate([CASE_W/2-WALL,-CASE_H/2,-12]) cube([WALL,CASE_H,9]);
+    }
+    // Side-wall grooves capture the 252x187mm plates at z=7..15 and z=48..56.
+    // Cut span is 3.4mm; measured from the inner wall face, wood depth is 3.2mm.
+    for (z0=[7,48]) {
+      translate([-PLATE_W/2-GROOVE_ENTRY_RELIEF,-PLATE_H/2,z0-0.1]) cube([GROOVE_CUT_LENGTH,PLATE_H,GROOVE_WIDTH]);
+      translate([CASE_W/2-WALL-GROOVE_ENTRY_RELIEF,-PLATE_H/2,z0-0.1]) cube([GROOVE_CUT_LENGTH,PLATE_H,GROOVE_WIDTH]);
+      translate([-PLATE_W/2,-PLATE_H/2-GROOVE_ENTRY_RELIEF,z0-0.1]) cube([PLATE_W,GROOVE_CUT_LENGTH,GROOVE_WIDTH]);
+      translate([-PLATE_W/2,CASE_H/2-WALL-GROOVE_ENTRY_RELIEF,z0-0.1]) cube([PLATE_W,GROOVE_CUT_LENGTH,GROOVE_WIDTH]);
+    }
+  }
+}
+
+module front_guard() {
+  if (show_guard) color([0.76,0.89,0.91,0.20]) translate([-CASE_W/2,-CASE_H/2,-3]) cube([CASE_W,CASE_H,3]);
+}
+
+if (show_shell) case_shell();
+if (show_supports) { support_a(); support_b(); }
+bushings_and_shafts();
+gear_layers();
+axial_hardware();
+display_board();
+motor_and_coupler();
+front_guard();
+'''
+    template = template.replace("__A_GEARS__", scad_array(gears_a))
+    template = template.replace("__B_GEARS__", scad_array(gears_b))
+    template = template.replace("__SHAFTS__", scad_array(shafts))
+    template = template.replace("__COMPOUND__", scad_vector(compound))
+    OUTPUT.write_text(template, encoding="utf-8")
+    print(f"Wrote {OUTPUT.relative_to(ROOT.parent.parent)} (28 gears, 27 shafts)")
+
+
+if __name__ == "__main__":
+    main()

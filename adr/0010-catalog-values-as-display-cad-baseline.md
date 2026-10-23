@@ -1,7 +1,7 @@
 # ADR-0010: 3.4Cメーカー公称値を機械CADの基準にする
 
 - 日付: 2026-10-21
-- 状態: **採用・現物取付受入前**
+- 状態: **一部SUPERSEDED by ADR-0016。旧外形・穴・厚さ・ガラス位置は履歴のみ**
 - 関連: [3.4C表示基板インターフェース](../docs/03-mechanical/display-board-interface.md)、[一台試作ベースライン](../docs/02-architecture/cots-prototype-baseline-2026-10-20.md)、[組立計画](../docs/08-manufacturing/assembly-plan.md)
 
 ## 背景
@@ -26,3 +26,5 @@
 
 - [Waveshare 3.4C製品ページ](https://www.waveshare.com/esp32-p4-wifi6-touch-lcd-3.4c.htm?sku=31523)
 - [Waveshare公式3.4C寸法図へのリンク](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC/Resources-And-Documents)
+
+> 追記（2026-10-22）: Drawing PDF/DXF/STEPに基づき、表示の円形外形、外周穴75×78.5mm、全厚包絡15.50mm、ガラス面z=44.50mmをADR-0016へ更新した。このADRの115×115mm角基板、75×75mm内部ねじ列の混同、z=40mm表示面は現行設計に使わない。

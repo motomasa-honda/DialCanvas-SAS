@@ -1,12 +1,14 @@
 # Forest Guardian / DialCanvas Desk Edition — 設計ベースライン v0.21
 
-- 基準日: 2026-10-21
+- 基準日: 2026-10-22
 - 状態: **一台試作の机上設計ベースライン。製作・通電・量産リリースではない**
 - 要求台帳: [v0.21 requirements.yaml](../01-requirements/requirements.yaml)
 - 決定記録: [ADR一覧](../../adr/README.md)
 - 現在の作業/受入状態: [worklist.csv](worklist.csv)、[状態記録](status-2026-10-21.md)
 
 この文書を現行Desk Editionの構成・インターフェース・候補値の統合基準とする。旧7軸設計の資料とブランチは履歴・参照専用で、新設計の要求、証拠、進捗へ混ぜない。部品、寸法、電気値に `PROVISIONAL` を付した項目は試作候補として一つに揃えた値であり、実物で受入れるまで製造値にはならない。
+
+**このv0.21と参考BOMは完成機の全量購入指示ではありません。** 1軸用の市販部品は候補型番まで特定しましたが、支持板材・圧入/溝クーポン・測定治具・基板/配線包絡を含む発注可能な評価パッケージは未完了です。完成機用の全量BOMは保留です。表示基板寸法と位置の現行判断は[ADR-0016](../../adr/0016-waveshare-34c-mounting-and-clearance.md)、購入区分は[購入前設計監査](../02-architecture/purchase-readiness-audit-2026-10-21.md)を参照してください。
 
 ## 1. 製品の固定方針
 
@@ -22,7 +24,7 @@
 
 | サブシステム | ベースライン構成 | 状態 |
 | --- | --- | --- |
-| 表示・主制御 | Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C、SKU31523、3.4型円形IPS、800×800、USB TO UART Type-Cから5V給電 | 型番候補はPROVISIONAL。基板改版、取付、消費電力、画質は未受入 |
+| 表示・主制御 | Waveshare ESP32-P4-WIFI6-Touch-LCD-3.4C、SKU31523、3.4型円形IPS、800×800、USB TO UART Type-Cから5V給電 | 公式Drawingの前面Ø115.00mm、表示Ø87.60mm、4×M4×4.00表記、外周穴ピッチ75×78.5mmをCAD反映。PDF厚15.10mm/STEP包絡15.50mmの大きい方を採用。公開参照回路図は設計rev1.1。入手個体のPCB版、ねじ実仕様、端子/挿抜包絡、消費電力、画質は未受入 |
 | 時刻 | Wi-Fi接続後SNTP。Adafruit DS3231 #3013をUTC保持用RTC候補として3.3V I²C接続。表示TZはJST (`JST-9`) | 構成PROVISIONAL。ネット断、電源断、電池保持は未受入 |
 | 文字盤 | `DialCanvas/faces/<name>/face.jpg`、800×800 sRGB Baseline JPEG、最大8MiB、任意のversion 1 `dial.json`。既定文字盤は削除不可。SDは読取専用 | 形式FIXED。表示器上の操作と保持は未受入 |
 | 入力 | ALPS EC11系ロータリーエンコーダー。回転でプレビュー、短押しで保存、900ms長押しで歯車の開始/停止要求 | 操作FIXED。GPIO割当はPROVISIONAL |
@@ -34,7 +36,7 @@
 
 | インターフェース | ベースライン |
 | --- | --- |
-| 表示器 | 3.4CのUSB TO UART Type-Cを通常時の5V入力に使う。40-pin GPIOヘッダーへ5Vを注入しない。画面は800×800、表示領域公称Ø87.6mm、基板公称115×115mm。 |
+| 表示器 | 3.4CのUSB TO UART Type-Cを通常時の5V入力に使う。40-pin GPIOヘッダーへ5Vを注入しない。画面は800×800、LCD有効領域Ø87.60mm、外周ガラスØ112.50mm+0.10mm、円形前面外径Ø115.00mm。115×115mmは最大矩形包絡。 |
 | サービス接続 | TPS25810EVM側のType-C sourceは給電用候補。書込み/デバッグ時はsource cableを外し、USB TO UART端子をPCへ接続する。二つの5V源を同時に接続しない。モーター電源スイッチはOFFにする。 |
 | 文字盤媒体 | microSD直下の `DialCanvas/faces/` のみを走査。英数字・`_`・`-`の1〜32文字フォルダー名、JPEG 8MiB以下。フォーマットや自動修復はしない。 |
 | 描画 | 時・分・秒の3針をミリ秒補間し、16ms間隔で更新要求する。16msは実測フレームレート保証ではない。最低30fps、目標60fpsの表示確認を実機受入条件とする。 |
@@ -60,14 +62,15 @@ GPIO候補の一次資料はWaveshare [3.4C公式ドキュメント](https://doc
 
 ### 4.2 歯車と軸
 
-- KHK DS1 M1 POM歯車、18/20/24/28T、5mm軸、二層配置を現行候補とする。
-- 最新のCADは28個（前列A 14、後列B 14）、歯数内訳18T×11、20T×10、24T×3、28T×4。数量、座標、噛合い経路は実物試験により変更可能であり要求値ではない。
-- 左側・下側へ寄せた不規則配置。異なるZ面の投影重なりを使い、歯面同士の投影干渉を避ける。
-- 5mm軸とOILES #80 80B-0508ブッシュ候補、透明支持板2枚で支持する。ギアの穴公差、軸圧入、ブッシュ保持、支持板変形は未受入。
-- 現行結合部品候補はNBK MJT-14-RD-4-5、4mm↔5mm、外径14mm、全長22mm。CAD名目位置z=48–70mm、モーター取付面z=72mm。
-- CADは公称2D配置・外形包絡で、実歯形、公差、振れ、荷重、配線、板たわみを含まない。加工データへ直接使わない。
+- 2026-10-22の現行機械候補はKHK BSS1-20C、M1・20T、6mm AH7穴/M4×4止めねじ付属、6mm h7軸、二層配置です。歯数や軸数は要求として固定しません。
+- 28位置CADは再配置の計算例で、BSS1-20C×28とした候補です。全位置を1型番に揃えたので歯車外径は同一です。見た目、個数、座標は試作後に変更できます。
+- 各単軸は一枚の支持板に通し、OILES #80 80B-0608で支持します。軸6mm h7、ハウジング穴8mm H7を仕様候補とし、ブッシュOD8.045〜8.157mmに対する公称しめしろは0.030〜0.157mmです。圧入後のIDはカタログ上+0.045〜+0.095mm。透明PC板の適合は同材試験片で確認するまで未受入です。
+- 現行結合部品候補はNBK MJT-14-RD-4-6、4mm↔6mm、外径14mm、全長22mmです。候補Z位置z=57–79mm、モーター取付面z=81mmです。結合部の軸方向保持と実挿入長は未受入です。
+- BSS1-20Cの止めねじはKHKが簡易固定と説明する方式です。校正有効なATG12CN-Sによる両方向0.070N·m指示の1軸保持試験がPASSするまで全量購入を保留します。計器へのアクセスと歯車保持具は未確保です。
+- NEMA-8 #4411の約406mm 4芯リード線は、線径/端子適合、ドライバー位置、引出し/固定経路、ギアや軸との離隔が未確認です。配線と歯車を一つの包絡へモデル化するまでモーター/ケース/配線材の全量購入は保留します。
+- CADは公称2D配置・外形包絡で、実歯形、公差、振れ、荷重、配線、板たわみを含みません。3.4Cは公式PDF/STEP差の安全側として15.50mm深さを置きましたが、個体受入とコネクター/ケーブル包絡は未完です。加工データへ直接使いません。
 
-図面・座標の参照先は[歯車成立性ノート](../03-mechanical/gear-feasibility.md)、[28歯車配置SVG](../03-mechanical/irregular_layered_gear_layout.svg)、[軸方向断面SVG](../03-mechanical/layered_gear_axial_section.svg)、[軸表CSV](../03-mechanical/gear_axis_schedule.csv)、[3D包絡レビュー](../03-mechanical/cots_clock_envelope_review.md)。
+機械候補と受入ゲートの正本は[BSS1-20C軸支持候補](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)、[4歯車試験票](../03-mechanical/four-gear-manual-test.md)、[BSS20包絡モデル](../03-mechanical/bss20_clock_envelope_review.scad)、[歯車成立性ノート](../03-mechanical/gear-feasibility.md)です。旧DS1の軸支持不整合と旧候補の保留理由は[購入前設計監査](../02-architecture/purchase-readiness-audit-2026-10-21.md)に残しています。
 
 ## 5. 筐体・整備
 
@@ -76,16 +79,18 @@ GPIO候補の一次資料はWaveshare [3.4C公式ドキュメント](https://doc
 | ケース外寸 | 270×205×145mm |
 | 内寸 | 246×181×121mm、側板12mmを前提にした候補 |
 | 材料 | 曲線部はウォールナット無垢材、広い化粧面はウォールナット突板候補 |
-| 支持板 | 透明PC 8mm、252×187mmを2枚。板外周を側壁溝で捕捉する候補 |
-| 前面保護 | 透明PC 3mm、周縁捕捉、着脱式押さえ縁。材料反射/傷、たわみ、保持、指到達を実物確認 |
-| 前面支持板 | z=0–8mm、中央Ø112mm開口候補 |
-| 表示基板 | 後面支持板の120×120mm開口へ配置。公称115mm基板外形との名目隙間2.5mm/辺。表示ガラス基準z=40mm |
-| 後面支持板 | z=36–44mm。部品高さ、USB/SD挿抜、熱、ケーブル曲げは未計測 |
-| ギア層 | A/B歯面を別Z面に配置し、名目2mmの歯幅方向間隔を取る |
+| 支持板 | 透明PC 8mm、252×187mmを2枚。側壁/上下壁へ各3mm入る捕捉溝の候補。溝は幅8.2mm、壁内側から深さ3.2mm。試験片PASSまで材料/溝加工は保留 |
+| 前面保護 | 初号機評価材は透明PC呼び厚3mm（[ADR-0017](../../adr/0017-transparent-guard-material-candidate.md)）、周縁捕捉、着脱式押さえ縁。材料SKU、反射/傷、たわみ、保持、指到達は実物確認 |
+| 前面保護板 | 前面内面をz=0、板内面候補z=-3。外形、押さえ縁、指到達は未受入 |
+| 前面支持板A | z=7–15mm、中央Ø112mm開口。14個のØ8 H7候補ブッシュ座 |
+| 歯車層A | BSS1-20Cのボスz=16–24mm、歯面z=24–30mm |
+| 歯車層B | 歯面z=33–39mm、ボスz=39–47mm。A/B歯面間は名目3mm |
+| 後面支持板B | z=48–56mm、中央120×120mm開口。14個のØ8 H7候補ブッシュ座 |
+| 表示器 | 公式Drawingを反映しガラス前面z=44.50mm候補、円形外径Ø115mm、奥行包絡15.50mm（z=44.50…60.00）。後面支持板の120mm角開口を通す保守的な矩形すき間2.5mm/辺。外周穴はM4×4.00表記、75×78.5mmピッチ。B歯面終端z=39mmとの名目軸方向すき間5.50mm。取付キャリア/背面部品との適合と物理すき間は未受入 |
 | 背面整備 | 背面板をねじ止めで外せる構成。支持板と表示器を背面から点検できる候補 |
-| モーター | カップリングz=48–70mm、NEMA-8取付面z=72mm、ケース内壁z=121mm。公称後方余裕16mm |
+| モーター | NBK継手z=57–79mm、NEMA-8取付面z=81mm、本体z=81–114mm、ケース内壁z=121mm。公称後方余裕7mm |
 
-公称寸法は一台用包絡モデルの基準であり、最終内寸・溝・穴径・保護板保持形状は実物部品と試験片の測定後に図面化する。承認済み外観の高解像度原画と利用条件はFG-038/OQ-10に残る。
+公称寸法は[BSS20包絡モデル](../03-mechanical/bss20_clock_envelope_review.scad)へ反映した候補です。画面をz=44.50mmへ置き、旧案の1mm軸方向すき間を5.50mmへ増やしました。正確な基板改版、外周穴の実仕様、保持キャリア、USB/SD挿抜、支持板たわみ/歯車振れ込みの最小すき間、モーター後方7mm、PC捕捉溝、圧入後内径は実物/試験片で受け入れるまで製作寸法ではありません。ウォールナット無垢材の曲線枠とウォールナット突板の広面材を使用し、木材の等級/木目/仕上げ/切出しは購入前に確定します。リポジトリの[概念参照JPG](../assets/forest-guardian-dialcanvas-concept-reference.jpg)は意匠方向の参照用で、旧概寸の注記を含み製作用輪郭ではありません。高解像度文字盤原画と利用条件はFG-038/OQ-10に残ります。
 
 ## 6. 電源とモーター保護
 
@@ -163,7 +168,7 @@ TPS25810EVM-745は評価用基板で、量産モジュールではない。TIガ
 
 ## 9. 参照資料
 
-- Waveshare [3.4C公式製品/基板資料](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[公式回路図](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC/ESP32-P4-WIFI6-Touch-LCD-XC-Schematic.pdf)
+- Waveshare [3.4C公式製品/基板資料](https://docs.waveshare.com/ESP32-P4-WIFI6-Touch-LCD-XC)、[3.4C公式Drawing ZIP](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC/ESP32-P4-WIFI6-TOUCH-LCD-3_4C.zip)、[公式回路図](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC/ESP32-P4-WIFI6-Touch-LCD-XC-Schematic.pdf)
 - TI [TPS25810EVM-745製品](https://www.ti.com/tool/TPS25810EVM-745)、[TPS25810EVM-745 User's Guide](https://www.ti.com/lit/pdf/slvuai0)
 - Pololu [D24V50F5 #2851](https://www.pololu.com/product/2851)
 - Adafruit [NEMA-8 #4411](https://www.adafruit.com/product/4411)、[TMC2209 #6121](https://www.adafruit.com/product/6121)、[HUSB238 #5807](https://www.adafruit.com/product/5807)、[DS3231 #3013](https://www.adafruit.com/product/3013)
