@@ -54,7 +54,7 @@
 | ステッパー | Adafruit NEMA-8 #4411、4mm軸 | 1 | 税別¥3,265、税込換算 **¥3,592** | [DigiKey](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/4411/11497509) | 200 step/rev、0.6A/相の候補。保持トルク・始動余裕・温度・負荷音は実機受入。|
 | モータードライバー | Adafruit TMC2209 breakout #6121 | 1 | 税別¥1,465、税込換算 **¥1,612** | [DigiKey](https://www.digikey.jp/ja/products/detail/adafruit-industries-llc/6121/25981358) | MS1/MS2開放で1/8、SPRD開放でStealthChop、EN HIGHで出力禁止。約0.3A RMSを初期評価点とするが、実電流調整と静音合格は未完。|
 | モーターVM TVS | Littelfuse SMBJ12A、unidirectional | 1 | 参考価格は調達時確認 | [Littelfuse](https://www.littelfuse.com/ja-jp/products/overvoltage-protection/tvs-diodes/surface-mount/smbj/smbj12a) | VM/GND近傍へ置く候補。VRWM=12V、最大クランプ19.9V。回生過渡の波形/エネルギーは未検証。|
-| ENN/STEP安全抵抗 | 10kΩ、ENN pull-upとSTEP pulldown | 2 | 価格僅少、購入候補表の小物へ別途追加 | 受動部品一般品 | ENN→VIO/3.3V、STEP→GNDの候補。実ドライバー基板のVIO/論理/外部プル状態と起動挙動を照合。|
+| ENN/STEP安全抵抗 | 汎用軸型スルーホール抵抗、10kΩ、0.25W以上、±5%以下 | 2本 | 一般受動部品。メーカー/販売店の固定指定なし | 電子部品店等 | 1本をENN→VIO/3.3Vのpull-up、1本をSTEP→GNDのpulldownに使用。抵抗値・数量・実装形状を選定済み。基板内蔵プルと起動動作は完成品受入で確認。|
 | 軸継手 | NBK MJT-14-RD-4-6、4mm↔6mm、外径14×全長22mm、ハブ長7mm | 1 | **¥2,167税込参考** | [NBK仕様](https://www.nbk1560.com/products/coupling/couplicon/jaw_type/MJT-RD/MJT-14-RD/MJT-14-RD-4-6/) | 6mm共通軸へ7mm挿入。モーター軸突出、後壁、実挿入深さ、止めねじ保持は現物確認。価格/在庫は注文前に再確認。|
 | USB-C PDアダプター | Anker 511 Charger (Nano 3, 30W) A2147 | 1 | **¥2,790 税込** | [Anker Japan](https://www.ankerjapan.com/products/a2147) | 15V/2A出力（30W）を使用。全負荷時のPD契約、電圧降下、温度は完成品で確認する。|
 | USB-Cケーブル | ELECOM MPA-CC10PNBK、C-C、1m、PD 60W | 1 | **¥1,720 税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-CC10PNBK.html) | 60W表示は本システムが60Wを得る意味ではない。ケーブル経由で15V/2A契約を使う。|

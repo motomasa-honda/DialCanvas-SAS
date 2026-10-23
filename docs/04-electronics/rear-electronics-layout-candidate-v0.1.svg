@@ -25,7 +25,7 @@
   <!-- Coordinates: case origin at center; 2 px/mm. Reference inner face 246 x 181 mm. -->
   <rect x="79" y="169" width="492" height="362" rx="3" class="case"/>
   <rect x="79" y="169" width="492" height="362" rx="3" class="usable"/>
-  <text x="79" y="151" class="dim">内面: 246×181mm（ケース外形は仮）</text>
+  <text x="79" y="151" class="dim">内面: 246×181mm（ケース見積基準v0.2）</text>
   <text x="79" y="550" class="small">左=X- / 右=X+   下=Y- / 上=Y+   原点=ケース・3.4C中心</text>
 
   <!-- DFR0758/DFR1015 module and wiring reservation only; DFR0758 board outline/mount holes unpublished. -->
