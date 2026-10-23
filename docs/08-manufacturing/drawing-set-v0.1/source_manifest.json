@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-23",
+  "version": "v0.1",
+  "geometry_baseline_commit": "033f460",
+  "status": "DESIGN_REFERENCE_NOT_PHYSICALLY_ACCEPTED",
+  "design_pdf_pages": 10,
+  "assembly_pdf_pages": 5,
+  "input_sha256": {
+    "docs/03-mechanical/gear_axis_schedule_bss20_candidate.csv": "0af9f081e3587fbf43716fb7fb91398211c6b0f7d0ad4fd0c41761de33353044",
+    "docs/03-mechanical/walnut_case_quote_parts_v0.4.csv": "487b5d3756e4391e31887b5e902238186215a7b66004b631afdcdd1457c55b85",
+    "docs/03-mechanical/walnut_case_quote_drawing_set_v0.4.pdf": "a4defc32bc2c887b5d4388afe3c6d9106af1b74b8d841947225681f41be07594",
+    "docs/03-mechanical/display-board-interface.md": "6bf159ed3a2c21a7bf55f9f277c0de6354f06b34074ee4fc9ae5d272c7db94a7",
+    "docs/04-electronics/rear-harness-and-mount-candidate-v0.1.md": "696e498eb5d3928dbee42bff8588a567dddc14921d2c66e99143f72cc538d033",
+    "docs/04-electronics/motor-harness-interface.md": "3826224cfdfda0213c69679c045e45fe7c3934f086333fd5219fb375108434d5"
+  },
+  "open_detail": "Motor support bracket geometry, mounting holes and fasteners are not defined in the baseline.",
+  "fit_on_arrival": [
+    "small PCB hole positions / M2.5 screw lengths",
+    "WAGO carrier hole positions / M3 lengths",
+    "P4 wood pilot holes",
+    "display connector route",
+    "harness and cover opening"
+  ],
+  "files": [
+    "A00.svg",
+    "A01.svg",
+    "A02.svg",
+    "A03.svg",
+    "A04.svg",
+    "D00.svg",
+    "D03.svg",
+    "D04.svg",
+    "D05.svg",
+    "D06.svg",
+    "D07.svg",
+    "D08.svg",
+    "D09.svg"
+  ]
+}

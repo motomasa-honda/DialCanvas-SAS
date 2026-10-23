@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 1680 1188">
+<title>A04 完成品の確認・閉じ方</title>
+<desc>一台用の設計参照・組立説明図。寸法単位mm。実機未受入。歯形と分解間隔は模式。</desc>
+<rect x="0.000" y="0.000" width="1680.000" height="1188.000" fill="#ffffff" stroke="none" stroke-width="1"/>
+<rect x="0.000" y="0.000" width="21.000" height="1188.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="58.000" y="68.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">FOREST GUARDIAN  /  DIALCANVAS DESK EDITION</text>
+<text x="58.000" y="118.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="34" font-weight="600" text-anchor="start" fill="#23383d">A04   完成品の確認・閉じ方</text>
+<text x="58.000" y="153.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">完成機そのものを確認する / 先行試験片・専用治具は購入や組立の必須条件にしない</text>
+<line x1="58.000" y1="180.000" x2="1622.000" y2="180.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<line x1="58.000" y1="1112.000" x2="1622.000" y2="1112.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<text x="58.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#607479">単位 mm  |  形状・組付けの設計参照  |  基準 033f460 + 図面整合修正</text>
+<text x="1620.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="end" fill="#607479">2026-10-23  /  v0.1  /  A04</text>
+<text x="58.000" y="1171.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#607479">完成品の実機受入は未実施。印刷物を実寸の切削テンプレートとして使わない。</text>
+<rect x="75.000" y="230.000" width="1530.000" height="156.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="75.000" y="230.000" width="6.000" height="156.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="97.000" y="265.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">9-1 無通電の確認</text>
+<text x="97.000" y="300.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">+15V / 9V / 5V / GNDの極性と短絡を確認。ヒューズとSPSTの直列経路を照合。</text>
+<text x="97.000" y="326.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">モーター巻線2組、個別絶縁、端子保持を確認。歯車は手回しして接触・引っ掛かりを見る。</text>
+<rect x="75.000" y="420.000" width="1530.000" height="156.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="75.000" y="420.000" width="6.000" height="156.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="97.000" y="455.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">9-2 表示・RTC・操作</text>
+<text x="97.000" y="490.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">内部A-C給電線で表示器を起動し、microSD、エンコーダー、RTC保持を確認。</text>
+<text x="97.000" y="516.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">CR1220はDS3231のホルダーへ。3.4CのRTC端子へ一次電池を接続しない。</text>
+<rect x="75.000" y="610.000" width="1530.000" height="156.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="75.000" y="610.000" width="6.000" height="156.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="97.000" y="645.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">9-3 低速の歯車駆動</text>
+<text x="97.000" y="680.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">初期0.30A RMS/相から低速正逆・停止を確認。歯車と軸の合いマークを見る。</text>
+<text x="97.000" y="706.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">滑り、噛み込み、異音、線への接触があれば、その箇所を調整する。</text>
+<rect x="75.000" y="800.000" width="1530.000" height="156.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="75.000" y="800.000" width="6.000" height="156.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="97.000" y="835.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">9-4 全負荷とカバー開閉</text>
+<text x="97.000" y="870.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">表示・無線・SD・LED・モーターの同時動作で電圧降下と閉箱温度を記録。</text>
+<text x="97.000" y="896.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">P4を開閉し、線の挟み込み・張力・可動部接触がないことを確認して閉じる。</text>
+<text x="80.000" y="1040.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#945d31">残る机上詳細: モーター支持金具の形状・固定穴・締結。工房回答事項: ケース材/接合/ガード保持。</text>
+<text x="80.000" y="1076.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">実機受入は表示コネクター経路、配線開閉、電源全負荷/温度/保護、歯車の噛み合い/滑り/音。</text>
+</svg>

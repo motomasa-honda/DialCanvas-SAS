@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 1680 1188">
+<title>A02 表示器とケースの組立順</title>
+<desc>一台用の設計参照・組立説明図。寸法単位mm。実機未受入。歯形と分解間隔は模式。</desc>
+<rect x="0.000" y="0.000" width="1680.000" height="1188.000" fill="#ffffff" stroke="none" stroke-width="1"/>
+<rect x="0.000" y="0.000" width="21.000" height="1188.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="58.000" y="68.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">FOREST GUARDIAN  /  DIALCANVAS DESK EDITION</text>
+<text x="58.000" y="118.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="34" font-weight="600" text-anchor="start" fill="#23383d">A02   表示器とケースの組立順</text>
+<text x="58.000" y="153.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">支持板252 × 187は内寸開口246 × 181より大きい / 箱を閉じる前に支持板を溝へ入れる</text>
+<line x1="58.000" y1="180.000" x2="1622.000" y2="180.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<line x1="58.000" y1="1112.000" x2="1622.000" y2="1112.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<text x="58.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#607479">単位 mm  |  形状・組付けの設計参照  |  基準 033f460 + 図面整合修正</text>
+<text x="1620.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="end" fill="#607479">2026-10-23  /  v0.1  /  A02</text>
+<text x="58.000" y="1171.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#607479">完成品の実機受入は未実施。印刷物を実寸の切削テンプレートとして使わない。</text>
+<circle cx="85.000" cy="240.000" r="20.000" fill="#327e87" stroke="none" stroke-width="1.3"/>
+<text x="85.000" y="247.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="21" font-weight="600" text-anchor="middle" fill="#ffffff">4</text>
+<text x="128.000" y="248.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="25" font-weight="600" text-anchor="start" fill="#23383d">表示器を支持板Aへ固定</text>
+<rect x="75.000" y="285.000" width="670.000" height="245.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="75.000" y="285.000" width="6.000" height="245.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="97.000" y="320.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">基板→キャリア→支持板</text>
+<text x="97.000" y="355.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">M4 × 8と2mm絶縁スペーサ各4で表示基板を4本腕へ取り付ける。</text>
+<text x="97.000" y="381.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">M3 × 25、7mm支持スペーサ、座金・ナットでA板の4点へ。</text>
+<text x="97.000" y="407.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">USB・microSDを操作できる方向に置き、ケーブルを仮に通す。</text>
+<text x="97.000" y="433.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">前面ガードを重ねる前にねじ底付き・表示面の座りを確認。</text>
+<rect x="880.000" y="300.000" width="480.000" height="250.000" fill="none" stroke="#73513d" stroke-width="7"/>
+<rect x="1380.000" y="300.000" width="35.000" height="250.000" fill="#e7d5c3" stroke="#73513d" stroke-width="2"/>
+<line x1="1360.000" y1="420.000" x2="1290.000" y2="420.000" stroke="#945d31" stroke-width="3"/>
+<polygon points="1290.000,420.000 1300.132,415.716 1300.132,424.284" fill="#945d31" stroke="none" stroke-width="1.3"/>
+<rect x="995.000" y="280.000" width="18.000" height="290.000" fill="#eaf3f3" stroke="#327e87" stroke-width="2"/>
+<text x="1004.000" y="610.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="23" font-weight="600" text-anchor="middle" fill="#327e87">A</text>
+<rect x="1165.000" y="280.000" width="18.000" height="290.000" fill="#eaf3f3" stroke="#327e87" stroke-width="2"/>
+<text x="1174.000" y="610.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="23" font-weight="600" text-anchor="middle" fill="#327e87">B</text>
+<text x="1110.000" y="260.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#23383d">ケース壁を開いた状態で板を挿入</text>
+<text x="1180.000" y="655.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#607479">模式図: 分解方向・板厚は説明用</text>
+<circle cx="85.000" cy="635.000" r="20.000" fill="#327e87" stroke="none" stroke-width="1.3"/>
+<text x="85.000" y="642.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="21" font-weight="600" text-anchor="middle" fill="#ffffff">5</text>
+<text x="128.000" y="643.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="25" font-weight="600" text-anchor="start" fill="#23383d">溝へ入れてケース壁を閉じる</text>
+<rect x="75.000" y="680.000" width="725.000" height="205.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="75.000" y="680.000" width="6.000" height="205.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="97.000" y="715.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">支持板の保持</text>
+<text x="97.000" y="750.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">A溝 z=28.5…37.5 / B溝 z=69.5…78.5、幅9 × 深さ4。</text>
+<text x="97.000" y="776.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">板端の捕捉は各辺3mm。PETシム0.25/0.5mmでガタを調整。</text>
+<text x="97.000" y="802.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">板を入れてからP2/P3を接合。接合方法は工房見積で決める。</text>
+<circle cx="890.000" cy="635.000" r="20.000" fill="#327e87" stroke="none" stroke-width="1.3"/>
+<text x="890.000" y="642.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="21" font-weight="600" text-anchor="middle" fill="#ffffff">6</text>
+<text x="933.000" y="643.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="25" font-weight="600" text-anchor="start" fill="#23383d">モーター・前後カバーを合わせる</text>
+<rect x="880.000" y="680.000" width="725.000" height="205.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="880.000" y="680.000" width="6.000" height="205.000" fill="#945d31" stroke="none" stroke-width="1"/>
+<text x="902.000" y="715.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#945d31">取付面と開閉</text>
+<text x="902.000" y="750.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">共通軸とモーター軸を継手で接続し、取付面z=108へ合わせる。</text>
+<text x="902.000" y="776.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">固定金具形状・締結詳細は現行ソースに未定義。別途具体化する。</text>
+<text x="902.000" y="802.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">P1/G2とP4は最後に固定し、保守時に取り外せるようにする。</text>
+<text x="80.000" y="957.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#23383d">P4のケース留め8本は3.1 × 25木ねじを見積に含める。P1/側板接合とガード保持は見積回答で決定。</text>
+<text x="80.000" y="1005.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#23383d">支持板を交換する場合はケース壁の接合を開く。背板だけを外して支持板を引き抜く構造にはしない。</text>
+</svg>

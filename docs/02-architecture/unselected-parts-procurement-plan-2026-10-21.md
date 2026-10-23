@@ -56,6 +56,7 @@
 | モーターVM TVS | Littelfuse SMBJ12A、unidirectional | 1 | 参考価格は調達時確認 | [Littelfuse](https://www.littelfuse.com/ja-jp/products/overvoltage-protection/tvs-diodes/surface-mount/smbj/smbj12a) | VM/GND近傍へ置く候補。VRWM=12V、最大クランプ19.9V。回生過渡の波形/エネルギーは未検証。|
 | ENN/STEP安全抵抗 | 汎用軸型スルーホール抵抗、10kΩ、0.25W以上、±5%以下 | 2本 | 一般受動部品。メーカー/販売店の固定指定なし | 電子部品店等 | 1本をENN→VIO/3.3Vのpull-up、1本をSTEP→GNDのpulldownに使用。抵抗値・数量・実装形状を選定済み。基板内蔵プルと起動動作は完成品受入で確認。|
 | 軸継手 | NBK MJT-14-RD-4-6、4mm↔6mm、外径14×全長22mm、ハブ長7mm | 1 | **¥2,167税込参考** | [NBK仕様](https://www.nbk1560.com/products/coupling/couplicon/jaw_type/MJT-RD/MJT-14-RD/MJT-14-RD-4-6/) | 6mm共通軸へ7mm挿入。モーター軸突出、後壁、実挿入深さ、止めねじ保持は現物確認。価格/在庫は注文前に再確認。|
+| モーター支持金具 | 取付面z=108mm。金具形状・ケース/支持板への固定穴・締結具は未定義 | 1式 | 未算出 | 詳細設計後に選定 | 2026-10-23の図面化で確認した机上残件。取付面位置を固定方法の確定と扱わない。選定済み市販部品の購入は進められるが、この支持金具の製作には詳細設計が必要。[図面D05/A02](../08-manufacturing/drawing-set-v0.1/README.md)へ明記。 |
 | USB-C PDアダプター | Anker 511 Charger (Nano 3, 30W) A2147 | 1 | **¥2,790 税込** | [Anker Japan](https://www.ankerjapan.com/products/a2147) | 15V/2A出力（30W）を使用。全負荷時のPD契約、電圧降下、温度は完成品で確認する。|
 | USB-Cケーブル | ELECOM MPA-CC10PNBK、C-C、1m、PD 60W | 1 | **¥1,720 税込** | [ELECOM](https://www.elecom.co.jp/products/MPA-CC10PNBK.html) | 60W表示は本システムが60Wを得る意味ではない。ケーブル経由で15V/2A契約を使う。|
 | PD受電 | Adafruit HUSB238 #5807 搭載基板（Switch Science ADA-5807） | 1 | **¥1,265 税込** | [Switch Science](https://www.switch-science.com/products/9296) | 15V/2Aへ設定する。出荷初期値は5V/1Aなのでジャンパーを設定。|

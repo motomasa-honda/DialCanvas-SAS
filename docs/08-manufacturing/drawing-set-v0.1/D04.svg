@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 1680 1188">
+<title>D04 支持板 B / 穴位置表</title>
+<desc>一台用の設計参照・組立説明図。寸法単位mm。実機未受入。歯形と分解間隔は模式。</desc>
+<rect x="0.000" y="0.000" width="1680.000" height="1188.000" fill="#ffffff" stroke="none" stroke-width="1"/>
+<rect x="0.000" y="0.000" width="21.000" height="1188.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="58.000" y="68.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">FOREST GUARDIAN  /  DIALCANVAS DESK EDITION</text>
+<text x="58.000" y="118.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="34" font-weight="600" text-anchor="start" fill="#23383d">D04   支持板 B / 穴位置表</text>
+<text x="58.000" y="153.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">板左上原点 / +X右・+Y下 / 全体外形 252 × 187 × 8 / ブッシュ穴 14か所</text>
+<line x1="58.000" y1="180.000" x2="1622.000" y2="180.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<line x1="58.000" y1="1112.000" x2="1622.000" y2="1112.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<text x="58.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#607479">単位 mm  |  形状・組付けの設計参照  |  基準 033f460 + 図面整合修正</text>
+<text x="1620.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="end" fill="#607479">2026-10-23  /  v0.1  /  D04</text>
+<text x="58.000" y="1171.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#607479">完成品の実機受入は未実施。印刷物を実寸の切削テンプレートとして使わない。</text>
+<rect x="140.000" y="300.000" width="756.000" height="561.000" fill="#eaf3f3" stroke="#327e87" stroke-width="2"/>
+<rect x="338.000" y="400.500" width="360.000" height="360.000" fill="#ffffff" stroke="#327e87" stroke-width="1.3"/>
+<text x="518.000" y="580.500" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="23" font-weight="400" text-anchor="middle" fill="#327e87">中央開口 120 × 120</text>
+<circle cx="518.000" cy="376.500" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="513.000" y1="376.500" x2="523.000" y2="376.500" stroke="#23383d" stroke-width="0.7"/>
+<line x1="518.000" y1="371.500" x2="518.000" y2="381.500" stroke="#23383d" stroke-width="0.7"/>
+<text x="534.000" y="381.500" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B00</text>
+<circle cx="460.109" cy="360.735" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="455.109" y1="360.735" x2="465.109" y2="360.735" stroke="#23383d" stroke-width="0.7"/>
+<line x1="460.109" y1="355.735" x2="460.109" y2="365.735" stroke="#23383d" stroke-width="0.7"/>
+<text x="476.109" y="365.735" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B01</text>
+<circle cx="402.215" cy="376.500" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="397.215" y1="376.500" x2="407.215" y2="376.500" stroke="#23383d" stroke-width="0.7"/>
+<line x1="402.215" y1="371.500" x2="402.215" y2="381.500" stroke="#23383d" stroke-width="0.7"/>
+<text x="418.215" y="381.500" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B02</text>
+<circle cx="345.374" cy="357.291" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="340.374" y1="357.291" x2="350.374" y2="357.291" stroke="#23383d" stroke-width="0.7"/>
+<line x1="345.374" y1="352.291" x2="345.374" y2="362.291" stroke="#23383d" stroke-width="0.7"/>
+<text x="361.374" y="362.291" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B03</text>
+<circle cx="293.411" cy="387.291" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="288.411" y1="387.291" x2="298.411" y2="387.291" stroke="#23383d" stroke-width="0.7"/>
+<line x1="293.411" y1="382.291" x2="293.411" y2="392.291" stroke="#23383d" stroke-width="0.7"/>
+<text x="309.411" y="392.291" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B04</text>
+<circle cx="240.866" cy="416.253" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="235.866" y1="416.253" x2="245.866" y2="416.253" stroke="#23383d" stroke-width="0.7"/>
+<line x1="240.866" y1="411.253" x2="240.866" y2="421.253" stroke="#23383d" stroke-width="0.7"/>
+<text x="256.866" y="421.253" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B05</text>
+<circle cx="284.459" cy="457.479" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="279.459" y1="457.479" x2="289.459" y2="457.479" stroke="#23383d" stroke-width="0.7"/>
+<line x1="284.459" y1="452.479" x2="284.459" y2="462.479" stroke="#23383d" stroke-width="0.7"/>
+<text x="300.459" y="462.479" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B06</text>
+<circle cx="241.958" cy="499.830" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="236.958" y1="499.830" x2="246.958" y2="499.830" stroke="#23383d" stroke-width="0.7"/>
+<line x1="241.958" y1="494.830" x2="241.958" y2="504.830" stroke="#23383d" stroke-width="0.7"/>
+<text x="257.958" y="504.830" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B07</text>
+<circle cx="284.459" cy="542.181" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="279.459" y1="542.181" x2="289.459" y2="542.181" stroke="#23383d" stroke-width="0.7"/>
+<line x1="284.459" y1="537.181" x2="284.459" y2="547.181" stroke="#23383d" stroke-width="0.7"/>
+<text x="300.459" y="547.181" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B08</text>
+<circle cx="238.091" cy="580.260" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="233.091" y1="580.260" x2="243.091" y2="580.260" stroke="#23383d" stroke-width="0.7"/>
+<line x1="238.091" y1="575.260" x2="238.091" y2="585.260" stroke="#23383d" stroke-width="0.7"/>
+<text x="254.091" y="585.260" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B09</text>
+<circle cx="286.664" cy="615.483" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="281.664" y1="615.483" x2="291.664" y2="615.483" stroke="#23383d" stroke-width="0.7"/>
+<line x1="286.664" y1="610.483" x2="286.664" y2="620.483" stroke="#23383d" stroke-width="0.7"/>
+<text x="302.664" y="620.483" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B10</text>
+<circle cx="247.532" cy="660.966" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="242.532" y1="660.966" x2="252.532" y2="660.966" stroke="#23383d" stroke-width="0.7"/>
+<line x1="247.532" y1="655.966" x2="247.532" y2="665.966" stroke="#23383d" stroke-width="0.7"/>
+<text x="263.532" y="665.966" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B11</text>
+<circle cx="282.536" cy="709.698" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="277.536" y1="709.698" x2="287.536" y2="709.698" stroke="#23383d" stroke-width="0.7"/>
+<line x1="282.536" y1="704.698" x2="282.536" y2="714.698" stroke="#23383d" stroke-width="0.7"/>
+<text x="298.536" y="714.698" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B12</text>
+<circle cx="235.169" cy="746.526" r="12.000" fill="#b8dadd" stroke="#327e87" stroke-width="1"/>
+<line x1="230.169" y1="746.526" x2="240.169" y2="746.526" stroke="#23383d" stroke-width="0.7"/>
+<line x1="235.169" y1="741.526" x2="235.169" y2="751.526" stroke="#23383d" stroke-width="0.7"/>
+<text x="251.169" y="751.526" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#23383d">B13</text>
+<line x1="140.000" y1="293.000" x2="140.000" y2="257.000" stroke="#607479" stroke-width="0.8"/>
+<line x1="896.000" y1="293.000" x2="896.000" y2="257.000" stroke="#607479" stroke-width="0.8"/>
+<line x1="140.000" y1="270.000" x2="896.000" y2="270.000" stroke="#607479" stroke-width="1"/>
+<polygon points="896.000,270.000 885.868,274.284 885.868,265.716" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="896.000" y1="270.000" x2="140.000" y2="270.000" stroke="#607479" stroke-width="1"/>
+<polygon points="140.000,270.000 150.132,265.716 150.132,274.284" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="518.000" y="258.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">252</text>
+<line x1="133.000" y1="300.000" x2="86.000" y2="300.000" stroke="#607479" stroke-width="0.8"/>
+<line x1="133.000" y1="861.000" x2="86.000" y2="861.000" stroke="#607479" stroke-width="0.8"/>
+<line x1="100.000" y1="300.000" x2="100.000" y2="861.000" stroke="#607479" stroke-width="1"/>
+<polygon points="100.000,861.000 95.716,850.868 104.284,850.868" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="100.000" y1="861.000" x2="100.000" y2="300.000" stroke="#607479" stroke-width="1"/>
+<polygon points="100.000,300.000 104.284,310.132 95.716,310.132" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="100.000" y="580.500" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">187</text>
+<circle cx="140.000" cy="300.000" r="20.000" fill="#327e87" stroke="none" stroke-width="1.3"/>
+<text x="140.000" y="307.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="21" font-weight="600" text-anchor="middle" fill="#ffffff">0</text>
+<line x1="140.000" y1="907.000" x2="235.000" y2="907.000" stroke="#327e87" stroke-width="2"/>
+<polygon points="235.000,907.000 224.868,911.284 224.868,902.716" fill="#327e87" stroke="none" stroke-width="1.3"/>
+<text x="250.000" y="913.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">+X</text>
+<rect x="1000.000" y="245.000" width="100.000" height="38.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="270.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="600" text-anchor="start" fill="#327e87">ID</text>
+<rect x="1100.000" y="245.000" width="220.000" height="38.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="270.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="600" text-anchor="start" fill="#327e87">X</text>
+<rect x="1320.000" y="245.000" width="220.000" height="38.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="270.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="600" text-anchor="start" fill="#327e87">Y</text>
+<rect x="1000.000" y="283.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="308.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B00</text>
+<rect x="1100.000" y="283.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="308.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">126.000</text>
+<rect x="1320.000" y="283.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="308.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">25.500</text>
+<rect x="1000.000" y="321.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="346.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B01</text>
+<rect x="1100.000" y="321.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="346.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">106.703</text>
+<rect x="1320.000" y="321.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="346.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">20.245</text>
+<rect x="1000.000" y="359.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="384.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B02</text>
+<rect x="1100.000" y="359.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="384.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">87.405</text>
+<rect x="1320.000" y="359.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="384.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">25.500</text>
+<rect x="1000.000" y="397.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="422.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B03</text>
+<rect x="1100.000" y="397.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="422.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">68.458</text>
+<rect x="1320.000" y="397.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="422.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">19.097</text>
+<rect x="1000.000" y="435.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="460.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B04</text>
+<rect x="1100.000" y="435.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="460.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">51.137</text>
+<rect x="1320.000" y="435.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="460.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">29.097</text>
+<rect x="1000.000" y="473.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="498.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B05</text>
+<rect x="1100.000" y="473.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="498.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">33.622</text>
+<rect x="1320.000" y="473.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="498.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">38.751</text>
+<rect x="1000.000" y="511.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="536.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B06</text>
+<rect x="1100.000" y="511.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="536.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">48.153</text>
+<rect x="1320.000" y="511.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="536.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">52.493</text>
+<rect x="1000.000" y="549.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="574.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B07</text>
+<rect x="1100.000" y="549.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="574.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">33.986</text>
+<rect x="1320.000" y="549.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="574.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">66.610</text>
+<rect x="1000.000" y="587.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="612.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B08</text>
+<rect x="1100.000" y="587.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="612.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">48.153</text>
+<rect x="1320.000" y="587.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="612.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">80.727</text>
+<rect x="1000.000" y="625.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="650.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B09</text>
+<rect x="1100.000" y="625.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="650.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">32.697</text>
+<rect x="1320.000" y="625.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="650.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">93.420</text>
+<rect x="1000.000" y="663.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="688.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B10</text>
+<rect x="1100.000" y="663.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="688.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">48.888</text>
+<rect x="1320.000" y="663.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="688.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">105.161</text>
+<rect x="1000.000" y="701.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="726.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B11</text>
+<rect x="1100.000" y="701.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="726.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">35.844</text>
+<rect x="1320.000" y="701.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="726.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">120.322</text>
+<rect x="1000.000" y="739.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="764.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B12</text>
+<rect x="1100.000" y="739.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="764.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">47.512</text>
+<rect x="1320.000" y="739.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="764.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">136.566</text>
+<rect x="1000.000" y="777.000" width="100.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1012.000" y="802.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B13</text>
+<rect x="1100.000" y="777.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1112.000" y="802.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">31.723</text>
+<rect x="1320.000" y="777.000" width="220.000" height="38.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="1332.000" y="802.840" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">148.842</text>
+<text x="140.000" y="915.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">OILES 80B-0608: ID6 / OD8 / 長さ8。指定穴はカタログ推奨 Ø8 H7。</text>
+<text x="140.000" y="946.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">ブッシュは板へ圧入。組立時に割れ・白化・軸の引っ掛かりを確認する。</text>
+<text x="140.000" y="977.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">ケース外側左上から板原点は (+9,+9)。軸位置はCSVと同一。</text>
+<text x="140.000" y="1008.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">B00はA00と同軸。共通軸を両板へ通し、箱を閉じる前に軸通りを確認する。</text>
+</svg>

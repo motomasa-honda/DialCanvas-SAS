@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 1680 1188">
+<title>D05 軸方向断面・歯車の向き</title>
+<desc>一台用の設計参照・組立説明図。寸法単位mm。実機未受入。歯形と分解間隔は模式。</desc>
+<rect x="0.000" y="0.000" width="1680.000" height="1188.000" fill="#ffffff" stroke="none" stroke-width="1"/>
+<rect x="0.000" y="0.000" width="21.000" height="1188.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="58.000" y="68.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">FOREST GUARDIAN  /  DIALCANVAS DESK EDITION</text>
+<text x="58.000" y="118.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="34" font-weight="600" text-anchor="start" fill="#23383d">D05   軸方向断面・歯車の向き</text>
+<text x="58.000" y="153.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">前→後を左→右に表示 / 実Z位置に比例した模式断面 / 歯先・止めねじ形状は省略</text>
+<line x1="58.000" y1="180.000" x2="1622.000" y2="180.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<line x1="58.000" y1="1112.000" x2="1622.000" y2="1112.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<text x="58.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#607479">単位 mm  |  形状・組付けの設計参照  |  基準 033f460 + 図面整合修正</text>
+<text x="1620.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="end" fill="#607479">2026-10-23  /  v0.1  /  D05</text>
+<text x="58.000" y="1171.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#607479">完成品の実機受入は未実施。印刷物を実寸の切削テンプレートとして使わない。</text>
+<line x1="180.000" y1="245.000" x2="180.000" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="180.000" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">0</text>
+<line x1="368.600" y1="245.000" x2="368.600" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<line x1="417.800" y1="245.000" x2="417.800" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="417.800" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">29</text>
+<line x1="483.400" y1="245.000" x2="483.400" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="483.400" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">37</text>
+<line x1="557.200" y1="245.000" x2="557.200" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<line x1="606.400" y1="245.000" x2="606.400" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<line x1="631.000" y1="245.000" x2="631.000" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="631.000" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">55</text>
+<line x1="680.200" y1="245.000" x2="680.200" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<line x1="754.000" y1="245.000" x2="754.000" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="754.000" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">70</text>
+<line x1="819.600" y1="245.000" x2="819.600" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<line x1="868.800" y1="245.000" x2="868.800" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="868.800" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">84</text>
+<line x1="926.200" y1="245.000" x2="926.200" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<line x1="1049.200" y1="245.000" x2="1049.200" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<line x1="1065.600" y1="245.000" x2="1065.600" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="1065.600" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">108</text>
+<line x1="1336.200" y1="245.000" x2="1336.200" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="1336.200" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">141</text>
+<line x1="1393.600" y1="245.000" x2="1393.600" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="1393.600" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">148</text>
+<line x1="1492.000" y1="245.000" x2="1492.000" y2="995.000" stroke="#cfdbdc" stroke-width="0.7" stroke-dasharray="3,5"/>
+<text x="1492.000" y="225.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#23383d">160</text>
+<line x1="180.000" y1="258.000" x2="1492.000" y2="258.000" stroke="#327e87" stroke-width="2"/>
+<polygon points="1492.000,258.000 1481.868,262.284 1481.868,253.716" fill="#327e87" stroke="none" stroke-width="1.3"/>
+<text x="1510.000" y="249.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">+Z</text>
+<text x="70.000" y="355.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="23" font-weight="600" text-anchor="start" fill="#23383d">A単軸</text>
+<text x="70.000" y="385.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">13組</text>
+<text x="70.000" y="585.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="23" font-weight="600" text-anchor="start" fill="#23383d">B単軸</text>
+<text x="70.000" y="615.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">13組</text>
+<text x="65.000" y="815.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="23" font-weight="600" text-anchor="start" fill="#23383d">共通軸</text>
+<text x="65.000" y="846.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#607479">1本・2歯車</text>
+<rect x="368.600" y="340.000" width="41.000" height="70.000" fill="#a5b3b6" stroke="#23383d" stroke-width="1"/>
+<text x="389.100" y="310.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">カラー</text>
+<line x1="389.100" y1="316.000" x2="389.100" y2="340.000" stroke="#607479" stroke-width="0.8"/>
+<rect x="409.600" y="340.000" width="8.200" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<rect x="417.800" y="340.000" width="65.600" height="70.000" fill="#eaf3f3" stroke="#23383d" stroke-width="1"/>
+<text x="450.600" y="310.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">A板</text>
+<line x1="450.600" y1="316.000" x2="450.600" y2="340.000" stroke="#607479" stroke-width="0.8"/>
+<rect x="483.400" y="340.000" width="8.200" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<rect x="491.600" y="340.000" width="65.600" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<text x="524.400" y="310.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">ボス</text>
+<line x1="524.400" y1="316.000" x2="524.400" y2="340.000" stroke="#607479" stroke-width="0.8"/>
+<rect x="557.200" y="340.000" width="49.200" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<text x="581.800" y="443.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">歯面A</text>
+<line x1="581.800" y1="425.000" x2="581.800" y2="410.000" stroke="#607479" stroke-width="0.8"/>
+<rect x="368.600" y="369.000" width="246.000" height="12.000" fill="#23383d" stroke="#23383d" stroke-width="1"/>
+<line x1="368.600" y1="485.000" x2="614.600" y2="485.000" stroke="#607479" stroke-width="1"/>
+<polygon points="614.600,485.000 604.468,489.284 604.468,480.716" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="614.600" y1="485.000" x2="368.600" y2="485.000" stroke="#607479" stroke-width="1"/>
+<polygon points="368.600,485.000 378.732,480.716 378.732,489.284" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="491.600" y="473.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">Ø6 h7 × 30   /   z=23…53</text>
+<rect x="631.000" y="570.000" width="49.200" height="70.000" fill="#945d31" stroke="#23383d" stroke-width="1"/>
+<text x="655.600" y="540.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">歯面B</text>
+<line x1="655.600" y1="546.000" x2="655.600" y2="570.000" stroke="#607479" stroke-width="0.8"/>
+<rect x="680.200" y="570.000" width="65.600" height="70.000" fill="#945d31" stroke="#23383d" stroke-width="1"/>
+<text x="713.000" y="673.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">ボス</text>
+<line x1="713.000" y1="655.000" x2="713.000" y2="640.000" stroke="#607479" stroke-width="0.8"/>
+<rect x="745.800" y="570.000" width="8.200" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<rect x="754.000" y="570.000" width="65.600" height="70.000" fill="#eaf3f3" stroke="#23383d" stroke-width="1"/>
+<text x="786.800" y="673.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">B板</text>
+<line x1="786.800" y1="655.000" x2="786.800" y2="640.000" stroke="#607479" stroke-width="0.8"/>
+<rect x="819.600" y="570.000" width="8.200" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<rect x="827.800" y="570.000" width="41.000" height="70.000" fill="#a5b3b6" stroke="#23383d" stroke-width="1"/>
+<text x="848.300" y="673.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">カラー</text>
+<line x1="848.300" y1="655.000" x2="848.300" y2="640.000" stroke="#607479" stroke-width="0.8"/>
+<rect x="631.000" y="599.000" width="246.000" height="12.000" fill="#23383d" stroke="#23383d" stroke-width="1"/>
+<line x1="631.000" y1="715.000" x2="877.000" y2="715.000" stroke="#607479" stroke-width="1"/>
+<polygon points="877.000,715.000 866.868,719.284 866.868,710.716" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="877.000" y1="715.000" x2="631.000" y2="715.000" stroke="#607479" stroke-width="1"/>
+<polygon points="631.000,715.000 641.132,710.716 641.132,719.284" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="754.000" y="703.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">Ø6 h7 × 30   /   z=55…85</text>
+<rect x="417.800" y="805.000" width="65.600" height="70.000" fill="#eaf3f3" stroke="#23383d" stroke-width="1"/>
+<rect x="483.400" y="805.000" width="8.200" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<rect x="491.600" y="805.000" width="65.600" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<rect x="557.200" y="805.000" width="49.200" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<rect x="631.000" y="805.000" width="49.200" height="70.000" fill="#945d31" stroke="#23383d" stroke-width="1"/>
+<rect x="680.200" y="805.000" width="65.600" height="70.000" fill="#945d31" stroke="#23383d" stroke-width="1"/>
+<rect x="745.800" y="805.000" width="8.200" height="70.000" fill="#c39743" stroke="#23383d" stroke-width="1"/>
+<rect x="754.000" y="805.000" width="65.600" height="70.000" fill="#eaf3f3" stroke="#23383d" stroke-width="1"/>
+<rect x="868.800" y="805.000" width="180.400" height="70.000" fill="#a5b3b6" stroke="#23383d" stroke-width="1"/>
+<rect x="1065.600" y="805.000" width="270.600" height="70.000" fill="#327e87" stroke="#23383d" stroke-width="1"/>
+<rect x="393.200" y="834.000" width="533.000" height="12.000" fill="#23383d" stroke="#23383d" stroke-width="1"/>
+<rect x="991.800" y="837.000" width="73.800" height="6.000" fill="#23383d" stroke="#23383d" stroke-width="1"/>
+<text x="1155.800" y="847.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#ffffff">#4411</text>
+<line x1="393.200" y1="953.000" x2="926.200" y2="953.000" stroke="#607479" stroke-width="1"/>
+<polygon points="926.200,953.000 916.068,957.284 916.068,948.716" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="926.200" y1="953.000" x2="393.200" y2="953.000" stroke="#607479" stroke-width="1"/>
+<polygon points="393.200,953.000 403.332,948.716 403.332,957.284" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="659.700" y="941.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">共通軸 Ø6 h7 × 65 / z=26…91</text>
+<text x="959.000" y="777.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#23383d">継手 84…106</text>
+<text x="1196.800" y="777.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#23383d">モーター 108…141</text>
+<line x1="1336.200" y1="915.000" x2="1393.600" y2="915.000" stroke="#607479" stroke-width="1"/>
+<polygon points="1393.600,915.000 1383.468,919.284 1383.468,910.716" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="1393.600" y1="915.000" x2="1336.200" y2="915.000" stroke="#607479" stroke-width="1"/>
+<polygon points="1336.200,915.000 1346.332,910.716 1346.332,919.284" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="1364.900" y="942.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">7</text>
+<text x="180.000" y="1025.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">W = POM 0612-10、各1mm。A00/B00にはカラーを置かず、ギア側Wを2枚使用。</text>
+<text x="180.000" y="1060.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b65340">モーター取付面 z=108。支持金具の形状・固定穴・ねじは現行ソースに未定義（製作用詳細図の対象外）。</text>
+</svg>

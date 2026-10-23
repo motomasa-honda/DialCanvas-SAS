@@ -39,7 +39,7 @@
   <text class="small" x="615" y="204">Four diagonal arms, 18mm wide; 190 × 190mm maximum blank.</text>
   <line class="rule" x1="615" y1="223" x2="1110" y2="223"/>
   <text class="label" x="615" y="258">Board side · 4 × M4 clearance Ø4.5mm</text>
-  <text class="small" x="615" y="282">Centers X=±37.50, Y=±39.25mm; 2mm nylon sleeves.</text>
+  <text class="small" x="615" y="282">Centers X=±37.50, Y=±39.25mm; 2mm POM sleeves.</text>
   <text class="small" x="615" y="305">M4 × 8mm screws: 3mm PC + 2mm sleeve leaves 3mm</text>
   <text class="small" x="615" y="326">nominal thread engagement in the drawing's 4mm depth.</text>
   <line class="rule" x1="615" y1="345" x2="1110" y2="345"/>
@@ -73,10 +73,10 @@
   <text class="tiny" x="225" y="608">46…52</text>
   <text class="tiny" x="253" y="608">55…61</text>
   <text class="tiny" x="299" y="608">70…78</text>
-  <text class="tiny" x="326" y="600">79…101</text>
-  <text class="tiny" x="398" y="591">103…136</text>
-  <text class="tiny" x="520" y="684" text-anchor="middle">Rear wall z=143</text>
-  <text class="tiny" x="280" y="702" text-anchor="middle">Display → carrier → A/B gears → coupler/motor; outer depth 167mm provisional.</text>
+  <text class="tiny" x="326" y="600">84…106</text>
+  <text class="tiny" x="398" y="591">108…141</text>
+  <text class="tiny" x="520" y="684" text-anchor="middle">Rear wall z=148</text>
+  <text class="tiny" x="280" y="702" text-anchor="middle">Display → carrier → A/B gears → coupler/motor; outer depth 172mm provisional.</text>
   <rect class="panel" x="650" y="564" width="490" height="138" rx="10"/>
   <text class="small" x="680" y="599">Catalog outline, hole pattern and depth set the layout.</text>
   <text class="small" x="680" y="624">At assembly, check screw engagement, USB/SD access,</text>

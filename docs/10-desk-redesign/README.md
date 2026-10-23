@@ -16,6 +16,8 @@
 
 `DR-00/01/08`は方針・ソース統合・要求移行を完了し、`DR-02〜06`は候補設計をベースライン化していますが、現物の照合・動作受入は残ります。`DR-07`製作リリースはHOLDです。
 
+2026-10-23に[設計図10ページ・分解組立図5ページ v0.1](../08-manufacturing/drawing-set-v0.1/README.md)を追加しました。ケース見積v0.4と最新の軸/電装配置を使う参照図です。図面化で確認したモーター支持金具の形状・穴・締結具は机上詳細が未定義のため、DR-06の残件として明記しました。物理受入の代わりにはしません。
+
 DR-02〜06の段階手順、記録項目、暫定pass条件は[一台試作受入計画v0.21](../09-verification/prototype-acceptance-plan-v0.21.md)を参照してください。そこに記載した数値目標も、実機で確認・承認するまでは暫定値です。
 
 購入準備状況は[一台分の調達候補BOM](../02-architecture/unselected-parts-procurement-plan-2026-10-21.md)、[購入前設計監査](../02-architecture/purchase-readiness-audit-2026-10-21.md)、[ADR-0015](../../adr/0015-bss20-axis-support-candidate.md)、[ADR-0016](../../adr/0016-waveshare-34c-mounting-and-clearance.md)、[現行BSS1-20C候補](../03-mechanical/bss20_axis_support_candidate-2026-10-22.md)に記録しています。**一台用の設計BOMは候補型番・数量・取付案まで選定済みです。** これは購入の実行や製作リリースを意味しません。ケース見積回答の確認、完成品一台の組立後に行う物理受入、文字盤素材の利用条件確認は残ります。圧入・溝クーポンや保持治具は初号機に使いません。

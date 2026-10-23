@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 1680 1188">
+<title>D09 制御線・モーター線の接続</title>
+<desc>一台用の設計参照・組立説明図。寸法単位mm。実機未受入。歯形と分解間隔は模式。</desc>
+<rect x="0.000" y="0.000" width="1680.000" height="1188.000" fill="#ffffff" stroke="none" stroke-width="1"/>
+<rect x="0.000" y="0.000" width="21.000" height="1188.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="58.000" y="68.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">FOREST GUARDIAN  /  DIALCANVAS DESK EDITION</text>
+<text x="58.000" y="118.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="34" font-weight="600" text-anchor="start" fill="#23383d">D09   制御線・モーター線の接続</text>
+<text x="58.000" y="153.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">GPIO番号は信号名。40ピン端子の物理ピン番号ではない / VIOとRTCは3.3V / UARTは未使用</text>
+<line x1="58.000" y1="180.000" x2="1622.000" y2="180.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<line x1="58.000" y1="1112.000" x2="1622.000" y2="1112.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<text x="58.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#607479">単位 mm  |  形状・組付けの設計参照  |  基準 033f460 + 図面整合修正</text>
+<text x="1620.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="end" fill="#607479">2026-10-23  /  v0.1  /  D09</text>
+<text x="58.000" y="1171.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#607479">完成品の実機受入は未実施。印刷物を実寸の切削テンプレートとして使わない。</text>
+<rect x="70.000" y="225.000" width="300.000" height="53.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="261.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="600" text-anchor="start" fill="#327e87">3.4C側</text>
+<rect x="370.000" y="225.000" width="490.000" height="53.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="261.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="600" text-anchor="start" fill="#327e87">接続先</text>
+<rect x="860.000" y="225.000" width="740.000" height="53.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="261.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="600" text-anchor="start" fill="#327e87">用途</text>
+<rect x="70.000" y="278.000" width="300.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="314.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">GPIO4</text>
+<rect x="370.000" y="278.000" width="490.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="314.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">TMC2209 STEP</text>
+<rect x="860.000" y="278.000" width="740.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="314.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">STEP → GNDへ10kΩ</text>
+<rect x="70.000" y="331.000" width="300.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="367.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">GPIO5</text>
+<rect x="370.000" y="331.000" width="490.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="367.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">TMC2209 DIR</text>
+<rect x="860.000" y="331.000" width="740.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="367.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">回転方向</text>
+<rect x="70.000" y="384.000" width="300.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="420.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">GPIO32</text>
+<rect x="370.000" y="384.000" width="490.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="420.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">TMC2209 ENN</text>
+<rect x="860.000" y="384.000" width="740.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="420.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">ENN → VIOへ10kΩ / HIGHで禁止</text>
+<rect x="70.000" y="437.000" width="300.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="473.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">3.3V / GND</text>
+<rect x="370.000" y="437.000" width="490.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="473.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">TMC2209 VIO / GND</text>
+<rect x="860.000" y="437.000" width="740.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="473.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">ロジック電源 / モーター戻りは別配線</text>
+<rect x="70.000" y="490.000" width="300.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="526.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">GPIO28 / GPIO29</text>
+<rect x="370.000" y="490.000" width="490.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="526.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">DS3231 SDA / SCL</text>
+<rect x="860.000" y="490.000" width="740.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="526.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">I²C 0x68</text>
+<rect x="70.000" y="543.000" width="300.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="579.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">3.3V / GND</text>
+<rect x="370.000" y="543.000" width="490.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="579.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">DS3231 VCC / GND</text>
+<rect x="860.000" y="543.000" width="740.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="579.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">CR1220はDS3231のホルダーへ</text>
+<rect x="70.000" y="596.000" width="300.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="632.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">GPIO2 / GPIO3</text>
+<rect x="370.000" y="596.000" width="490.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="632.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">EC11 A / B</text>
+<rect x="860.000" y="596.000" width="740.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="632.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">COM → GND / 内部pull-up</text>
+<rect x="70.000" y="649.000" width="300.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="82.000" y="685.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">GPIO21</text>
+<rect x="370.000" y="649.000" width="490.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="382.000" y="685.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">EC11 SW</text>
+<rect x="860.000" y="649.000" width="740.000" height="53.000" fill="#ffffff" stroke="#cfdbdc" stroke-width="0.8"/>
+<text x="872.000" y="685.040" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#23383d">SW COM → GND / 内部pull-up</text>
+<text x="70.000" y="765.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="23" font-weight="600" text-anchor="start" fill="#23383d">#4411の4本は巻線抵抗で2相へ分け、色に依存せず両端を表示する。</text>
+<text x="95.000" y="831.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">#4411 A1</text>
+<line x1="270.000" y1="825.000" x2="520.000" y2="825.000" stroke="#23383d" stroke-width="2"/>
+<rect x="470.000" y="813.000" width="120.000" height="24.000" fill="#e4e7e6" stroke="#23383d" stroke-width="1"/>
+<line x1="590.000" y1="825.000" x2="880.000" y2="825.000" stroke="#23383d" stroke-width="2"/>
+<text x="920.000" y="831.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">AWG22 → TMC 1A</text>
+<text x="530.000" y="794.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">個別はんだ + 接着剤付き熱収縮</text>
+<text x="95.000" y="881.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">#4411 A2</text>
+<line x1="270.000" y1="875.000" x2="520.000" y2="875.000" stroke="#23383d" stroke-width="2"/>
+<rect x="470.000" y="863.000" width="120.000" height="24.000" fill="#e4e7e6" stroke="#23383d" stroke-width="1"/>
+<line x1="590.000" y1="875.000" x2="880.000" y2="875.000" stroke="#23383d" stroke-width="2"/>
+<text x="920.000" y="881.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">AWG22 → TMC 1B</text>
+<text x="95.000" y="931.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">#4411 B1</text>
+<line x1="270.000" y1="925.000" x2="520.000" y2="925.000" stroke="#23383d" stroke-width="2"/>
+<rect x="470.000" y="913.000" width="120.000" height="24.000" fill="#e4e7e6" stroke="#23383d" stroke-width="1"/>
+<line x1="590.000" y1="925.000" x2="880.000" y2="925.000" stroke="#23383d" stroke-width="2"/>
+<text x="920.000" y="931.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">AWG22 → TMC 2A</text>
+<text x="95.000" y="981.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">#4411 B2</text>
+<line x1="270.000" y1="975.000" x2="520.000" y2="975.000" stroke="#23383d" stroke-width="2"/>
+<rect x="470.000" y="963.000" width="120.000" height="24.000" fill="#e4e7e6" stroke="#23383d" stroke-width="1"/>
+<line x1="590.000" y1="975.000" x2="880.000" y2="975.000" stroke="#23383d" stroke-width="2"/>
+<text x="920.000" y="981.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">AWG22 → TMC 2B</text>
+<rect x="1200.000" y="755.000" width="410.000" height="310.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="1200.000" y="755.000" width="6.000" height="310.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="1222.000" y="790.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">線の固定</text>
+<text x="1222.000" y="825.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">4本を個別に絶縁。TRPW6.4-2.0-10を各約25m</text>
+<text x="1222.000" y="851.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">m使用。</text>
+<text x="1222.000" y="877.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">端子・はんだ部と離れた点へ結束。接続部へ引</text>
+<text x="1222.000" y="903.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">張りを掛けない。</text>
+<text x="1222.000" y="929.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">PC接続時は内部USB給電線を外す。モーターV</text>
+<text x="1222.000" y="955.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">MをOFFにする。</text>
+<text x="70.000" y="1070.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">初期駆動: MS1/MS2開放で1/8、SPRD開放でStealthChop、0.30A RMS/相を評価開始点とする。</text>
+</svg>

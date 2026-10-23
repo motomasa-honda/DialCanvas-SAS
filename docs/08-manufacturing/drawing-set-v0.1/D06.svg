@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 1680 1188">
+<title>D06 表示器キャリア・固定スタック</title>
+<desc>一台用の設計参照・組立説明図。寸法単位mm。実機未受入。歯形と分解間隔は模式。</desc>
+<rect x="0.000" y="0.000" width="1680.000" height="1188.000" fill="#ffffff" stroke="none" stroke-width="1"/>
+<rect x="0.000" y="0.000" width="21.000" height="1188.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="58.000" y="68.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">FOREST GUARDIAN  /  DIALCANVAS DESK EDITION</text>
+<text x="58.000" y="118.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="34" font-weight="600" text-anchor="start" fill="#23383d">D06   表示器キャリア・固定スタック</text>
+<text x="58.000" y="153.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#607479">基板外周M4穴 75 × 78.5 / 4本腕の中央は開放 / 支持板Aのアンカーへ接続</text>
+<line x1="58.000" y1="180.000" x2="1622.000" y2="180.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<line x1="58.000" y1="1112.000" x2="1622.000" y2="1112.000" stroke="#cfdbdc" stroke-width="1.3"/>
+<text x="58.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#607479">単位 mm  |  形状・組付けの設計参照  |  基準 033f460 + 図面整合修正</text>
+<text x="1620.000" y="1145.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="15" font-weight="400" text-anchor="end" fill="#607479">2026-10-23  /  v0.1  /  D06</text>
+<text x="58.000" y="1171.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#607479">完成品の実機受入は未実施。印刷物を実寸の切削テンプレートとして使わない。</text>
+<rect x="131.500" y="296.500" width="627.000" height="627.000" fill="none" stroke="#cfdbdc" stroke-width="1" stroke-dasharray="8,6"/>
+<circle cx="445.000" cy="610.000" r="196.350" fill="none" stroke="#327e87" stroke-width="1.2"/>
+<circle cx="445.000" cy="610.000" r="189.750" fill="none" stroke="#a5b3b6" stroke-width="1"/>
+<line x1="321.250" y1="480.475" x2="181.000" y2="346.000" stroke="#c39743" stroke-width="59.4"/>
+<circle cx="321.250" cy="480.475" r="29.700" fill="#c39743" stroke="none" stroke-width="1.3"/>
+<circle cx="181.000" cy="346.000" r="29.700" fill="#c39743" stroke="none" stroke-width="1.3"/>
+<circle cx="321.250" cy="480.475" r="7.425" fill="#ffffff" stroke="#945d31" stroke-width="1.3"/>
+<circle cx="181.000" cy="346.000" r="5.610" fill="#ffffff" stroke="#945d31" stroke-width="1.3"/>
+<line x1="568.750" y1="480.475" x2="709.000" y2="346.000" stroke="#c39743" stroke-width="59.4"/>
+<circle cx="568.750" cy="480.475" r="29.700" fill="#c39743" stroke="none" stroke-width="1.3"/>
+<circle cx="709.000" cy="346.000" r="29.700" fill="#c39743" stroke="none" stroke-width="1.3"/>
+<circle cx="568.750" cy="480.475" r="7.425" fill="#ffffff" stroke="#945d31" stroke-width="1.3"/>
+<circle cx="709.000" cy="346.000" r="5.610" fill="#ffffff" stroke="#945d31" stroke-width="1.3"/>
+<line x1="321.250" y1="739.525" x2="181.000" y2="874.000" stroke="#c39743" stroke-width="59.4"/>
+<circle cx="321.250" cy="739.525" r="29.700" fill="#c39743" stroke="none" stroke-width="1.3"/>
+<circle cx="181.000" cy="874.000" r="29.700" fill="#c39743" stroke="none" stroke-width="1.3"/>
+<circle cx="321.250" cy="739.525" r="7.425" fill="#ffffff" stroke="#945d31" stroke-width="1.3"/>
+<circle cx="181.000" cy="874.000" r="5.610" fill="#ffffff" stroke="#945d31" stroke-width="1.3"/>
+<line x1="568.750" y1="739.525" x2="709.000" y2="874.000" stroke="#c39743" stroke-width="59.4"/>
+<circle cx="568.750" cy="739.525" r="29.700" fill="#c39743" stroke="none" stroke-width="1.3"/>
+<circle cx="709.000" cy="874.000" r="29.700" fill="#c39743" stroke="none" stroke-width="1.3"/>
+<circle cx="568.750" cy="739.525" r="7.425" fill="#ffffff" stroke="#945d31" stroke-width="1.3"/>
+<circle cx="709.000" cy="874.000" r="5.610" fill="#ffffff" stroke="#945d31" stroke-width="1.3"/>
+<line x1="445.000" y1="247.000" x2="445.000" y2="973.000" stroke="#607479" stroke-width="0.8" stroke-dasharray="6,5"/>
+<line x1="82.000" y1="610.000" x2="808.000" y2="610.000" stroke="#607479" stroke-width="0.8" stroke-dasharray="6,5"/>
+<text x="445.000" y="207.400" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#23383d">中心原点 / +X右 / +Y上</text>
+<line x1="321.250" y1="436.475" x2="568.750" y2="436.475" stroke="#607479" stroke-width="1"/>
+<polygon points="568.750,436.475 558.618,440.759 558.618,432.191" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="568.750" y1="436.475" x2="321.250" y2="436.475" stroke="#607479" stroke-width="1"/>
+<polygon points="321.250,436.475 331.382,432.191 331.382,440.759" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="445.000" y="424.475" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">75</text>
+<line x1="643.750" y1="480.475" x2="643.750" y2="739.525" stroke="#607479" stroke-width="1"/>
+<polygon points="643.750,739.525 639.466,729.393 648.034,729.393" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="643.750" y1="739.525" x2="643.750" y2="480.475" stroke="#607479" stroke-width="1"/>
+<polygon points="643.750,480.475 648.034,490.607 639.466,490.607" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="643.750" y="610.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">78.5</text>
+<line x1="181.000" y1="949.000" x2="709.000" y2="949.000" stroke="#607479" stroke-width="1"/>
+<polygon points="709.000,949.000 698.868,953.284 698.868,944.716" fill="#607479" stroke="none" stroke-width="1.3"/>
+<line x1="709.000" y1="949.000" x2="181.000" y2="949.000" stroke="#607479" stroke-width="1"/>
+<polygon points="181.000,949.000 191.132,944.716 191.132,953.284" fill="#607479" stroke="none" stroke-width="1.3"/>
+<text x="445.000" y="937.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#23383d">アンカー 160</text>
+<rect x="920.000" y="235.000" width="680.000" height="260.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="920.000" y="235.000" width="6.000" height="260.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="942.000" y="270.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">キャリアの名目寸法</text>
+<text x="942.000" y="305.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">透明PC 3厚。190 × 190素材から4本腕を切出し（4本で1組）。</text>
+<text x="942.000" y="331.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">腕幅18。M4側: 中心X=±37.50 / Y=±39.25、穴 Ø4.5。</text>
+<text x="942.000" y="357.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">M3側: 中心X/Y=±80、穴 Ø3.4。外形最大±89。</text>
+<text x="942.000" y="383.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">外周の基板固定座へ接続し、中央の部品・端子域は開ける。</text>
+<rect x="920.000" y="530.000" width="680.000" height="195.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="920.000" y="530.000" width="6.000" height="195.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="942.000" y="565.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">基板側: M4 × 8 / 4本</text>
+<text x="942.000" y="600.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">ねじ頭 → PC 3 → POM絶縁スペーサ2 → 基板M4取付座。</text>
+<text x="942.000" y="626.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">公称掛かり = 8 - 3 - 2 = 3。底付きと掛かりは組立時に確認。</text>
+<text x="942.000" y="652.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">M4ねじへ別座金を追加すると掛かりが減るため追加しない。</text>
+<rect x="920.000" y="755.000" width="680.000" height="205.000" fill="#eaf3f3" stroke="#cfdbdc" stroke-width="1"/>
+<rect x="920.000" y="755.000" width="6.000" height="205.000" fill="#327e87" stroke="none" stroke-width="1"/>
+<text x="942.000" y="790.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="22" font-weight="600" text-anchor="start" fill="#327e87">支持板側: M3 × 25 / 4組</text>
+<text x="942.000" y="825.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">PCキャリア3 → スペーサ合計7 → 支持板A 8。</text>
+<text x="942.000" y="851.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">7mmは6mm POMスペーサ + 1mm座金。外側はM3平座金と緩み止めナット。</text>
+<text x="942.000" y="877.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#23383d">PCを割らない手締め。根拠のない締付トルクは指定しない。</text>
+<text x="140.000" y="1070.000" font-family="Noto Sans JP,Noto Sans CJK JP,sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#23383d">前後: 基板 z=1.5…17 / 2mmスペーサ / PCキャリア19…22 / 7mm支持 / A板29…37。</text>
+</svg>
