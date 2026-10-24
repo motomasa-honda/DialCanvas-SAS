@@ -6,14 +6,14 @@
 - 元ZIPサイズ: **883777 bytes**
 - 元ZIP SHA-256: `b50177d12558f87b33673c1567680bf4b0e9ce875f49227431087a52c170b06d`
 - ZIPエントリ数: **26**
-- 状態: **ZIP本体のGitHub登録待ち**。このREADMEだけで原本保存済みと判断しないこと。
+- 状態: **ZIP本体はGitHubブランチに登録済み**（883777 bytes、Git blob SHA `797232a9d7d44ae5fbf0c4bcd9935cbb7671748e`）。元ZIPとのSHA-256再計算照合は未実施。
 
 ZIPには `design-baseline-v0.21.md`、`display-board-interface.md`、`walnut_case_candidate-2026-10-22.md`、`assembly-plan.md`、PDF/SVG図面、`source_manifest.json` 等が含まれる。
 
 参照ZIPは監査対象であり、ZIP中の旧資料をそのまま現行FIXED仕様へ昇格させない。現行正本はルート `AGENTS.md` の指定に従う。
 
 ## 取り込みチェック
-- [ ] ZIP本体を上記配置先へ原本のままコミット
+- [x] ZIP本体を上記配置先へコミット（サイズ一致）
 - [ ] SHA-256とファイルサイズを照合
 - [ ] ZIP内の26エントリを監査・分類
 - [ ] mainの既存資料との差分を記録
